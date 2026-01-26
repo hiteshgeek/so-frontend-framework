@@ -1179,6 +1179,56 @@ dropdown.clearSelection();  // Clear all selections
                                 </div>
                             </div>
 
+                            <!-- Light -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Light</label>
+                                <div class="so-dropdown so-dropdown-light" data-so-dropdown>
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected">Select option</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-item" data-value="1">
+                                            Option 1
+                                            <span class="material-icons so-dropdown-check">check</span>
+                                        </div>
+                                        <div class="so-dropdown-item" data-value="2">
+                                            Option 2
+                                            <span class="material-icons so-dropdown-check">check</span>
+                                        </div>
+                                        <div class="so-dropdown-item" data-value="3">
+                                            Option 3
+                                            <span class="material-icons so-dropdown-check">check</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dark -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Dark</label>
+                                <div class="so-dropdown so-dropdown-dark" data-so-dropdown>
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected">Select option</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-item" data-value="1">
+                                            Option 1
+                                            <span class="material-icons so-dropdown-check">check</span>
+                                        </div>
+                                        <div class="so-dropdown-item" data-value="2">
+                                            Option 2
+                                            <span class="material-icons so-dropdown-check">check</span>
+                                        </div>
+                                        <div class="so-dropdown-item" data-value="3">
+                                            Option 3
+                                            <span class="material-icons so-dropdown-check">check</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <h4 class="so-demo-section-heading-spaced">Multiple Selection with Contextual Colors</h4>
@@ -1238,6 +1288,42 @@ dropdown.clearSelection();  // Clear all selections
                                 </div>
                             </div>
 
+                            <!-- Multiple Light -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Multiple (Light)</label>
+                                <div class="so-dropdown so-dropdown-searchable so-dropdown-light" data-so-dropdown data-so-multiple="true">
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected placeholder">Select items</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-items">
+                                            <div class="so-dropdown-item" data-value="one">Option One</div>
+                                            <div class="so-dropdown-item" data-value="two">Option Two</div>
+                                            <div class="so-dropdown-item" data-value="three">Option Three</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Multiple Dark -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Multiple (Dark)</label>
+                                <div class="so-dropdown so-dropdown-searchable so-dropdown-dark" data-so-dropdown data-so-multiple="true">
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected placeholder">Select items</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-items">
+                                            <div class="so-dropdown-item" data-value="a">Choice A</div>
+                                            <div class="so-dropdown-item" data-value="b">Choice B</div>
+                                            <div class="so-dropdown-item" data-value="c">Choice C</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- Code Example -->
@@ -1265,6 +1351,12 @@ dropdown.clearSelection();  // Clear all selections
 
 &lt;!-- Secondary selection color --&gt;
 &lt;div class="so-dropdown so-dropdown-secondary" data-so-dropdown&gt;...&lt;/div&gt;
+
+&lt;!-- Light selection color --&gt;
+&lt;div class="so-dropdown so-dropdown-light" data-so-dropdown&gt;...&lt;/div&gt;
+
+&lt;!-- Dark selection color --&gt;
+&lt;div class="so-dropdown so-dropdown-dark" data-so-dropdown&gt;...&lt;/div&gt;
 
 &lt;!-- Multiple selection with contextual color --&gt;
 &lt;div class="so-dropdown so-dropdown-searchable so-dropdown-success"

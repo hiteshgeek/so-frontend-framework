@@ -491,6 +491,34 @@
   }
 }
 
+// Light Header
+.#{$so-prefix}card-header-light {
+  > .#{$so-prefix}card-header {
+    background: $so-grey-100;
+    border-bottom: none;
+    border-radius: radius('lg') radius('lg') 0 0;
+
+    .#{$so-prefix}card-title,
+    .#{$so-prefix}card-subtitle {
+      color: $so-grey-800;
+    }
+  }
+}
+
+// Dark Header
+.#{$so-prefix}card-header-dark {
+  > .#{$so-prefix}card-header {
+    background: $so-grey-900;
+    border-bottom: none;
+    border-radius: radius('lg') radius('lg') 0 0;
+
+    .#{$so-prefix}card-title,
+    .#{$so-prefix}card-subtitle {
+      color: $so-white;
+    }
+  }
+}
+
 // ============================================
 // SOFT/LIGHT CONTEXTUAL HEADERS
 // ============================================
@@ -561,6 +589,28 @@
   }
 }
 
+.#{$so-prefix}card-header-soft-light {
+  > .#{$so-prefix}card-header {
+    background: $so-grey-50;
+    border-bottom-color: $so-grey-200;
+
+    .#{$so-prefix}card-title {
+      color: $so-grey-600;
+    }
+  }
+}
+
+.#{$so-prefix}card-header-soft-dark {
+  > .#{$so-prefix}card-header {
+    background: alpha($so-grey-900, 0.1);
+    border-bottom-color: alpha($so-grey-900, 0.2);
+
+    .#{$so-prefix}card-title {
+      color: $so-grey-900;
+    }
+  }
+}
+
 // ============================================
 // BORDER COLOR VARIANTS
 // ============================================
@@ -592,6 +642,16 @@
 
 .#{$so-prefix}card-border-secondary {
   border: 1px solid css-var('accent-secondary');
+  box-shadow: none;
+}
+
+.#{$so-prefix}card-border-light {
+  border: 1px solid $so-grey-300;
+  box-shadow: none;
+}
+
+.#{$so-prefix}card-border-dark {
+  border: 1px solid $so-grey-900;
   box-shadow: none;
 }
 

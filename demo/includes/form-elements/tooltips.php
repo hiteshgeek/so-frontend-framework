@@ -115,6 +115,9 @@
                                     <button class="so-btn so-btn-outline-danger" data-so-tooltip="Danger alert" data-so-tooltip-color="danger">Danger</button>
                                     <button class="so-btn so-btn-outline-warning" data-so-tooltip="Warning notice" data-so-tooltip-color="warning">Warning</button>
                                     <button class="so-btn so-btn-outline-info" data-so-tooltip="Info hint" data-so-tooltip-color="info">Info</button>
+                                    <button class="so-btn so-btn-outline-secondary" data-so-tooltip="Secondary style" data-so-tooltip-color="secondary">Secondary</button>
+                                    <button class="so-btn so-btn-outline-light" data-so-tooltip="Light theme" data-so-tooltip-color="light">Light</button>
+                                    <button class="so-btn so-btn-outline-dark" data-so-tooltip="Dark theme" data-so-tooltip-color="dark">Dark</button>
                                 </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
@@ -128,7 +131,10 @@
 &lt;button data-so-tooltip="Success message" data-so-tooltip-color="success"&gt;Success&lt;/button&gt;
 &lt;button data-so-tooltip="Danger alert" data-so-tooltip-color="danger"&gt;Danger&lt;/button&gt;
 &lt;button data-so-tooltip="Warning notice" data-so-tooltip-color="warning"&gt;Warning&lt;/button&gt;
-&lt;button data-so-tooltip="Info hint" data-so-tooltip-color="info"&gt;Info&lt;/button&gt;</code></pre>
+&lt;button data-so-tooltip="Info hint" data-so-tooltip-color="info"&gt;Info&lt;/button&gt;
+&lt;button data-so-tooltip="Secondary style" data-so-tooltip-color="secondary"&gt;Secondary&lt;/button&gt;
+&lt;button data-so-tooltip="Light theme" data-so-tooltip-color="light"&gt;Light&lt;/button&gt;
+&lt;button data-so-tooltip="Dark theme" data-so-tooltip-color="dark"&gt;Dark&lt;/button&gt;</code></pre>
                             </div>
                     </div>
                 </div>

@@ -123,6 +123,24 @@
                                     <p>Card with secondary colored header.</p>
                                 </div>
                             </div>
+
+                            <div class="so-card so-card-header-light">
+                                <div class="so-card-header">
+                                    <h3 class="so-card-title">Light Header</h3>
+                                </div>
+                                <div class="so-card-body">
+                                    <p>Card with light colored header.</p>
+                                </div>
+                            </div>
+
+                            <div class="so-card so-card-header-dark">
+                                <div class="so-card-header">
+                                    <h3 class="so-card-title">Dark Header</h3>
+                                </div>
+                                <div class="so-card-body">
+                                    <p>Card with dark colored header.</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="so-code-block so-mt-4">
                             <div class="so-code-header">
@@ -142,7 +160,8 @@
 
 &lt;!-- Available: so-card-header-primary, so-card-header-success,
      so-card-header-danger, so-card-header-warning,
-     so-card-header-info, so-card-header-secondary --&gt;</code></pre>
+     so-card-header-info, so-card-header-secondary,
+     so-card-header-light, so-card-header-dark --&gt;</code></pre>
                         </div>
                     </div>
                 </div>

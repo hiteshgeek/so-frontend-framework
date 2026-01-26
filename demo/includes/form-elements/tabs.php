@@ -302,6 +302,20 @@
                                             <button class="so-tab" role="tab">Tab 2</button>
                                         </div>
                                     </div>
+                                    <div>
+                                        <h5 class="so-demo-section-title-sm">Light</h5>
+                                        <div class="so-tabs so-tabs-pills so-tabs-light so-tabs-sm" role="tablist" data-so-tabs>
+                                            <button class="so-tab active" role="tab">Active</button>
+                                            <button class="so-tab" role="tab">Tab 2</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="so-demo-section-title-sm">Dark</h5>
+                                        <div class="so-tabs so-tabs-pills so-tabs-dark so-tabs-sm" role="tablist" data-so-tabs>
+                                            <button class="so-tab active" role="tab">Active</button>
+                                            <button class="so-tab" role="tab">Tab 2</button>
+                                        </div>
+                                    </div>
                         </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
@@ -315,7 +329,9 @@
 &lt;div class="so-tabs so-tabs-pills so-tabs-danger"&gt;...&lt;/div&gt;
 &lt;div class="so-tabs so-tabs-pills so-tabs-warning"&gt;...&lt;/div&gt;
 &lt;div class="so-tabs so-tabs-pills so-tabs-info"&gt;...&lt;/div&gt;
-&lt;div class="so-tabs so-tabs-pills so-tabs-secondary"&gt;...&lt;/div&gt;</code></pre>
+&lt;div class="so-tabs so-tabs-pills so-tabs-secondary"&gt;...&lt;/div&gt;
+&lt;div class="so-tabs so-tabs-pills so-tabs-light"&gt;...&lt;/div&gt;
+&lt;div class="so-tabs so-tabs-pills so-tabs-dark"&gt;...&lt;/div&gt;</code></pre>
                             </div>
                     </div>
                 </div>

@@ -86,6 +86,26 @@
   }
 }
 
+// Light Input
+.#{$so-prefix}input-light {
+  border-color: $so-grey-300;
+
+  &:focus {
+    border-color: $so-grey-400;
+    box-shadow: 0 0 0 3px alpha($so-grey-300, 0.2);
+  }
+}
+
+// Dark Input
+.#{$so-prefix}input-dark {
+  border-color: $so-grey-900;
+
+  &:focus {
+    border-color: $so-grey-900;
+    box-shadow: 0 0 0 3px alpha($so-grey-900, 0.2);
+  }
+}
+
 // ============================================
 // INPUT WITH ICON
 // ============================================

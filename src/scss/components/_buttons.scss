@@ -3,6 +3,7 @@
 // Button component styles
 // ============================================
 
+@use 'sass:color';
 @use '../abstracts' as *;
 
 // ============================================
@@ -261,6 +262,46 @@
       background: css-var('accent-info-light', $so-info-light);
     }
   }
+
+  &.#{$so-prefix}btn-warning {
+    color: css-var('accent-warning-hover', $so-warning-dark);
+    background: transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: css-var('accent-warning-light', $so-warning-light);
+    }
+  }
+
+  &.#{$so-prefix}btn-secondary {
+    color: $so-secondary;
+    background: transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: $so-grey-200;
+    }
+  }
+
+  &.#{$so-prefix}btn-dark {
+    color: $so-grey-900;
+    background: transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: $so-grey-200;
+    }
+  }
+
+  &.#{$so-prefix}btn-light {
+    color: $so-grey-600;
+    background: transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: $so-grey-100;
+    }
+  }
 }
 
 // Link Button
@@ -389,6 +430,54 @@
   }
 }
 
+// Outline Secondary
+.#{$so-prefix}btn-outline-secondary {
+  background: transparent;
+  color: $so-secondary;
+  border-color: $so-secondary;
+
+  &:hover:not(:disabled) {
+    background: $so-secondary;
+    color: $so-white;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px alpha($so-secondary, 0.2);
+  }
+}
+
+// Outline Dark
+.#{$so-prefix}btn-outline-dark {
+  background: transparent;
+  color: $so-grey-900;
+  border-color: $so-grey-900;
+
+  &:hover:not(:disabled) {
+    background: $so-grey-900;
+    color: $so-white;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px alpha($so-grey-900, 0.2);
+  }
+}
+
+// Outline Light
+.#{$so-prefix}btn-outline-light {
+  background: transparent;
+  color: $so-grey-600;
+  border-color: $so-grey-300;
+
+  &:hover:not(:disabled) {
+    background: $so-grey-100;
+    color: $so-grey-800;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px alpha($so-grey-400, 0.2);
+  }
+}
+
 // ============================================
 // LIGHT BUTTONS (Soft Background)
 // ============================================
@@ -470,6 +559,54 @@
 
   &:focus {
     box-shadow: 0 0 0 3px alpha($so-info, 0.2);
+  }
+}
+
+// Light Secondary
+.#{$so-prefix}btn-light-secondary {
+  background: $so-grey-200;
+  color: $so-secondary;
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background: $so-secondary;
+    color: $so-white;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px alpha($so-secondary, 0.2);
+  }
+}
+
+// Light Dark
+.#{$so-prefix}btn-light-dark {
+  background: $so-grey-200;
+  color: $so-grey-900;
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background: $so-grey-900;
+    color: $so-white;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px alpha($so-grey-900, 0.2);
+  }
+}
+
+// Light Light
+.#{$so-prefix}btn-light-light {
+  background: $so-grey-50;
+  color: $so-grey-600;
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background: $so-grey-100;
+    color: $so-grey-800;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px alpha($so-grey-400, 0.2);
   }
 }
 
@@ -1186,14 +1323,297 @@
     animation: so-btn-spin 0.6s linear infinite;
   }
 
-  // For outline/ghost/light buttons, use dark spinner
+  // For outline/ghost/light buttons, use contextual color spinner
   &.#{$so-prefix}btn-outline,
   &.#{$so-prefix}btn-ghost,
-  &.#{$so-prefix}btn-link,
-  &[class*="btn-outline-"],
-  &[class*="btn-light-"] {
+  &.#{$so-prefix}btn-link {
     &::before {
       border-color: css-var('text-secondary');
+      border-right-color: transparent;
+    }
+  }
+
+  // Contextual spinner colors for solid buttons (very light tint - mix with white)
+  &.#{$so-prefix}btn-primary {
+    &::before {
+      border-color: color.mix($so-white, $so-primary, 70%);
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-secondary {
+    &::before {
+      border-color: color.mix($so-white, $so-secondary, 70%);
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-success {
+    &::before {
+      border-color: color.mix($so-white, $so-success, 70%);
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-danger {
+    &::before {
+      border-color: color.mix($so-white, $so-danger, 70%);
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-warning {
+    &::before {
+      border-color: color.mix($so-white, $so-warning, 70%);
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-info {
+    &::before {
+      border-color: color.mix($so-white, $so-info, 70%);
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light {
+    &::before {
+      border-color: $so-grey-500;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-dark {
+    &::before {
+      border-color: $so-grey-500;
+      border-right-color: transparent;
+    }
+  }
+
+  // Contextual spinner colors for outline buttons
+  &.#{$so-prefix}btn-outline-primary {
+    &::before {
+      border-color: css-var('accent-primary');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-outline-secondary {
+    &::before {
+      border-color: $so-secondary;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-outline-success {
+    &::before {
+      border-color: css-var('accent-success');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-outline-danger {
+    &::before {
+      border-color: css-var('accent-danger');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-outline-warning {
+    &::before {
+      border-color: css-var('accent-warning');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-outline-info {
+    &::before {
+      border-color: css-var('accent-info');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-outline-light {
+    &::before {
+      border-color: $so-grey-400;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-outline-dark {
+    &::before {
+      border-color: $so-grey-900;
+      border-right-color: transparent;
+    }
+  }
+
+  // Contextual spinner colors for light (soft) buttons
+  &.#{$so-prefix}btn-light-primary {
+    &::before {
+      border-color: css-var('accent-primary');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light-secondary {
+    &::before {
+      border-color: $so-secondary;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light-success {
+    &::before {
+      border-color: css-var('accent-success');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light-danger {
+    &::before {
+      border-color: css-var('accent-danger');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light-warning {
+    &::before {
+      border-color: css-var('accent-warning');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light-info {
+    &::before {
+      border-color: css-var('accent-info');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light-light {
+    &::before {
+      border-color: $so-grey-500;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-light-dark {
+    &::before {
+      border-color: $so-grey-900;
+      border-right-color: transparent;
+    }
+  }
+
+  // Contextual spinner colors for ghost buttons
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-primary {
+    &::before {
+      border-color: css-var('accent-primary');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-secondary {
+    &::before {
+      border-color: $so-secondary;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-success {
+    &::before {
+      border-color: css-var('accent-success');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-danger {
+    &::before {
+      border-color: css-var('accent-danger');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-warning {
+    &::before {
+      border-color: css-var('accent-warning');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-info {
+    &::before {
+      border-color: css-var('accent-info');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-light {
+    &::before {
+      border-color: $so-grey-400;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-ghost.#{$so-prefix}btn-dark {
+    &::before {
+      border-color: $so-grey-900;
+      border-right-color: transparent;
+    }
+  }
+
+  // Contextual spinner colors for link buttons
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-primary {
+    &::before {
+      border-color: css-var('accent-primary');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-secondary {
+    &::before {
+      border-color: $so-secondary;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-success {
+    &::before {
+      border-color: css-var('accent-success');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-danger {
+    &::before {
+      border-color: css-var('accent-danger');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-warning {
+    &::before {
+      border-color: css-var('accent-warning');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-info {
+    &::before {
+      border-color: css-var('accent-info');
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-light {
+    &::before {
+      border-color: $so-grey-400;
+      border-right-color: transparent;
+    }
+  }
+
+  &.#{$so-prefix}btn-link.#{$so-prefix}text-dark {
+    &::before {
+      border-color: $so-grey-900;
       border-right-color: transparent;
     }
   }

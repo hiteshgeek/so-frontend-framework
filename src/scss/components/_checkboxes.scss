@@ -196,7 +196,9 @@
   'success': $so-success,
   'danger': $so-danger,
   'warning': $so-warning,
-  'info': $so-info
+  'info': $so-info,
+  'light': $so-grey-400,
+  'dark': $so-grey-900
 ) {
   .#{$so-prefix}checkbox-#{$name} {
     &:hover:not(.disabled) .#{$so-prefix}checkbox-box {
@@ -399,7 +401,9 @@
   'success': $so-success,
   'danger': $so-danger,
   'warning': $so-warning,
-  'info': $so-info
+  'info': $so-info,
+  'light': $so-grey-400,
+  'dark': $so-grey-900
 ) {
   .#{$so-prefix}radio-#{$name} {
     &:hover:not(.disabled) .#{$so-prefix}radio-circle {
@@ -634,7 +638,9 @@
   'success': $so-success,
   'danger': $so-danger,
   'warning': $so-warning,
-  'info': $so-info
+  'info': $so-info,
+  'light': $so-grey-400,
+  'dark': $so-grey-900
 ) {
   .#{$so-prefix}switch-#{$name} {
     input:checked + .#{$so-prefix}switch-track {

@@ -236,6 +236,20 @@
                                 </span>
                                 <span class="so-checkbox-label">Info</span>
                             </label>
+                            <label class="so-checkbox so-checkbox-light">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Light</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-dark">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Dark</span>
+                            </label>
                         </div>
 
                         <h5 class="so-mb-3" class="so-demo-section-title">With Contextual Labels (label color matches when checked)</h5>
@@ -275,6 +289,27 @@
                                 </span>
                                 <span class="so-checkbox-label">Info</span>
                             </label>
+                            <label class="so-checkbox so-checkbox-secondary so-checkbox-label-contextual">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Secondary</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-light so-checkbox-label-contextual">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Light</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-dark so-checkbox-label-contextual">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Dark</span>
+                            </label>
                         </div>
                         <div class="so-code-block so-mt-4">
                             <div class="so-code-header">
@@ -289,6 +324,9 @@
 &lt;label class="so-checkbox so-checkbox-danger"&gt;...&lt;/label&gt;
 &lt;label class="so-checkbox so-checkbox-warning"&gt;...&lt;/label&gt;
 &lt;label class="so-checkbox so-checkbox-info"&gt;...&lt;/label&gt;
+&lt;label class="so-checkbox so-checkbox-secondary"&gt;...&lt;/label&gt;
+&lt;label class="so-checkbox so-checkbox-light"&gt;...&lt;/label&gt;
+&lt;label class="so-checkbox so-checkbox-dark"&gt;...&lt;/label&gt;
 
 &lt;!-- With contextual label color (label matches when checked) --&gt;
 &lt;label class="so-checkbox so-checkbox-success so-checkbox-label-contextual"&gt;
@@ -475,6 +513,16 @@
                                 <span class="so-radio-circle"></span>
                                 <span class="so-radio-label">Info</span>
                             </label>
+                            <label class="so-radio so-radio-light">
+                                <input type="radio" name="radio-color" value="light">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Light</span>
+                            </label>
+                            <label class="so-radio so-radio-dark">
+                                <input type="radio" name="radio-color" value="dark">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Dark</span>
+                            </label>
                         </div>
 
                         <h5 class="so-mb-3" class="so-demo-section-title">With Contextual Labels (label color matches when selected)</h5>
@@ -504,6 +552,21 @@
                                 <span class="so-radio-circle"></span>
                                 <span class="so-radio-label">Info</span>
                             </label>
+                            <label class="so-radio so-radio-secondary so-radio-label-contextual">
+                                <input type="radio" name="radio-color-contextual" value="secondary">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Secondary</span>
+                            </label>
+                            <label class="so-radio so-radio-light so-radio-label-contextual">
+                                <input type="radio" name="radio-color-contextual" value="light">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Light</span>
+                            </label>
+                            <label class="so-radio so-radio-dark so-radio-label-contextual">
+                                <input type="radio" name="radio-color-contextual" value="dark">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Dark</span>
+                            </label>
                         </div>
                         <div class="so-code-block so-mt-4">
                             <div class="so-code-header">
@@ -516,6 +579,9 @@
 &lt;label class="so-radio so-radio-primary"&gt;...&lt;/label&gt;
 &lt;label class="so-radio so-radio-success"&gt;...&lt;/label&gt;
 &lt;label class="so-radio so-radio-danger"&gt;...&lt;/label&gt;
+&lt;label class="so-radio so-radio-secondary"&gt;...&lt;/label&gt;
+&lt;label class="so-radio so-radio-light"&gt;...&lt;/label&gt;
+&lt;label class="so-radio so-radio-dark"&gt;...&lt;/label&gt;
 
 &lt;!-- With contextual label color --&gt;
 &lt;label class="so-radio so-radio-success so-radio-label-contextual"&gt;
@@ -612,6 +678,16 @@
                                 <input type="checkbox" checked>
                                 <span class="so-switch-track"></span>
                                 <span class="so-switch-label">Info</span>
+                            </label>
+                            <label class="so-switch so-switch-light">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Light</span>
+                            </label>
+                            <label class="so-switch so-switch-dark">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Dark</span>
                             </label>
                         </div>
 

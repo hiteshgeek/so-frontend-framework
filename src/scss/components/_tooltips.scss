@@ -766,6 +766,52 @@
   }
 }
 
+// Secondary
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-secondary {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-secondary;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-top .#{$so-prefix}tooltip-inner::after {
+    border-top-color: $so-secondary;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-bottom .#{$so-prefix}tooltip-inner::after {
+    border-bottom-color: $so-secondary;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-left .#{$so-prefix}tooltip-inner::after {
+    border-left-color: $so-secondary;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-right .#{$so-prefix}tooltip-inner::after {
+    border-right-color: $so-secondary;
+  }
+}
+
+// Dark
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-dark {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-grey-900;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-top .#{$so-prefix}tooltip-inner::after {
+    border-top-color: $so-grey-900;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-bottom .#{$so-prefix}tooltip-inner::after {
+    border-bottom-color: $so-grey-900;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-left .#{$so-prefix}tooltip-inner::after {
+    border-left-color: $so-grey-900;
+  }
+
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-right .#{$so-prefix}tooltip-inner::after {
+    border-right-color: $so-grey-900;
+  }
+}
+
 // ============================================
 // POPUP LIGHT THEME
 // ============================================

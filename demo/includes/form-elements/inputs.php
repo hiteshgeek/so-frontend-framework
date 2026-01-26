@@ -182,6 +182,16 @@
                                 <label class="so-form-label">Info</label>
                                 <input type="text" class="so-input so-input-info" placeholder="Info input">
                             </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Light</label>
+                                <input type="text" class="so-input so-input-light" placeholder="Light input">
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Dark</label>
+                                <input type="text" class="so-input so-input-dark" placeholder="Dark input">
+                            </div>
                         </div>
                         <div class="so-code-block so-mt-4">
                             <div class="so-code-header">
@@ -195,7 +205,9 @@
 &lt;input type="text" class="so-input so-input-success" placeholder="Success"&gt;
 &lt;input type="text" class="so-input so-input-danger" placeholder="Danger"&gt;
 &lt;input type="text" class="so-input so-input-warning" placeholder="Warning"&gt;
-&lt;input type="text" class="so-input so-input-info" placeholder="Info"&gt;</code></pre>
+&lt;input type="text" class="so-input so-input-info" placeholder="Info"&gt;
+&lt;input type="text" class="so-input so-input-light" placeholder="Light"&gt;
+&lt;input type="text" class="so-input so-input-dark" placeholder="Dark"&gt;</code></pre>
                         </div>
                     </div>
                 </div>

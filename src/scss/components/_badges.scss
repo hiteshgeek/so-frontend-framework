@@ -64,6 +64,18 @@
   color: $so-white;
 }
 
+// Light Badge
+.#{$so-prefix}badge-light {
+  background: $so-grey-100;
+  color: $so-grey-800;
+}
+
+// Dark Badge
+.#{$so-prefix}badge-dark {
+  background: $so-grey-900;
+  color: $so-white;
+}
+
 // ============================================
 // SOFT/LIGHT VARIANTS
 // ============================================
@@ -91,6 +103,21 @@
 .#{$so-prefix}badge-soft-info {
   background: alpha($so-info, 0.15);
   color: css-var('accent-info');
+}
+
+.#{$so-prefix}badge-soft-secondary {
+  background: alpha($so-secondary, 0.15);
+  color: $so-secondary;
+}
+
+.#{$so-prefix}badge-soft-light {
+  background: $so-grey-50;
+  color: $so-grey-600;
+}
+
+.#{$so-prefix}badge-soft-dark {
+  background: alpha($so-grey-900, 0.15);
+  color: $so-grey-900;
 }
 
 // ============================================

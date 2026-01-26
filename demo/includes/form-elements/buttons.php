@@ -41,12 +41,14 @@
                     </div>
                     <div class="so-card-body">
                                                         <div class="so-flex so-gap-2 so-flex-wrap">
-                                    <button class="so-btn so-btn-outline">Outline</button>
                                     <button class="so-btn so-btn-outline-primary">Primary</button>
+                                    <button class="so-btn so-btn-outline-secondary">Secondary</button>
                                     <button class="so-btn so-btn-outline-success">Success</button>
                                     <button class="so-btn so-btn-outline-danger">Danger</button>
                                     <button class="so-btn so-btn-outline-warning">Warning</button>
                                     <button class="so-btn so-btn-outline-info">Info</button>
+                                    <button class="so-btn so-btn-outline-light">Light</button>
+                                    <button class="so-btn so-btn-outline-dark">Dark</button>
                                 </div>                            <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -54,12 +56,14 @@
                                         <span class="material-icons">content_copy</span>
                                     </button>
                                 </div>
-                                <pre class="so-code-content"><code class="language-html">&lt;button class="so-btn so-btn-outline"&gt;Outline&lt;/button&gt;
-&lt;button class="so-btn so-btn-outline-primary"&gt;Primary&lt;/button&gt;
+                                <pre class="so-code-content"><code class="language-html">&lt;button class="so-btn so-btn-outline-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="so-btn so-btn-outline-secondary"&gt;Secondary&lt;/button&gt;
 &lt;button class="so-btn so-btn-outline-success"&gt;Success&lt;/button&gt;
 &lt;button class="so-btn so-btn-outline-danger"&gt;Danger&lt;/button&gt;
 &lt;button class="so-btn so-btn-outline-warning"&gt;Warning&lt;/button&gt;
-&lt;button class="so-btn so-btn-outline-info"&gt;Info&lt;/button&gt;</code></pre>
+&lt;button class="so-btn so-btn-outline-info"&gt;Info&lt;/button&gt;
+&lt;button class="so-btn so-btn-outline-light"&gt;Light&lt;/button&gt;
+&lt;button class="so-btn so-btn-outline-dark"&gt;Dark&lt;/button&gt;</code></pre>
                             </div>
                     </div>
                 </div>
@@ -72,10 +76,13 @@
                     <div class="so-card-body">
                                                         <div class="so-flex so-gap-2 so-flex-wrap">
                                     <button class="so-btn so-btn-light-primary">Primary</button>
+                                    <button class="so-btn so-btn-light-secondary">Secondary</button>
                                     <button class="so-btn so-btn-light-success">Success</button>
                                     <button class="so-btn so-btn-light-danger">Danger</button>
                                     <button class="so-btn so-btn-light-warning">Warning</button>
                                     <button class="so-btn so-btn-light-info">Info</button>
+                                    <button class="so-btn so-btn-light-light">Light</button>
+                                    <button class="so-btn so-btn-light-dark">Dark</button>
                                 </div>                            <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -84,10 +91,13 @@
                                     </button>
                                 </div>
                                 <pre class="so-code-content"><code class="language-html">&lt;button class="so-btn so-btn-light-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="so-btn so-btn-light-secondary"&gt;Secondary&lt;/button&gt;
 &lt;button class="so-btn so-btn-light-success"&gt;Success&lt;/button&gt;
 &lt;button class="so-btn so-btn-light-danger"&gt;Danger&lt;/button&gt;
 &lt;button class="so-btn so-btn-light-warning"&gt;Warning&lt;/button&gt;
-&lt;button class="so-btn so-btn-light-info"&gt;Info&lt;/button&gt;</code></pre>
+&lt;button class="so-btn so-btn-light-info"&gt;Info&lt;/button&gt;
+&lt;button class="so-btn so-btn-light-light"&gt;Light&lt;/button&gt;
+&lt;button class="so-btn so-btn-light-dark"&gt;Dark&lt;/button&gt;</code></pre>
                             </div>
                     </div>
                 </div>
@@ -99,11 +109,14 @@
                     </div>
                     <div class="so-card-body">
                                                         <div class="so-flex so-gap-2 so-flex-wrap">
-                                    <button class="so-btn so-btn-ghost">Ghost</button>
                                     <button class="so-btn so-btn-ghost so-btn-primary">Primary</button>
+                                    <button class="so-btn so-btn-ghost so-btn-secondary">Secondary</button>
                                     <button class="so-btn so-btn-ghost so-btn-success">Success</button>
                                     <button class="so-btn so-btn-ghost so-btn-danger">Danger</button>
+                                    <button class="so-btn so-btn-ghost so-btn-warning">Warning</button>
                                     <button class="so-btn so-btn-ghost so-btn-info">Info</button>
+                                    <button class="so-btn so-btn-ghost so-btn-light">Light</button>
+                                    <button class="so-btn so-btn-ghost so-btn-dark">Dark</button>
                                 </div>                            <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -111,12 +124,95 @@
                                         <span class="material-icons">content_copy</span>
                                     </button>
                                 </div>
-                                <pre class="so-code-content"><code class="language-html">&lt;button class="so-btn so-btn-ghost"&gt;Ghost&lt;/button&gt;
-&lt;button class="so-btn so-btn-ghost so-btn-primary"&gt;Primary&lt;/button&gt;
+                                <pre class="so-code-content"><code class="language-html">&lt;button class="so-btn so-btn-ghost so-btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="so-btn so-btn-ghost so-btn-secondary"&gt;Secondary&lt;/button&gt;
 &lt;button class="so-btn so-btn-ghost so-btn-success"&gt;Success&lt;/button&gt;
 &lt;button class="so-btn so-btn-ghost so-btn-danger"&gt;Danger&lt;/button&gt;
-&lt;button class="so-btn so-btn-ghost so-btn-info"&gt;Info&lt;/button&gt;</code></pre>
+&lt;button class="so-btn so-btn-ghost so-btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="so-btn so-btn-ghost so-btn-info"&gt;Info&lt;/button&gt;
+&lt;button class="so-btn so-btn-ghost so-btn-light"&gt;Light&lt;/button&gt;
+&lt;button class="so-btn so-btn-ghost so-btn-dark"&gt;Dark&lt;/button&gt;</code></pre>
                             </div>
+                    </div>
+                </div>
+
+                <!-- Section 4b: Link Buttons -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Link Buttons</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-3">Link buttons look like text links but behave like buttons. Use text color helper classes for contextual colors.</p>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-link">Default Link</button>
+                            <button class="so-btn so-btn-link so-text-primary">Primary</button>
+                            <button class="so-btn so-btn-link so-text-secondary">Secondary</button>
+                            <button class="so-btn so-btn-link so-text-success">Success</button>
+                            <button class="so-btn so-btn-link so-text-danger">Danger</button>
+                            <button class="so-btn so-btn-link so-text-warning">Warning</button>
+                            <button class="so-btn so-btn-link so-text-info">Info</button>
+                            <button class="so-btn so-btn-link so-text-dark">Dark</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Link Buttons with Icons</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-link so-text-primary">
+                                <span class="material-icons">edit</span>
+                                Edit
+                            </button>
+                            <button class="so-btn so-btn-link so-text-danger">
+                                <span class="material-icons">delete</span>
+                                Delete
+                            </button>
+                            <button class="so-btn so-btn-link so-text-success">
+                                <span class="material-icons">add</span>
+                                Add New
+                            </button>
+                            <button class="so-btn so-btn-link so-text-info">
+                                <span class="material-icons">visibility</span>
+                                View
+                            </button>
+                        </div>
+
+                        <h5 class="so-mb-3">Link Button Sizes</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap">
+                            <button class="so-btn so-btn-link so-btn-xs so-text-primary">Extra Small</button>
+                            <button class="so-btn so-btn-link so-btn-sm so-text-primary">Small</button>
+                            <button class="so-btn so-btn-link so-text-primary">Default</button>
+                            <button class="so-btn so-btn-link so-btn-lg so-text-primary">Large</button>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Default Link Button --&gt;
+&lt;button class="so-btn so-btn-link"&gt;Default Link&lt;/button&gt;
+
+&lt;!-- Contextual Colors (use text helper classes) --&gt;
+&lt;button class="so-btn so-btn-link so-text-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-text-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-text-success"&gt;Success&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-text-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-text-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-text-info"&gt;Info&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-text-light"&gt;Light&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-text-dark"&gt;Dark&lt;/button&gt;
+
+&lt;!-- With Icon --&gt;
+&lt;button class="so-btn so-btn-link so-text-danger"&gt;
+    &lt;span class="material-icons"&gt;delete&lt;/span&gt;
+    Delete
+&lt;/button&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;button class="so-btn so-btn-link so-btn-xs"&gt;Extra Small&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="so-btn so-btn-link"&gt;Default&lt;/button&gt;
+&lt;button class="so-btn so-btn-link so-btn-lg"&gt;Large&lt;/button&gt;</code></pre>
+                        </div>
                     </div>
                 </div>
 
@@ -301,7 +397,158 @@
                     </div>
                 </div>
 
-                <!-- Section 10: Progress Buttons -->
+                <!-- Section 10: Loading Buttons -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Loading Buttons</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-3">Add the <code>.loading</code> class to show a spinner and disable interaction. Works with all button variants.</p>
+
+                        <h5 class="so-mb-3">Solid Variants</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-primary loading">Primary</button>
+                            <button class="so-btn so-btn-secondary loading">Secondary</button>
+                            <button class="so-btn so-btn-success loading">Success</button>
+                            <button class="so-btn so-btn-danger loading">Danger</button>
+                            <button class="so-btn so-btn-warning loading">Warning</button>
+                            <button class="so-btn so-btn-info loading">Info</button>
+                            <button class="so-btn so-btn-light loading">Light</button>
+                            <button class="so-btn so-btn-dark loading">Dark</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Outline Variants</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-outline-primary loading">Primary</button>
+                            <button class="so-btn so-btn-outline-secondary loading">Secondary</button>
+                            <button class="so-btn so-btn-outline-success loading">Success</button>
+                            <button class="so-btn so-btn-outline-danger loading">Danger</button>
+                            <button class="so-btn so-btn-outline-warning loading">Warning</button>
+                            <button class="so-btn so-btn-outline-info loading">Info</button>
+                            <button class="so-btn so-btn-outline-light loading">Light</button>
+                            <button class="so-btn so-btn-outline-dark loading">Dark</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Light (Soft) Variants</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-light-primary loading">Primary</button>
+                            <button class="so-btn so-btn-light-secondary loading">Secondary</button>
+                            <button class="so-btn so-btn-light-success loading">Success</button>
+                            <button class="so-btn so-btn-light-danger loading">Danger</button>
+                            <button class="so-btn so-btn-light-warning loading">Warning</button>
+                            <button class="so-btn so-btn-light-info loading">Info</button>
+                            <button class="so-btn so-btn-light-light loading">Light</button>
+                            <button class="so-btn so-btn-light-dark loading">Dark</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Ghost & Link Variants</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-ghost so-btn-primary loading">Ghost Primary</button>
+                            <button class="so-btn so-btn-ghost so-btn-success loading">Ghost Success</button>
+                            <button class="so-btn so-btn-ghost so-btn-danger loading">Ghost Danger</button>
+                            <button class="so-btn so-btn-link loading">Link Button</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Size Variants</h5>
+                        <div class="so-flex so-gap-2 so-items-center so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-primary so-btn-xs loading">Extra Small</button>
+                            <button class="so-btn so-btn-primary so-btn-sm loading">Small</button>
+                            <button class="so-btn so-btn-primary loading">Default</button>
+                            <button class="so-btn so-btn-primary so-btn-lg loading">Large</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Icon Buttons</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-icon so-btn-primary loading">
+                                <span class="material-icons">add</span>
+                            </button>
+                            <button class="so-btn so-btn-icon so-btn-success loading">
+                                <span class="material-icons">check</span>
+                            </button>
+                            <button class="so-btn so-btn-icon so-btn-outline-danger loading">
+                                <span class="material-icons">delete</span>
+                            </button>
+                            <button class="so-btn so-btn-icon so-btn-ghost loading">
+                                <span class="material-icons">more_vert</span>
+                            </button>
+                        </div>
+
+                        <h5 class="so-mb-3">Interactive Demo</h5>
+                        <p class="so-text-muted so-mb-3">Click buttons to toggle loading state</p>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-primary" onclick="this.classList.toggle('loading')">
+                                <span class="material-icons">save</span>
+                                Save Changes
+                            </button>
+                            <button class="so-btn so-btn-success" onclick="this.classList.toggle('loading')">
+                                <span class="material-icons">send</span>
+                                Submit
+                            </button>
+                            <button class="so-btn so-btn-outline-primary" onclick="this.classList.toggle('loading')">
+                                <span class="material-icons">refresh</span>
+                                Refresh
+                            </button>
+                            <button class="so-btn so-btn-light-danger" onclick="this.classList.toggle('loading')">
+                                <span class="material-icons">delete</span>
+                                Delete
+                            </button>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Add .loading class to show spinner --&gt;
+&lt;button class="so-btn so-btn-primary loading"&gt;Loading...&lt;/button&gt;
+
+&lt;!-- Works with all variants (8 contextual colors) --&gt;
+&lt;button class="so-btn so-btn-primary loading"&gt;Primary&lt;/button&gt;
+&lt;button class="so-btn so-btn-secondary loading"&gt;Secondary&lt;/button&gt;
+&lt;button class="so-btn so-btn-success loading"&gt;Success&lt;/button&gt;
+&lt;button class="so-btn so-btn-danger loading"&gt;Danger&lt;/button&gt;
+&lt;button class="so-btn so-btn-warning loading"&gt;Warning&lt;/button&gt;
+&lt;button class="so-btn so-btn-info loading"&gt;Info&lt;/button&gt;
+&lt;button class="so-btn so-btn-light loading"&gt;Light&lt;/button&gt;
+&lt;button class="so-btn so-btn-dark loading"&gt;Dark&lt;/button&gt;
+
+&lt;!-- Outline variants --&gt;
+&lt;button class="so-btn so-btn-outline-primary loading"&gt;Outline&lt;/button&gt;
+
+&lt;!-- Light (soft) variants --&gt;
+&lt;button class="so-btn so-btn-light-primary loading"&gt;Light&lt;/button&gt;
+
+&lt;!-- Ghost variants --&gt;
+&lt;button class="so-btn so-btn-ghost so-btn-primary loading"&gt;Ghost&lt;/button&gt;
+
+&lt;!-- Link button --&gt;
+&lt;button class="so-btn so-btn-link loading"&gt;Link&lt;/button&gt;
+
+&lt;!-- Icon button --&gt;
+&lt;button class="so-btn so-btn-icon so-btn-primary loading"&gt;
+    &lt;span class="material-icons"&gt;add&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Toggle loading with JavaScript --&gt;
+&lt;script&gt;
+const btn = document.querySelector('.so-btn');
+
+// Start loading
+btn.classList.add('loading');
+
+// Stop loading
+btn.classList.remove('loading');
+
+// Toggle loading
+btn.classList.toggle('loading');
+&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 11: Progress Buttons -->
                 <div class="so-card so-mb-4">
                     <div class="so-card-header">
                         <h3 class="so-card-title">Progress Buttons</h3>

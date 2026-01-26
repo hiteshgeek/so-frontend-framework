@@ -3,6 +3,15 @@
 // Forward all layout modules
 // ============================================
 
+// Grid System Configuration (shared variables)
+@forward 'grid-config';
+
+// Grid System
+@forward 'containers';
+@forward 'grid';
+@forward 'css-grid';
+
+// Page Layout Components
 @forward 'navbar';
 @forward 'sidebar';
 @forward 'main-content';

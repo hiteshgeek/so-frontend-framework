@@ -12,14 +12,14 @@
                                 <label class="so-form-label">With Text Prefix</label>
                                 <div class="so-input-group">
                                     <span class="so-input-addon">$</span>
-                                    <input type="text" class="so-input" placeholder="0.00">
+                                    <input type="text" class="so-form-control" placeholder="0.00">
                                 </div>
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">With Text Suffix</label>
                                 <div class="so-input-group">
-                                    <input type="text" class="so-input" placeholder="Username">
+                                    <input type="text" class="so-form-control" placeholder="Username">
                                     <span class="so-input-addon">@example.com</span>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                                 <label class="so-form-label">Both Sides</label>
                                 <div class="so-input-group">
                                     <span class="so-input-addon">https://</span>
-                                    <input type="text" class="so-input" placeholder="domain">
+                                    <input type="text" class="so-form-control" placeholder="domain">
                                     <span class="so-input-addon">.com</span>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                             <div class="so-form-group">
                                 <label class="so-form-label">Numeric with Unit</label>
                                 <div class="so-input-group">
-                                    <input type="number" class="so-input" placeholder="0">
+                                    <input type="number" class="so-form-control" placeholder="0">
                                     <span class="so-input-addon">kg</span>
                                 </div>
                             </div>
@@ -51,19 +51,19 @@
                             <pre class="so-code-content"><code class="language-html">&lt;!-- Text Prefix --&gt;
 &lt;div class="so-input-group"&gt;
     &lt;span class="so-input-addon"&gt;$&lt;/span&gt;
-    &lt;input type="text" class="so-input" placeholder="0.00"&gt;
+    &lt;input type="text" class="so-form-control" placeholder="0.00"&gt;
 &lt;/div&gt;
 
 &lt;!-- Text Suffix --&gt;
 &lt;div class="so-input-group"&gt;
-    &lt;input type="text" class="so-input" placeholder="Username"&gt;
+    &lt;input type="text" class="so-form-control" placeholder="Username"&gt;
     &lt;span class="so-input-addon"&gt;@example.com&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;!-- Both Sides --&gt;
 &lt;div class="so-input-group"&gt;
     &lt;span class="so-input-addon"&gt;https://&lt;/span&gt;
-    &lt;input type="text" class="so-input" placeholder="domain"&gt;
+    &lt;input type="text" class="so-form-control" placeholder="domain"&gt;
     &lt;span class="so-input-addon"&gt;.com&lt;/span&gt;
 &lt;/div&gt;</code></pre>
                         </div>
@@ -81,7 +81,7 @@
                                 <label class="so-form-label">Email</label>
                                 <div class="so-input-group">
                                     <span class="so-input-addon"><span class="material-icons">email</span></span>
-                                    <input type="email" class="so-input" placeholder="Email address">
+                                    <input type="email" class="so-form-control" placeholder="Email address">
                                 </div>
                             </div>
 
@@ -89,7 +89,7 @@
                                 <label class="so-form-label">Phone</label>
                                 <div class="so-input-group">
                                     <span class="so-input-addon"><span class="material-icons">phone</span></span>
-                                    <input type="tel" class="so-input" placeholder="Phone number">
+                                    <input type="tel" class="so-form-control" placeholder="Phone number">
                                 </div>
                             </div>
 
@@ -97,7 +97,7 @@
                                 <label class="so-form-label">Website</label>
                                 <div class="so-input-group">
                                     <span class="so-input-addon"><span class="material-icons">link</span></span>
-                                    <input type="url" class="so-input" placeholder="https://example.com">
+                                    <input type="url" class="so-form-control" placeholder="https://example.com">
                                 </div>
                             </div>
 
@@ -105,7 +105,7 @@
                                 <label class="so-form-label">Location</label>
                                 <div class="so-input-group">
                                     <span class="so-input-addon"><span class="material-icons">location_on</span></span>
-                                    <input type="text" class="so-input" placeholder="Enter address">
+                                    <input type="text" class="so-form-control" placeholder="Enter address">
                                 </div>
                             </div>
                         </div>
@@ -118,12 +118,12 @@
                             </div>
                             <pre class="so-code-content"><code class="language-html">&lt;div class="so-input-group"&gt;
     &lt;span class="so-input-addon"&gt;&lt;span class="material-icons"&gt;email&lt;/span&gt;&lt;/span&gt;
-    &lt;input type="email" class="so-input" placeholder="Email address"&gt;
+    &lt;input type="email" class="so-form-control" placeholder="Email address"&gt;
 &lt;/div&gt;
 
 &lt;div class="so-input-group"&gt;
     &lt;span class="so-input-addon"&gt;&lt;span class="material-icons"&gt;phone&lt;/span&gt;&lt;/span&gt;
-    &lt;input type="tel" class="so-input" placeholder="Phone number"&gt;
+    &lt;input type="tel" class="so-form-control" placeholder="Phone number"&gt;
 &lt;/div&gt;</code></pre>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                             <div class="so-form-group">
                                 <label class="so-form-label">Search</label>
                                 <div class="so-input-group">
-                                    <input type="text" class="so-input" placeholder="Search...">
+                                    <input type="text" class="so-form-control" placeholder="Search...">
                                     <button type="button" class="so-btn so-btn-primary">Search</button>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                             <div class="so-form-group">
                                 <label class="so-form-label">Subscribe</label>
                                 <div class="so-input-group">
-                                    <input type="email" class="so-input" placeholder="Enter email">
+                                    <input type="email" class="so-form-control" placeholder="Enter email">
                                     <button type="button" class="so-btn so-btn-success">Subscribe</button>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                             <div class="so-form-group">
                                 <label class="so-form-label">Copy Link</label>
                                 <div class="so-input-group">
-                                    <input type="text" class="so-input" value="https://sixorbit.com/invite/abc123" readonly>
+                                    <input type="text" class="so-form-control" value="https://sixorbit.com/invite/abc123" readonly>
                                     <button type="button" class="so-btn so-btn-secondary">
                                         <span class="material-icons">content_copy</span>
                                     </button>
@@ -165,7 +165,7 @@
                             <div class="so-form-group">
                                 <label class="so-form-label">Upload</label>
                                 <div class="so-input-group">
-                                    <input type="text" class="so-input" placeholder="Choose file..." readonly>
+                                    <input type="text" class="so-form-control" placeholder="Choose file..." readonly>
                                     <button type="button" class="so-btn so-btn-light">Browse</button>
                                 </div>
                             </div>
@@ -179,13 +179,13 @@
                             </div>
                             <pre class="so-code-content"><code class="language-html">&lt;!-- Search --&gt;
 &lt;div class="so-input-group"&gt;
-    &lt;input type="text" class="so-input" placeholder="Search..."&gt;
+    &lt;input type="text" class="so-form-control" placeholder="Search..."&gt;
     &lt;button type="button" class="so-btn so-btn-primary"&gt;Search&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;!-- Icon Button --&gt;
 &lt;div class="so-input-group"&gt;
-    &lt;input type="text" class="so-input" value="https://..." readonly&gt;
+    &lt;input type="text" class="so-form-control" value="https://..." readonly&gt;
     &lt;button type="button" class="so-btn so-btn-secondary"&gt;
         &lt;span class="material-icons"&gt;content_copy&lt;/span&gt;
     &lt;/button&gt;

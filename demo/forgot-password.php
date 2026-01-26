@@ -76,7 +76,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                                 <div class="so-auth-input-wrapper">
                                     <input type="email"
                                            id="recoveryId"
-                                           class="so-input"
+                                           class="so-form-control"
                                            placeholder="Enter your email address"
                                            autocomplete="email"
                                            required>
@@ -158,7 +158,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                                 <div class="so-auth-input-wrapper has-toggle">
                                     <input type="password"
                                            id="newPassword"
-                                           class="so-input"
+                                           class="so-form-control"
                                            placeholder="Enter your new password"
                                            autocomplete="new-password"
                                            required>
@@ -194,7 +194,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                                 <div class="so-auth-input-wrapper has-toggle">
                                     <input type="password"
                                            id="confirmPassword"
-                                           class="so-input"
+                                           class="so-form-control"
                                            placeholder="Confirm your new password"
                                            autocomplete="new-password"
                                            required>

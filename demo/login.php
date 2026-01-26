@@ -99,7 +99,7 @@ require_once 'includes/config.php';
                             <span class="material-icons so-auth-input-icon" id="loginIdIcon">email</span>
                             <input type="email"
                                    id="loginId"
-                                   class="so-form-input"
+                                   class="so-form-control"
                                    placeholder="Enter your email address"
                                    autocomplete="email"
                                    required>
@@ -114,7 +114,7 @@ require_once 'includes/config.php';
                             <span class="material-icons so-auth-input-icon">lock</span>
                             <input type="password"
                                    id="password"
-                                   class="so-form-input"
+                                   class="so-form-control"
                                    placeholder="Enter your password"
                                    autocomplete="current-password"
                                    required>

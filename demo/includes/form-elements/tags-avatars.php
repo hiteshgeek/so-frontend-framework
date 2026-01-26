@@ -676,7 +676,7 @@
                         <!-- Add Chip Input -->
                         <div class="so-flex so-gap-2 so-items-center so-mb-3">
                             <div class="so-input-group" style="max-width: 300px;">
-                                <input type="text" class="so-input" id="chip-input" placeholder="Type a tag name...">
+                                <input type="text" class="so-form-control" id="chip-input" placeholder="Type a tag name...">
                                 <button class="so-btn so-btn-primary" id="add-chip-btn">
                                     <span class="material-icons">add</span>
                                     Add

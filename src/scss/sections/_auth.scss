@@ -392,11 +392,11 @@
 .#{$so-prefix}auth-input-wrapper {
   position: relative;
 
-  .#{$so-prefix}input {
+  .#{$so-prefix}form-control {
     padding-left: 44px;
   }
 
-  .#{$so-prefix}input-icon-left {
+  .#{$so-prefix}form-control-icon-left {
     position: absolute;
     left: 14px;
     top: 50%;
@@ -411,12 +411,12 @@
     }
   }
 
-  .#{$so-prefix}input:focus + .#{$so-prefix}input-icon-left,
-  .#{$so-prefix}input:not(:placeholder-shown) + .#{$so-prefix}input-icon-left {
+  .#{$so-prefix}form-control:focus + .#{$so-prefix}form-control-icon-left,
+  .#{$so-prefix}form-control:not(:placeholder-shown) + .#{$so-prefix}form-control-icon-left {
     color: css-var('accent-primary');
   }
 
-  &.has-toggle .#{$so-prefix}input {
+  &.has-toggle .#{$so-prefix}form-control {
     padding-right: 44px;
   }
 }

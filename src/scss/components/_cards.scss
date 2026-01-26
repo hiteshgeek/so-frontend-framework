@@ -795,9 +795,26 @@
 }
 
 // ============================================
-// CARD LOADING/SKELETON STATE
+// SKELETON LOADING ANIMATION
 // ============================================
 
+@keyframes so-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Base skeleton element (no animation by default)
+.#{$so-prefix}skeleton {
+  background: css-var('border-color');
+  border-radius: radius('sm');
+}
+
+// Skeleton loading container - enables animation for all .so-skeleton children
+.#{$so-prefix}skeleton-loading,
 .#{$so-prefix}card-loading {
   pointer-events: none;
 
@@ -810,49 +827,45 @@
     );
     background-size: 200% 100%;
     animation: so-skeleton-loading 1.5s infinite;
-    border-radius: radius('sm');
-  }
-
-  .#{$so-prefix}skeleton-text {
-    height: 1em;
-    margin-bottom: spacing('2');
-
-    &:last-child {
-      width: 60%;
-      margin-bottom: 0;
-    }
-  }
-
-  .#{$so-prefix}skeleton-title {
-    height: 1.5em;
-    width: 50%;
-    margin-bottom: spacing('3');
-  }
-
-  .#{$so-prefix}skeleton-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: radius('full');
-  }
-
-  .#{$so-prefix}skeleton-img {
-    height: 200px;
-    border-radius: radius('lg') radius('lg') 0 0;
-    width: 100%;
-  }
-
-  .#{$so-prefix}skeleton-btn {
-    height: 36px;
-    width: 80px;
-    border-radius: radius('md');
   }
 }
 
-@keyframes so-skeleton-loading {
-  0% {
-    background-position: 200% 0;
+// Skeleton element variants
+.#{$so-prefix}skeleton-text {
+  @extend .#{$so-prefix}skeleton;
+  height: 1em;
+  margin-bottom: spacing('2');
+
+  &:last-child {
+    width: 60%;
+    margin-bottom: 0;
   }
-  100% {
-    background-position: -200% 0;
-  }
+}
+
+.#{$so-prefix}skeleton-title {
+  @extend .#{$so-prefix}skeleton;
+  height: 1.5em;
+  width: 50%;
+  margin-bottom: spacing('3');
+}
+
+.#{$so-prefix}skeleton-avatar {
+  @extend .#{$so-prefix}skeleton;
+  width: 40px;
+  height: 40px;
+  border-radius: radius('full');
+}
+
+.#{$so-prefix}skeleton-img {
+  @extend .#{$so-prefix}skeleton;
+  height: 200px;
+  border-radius: radius('lg') radius('lg') 0 0;
+  width: 100%;
+}
+
+.#{$so-prefix}skeleton-btn {
+  @extend .#{$so-prefix}skeleton;
+  height: 36px;
+  width: 80px;
+  border-radius: radius('md');
 }

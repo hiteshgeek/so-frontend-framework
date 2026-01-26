@@ -6,28 +6,49 @@
 @use '../abstracts' as *;
 
 // ============================================
-// TEXT INPUT
+// FORM CONTROL (Bootstrap-aligned naming)
+// Unified class for inputs, textareas, and selects
 // ============================================
 
-.#{$so-prefix}input {
+.#{$so-prefix}form-control {
   @include input-base;
+
+  // Textarea-specific styles when applied to textarea element
+  &[rows],
+  textarea#{&} {
+    height: auto;
+    min-height: 100px;
+    resize: vertical;
+  }
 }
 
-// Input Sizes
-.#{$so-prefix}input-sm {
+// Form Control Sizes
+.#{$so-prefix}form-control-sm {
   @include input-size($so-form-height-sm, spacing('2') + 2px, $so-form-font-size-sm);
+
+  &[rows],
+  textarea#{&} {
+    height: auto;
+    min-height: 80px;
+  }
 }
 
-.#{$so-prefix}input-lg {
+.#{$so-prefix}form-control-lg {
   @include input-size($so-form-height-lg, spacing('4'), $so-form-font-size-lg);
+
+  &[rows],
+  textarea#{&} {
+    height: auto;
+    min-height: 120px;
+  }
 }
 
 // ============================================
-// CONTEXTUAL INPUT VARIANTS
+// CONTEXTUAL FORM CONTROL VARIANTS
 // ============================================
 
-// Primary Input
-.#{$so-prefix}input-primary {
+// Primary
+.#{$so-prefix}form-control-primary {
   border-color: css-var('accent-primary');
 
   &:focus {
@@ -36,8 +57,8 @@
   }
 }
 
-// Secondary Input
-.#{$so-prefix}input-secondary {
+// Secondary
+.#{$so-prefix}form-control-secondary {
   border-color: $so-secondary;
 
   &:focus {
@@ -46,8 +67,8 @@
   }
 }
 
-// Success Input
-.#{$so-prefix}input-success {
+// Success
+.#{$so-prefix}form-control-success {
   border-color: css-var('accent-success');
 
   &:focus {
@@ -56,8 +77,8 @@
   }
 }
 
-// Danger Input
-.#{$so-prefix}input-danger {
+// Danger
+.#{$so-prefix}form-control-danger {
   border-color: css-var('accent-danger');
 
   &:focus {
@@ -66,8 +87,8 @@
   }
 }
 
-// Warning Input
-.#{$so-prefix}input-warning {
+// Warning
+.#{$so-prefix}form-control-warning {
   border-color: css-var('accent-warning');
 
   &:focus {
@@ -76,8 +97,8 @@
   }
 }
 
-// Info Input
-.#{$so-prefix}input-info {
+// Info
+.#{$so-prefix}form-control-info {
   border-color: css-var('accent-info');
 
   &:focus {
@@ -86,8 +107,8 @@
   }
 }
 
-// Light Input
-.#{$so-prefix}input-light {
+// Light
+.#{$so-prefix}form-control-light {
   border-color: $so-grey-300;
 
   &:focus {
@@ -96,8 +117,8 @@
   }
 }
 
-// Dark Input
-.#{$so-prefix}input-dark {
+// Dark
+.#{$so-prefix}form-control-dark {
   border-color: $so-grey-900;
 
   &:focus {
@@ -114,7 +135,7 @@
   position: relative;
   display: block;
 
-  .#{$so-prefix}input {
+  .#{$so-prefix}form-control {
     padding-left: 40px;
   }
 
@@ -133,7 +154,7 @@
 
   // Icon on right side
   &.icon-right {
-    .#{$so-prefix}input {
+    .#{$so-prefix}form-control {
       padding-left: spacing('3');
       padding-right: 40px;
     }
@@ -172,75 +193,30 @@
     }
   }
 
-  .#{$so-prefix}input:not(:placeholder-shown) ~ .#{$so-prefix}input-clear {
+  .#{$so-prefix}form-control:not(:placeholder-shown) ~ .#{$so-prefix}input-clear {
     display: flex;
   }
 }
 
 // ============================================
-// TEXTAREA
+// TEXTAREA AUTOSIZE (modifier class)
 // ============================================
 
-.#{$so-prefix}textarea {
-  display: block;
-  width: 100%;
-  min-height: 100px;
-  padding: spacing('2') + 2px spacing('3');
-  font-size: font-size('base');
-  font-family: inherit;
-  color: css-var('form-text');
-  background: css-var('form-bg');
-  border: 1px solid css-var('form-border');
-  border-radius: radius('base');
-  outline: none;
-  resize: vertical;
-  transition: border-color $so-transition-base, box-shadow $so-transition-base;
-
-  &::placeholder {
-    color: css-var('form-placeholder');
-  }
-
-  &:hover:not(:disabled):not(:focus) {
-    border-color: css-var('form-border-hover');
-  }
-
-  &:focus {
-    border-color: css-var('form-border-focus');
-    box-shadow: 0 0 0 3px alpha($so-primary, 0.1);
-  }
-
-  &:disabled {
-    background: css-var('form-disabled-bg');
-    color: css-var('form-disabled-text');
-    cursor: not-allowed;
-  }
-
-  @include dark-mode {
-    &:focus {
-      box-shadow: 0 0 0 3px alpha($so-purple, 0.15);
-    }
-  }
-}
-
-// ============================================
-// TEXTAREA AUTOSIZE
-// ============================================
-
-.#{$so-prefix}textarea-autosize {
+.#{$so-prefix}form-control-autosize {
   overflow: hidden;
   resize: none;
   min-height: 80px;
   max-height: 400px;
-}
 
-.#{$so-prefix}textarea-autosize-sm {
-  min-height: 60px;
-  max-height: 200px;
-}
+  &.#{$so-prefix}form-control-sm {
+    min-height: 60px;
+    max-height: 200px;
+  }
 
-.#{$so-prefix}textarea-autosize-lg {
-  min-height: 120px;
-  max-height: 600px;
+  &.#{$so-prefix}form-control-lg {
+    min-height: 120px;
+    max-height: 600px;
+  }
 }
 
 // ============================================
@@ -375,7 +351,7 @@
 .#{$so-prefix}input-group {
   display: flex;
 
-  .#{$so-prefix}input {
+  .#{$so-prefix}form-control {
     flex: 1;
     border-radius: radius('base') 0 0 radius('base');
   }
@@ -398,7 +374,7 @@
       border-radius: radius('base') 0 0 radius('base');
       border-right: none;
 
-      + .#{$so-prefix}input {
+      + .#{$so-prefix}form-control {
         border-radius: 0 radius('base') radius('base') 0;
       }
     }
@@ -409,7 +385,7 @@
     }
   }
 
-  .#{$so-prefix}input:not(:first-child):not(:last-child) {
+  .#{$so-prefix}form-control:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
 }

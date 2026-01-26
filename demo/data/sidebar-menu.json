@@ -11,6 +11,13 @@
       "url": "form-elements.php"
     },
     {
+      "title": "Grid System",
+      "icon": "grid_view",
+      "url": "grid.php",
+      "badge": "New",
+      "badgeClass": "so-badge-soft-success"
+    },
+    {
       "title": "Finance",
       "icon": "account_balance",
       "children": [

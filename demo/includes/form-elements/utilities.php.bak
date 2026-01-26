@@ -38,13 +38,7 @@
             </div>
 
             <div class="so-code-block so-mb-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-m-3"&gt;Margin all sides&lt;/div&gt;
+                <pre><code>&lt;div class="so-m-3"&gt;Margin all sides&lt;/div&gt;
 &lt;div class="so-mt-2"&gt;Margin top&lt;/div&gt;
 &lt;div class="so-mx-auto"&gt;Margin auto horizontal (centering)&lt;/div&gt;
 &lt;div class="so-ms-4"&gt;Margin start (left in LTR)&lt;/div&gt;
@@ -63,13 +57,7 @@
             </div>
 
             <div class="so-code-block so-mb-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-p-3"&gt;Padding all sides&lt;/div&gt;
+                <pre><code>&lt;div class="so-p-3"&gt;Padding all sides&lt;/div&gt;
 &lt;div class="so-py-4"&gt;Padding vertical&lt;/div&gt;
 &lt;div class="so-px-5"&gt;Padding horizontal&lt;/div&gt;
 &lt;div class="so-pt-2 so-pb-4"&gt;Different top/bottom&lt;/div&gt;</code></pre>
@@ -99,13 +87,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-d-flex so-gap-3"&gt;...&lt;/div&gt;
+                <pre><code>&lt;div class="so-d-flex so-gap-3"&gt;...&lt;/div&gt;
 &lt;div class="so-d-flex so-row-gap-2 so-column-gap-4"&gt;...&lt;/div&gt;</code></pre>
             </div>
         </div>
@@ -142,13 +124,7 @@
             </div>
 
             <div class="so-code-block so-mb-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-position-relative"&gt;
+                <pre><code>&lt;div class="so-position-relative"&gt;
   &lt;div class="so-position-absolute so-top-0 so-start-0"&gt;Top Left&lt;/div&gt;
   &lt;div class="so-position-absolute so-top-50 so-start-50 so-translate-middle"&gt;Centered&lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -182,13 +158,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-float-start"&gt;Float left&lt;/div&gt;
+                <pre><code>&lt;div class="so-float-start"&gt;Float left&lt;/div&gt;
 &lt;div class="so-float-end"&gt;Float right&lt;/div&gt;
 &lt;div class="so-clearfix"&gt;Container with clearfix&lt;/div&gt;</code></pre>
             </div>
@@ -226,13 +196,7 @@
             </div>
 
             <div class="so-code-block so-mb-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-d-none"&gt;Hidden&lt;/div&gt;
+                <pre><code>&lt;div class="so-d-none"&gt;Hidden&lt;/div&gt;
 &lt;div class="so-d-block"&gt;Block&lt;/div&gt;
 &lt;div class="so-d-md-none so-d-lg-block"&gt;Responsive display&lt;/div&gt;</code></pre>
             </div>
@@ -247,13 +211,7 @@
             <p class="so-text-muted so-fs-sm so-mb-3"><code>.so-invisible</code> hides visually but preserves layout space. Use <code>.so-visually-hidden</code> or <code>.so-sr-only</code> for screen reader only content.</p>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-visible"&gt;Visible&lt;/div&gt;
+                <pre><code>&lt;div class="so-visible"&gt;Visible&lt;/div&gt;
 &lt;div class="so-invisible"&gt;Invisible (still takes space)&lt;/div&gt;
 &lt;span class="so-visually-hidden"&gt;Screen reader only&lt;/span&gt;
 &lt;span class="so-sr-only"&gt;Also screen reader only&lt;/span&gt;</code></pre>
@@ -383,13 +341,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-d-flex so-justify-content-between so-align-items-center"&gt;
+                <pre><code>&lt;div class="so-d-flex so-justify-content-between so-align-items-center"&gt;
   &lt;div class="so-flex-grow-1"&gt;Grows to fill&lt;/div&gt;
   &lt;div class="so-flex-shrink-0"&gt;Won't shrink&lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -417,13 +369,7 @@
             </div>
 
             <div class="so-code-block so-mb-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-w-25"&gt;25% width&lt;/div&gt;
+                <pre><code>&lt;div class="so-w-25"&gt;25% width&lt;/div&gt;
 &lt;div class="so-w-50"&gt;50% width&lt;/div&gt;
 &lt;div class="so-w-auto"&gt;Auto width&lt;/div&gt;
 &lt;div class="so-max-w-100"&gt;Max 100% width&lt;/div&gt;
@@ -440,13 +386,7 @@
             </div>
 
             <div class="so-code-block so-mb-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-h-100"&gt;100% height&lt;/div&gt;
+                <pre><code>&lt;div class="so-h-100"&gt;100% height&lt;/div&gt;
 &lt;div class="so-vh-100"&gt;100vh (viewport height)&lt;/div&gt;
 &lt;div class="so-min-vh-100"&gt;Min 100vh&lt;/div&gt;</code></pre>
             </div>
@@ -465,13 +405,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-aspect-square"&gt;1:1 ratio&lt;/div&gt;
+                <pre><code>&lt;div class="so-aspect-square"&gt;1:1 ratio&lt;/div&gt;
 &lt;div class="so-aspect-video"&gt;16:9 ratio&lt;/div&gt;
 &lt;img class="so-object-cover so-w-100 so-h-100" src="..." /&gt;
 &lt;img class="so-object-contain" src="..." /&gt;</code></pre>
@@ -588,13 +522,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;p class="so-text-truncate"&gt;Long text...&lt;/p&gt;
+                <pre><code>&lt;p class="so-text-truncate"&gt;Long text...&lt;/p&gt;
 &lt;p class="so-line-clamp-2"&gt;Multi-line clamp...&lt;/p&gt;
 &lt;p class="so-line-clamp-3"&gt;Three lines max...&lt;/p&gt;</code></pre>
             </div>
@@ -668,13 +596,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-border so-border-2 so-border-primary so-rounded-lg"&gt;...&lt;/div&gt;
+                <pre><code>&lt;div class="so-border so-border-2 so-border-primary so-rounded-lg"&gt;...&lt;/div&gt;
 &lt;div class="so-rounded-circle"&gt;Circle&lt;/div&gt;
 &lt;div class="so-rounded-pill"&gt;Pill shape&lt;/div&gt;
 &lt;div class="so-border-0"&gt;No border&lt;/div&gt;</code></pre>
@@ -706,13 +628,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-shadow"&gt;Default shadow&lt;/div&gt;
+                <pre><code>&lt;div class="so-shadow"&gt;Default shadow&lt;/div&gt;
 &lt;div class="so-shadow-lg"&gt;Large shadow&lt;/div&gt;
 &lt;div class="so-shadow-inner"&gt;Inset shadow&lt;/div&gt;
 &lt;div class="so-shadow-none"&gt;No shadow&lt;/div&gt;</code></pre>
@@ -740,13 +656,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-opacity-50"&gt;50% opacity&lt;/div&gt;
+                <pre><code>&lt;div class="so-opacity-50"&gt;50% opacity&lt;/div&gt;
 &lt;div class="so-opacity-75"&gt;75% opacity&lt;/div&gt;</code></pre>
             </div>
         </div>
@@ -790,13 +700,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-overflow-auto"&gt;Scrollable when needed&lt;/div&gt;
+                <pre><code>&lt;div class="so-overflow-auto"&gt;Scrollable when needed&lt;/div&gt;
 &lt;div class="so-overflow-hidden"&gt;Clip overflow&lt;/div&gt;
 &lt;div class="so-overflow-x-auto so-overflow-y-hidden"&gt;Scroll horizontal only&lt;/div&gt;</code></pre>
             </div>
@@ -825,13 +729,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;button class="so-cursor-not-allowed" disabled&gt;Disabled&lt;/button&gt;
+                <pre><code>&lt;button class="so-cursor-not-allowed" disabled&gt;Disabled&lt;/button&gt;
 &lt;div class="so-cursor-pointer"&gt;Clickable area&lt;/div&gt;
 &lt;div class="so-cursor-grab"&gt;Draggable&lt;/div&gt;</code></pre>
             </div>
@@ -870,13 +768,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-transition so-duration-300"&gt;Smooth transition&lt;/div&gt;
+                <pre><code>&lt;div class="so-transition so-duration-300"&gt;Smooth transition&lt;/div&gt;
 &lt;div class="so-transition-all so-duration-500"&gt;All properties animate&lt;/div&gt;
 &lt;div class="so-transition-transform so-duration-200"&gt;Transform only&lt;/div&gt;</code></pre>
             </div>
@@ -914,13 +806,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-scale-110"&gt;Scaled up 110%&lt;/div&gt;
+                <pre><code>&lt;div class="so-scale-110"&gt;Scaled up 110%&lt;/div&gt;
 &lt;div class="so-rotate-45"&gt;Rotated 45 degrees&lt;/div&gt;
 &lt;div class="so-transition-transform so-hover:so-scale-105"&gt;Scale on hover&lt;/div&gt;</code></pre>
             </div>
@@ -975,13 +861,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-blur-sm"&gt;Blurred element&lt;/div&gt;
+                <pre><code>&lt;div class="so-blur-sm"&gt;Blurred element&lt;/div&gt;
 &lt;div class="so-grayscale"&gt;Grayscale&lt;/div&gt;
 &lt;div class="so-backdrop-blur-md so-bg-white so-bg-opacity-50"&gt;Frosted glass effect&lt;/div&gt;</code></pre>
             </div>
@@ -1012,13 +892,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;div class="so-user-select-none"&gt;Cannot be selected&lt;/div&gt;
+                <pre><code>&lt;div class="so-user-select-none"&gt;Cannot be selected&lt;/div&gt;
 &lt;div class="so-user-select-all"&gt;Click to select all text&lt;/div&gt;
 &lt;button class="so-pe-none"&gt;Click-through (disabled)&lt;/button&gt;</code></pre>
             </div>
@@ -1074,13 +948,7 @@
             </div>
 
             <div class="so-code-block so-mb-5">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;!-- Wrap with .so-skeleton-loading to enable animation --&gt;
+                <pre><code>&lt;!-- Wrap with .so-skeleton-loading to enable animation --&gt;
 &lt;div class="so-skeleton-loading"&gt;
     &lt;div class="so-skeleton so-skeleton-text"&gt;&lt;/div&gt;
     &lt;div class="so-skeleton so-skeleton-title"&gt;&lt;/div&gt;
@@ -1141,13 +1009,7 @@
             </div>
 
             <div class="so-code-block so-mb-5">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;!-- Card with Image Skeleton --&gt;
+                <pre><code>&lt;!-- Card with Image Skeleton --&gt;
 &lt;div class="so-card so-skeleton-loading"&gt;
     &lt;div class="so-skeleton so-skeleton-img"&gt;&lt;/div&gt;
     &lt;div class="so-card-body"&gt;
@@ -1251,13 +1113,7 @@
             </div>
 
             <div class="so-code-block so-mb-5">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;!-- List Item Skeleton --&gt;
+                <pre><code>&lt;!-- List Item Skeleton --&gt;
 &lt;div class="so-d-flex so-align-items-center so-gap-3 so-p-3"&gt;
     &lt;div class="so-skeleton so-skeleton-avatar"&gt;&lt;/div&gt;
     &lt;div class="so-flex-grow-1"&gt;
@@ -1333,13 +1189,7 @@
             </div>
 
             <div class="so-code-block so-mb-5">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;!-- Custom shapes with inline styles --&gt;
+                <pre><code>&lt;!-- Custom shapes with inline styles --&gt;
 &lt;div class="so-skeleton" style="width: 60px; height: 60px; border-radius: 8px;"&gt;&lt;/div&gt;
 &lt;div class="so-skeleton" style="width: 60px; height: 60px; border-radius: 50%;"&gt;&lt;/div&gt;
 &lt;div class="so-skeleton" style="width: 80px; height: 24px; border-radius: 9999px;"&gt;&lt;/div&gt;
@@ -1502,13 +1352,7 @@
             </div>
 
             <div class="so-code-block">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-html">&lt;!-- Hidden on mobile, visible on md and up --&gt;
+                <pre><code>&lt;!-- Hidden on mobile, visible on md and up --&gt;
 &lt;div class="so-d-none so-d-md-block"&gt;...&lt;/div&gt;
 
 &lt;!-- Stack on mobile, row on lg and up --&gt;

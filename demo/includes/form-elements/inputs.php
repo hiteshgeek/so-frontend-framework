@@ -9,22 +9,22 @@
                         <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
                             <div class="so-form-group">
                                 <label class="so-form-label">Default Input</label>
-                                <input type="text" class="so-input" placeholder="Enter text...">
+                                <input type="text" class="so-form-control" placeholder="Enter text...">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">With Value</label>
-                                <input type="text" class="so-input" value="John Doe">
+                                <input type="text" class="so-form-control" value="John Doe">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label required">Required Field</label>
-                                <input type="text" class="so-input" placeholder="This field is required" required>
+                                <input type="text" class="so-form-control" placeholder="This field is required" required>
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Password Input</label>
-                                <input type="password" class="so-input" placeholder="Enter password">
+                                <input type="password" class="so-form-control" placeholder="Enter password">
                             </div>
                         </div>
                         <div class="so-code-block so-mt-4">
@@ -36,12 +36,12 @@
                             </div>
                             <pre class="so-code-content"><code class="language-html">&lt;div class="so-form-group"&gt;
     &lt;label class="so-form-label"&gt;Default Input&lt;/label&gt;
-    &lt;input type="text" class="so-input" placeholder="Enter text..."&gt;
+    &lt;input type="text" class="so-form-control" placeholder="Enter text..."&gt;
 &lt;/div&gt;
 
 &lt;div class="so-form-group"&gt;
     &lt;label class="so-form-label required"&gt;Required Field&lt;/label&gt;
-    &lt;input type="text" class="so-input" placeholder="This field is required" required&gt;
+    &lt;input type="text" class="so-form-control" placeholder="This field is required" required&gt;
 &lt;/div&gt;</code></pre>
                         </div>
                     </div>
@@ -56,17 +56,17 @@
                         <div class="so-grid so-grid-cols-3 so-grid-cols-sm-1">
                             <div class="so-form-group">
                                 <label class="so-form-label">Small Input</label>
-                                <input type="text" class="so-input so-input-sm" placeholder="Small input">
+                                <input type="text" class="so-form-control so-form-control-sm" placeholder="Small input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Default Input</label>
-                                <input type="text" class="so-input" placeholder="Default input">
+                                <input type="text" class="so-form-control" placeholder="Default input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Large Input</label>
-                                <input type="text" class="so-input so-input-lg" placeholder="Large input">
+                                <input type="text" class="so-form-control so-form-control-lg" placeholder="Large input">
                             </div>
                         </div>
                         <div class="so-code-block so-mt-4">
@@ -76,9 +76,9 @@
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;input type="text" class="so-input so-input-sm" placeholder="Small"&gt;
-&lt;input type="text" class="so-input" placeholder="Default"&gt;
-&lt;input type="text" class="so-input so-input-lg" placeholder="Large"&gt;</code></pre>
+                            <pre class="so-code-content"><code class="language-html">&lt;input type="text" class="so-form-control so-form-control-sm" placeholder="Small"&gt;
+&lt;input type="text" class="so-form-control" placeholder="Default"&gt;
+&lt;input type="text" class="so-form-control so-form-control-lg" placeholder="Large"&gt;</code></pre>
                         </div>
                     </div>
                 </div>
@@ -94,14 +94,14 @@
                                 <label class="so-form-label">Left Icon</label>
                                 <div class="so-input-wrapper">
                                     <span class="so-input-icon"><span class="material-icons">search</span></span>
-                                    <input type="text" class="so-input" placeholder="Search...">
+                                    <input type="text" class="so-form-control" placeholder="Search...">
                                 </div>
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Right Icon</label>
                                 <div class="so-input-wrapper icon-right">
-                                    <input type="text" class="so-input" placeholder="Email address">
+                                    <input type="text" class="so-form-control" placeholder="Email address">
                                     <span class="so-input-icon"><span class="material-icons">email</span></span>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                             <div class="so-form-group">
                                 <label class="so-form-label">Clearable Input</label>
                                 <div class="so-input-wrapper icon-right">
-                                    <input type="text" class="so-input" placeholder="Type to clear..." value="Clear me">
+                                    <input type="text" class="so-form-control" placeholder="Type to clear..." value="Clear me">
                                     <button type="button" class="so-input-clear">
                                         <span class="material-icons">close</span>
                                     </button>
@@ -126,18 +126,18 @@
                             <pre class="so-code-content"><code class="language-html">&lt;!-- Left Icon --&gt;
 &lt;div class="so-input-wrapper"&gt;
     &lt;span class="so-input-icon"&gt;&lt;span class="material-icons"&gt;search&lt;/span&gt;&lt;/span&gt;
-    &lt;input type="text" class="so-input" placeholder="Search..."&gt;
+    &lt;input type="text" class="so-form-control" placeholder="Search..."&gt;
 &lt;/div&gt;
 
 &lt;!-- Right Icon --&gt;
 &lt;div class="so-input-wrapper icon-right"&gt;
-    &lt;input type="text" class="so-input" placeholder="Email"&gt;
+    &lt;input type="text" class="so-form-control" placeholder="Email"&gt;
     &lt;span class="so-input-icon"&gt;&lt;span class="material-icons"&gt;email&lt;/span&gt;&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;!-- Clearable Input --&gt;
 &lt;div class="so-input-wrapper icon-right"&gt;
-    &lt;input type="text" class="so-input" placeholder="Type..." value="Clear me"&gt;
+    &lt;input type="text" class="so-form-control" placeholder="Type..." value="Clear me"&gt;
     &lt;button type="button" class="so-input-clear"&gt;
         &lt;span class="material-icons"&gt;close&lt;/span&gt;
     &lt;/button&gt;
@@ -155,42 +155,42 @@
                         <div class="so-grid so-grid-cols-3 so-grid-cols-sm-1">
                             <div class="so-form-group">
                                 <label class="so-form-label">Primary</label>
-                                <input type="text" class="so-input so-input-primary" placeholder="Primary input">
+                                <input type="text" class="so-form-control so-form-control-primary" placeholder="Primary input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Secondary</label>
-                                <input type="text" class="so-input so-input-secondary" placeholder="Secondary input">
+                                <input type="text" class="so-form-control so-form-control-secondary" placeholder="Secondary input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Success</label>
-                                <input type="text" class="so-input so-input-success" placeholder="Success input">
+                                <input type="text" class="so-form-control so-form-control-success" placeholder="Success input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Danger</label>
-                                <input type="text" class="so-input so-input-danger" placeholder="Danger input">
+                                <input type="text" class="so-form-control so-form-control-danger" placeholder="Danger input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Warning</label>
-                                <input type="text" class="so-input so-input-warning" placeholder="Warning input">
+                                <input type="text" class="so-form-control so-form-control-warning" placeholder="Warning input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Info</label>
-                                <input type="text" class="so-input so-input-info" placeholder="Info input">
+                                <input type="text" class="so-form-control so-form-control-info" placeholder="Info input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Light</label>
-                                <input type="text" class="so-input so-input-light" placeholder="Light input">
+                                <input type="text" class="so-form-control so-form-control-light" placeholder="Light input">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Dark</label>
-                                <input type="text" class="so-input so-input-dark" placeholder="Dark input">
+                                <input type="text" class="so-form-control so-form-control-dark" placeholder="Dark input">
                             </div>
                         </div>
                         <div class="so-code-block so-mt-4">
@@ -200,14 +200,14 @@
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;input type="text" class="so-input so-input-primary" placeholder="Primary"&gt;
-&lt;input type="text" class="so-input so-input-secondary" placeholder="Secondary"&gt;
-&lt;input type="text" class="so-input so-input-success" placeholder="Success"&gt;
-&lt;input type="text" class="so-input so-input-danger" placeholder="Danger"&gt;
-&lt;input type="text" class="so-input so-input-warning" placeholder="Warning"&gt;
-&lt;input type="text" class="so-input so-input-info" placeholder="Info"&gt;
-&lt;input type="text" class="so-input so-input-light" placeholder="Light"&gt;
-&lt;input type="text" class="so-input so-input-dark" placeholder="Dark"&gt;</code></pre>
+                            <pre class="so-code-content"><code class="language-html">&lt;input type="text" class="so-form-control so-form-control-primary" placeholder="Primary"&gt;
+&lt;input type="text" class="so-form-control so-form-control-secondary" placeholder="Secondary"&gt;
+&lt;input type="text" class="so-form-control so-form-control-success" placeholder="Success"&gt;
+&lt;input type="text" class="so-form-control so-form-control-danger" placeholder="Danger"&gt;
+&lt;input type="text" class="so-form-control so-form-control-warning" placeholder="Warning"&gt;
+&lt;input type="text" class="so-form-control so-form-control-info" placeholder="Info"&gt;
+&lt;input type="text" class="so-form-control so-form-control-light" placeholder="Light"&gt;
+&lt;input type="text" class="so-form-control so-form-control-dark" placeholder="Dark"&gt;</code></pre>
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@
                         <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
                             <div class="so-form-group has-error" id="emailGroup">
                                 <label class="so-form-label">Error State</label>
-                                <input type="email" class="so-input" value="invalid-email">
+                                <input type="email" class="so-form-control" value="invalid-email">
                                 <div class="so-form-error" id="emailError">
                                     <span class="material-icons">error</span>
                                     Please enter a valid email address
@@ -230,7 +230,7 @@
 
                             <div class="so-form-group has-success" id="usernameGroup">
                                 <label class="so-form-label">Success State</label>
-                                <input type="text" class="so-input" value="johndoe">
+                                <input type="text" class="so-form-control" value="johndoe">
                                 <div class="so-form-success" id="usernameSuccess">
                                     <span class="material-icons">check_circle</span>
                                     Username is available
@@ -239,7 +239,7 @@
 
                             <div class="so-form-group has-warning" id="passwordGroup">
                                 <label class="so-form-label">Warning State</label>
-                                <input type="password" class="so-input" value="weak123">
+                                <input type="password" class="so-form-control" value="weak123">
                                 <div class="so-form-warning" id="passwordWarning">
                                     <span class="material-icons">warning</span>
                                     Password is weak, consider adding special characters
@@ -248,7 +248,7 @@
 
                             <div class="so-form-group has-info" id="phoneGroup">
                                 <label class="so-form-label">Info State</label>
-                                <input type="tel" class="so-input" placeholder="Enter phone number">
+                                <input type="tel" class="so-form-control" placeholder="Enter phone number">
                                 <div class="so-form-info" id="phoneInfo">
                                     <span class="material-icons">info</span>
                                     We'll send a verification code to this number
@@ -265,7 +265,7 @@
                             <pre class="so-code-content"><code class="language-html">&lt;!-- Error State --&gt;
 &lt;div class="so-form-group has-error" id="emailGroup"&gt;
     &lt;label class="so-form-label"&gt;Email&lt;/label&gt;
-    &lt;input type="email" class="so-input" value="invalid-email"&gt;
+    &lt;input type="email" class="so-form-control" value="invalid-email"&gt;
     &lt;div class="so-form-error" id="emailError"&gt;
         &lt;span class="material-icons"&gt;error&lt;/span&gt;
         Please enter a valid email address
@@ -275,7 +275,7 @@
 &lt;!-- Success State --&gt;
 &lt;div class="so-form-group has-success"&gt;
     &lt;label class="so-form-label"&gt;Username&lt;/label&gt;
-    &lt;input type="text" class="so-input" value="johndoe"&gt;
+    &lt;input type="text" class="so-form-control" value="johndoe"&gt;
     &lt;div class="so-form-success"&gt;
         &lt;span class="material-icons"&gt;check_circle&lt;/span&gt;
         Username is available
@@ -285,7 +285,7 @@
 &lt;!-- Warning State --&gt;
 &lt;div class="so-form-group has-warning"&gt;
     &lt;label class="so-form-label"&gt;Password&lt;/label&gt;
-    &lt;input type="password" class="so-input" value="weak"&gt;
+    &lt;input type="password" class="so-form-control" value="weak"&gt;
     &lt;div class="so-form-warning"&gt;
         &lt;span class="material-icons"&gt;warning&lt;/span&gt;
         Password is weak
@@ -295,7 +295,7 @@
 &lt;!-- Info State --&gt;
 &lt;div class="so-form-group has-info"&gt;
     &lt;label class="so-form-label"&gt;Phone&lt;/label&gt;
-    &lt;input type="tel" class="so-input" placeholder="Enter phone"&gt;
+    &lt;input type="tel" class="so-form-control" placeholder="Enter phone"&gt;
     &lt;div class="so-form-info"&gt;
         &lt;span class="material-icons"&gt;info&lt;/span&gt;
         We'll send a verification code
@@ -341,7 +341,7 @@ SOForms.clearError('email');</code></pre>
                         <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
                             <div class="so-form-group">
                                 <label class="so-form-label">With Help Text</label>
-                                <input type="text" class="so-input" placeholder="Enter username">
+                                <input type="text" class="so-form-control" placeholder="Enter username">
                                 <div class="so-form-hint">
                                     <span class="material-icons">help_outline</span>
                                     Username must be 3-20 characters long
@@ -350,7 +350,7 @@ SOForms.clearError('email');</code></pre>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">With Character Counter</label>
-                                <input type="text" class="so-input" placeholder="Enter bio" maxlength="100">
+                                <input type="text" class="so-form-control" placeholder="Enter bio" maxlength="100">
                                 <div class="so-form-hint so-form-hint-counter">
                                     0 / 100 characters
                                 </div>
@@ -364,12 +364,12 @@ SOForms.clearError('email');</code></pre>
                                         Optional
                                     </span>
                                 </label>
-                                <input type="text" class="so-input" placeholder="Enter middle name">
+                                <input type="text" class="so-form-control" placeholder="Enter middle name">
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Multiple Hints</label>
-                                <input type="password" class="so-input" placeholder="Create password">
+                                <input type="password" class="so-form-control" placeholder="Create password">
                                 <div class="so-form-hint">
                                     <span class="material-icons">lock</span>
                                     Must contain at least 8 characters
@@ -390,7 +390,7 @@ SOForms.clearError('email');</code></pre>
                             <pre class="so-code-content"><code class="language-html">&lt;!-- Basic Help Text --&gt;
 &lt;div class="so-form-group"&gt;
     &lt;label class="so-form-label"&gt;Username&lt;/label&gt;
-    &lt;input type="text" class="so-input" placeholder="Enter username"&gt;
+    &lt;input type="text" class="so-form-control" placeholder="Enter username"&gt;
     &lt;div class="so-form-hint"&gt;
         &lt;span class="material-icons"&gt;help_outline&lt;/span&gt;
         Username must be 3-20 characters long
@@ -400,7 +400,7 @@ SOForms.clearError('email');</code></pre>
 &lt;!-- Character Counter --&gt;
 &lt;div class="so-form-group"&gt;
     &lt;label class="so-form-label"&gt;Bio&lt;/label&gt;
-    &lt;input type="text" class="so-input" maxlength="100"&gt;
+    &lt;input type="text" class="so-form-control" maxlength="100"&gt;
     &lt;div class="so-form-hint so-form-hint-counter"&gt;
         0 / 100 characters
     &lt;/div&gt;
@@ -415,7 +415,7 @@ SOForms.clearError('email');</code></pre>
             Optional
         &lt;/span&gt;
     &lt;/label&gt;
-    &lt;input type="text" class="so-input"&gt;
+    &lt;input type="text" class="so-form-control"&gt;
 &lt;/div&gt;</code></pre>
                         </div>
                     </div>
@@ -430,12 +430,12 @@ SOForms.clearError('email');</code></pre>
                         <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
                             <div class="so-form-group">
                                 <label class="so-form-label">Disabled Input</label>
-                                <input type="text" class="so-input" value="Cannot edit this" disabled>
+                                <input type="text" class="so-form-control" value="Cannot edit this" disabled>
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Readonly Input</label>
-                                <input type="text" class="so-input" value="Read only value" readonly>
+                                <input type="text" class="so-form-control" value="Read only value" readonly>
                             </div>
                         </div>
                         <div class="so-code-block so-mt-4">
@@ -445,8 +445,8 @@ SOForms.clearError('email');</code></pre>
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;input type="text" class="so-input" value="Cannot edit" disabled&gt;
-&lt;input type="text" class="so-input" value="Read only" readonly&gt;</code></pre>
+                            <pre class="so-code-content"><code class="language-html">&lt;input type="text" class="so-form-control" value="Cannot edit" disabled&gt;
+&lt;input type="text" class="so-form-control" value="Read only" readonly&gt;</code></pre>
                         </div>
                     </div>
                 </div>
@@ -460,7 +460,7 @@ SOForms.clearError('email');</code></pre>
                         <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
                             <div class="so-form-group">
                                 <label class="so-form-label">Basic Textarea</label>
-                                <textarea class="so-textarea" rows="4" placeholder="Enter description..."></textarea>
+                                <textarea class="so-form-control" rows="4" placeholder="Enter description..."></textarea>
                                 <div class="so-form-hint">
                                     <span class="material-icons">drag_indicator</span>
                                     Drag corner to resize
@@ -469,7 +469,7 @@ SOForms.clearError('email');</code></pre>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Autosize Textarea</label>
-                                <textarea class="so-textarea so-textarea-autosize" placeholder="Start typing... height will grow automatically" data-min-height="80" data-max-height="300"></textarea>
+                                <textarea class="so-form-control so-form-control-autosize" placeholder="Start typing... height will grow automatically" data-min-height="80" data-max-height="300"></textarea>
                                 <div class="so-form-hint">
                                     <span class="material-icons">expand</span>
                                     Auto-expands as you type (no resize handle)
@@ -478,12 +478,12 @@ SOForms.clearError('email');</code></pre>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Small Autosize</label>
-                                <textarea class="so-textarea so-textarea-autosize-sm" placeholder="Small autosize (60-200px)"></textarea>
+                                <textarea class="so-form-control so-form-control-autosize-sm" placeholder="Small autosize (60-200px)"></textarea>
                             </div>
 
                             <div class="so-form-group">
                                 <label class="so-form-label">Large Autosize</label>
-                                <textarea class="so-textarea so-textarea-autosize-lg" placeholder="Large autosize (120-600px)"></textarea>
+                                <textarea class="so-form-control so-form-control-autosize-lg" placeholder="Large autosize (120-600px)"></textarea>
                             </div>
                         </div>
                         <div class="so-code-block so-mt-4">
@@ -494,17 +494,17 @@ SOForms.clearError('email');</code></pre>
                                 </button>
                             </div>
                             <pre class="so-code-content"><code class="language-html">&lt;!-- Basic Textarea (with resize) --&gt;
-&lt;textarea class="so-textarea" rows="4" placeholder="Enter description..."&gt;&lt;/textarea&gt;
+&lt;textarea class="so-form-control" rows="4" placeholder="Enter description..."&gt;&lt;/textarea&gt;
 
 &lt;!-- Autosize Textarea (no resize, auto-grows) --&gt;
-&lt;textarea class="so-textarea so-textarea-autosize"
+&lt;textarea class="so-form-control so-form-control-autosize"
     placeholder="Start typing..."
     data-min-height="80"
     data-max-height="300"&gt;&lt;/textarea&gt;
 
 &lt;!-- Size Variants --&gt;
-&lt;textarea class="so-textarea so-textarea-autosize-sm"&gt;&lt;/textarea&gt;
-&lt;textarea class="so-textarea so-textarea-autosize-lg"&gt;&lt;/textarea&gt;</code></pre>
+&lt;textarea class="so-form-control so-form-control-autosize-sm"&gt;&lt;/textarea&gt;
+&lt;textarea class="so-form-control so-form-control-autosize-lg"&gt;&lt;/textarea&gt;</code></pre>
                         </div>
 
                         <h4 class="so-mt-4 so-mb-3">JavaScript API</h4>
@@ -516,7 +516,7 @@ SOForms.clearError('email');</code></pre>
                                 </button>
                             </div>
                             <pre class="so-code-content"><code class="language-javascript">// Get or create autosize instance
-const textarea = document.querySelector('.so-textarea-autosize');
+const textarea = document.querySelector('.so-form-control-autosize');
 const autosize = SOTextareaAutosize.getInstance(textarea, {
     minHeight: 80,
     maxHeight: 400

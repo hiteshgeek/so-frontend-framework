@@ -12,9 +12,8 @@
 
 // Error State
 .#{$so-prefix}form-group.has-error {
-  .#{$so-prefix}input,
-  .#{$so-prefix}select,
-  .#{$so-prefix}textarea {
+  .#{$so-prefix}form-control,
+  .#{$so-prefix}select {
     border-color: css-var('accent-danger');
 
     &:focus {
@@ -30,9 +29,8 @@
 
 // Success State
 .#{$so-prefix}form-group.has-success {
-  .#{$so-prefix}input,
-  .#{$so-prefix}select,
-  .#{$so-prefix}textarea {
+  .#{$so-prefix}form-control,
+  .#{$so-prefix}select {
     border-color: css-var('accent-success');
 
     &:focus {
@@ -48,9 +46,8 @@
 
 // Warning State
 .#{$so-prefix}form-group.has-warning {
-  .#{$so-prefix}input,
-  .#{$so-prefix}select,
-  .#{$so-prefix}textarea {
+  .#{$so-prefix}form-control,
+  .#{$so-prefix}select {
     border-color: css-var('accent-warning');
 
     &:focus {
@@ -66,9 +63,8 @@
 
 // Info State
 .#{$so-prefix}form-group.has-info {
-  .#{$so-prefix}input,
-  .#{$so-prefix}select,
-  .#{$so-prefix}textarea {
+  .#{$so-prefix}form-control,
+  .#{$so-prefix}select {
     border-color: css-var('accent-info');
 
     &:focus {
@@ -133,7 +129,7 @@
 .#{$so-prefix}input-wrapper.show-validation-icon {
   position: relative;
 
-  .#{$so-prefix}input {
+  .#{$so-prefix}form-control {
     padding-right: 40px;
   }
 

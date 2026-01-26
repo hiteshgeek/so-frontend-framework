@@ -70,10 +70,7 @@ class SOModal extends SOComponent {
       });
     }
 
-    // Keyboard events
-    if (this.options.keyboard) {
-      this.on('keydown', this._handleKeydown);
-    }
+    // Note: Keyboard events are bound to document in show() and unbound in hide()
 
     // Confirm/Cancel buttons
     this.delegate('click', '[data-modal-confirm]', () => {
@@ -93,9 +90,35 @@ class SOModal extends SOComponent {
    * @private
    */
   _handleKeydown(e) {
-    if (e.key === 'Escape' && this.options.closable) {
-      e.preventDefault();
-      this.hide();
+    // Only handle if this is the topmost modal
+    if (e.key === 'Escape' && this.options.closable && this._isOpen) {
+      const openModals = SOModal._openModals;
+      if (openModals.length > 0 && openModals[openModals.length - 1] === this) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.hide();
+      }
+    }
+  }
+
+  /**
+   * Bind document keyboard listener
+   * @private
+   */
+  _bindDocumentKeydown() {
+    if (!this.options.keyboard) return;
+    this._boundKeydown = this._handleKeydown.bind(this);
+    document.addEventListener('keydown', this._boundKeydown);
+  }
+
+  /**
+   * Unbind document keyboard listener
+   * @private
+   */
+  _unbindDocumentKeydown() {
+    if (this._boundKeydown) {
+      document.removeEventListener('keydown', this._boundKeydown);
+      this._boundKeydown = null;
     }
   }
 
@@ -199,6 +222,9 @@ class SOModal extends SOComponent {
       this._focusTrapCleanup = this.trapFocus();
     }
 
+    // Bind document keyboard listener for Escape
+    this._bindDocumentKeydown();
+
     // Emit shown event after transition
     if (this.options.animation) {
       this._dialog.addEventListener('transitionend', () => {
@@ -237,6 +263,9 @@ class SOModal extends SOComponent {
       this._focusTrapCleanup = null;
     }
 
+    // Unbind document keyboard listener
+    this._unbindDocumentKeydown();
+
     // Hide modal
     this.removeClass('show');
 
@@ -253,8 +282,18 @@ class SOModal extends SOComponent {
       this.emit(SOModal.EVENTS.HIDDEN);
     };
 
-    if (this.options.animation) {
-      this._dialog.addEventListener('transitionend', hideComplete, { once: true });
+    if (this.options.animation && this._dialog) {
+      // Use a flag to prevent double execution
+      let completed = false;
+      const safeHideComplete = () => {
+        if (completed) return;
+        completed = true;
+        hideComplete();
+      };
+
+      this._dialog.addEventListener('transitionend', safeHideComplete, { once: true });
+      // Fallback timeout in case transitionend doesn't fire
+      setTimeout(safeHideComplete, 350);
     } else {
       hideComplete();
     }
@@ -329,8 +368,11 @@ class SOModal extends SOComponent {
       className = '',
     } = options;
 
+    // Size class goes on the modal container, not the dialog
+    const sizeClass = size !== 'default' ? `so-modal-${size}` : '';
+
     const modal = document.createElement('div');
-    modal.className = `so-modal fade ${className}`;
+    modal.className = `so-modal fade ${sizeClass} ${className}`.trim().replace(/\s+/g, ' ');
     modal.tabIndex = -1;
 
     let footerHtml = '';
@@ -343,7 +385,7 @@ class SOModal extends SOComponent {
     }
 
     modal.innerHTML = `
-      <div class="so-modal-dialog so-modal-${size}">
+      <div class="so-modal-dialog">
         <div class="so-modal-content">
           <div class="so-modal-header">
             <h5 class="so-modal-title">${title}</h5>
@@ -370,35 +412,79 @@ class SOModal extends SOComponent {
   }
 
   /**
-   * Show a confirmation dialog
+   * Show a confirmation dialog with multiple action support
    * @param {Object} options - Dialog options
-   * @returns {Promise<boolean>} Resolves true if confirmed, false if cancelled
+   * @param {string} options.title - Dialog title
+   * @param {string} options.message - Dialog message
+   * @param {Array} options.actions - Array of action objects: { id, text, class, primary }
+   * @param {string} options.confirmText - Text for confirm button (simple mode)
+   * @param {string} options.cancelText - Text for cancel button (simple mode)
+   * @param {boolean} options.danger - Use danger styling for confirm button
+   * @returns {Promise<string|boolean>} Resolves with action id/true/false or 'dismiss' if closed
    */
   static confirm(options = {}) {
     const {
       title = 'Confirm',
       message = 'Are you sure?',
+      actions = null,
       confirmText = 'Confirm',
       cancelText = 'Cancel',
       confirmClass = 'so-btn-primary',
       danger = false,
+      closable = true,
     } = options;
 
     return new Promise((resolve) => {
+      let resolved = false;
+      let footerHtml = '';
+
+      // Build footer based on actions or simple confirm/cancel
+      if (actions && Array.isArray(actions)) {
+        // Multiple actions mode
+        footerHtml = actions.map(action => {
+          const btnClass = action.class || (action.primary ? 'so-btn-primary' : 'so-btn-outline');
+          return `<button type="button" class="so-btn ${btnClass}" data-modal-action="${action.id}">${action.text}</button>`;
+        }).join('\n');
+      } else {
+        // Simple confirm/cancel mode
+        footerHtml = `
+          <button type="button" class="so-btn so-btn-outline" data-modal-action="cancel">${cancelText}</button>
+          <button type="button" class="so-btn ${danger ? 'so-btn-danger' : confirmClass}" data-modal-action="confirm">${confirmText}</button>
+        `;
+      }
+
       const modal = SOModal.create({
         title,
         content: `<p>${message}</p>`,
         size: 'sm',
-        closable: true,
-        footer: `
-          <button type="button" class="so-btn so-btn-outline" data-modal-cancel>${cancelText}</button>
-          <button type="button" class="so-btn ${danger ? 'so-btn-danger' : confirmClass}" data-modal-confirm>${confirmText}</button>
-        `,
+        closable,
+        footer: footerHtml,
       });
 
-      modal.element.addEventListener(SixOrbit.evt(SOModal.EVENTS.CONFIRM), () => resolve(true));
-      modal.element.addEventListener(SixOrbit.evt(SOModal.EVENTS.CANCEL), () => resolve(false));
-      modal.element.addEventListener(SixOrbit.evt(SOModal.EVENTS.HIDDEN), () => resolve(false));
+      // Handle action button clicks
+      modal.element.querySelectorAll('[data-modal-action]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (resolved) return;
+          resolved = true;
+          const actionId = btn.getAttribute('data-modal-action');
+
+          // For simple mode, convert to boolean for backwards compatibility
+          if (!actions) {
+            resolve(actionId === 'confirm');
+          } else {
+            resolve(actionId);
+          }
+          modal.hide();
+        });
+      });
+
+      // Handle dismiss (close button, escape, backdrop click)
+      modal.element.addEventListener(SixOrbit.evt(SOModal.EVENTS.HIDDEN), () => {
+        if (resolved) return;
+        resolved = true;
+        // Return false for simple mode, 'dismiss' for actions mode
+        resolve(actions ? 'dismiss' : false);
+      });
 
       modal.show();
     });

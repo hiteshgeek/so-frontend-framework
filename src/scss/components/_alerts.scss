@@ -66,6 +66,41 @@
         border-radius: radius('sm');
         font-size: 0.8125em;
     }
+
+    // Heading within alert
+    .#{$so-prefix}alert-heading {
+        font-size: font-size('lg');
+        font-weight: font-weight('semibold');
+        margin-bottom: spacing('2');
+        color: inherit;
+    }
+
+    // Link styling within alert
+    .#{$so-prefix}alert-link {
+        font-weight: font-weight('semibold');
+        text-decoration: underline;
+        transition: color $so-transition-base;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    // Horizontal rule in alert
+    hr {
+        margin: spacing('3') 0;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    // Paragraph spacing
+    p {
+        margin-bottom: spacing('2');
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 }
 
 // Alert variants
@@ -84,6 +119,10 @@
         background: rgba($so-info, 0.12);
         color: color.adjust($so-info, $lightness: -10%);
     }
+
+    .#{$so-prefix}alert-link {
+        color: color.adjust($so-info, $lightness: -15%);
+    }
 }
 
 .#{$so-prefix}alert-success {
@@ -101,6 +140,10 @@
         background: rgba($so-success, 0.12);
         color: color.adjust($so-success, $lightness: -10%);
     }
+
+    .#{$so-prefix}alert-link {
+        color: color.adjust($so-success, $lightness: -15%);
+    }
 }
 
 .#{$so-prefix}alert-warning {
@@ -117,6 +160,10 @@
     code {
         background: rgba($so-warning, 0.15);
         color: color.adjust($so-warning, $lightness: -15%);
+    }
+
+    .#{$so-prefix}alert-link {
+        color: color.adjust($so-warning, $lightness: -20%);
     }
 }
 
@@ -136,6 +183,10 @@
         background: rgba($so-danger, 0.12);
         color: color.adjust($so-danger, $lightness: -5%);
     }
+
+    .#{$so-prefix}alert-link {
+        color: color.adjust($so-danger, $lightness: -10%);
+    }
 }
 
 // Primary variant (for tips/highlights)
@@ -153,6 +204,76 @@
     code {
         background: rgba($so-primary, 0.12);
         color: color.adjust($so-primary, $lightness: -5%);
+    }
+
+    .#{$so-prefix}alert-link {
+        color: color.adjust($so-primary, $lightness: -10%);
+    }
+}
+
+// Secondary variant (neutral gray)
+.#{$so-prefix}alert-secondary {
+    background: rgba($so-secondary, 0.08);
+    border-color: rgba($so-secondary, 0.2);
+    color: css-var('text-primary');
+
+    > .material-icons,
+    > .#{$so-prefix}alert-icon {
+        background: rgba($so-secondary, 0.15);
+        color: $so-secondary;
+    }
+
+    code {
+        background: rgba($so-secondary, 0.12);
+        color: color.adjust($so-secondary, $lightness: -10%);
+    }
+
+    .#{$so-prefix}alert-link {
+        color: color.adjust($so-secondary, $lightness: -15%);
+    }
+}
+
+// Light variant (very subtle)
+.#{$so-prefix}alert-light {
+    background: $so-grey-100;
+    border-color: $so-grey-300;
+    color: css-var('text-primary');
+
+    > .material-icons,
+    > .#{$so-prefix}alert-icon {
+        background: $so-grey-200;
+        color: $so-grey-700;
+    }
+
+    code {
+        background: rgba(0, 0, 0, 0.06);
+        color: $so-grey-800;
+    }
+
+    .#{$so-prefix}alert-link {
+        color: $so-grey-900;
+    }
+}
+
+// Dark variant (high contrast)
+.#{$so-prefix}alert-dark {
+    background: $so-grey-800;
+    border-color: $so-grey-700;
+    color: $so-white;
+
+    > .material-icons,
+    > .#{$so-prefix}alert-icon {
+        background: $so-grey-700;
+        color: $so-white;
+    }
+
+    code {
+        background: rgba(255, 255, 255, 0.15);
+        color: $so-grey-100;
+    }
+
+    .#{$so-prefix}alert-link {
+        color: $so-grey-200;
     }
 }
 
@@ -197,6 +318,27 @@
 
     &.#{$so-prefix}alert-primary {
         border-color: rgba($so-primary, 0.4);
+    }
+
+    &.#{$so-prefix}alert-secondary {
+        border-color: rgba($so-secondary, 0.4);
+    }
+
+    &.#{$so-prefix}alert-light {
+        border-color: $so-grey-400;
+        background: transparent;
+    }
+
+    &.#{$so-prefix}alert-dark {
+        border-color: $so-grey-600;
+        background: transparent;
+        color: css-var('text-primary');
+
+        > .material-icons,
+        > .#{$so-prefix}alert-icon {
+            background: rgba($so-grey-800, 0.15);
+            color: $so-grey-800;
+        }
     }
 }
 
@@ -250,6 +392,10 @@
             background: rgba($so-info, 0.2);
             color: color.adjust($so-info, $lightness: 15%);
         }
+
+        .#{$so-prefix}alert-link {
+            color: color.adjust($so-info, $lightness: 15%);
+        }
     }
 
     .#{$so-prefix}alert-success {
@@ -263,6 +409,10 @@
 
         code {
             background: rgba($so-success, 0.2);
+            color: color.adjust($so-success, $lightness: 15%);
+        }
+
+        .#{$so-prefix}alert-link {
             color: color.adjust($so-success, $lightness: 15%);
         }
     }
@@ -281,6 +431,10 @@
             background: rgba($so-warning, 0.25);
             color: color.adjust($so-warning, $lightness: 10%);
         }
+
+        .#{$so-prefix}alert-link {
+            color: color.adjust($so-warning, $lightness: 10%);
+        }
     }
 
     .#{$so-prefix}alert-danger,
@@ -295,6 +449,10 @@
 
         code {
             background: rgba($so-danger, 0.2);
+            color: color.adjust($so-danger, $lightness: 15%);
+        }
+
+        .#{$so-prefix}alert-link {
             color: color.adjust($so-danger, $lightness: 15%);
         }
     }
@@ -314,9 +472,82 @@
         }
     }
 
+    .#{$so-prefix}alert-primary {
+        background: rgba($so-primary, 0.12);
+        border-color: rgba($so-primary, 0.25);
+
+        > .material-icons,
+        > .#{$so-prefix}alert-icon {
+            background: rgba($so-primary, 0.2);
+        }
+
+        code {
+            background: rgba($so-primary, 0.2);
+            color: color.adjust($so-primary, $lightness: 15%);
+        }
+
+        .#{$so-prefix}alert-link {
+            color: color.adjust($so-primary, $lightness: 15%);
+        }
+    }
+
+    .#{$so-prefix}alert-secondary {
+        background: rgba($so-secondary, 0.15);
+        border-color: rgba($so-secondary, 0.25);
+
+        > .material-icons,
+        > .#{$so-prefix}alert-icon {
+            background: rgba($so-secondary, 0.2);
+            color: $so-grey-400;
+        }
+
+        code {
+            background: rgba($so-secondary, 0.2);
+            color: $so-grey-300;
+        }
+
+        .#{$so-prefix}alert-link {
+            color: $so-grey-300;
+        }
+    }
+
+    .#{$so-prefix}alert-light {
+        background: rgba($so-grey-100, 0.1);
+        border-color: rgba($so-grey-300, 0.3);
+
+        > .material-icons,
+        > .#{$so-prefix}alert-icon {
+            background: rgba($so-grey-100, 0.15);
+            color: $so-grey-300;
+        }
+
+        .#{$so-prefix}alert-link {
+            color: $so-grey-200;
+        }
+    }
+
+    .#{$so-prefix}alert-dark {
+        background: $so-grey-900;
+        border-color: $so-grey-700;
+
+        > .material-icons,
+        > .#{$so-prefix}alert-icon {
+            background: $so-grey-800;
+        }
+
+        .#{$so-prefix}alert-link {
+            color: $so-grey-300;
+        }
+    }
+
     .#{$so-prefix}alert-dismissible {
         .#{$so-prefix}alert-close:hover {
             background: rgba(255, 255, 255, 0.1);
         }
+    }
+
+    // Dark mode hr
+    .#{$so-prefix}alert hr {
+        border-top-color: rgba(255, 255, 255, 0.1);
     }
 }

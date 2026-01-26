@@ -19,6 +19,8 @@ import SOTooltip from './components/so-tooltip.js';
 import SOContextMenu from './components/so-context-menu.js';
 import SOProgressButton from './components/so-progress-button.js';
 import SOButtonGroup from './components/so-button-group.js';
+import SOAlert from './components/so-alert.js';
+import SOToast from './components/so-toast.js';
 
 // Features
 import SOForms from './features/so-forms.js';
@@ -74,6 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize progress buttons
   SOProgressButton.initAll();
 
+  // Initialize dismissible alerts
+  SOAlert.initAll();
+
   console.log('SixOrbit UI Full initialized');
 });
 
@@ -93,6 +98,8 @@ export {
   SOContextMenu,
   SOProgressButton,
   SOButtonGroup,
+  SOAlert,
+  SOToast,
   SOForms,
   SOSearchOverlay,
   SOFeatureCarousel,

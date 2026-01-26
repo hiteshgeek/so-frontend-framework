@@ -79,6 +79,14 @@ require_once 'includes/navbar.php';
                     <span class="material-icons">build</span>
                     Utilities
                 </button>
+                <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-alerts-toasts">
+                    <span class="material-icons">notifications</span>
+                    Alerts & Toasts
+                </button>
+                <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-modals">
+                    <span class="material-icons">open_in_new</span>
+                    Modals
+                </button>
             </div>
 
             <!-- Tab Content -->
@@ -96,6 +104,8 @@ require_once 'includes/navbar.php';
                 <?php include 'includes/form-elements/context-menu.php'; ?>
                 <?php include 'includes/form-elements/colors.php'; ?>
                 <?php include 'includes/form-elements/utilities.php'; ?>
+                <?php include 'includes/form-elements/alerts-toasts.php'; ?>
+                <?php include 'includes/form-elements/modals.php'; ?>
             </div>
         </div>
     </div>

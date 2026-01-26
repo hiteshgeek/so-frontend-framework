@@ -3,6 +3,7 @@
 // Modal and dialog components
 // ============================================
 
+@use 'sass:color';
 @use '../abstracts' as *;
 
 // ============================================
@@ -80,6 +81,14 @@
   overflow: hidden;
 }
 
+.#{$so-prefix}modal-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0; // Important for flex container scrolling
+  overflow: hidden;
+}
+
 // Modal sizes
 .#{$so-prefix}modal-sm .#{$so-prefix}modal-dialog {
   max-width: 380px;
@@ -93,12 +102,16 @@
   max-width: 960px;
 }
 
-.#{$so-prefix}modal-fullscreen .#{$so-prefix}modal-dialog {
-  max-width: none;
-  width: calc(100% - #{spacing('8')});
-  height: calc(100% - #{spacing('8')});
-  max-height: none;
-  border-radius: radius('lg');
+.#{$so-prefix}modal-fullscreen {
+  padding: 0;
+
+  .#{$so-prefix}modal-dialog {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
 }
 
 // ============================================
@@ -151,6 +164,7 @@
   padding: spacing('5');
   overflow-y: auto;
   flex: 1;
+  min-height: 0; // Important for flex container scrolling
   @include custom-scrollbar;
 }
 
@@ -161,7 +175,6 @@
   gap: spacing('2');
   padding: spacing('4') spacing('5');
   border-top: 1px solid css-var('border-color');
-  background: css-var('card-hover-bg');
   flex-shrink: 0;
 }
 
@@ -185,10 +198,14 @@
 .#{$so-prefix}modal-scrollable {
   .#{$so-prefix}modal-dialog {
     max-height: calc(100vh - #{spacing('8')});
+    display: flex;
+    flex-direction: column;
   }
 
   .#{$so-prefix}modal-body {
     overflow-y: auto;
+    flex: 1;
+    min-height: 0; // Important for flex container scrolling
   }
 }
 
@@ -272,6 +289,313 @@
     justify-content: center;
     background: transparent;
     border-top: none;
+  }
+}
+
+// ============================================
+// CONTEXTUAL MODAL HEADERS
+// Colored headers with solid and light variants
+// ============================================
+
+// Primary
+.#{$so-prefix}modal-primary {
+  .#{$so-prefix}modal-header {
+    background: css-var('accent-primary');
+    border-bottom-color: transparent;
+
+    .#{$so-prefix}modal-title {
+      color: $so-white;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: rgba($so-white, 0.8);
+
+      &:hover {
+        background: rgba($so-white, 0.15);
+        color: $so-white;
+      }
+    }
+  }
+}
+
+.#{$so-prefix}modal-primary-light {
+  .#{$so-prefix}modal-header {
+    background: rgba($so-primary, 0.1);
+    border-bottom-color: rgba($so-primary, 0.15);
+
+    .#{$so-prefix}modal-title {
+      color: css-var('accent-primary');
+    }
+
+    .#{$so-prefix}modal-close {
+      color: css-var('accent-primary');
+
+      &:hover {
+        background: rgba($so-primary, 0.15);
+      }
+    }
+  }
+}
+
+// Secondary
+.#{$so-prefix}modal-secondary {
+  .#{$so-prefix}modal-header {
+    background: $so-secondary;
+    border-bottom-color: transparent;
+
+    .#{$so-prefix}modal-title {
+      color: $so-white;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: rgba($so-white, 0.8);
+
+      &:hover {
+        background: rgba($so-white, 0.15);
+        color: $so-white;
+      }
+    }
+  }
+}
+
+.#{$so-prefix}modal-secondary-light {
+  .#{$so-prefix}modal-header {
+    background: rgba($so-secondary, 0.1);
+    border-bottom-color: rgba($so-secondary, 0.15);
+
+    .#{$so-prefix}modal-title {
+      color: $so-secondary;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: $so-secondary;
+
+      &:hover {
+        background: rgba($so-secondary, 0.15);
+      }
+    }
+  }
+}
+
+// Success
+.#{$so-prefix}modal-success {
+  .#{$so-prefix}modal-header {
+    background: css-var('accent-success');
+    border-bottom-color: transparent;
+
+    .#{$so-prefix}modal-title {
+      color: $so-white;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: rgba($so-white, 0.8);
+
+      &:hover {
+        background: rgba($so-white, 0.15);
+        color: $so-white;
+      }
+    }
+  }
+}
+
+.#{$so-prefix}modal-success-light {
+  .#{$so-prefix}modal-header {
+    background: rgba($so-success, 0.1);
+    border-bottom-color: rgba($so-success, 0.15);
+
+    .#{$so-prefix}modal-title {
+      color: css-var('accent-success');
+    }
+
+    .#{$so-prefix}modal-close {
+      color: css-var('accent-success');
+
+      &:hover {
+        background: rgba($so-success, 0.15);
+      }
+    }
+  }
+}
+
+// Danger
+.#{$so-prefix}modal-danger {
+  .#{$so-prefix}modal-header {
+    background: css-var('accent-danger');
+    border-bottom-color: transparent;
+
+    .#{$so-prefix}modal-title {
+      color: $so-white;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: rgba($so-white, 0.8);
+
+      &:hover {
+        background: rgba($so-white, 0.15);
+        color: $so-white;
+      }
+    }
+  }
+}
+
+.#{$so-prefix}modal-danger-light {
+  .#{$so-prefix}modal-header {
+    background: rgba($so-danger, 0.1);
+    border-bottom-color: rgba($so-danger, 0.15);
+
+    .#{$so-prefix}modal-title {
+      color: css-var('accent-danger');
+    }
+
+    .#{$so-prefix}modal-close {
+      color: css-var('accent-danger');
+
+      &:hover {
+        background: rgba($so-danger, 0.15);
+      }
+    }
+  }
+}
+
+// Warning
+.#{$so-prefix}modal-warning {
+  .#{$so-prefix}modal-header {
+    background: css-var('accent-warning');
+    border-bottom-color: transparent;
+
+    .#{$so-prefix}modal-title {
+      color: $so-grey-900;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: rgba($so-grey-900, 0.7);
+
+      &:hover {
+        background: rgba($so-grey-900, 0.1);
+        color: $so-grey-900;
+      }
+    }
+  }
+}
+
+.#{$so-prefix}modal-warning-light {
+  .#{$so-prefix}modal-header {
+    background: rgba($so-warning, 0.15);
+    border-bottom-color: rgba($so-warning, 0.2);
+
+    .#{$so-prefix}modal-title {
+      color: color.adjust($so-warning, $lightness: -15%);
+    }
+
+    .#{$so-prefix}modal-close {
+      color: color.adjust($so-warning, $lightness: -15%);
+
+      &:hover {
+        background: rgba($so-warning, 0.2);
+      }
+    }
+  }
+}
+
+// Info
+.#{$so-prefix}modal-info {
+  .#{$so-prefix}modal-header {
+    background: css-var('accent-info');
+    border-bottom-color: transparent;
+
+    .#{$so-prefix}modal-title {
+      color: $so-white;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: rgba($so-white, 0.8);
+
+      &:hover {
+        background: rgba($so-white, 0.15);
+        color: $so-white;
+      }
+    }
+  }
+}
+
+.#{$so-prefix}modal-info-light {
+  .#{$so-prefix}modal-header {
+    background: rgba($so-info, 0.1);
+    border-bottom-color: rgba($so-info, 0.15);
+
+    .#{$so-prefix}modal-title {
+      color: css-var('accent-info');
+    }
+
+    .#{$so-prefix}modal-close {
+      color: css-var('accent-info');
+
+      &:hover {
+        background: rgba($so-info, 0.15);
+      }
+    }
+  }
+}
+
+// Light
+.#{$so-prefix}modal-light {
+  .#{$so-prefix}modal-header {
+    background: $so-grey-100;
+    border-bottom-color: $so-grey-200;
+
+    .#{$so-prefix}modal-title {
+      color: $so-grey-800;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: $so-grey-600;
+
+      &:hover {
+        background: $so-grey-200;
+        color: $so-grey-800;
+      }
+    }
+  }
+}
+
+// Dark
+.#{$so-prefix}modal-dark {
+  .#{$so-prefix}modal-header {
+    background: $so-grey-900;
+    border-bottom-color: transparent;
+
+    .#{$so-prefix}modal-title {
+      color: $so-white;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: $so-grey-400;
+
+      &:hover {
+        background: rgba($so-white, 0.1);
+        color: $so-white;
+      }
+    }
+  }
+}
+
+.#{$so-prefix}modal-dark-light {
+  .#{$so-prefix}modal-header {
+    background: $so-grey-200;
+    border-bottom-color: $so-grey-300;
+
+    .#{$so-prefix}modal-title {
+      color: $so-grey-900;
+    }
+
+    .#{$so-prefix}modal-close {
+      color: $so-grey-700;
+
+      &:hover {
+        background: $so-grey-300;
+        color: $so-grey-900;
+      }
+    }
   }
 }
 
@@ -360,7 +684,6 @@
   gap: spacing('2');
   padding: spacing('4') spacing('5');
   border-top: 1px solid css-var('border-color');
-  background: css-var('card-hover-bg');
   flex-shrink: 0;
 }
 

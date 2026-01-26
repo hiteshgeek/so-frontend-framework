@@ -966,4 +966,3 @@ document.getElementById('my-btn').addEventListener('so:progress:reset', (e) =&gt
                     </div>
                 </div>
             </div>
-

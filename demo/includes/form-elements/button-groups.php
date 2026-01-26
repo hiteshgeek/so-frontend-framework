@@ -903,5 +903,353 @@ element.addEventListener('so:toggle:change', (e) => {
                         }
                     });
                 </script>
-            </div>
 
+                <!-- Block Button Groups -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Block Button Groups (Full Width)</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Make buttons and button groups span the full width of their container.</p>
+
+                        <!-- Single Block Buttons -->
+                        <h6 class="so-mb-3">Block Buttons</h6>
+                        <p class="so-text-muted so-mb-3">Add <code>.so-btn-block</code> class to make any single button full width.</p>
+                        <div class="so-flex so-flex-col so-gap-2 so-mb-4" style="max-width: 400px;">
+                            <button class="so-btn so-btn-primary so-btn-block">Primary Block</button>
+                            <button class="so-btn so-btn-secondary so-btn-block">Secondary Block</button>
+                            <button class="so-btn so-btn-success so-btn-block">Success Block</button>
+                            <button class="so-btn so-btn-danger so-btn-block">Danger Block</button>
+                            <button class="so-btn so-btn-warning so-btn-block">Warning Block</button>
+                            <button class="so-btn so-btn-info so-btn-block">Info Block</button>
+                            <button class="so-btn so-btn-light so-btn-block">Light Block</button>
+                            <button class="so-btn so-btn-dark so-btn-block">Dark Block</button>
+                        </div>
+
+                        <!-- Outline Block Buttons -->
+                        <h6 class="so-mb-3">Outline Block Buttons</h6>
+                        <div class="so-flex so-flex-col so-gap-2 so-mb-4" style="max-width: 400px;">
+                            <button class="so-btn so-btn-outline-primary so-btn-block">Outline Primary</button>
+                            <button class="so-btn so-btn-outline-secondary so-btn-block">Outline Secondary</button>
+                            <button class="so-btn so-btn-outline-success so-btn-block">Outline Success</button>
+                            <button class="so-btn so-btn-outline-danger so-btn-block">Outline Danger</button>
+                            <button class="so-btn so-btn-outline-warning so-btn-block">Outline Warning</button>
+                            <button class="so-btn so-btn-outline-info so-btn-block">Outline Info</button>
+                            <button class="so-btn so-btn-outline-dark so-btn-block">Outline Dark</button>
+                        </div>
+
+                        <!-- Light/Soft Block Buttons -->
+                        <h6 class="so-mb-3">Light (Soft) Block Buttons</h6>
+                        <div class="so-flex so-flex-col so-gap-2 so-mb-4" style="max-width: 400px;">
+                            <button class="so-btn so-btn-light-primary so-btn-block">Light Primary</button>
+                            <button class="so-btn so-btn-light-secondary so-btn-block">Light Secondary</button>
+                            <button class="so-btn so-btn-light-success so-btn-block">Light Success</button>
+                            <button class="so-btn so-btn-light-danger so-btn-block">Light Danger</button>
+                            <button class="so-btn so-btn-light-warning so-btn-block">Light Warning</button>
+                            <button class="so-btn so-btn-light-info so-btn-block">Light Info</button>
+                            <button class="so-btn so-btn-light-dark so-btn-block">Light Dark</button>
+                        </div>
+
+                        <!-- Ghost Block Buttons -->
+                        <h6 class="so-mb-3">Ghost Block Buttons</h6>
+                        <div class="so-flex so-flex-col so-gap-2 so-mb-4" style="max-width: 400px;">
+                            <button class="so-btn so-btn-ghost so-btn-primary so-btn-block">Ghost Primary</button>
+                            <button class="so-btn so-btn-ghost so-btn-secondary so-btn-block">Ghost Secondary</button>
+                            <button class="so-btn so-btn-ghost so-btn-success so-btn-block">Ghost Success</button>
+                            <button class="so-btn so-btn-ghost so-btn-danger so-btn-block">Ghost Danger</button>
+                        </div>
+
+                        <!-- Link Block Buttons -->
+                        <h6 class="so-mb-3">Link Block Buttons</h6>
+                        <div class="so-flex so-flex-col so-gap-2 so-mb-4" style="max-width: 400px;">
+                            <button class="so-btn so-btn-link so-btn-block">Link Block</button>
+                            <button class="so-btn so-btn-link so-text-primary so-btn-block">Link Primary</button>
+                            <button class="so-btn so-btn-link so-text-danger so-btn-block">Link Danger</button>
+                        </div>
+
+                        <!-- Block Button Sizes -->
+                        <h6 class="so-mb-3">Block Button Sizes</h6>
+                        <div class="so-flex so-flex-col so-gap-2 so-mb-4" style="max-width: 400px;">
+                            <button class="so-btn so-btn-primary so-btn-xs so-btn-block">Extra Small Block</button>
+                            <button class="so-btn so-btn-primary so-btn-sm so-btn-block">Small Block</button>
+                            <button class="so-btn so-btn-primary so-btn-block">Default Block</button>
+                            <button class="so-btn so-btn-primary so-btn-lg so-btn-block">Large Block</button>
+                        </div>
+
+                        <!-- Block Buttons with Icons -->
+                        <h6 class="so-mb-3">Block Buttons with Icons</h6>
+                        <div class="so-flex so-flex-col so-gap-2 so-mb-4" style="max-width: 400px;">
+                            <button class="so-btn so-btn-primary so-btn-block">
+                                <span class="material-icons">download</span>
+                                Download File
+                            </button>
+                            <button class="so-btn so-btn-success so-btn-block">
+                                <span class="material-icons">check_circle</span>
+                                Confirm Action
+                            </button>
+                            <button class="so-btn so-btn-outline-danger so-btn-block">
+                                <span class="material-icons">delete</span>
+                                Delete Item
+                            </button>
+                            <button class="so-btn so-btn-light-info so-btn-block">
+                                Upload Document
+                                <span class="material-icons">upload</span>
+                            </button>
+                        </div>
+
+                        <hr class="so-my-4">
+
+                        <!-- Basic Block Groups -->
+                        <h6 class="so-mb-3">Block Button Groups</h6>
+                        <p class="so-text-muted so-mb-3">Add <code>.so-btn-group-block</code> class to make button groups full width with equally distributed buttons.</p>
+                        <h6 class="so-mb-3">Basic Block Button Groups</h6>
+                        <div class="so-flex so-flex-col so-gap-3 so-mb-4" style="max-width: 500px;">
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-primary">Left</button>
+                                <button type="button" class="so-btn so-btn-primary">Middle</button>
+                                <button type="button" class="so-btn so-btn-primary">Right</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-outline-primary">Left</button>
+                                <button type="button" class="so-btn so-btn-outline-primary">Middle</button>
+                                <button type="button" class="so-btn so-btn-outline-primary">Right</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-secondary">Left</button>
+                                <button type="button" class="so-btn so-btn-secondary">Middle</button>
+                                <button type="button" class="so-btn so-btn-secondary">Right</button>
+                            </div>
+                        </div>
+
+                        <!-- Contextual Block Groups -->
+                        <h6 class="so-mb-3">Contextual Block Groups</h6>
+                        <div class="so-flex so-flex-col so-gap-3 so-mb-4" style="max-width: 500px;">
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-success">Yes</button>
+                                <button type="button" class="so-btn so-btn-danger">No</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-outline-success">Approve</button>
+                                <button type="button" class="so-btn so-btn-outline-warning">Pending</button>
+                                <button type="button" class="so-btn so-btn-outline-danger">Reject</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-info">Info</button>
+                                <button type="button" class="so-btn so-btn-warning">Warning</button>
+                                <button type="button" class="so-btn so-btn-danger">Danger</button>
+                            </div>
+                        </div>
+
+                        <!-- Block Group Sizes -->
+                        <h6 class="so-mb-3">Block Group Sizes</h6>
+                        <div class="so-flex so-flex-col so-gap-3 so-mb-4" style="max-width: 500px;">
+                            <div class="so-btn-group so-btn-group-xs so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-primary">Extra Small</button>
+                                <button type="button" class="so-btn so-btn-primary">Block</button>
+                                <button type="button" class="so-btn so-btn-primary">Group</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-sm so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-primary">Small</button>
+                                <button type="button" class="so-btn so-btn-primary">Block</button>
+                                <button type="button" class="so-btn so-btn-primary">Group</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-primary">Default</button>
+                                <button type="button" class="so-btn so-btn-primary">Block</button>
+                                <button type="button" class="so-btn so-btn-primary">Group</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-lg so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-primary">Large</button>
+                                <button type="button" class="so-btn so-btn-primary">Block</button>
+                                <button type="button" class="so-btn so-btn-primary">Group</button>
+                            </div>
+                        </div>
+
+                        <!-- Block Groups with Icons -->
+                        <h6 class="so-mb-3">Block Groups with Icons</h6>
+                        <div class="so-flex so-flex-col so-gap-3 so-mb-4" style="max-width: 500px;">
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-primary">
+                                    <span class="material-icons">thumb_up</span>
+                                    Like
+                                </button>
+                                <button type="button" class="so-btn so-btn-primary">
+                                    <span class="material-icons">comment</span>
+                                    Comment
+                                </button>
+                                <button type="button" class="so-btn so-btn-primary">
+                                    <span class="material-icons">share</span>
+                                    Share
+                                </button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-block">
+                                <button type="button" class="so-btn so-btn-outline-secondary">
+                                    <span class="material-icons">edit</span>
+                                    Edit
+                                </button>
+                                <button type="button" class="so-btn so-btn-outline-secondary">
+                                    <span class="material-icons">content_copy</span>
+                                    Copy
+                                </button>
+                                <button type="button" class="so-btn so-btn-outline-danger">
+                                    <span class="material-icons">delete</span>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Block Toggle Groups -->
+                        <h6 class="so-mb-3">Block Toggle Groups</h6>
+                        <div class="so-flex so-flex-col so-gap-3 so-mb-4" style="max-width: 500px;">
+                            <div class="so-btn-group so-btn-group-toggle so-btn-group-block" data-so-toggle="buttons" data-toggle-type="radio">
+                                <button type="button" class="so-btn so-btn-outline-primary active" data-value="daily">Daily</button>
+                                <button type="button" class="so-btn so-btn-outline-primary" data-value="weekly">Weekly</button>
+                                <button type="button" class="so-btn so-btn-outline-primary" data-value="monthly">Monthly</button>
+                            </div>
+                            <div class="so-btn-group so-btn-group-toggle so-btn-group-block" data-so-toggle="buttons" data-toggle-type="checkbox">
+                                <button type="button" class="so-btn so-btn-light-primary active" data-value="bold">
+                                    <span class="material-icons">format_bold</span>
+                                </button>
+                                <button type="button" class="so-btn so-btn-light-primary" data-value="italic">
+                                    <span class="material-icons">format_italic</span>
+                                </button>
+                                <button type="button" class="so-btn so-btn-light-primary active" data-value="underline">
+                                    <span class="material-icons">format_underlined</span>
+                                </button>
+                                <button type="button" class="so-btn so-btn-light-primary" data-value="strikethrough">
+                                    <span class="material-icons">strikethrough_s</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Vertical Block Groups -->
+                        <h6 class="so-mb-3">Vertical Block Groups</h6>
+                        <div class="so-flex so-gap-4 so-mb-4">
+                            <div style="width: 200px;">
+                                <div class="so-btn-group so-btn-group-vertical so-btn-group-block">
+                                    <button type="button" class="so-btn so-btn-primary">Top</button>
+                                    <button type="button" class="so-btn so-btn-primary">Middle</button>
+                                    <button type="button" class="so-btn so-btn-primary">Bottom</button>
+                                </div>
+                            </div>
+                            <div style="width: 200px;">
+                                <div class="so-btn-group so-btn-group-vertical so-btn-group-block">
+                                    <button type="button" class="so-btn so-btn-outline-secondary">
+                                        <span class="material-icons">home</span>
+                                        Home
+                                    </button>
+                                    <button type="button" class="so-btn so-btn-outline-secondary">
+                                        <span class="material-icons">settings</span>
+                                        Settings
+                                    </button>
+                                    <button type="button" class="so-btn so-btn-outline-secondary">
+                                        <span class="material-icons">help</span>
+                                        Help
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- ============================================ --&gt;
+&lt;!-- SINGLE BLOCK BUTTONS --&gt;
+&lt;!-- ============================================ --&gt;
+
+&lt;!-- Solid Block Buttons --&gt;
+&lt;button class="so-btn so-btn-primary so-btn-block"&gt;Primary Block&lt;/button&gt;
+&lt;button class="so-btn so-btn-secondary so-btn-block"&gt;Secondary Block&lt;/button&gt;
+&lt;button class="so-btn so-btn-success so-btn-block"&gt;Success Block&lt;/button&gt;
+&lt;button class="so-btn so-btn-danger so-btn-block"&gt;Danger Block&lt;/button&gt;
+
+&lt;!-- Outline Block Buttons --&gt;
+&lt;button class="so-btn so-btn-outline-primary so-btn-block"&gt;Outline Primary&lt;/button&gt;
+&lt;button class="so-btn so-btn-outline-danger so-btn-block"&gt;Outline Danger&lt;/button&gt;
+
+&lt;!-- Light (Soft) Block Buttons --&gt;
+&lt;button class="so-btn so-btn-light-primary so-btn-block"&gt;Light Primary&lt;/button&gt;
+&lt;button class="so-btn so-btn-light-success so-btn-block"&gt;Light Success&lt;/button&gt;
+
+&lt;!-- Ghost Block Buttons --&gt;
+&lt;button class="so-btn so-btn-ghost so-btn-primary so-btn-block"&gt;Ghost Primary&lt;/button&gt;
+
+&lt;!-- Link Block Buttons --&gt;
+&lt;button class="so-btn so-btn-link so-btn-block"&gt;Link Block&lt;/button&gt;
+
+&lt;!-- Block Button Sizes --&gt;
+&lt;button class="so-btn so-btn-primary so-btn-xs so-btn-block"&gt;Extra Small&lt;/button&gt;
+&lt;button class="so-btn so-btn-primary so-btn-sm so-btn-block"&gt;Small&lt;/button&gt;
+&lt;button class="so-btn so-btn-primary so-btn-block"&gt;Default&lt;/button&gt;
+&lt;button class="so-btn so-btn-primary so-btn-lg so-btn-block"&gt;Large&lt;/button&gt;
+
+&lt;!-- Block Buttons with Icons --&gt;
+&lt;button class="so-btn so-btn-primary so-btn-block"&gt;
+    &lt;span class="material-icons"&gt;download&lt;/span&gt;
+    Download File
+&lt;/button&gt;
+
+&lt;!-- ============================================ --&gt;
+&lt;!-- BLOCK BUTTON GROUPS --&gt;
+&lt;!-- ============================================ --&gt;
+
+&lt;!-- Basic Block Button Group --&gt;
+&lt;div class="so-btn-group so-btn-group-block"&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Left&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Middle&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Outline Block Group --&gt;
+&lt;div class="so-btn-group so-btn-group-block"&gt;
+    &lt;button type="button" class="so-btn so-btn-outline-primary"&gt;Left&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-outline-primary"&gt;Middle&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-outline-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Contextual Block Groups --&gt;
+&lt;div class="so-btn-group so-btn-group-block"&gt;
+    &lt;button type="button" class="so-btn so-btn-success"&gt;Approve&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-warning"&gt;Pending&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-danger"&gt;Reject&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Block Group with Size --&gt;
+&lt;div class="so-btn-group so-btn-group-lg so-btn-group-block"&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Large Block&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Group&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Block Group with Icons --&gt;
+&lt;div class="so-btn-group so-btn-group-block"&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;
+        &lt;span class="material-icons"&gt;thumb_up&lt;/span&gt;
+        Like
+    &lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;
+        &lt;span class="material-icons"&gt;share&lt;/span&gt;
+        Share
+    &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Block Toggle Group --&gt;
+&lt;div class="so-btn-group so-btn-group-toggle so-btn-group-block" data-so-toggle="buttons" data-toggle-type="radio"&gt;
+    &lt;button type="button" class="so-btn so-btn-outline-primary active" data-value="daily"&gt;Daily&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-outline-primary" data-value="weekly"&gt;Weekly&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-outline-primary" data-value="monthly"&gt;Monthly&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Vertical Block Group --&gt;
+&lt;div class="so-btn-group so-btn-group-vertical so-btn-group-block"&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Top&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Middle&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-primary"&gt;Bottom&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,1249 @@
+            <div class="so-tab-pane fade" id="pane-tags-avatars" role="tabpanel">
+
+                <!-- ============================================ -->
+                <!-- SECTION 1: BADGES -->
+                <!-- ============================================ -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Badges</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Small count and labeling components for notifications and status indicators.</p>
+
+                        <h5 class="so-mb-3">Solid Badges</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-badge so-badge-primary">Primary</span>
+                            <span class="so-badge so-badge-secondary">Secondary</span>
+                            <span class="so-badge so-badge-success">Success</span>
+                            <span class="so-badge so-badge-danger">Danger</span>
+                            <span class="so-badge so-badge-warning">Warning</span>
+                            <span class="so-badge so-badge-info">Info</span>
+                            <span class="so-badge so-badge-light">Light</span>
+                            <span class="so-badge so-badge-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Soft Badges</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-badge so-badge-soft-primary">Primary</span>
+                            <span class="so-badge so-badge-soft-secondary">Secondary</span>
+                            <span class="so-badge so-badge-soft-success">Success</span>
+                            <span class="so-badge so-badge-soft-danger">Danger</span>
+                            <span class="so-badge so-badge-soft-warning">Warning</span>
+                            <span class="so-badge so-badge-soft-info">Info</span>
+                            <span class="so-badge so-badge-soft-light">Light</span>
+                            <span class="so-badge so-badge-soft-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Outline Badges</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-badge so-badge-outline-primary">Primary</span>
+                            <span class="so-badge so-badge-outline-secondary">Secondary</span>
+                            <span class="so-badge so-badge-outline-success">Success</span>
+                            <span class="so-badge so-badge-outline-danger">Danger</span>
+                            <span class="so-badge so-badge-outline-warning">Warning</span>
+                            <span class="so-badge so-badge-outline-info">Info</span>
+                            <span class="so-badge so-badge-outline-light">Light</span>
+                            <span class="so-badge so-badge-outline-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Badge Sizes</h5>
+                        <div class="so-flex so-gap-2 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-badge so-badge-primary so-badge-sm">Small</span>
+                            <span class="so-badge so-badge-primary">Default</span>
+                            <span class="so-badge so-badge-primary so-badge-lg">Large</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Badges with Icons</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-badge so-badge-primary">
+                                <span class="material-icons">check</span>
+                                Approved
+                            </span>
+                            <span class="so-badge so-badge-danger">
+                                <span class="material-icons">error</span>
+                                Error
+                            </span>
+                            <span class="so-badge so-badge-soft-success">
+                                <span class="material-icons">done_all</span>
+                                Complete
+                            </span>
+                            <span class="so-badge so-badge-outline-info">
+                                <span class="material-icons">info</span>
+                                Info
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Dot Badges</h5>
+                        <div class="so-flex so-gap-3 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-badge-dot so-badge-primary"></span>
+                            <span class="so-badge-dot so-badge-secondary"></span>
+                            <span class="so-badge-dot so-badge-success"></span>
+                            <span class="so-badge-dot so-badge-danger"></span>
+                            <span class="so-badge-dot so-badge-warning"></span>
+                            <span class="so-badge-dot so-badge-info"></span>
+                            <span class="so-badge-dot so-badge-light"></span>
+                            <span class="so-badge-dot so-badge-dark"></span>
+                        </div>
+
+                        <h5 class="so-mb-3">Pulse Animation</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-badge-dot so-badge-danger so-badge-pulse"></span>
+                            <span class="so-badge-dot so-badge-success so-badge-pulse"></span>
+                            <span class="so-badge so-badge-danger so-badge-pulse">Live</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Count Badge Colors</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light so-btn-icon">
+                                    <span class="material-icons">notifications</span>
+                                </button>
+                                <span class="so-badge-count so-badge-primary">3</span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light so-btn-icon">
+                                    <span class="material-icons">mail</span>
+                                </button>
+                                <span class="so-badge-count so-badge-success">5</span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light so-btn-icon">
+                                    <span class="material-icons">shopping_cart</span>
+                                </button>
+                                <span class="so-badge-count so-badge-warning">2</span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light so-btn-icon">
+                                    <span class="material-icons">favorite</span>
+                                </button>
+                                <span class="so-badge-count so-badge-info">7</span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light so-btn-icon">
+                                    <span class="material-icons">chat</span>
+                                </button>
+                                <span class="so-badge-count so-badge-secondary">4</span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light so-btn-icon">
+                                    <span class="material-icons">folder</span>
+                                </button>
+                                <span class="so-badge-count so-badge-dark">9</span>
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Hint Badges (Dot on Buttons)</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-primary">Profile</button>
+                                <span class="so-badge-dot so-badge-danger"></span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-outline-primary">
+                                    <span class="material-icons">settings</span>
+                                    Settings
+                                </button>
+                                <span class="so-badge-dot so-badge-success"></span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light so-btn-icon">
+                                    <span class="material-icons">notifications</span>
+                                </button>
+                                <span class="so-badge-dot so-badge-danger so-badge-pulse"></span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-ghost so-btn-icon">
+                                    <span class="material-icons">mail</span>
+                                </button>
+                                <span class="so-badge-dot so-badge-primary"></span>
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Hint Badge Positions</h5>
+                        <div class="so-flex so-gap-6 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-top-left">
+                                    <button class="so-btn so-btn-primary so-btn-icon">
+                                        <span class="material-icons">person</span>
+                                    </button>
+                                    <span class="so-badge-dot so-badge-success"></span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-top-right">
+                                    <button class="so-btn so-btn-success so-btn-icon">
+                                        <span class="material-icons">person</span>
+                                    </button>
+                                    <span class="so-badge-dot so-badge-danger"></span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Right</p>
+                            </div>
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-bottom-left">
+                                    <button class="so-btn so-btn-warning so-btn-icon">
+                                        <span class="material-icons">person</span>
+                                    </button>
+                                    <span class="so-badge-dot so-badge-info"></span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-bottom-right">
+                                    <button class="so-btn so-btn-danger so-btn-icon">
+                                        <span class="material-icons">person</span>
+                                    </button>
+                                    <span class="so-badge-dot so-badge-warning"></span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Right</p>
+                            </div>
+                        </div>
+
+                        <h5 class="so-mb-3">Positioned Count Badges</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-primary">
+                                    <span class="material-icons">notifications</span>
+                                </button>
+                                <span class="so-badge-count">5</span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-outline-primary">
+                                    <span class="material-icons">mail</span>
+                                </button>
+                                <span class="so-badge-count so-badge-success">12</span>
+                            </span>
+                            <span class="so-badge-wrapper">
+                                <button class="so-btn so-btn-light">
+                                    <span class="material-icons">shopping_cart</span>
+                                </button>
+                                <span class="so-badge-count so-badge-sm">99+</span>
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Badge Position Variants</h5>
+                        <div class="so-flex so-gap-6 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-top-left">
+                                    <button class="so-btn so-btn-primary so-btn-icon">
+                                        <span class="material-icons">notifications</span>
+                                    </button>
+                                    <span class="so-badge-count">3</span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-top-right">
+                                    <button class="so-btn so-btn-success so-btn-icon">
+                                        <span class="material-icons">mail</span>
+                                    </button>
+                                    <span class="so-badge-count">7</span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Right</p>
+                            </div>
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-bottom-left">
+                                    <button class="so-btn so-btn-warning so-btn-icon">
+                                        <span class="material-icons">shopping_cart</span>
+                                    </button>
+                                    <span class="so-badge-count">2</span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <span class="so-badge-wrapper so-badge-bottom-right">
+                                    <button class="so-btn so-btn-danger so-btn-icon">
+                                        <span class="material-icons">favorite</span>
+                                    </button>
+                                    <span class="so-badge-count">9</span>
+                                </span>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Right</p>
+                            </div>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Solid badges (8 colors) --&gt;
+&lt;span class="so-badge so-badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="so-badge so-badge-secondary"&gt;Secondary&lt;/span&gt;
+
+&lt;!-- Soft badges --&gt;
+&lt;span class="so-badge so-badge-soft-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Outline badges --&gt;
+&lt;span class="so-badge so-badge-outline-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;span class="so-badge so-badge-primary so-badge-sm"&gt;Small&lt;/span&gt;
+&lt;span class="so-badge so-badge-primary so-badge-lg"&gt;Large&lt;/span&gt;
+
+&lt;!-- With icon --&gt;
+&lt;span class="so-badge so-badge-success"&gt;
+    &lt;span class="material-icons"&gt;check&lt;/span&gt;
+    Approved
+&lt;/span&gt;
+
+&lt;!-- Dot badges --&gt;
+&lt;span class="so-badge-dot so-badge-success"&gt;&lt;/span&gt;
+
+&lt;!-- Pulse animation --&gt;
+&lt;span class="so-badge-dot so-badge-danger so-badge-pulse"&gt;&lt;/span&gt;
+
+&lt;!-- Positioned badge (notification) --&gt;
+&lt;span class="so-badge-wrapper"&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;
+        &lt;span class="material-icons"&gt;notifications&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;span class="so-badge-count"&gt;5&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Count badge with contextual colors --&gt;
+&lt;span class="so-badge-wrapper"&gt;
+    &lt;button class="so-btn so-btn-light so-btn-icon"&gt;
+        &lt;span class="material-icons"&gt;mail&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;span class="so-badge-count so-badge-success"&gt;5&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Hint badge (dot on button) --&gt;
+&lt;span class="so-badge-wrapper"&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;Profile&lt;/button&gt;
+    &lt;span class="so-badge-dot so-badge-danger"&gt;&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Hint badge with position --&gt;
+&lt;span class="so-badge-wrapper so-badge-top-left"&gt;
+    &lt;button class="so-btn so-btn-primary so-btn-icon"&gt;
+        &lt;span class="material-icons"&gt;person&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;span class="so-badge-dot so-badge-success"&gt;&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Position variants: so-badge-top-left, so-badge-top-right, so-badge-bottom-left, so-badge-bottom-right --&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================ -->
+                <!-- SECTION 2: PILLS -->
+                <!-- ============================================ -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Pills</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Fully rounded tag variants for categories, tags, and filters.</p>
+
+                        <h5 class="so-mb-3">Solid Pills</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-pill so-pill-primary">Primary</span>
+                            <span class="so-pill so-pill-secondary">Secondary</span>
+                            <span class="so-pill so-pill-success">Success</span>
+                            <span class="so-pill so-pill-danger">Danger</span>
+                            <span class="so-pill so-pill-warning">Warning</span>
+                            <span class="so-pill so-pill-info">Info</span>
+                            <span class="so-pill so-pill-light">Light</span>
+                            <span class="so-pill so-pill-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Soft Pills</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-pill so-pill-soft-primary">Primary</span>
+                            <span class="so-pill so-pill-soft-secondary">Secondary</span>
+                            <span class="so-pill so-pill-soft-success">Success</span>
+                            <span class="so-pill so-pill-soft-danger">Danger</span>
+                            <span class="so-pill so-pill-soft-warning">Warning</span>
+                            <span class="so-pill so-pill-soft-info">Info</span>
+                            <span class="so-pill so-pill-soft-light">Light</span>
+                            <span class="so-pill so-pill-soft-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Outline Pills</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-pill so-pill-outline-primary">Primary</span>
+                            <span class="so-pill so-pill-outline-secondary">Secondary</span>
+                            <span class="so-pill so-pill-outline-success">Success</span>
+                            <span class="so-pill so-pill-outline-danger">Danger</span>
+                            <span class="so-pill so-pill-outline-warning">Warning</span>
+                            <span class="so-pill so-pill-outline-info">Info</span>
+                            <span class="so-pill so-pill-outline-light">Light</span>
+                            <span class="so-pill so-pill-outline-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Pill Sizes</h5>
+                        <div class="so-flex so-gap-2 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-pill so-pill-primary so-pill-sm">Small</span>
+                            <span class="so-pill so-pill-primary">Default</span>
+                            <span class="so-pill so-pill-primary so-pill-lg">Large</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Pills with Icons</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-pill so-pill-primary">
+                                <span class="material-icons">star</span>
+                                Featured
+                            </span>
+                            <span class="so-pill so-pill-soft-success">
+                                <span class="material-icons">check_circle</span>
+                                Verified
+                            </span>
+                            <span class="so-pill so-pill-outline-danger">
+                                <span class="material-icons">priority_high</span>
+                                Urgent
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Closable Pills</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-pill so-pill-primary" data-so-chip data-so-chip-closable>
+                                JavaScript
+                                <button class="so-pill-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-pill so-pill-soft-success" data-so-chip data-so-chip-closable>
+                                React
+                                <button class="so-pill-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-pill so-pill-outline-info" data-so-chip data-so-chip-closable>
+                                Vue.js
+                                <button class="so-pill-close"><span class="material-icons">close</span></button>
+                            </span>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Solid pills (8 colors) --&gt;
+&lt;span class="so-pill so-pill-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Soft pills --&gt;
+&lt;span class="so-pill so-pill-soft-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Outline pills --&gt;
+&lt;span class="so-pill so-pill-outline-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;span class="so-pill so-pill-primary so-pill-sm"&gt;Small&lt;/span&gt;
+&lt;span class="so-pill so-pill-primary so-pill-lg"&gt;Large&lt;/span&gt;
+
+&lt;!-- With icon --&gt;
+&lt;span class="so-pill so-pill-primary"&gt;
+    &lt;span class="material-icons"&gt;star&lt;/span&gt;
+    Featured
+&lt;/span&gt;
+
+&lt;!-- Closable pill --&gt;
+&lt;span class="so-pill so-pill-primary" data-so-chip data-so-chip-closable&gt;
+    Tag Name
+    &lt;button class="so-pill-close"&gt;&lt;span class="material-icons"&gt;close&lt;/span&gt;&lt;/button&gt;
+&lt;/span&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================ -->
+                <!-- SECTION 3: LABELS -->
+                <!-- ============================================ -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Labels</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Square-cornered text labels with uppercase styling for categorization.</p>
+
+                        <h5 class="so-mb-3">Solid Labels</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-label so-label-primary">Primary</span>
+                            <span class="so-label so-label-secondary">Secondary</span>
+                            <span class="so-label so-label-success">Success</span>
+                            <span class="so-label so-label-danger">Danger</span>
+                            <span class="so-label so-label-warning">Warning</span>
+                            <span class="so-label so-label-info">Info</span>
+                            <span class="so-label so-label-light">Light</span>
+                            <span class="so-label so-label-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Soft Labels</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-label so-label-soft-primary">Primary</span>
+                            <span class="so-label so-label-soft-secondary">Secondary</span>
+                            <span class="so-label so-label-soft-success">Success</span>
+                            <span class="so-label so-label-soft-danger">Danger</span>
+                            <span class="so-label so-label-soft-warning">Warning</span>
+                            <span class="so-label so-label-soft-info">Info</span>
+                            <span class="so-label so-label-soft-light">Light</span>
+                            <span class="so-label so-label-soft-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Label Sizes</h5>
+                        <div class="so-flex so-gap-2 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-label so-label-primary so-label-sm">Small</span>
+                            <span class="so-label so-label-primary">Default</span>
+                            <span class="so-label so-label-primary so-label-lg">Large</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Labels with Icons</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-label so-label-success">
+                                <span class="material-icons">new_releases</span>
+                                New
+                            </span>
+                            <span class="so-label so-label-soft-warning">
+                                <span class="material-icons">science</span>
+                                Beta
+                            </span>
+                            <span class="so-label so-label-danger">
+                                <span class="material-icons">priority_high</span>
+                                Urgent
+                            </span>
+                            <span class="so-label so-label-soft-info">
+                                <span class="material-icons">update</span>
+                                Updated
+                            </span>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Solid labels (8 colors) --&gt;
+&lt;span class="so-label so-label-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Soft labels --&gt;
+&lt;span class="so-label so-label-soft-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;span class="so-label so-label-primary so-label-sm"&gt;Small&lt;/span&gt;
+&lt;span class="so-label so-label-primary so-label-lg"&gt;Large&lt;/span&gt;
+
+&lt;!-- With icon --&gt;
+&lt;span class="so-label so-label-success"&gt;
+    &lt;span class="material-icons"&gt;new_releases&lt;/span&gt;
+    New
+&lt;/span&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================ -->
+                <!-- SECTION 4: CHIPS -->
+                <!-- ============================================ -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Chips</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Interactive tag elements with close and select functionality.</p>
+
+                        <h5 class="so-mb-3">Basic Chips</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-chip">Default</span>
+                            <span class="so-chip so-chip-primary">Primary</span>
+                            <span class="so-chip so-chip-secondary">Secondary</span>
+                            <span class="so-chip so-chip-success">Success</span>
+                            <span class="so-chip so-chip-danger">Danger</span>
+                            <span class="so-chip so-chip-warning">Warning</span>
+                            <span class="so-chip so-chip-info">Info</span>
+                            <span class="so-chip so-chip-light">Light</span>
+                            <span class="so-chip so-chip-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Soft Chips</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-chip so-chip-soft-primary">Primary</span>
+                            <span class="so-chip so-chip-soft-secondary">Secondary</span>
+                            <span class="so-chip so-chip-soft-success">Success</span>
+                            <span class="so-chip so-chip-soft-danger">Danger</span>
+                            <span class="so-chip so-chip-soft-warning">Warning</span>
+                            <span class="so-chip so-chip-soft-info">Info</span>
+                            <span class="so-chip so-chip-soft-light">Light</span>
+                            <span class="so-chip so-chip-soft-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Outline Chips</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-chip so-chip-outline-primary">Primary</span>
+                            <span class="so-chip so-chip-outline-secondary">Secondary</span>
+                            <span class="so-chip so-chip-outline-success">Success</span>
+                            <span class="so-chip so-chip-outline-danger">Danger</span>
+                            <span class="so-chip so-chip-outline-warning">Warning</span>
+                            <span class="so-chip so-chip-outline-info">Info</span>
+                            <span class="so-chip so-chip-outline-light">Light</span>
+                            <span class="so-chip so-chip-outline-dark">Dark</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Chip Sizes</h5>
+                        <div class="so-flex so-gap-2 so-items-center so-flex-wrap so-mb-4">
+                            <span class="so-chip so-chip-primary so-chip-sm">Small</span>
+                            <span class="so-chip so-chip-primary">Default</span>
+                            <span class="so-chip so-chip-primary so-chip-lg">Large</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Chips with Icons</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-chip so-chip-soft-primary">
+                                <span class="material-icons">code</span>
+                                JavaScript
+                            </span>
+                            <span class="so-chip so-chip-soft-success">
+                                <span class="material-icons">check_circle</span>
+                                Verified
+                            </span>
+                            <span class="so-chip so-chip-soft-danger">
+                                <span class="material-icons">error</span>
+                                Error
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Chips with Avatars</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-chip so-chip-soft-primary">
+                                <img src="https://i.pravatar.cc/100?img=1" class="so-chip-avatar" alt="">
+                                John Doe
+                            </span>
+                            <span class="so-chip so-chip-soft-success">
+                                <img src="https://i.pravatar.cc/100?img=2" class="so-chip-avatar" alt="">
+                                Jane Smith
+                            </span>
+                            <span class="so-chip so-chip-soft-info">
+                                <img src="https://i.pravatar.cc/100?img=3" class="so-chip-avatar" alt="">
+                                Bob Wilson
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Closable Chips (Click X to remove)</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4" id="closable-chips-demo">
+                            <span class="so-chip so-chip-primary" data-so-chip data-so-chip-closable data-value="react">
+                                React
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-chip so-chip-soft-success" data-so-chip data-so-chip-closable data-value="vue">
+                                Vue.js
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-chip so-chip-outline-info" data-so-chip data-so-chip-closable data-value="angular">
+                                Angular
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-chip so-chip-soft-warning" data-so-chip data-so-chip-closable data-value="svelte">
+                                <img src="https://i.pravatar.cc/100?img=4" class="so-chip-avatar" alt="">
+                                Svelte Dev
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Selectable/Filter Chips (Click to toggle)</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4" id="filter-chips-demo">
+                            <span class="so-chip so-chip-outline-primary so-chip-selectable" data-so-chip data-so-chip-selectable data-value="all">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                All
+                            </span>
+                            <span class="so-chip so-chip-outline-primary so-chip-selectable so-chip-selected" data-so-chip data-so-chip-selectable data-value="active">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                Active
+                            </span>
+                            <span class="so-chip so-chip-outline-primary so-chip-selectable" data-so-chip data-so-chip-selectable data-value="pending">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                Pending
+                            </span>
+                            <span class="so-chip so-chip-outline-primary so-chip-selectable" data-so-chip data-so-chip-selectable data-value="completed">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                Completed
+                            </span>
+                        </div>
+
+                        <h5 class="so-mb-3">Disabled Chips</h5>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                            <span class="so-chip so-chip-primary so-chip-disabled">Disabled</span>
+                            <span class="so-chip so-chip-soft-success so-chip-disabled">Disabled Soft</span>
+                            <span class="so-chip so-chip-outline-danger so-chip-disabled">Disabled Outline</span>
+                        </div>
+
+                        <h5 class="so-mb-3">Interactive Demo</h5>
+                        <p class="so-text-muted so-mb-3">Try adding, removing, and selecting chips. Watch the console for events.</p>
+
+                        <!-- Add Chip Input -->
+                        <div class="so-flex so-gap-2 so-items-center so-mb-3">
+                            <div class="so-input-group" style="max-width: 300px;">
+                                <input type="text" class="so-input" id="chip-input" placeholder="Type a tag name...">
+                                <button class="so-btn so-btn-primary" id="add-chip-btn">
+                                    <span class="material-icons">add</span>
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Chips Container -->
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4" id="interactive-chips-container">
+                            <span class="so-chip so-chip-soft-primary" data-so-chip data-so-chip-closable data-value="HTML">
+                                HTML
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-chip so-chip-soft-success" data-so-chip data-so-chip-closable data-value="CSS">
+                                CSS
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-chip so-chip-soft-warning" data-so-chip data-so-chip-closable data-value="JavaScript">
+                                JavaScript
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                        </div>
+
+                        <!-- Event Log -->
+                        <div class="so-card so-card-secondary so-mb-4">
+                            <div class="so-card-header so-py-2">
+                                <h6 class="so-card-title so-mb-0">Event Log</h6>
+                                <button class="so-btn so-btn-xs so-btn-ghost" id="clear-log-btn">Clear</button>
+                            </div>
+                            <div class="so-card-body so-py-2" style="max-height: 120px; overflow-y: auto;">
+                                <div id="chip-event-log" class="so-text-sm so-font-mono">
+                                    <div class="so-text-muted">Events will appear here...</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filter Chips Demo -->
+                        <h6 class="so-mb-2">Filter by Category</h6>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-3" id="category-filter-chips">
+                            <span class="so-chip so-chip-outline-primary so-chip-selectable so-chip-selected" data-so-chip data-so-chip-selectable data-value="all">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                All
+                            </span>
+                            <span class="so-chip so-chip-outline-success so-chip-selectable" data-so-chip data-so-chip-selectable data-value="frontend">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                Frontend
+                            </span>
+                            <span class="so-chip so-chip-outline-info so-chip-selectable" data-so-chip data-so-chip-selectable data-value="backend">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                Backend
+                            </span>
+                            <span class="so-chip so-chip-outline-warning so-chip-selectable" data-so-chip data-so-chip-selectable data-value="database">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                Database
+                            </span>
+                            <span class="so-chip so-chip-outline-danger so-chip-selectable" data-so-chip data-so-chip-selectable data-value="devops">
+                                <span class="so-chip-check"><span class="material-icons">check</span></span>
+                                DevOps
+                            </span>
+                        </div>
+                        <div class="so-mb-4">
+                            <span class="so-text-muted so-text-sm">Selected filters: </span>
+                            <span id="selected-filters" class="so-text-sm so-font-semibold">All</span>
+                        </div>
+
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const container = document.getElementById('interactive-chips-container');
+                            const input = document.getElementById('chip-input');
+                            const addBtn = document.getElementById('add-chip-btn');
+                            const eventLog = document.getElementById('chip-event-log');
+                            const clearLogBtn = document.getElementById('clear-log-btn');
+                            const filterContainer = document.getElementById('category-filter-chips');
+                            const selectedFiltersEl = document.getElementById('selected-filters');
+
+                            // Colors for new chips
+                            const chipColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info'];
+                            let colorIndex = 0;
+
+                            // Log events
+                            function logEvent(type, value) {
+                                const time = new Date().toLocaleTimeString();
+                                const entry = document.createElement('div');
+                                entry.className = type.includes('close') ? 'so-text-danger' :
+                                                  type.includes('select') ? 'so-text-success' :
+                                                  type.includes('deselect') ? 'so-text-warning' : 'so-text-info';
+                                entry.textContent = '[' + time + '] ' + type + ': "' + value + '"';
+
+                                // Remove placeholder if exists
+                                const placeholder = eventLog.querySelector('.so-text-muted');
+                                if (placeholder) placeholder.remove();
+
+                                eventLog.insertBefore(entry, eventLog.firstChild);
+                            }
+
+                            // Add chip
+                            function addChip() {
+                                const value = input.value.trim();
+                                if (!value) return;
+
+                                const color = chipColors[colorIndex % chipColors.length];
+                                colorIndex++;
+
+                                const chip = document.createElement('span');
+                                chip.className = 'so-chip so-chip-soft-' + color;
+                                chip.setAttribute('data-so-chip', '');
+                                chip.setAttribute('data-so-chip-closable', '');
+                                chip.setAttribute('data-value', value);
+                                chip.innerHTML = value + '<button class="so-chip-close"><span class="material-icons">close</span></button>';
+
+                                container.appendChild(chip);
+                                input.value = '';
+                                logEvent('chip:added', value);
+
+                                // Bind close event
+                                chip.querySelector('.so-chip-close').addEventListener('click', function(e) {
+                                    e.stopPropagation();
+                                    const chipValue = chip.getAttribute('data-value');
+                                    chip.style.opacity = '0';
+                                    chip.style.transform = 'scale(0.8)';
+                                    setTimeout(function() {
+                                        chip.remove();
+                                    }, 150);
+                                    logEvent('chip:close', chipValue);
+                                });
+                            }
+
+                            // Add chip on button click
+                            addBtn.addEventListener('click', addChip);
+
+                            // Add chip on Enter key
+                            input.addEventListener('keypress', function(e) {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    addChip();
+                                }
+                            });
+
+                            // Clear log
+                            clearLogBtn.addEventListener('click', function() {
+                                eventLog.innerHTML = '<div class="so-text-muted">Events will appear here...</div>';
+                            });
+
+                            // Listen for chip close events from existing chips
+                            container.addEventListener('click', function(e) {
+                                if (e.target.closest('.so-chip-close')) {
+                                    const chip = e.target.closest('[data-so-chip]');
+                                    if (chip) {
+                                        const value = chip.getAttribute('data-value');
+                                        chip.style.opacity = '0';
+                                        chip.style.transform = 'scale(0.8)';
+                                        setTimeout(function() {
+                                            chip.remove();
+                                        }, 150);
+                                        logEvent('chip:close', value);
+                                    }
+                                }
+                            });
+
+                            // Filter chips - track selection
+                            function updateSelectedFilters() {
+                                const selected = filterContainer.querySelectorAll('.so-chip-selected');
+                                const values = Array.from(selected).map(function(chip) {
+                                    return chip.getAttribute('data-value');
+                                });
+                                selectedFiltersEl.textContent = values.length > 0 ? values.join(', ') : 'None';
+                            }
+
+                            // Filter chip click handling
+                            filterContainer.addEventListener('click', function(e) {
+                                const chip = e.target.closest('[data-so-chip-selectable]');
+                                if (chip) {
+                                    const isSelected = chip.classList.toggle('so-chip-selected');
+                                    const value = chip.getAttribute('data-value');
+                                    logEvent(isSelected ? 'chip:select' : 'chip:deselect', value);
+                                    updateSelectedFilters();
+                                }
+                            });
+                        });
+                        </script>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Basic chip --&gt;
+&lt;span class="so-chip so-chip-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Soft chip --&gt;
+&lt;span class="so-chip so-chip-soft-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Outline chip --&gt;
+&lt;span class="so-chip so-chip-outline-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Chip with icon --&gt;
+&lt;span class="so-chip so-chip-soft-primary"&gt;
+    &lt;span class="material-icons"&gt;code&lt;/span&gt;
+    JavaScript
+&lt;/span&gt;
+
+&lt;!-- Chip with avatar --&gt;
+&lt;span class="so-chip so-chip-soft-primary"&gt;
+    &lt;img src="user.jpg" class="so-chip-avatar" alt=""&gt;
+    John Doe
+&lt;/span&gt;
+
+&lt;!-- Closable chip --&gt;
+&lt;span class="so-chip so-chip-primary" data-so-chip data-so-chip-closable data-value="tag1"&gt;
+    Tag Name
+    &lt;button class="so-chip-close"&gt;&lt;span class="material-icons"&gt;close&lt;/span&gt;&lt;/button&gt;
+&lt;/span&gt;
+
+&lt;!-- Selectable/filter chip --&gt;
+&lt;span class="so-chip so-chip-outline-primary so-chip-selectable" data-so-chip data-so-chip-selectable data-value="filter1"&gt;
+    &lt;span class="so-chip-check"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt;&lt;/span&gt;
+    Filter Option
+&lt;/span&gt;
+
+&lt;!-- Disabled chip --&gt;
+&lt;span class="so-chip so-chip-primary so-chip-disabled"&gt;Disabled&lt;/span&gt;
+
+&lt;!-- JavaScript events --&gt;
+&lt;script&gt;
+// Listen for chip close
+document.addEventListener('so-chip:close', (e) =&gt; {
+    console.log('Chip closed:', e.detail.value);
+});
+
+// Listen for chip selection
+document.addEventListener('so-chip:select', (e) =&gt; {
+    console.log('Chip selected:', e.detail.value);
+});
+
+document.addEventListener('so-chip:deselect', (e) =&gt; {
+    console.log('Chip deselected:', e.detail.value);
+});
+
+// Get selected chips
+const selected = SOChips.getSelectedValues(container);
+&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================ -->
+                <!-- SECTION 5: AVATARS -->
+                <!-- ============================================ -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Avatars</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">User representation with images, initials, or icons.</p>
+
+                        <h5 class="so-mb-3">Image Avatars</h5>
+                        <div class="so-flex so-gap-3 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-xs"><img src="https://i.pravatar.cc/100?img=1" alt=""></div>
+                            <div class="so-avatar so-avatar-sm"><img src="https://i.pravatar.cc/100?img=2" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=3" alt=""></div>
+                            <div class="so-avatar so-avatar-lg"><img src="https://i.pravatar.cc/100?img=4" alt=""></div>
+                            <div class="so-avatar so-avatar-xl"><img src="https://i.pravatar.cc/100?img=5" alt=""></div>
+                            <div class="so-avatar so-avatar-2xl"><img src="https://i.pravatar.cc/100?img=6" alt=""></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Initial Avatars (8 Colors)</h5>
+                        <div class="so-flex so-gap-3 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-primary"><span>JD</span></div>
+                            <div class="so-avatar so-avatar-secondary"><span>AB</span></div>
+                            <div class="so-avatar so-avatar-success"><span>CD</span></div>
+                            <div class="so-avatar so-avatar-danger"><span>EF</span></div>
+                            <div class="so-avatar so-avatar-warning"><span>GH</span></div>
+                            <div class="so-avatar so-avatar-info"><span>IJ</span></div>
+                            <div class="so-avatar so-avatar-light"><span>KL</span></div>
+                            <div class="so-avatar so-avatar-dark"><span>MN</span></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Icon Avatars</h5>
+                        <div class="so-flex so-gap-3 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar"><span class="material-icons">person</span></div>
+                            <div class="so-avatar so-avatar-primary"><span class="material-icons">person</span></div>
+                            <div class="so-avatar so-avatar-success"><span class="material-icons">check</span></div>
+                            <div class="so-avatar so-avatar-danger"><span class="material-icons">close</span></div>
+                            <div class="so-avatar so-avatar-info"><span class="material-icons">info</span></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Avatar Sizes</h5>
+                        <div class="so-flex so-gap-3 so-items-end so-flex-wrap so-mb-4">
+                            <div>
+                                <div class="so-avatar so-avatar-xs so-avatar-primary"><span>XS</span></div>
+                                <p class="so-text-muted so-text-xs so-text-center so-mt-1">24px</p>
+                            </div>
+                            <div>
+                                <div class="so-avatar so-avatar-sm so-avatar-primary"><span>SM</span></div>
+                                <p class="so-text-muted so-text-xs so-text-center so-mt-1">32px</p>
+                            </div>
+                            <div>
+                                <div class="so-avatar so-avatar-primary"><span>MD</span></div>
+                                <p class="so-text-muted so-text-xs so-text-center so-mt-1">40px</p>
+                            </div>
+                            <div>
+                                <div class="so-avatar so-avatar-lg so-avatar-primary"><span>LG</span></div>
+                                <p class="so-text-muted so-text-xs so-text-center so-mt-1">48px</p>
+                            </div>
+                            <div>
+                                <div class="so-avatar so-avatar-xl so-avatar-primary"><span>XL</span></div>
+                                <p class="so-text-muted so-text-xs so-text-center so-mt-1">64px</p>
+                            </div>
+                            <div>
+                                <div class="so-avatar so-avatar-2xl so-avatar-primary"><span>2XL</span></div>
+                                <p class="so-text-muted so-text-xs so-text-center so-mt-1">80px</p>
+                            </div>
+                        </div>
+
+                        <h5 class="so-mb-3">Square Avatars</h5>
+                        <div class="so-flex so-gap-3 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-square"><img src="https://i.pravatar.cc/100?img=10" alt=""></div>
+                            <div class="so-avatar so-avatar-square so-avatar-primary"><span>JD</span></div>
+                            <div class="so-avatar so-avatar-square so-avatar-lg so-avatar-success"><span class="material-icons">business</span></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Avatars with Ring/Border</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-ring"><img src="https://i.pravatar.cc/100?img=11" alt=""></div>
+                            <div class="so-avatar so-avatar-ring-primary"><img src="https://i.pravatar.cc/100?img=12" alt=""></div>
+                            <div class="so-avatar so-avatar-ring-secondary"><img src="https://i.pravatar.cc/100?img=13" alt=""></div>
+                            <div class="so-avatar so-avatar-ring-success"><img src="https://i.pravatar.cc/100?img=14" alt=""></div>
+                            <div class="so-avatar so-avatar-ring-danger"><img src="https://i.pravatar.cc/100?img=15" alt=""></div>
+                            <div class="so-avatar so-avatar-ring-warning"><img src="https://i.pravatar.cc/100?img=16" alt=""></div>
+                            <div class="so-avatar so-avatar-ring-info"><img src="https://i.pravatar.cc/100?img=17" alt=""></div>
+                            <div class="so-avatar so-avatar-ring-light so-avatar-dark"><span>LT</span></div>
+                            <div class="so-avatar so-avatar-ring-dark so-avatar-light"><span>DK</span></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Avatars with Status (Semantic)</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=20" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-away"><img src="https://i.pravatar.cc/100?img=21" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-busy"><img src="https://i.pravatar.cc/100?img=22" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-offline"><img src="https://i.pravatar.cc/100?img=23" alt=""></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Avatars with Status (All Contextual Colors)</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-status so-avatar-status-primary"><img src="https://i.pravatar.cc/100?img=30" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-secondary"><img src="https://i.pravatar.cc/100?img=31" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-success"><img src="https://i.pravatar.cc/100?img=32" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-danger"><img src="https://i.pravatar.cc/100?img=33" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-warning"><img src="https://i.pravatar.cc/100?img=34" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-info"><img src="https://i.pravatar.cc/100?img=35" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-light so-avatar-dark"><span>LT</span></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-dark so-avatar-light"><span>DK</span></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Square Avatars with Status</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-square so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=40" alt=""></div>
+                            <div class="so-avatar so-avatar-square so-avatar-status so-avatar-status-away"><img src="https://i.pravatar.cc/100?img=41" alt=""></div>
+                            <div class="so-avatar so-avatar-square so-avatar-status so-avatar-status-busy"><img src="https://i.pravatar.cc/100?img=42" alt=""></div>
+                            <div class="so-avatar so-avatar-square so-avatar-status so-avatar-status-offline"><img src="https://i.pravatar.cc/100?img=43" alt=""></div>
+                            <div class="so-avatar so-avatar-square so-avatar-status so-avatar-status-primary so-avatar-primary"><span>AB</span></div>
+                            <div class="so-avatar so-avatar-square so-avatar-status so-avatar-status-success so-avatar-success"><span>CD</span></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Status with Different Sizes</h5>
+                        <div class="so-flex so-gap-4 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar so-avatar-xs so-avatar-status so-avatar-status-online so-avatar-primary"><span>XS</span></div>
+                            <div class="so-avatar so-avatar-sm so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=24" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=25" alt=""></div>
+                            <div class="so-avatar so-avatar-lg so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=26" alt=""></div>
+                            <div class="so-avatar so-avatar-xl so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=27" alt=""></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Status Position Variants</h5>
+                        <div class="so-flex so-gap-6 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-status so-avatar-status-online so-avatar-status-top-left"><img src="https://i.pravatar.cc/100?img=50" alt=""></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-status so-avatar-status-success so-avatar-status-top-right"><img src="https://i.pravatar.cc/100?img=51" alt=""></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Right</p>
+                            </div>
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-status so-avatar-status-warning so-avatar-status-bottom-left"><img src="https://i.pravatar.cc/100?img=52" alt=""></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-status so-avatar-status-danger so-avatar-status-bottom-right"><img src="https://i.pravatar.cc/100?img=53" alt=""></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Right</p>
+                            </div>
+                        </div>
+
+                        <h5 class="so-mb-3">Square Avatars with Status Positions</h5>
+                        <div class="so-flex so-gap-6 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-square so-avatar-status so-avatar-status-primary so-avatar-status-top-left so-avatar-primary"><span>TL</span></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-square so-avatar-status so-avatar-status-success so-avatar-status-top-right"><img src="https://i.pravatar.cc/100?img=54" alt=""></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Top Right</p>
+                            </div>
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-square so-avatar-status so-avatar-status-info so-avatar-status-bottom-left"><img src="https://i.pravatar.cc/100?img=55" alt=""></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Left</p>
+                            </div>
+                            <div class="so-text-center">
+                                <div class="so-avatar so-avatar-lg so-avatar-square so-avatar-status so-avatar-status-danger so-avatar-status-bottom-right so-avatar-danger"><span>BR</span></div>
+                                <p class="so-text-muted so-text-xs so-mt-2">Bottom Right</p>
+                            </div>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Image avatar --&gt;
+&lt;div class="so-avatar"&gt;
+    &lt;img src="user.jpg" alt=""&gt;
+&lt;/div&gt;
+
+&lt;!-- Initial avatar with color --&gt;
+&lt;div class="so-avatar so-avatar-primary"&gt;
+    &lt;span&gt;JD&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Icon avatar --&gt;
+&lt;div class="so-avatar so-avatar-secondary"&gt;
+    &lt;span class="material-icons"&gt;person&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Sizes: xs, sm, (default), lg, xl, 2xl --&gt;
+&lt;div class="so-avatar so-avatar-xs"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-sm"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-lg"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-xl"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-2xl"&gt;...&lt;/div&gt;
+
+&lt;!-- Square avatar --&gt;
+&lt;div class="so-avatar so-avatar-square"&gt;...&lt;/div&gt;
+
+&lt;!-- Avatar with ring --&gt;
+&lt;div class="so-avatar so-avatar-ring"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-ring-primary"&gt;...&lt;/div&gt;
+
+&lt;!-- Avatar with status --&gt;
+&lt;div class="so-avatar so-avatar-status so-avatar-status-online"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-status so-avatar-status-away"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-status so-avatar-status-busy"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar so-avatar-status so-avatar-status-offline"&gt;...&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================ -->
+                <!-- SECTION 6: AVATAR GROUPS -->
+                <!-- ============================================ -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Avatar Groups</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Multiple avatar layouts: stacked, vertical, and grid.</p>
+
+                        <h5 class="so-mb-3">Stacked (Horizontal Overlapping)</h5>
+                        <div class="so-flex so-gap-6 so-items-center so-flex-wrap so-mb-4">
+                            <div class="so-avatar-group so-avatar-group-stacked">
+                                <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=30" alt=""></div>
+                                <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=31" alt=""></div>
+                                <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=32" alt=""></div>
+                                <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=33" alt=""></div>
+                                <div class="so-avatar so-avatar-more so-avatar-secondary"><span>+5</span></div>
+                            </div>
+
+                            <div class="so-avatar-group so-avatar-group-stacked so-avatar-group-sm">
+                                <div class="so-avatar so-avatar-sm"><img src="https://i.pravatar.cc/100?img=34" alt=""></div>
+                                <div class="so-avatar so-avatar-sm"><img src="https://i.pravatar.cc/100?img=35" alt=""></div>
+                                <div class="so-avatar so-avatar-sm"><img src="https://i.pravatar.cc/100?img=36" alt=""></div>
+                                <div class="so-avatar so-avatar-sm so-avatar-more so-avatar-primary"><span>+3</span></div>
+                            </div>
+
+                            <div class="so-avatar-group so-avatar-group-stacked so-avatar-group-lg">
+                                <div class="so-avatar so-avatar-lg"><img src="https://i.pravatar.cc/100?img=37" alt=""></div>
+                                <div class="so-avatar so-avatar-lg"><img src="https://i.pravatar.cc/100?img=38" alt=""></div>
+                                <div class="so-avatar so-avatar-lg so-avatar-primary"><span>AB</span></div>
+                            </div>
+                        </div>
+
+                        <h5 class="so-mb-3">Stacked with Status</h5>
+                        <div class="so-avatar-group so-avatar-group-stacked so-mb-4">
+                            <div class="so-avatar so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=40" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=41" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-away"><img src="https://i.pravatar.cc/100?img=42" alt=""></div>
+                            <div class="so-avatar so-avatar-status so-avatar-status-offline"><img src="https://i.pravatar.cc/100?img=43" alt=""></div>
+                        </div>
+
+                        <h5 class="so-mb-3">Vertical List</h5>
+                        <div class="so-flex so-gap-6 so-mb-4">
+                            <div class="so-avatar-group so-avatar-group-vertical">
+                                <div class="so-avatar so-avatar-status so-avatar-status-online"><img src="https://i.pravatar.cc/100?img=50" alt=""></div>
+                                <div class="so-avatar so-avatar-status so-avatar-status-away"><img src="https://i.pravatar.cc/100?img=51" alt=""></div>
+                                <div class="so-avatar so-avatar-status so-avatar-status-busy"><img src="https://i.pravatar.cc/100?img=52" alt=""></div>
+                                <div class="so-avatar so-avatar-status so-avatar-status-offline"><img src="https://i.pravatar.cc/100?img=53" alt=""></div>
+                            </div>
+
+                            <div class="so-avatar-group so-avatar-group-vertical">
+                                <div class="so-avatar so-avatar-primary"><span>JD</span></div>
+                                <div class="so-avatar so-avatar-success"><span>AB</span></div>
+                                <div class="so-avatar so-avatar-info"><span>CD</span></div>
+                            </div>
+                        </div>
+
+                        <h5 class="so-mb-3">Grid Layout</h5>
+                        <div class="so-avatar-group so-avatar-group-grid so-mb-4" style="max-width: 200px;">
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=60" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=61" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=62" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=63" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=64" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=65" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=66" alt=""></div>
+                            <div class="so-avatar"><img src="https://i.pravatar.cc/100?img=67" alt=""></div>
+                            <div class="so-avatar so-avatar-more so-avatar-secondary"><span>+12</span></div>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Stacked (overlapping horizontal) --&gt;
+&lt;div class="so-avatar-group so-avatar-group-stacked"&gt;
+    &lt;div class="so-avatar"&gt;&lt;img src="user1.jpg" alt=""&gt;&lt;/div&gt;
+    &lt;div class="so-avatar"&gt;&lt;img src="user2.jpg" alt=""&gt;&lt;/div&gt;
+    &lt;div class="so-avatar"&gt;&lt;img src="user3.jpg" alt=""&gt;&lt;/div&gt;
+    &lt;div class="so-avatar so-avatar-more so-avatar-secondary"&gt;&lt;span&gt;+5&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Stacked with size modifier --&gt;
+&lt;div class="so-avatar-group so-avatar-group-stacked so-avatar-group-sm"&gt;...&lt;/div&gt;
+&lt;div class="so-avatar-group so-avatar-group-stacked so-avatar-group-lg"&gt;...&lt;/div&gt;
+
+&lt;!-- Vertical list --&gt;
+&lt;div class="so-avatar-group so-avatar-group-vertical"&gt;
+    &lt;div class="so-avatar so-avatar-status so-avatar-status-online"&gt;...&lt;/div&gt;
+    &lt;div class="so-avatar so-avatar-status so-avatar-status-away"&gt;...&lt;/div&gt;
+    &lt;div class="so-avatar so-avatar-status so-avatar-status-offline"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Grid layout --&gt;
+&lt;div class="so-avatar-group so-avatar-group-grid"&gt;
+    &lt;div class="so-avatar"&gt;...&lt;/div&gt;
+    &lt;div class="so-avatar"&gt;...&lt;/div&gt;
+    &lt;div class="so-avatar"&gt;...&lt;/div&gt;
+    &lt;div class="so-avatar so-avatar-more so-avatar-secondary"&gt;&lt;span&gt;+12&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>

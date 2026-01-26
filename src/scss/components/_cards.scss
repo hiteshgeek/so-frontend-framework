@@ -527,6 +527,7 @@
   > .#{$so-prefix}card-header {
     background: alpha($so-primary, 0.1);
     border-bottom-color: alpha($so-primary, 0.2);
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: css-var('accent-primary');
@@ -538,6 +539,7 @@
   > .#{$so-prefix}card-header {
     background: alpha($so-success, 0.1);
     border-bottom-color: alpha($so-success, 0.2);
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: css-var('accent-success');
@@ -549,6 +551,7 @@
   > .#{$so-prefix}card-header {
     background: alpha($so-danger, 0.1);
     border-bottom-color: alpha($so-danger, 0.2);
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: css-var('accent-danger');
@@ -560,6 +563,7 @@
   > .#{$so-prefix}card-header {
     background: alpha($so-warning, 0.1);
     border-bottom-color: alpha($so-warning, 0.2);
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: css-var('accent-warning');
@@ -571,6 +575,7 @@
   > .#{$so-prefix}card-header {
     background: alpha($so-info, 0.1);
     border-bottom-color: alpha($so-info, 0.2);
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: css-var('accent-info');
@@ -582,6 +587,7 @@
   > .#{$so-prefix}card-header {
     background: alpha($so-secondary, 0.1);
     border-bottom-color: alpha($so-secondary, 0.2);
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: css-var('accent-secondary');
@@ -593,6 +599,7 @@
   > .#{$so-prefix}card-header {
     background: $so-grey-50;
     border-bottom-color: $so-grey-200;
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: $so-grey-600;
@@ -604,6 +611,7 @@
   > .#{$so-prefix}card-header {
     background: alpha($so-grey-900, 0.1);
     border-bottom-color: alpha($so-grey-900, 0.2);
+    border-radius: radius('lg') radius('lg') 0 0;
 
     .#{$so-prefix}card-title {
       color: $so-grey-900;
@@ -700,11 +708,18 @@
   align-items: center;
   gap: spacing('3');
 
+  // Use the reusable .so-avatar component for card avatars
+  // Legacy support: .so-card-avatar maps to .so-avatar styles
   .#{$so-prefix}card-avatar {
     width: 40px;
     height: 40px;
     border-radius: radius('full');
     object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  // When using .so-avatar directly in card header
+  .#{$so-prefix}avatar {
     flex-shrink: 0;
   }
 
@@ -823,9 +838,7 @@
   .#{$so-prefix}skeleton-img {
     height: 200px;
     border-radius: radius('lg') radius('lg') 0 0;
-    margin: calc(spacing('4') * -1);
-    margin-bottom: spacing('4');
-    width: calc(100% + spacing('4') * 2);
+    width: 100%;
   }
 
   .#{$so-prefix}skeleton-btn {

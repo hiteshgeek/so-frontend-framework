@@ -16,6 +16,9 @@ import SORipple from './components/so-ripple.js';
 import SOOtpInput from './components/so-otp.js';
 import SOTabs from './components/so-tabs.js';
 import SOTooltip from './components/so-tooltip.js';
+import SOContextMenu from './components/so-context-menu.js';
+import SOProgressButton from './components/so-progress-button.js';
+import SOButtonGroup from './components/so-button-group.js';
 
 // Features
 import SOForms from './features/so-forms.js';
@@ -65,6 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize tabs
   SOTabs.initAll();
 
+  // Initialize button groups
+  SOButtonGroup.initAll();
+
+  // Initialize progress buttons
+  SOProgressButton.initAll();
+
   console.log('SixOrbit UI Full initialized');
 });
 
@@ -81,6 +90,9 @@ export {
   SOOtpInput,
   SOTabs,
   SOTooltip,
+  SOContextMenu,
+  SOProgressButton,
+  SOButtonGroup,
   SOForms,
   SOSearchOverlay,
   SOFeatureCarousel,

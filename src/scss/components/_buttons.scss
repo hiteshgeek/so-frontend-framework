@@ -854,6 +854,29 @@
 }
 
 // ============================================
+// BLOCK BUTTON GROUP (Full Width)
+// ============================================
+
+.#{$so-prefix}btn-group-block {
+  display: flex;
+  width: 100%;
+
+  .#{$so-prefix}btn {
+    flex: 1;
+  }
+}
+
+// Apply block to vertical groups as well
+.#{$so-prefix}btn-group-vertical.#{$so-prefix}btn-group-block {
+  width: 100%;
+
+  .#{$so-prefix}btn {
+    flex: none;
+    width: 100%;
+  }
+}
+
+// ============================================
 // TOGGLE BUTTONS (Radio/Checkbox)
 // Hidden inputs with label buttons for toggle behavior
 // ============================================

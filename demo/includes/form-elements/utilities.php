@@ -900,6 +900,403 @@
     </div>
 
     <!-- ============================================
+         SKELETON LOADING
+         ============================================ -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Skeleton Loading</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-muted so-mb-4">Skeleton loaders provide visual placeholders while content is loading. Apply <code>.so-skeleton-loading</code> to a container to enable the animated skeleton effect.</p>
+
+            <!-- Basic Skeleton Elements -->
+            <h5 class="so-fw-semibold so-mb-3">Basic Skeleton Elements</h5>
+            <div class="so-row so-mb-4">
+                <div class="so-col-md-6">
+                    <div class="so-bg-body-secondary so-p-4 so-rounded so-skeleton-loading">
+                        <div class="so-d-flex so-gap-3 so-flex-wrap so-align-items-center">
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Text</p>
+                                <div class="so-skeleton so-skeleton-text" style="width: 150px;"></div>
+                            </div>
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Title</p>
+                                <div class="so-skeleton so-skeleton-title" style="width: 120px;"></div>
+                            </div>
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Avatar</p>
+                                <div class="so-skeleton so-skeleton-avatar"></div>
+                            </div>
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Button</p>
+                                <div class="so-skeleton so-skeleton-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-col-md-6">
+                    <p class="so-fs-sm so-text-muted so-mb-2">Available skeleton classes:</p>
+                    <div class="so-d-flex so-gap-2 so-flex-wrap">
+                        <span class="so-badge so-badge-soft-primary">.so-skeleton</span>
+                        <span class="so-badge so-badge-soft-primary">.so-skeleton-text</span>
+                        <span class="so-badge so-badge-soft-primary">.so-skeleton-title</span>
+                        <span class="so-badge so-badge-soft-primary">.so-skeleton-avatar</span>
+                        <span class="so-badge so-badge-soft-primary">.so-skeleton-img</span>
+                        <span class="so-badge so-badge-soft-primary">.so-skeleton-btn</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-code-block so-mb-5">
+                <pre><code>&lt;!-- Wrap with .so-skeleton-loading to enable animation --&gt;
+&lt;div class="so-skeleton-loading"&gt;
+    &lt;div class="so-skeleton so-skeleton-text"&gt;&lt;/div&gt;
+    &lt;div class="so-skeleton so-skeleton-title"&gt;&lt;/div&gt;
+    &lt;div class="so-skeleton so-skeleton-avatar"&gt;&lt;/div&gt;
+    &lt;div class="so-skeleton so-skeleton-btn"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <!-- Skeleton Card Examples -->
+            <h5 class="so-fw-semibold so-mb-3">Skeleton Card Layouts</h5>
+            <div class="so-row so-mb-4">
+                <!-- Basic Card Skeleton -->
+                <div class="so-col-md-4 so-mb-3">
+                    <p class="so-fs-sm so-text-muted so-mb-2">Basic Card</p>
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-card-body">
+                            <div class="so-skeleton so-skeleton-title"></div>
+                            <div class="so-skeleton so-skeleton-text"></div>
+                            <div class="so-skeleton so-skeleton-text"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card with Image Skeleton -->
+                <div class="so-col-md-4 so-mb-3">
+                    <p class="so-fs-sm so-text-muted so-mb-2">Card with Image</p>
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-skeleton so-skeleton-img"></div>
+                        <div class="so-card-body">
+                            <div class="so-skeleton so-skeleton-title"></div>
+                            <div class="so-skeleton so-skeleton-text"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card with Avatar Skeleton -->
+                <div class="so-col-md-4 so-mb-3">
+                    <p class="so-fs-sm so-text-muted so-mb-2">Card with Avatar</p>
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-card-header">
+                            <div class="so-d-flex so-align-items-center so-gap-3">
+                                <div class="so-skeleton so-skeleton-avatar"></div>
+                                <div class="so-flex-grow-1">
+                                    <div class="so-skeleton so-skeleton-text" style="width: 60%; margin-bottom: 6px;"></div>
+                                    <div class="so-skeleton so-skeleton-text" style="width: 40%; height: 0.8em; margin-bottom: 0;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="so-card-body">
+                            <div class="so-skeleton so-skeleton-text"></div>
+                            <div class="so-skeleton so-skeleton-text"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-code-block so-mb-5">
+                <pre><code>&lt;!-- Card with Image Skeleton --&gt;
+&lt;div class="so-card so-skeleton-loading"&gt;
+    &lt;div class="so-skeleton so-skeleton-img"&gt;&lt;/div&gt;
+    &lt;div class="so-card-body"&gt;
+        &lt;div class="so-skeleton so-skeleton-title"&gt;&lt;/div&gt;
+        &lt;div class="so-skeleton so-skeleton-text"&gt;&lt;/div&gt;
+        &lt;div class="so-skeleton so-skeleton-text" style="width: 80%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Card with Avatar Skeleton --&gt;
+&lt;div class="so-card so-skeleton-loading"&gt;
+    &lt;div class="so-card-header"&gt;
+        &lt;div class="so-d-flex so-align-items-center so-gap-3"&gt;
+            &lt;div class="so-skeleton so-skeleton-avatar"&gt;&lt;/div&gt;
+            &lt;div class="so-flex-grow-1"&gt;
+                &lt;div class="so-skeleton so-skeleton-text" style="width: 60%;"&gt;&lt;/div&gt;
+                &lt;div class="so-skeleton so-skeleton-text" style="width: 40%;"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="so-card-body"&gt;
+        &lt;div class="so-skeleton so-skeleton-text"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <!-- Skeleton List/Table -->
+            <h5 class="so-fw-semibold so-mb-3">Skeleton List & Table</h5>
+            <div class="so-row so-mb-4">
+                <!-- List Skeleton -->
+                <div class="so-col-md-6 so-mb-3">
+                    <p class="so-fs-sm so-text-muted so-mb-2">List Items</p>
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-card-body so-p-0">
+                            <div class="so-d-flex so-align-items-center so-gap-3 so-p-3 so-border-bottom">
+                                <div class="so-skeleton so-skeleton-avatar"></div>
+                                <div class="so-flex-grow-1">
+                                    <div class="so-skeleton so-skeleton-text" style="width: 50%; margin-bottom: 6px;"></div>
+                                    <div class="so-skeleton so-skeleton-text" style="width: 30%; height: 0.8em; margin-bottom: 0;"></div>
+                                </div>
+                                <div class="so-skeleton so-skeleton-btn" style="width: 60px;"></div>
+                            </div>
+                            <div class="so-d-flex so-align-items-center so-gap-3 so-p-3 so-border-bottom">
+                                <div class="so-skeleton so-skeleton-avatar"></div>
+                                <div class="so-flex-grow-1">
+                                    <div class="so-skeleton so-skeleton-text" style="width: 65%; margin-bottom: 6px;"></div>
+                                    <div class="so-skeleton so-skeleton-text" style="width: 40%; height: 0.8em; margin-bottom: 0;"></div>
+                                </div>
+                                <div class="so-skeleton so-skeleton-btn" style="width: 60px;"></div>
+                            </div>
+                            <div class="so-d-flex so-align-items-center so-gap-3 so-p-3">
+                                <div class="so-skeleton so-skeleton-avatar"></div>
+                                <div class="so-flex-grow-1">
+                                    <div class="so-skeleton so-skeleton-text" style="width: 45%; margin-bottom: 6px;"></div>
+                                    <div class="so-skeleton so-skeleton-text" style="width: 25%; height: 0.8em; margin-bottom: 0;"></div>
+                                </div>
+                                <div class="so-skeleton so-skeleton-btn" style="width: 60px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Skeleton -->
+                <div class="so-col-md-6 so-mb-3">
+                    <p class="so-fs-sm so-text-muted so-mb-2">Table Rows</p>
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-table-responsive">
+                            <table class="so-table so-mb-0">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;"></th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><div class="so-skeleton so-skeleton-avatar" style="width: 32px; height: 32px;"></div></td>
+                                        <td><div class="so-skeleton so-skeleton-text" style="width: 80%; margin-bottom: 0;"></div></td>
+                                        <td><div class="so-skeleton" style="width: 60px; height: 22px; border-radius: 9999px;"></div></td>
+                                        <td><div class="so-skeleton so-skeleton-btn" style="width: 50px; height: 28px;"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="so-skeleton so-skeleton-avatar" style="width: 32px; height: 32px;"></div></td>
+                                        <td><div class="so-skeleton so-skeleton-text" style="width: 65%; margin-bottom: 0;"></div></td>
+                                        <td><div class="so-skeleton" style="width: 60px; height: 22px; border-radius: 9999px;"></div></td>
+                                        <td><div class="so-skeleton so-skeleton-btn" style="width: 50px; height: 28px;"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="so-skeleton so-skeleton-avatar" style="width: 32px; height: 32px;"></div></td>
+                                        <td><div class="so-skeleton so-skeleton-text" style="width: 90%; margin-bottom: 0;"></div></td>
+                                        <td><div class="so-skeleton" style="width: 60px; height: 22px; border-radius: 9999px;"></div></td>
+                                        <td><div class="so-skeleton so-skeleton-btn" style="width: 50px; height: 28px;"></div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-code-block so-mb-5">
+                <pre><code>&lt;!-- List Item Skeleton --&gt;
+&lt;div class="so-d-flex so-align-items-center so-gap-3 so-p-3"&gt;
+    &lt;div class="so-skeleton so-skeleton-avatar"&gt;&lt;/div&gt;
+    &lt;div class="so-flex-grow-1"&gt;
+        &lt;div class="so-skeleton so-skeleton-text" style="width: 50%;"&gt;&lt;/div&gt;
+        &lt;div class="so-skeleton so-skeleton-text" style="width: 30%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="so-skeleton so-skeleton-btn"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Table Row Skeleton --&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;div class="so-skeleton so-skeleton-avatar" style="width: 32px; height: 32px;"&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div class="so-skeleton so-skeleton-text" style="width: 80%;"&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div class="so-skeleton" style="width: 60px; height: 22px; border-radius: 9999px;"&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div class="so-skeleton so-skeleton-btn"&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+            </div>
+
+            <!-- Custom Skeleton Shapes -->
+            <h5 class="so-fw-semibold so-mb-3">Custom Skeleton Shapes</h5>
+            <p class="so-text-muted so-mb-3">Use inline styles or utility classes to create custom skeleton shapes for any element.</p>
+            <div class="so-row so-mb-4">
+                <div class="so-col-md-6 so-mb-3">
+                    <div class="so-bg-body-secondary so-p-4 so-rounded so-skeleton-loading">
+                        <div class="so-d-flex so-gap-3 so-flex-wrap so-align-items-end">
+                            <!-- Square -->
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Square</p>
+                                <div class="so-skeleton" style="width: 60px; height: 60px; border-radius: 8px;"></div>
+                            </div>
+                            <!-- Circle -->
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Circle</p>
+                                <div class="so-skeleton" style="width: 60px; height: 60px; border-radius: 50%;"></div>
+                            </div>
+                            <!-- Pill/Badge -->
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Pill</p>
+                                <div class="so-skeleton" style="width: 80px; height: 24px; border-radius: 9999px;"></div>
+                            </div>
+                            <!-- Icon -->
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Icon</p>
+                                <div class="so-skeleton" style="width: 24px; height: 24px; border-radius: 4px;"></div>
+                            </div>
+                            <!-- Chart Bar -->
+                            <div>
+                                <p class="so-fs-sm so-text-muted so-mb-1">Chart</p>
+                                <div class="so-d-flex so-gap-1 so-align-items-end">
+                                    <div class="so-skeleton" style="width: 12px; height: 30px; border-radius: 2px;"></div>
+                                    <div class="so-skeleton" style="width: 12px; height: 50px; border-radius: 2px;"></div>
+                                    <div class="so-skeleton" style="width: 12px; height: 35px; border-radius: 2px;"></div>
+                                    <div class="so-skeleton" style="width: 12px; height: 60px; border-radius: 2px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-col-md-6 so-mb-3">
+                    <div class="so-bg-body-secondary so-p-4 so-rounded so-skeleton-loading">
+                        <p class="so-fs-sm so-text-muted so-mb-2">Profile Header</p>
+                        <div class="so-d-flex so-flex-column so-align-items-center so-text-center">
+                            <div class="so-skeleton" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 12px;"></div>
+                            <div class="so-skeleton so-skeleton-title" style="width: 120px;"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 160px;"></div>
+                            <div class="so-d-flex so-gap-2 so-mt-3">
+                                <div class="so-skeleton so-skeleton-btn"></div>
+                                <div class="so-skeleton so-skeleton-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-code-block so-mb-5">
+                <pre><code>&lt;!-- Custom shapes with inline styles --&gt;
+&lt;div class="so-skeleton" style="width: 60px; height: 60px; border-radius: 8px;"&gt;&lt;/div&gt;
+&lt;div class="so-skeleton" style="width: 60px; height: 60px; border-radius: 50%;"&gt;&lt;/div&gt;
+&lt;div class="so-skeleton" style="width: 80px; height: 24px; border-radius: 9999px;"&gt;&lt;/div&gt;
+
+&lt;!-- Chart bars --&gt;
+&lt;div class="so-d-flex so-gap-1 so-align-items-end"&gt;
+    &lt;div class="so-skeleton" style="width: 12px; height: 30px;"&gt;&lt;/div&gt;
+    &lt;div class="so-skeleton" style="width: 12px; height: 50px;"&gt;&lt;/div&gt;
+    &lt;div class="so-skeleton" style="width: 12px; height: 35px;"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <!-- Grid of Skeleton Cards -->
+            <h5 class="so-fw-semibold so-mb-3">Skeleton Grid Layout</h5>
+            <div class="so-row so-mb-4">
+                <div class="so-col-md-3 so-col-6 so-mb-3">
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-skeleton so-skeleton-img" style="height: 120px;"></div>
+                        <div class="so-card-body so-p-3">
+                            <div class="so-skeleton so-skeleton-text" style="margin-bottom: 4px;"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 60%; height: 0.8em;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-col-md-3 so-col-6 so-mb-3">
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-skeleton so-skeleton-img" style="height: 120px;"></div>
+                        <div class="so-card-body so-p-3">
+                            <div class="so-skeleton so-skeleton-text" style="margin-bottom: 4px;"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 60%; height: 0.8em;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-col-md-3 so-col-6 so-mb-3">
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-skeleton so-skeleton-img" style="height: 120px;"></div>
+                        <div class="so-card-body so-p-3">
+                            <div class="so-skeleton so-skeleton-text" style="margin-bottom: 4px;"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 60%; height: 0.8em;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-col-md-3 so-col-6 so-mb-3">
+                    <div class="so-card so-skeleton-loading">
+                        <div class="so-skeleton so-skeleton-img" style="height: 120px;"></div>
+                        <div class="so-card-body so-p-3">
+                            <div class="so-skeleton so-skeleton-text" style="margin-bottom: 4px;"></div>
+                            <div class="so-skeleton so-skeleton-text" style="width: 60%; height: 0.8em;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skeleton Reference -->
+            <h5 class="so-fw-semibold so-mb-3">Skeleton Class Reference</h5>
+            <div class="so-table-responsive">
+                <table class="so-table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Description</th>
+                            <th>Default Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>.so-skeleton-loading</code></td>
+                            <td>Container class that enables animation for all nested skeletons</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>.so-skeleton</code></td>
+                            <td>Base skeleton class with shimmer animation gradient</td>
+                            <td>Auto (set via style)</td>
+                        </tr>
+                        <tr>
+                            <td><code>.so-skeleton-text</code></td>
+                            <td>Single line text placeholder</td>
+                            <td>height: 1em</td>
+                        </tr>
+                        <tr>
+                            <td><code>.so-skeleton-title</code></td>
+                            <td>Title/heading placeholder</td>
+                            <td>height: 1.5em, width: 50%</td>
+                        </tr>
+                        <tr>
+                            <td><code>.so-skeleton-avatar</code></td>
+                            <td>Circular avatar placeholder</td>
+                            <td>40px × 40px, circle</td>
+                        </tr>
+                        <tr>
+                            <td><code>.so-skeleton-img</code></td>
+                            <td>Image placeholder with rounded top corners</td>
+                            <td>height: 200px, full width</td>
+                        </tr>
+                        <tr>
+                            <td><code>.so-skeleton-btn</code></td>
+                            <td>Button placeholder</td>
+                            <td>80px × 36px</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
          RESPONSIVE UTILITIES REFERENCE
          ============================================ -->
     <div class="so-card">

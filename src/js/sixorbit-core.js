@@ -13,9 +13,11 @@ import './components/so-dropdown.js';
 import './components/so-layout.js';
 import './components/so-modal.js';
 import './components/so-ripple.js';
+import './components/so-context-menu.js';
 
 // Core features
 import './features/so-forms.js';
+import './features/so-chips.js';
 
 // Auto-initialize core components when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {

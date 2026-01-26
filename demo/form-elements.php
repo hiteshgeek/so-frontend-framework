@@ -51,9 +51,9 @@ require_once 'includes/navbar.php';
                     <span class="material-icons">checklist</span>
                     Checkboxes & Radios
                 </button>
-                <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-badges">
-                    <span class="material-icons">label</span>
-                    Badges
+                <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-tags-avatars">
+                    <span class="material-icons">sell</span>
+                    Tags & Avatars
                 </button>
                 <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-cards">
                     <span class="material-icons">dashboard</span>
@@ -66,6 +66,10 @@ require_once 'includes/navbar.php';
                 <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-tooltips">
                     <span class="material-icons">info_outline</span>
                     Tooltips
+                </button>
+                <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-context-menu">
+                    <span class="material-icons">menu</span>
+                    Context Menu
                 </button>
                 <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-colors">
                     <span class="material-icons">palette</span>
@@ -85,10 +89,11 @@ require_once 'includes/navbar.php';
                 <?php include 'includes/form-elements/input-groups.php'; ?>
                 <?php include 'includes/form-elements/dropdowns.php'; ?>
                 <?php include 'includes/form-elements/checkboxes.php'; ?>
-                <?php include 'includes/form-elements/badges.php'; ?>
+                <?php include 'includes/form-elements/tags-avatars.php'; ?>
                 <?php include 'includes/form-elements/cards.php'; ?>
                 <?php include 'includes/form-elements/tabs.php'; ?>
                 <?php include 'includes/form-elements/tooltips.php'; ?>
+                <?php include 'includes/form-elements/context-menu.php'; ?>
                 <?php include 'includes/form-elements/colors.php'; ?>
                 <?php include 'includes/form-elements/utilities.php'; ?>
             </div>

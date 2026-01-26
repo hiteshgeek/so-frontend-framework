@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Dashboard - Complete Example</title>
+    
+    <!-- Load Plugin CSS -->
+    <link rel="stylesheet" href="cashflow-dashboard.css">
+    
+    <!-- Your existing page styles (won't conflict) -->
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #e9ecef;
+        }
+        
+        .page-header {
+            max-width: 1600px;
+            margin: 0 auto 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .page-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            color: #202124;
+        }
+        
+        .page-header p {
+            margin: 0;
+            color: #5f6368;
+        }
+        
+        .controls {
+            max-width: 1600px;
+            margin: 0 auto 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .controls button {
+            padding: 8px 16px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .controls button:hover {
+            background: #1a73e8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your page header -->
+    <div class="page-header">
+        <h1>Cash Flow Analysis Dashboard</h1>
+        <p>Comprehensive financial reporting with hierarchical visualization</p>
+    </div>
+
+    <!-- Example controls -->
+    <div class="controls">
+        <button onclick="loadNewData()">Load Sample Data</button>
+        <button onclick="dashboard.setNumberFormat('full')">Switch to Full Format</button>
+        <button onclick="dashboard.setNumberFormat('short')">Switch to Short Format</button>
+        <button onclick="dashboard.expandAll()">Expand All</button>
+        <button onclick="dashboard.collapseAll()">Collapse All</button>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div id="cashflow-container"></div>
+
+    <!-- Load Plugin JS -->
+    <script src="cashflow-dashboard-v2.js"></script>
+
+    <script>
+        // Global dashboard instance
+        let dashboard;
+
+        // Initialize dashboard on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Method 1: Initialize without data, load from JSON file
+            dashboard = new CashFlowDashboard('cashflow-container', {
+                numberFormat: 'short',
+                showProgressBarsOnMobile: false
+            });
+
+            // Load data from separate JSON file
+            fetch('cashflow-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    dashboard.loadData(data);
+                })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+                });
+        });
+
+        // Example function to load new data
+        function loadNewData() {
+            // You can load different data dynamically
+            fetch('cashflow-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    dashboard.loadData(data);
+                    alert('Data reloaded successfully!');
+                })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+                    alert('Error loading data');
+                });
+        }
+
+        // Method 2: Initialize with inline data
+        /*
+        const inlineData = {
+            "company": "ABC Corp",
+            "period": {"start": "2025-01-01", "end": "2025-03-31"},
+            "cashflow": {
+                "inflow": {
+                    "groups": [{
+                        "id": "revenue",
+                        "name": "Revenue",
+                        "type": "group",
+                        "children": [{
+                            "id": "sales",
+                            "name": "Sales",
+                            "type": "ledger",
+                            "amount": 1000000
+                        }]
+                    }]
+                },
+                "outflow": {
+                    "groups": [{
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "type": "ledger",
+                        "amount": 500000
+                    }]
+                }
+            }
+        };
+
+        dashboard = new CashFlowDashboard('cashflow-container', {
+            data: inlineData,
+            numberFormat: 'short'
+        });
+        */
+    </script>
+</body>
+</html>

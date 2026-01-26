@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SixOrbit ERP - Report Plugin Library</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="common/sixorbit-common.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--so-grey-50);
+            font-family: var(--so-font-family);
+        }
+
+        .page-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: var(--so-space-3xl) var(--so-space-xl);
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: var(--so-space-4xl);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--so-space-md);
+            margin-bottom: var(--so-space-lg);
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--so-primary) 0%, var(--so-primary-dark) 100%);
+            border-radius: var(--so-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--so-white);
+            font-size: 32px;
+            box-shadow: var(--so-shadow-2);
+        }
+
+        .logo-text {
+            font-size: var(--so-text-4xl);
+            font-weight: var(--so-weight-bold);
+            font-family: var(--so-font-family-display);
+            color: var(--so-grey-900);
+        }
+
+        .page-title {
+            font-size: var(--so-text-4xl);
+            font-weight: var(--so-weight-medium);
+            font-family: var(--so-font-family-display);
+            color: var(--so-grey-900);
+            margin: 0 0 var(--so-space-sm) 0;
+        }
+
+        .page-subtitle {
+            font-size: var(--so-text-lg);
+            color: var(--so-grey-600);
+            margin: 0;
+        }
+
+        /* Module Sections */
+        .module-section {
+            margin-bottom: var(--so-space-4xl);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: var(--so-space-lg);
+            margin-bottom: var(--so-space-2xl);
+            padding-bottom: var(--so-space-lg);
+            border-bottom: 2px solid var(--so-grey-200);
+        }
+
+        .module-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--so-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--so-white);
+            box-shadow: var(--so-shadow-2);
+        }
+
+        .module-icon.finance { background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%); }
+        .module-icon.hr { background: linear-gradient(135deg, #f9ab00 0%, #e37400 100%); }
+        .module-icon.sales { background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%); }
+        .module-icon.purchase { background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%); }
+        .module-icon.stock { background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%); }
+        .module-icon.production { background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%); }
+
+        .module-info {
+            flex: 1;
+        }
+
+        .module-title {
+            font-size: var(--so-text-3xl);
+            font-weight: var(--so-weight-medium);
+            font-family: var(--so-font-family-display);
+            color: var(--so-grey-900);
+            margin: 0 0 var(--so-space-xs) 0;
+        }
+
+        .module-description {
+            font-size: var(--so-text-base);
+            color: var(--so-grey-600);
+            margin: 0;
+        }
+
+        .module-stats {
+            display: flex;
+            gap: var(--so-space-xl);
+            align-items: center;
+        }
+
+        .module-stat {
+            text-align: center;
+        }
+
+        .module-stat-value {
+            font-size: var(--so-text-2xl);
+            font-weight: var(--so-weight-semibold);
+            color: var(--so-grey-900);
+        }
+
+        .module-stat-label {
+            font-size: var(--so-text-xs);
+            color: var(--so-grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Reports Grid */
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: var(--so-space-xl);
+        }
+
+        .report-card {
+            background: var(--so-white);
+            border-radius: var(--so-radius-lg);
+            box-shadow: var(--so-shadow-1);
+            overflow: hidden;
+            transition: all var(--so-transition-base);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-card:hover {
+            box-shadow: var(--so-shadow-3);
+            transform: translateY(-4px);
+        }
+
+        .report-header {
+            padding: var(--so-space-2xl);
+            background: linear-gradient(135deg, var(--so-primary-light) 0%, var(--so-white) 100%);
+        }
+
+        .report-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--so-primary);
+            border-radius: var(--so-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--so-white);
+            font-size: 24px;
+            margin-bottom: var(--so-space-md);
+            box-shadow: var(--so-shadow-1);
+        }
+
+        .report-title {
+            font-size: var(--so-text-xl);
+            font-weight: var(--so-weight-medium);
+            font-family: var(--so-font-family-display);
+            color: var(--so-grey-900);
+            margin: 0 0 var(--so-space-xs) 0;
+        }
+
+        .report-version {
+            font-size: var(--so-text-sm);
+            color: var(--so-grey-600);
+            font-weight: var(--so-weight-medium);
+        }
+
+        .report-body {
+            padding: var(--so-space-xl);
+            flex-grow: 1;
+        }
+
+        .report-description {
+            font-size: var(--so-text-base);
+            color: var(--so-grey-700);
+            line-height: var(--so-leading-relaxed);
+            margin-bottom: var(--so-space-lg);
+        }
+
+        .report-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .report-features li {
+            display: flex;
+            align-items: center;
+            gap: var(--so-space-sm);
+            font-size: var(--so-text-sm);
+            color: var(--so-grey-700);
+            margin-bottom: var(--so-space-sm);
+        }
+
+        .report-features li .material-icons {
+            color: var(--so-success);
+            font-size: 16px;
+        }
+
+        .report-footer {
+            padding: var(--so-space-lg) var(--so-space-xl);
+            border-top: 1px solid var(--so-grey-200);
+            display: flex;
+            gap: var(--so-space-sm);
+        }
+
+        .report-link {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--so-space-sm);
+            padding: var(--so-space-md);
+            background: var(--so-primary);
+            color: var(--so-white);
+            text-decoration: none;
+            font-size: var(--so-text-sm);
+            font-weight: var(--so-weight-medium);
+            border-radius: var(--so-radius-sm);
+            transition: all var(--so-transition-base);
+        }
+
+        .report-link:hover {
+            background: var(--so-primary-dark);
+            box-shadow: var(--so-shadow-hover);
+        }
+
+        .report-link-secondary {
+            background: var(--so-grey-100);
+            color: var(--so-grey-900);
+        }
+
+        .report-link-secondary:hover {
+            background: var(--so-grey-200);
+        }
+
+        .coming-soon {
+            background: var(--so-grey-50);
+            border: 2px dashed var(--so-grey-300);
+            padding: var(--so-space-4xl);
+            border-radius: var(--so-radius-lg);
+            text-align: center;
+        }
+
+        .coming-soon-icon {
+            font-size: 64px;
+            color: var(--so-grey-400);
+            margin-bottom: var(--so-space-lg);
+        }
+
+        .coming-soon-text {
+            font-size: var(--so-text-lg);
+            color: var(--so-grey-600);
+            font-weight: var(--so-weight-medium);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: var(--so-space-3xl) 0;
+            border-top: 1px solid var(--so-grey-200);
+            margin-top: var(--so-space-4xl);
+        }
+
+        .footer-text {
+            font-size: var(--so-text-base);
+            color: var(--so-grey-600);
+        }
+
+        .footer-link {
+            color: var(--so-primary);
+            text-decoration: none;
+            font-weight: var(--so-weight-medium);
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-container {
+                padding: var(--so-space-xl) var(--so-space-lg);
+            }
+
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .module-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .module-stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="page-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <span class="material-icons">assessment</span>
+                </div>
+                <div class="logo-text">SixOrbit</div>
+            </div>
+            <h1 class="page-title">Report Plugin Library</h1>
+            <p class="page-subtitle">Framework-agnostic, reusable report components for SixOrbit ERP</p>
+        </header>
+
+        <!-- Finance Module -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon finance">
+                    <span class="material-icons">account_balance</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">Finance Reports</h2>
+                    <p class="module-description">Financial analysis, cash flow, P&L, balance sheets, and accounting reports</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">6</div>
+                        <div class="module-stat-label">Reports</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-grid">
+                <!-- Cash Flow Dashboard -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);">
+                            <span class="material-icons">account_balance</span>
+                        </div>
+                        <h3 class="report-title">Cash Flow Dashboard</h3>
+                        <div class="report-version">v2.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Comprehensive financial reporting with hierarchical data visualization for detailed cash flow analysis.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Hierarchical data structure</li>
+                            <li><span class="material-icons">check_circle</span> Expand/collapse groups</li>
+                            <li><span class="material-icons">check_circle</span> Number format switching</li>
+                            <li><span class="material-icons">check_circle</span> Visual progress bars</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="finance/cash_flow_summary/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="finance/cash_flow_summary/DOCUMENTATION.html" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profit & Loss Statement -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);">
+                            <span class="material-icons">description</span>
+                        </div>
+                        <h3 class="report-title">Profit & Loss Statement</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Two-part P&L statement with side-by-side comparison of revenue and expenses, calculating Gross Profit and Net Profit.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Trading Account & P&L Account</li>
+                            <li><span class="material-icons">check_circle</span> Debit/Credit/Balance columns</li>
+                            <li><span class="material-icons">check_circle</span> Percentage of Sales analysis</li>
+                            <li><span class="material-icons">check_circle</span> Expandable expense groups</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="finance/profit_loss_statement/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="finance/profit_loss_statement/DOCUMENTATION.html" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Balance Sheet -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);">
+                            <span class="material-icons">balance</span>
+                        </div>
+                        <h3 class="report-title">Balance Sheet</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Two-section balance sheet displaying Liabilities and Assets side by side with nested groups, ledgers, and visual charts.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Liabilities & Assets sections</li>
+                            <li><span class="material-icons">check_circle</span> Nested groups and ledgers</li>
+                            <li><span class="material-icons">check_circle</span> Sunburst charts with percentages</li>
+                            <li><span class="material-icons">check_circle</span> Expand/collapse functionality</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="finance/balance_sheet/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="finance/balance_sheet/README.md" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Group Summary -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);">
+                            <span class="material-icons">folder_open</span>
+                        </div>
+                        <h3 class="report-title">Group Summary</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Detailed group summary with multi-level nested groups showing Opening, Net Transactions, and Closing balances.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Opening, Net Txn, Closing balances</li>
+                            <li><span class="material-icons">check_circle</span> Flexible column visibility controls</li>
+                            <li><span class="material-icons">check_circle</span> Separate Dr/Cr or combined display</li>
+                            <li><span class="material-icons">check_circle</span> Multi-level nested groups</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="finance/group_summary/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="finance/group_summary/README.md" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Trial Balance -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);">
+                            <span class="material-icons">account_balance_wallet</span>
+                        </div>
+                        <h3 class="report-title">Trial Balance</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Professional trial balance report with comprehensive column options showing opening, transactions, and closing balances.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Opening, Transactions, Closing columns</li>
+                            <li><span class="material-icons">check_circle</span> Toggle column visibility controls</li>
+                            <li><span class="material-icons">check_circle</span> Separate Debit/Credit display</li>
+                            <li><span class="material-icons">check_circle</span> Automatic totals calculation</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="finance/trial_balance/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="finance/trial_balance/README.md" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Monthwise Profit & Loss -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #9334e6 0%, #7c28c2 100%);">
+                            <span class="material-icons">trending_up</span>
+                        </div>
+                        <h3 class="report-title">Monthwise Profit & Loss</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Comprehensive monthwise/outlet profit & loss statement with trade & indirect expenses/income breakdown and visual charts.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Monthly/Outlet view with frozen columns</li>
+                            <li><span class="material-icons">check_circle</span> Trade & Indirect Expenses/Income groups</li>
+                            <li><span class="material-icons">check_circle</span> Gross & Net Profit with percentages</li>
+                            <li><span class="material-icons">check_circle</span> Interactive stacked bar charts</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="finance/monthwise_profit_loss/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="finance/monthwise_profit_loss/DOCUMENTATION.html" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- General Utilities Module -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon general" style="background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);">
+                    <span class="material-icons">widgets</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">General Utilities</h2>
+                    <p class="module-description">Reusable UI components and utility plugins for common tasks</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">1</div>
+                        <div class="module-stat-label">Plugins</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-grid">
+                <!-- DataTable -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);">
+                            <span class="material-icons">table_chart</span>
+                        </div>
+                        <h3 class="report-title">DataTable</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Powerful data table with column selection, grouping, search, pagination, and API integration using Tabulator.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Column show/hide controls</li>
+                            <li><span class="material-icons">check_circle</span> Dynamic grouping by any column</li>
+                            <li><span class="material-icons">check_circle</span> Real-time search & filtering</li>
+                            <li><span class="material-icons">check_circle</span> Load data from API with filters</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="general_plugins/datatable/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="general_plugins/datatable/DOCUMENTATION.html" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HR Module -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon hr">
+                    <span class="material-icons">people</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">HR Reports</h2>
+                    <p class="module-description">Employee attendance, payroll, leave management, and HR analytics</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">1</div>
+                        <div class="module-stat-label">Reports</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-grid">
+                <!-- Multi Employee Attendance -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #f9ab00 0%, #e37400 100%);">
+                            <span class="material-icons">event_available</span>
+                        </div>
+                        <h3 class="report-title">Multi Employee Attendance</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Advanced attendance tracking system for multiple employees across multiple days with filtering.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Multi-day calendar view</li>
+                            <li><span class="material-icons">check_circle</span> Real-time statistics</li>
+                            <li><span class="material-icons">check_circle</span> Advanced filtering</li>
+                            <li><span class="material-icons">check_circle</span> Frozen employee column</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="hr/multi_employee_attendance_viewer/demo.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="hr/multi_employee_attendance_viewer/DOCUMENTATION.html" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sales Module -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon sales">
+                    <span class="material-icons">trending_up</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">Sales Reports</h2>
+                    <p class="module-description">Sales analytics, order tracking, customer insights, and revenue reports</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">0</div>
+                        <div class="module-stat-label">Reports</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <span class="material-icons" style="font-size: inherit;">hourglass_empty</span>
+                </div>
+                <div class="coming-soon-text">Sales reports coming soon...</div>
+            </div>
+        </section>
+
+        <!-- Purchase Module -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon purchase">
+                    <span class="material-icons">shopping_cart</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">Purchase Reports</h2>
+                    <p class="module-description">Purchase orders, vendor analysis, procurement tracking, and cost reports</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">0</div>
+                        <div class="module-stat-label">Reports</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <span class="material-icons" style="font-size: inherit;">hourglass_empty</span>
+                </div>
+                <div class="coming-soon-text">Purchase reports coming soon...</div>
+            </div>
+        </section>
+
+        <!-- Stock Module -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon stock">
+                    <span class="material-icons">inventory_2</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">Stock Reports</h2>
+                    <p class="module-description">Inventory levels, stock movements, warehouse analytics, and valuation reports</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">0</div>
+                        <div class="module-stat-label">Reports</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <span class="material-icons" style="font-size: inherit;">hourglass_empty</span>
+                </div>
+                <div class="coming-soon-text">Stock reports coming soon...</div>
+            </div>
+        </section>
+
+        <!-- Production Module -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon production">
+                    <span class="material-icons">precision_manufacturing</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">Production Reports</h2>
+                    <p class="module-description">Manufacturing analytics, production efficiency, work orders, and capacity reports</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">0</div>
+                        <div class="module-stat-label">Reports</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <span class="material-icons" style="font-size: inherit;">hourglass_empty</span>
+                </div>
+                <div class="coming-soon-text">Production reports coming soon...</div>
+            </div>
+        </section>
+
+        <!-- SixOrbit UI Framework -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);">
+                    <span class="material-icons">dashboard_customize</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">SixOrbit UI</h2>
+                    <p class="module-description">Platform-agnostic UI framework for building ERP interfaces - navbar, sidebar, and layout components</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">3</div>
+                        <div class="module-stat-label">Components</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-grid">
+                <!-- Layout Framework -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);">
+                            <span class="material-icons">view_sidebar</span>
+                        </div>
+                        <h3 class="report-title">ERP Layout Framework</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Complete layout system with responsive navbar and collapsible sidebar, designed for ERP interfaces with deep menu hierarchies.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Fixed navbar with search & user menu</li>
+                            <li><span class="material-icons">check_circle</span> Collapsible sidebar with nested menus</li>
+                            <li><span class="material-icons">check_circle</span> Mobile-responsive with overlay</li>
+                            <li><span class="material-icons">check_circle</span> Bootstrap 3 compatible structure</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="sixorbit-ui/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="sixorbit-ui/css/so-navbar.css" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            CSS
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navbar Component -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);">
+                            <span class="material-icons">web</span>
+                        </div>
+                        <h3 class="report-title">Navbar Component</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Modern navbar with global search, outlet selector dropdown, icon buttons, and user profile dropdown menu.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Search with autocomplete dropdown</li>
+                            <li><span class="material-icons">check_circle</span> Outlet/branch selector</li>
+                            <li><span class="material-icons">check_circle</span> User profile dropdown</li>
+                            <li><span class="material-icons">check_circle</span> Icon button toolbar</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="sixorbit-ui/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="sixorbit-ui/css/so-navbar.css" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            CSS
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Component -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);">
+                            <span class="material-icons">menu</span>
+                        </div>
+                        <h3 class="report-title">Sidebar Component</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Collapsible sidebar navigation supporting multi-level menus, icons, badges, and smooth expand/collapse animations.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Multi-level nested submenus</li>
+                            <li><span class="material-icons">check_circle</span> Collapsed mode with tooltips</li>
+                            <li><span class="material-icons">check_circle</span> Mini sidebar (hover expand)</li>
+                            <li><span class="material-icons">check_circle</span> Persistent state via localStorage</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="sixorbit-ui/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="sixorbit-ui/css/so-sidebar.css" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            CSS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- General Utilities -->
+        <section class="module-section">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #607d8b 0%, #455a64 100%);">
+                    <span class="material-icons">view_module</span>
+                </div>
+                <div class="module-info">
+                    <h2 class="module-title">General Utilities</h2>
+                    <p class="module-description">Cross-module utilities and common components used across all reports</p>
+                </div>
+                <div class="module-stats">
+                    <div class="module-stat">
+                        <div class="module-stat-value">1</div>
+                        <div class="module-stat-label">Utilities</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-grid">
+                <!-- Report List Plugin -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon" style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);">
+                            <span class="material-icons">assessment</span>
+                        </div>
+                        <h3 class="report-title">Report List Viewer</h3>
+                        <div class="report-version">v1.0.0</div>
+                    </div>
+                    <div class="report-body">
+                        <p class="report-description">
+                            Universal report listing component with grid/list views, search, favorites, and usage tracking. Works with all modules.
+                        </p>
+                        <ul class="report-features">
+                            <li><span class="material-icons">check_circle</span> Grid & List view modes</li>
+                            <li><span class="material-icons">check_circle</span> Real-time search filtering</li>
+                            <li><span class="material-icons">check_circle</span> Favorites system</li>
+                            <li><span class="material-icons">check_circle</span> Most used tracking</li>
+                        </ul>
+                    </div>
+                    <div class="report-footer">
+                        <a href="report_list/index.html" class="report-link">
+                            <span class="material-icons">launch</span>
+                            View Demo
+                        </a>
+                        <a href="report_list/DOCUMENTATION.html" class="report-link report-link-secondary">
+                            <span class="material-icons">code</span>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p class="footer-text">
+                Built with <span style="color: var(--so-error);">❤</span> for SixOrbit ERP |
+                <a href="common/components-showcase.html" class="footer-link">Components</a> |
+                <a href="GETTING_STARTED.md" class="footer-link">Get Started</a> |
+                <a href="common/README.md" class="footer-link">Documentation</a>
+            </p>
+            <p class="footer-text" style="margin-top: var(--so-space-sm); font-size: var(--so-text-sm);">
+                All plugins use the common <code style="background: var(--so-grey-100); padding: 2px 6px; border-radius: 3px;">sixorbit-common.css</code> design system
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

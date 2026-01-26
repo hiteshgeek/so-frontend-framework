@@ -1,0 +1,670 @@
+/**
+ * Sales Reports Plugin - CSS
+ * Version: 1.0.0
+ * All styles are prefixed with .rlp- to avoid conflicts with Bootstrap and other frameworks
+ */
+
+/* CSS Variables for theming */
+.rlp-container {
+    --rlp-primary: #1a73e8;
+    --rlp-primary-dark: #1557b0;
+    --rlp-secondary: #5f6368;
+    --rlp-surface: #ffffff;
+    --rlp-background: #f8f9fa;
+    --rlp-border: #dadce0;
+    --rlp-text-primary: #202124;
+    --rlp-text-secondary: #5f6368;
+    --rlp-hover-bg: #f1f3f4;
+    --rlp-shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    --rlp-shadow-md: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+}
+
+/* Reset and base styles */
+.rlp-container * {
+    box-sizing: border-box;
+}
+
+.rlp-container {
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--rlp-background);
+    color: var(--rlp-text-primary);
+    line-height: 1.5;
+    width: 100%;
+}
+
+/* Header */
+.rlp-header {
+    background: var(--rlp-surface);
+    border-bottom: 1px solid var(--rlp-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.rlp-header-content {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.rlp-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--rlp-text-secondary);
+    text-decoration: none;
+}
+
+.rlp-logo .rlp-icon {
+    font-size: 28px;
+    color: var(--rlp-primary);
+}
+
+/* Search Bar */
+.rlp-search-container {
+    flex: 1;
+    max-width: 720px;
+    position: relative;
+}
+
+.rlp-search-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(--rlp-background);
+    border: 1px solid var(--rlp-border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+}
+
+.rlp-search-wrapper:hover {
+    background: var(--rlp-surface);
+    box-shadow: var(--rlp-shadow-sm);
+}
+
+.rlp-search-wrapper:focus-within {
+    background: var(--rlp-surface);
+    box-shadow: var(--rlp-shadow-md);
+    border-color: transparent;
+}
+
+.rlp-search-icon {
+    color: var(--rlp-text-secondary);
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.rlp-search-icon .rlp-icon {
+    display: flex;
+    align-items: center;
+}
+
+.rlp-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: var(--rlp-text-primary);
+    outline: none;
+    font-family: inherit;
+}
+
+.rlp-search-input::placeholder {
+    color: var(--rlp-text-secondary);
+}
+
+.rlp-header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* View Switcher */
+.rlp-view-switcher {
+    display: flex;
+    gap: 4px;
+    background: var(--rlp-background);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid var(--rlp-border);
+    margin-right: 8px;
+}
+
+.rlp-view-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rlp-text-secondary);
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.rlp-view-btn:hover {
+    background: var(--rlp-surface);
+    color: var(--rlp-text-primary);
+}
+
+.rlp-view-btn.rlp-active {
+    background: var(--rlp-surface);
+    color: var(--rlp-primary);
+    box-shadow: var(--rlp-shadow-sm);
+}
+
+/* Main Content */
+.rlp-main-content {
+    padding: 24px;
+}
+
+/* Tabs */
+.rlp-tabs-wrapper {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.rlp-tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--rlp-border);
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+.rlp-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.rlp-tab {
+    padding: 12px 24px;
+    border: none;
+    background: transparent;
+    color: var(--rlp-text-secondary);
+    font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rlp-tab:hover {
+    background: var(--rlp-hover-bg);
+    color: var(--rlp-text-primary);
+}
+
+.rlp-tab.rlp-active {
+    color: var(--rlp-primary);
+    border-bottom-color: var(--rlp-primary);
+}
+
+/* Scroll indicators */
+.rlp-scroll-indicator {
+    position: absolute;
+    top: 0;
+    bottom: 1px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, var(--rlp-surface), transparent);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.rlp-scroll-indicator.rlp-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rlp-scroll-indicator.rlp-left {
+    left: 0;
+    background: linear-gradient(to right, var(--rlp-surface) 60%, transparent);
+}
+
+.rlp-scroll-indicator.rlp-right {
+    right: 0;
+    background: linear-gradient(to left, var(--rlp-surface) 60%, transparent);
+}
+
+.rlp-scroll-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--rlp-surface);
+    border: 1px solid var(--rlp-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--rlp-shadow-sm);
+    transition: all 0.2s ease;
+    color: var(--rlp-text-secondary);
+}
+
+.rlp-scroll-btn:hover {
+    background: var(--rlp-hover-bg);
+    color: var(--rlp-primary);
+    box-shadow: var(--rlp-shadow-md);
+}
+
+/* Section Header */
+.rlp-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 8px;
+    margin-bottom: 16px;
+}
+
+.rlp-section-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rlp-section-title {
+    font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--rlp-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.rlp-section-count {
+    font-size: 13px;
+    color: var(--rlp-text-secondary);
+    background: var(--rlp-background);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 400;
+}
+
+/* Reports Grid */
+.rlp-reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+    align-items: stretch;
+}
+
+/* List View */
+.rlp-reports-grid.rlp-list-view {
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-report-card {
+    padding: 16px 20px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-report-card-header {
+    gap: 12px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-report-icon-wrapper {
+    flex-direction: row;
+    gap: 8px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-report-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-favorite-star {
+    width: 28px;
+    height: 28px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-report-title {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-report-description {
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.rlp-reports-grid.rlp-list-view .rlp-report-metadata {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+/* Report Card */
+.rlp-report-card {
+    background: var(--rlp-surface);
+    border: 1px solid var(--rlp-border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.rlp-report-card:hover {
+    box-shadow: var(--rlp-shadow-md);
+    border-color: transparent;
+}
+
+/* Most Used Report Highlight */
+.rlp-report-card.rlp-most-used {
+    background: #f8fbff;
+    border-color: #d2e3fc;
+}
+
+.rlp-report-card.rlp-most-used::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: #4285f4;
+    border-radius: 8px 0 0 8px;
+}
+
+.rlp-report-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.rlp-report-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.rlp-report-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #e8f0fe;
+    color: var(--rlp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rlp-report-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.rlp-report-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Clickable link area */
+.rlp-report-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+}
+
+.rlp-report-link:hover .rlp-report-title {
+    color: var(--rlp-primary);
+}
+
+.rlp-report-link:hover .rlp-report-description {
+    color: var(--rlp-text-primary);
+}
+
+.rlp-report-title {
+    font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--rlp-text-primary);
+    margin: 0 0 6px 0;
+    line-height: 1.3;
+    word-wrap: break-word;
+    transition: color 0.2s ease;
+}
+
+.rlp-report-description {
+    font-size: 13px;
+    color: var(--rlp-text-secondary);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+}
+
+/* Favorite Star */
+.rlp-favorite-star {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rlp-text-secondary);
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.rlp-favorite-star:hover {
+    background: var(--rlp-hover-bg);
+    color: #fbbc04;
+}
+
+.rlp-favorite-star.rlp-active {
+    color: #fbbc04;
+}
+
+/* Metadata Row */
+.rlp-report-metadata {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #80868b;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rlp-border);
+    margin-bottom: 12px;
+}
+
+.rlp-report-metadata.rlp-no-border {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.rlp-report-metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.rlp-report-metadata-separator {
+    width: 1px;
+    height: 12px;
+    background: var(--rlp-border);
+}
+
+.rlp-report-meta {
+    display: flex;
+    gap: 8px;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+
+.rlp-meta-chip {
+    padding: 4px 12px;
+    background: var(--rlp-background);
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--rlp-text-secondary);
+    font-weight: 500;
+}
+
+.rlp-meta-chip.rlp-primary {
+    background: #e8f0fe;
+    color: var(--rlp-primary);
+}
+
+/* Icon styling */
+.rlp-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.rlp-icon svg {
+    width: 20px;
+    height: 20px;
+    color: inherit;
+    vertical-align: middle;
+}
+
+/* Empty State */
+.rlp-empty-state {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.rlp-empty-state .rlp-icon {
+    font-size: 64px;
+    color: var(--rlp-border);
+    margin-bottom: 16px;
+}
+
+.rlp-empty-state svg {
+    width: 64px;
+    height: 64px;
+}
+
+.rlp-empty-state h3 {
+    font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--rlp-text-primary);
+    margin: 0 0 8px 0;
+}
+
+.rlp-empty-state p {
+    font-size: 14px;
+    color: var(--rlp-text-secondary);
+    margin: 0;
+}
+
+/* Section */
+.rlp-reports-section {
+    margin-bottom: 32px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rlp-header-content {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+    }
+
+    .rlp-search-container {
+        order: 3;
+        width: 100%;
+        flex: 1 1 100%;
+        margin-top: 8px;
+        max-width: none;
+    }
+
+    .rlp-search-wrapper {
+        width: 100%;
+    }
+
+    .rlp-logo {
+        flex: 1;
+    }
+
+    .rlp-header-actions {
+        order: 2;
+    }
+
+    .rlp-main-content {
+        padding: 16px;
+    }
+
+    .rlp-reports-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rlp-tabs-wrapper {
+        margin: 0 -8px 24px -8px;
+    }
+
+    .rlp-tabs {
+        padding: 0 8px;
+    }
+
+    .rlp-scroll-indicator {
+        width: 40px;
+    }
+
+    .rlp-scroll-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Hide view switcher on mobile */
+    .rlp-view-switcher {
+        display: none;
+    }
+}
+
+/* Animations */
+@keyframes srp-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rlp-report-card {
+    animation: srp-fadeIn 0.3s ease-out;
+}
+
+.rlp-report-card:nth-child(1) { animation-delay: 0.05s; }
+.rlp-report-card:nth-child(2) { animation-delay: 0.1s; }
+.rlp-report-card:nth-child(3) { animation-delay: 0.15s; }
+.rlp-report-card:nth-child(4) { animation-delay: 0.2s; }
+.rlp-report-card:nth-child(5) { animation-delay: 0.25s; }
+.rlp-report-card:nth-child(6) { animation-delay: 0.3s; }

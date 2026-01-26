@@ -1,0 +1,1428 @@
+/**
+ * SixOrbit UI - Form Elements Library
+ * Reusable form components: Buttons, Inputs, Dropdowns, Checkboxes, Radio, etc.
+ * Version: 1.0.0
+ */
+
+/* ============================================
+   CSS VARIABLES - Form Elements
+   ============================================ */
+:root {
+    /* Form Colors */
+    --so-form-bg: #ffffff;
+    --so-form-border: #dadce0;
+    --so-form-border-hover: #bdc1c6;
+    --so-form-border-focus: #1a73e8;
+    --so-form-text: #202124;
+    --so-form-text-secondary: #5f6368;
+    --so-form-placeholder: #9aa0a6;
+    --so-form-disabled-bg: #f1f3f4;
+    --so-form-disabled-text: #9aa0a6;
+
+    /* Button Colors */
+    --so-btn-primary-bg: #1a73e8;
+    --so-btn-primary-text: #ffffff;
+    --so-btn-primary-hover: #1557b0;
+    --so-btn-secondary-bg: #ffffff;
+    --so-btn-secondary-text: #3c4043;
+    --so-btn-secondary-border: #dadce0;
+    --so-btn-secondary-hover: #f1f3f4;
+    --so-btn-success-bg: #34a853;
+    --so-btn-success-hover: #2d8f47;
+    --so-btn-danger-bg: #ea4335;
+    --so-btn-danger-hover: #d33426;
+    --so-btn-warning-bg: #f9ab00;
+    --so-btn-warning-hover: #e09b00;
+
+    /* Dropdown Colors */
+    --so-dropdown-bg: #ffffff;
+    --so-dropdown-border: #dadce0;
+    --so-dropdown-shadow: 0 4px 12px rgba(60, 64, 67, 0.15), 0 2px 4px rgba(60, 64, 67, 0.1);
+    --so-dropdown-item-hover: #f1f3f4;
+    --so-dropdown-item-active: #e8f0fe;
+    --so-dropdown-item-active-text: #1a73e8;
+
+    /* Checkbox & Radio */
+    --so-check-border: #5f6368;
+    --so-check-checked: #1a73e8;
+    --so-check-disabled: #dadce0;
+
+    /* Form Sizing */
+    --so-form-height-sm: 32px;
+    --so-form-height-md: 40px;
+    --so-form-height-lg: 48px;
+    --so-form-radius: 4px;
+    --so-form-radius-lg: 8px;
+}
+
+/* ============================================
+   DARK MODE - Form Variables
+   ============================================ */
+[data-theme="dark"] {
+    --so-form-bg: #25293c;
+    --so-form-border: #3b4056;
+    --so-form-border-hover: #474d64;
+    --so-form-border-focus: #7367f0;
+    --so-form-text: #d0d4e4;
+    --so-form-text-secondary: #a3a8b8;
+    --so-form-placeholder: #6c7293;
+    --so-form-disabled-bg: #2f3349;
+    --so-form-disabled-text: #6c7293;
+
+    --so-btn-primary-bg: #7367f0;
+    --so-btn-primary-hover: #9e95f5;
+    --so-btn-secondary-bg: #2f3349;
+    --so-btn-secondary-text: #d0d4e4;
+    --so-btn-secondary-border: #3b4056;
+    --so-btn-secondary-hover: #3b4056;
+    --so-btn-success-bg: #28c76f;
+    --so-btn-success-hover: #48da89;
+    --so-btn-danger-bg: #ea5455;
+    --so-btn-danger-hover: #f08182;
+    --so-btn-warning-bg: #ff9f43;
+    --so-btn-warning-hover: #ffb976;
+
+    --so-dropdown-bg: #2f3349;
+    --so-dropdown-border: #3b4056;
+    --so-dropdown-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --so-dropdown-item-hover: #3b4056;
+    --so-dropdown-item-active: rgba(115, 103, 240, 0.15);
+    --so-dropdown-item-active-text: #7367f0;
+
+    --so-check-border: #a3a8b8;
+    --so-check-checked: #7367f0;
+    --so-check-disabled: #3b4056;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.so-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: var(--so-form-height-md);
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border-radius: var(--so-form-radius);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.so-btn:focus {
+    outline: none;
+}
+
+.so-btn:disabled,
+.so-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Button Sizes */
+.so-btn-sm {
+    height: var(--so-form-height-sm);
+    padding: 0 12px;
+    font-size: 13px;
+}
+
+.so-btn-lg {
+    height: var(--so-form-height-lg);
+    padding: 0 24px;
+    font-size: 15px;
+}
+
+/* Button with Icon */
+.so-btn .material-icons {
+    font-size: 18px;
+}
+
+.so-btn-sm .material-icons {
+    font-size: 16px;
+}
+
+.so-btn-lg .material-icons {
+    font-size: 20px;
+}
+
+/* Icon-only Button */
+.so-btn-icon {
+    width: var(--so-form-height-md);
+    padding: 0;
+}
+
+.so-btn-icon.so-btn-sm {
+    width: var(--so-form-height-sm);
+}
+
+.so-btn-icon.so-btn-lg {
+    width: var(--so-form-height-lg);
+}
+
+/* Primary Button */
+.so-btn-primary {
+    background: var(--so-btn-primary-bg);
+    color: var(--so-btn-primary-text);
+    border-color: var(--so-btn-primary-bg);
+}
+
+.so-btn-primary:hover:not(:disabled) {
+    background: var(--so-btn-primary-hover);
+    border-color: var(--so-btn-primary-hover);
+}
+
+.so-btn-primary:focus {
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+[data-theme="dark"] .so-btn-primary:focus {
+    box-shadow: 0 0 0 3px rgba(115, 103, 240, 0.3);
+}
+
+/* Secondary Button (Default) */
+.so-btn-secondary,
+.so-btn:not([class*="so-btn-primary"]):not([class*="so-btn-success"]):not([class*="so-btn-danger"]):not([class*="so-btn-warning"]):not([class*="so-btn-ghost"]):not([class*="so-btn-link"]) {
+    background: var(--so-btn-secondary-bg);
+    color: var(--so-btn-secondary-text);
+    border-color: var(--so-btn-secondary-border);
+}
+
+.so-btn-secondary:hover:not(:disabled),
+.so-btn:not([class*="so-btn-primary"]):not([class*="so-btn-success"]):not([class*="so-btn-danger"]):not([class*="so-btn-warning"]):not([class*="so-btn-ghost"]):not([class*="so-btn-link"]):hover:not(:disabled) {
+    background: var(--so-btn-secondary-hover);
+}
+
+/* Success Button */
+.so-btn-success {
+    background: var(--so-btn-success-bg);
+    color: #ffffff;
+    border-color: var(--so-btn-success-bg);
+}
+
+.so-btn-success:hover:not(:disabled) {
+    background: var(--so-btn-success-hover);
+    border-color: var(--so-btn-success-hover);
+}
+
+/* Danger Button */
+.so-btn-danger {
+    background: var(--so-btn-danger-bg);
+    color: #ffffff;
+    border-color: var(--so-btn-danger-bg);
+}
+
+.so-btn-danger:hover:not(:disabled) {
+    background: var(--so-btn-danger-hover);
+    border-color: var(--so-btn-danger-hover);
+}
+
+/* Warning Button */
+.so-btn-warning {
+    background: var(--so-btn-warning-bg);
+    color: #202124;
+    border-color: var(--so-btn-warning-bg);
+}
+
+.so-btn-warning:hover:not(:disabled) {
+    background: var(--so-btn-warning-hover);
+    border-color: var(--so-btn-warning-hover);
+}
+
+/* Ghost Button (transparent bg) */
+.so-btn-ghost {
+    background: transparent;
+    color: var(--so-btn-secondary-text);
+    border-color: transparent;
+}
+
+.so-btn-ghost:hover:not(:disabled) {
+    background: var(--so-btn-secondary-hover);
+}
+
+.so-btn-ghost.so-btn-primary {
+    color: var(--so-btn-primary-bg);
+}
+
+.so-btn-ghost.so-btn-danger {
+    color: var(--so-btn-danger-bg);
+}
+
+/* Link Button */
+.so-btn-link {
+    background: transparent;
+    color: var(--so-btn-primary-bg);
+    border-color: transparent;
+    padding: 0;
+    height: auto;
+}
+
+.so-btn-link:hover:not(:disabled) {
+    text-decoration: underline;
+}
+
+/* Button Group */
+.so-btn-group {
+    display: inline-flex;
+}
+
+.so-btn-group .so-btn {
+    border-radius: 0;
+}
+
+.so-btn-group .so-btn:first-child {
+    border-radius: var(--so-form-radius) 0 0 var(--so-form-radius);
+}
+
+.so-btn-group .so-btn:last-child {
+    border-radius: 0 var(--so-form-radius) var(--so-form-radius) 0;
+}
+
+.so-btn-group .so-btn:not(:first-child) {
+    margin-left: -1px;
+}
+
+.so-btn-group .so-btn:only-child {
+    border-radius: var(--so-form-radius);
+}
+
+.so-btn-group .so-btn.active {
+    background: var(--so-dropdown-item-active);
+    color: var(--so-dropdown-item-active-text);
+    border-color: var(--so-dropdown-item-active-text);
+    z-index: 1;
+}
+
+/* Button Ripple Effect */
+.so-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.so-btn:active::after {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+    transition: width 0s, height 0s, opacity 0s;
+}
+
+.so-btn-secondary::after,
+.so-btn-ghost::after {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   TEXT INPUT
+   ============================================ */
+.so-input {
+    display: block;
+    width: 100%;
+    height: var(--so-form-height-md);
+    padding: 0 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--so-form-text);
+    background: var(--so-form-bg);
+    border: 1px solid var(--so-form-border);
+    border-radius: var(--so-form-radius);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.so-input::placeholder {
+    color: var(--so-form-placeholder);
+}
+
+.so-input:hover:not(:disabled):not(:focus) {
+    border-color: var(--so-form-border-hover);
+}
+
+.so-input:focus {
+    border-color: var(--so-form-border-focus);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+[data-theme="dark"] .so-input:focus {
+    box-shadow: 0 0 0 3px rgba(115, 103, 240, 0.15);
+}
+
+.so-input:disabled {
+    background: var(--so-form-disabled-bg);
+    color: var(--so-form-disabled-text);
+    cursor: not-allowed;
+}
+
+/* Input Sizes */
+.so-input-sm {
+    height: var(--so-form-height-sm);
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+.so-input-lg {
+    height: var(--so-form-height-lg);
+    padding: 0 16px;
+    font-size: 15px;
+}
+
+/* Input with Icon */
+.so-input-wrapper {
+    position: relative;
+    display: block;
+}
+
+.so-input-wrapper .so-input {
+    padding-left: 40px;
+}
+
+.so-input-wrapper .so-input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--so-form-text-secondary);
+    pointer-events: none;
+}
+
+.so-input-wrapper .so-input-icon .material-icons {
+    font-size: 20px;
+}
+
+.so-input-wrapper.icon-right .so-input {
+    padding-left: 12px;
+    padding-right: 40px;
+}
+
+.so-input-wrapper.icon-right .so-input-icon {
+    left: auto;
+    right: 12px;
+}
+
+/* Input with Clear Button */
+.so-input-wrapper .so-input-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--so-form-text-secondary);
+}
+
+.so-input-wrapper .so-input-clear:hover {
+    background: var(--so-btn-secondary-hover);
+}
+
+.so-input-wrapper .so-input-clear .material-icons {
+    font-size: 18px;
+}
+
+.so-input-wrapper .so-input:not(:placeholder-shown) ~ .so-input-clear {
+    display: flex;
+}
+
+/* Textarea */
+.so-textarea {
+    display: block;
+    width: 100%;
+    min-height: 100px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--so-form-text);
+    background: var(--so-form-bg);
+    border: 1px solid var(--so-form-border);
+    border-radius: var(--so-form-radius);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.so-textarea::placeholder {
+    color: var(--so-form-placeholder);
+}
+
+.so-textarea:focus {
+    border-color: var(--so-form-border-focus);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+[data-theme="dark"] .so-textarea:focus {
+    box-shadow: 0 0 0 3px rgba(115, 103, 240, 0.15);
+}
+
+/* ============================================
+   SELECT (Native)
+   ============================================ */
+.so-select {
+    display: block;
+    width: 100%;
+    height: var(--so-form-height-md);
+    padding: 0 36px 0 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--so-form-text);
+    background: var(--so-form-bg);
+    border: 1px solid var(--so-form-border);
+    border-radius: var(--so-form-radius);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235f6368' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-theme="dark"] .so-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a3a8b8' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+}
+
+.so-select:hover:not(:disabled) {
+    border-color: var(--so-form-border-hover);
+}
+
+.so-select:focus {
+    border-color: var(--so-form-border-focus);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+[data-theme="dark"] .so-select:focus {
+    box-shadow: 0 0 0 3px rgba(115, 103, 240, 0.15);
+}
+
+.so-select:disabled {
+    background-color: var(--so-form-disabled-bg);
+    color: var(--so-form-disabled-text);
+    cursor: not-allowed;
+}
+
+/* Select Sizes */
+.so-select-sm {
+    height: var(--so-form-height-sm);
+    padding: 0 32px 0 10px;
+    font-size: 13px;
+}
+
+.so-select-lg {
+    height: var(--so-form-height-lg);
+    padding: 0 40px 0 16px;
+    font-size: 15px;
+}
+
+/* ============================================
+   DROPDOWN (Custom)
+   ============================================ */
+.so-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.so-dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: var(--so-form-height-md);
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--so-btn-secondary-text);
+    background: var(--so-btn-secondary-bg);
+    border: 1px solid var(--so-btn-secondary-border);
+    border-radius: var(--so-form-radius);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.so-dropdown-trigger:hover {
+    background: var(--so-btn-secondary-hover);
+}
+
+.so-dropdown-trigger .material-icons {
+    font-size: 18px;
+}
+
+.so-dropdown-trigger .so-dropdown-arrow {
+    transition: transform 0.2s ease;
+}
+
+.so-dropdown.open .so-dropdown-trigger .so-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.so-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 200px;
+    max-height: 320px;
+    overflow-y: auto;
+    background: var(--so-dropdown-bg);
+    border: 1px solid var(--so-dropdown-border);
+    border-radius: var(--so-form-radius-lg);
+    box-shadow: var(--so-dropdown-shadow);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+}
+
+.so-dropdown.open .so-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dropdown positioned to right */
+.so-dropdown.dropdown-right .so-dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* Dropdown Header */
+.so-dropdown-header {
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--so-form-text-secondary);
+    border-bottom: 1px solid var(--so-dropdown-border);
+}
+
+/* Dropdown Items */
+.so-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--so-form-text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.so-dropdown-item:hover {
+    background: var(--so-dropdown-item-hover);
+    text-decoration: none;
+}
+
+.so-dropdown-item.active {
+    background: var(--so-dropdown-item-active);
+    color: var(--so-dropdown-item-active-text);
+}
+
+.so-dropdown-item .material-icons {
+    font-size: 18px;
+    color: var(--so-form-text-secondary);
+}
+
+.so-dropdown-item.active .material-icons {
+    color: var(--so-dropdown-item-active-text);
+}
+
+.so-dropdown-item .so-dropdown-check {
+    margin-left: auto;
+    opacity: 0;
+}
+
+.so-dropdown-item.active .so-dropdown-check {
+    opacity: 1;
+}
+
+/* Dropdown Divider */
+.so-dropdown-divider {
+    height: 1px;
+    margin: 4px 0;
+    background: var(--so-dropdown-border);
+}
+
+/* Dropdown with Search */
+.so-dropdown-search {
+    padding: 8px;
+    border-bottom: 1px solid var(--so-dropdown-border);
+}
+
+.so-dropdown-search .so-input {
+    height: 36px;
+}
+
+/* ============================================
+   SEARCHABLE DROPDOWN
+   ============================================ */
+.so-searchable-dropdown {
+    position: relative;
+    display: block;
+}
+
+.so-searchable-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: var(--so-form-height-md);
+    padding: 0 36px 0 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--so-form-text);
+    background: var(--so-form-bg);
+    border: 1px solid var(--so-form-border);
+    border-radius: var(--so-form-radius);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s ease;
+}
+
+.so-searchable-dropdown-trigger:hover {
+    border-color: var(--so-form-border-hover);
+}
+
+.so-searchable-dropdown.open .so-searchable-dropdown-trigger {
+    border-color: var(--so-form-border-focus);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.so-searchable-dropdown-trigger .placeholder {
+    color: var(--so-form-placeholder);
+}
+
+.so-searchable-dropdown-trigger .so-dropdown-arrow {
+    position: absolute;
+    right: 12px;
+    color: var(--so-form-text-secondary);
+    transition: transform 0.2s ease;
+}
+
+.so-searchable-dropdown.open .so-searchable-dropdown-trigger .so-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.so-searchable-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--so-dropdown-bg);
+    border: 1px solid var(--so-form-border-focus);
+    border-top: none;
+    border-radius: 0 0 var(--so-form-radius) var(--so-form-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+}
+
+.so-searchable-dropdown.open .so-searchable-dropdown-menu {
+    display: block;
+}
+
+.so-searchable-dropdown-search {
+    padding: 8px;
+    border-bottom: 1px solid var(--so-dropdown-border);
+}
+
+.so-searchable-dropdown-search .so-input {
+    height: 36px;
+}
+
+.so-searchable-dropdown-list {
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.so-searchable-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--so-form-text);
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.so-searchable-dropdown-item:hover {
+    background: var(--so-dropdown-item-hover);
+}
+
+.so-searchable-dropdown-item.selected {
+    background: var(--so-dropdown-item-active);
+    color: var(--so-dropdown-item-active-text);
+}
+
+.so-searchable-dropdown-item .check-icon {
+    font-size: 18px;
+    visibility: hidden;
+}
+
+.so-searchable-dropdown-item.selected .check-icon {
+    visibility: visible;
+}
+
+.so-searchable-dropdown-empty {
+    padding: 16px;
+    text-align: center;
+    color: var(--so-form-text-secondary);
+    font-size: 13px;
+}
+
+/* ============================================
+   OUTLET DROPDOWN (Icon + Searchable Select)
+   ============================================ */
+.so-outlet-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.so-outlet-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: var(--so-form-height-md);
+    padding: 0 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--so-form-text);
+    background: var(--so-form-bg);
+    border: 1px solid var(--so-form-border);
+    border-radius: var(--so-form-radius);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.so-outlet-dropdown-trigger:hover {
+    border-color: var(--so-form-border-hover);
+    background: var(--so-dropdown-item-hover);
+}
+
+.so-outlet-dropdown.open .so-outlet-dropdown-trigger {
+    border-color: var(--so-form-border-focus);
+}
+
+.so-outlet-dropdown-trigger .outlet-icon {
+    font-size: 18px;
+    color: var(--so-form-text-secondary);
+}
+
+.so-outlet-dropdown-trigger .outlet-text {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.so-outlet-dropdown-trigger .outlet-arrow {
+    font-size: 18px;
+    color: var(--so-form-text-secondary);
+    margin-left: auto;
+    transition: transform 0.2s ease;
+}
+
+.so-outlet-dropdown.open .so-outlet-dropdown-trigger .outlet-arrow {
+    transform: rotate(180deg);
+}
+
+.so-outlet-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 220px;
+    background: var(--so-dropdown-bg);
+    border: 1px solid var(--so-form-border);
+    border-radius: var(--so-form-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+}
+
+.so-outlet-dropdown.open .so-outlet-dropdown-menu {
+    display: block;
+}
+
+/* Position modifiers */
+.so-outlet-dropdown.position-right .so-outlet-dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+.so-outlet-dropdown.position-top .so-outlet-dropdown-menu {
+    top: auto;
+    bottom: calc(100% + 4px);
+}
+
+.so-outlet-dropdown-search {
+    padding: 8px;
+    border-bottom: 1px solid var(--so-dropdown-border);
+}
+
+.so-outlet-dropdown-search input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--so-form-text);
+    background: var(--so-form-bg);
+    border: 1px solid var(--so-form-border);
+    border-radius: var(--so-form-radius);
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.so-outlet-dropdown-search input::placeholder {
+    color: var(--so-form-placeholder);
+}
+
+.so-outlet-dropdown-search input:focus {
+    border-color: var(--so-form-border-focus);
+}
+
+.so-outlet-dropdown-list {
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.so-outlet-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--so-form-text);
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.so-outlet-dropdown-item:hover {
+    background: var(--so-dropdown-item-hover);
+}
+
+.so-outlet-dropdown-item.selected {
+    background: var(--so-dropdown-item-active);
+    color: var(--so-dropdown-item-active-text);
+}
+
+.so-outlet-dropdown-item .check-icon {
+    font-size: 18px;
+    visibility: hidden;
+}
+
+.so-outlet-dropdown-item.selected .check-icon {
+    visibility: visible;
+}
+
+.so-outlet-dropdown-empty {
+    padding: 16px;
+    text-align: center;
+    color: var(--so-form-text-secondary);
+    font-size: 13px;
+}
+
+/* Size variants */
+.so-outlet-dropdown.so-outlet-sm .so-outlet-dropdown-trigger {
+    height: var(--so-form-height-sm);
+    padding: 0 8px;
+    font-size: 13px;
+    gap: 6px;
+}
+
+.so-outlet-dropdown.so-outlet-sm .so-outlet-dropdown-trigger .outlet-icon,
+.so-outlet-dropdown.so-outlet-sm .so-outlet-dropdown-trigger .outlet-arrow {
+    font-size: 16px;
+}
+
+.so-outlet-dropdown.so-outlet-sm .so-outlet-dropdown-trigger .outlet-text {
+    max-width: 120px;
+}
+
+.so-outlet-dropdown.so-outlet-lg .so-outlet-dropdown-trigger {
+    height: var(--so-form-height-lg);
+    padding: 0 16px;
+    font-size: 15px;
+    gap: 10px;
+}
+
+.so-outlet-dropdown.so-outlet-lg .so-outlet-dropdown-trigger .outlet-text {
+    max-width: 200px;
+}
+
+/* ============================================
+   CHECKBOX
+   ============================================ */
+.so-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.so-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.so-checkbox-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--so-check-border);
+    border-radius: 3px;
+    background: transparent;
+    transition: all 0.15s ease;
+}
+
+.so-checkbox-box .material-icons {
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.15s ease;
+}
+
+.so-checkbox:hover .so-checkbox-box {
+    border-color: var(--so-check-checked);
+}
+
+.so-checkbox input:checked + .so-checkbox-box {
+    background: var(--so-check-checked);
+    border-color: var(--so-check-checked);
+}
+
+.so-checkbox input:checked + .so-checkbox-box .material-icons {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.so-checkbox input:disabled + .so-checkbox-box {
+    border-color: var(--so-check-disabled);
+    background: var(--so-form-disabled-bg);
+    cursor: not-allowed;
+}
+
+.so-checkbox input:disabled:checked + .so-checkbox-box {
+    background: var(--so-check-disabled);
+}
+
+.so-checkbox-label {
+    font-size: 14px;
+    color: var(--so-form-text);
+}
+
+.so-checkbox input:disabled ~ .so-checkbox-label {
+    color: var(--so-form-disabled-text);
+}
+
+/* Indeterminate State */
+.so-checkbox input:indeterminate + .so-checkbox-box {
+    background: var(--so-check-checked);
+    border-color: var(--so-check-checked);
+}
+
+.so-checkbox input:indeterminate + .so-checkbox-box .material-icons::before {
+    content: 'remove';
+}
+
+/* ============================================
+   RADIO BUTTON
+   ============================================ */
+.so-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.so-radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.so-radio-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--so-check-border);
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.15s ease;
+}
+
+.so-radio-circle::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--so-check-checked);
+    transform: scale(0);
+    transition: transform 0.15s ease;
+}
+
+.so-radio:hover .so-radio-circle {
+    border-color: var(--so-check-checked);
+}
+
+.so-radio input:checked + .so-radio-circle {
+    border-color: var(--so-check-checked);
+}
+
+.so-radio input:checked + .so-radio-circle::after {
+    transform: scale(1);
+}
+
+.so-radio input:disabled + .so-radio-circle {
+    border-color: var(--so-check-disabled);
+    cursor: not-allowed;
+}
+
+.so-radio input:disabled:checked + .so-radio-circle::after {
+    background: var(--so-check-disabled);
+}
+
+.so-radio-label {
+    font-size: 14px;
+    color: var(--so-form-text);
+}
+
+.so-radio input:disabled ~ .so-radio-label {
+    color: var(--so-form-disabled-text);
+}
+
+/* Radio Group */
+.so-radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.so-radio-group.vertical {
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ============================================
+   TOGGLE SWITCH
+   ============================================ */
+.so-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.so-toggle input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.so-toggle-track {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--so-check-border);
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.so-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.so-toggle input:checked + .so-toggle-track {
+    background: var(--so-check-checked);
+}
+
+.so-toggle input:checked + .so-toggle-track .so-toggle-thumb {
+    transform: translateX(20px);
+}
+
+.so-toggle input:disabled + .so-toggle-track {
+    background: var(--so-check-disabled);
+    cursor: not-allowed;
+}
+
+.so-toggle-label {
+    font-size: 14px;
+    color: var(--so-form-text);
+}
+
+.so-toggle input:disabled ~ .so-toggle-label {
+    color: var(--so-form-disabled-text);
+}
+
+/* ============================================
+   FORM GROUP (Label + Input)
+   ============================================ */
+.so-form-group {
+    margin-bottom: 16px;
+}
+
+.so-form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--so-form-text);
+}
+
+.so-form-label.required::after {
+    content: ' *';
+    color: var(--so-btn-danger-bg);
+}
+
+.so-form-hint {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--so-form-text-secondary);
+}
+
+.so-form-error {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--so-btn-danger-bg);
+}
+
+/* Error State */
+.so-form-group.has-error .so-input,
+.so-form-group.has-error .so-select,
+.so-form-group.has-error .so-textarea {
+    border-color: var(--so-btn-danger-bg);
+}
+
+.so-form-group.has-error .so-input:focus,
+.so-form-group.has-error .so-select:focus,
+.so-form-group.has-error .so-textarea:focus {
+    box-shadow: 0 0 0 3px rgba(234, 67, 53, 0.15);
+}
+
+/* Success State */
+.so-form-group.has-success .so-input,
+.so-form-group.has-success .so-select,
+.so-form-group.has-success .so-textarea {
+    border-color: var(--so-btn-success-bg);
+}
+
+/* ============================================
+   INPUT GROUP (Input + Button/Addon)
+   ============================================ */
+.so-input-group {
+    display: flex;
+}
+
+.so-input-group .so-input {
+    flex: 1;
+    border-radius: var(--so-form-radius) 0 0 var(--so-form-radius);
+}
+
+.so-input-group .so-btn {
+    border-radius: 0 var(--so-form-radius) var(--so-form-radius) 0;
+    margin-left: -1px;
+}
+
+.so-input-group .so-input-addon {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 14px;
+    color: var(--so-form-text-secondary);
+    background: var(--so-form-disabled-bg);
+    border: 1px solid var(--so-form-border);
+}
+
+.so-input-group .so-input-addon:first-child {
+    border-radius: var(--so-form-radius) 0 0 var(--so-form-radius);
+    border-right: none;
+}
+
+.so-input-group .so-input-addon:first-child + .so-input {
+    border-radius: 0 var(--so-form-radius) var(--so-form-radius) 0;
+}
+
+.so-input-group .so-input-addon:last-child {
+    border-radius: 0 var(--so-form-radius) var(--so-form-radius) 0;
+    border-left: none;
+}
+
+.so-input-group .so-input:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+/* ============================================
+   ICON-ONLY DROPDOWN (Options Menu)
+   ============================================ */
+.so-options-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.so-options-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--so-panel-btn-text);
+    background: var(--so-panel-btn-bg);
+    border: 1px solid var(--so-panel-btn-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.so-options-trigger:hover {
+    background: var(--so-panel-btn-hover-bg);
+}
+
+.so-options-trigger .material-icons {
+    font-size: 18px;
+}
+
+.so-options-arrow {
+    transition: transform 0.2s ease;
+}
+
+.so-options-dropdown.open .so-options-arrow {
+    transform: rotate(180deg);
+}
+
+.so-options-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    left: auto;
+    bottom: auto;
+    min-width: 220px;
+    background: var(--so-dropdown-bg);
+    border: 1px solid var(--so-dropdown-border);
+    border-radius: var(--so-form-radius-lg);
+    box-shadow: var(--so-dropdown-shadow);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.so-options-dropdown.open .so-options-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Position: Open to the left (default is right) */
+.so-options-dropdown.position-left .so-options-menu {
+    right: auto;
+    left: 0;
+}
+
+/* Position: Open above (when no space below) */
+.so-options-dropdown.position-top .so-options-menu {
+    top: auto;
+    bottom: calc(100% + 4px);
+    transform: translateY(8px);
+}
+
+.so-options-dropdown.position-top.open .so-options-menu {
+    transform: translateY(0);
+}
+
+.so-options-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--so-form-text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.so-options-item:first-child {
+    border-radius: var(--so-form-radius-lg) var(--so-form-radius-lg) 0 0;
+}
+
+.so-options-item:last-child {
+    border-radius: 0 0 var(--so-form-radius-lg) var(--so-form-radius-lg);
+}
+
+.so-options-item:only-child {
+    border-radius: var(--so-form-radius-lg);
+}
+
+.so-options-item:hover {
+    background: var(--so-dropdown-item-hover);
+    text-decoration: none;
+}
+
+.so-options-item .material-icons {
+    font-size: 18px;
+    color: var(--so-form-text-secondary);
+}
+
+.so-options-item:hover .material-icons {
+    color: var(--so-dropdown-item-active-text);
+}
+
+.so-options-item.danger {
+    color: var(--so-btn-danger-bg);
+}
+
+.so-options-item.danger .material-icons {
+    color: var(--so-btn-danger-bg);
+}
+
+.so-options-divider {
+    height: 1px;
+    margin: 4px 0;
+    background: var(--so-dropdown-border);
+}

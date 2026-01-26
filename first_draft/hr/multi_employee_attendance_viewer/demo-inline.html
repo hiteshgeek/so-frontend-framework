@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Manager Plugin - Inline Data Demo</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="attendance-plugin.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .demo-header {
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .demo-header h1 {
+            margin: 0 0 10px 0;
+            font-family: 'Google Sans', sans-serif;
+            color: #202124;
+        }
+        
+        .demo-header p {
+            margin: 0;
+            color: #5f6368;
+        }
+        
+        .demo-controls {
+            background: #ffffff;
+            padding: 15px 20px;
+            margin: 0 20px 20px 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .demo-btn {
+            padding: 8px 16px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Google Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .demo-btn:hover {
+            background: #1765cc;
+        }
+        
+        .demo-btn.secondary {
+            background: #ffffff;
+            color: #1a73e8;
+            border: 1px solid #dadce0;
+        }
+        
+        .demo-btn.secondary:hover {
+            background: #f1f3f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1>Attendance Manager Plugin - Demo</h1>
+        <p>Framework-agnostic JavaScript plugin (using inline data)</p>
+    </div>
+    
+    <div class="demo-controls">
+        <button class="demo-btn secondary" onclick="updateSampleCell()">Update Sample Cell</button>
+        <button class="demo-btn secondary" onclick="addNewEmployee()">Add New Employee</button>
+        <button class="demo-btn secondary" onclick="showConsoleLog()">Show Console Info</button>
+    </div>
+    
+    <div id="attendance-container"></div>
+    
+    <!-- Plugin JS -->
+    <script src="attendance-plugin.js"></script>
+    
+    <script>
+        // Sample data embedded directly
+        const sampleData = {
+            "workTiming": {
+                "startTime": "10:00",
+                "endTime": "19:00",
+                "requiredHours": 9
+            },
+            "employees": [
+                {
+                    "empid": 1,
+                    "employeeCode": "EMP001",
+                    "name": "Abhijeeth S",
+                    "department": "Support",
+                    "attendance": {
+                        "2026-01-01": { "status": "absent", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-02": { "status": "absent", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-03": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-04": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-05": { "status": "absent", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-06": { "status": "absent", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-07": { "status": "absent", "checkIn": null, "checkOut": null, "method": null }
+                    }
+                },
+                {
+                    "empid": 2,
+                    "employeeCode": "EMP002",
+                    "name": "Aenita Sarnaddar",
+                    "department": "Support",
+                    "attendance": {
+                        "2026-01-01": { "status": "present", "checkIn": "10:12", "checkOut": null, "method": "mobile" },
+                        "2026-01-02": { "status": "present", "checkIn": "10:12", "checkOut": "19:53", "method": "mobile" },
+                        "2026-01-03": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-04": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-05": { "status": "present", "checkIn": "10:07", "checkOut": "19:19", "method": "biometric" },
+                        "2026-01-06": { "status": "present", "checkIn": "10:15", "checkOut": "19:25", "method": "biometric" },
+                        "2026-01-07": { "status": "present", "checkIn": "10:25", "checkOut": null, "method": "manual" }
+                    }
+                },
+                {
+                    "empid": 3,
+                    "employeeCode": "EMP003",
+                    "name": "Aishwarya A Adurajar",
+                    "department": "Consulting",
+                    "attendance": {
+                        "2026-01-01": { "status": "present", "checkIn": "09:58", "checkOut": "19:09", "method": "biometric" },
+                        "2026-01-02": { "status": "present", "checkIn": "10:00", "checkOut": "19:02", "method": "biometric" },
+                        "2026-01-03": { "status": "present", "checkIn": "10:04", "checkOut": "19:04", "method": "biometric" },
+                        "2026-01-04": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-05": { "status": "present", "checkIn": "10:06", "checkOut": "19:06", "method": "biometric" },
+                        "2026-01-06": { "status": "present", "checkIn": "09:59", "checkOut": "19:06", "method": "biometric" },
+                        "2026-01-07": { "status": "present", "checkIn": "09:46", "checkOut": "19:09", "method": "biometric" }
+                    }
+                },
+                {
+                    "empid": 4,
+                    "employeeCode": "EMP004",
+                    "name": "Akkhilesh Viswanathan",
+                    "department": "Technology",
+                    "attendance": {
+                        "2026-01-01": { "status": "present", "checkIn": "09:59", "checkOut": "19:08", "method": "biometric" },
+                        "2026-01-02": { "status": "present", "checkIn": "09:59", "checkOut": "19:05", "method": "biometric" },
+                        "2026-01-05": { "status": "absent", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-06": { "status": "absent", "checkIn": null, "checkOut": null, "method": null }
+                    }
+                },
+                {
+                    "empid": 5,
+                    "employeeCode": "EMP005",
+                    "name": "Rajesh Kumar",
+                    "department": "Finance",
+                    "attendance": {
+                        "2026-01-01": { "status": "present", "checkIn": "09:30", "checkOut": "18:30", "method": "biometric" },
+                        "2026-01-02": { "status": "present", "checkIn": "09:45", "checkOut": "18:45", "method": "biometric" },
+                        "2026-01-03": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-04": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-05": { "status": "leave", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-06": { "status": "leave", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-07": { "status": "present", "checkIn": "09:30", "checkOut": null, "method": "biometric" }
+                    }
+                },
+                {
+                    "empid": 6,
+                    "employeeCode": "EMP006",
+                    "name": "Priya Sharma",
+                    "department": "Business Development",
+                    "attendance": {
+                        "2026-01-01": { "status": "present", "checkIn": "10:00", "checkOut": "19:00", "method": "manual" },
+                        "2026-01-02": { "status": "present", "checkIn": "10:15", "checkOut": "19:15", "method": "manual" },
+                        "2026-01-03": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-04": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-05": { "status": "present", "checkIn": "10:05", "checkOut": "19:05", "method": "biometric" },
+                        "2026-01-06": { "status": "present", "checkIn": "10:10", "checkOut": "19:10", "method": "biometric" },
+                        "2026-01-07": { "status": "present", "checkIn": "09:55", "checkOut": null, "method": "biometric" }
+                    }
+                },
+                {
+                    "empid": 7,
+                    "employeeCode": "EMP007",
+                    "name": "Vikram Singh",
+                    "department": "Technology",
+                    "attendance": {
+                        "2026-01-01": { "status": "present", "checkIn": "10:45", "checkOut": "18:30", "method": "mobile" },
+                        "2026-01-02": { "status": "present", "checkIn": "11:00", "checkOut": "18:45", "method": "mobile" },
+                        "2026-01-03": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-04": { "status": "weekend", "checkIn": null, "checkOut": null, "method": null },
+                        "2026-01-05": { "status": "present", "checkIn": "10:30", "checkOut": "18:00", "method": "manual" },
+                        "2026-01-06": { "status": "present", "checkIn": "10:20", "checkOut": "18:15", "method": "manual" },
+                        "2026-01-07": { "status": "present", "checkIn": "10:40", "checkOut": "18:30", "method": "manual" }
+                    }
+                }
+            ]
+        };
+        
+        // Initialize the plugin with inline data
+        let attendance = null;
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing Attendance Manager...');
+            
+            attendance = new AttendanceManager('#attendance-container', {
+                data: sampleData,  // Pass data directly instead of URL
+                onCellClick: function(data) {
+                    console.log('Cell clicked:', data);
+                    alert(
+                        'Cell Clicked!\n\n' +
+                        'Employee: ' + data.employeeCode + '\n' +
+                        'Name: ' + (attendance.employees.find(e => e.empid === data.empid)?.name || 'Unknown') + '\n' +
+                        'Date: ' + data.date + '\n' +
+                        'Status: ' + (data.attendance?.status || 'No data')
+                    );
+                }
+            });
+            
+            console.log('Attendance Manager initialized successfully!');
+        });
+        
+        function updateSampleCell() {
+            if (!attendance) {
+                alert('Attendance manager not initialized');
+                return;
+            }
+            
+            // Update EMP002's attendance for 2026-01-07
+            attendance.updateCell(2, '2026-01-07', {
+                status: 'present',
+                checkIn: '09:00',
+                checkOut: '20:00',
+                method: 'biometric'
+            });
+            
+            console.log('Updated EMP002 for 2026-01-07');
+            alert('✓ Updated EMP002 attendance for 2026-01-07\nCheck-in: 09:00\nCheck-out: 20:00\nMethod: Biometric');
+        }
+        
+        function addNewEmployee() {
+            if (!attendance) return;
+            
+            // Add a new employee to the data
+            const newEmployee = {
+                empid: 8,
+                employeeCode: "EMP008",
+                name: "New Employee",
+                department: "Technology",
+                attendance: {
+                    "2026-01-01": { status: "present", checkIn: "10:00", checkOut: "19:00", method: "mobile" },
+                    "2026-01-07": { status: "present", checkIn: "10:30", checkOut: null, method: "manual" }
+                }
+            };
+            
+            sampleData.employees.push(newEmployee);
+            attendance.refresh(sampleData);
+            
+            console.log('Added new employee:', newEmployee);
+            alert('✓ Added new employee: EMP008');
+        }
+        
+        function showConsoleLog() {
+            console.log('Current attendance instance:', attendance);
+            console.log('Total employees:', attendance.employees.length);
+            console.log('Filtered employees:', attendance.filteredEmployees.length);
+            console.log('Date range:', attendance.dateRange);
+            alert('Check the browser console (F12) for detailed information');
+        }
+    </script>
+</body>
+</html>

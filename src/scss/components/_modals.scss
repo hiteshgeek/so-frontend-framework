@@ -1,0 +1,454 @@
+// ============================================
+// SIXORBIT UI - MODALS
+// Modal and dialog components
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// MODAL OVERLAY/BACKDROP
+// ============================================
+
+.#{$so-prefix}modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: z-index('modal-backdrop');
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $so-transition-normal, visibility $so-transition-normal;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Dark mode adjustment
+[data-theme='dark'] .#{$so-prefix}modal-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+// ============================================
+// MODAL CONTAINER
+// ============================================
+
+.#{$so-prefix}modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: z-index('modal');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: spacing('4');
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $so-transition-normal, visibility $so-transition-normal;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+
+    .#{$so-prefix}modal-dialog {
+      transform: scale(1) translateY(0);
+    }
+  }
+}
+
+// ============================================
+// MODAL DIALOG
+// ============================================
+
+.#{$so-prefix}modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  max-height: calc(100vh - #{spacing('8')});
+  background: css-var('card-bg');
+  border-radius: radius('xl');
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95) translateY(-20px);
+  transition: transform $so-transition-normal;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// Modal sizes
+.#{$so-prefix}modal-sm .#{$so-prefix}modal-dialog {
+  max-width: 380px;
+}
+
+.#{$so-prefix}modal-lg .#{$so-prefix}modal-dialog {
+  max-width: 720px;
+}
+
+.#{$so-prefix}modal-xl .#{$so-prefix}modal-dialog {
+  max-width: 960px;
+}
+
+.#{$so-prefix}modal-fullscreen .#{$so-prefix}modal-dialog {
+  max-width: none;
+  width: calc(100% - #{spacing('8')});
+  height: calc(100% - #{spacing('8')});
+  max-height: none;
+  border-radius: radius('lg');
+}
+
+// ============================================
+// MODAL SECTIONS
+// ============================================
+
+.#{$so-prefix}modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: spacing('3');
+  padding: spacing('4') spacing('5');
+  border-bottom: 1px solid css-var('border-color');
+  flex-shrink: 0;
+}
+
+.#{$so-prefix}modal-title {
+  font-size: font-size('lg');
+  font-weight: font-weight('semibold');
+  color: css-var('text-heading');
+  margin: 0;
+}
+
+.#{$so-prefix}modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: radius('full');
+  color: css-var('text-secondary');
+  cursor: pointer;
+  transition: all $so-transition-base;
+  margin: -4px -8px -4px 0;
+
+  &:hover {
+    background: css-var('card-hover-bg');
+    color: css-var('text-primary');
+  }
+
+  .material-icons {
+    font-size: 20px;
+  }
+}
+
+.#{$so-prefix}modal-body {
+  padding: spacing('5');
+  overflow-y: auto;
+  flex: 1;
+  @include custom-scrollbar;
+}
+
+.#{$so-prefix}modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: spacing('2');
+  padding: spacing('4') spacing('5');
+  border-top: 1px solid css-var('border-color');
+  background: css-var('card-hover-bg');
+  flex-shrink: 0;
+}
+
+// Footer alignment variants
+.#{$so-prefix}modal-footer.justify-start {
+  justify-content: flex-start;
+}
+
+.#{$so-prefix}modal-footer.justify-between {
+  justify-content: space-between;
+}
+
+.#{$so-prefix}modal-footer.justify-center {
+  justify-content: center;
+}
+
+// ============================================
+// SCROLLABLE MODAL
+// ============================================
+
+.#{$so-prefix}modal-scrollable {
+  .#{$so-prefix}modal-dialog {
+    max-height: calc(100vh - #{spacing('8')});
+  }
+
+  .#{$so-prefix}modal-body {
+    overflow-y: auto;
+  }
+}
+
+// ============================================
+// CENTERED MODAL (vertically)
+// ============================================
+
+.#{$so-prefix}modal-centered {
+  align-items: center;
+}
+
+// ============================================
+// CONFIRMATION DIALOG
+// ============================================
+
+.#{$so-prefix}confirm-dialog {
+  text-align: center;
+
+  .#{$so-prefix}modal-dialog {
+    max-width: 400px;
+  }
+
+  .#{$so-prefix}modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+    justify-content: flex-end;
+  }
+
+  .#{$so-prefix}modal-body {
+    padding-top: spacing('2');
+  }
+
+  .#{$so-prefix}confirm-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: radius('full');
+    margin-bottom: spacing('4');
+
+    .material-icons {
+      font-size: 32px;
+    }
+
+    &.warning {
+      background: alpha($so-warning, 0.15);
+      color: css-var('accent-warning');
+    }
+
+    &.danger {
+      background: alpha($so-danger, 0.15);
+      color: css-var('accent-danger');
+    }
+
+    &.success {
+      background: alpha($so-success, 0.15);
+      color: css-var('accent-success');
+    }
+
+    &.info {
+      background: alpha($so-info, 0.15);
+      color: css-var('accent-info');
+    }
+  }
+
+  .#{$so-prefix}confirm-title {
+    font-size: font-size('xl');
+    font-weight: font-weight('semibold');
+    color: css-var('text-heading');
+    margin-bottom: spacing('2');
+  }
+
+  .#{$so-prefix}confirm-message {
+    font-size: font-size('base');
+    color: css-var('text-secondary');
+    line-height: line-height('relaxed');
+  }
+
+  .#{$so-prefix}modal-footer {
+    justify-content: center;
+    background: transparent;
+    border-top: none;
+  }
+}
+
+// ============================================
+// SIDE PANEL / DRAWER
+// ============================================
+
+.#{$so-prefix}drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  max-width: 100%;
+  background: css-var('card-bg');
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  z-index: z-index('modal');
+  transform: translateX(100%);
+  transition: transform $so-transition-normal;
+  display: flex;
+  flex-direction: column;
+
+  &.show {
+    transform: translateX(0);
+  }
+}
+
+// Left-side drawer
+.#{$so-prefix}drawer-left {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+
+  &.show {
+    transform: translateX(0);
+  }
+}
+
+// Drawer sizes
+.#{$so-prefix}drawer-sm {
+  width: 320px;
+}
+
+.#{$so-prefix}drawer-lg {
+  width: 560px;
+}
+
+.#{$so-prefix}drawer-xl {
+  width: 720px;
+}
+
+// Drawer sections
+.#{$so-prefix}drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: spacing('3');
+  padding: spacing('4') spacing('5');
+  border-bottom: 1px solid css-var('border-color');
+  flex-shrink: 0;
+}
+
+.#{$so-prefix}drawer-title {
+  font-size: font-size('lg');
+  font-weight: font-weight('semibold');
+  color: css-var('text-heading');
+  margin: 0;
+}
+
+.#{$so-prefix}drawer-close {
+  @extend .#{$so-prefix}modal-close;
+}
+
+.#{$so-prefix}drawer-body {
+  flex: 1;
+  padding: spacing('5');
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.#{$so-prefix}drawer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: spacing('2');
+  padding: spacing('4') spacing('5');
+  border-top: 1px solid css-var('border-color');
+  background: css-var('card-hover-bg');
+  flex-shrink: 0;
+}
+
+// ============================================
+// IMAGE LIGHTBOX
+// ============================================
+
+.#{$so-prefix}lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: z-index('modal') + 10;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $so-transition-normal, visibility $so-transition-normal;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: radius('md');
+  }
+}
+
+.#{$so-prefix}lightbox-close {
+  position: absolute;
+  top: spacing('4');
+  right: spacing('4');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: radius('full');
+  color: $so-white;
+  cursor: pointer;
+  transition: background $so-transition-base;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .material-icons {
+    font-size: 24px;
+  }
+}
+
+// ============================================
+// RESPONSIVE ADJUSTMENTS
+// ============================================
+
+@include mobile {
+  .#{$so-prefix}modal {
+    padding: spacing('3');
+  }
+
+  .#{$so-prefix}modal-dialog {
+    max-width: none;
+    max-height: calc(100vh - #{spacing('6')});
+    border-radius: radius('lg');
+  }
+
+  .#{$so-prefix}modal-fullscreen .#{$so-prefix}modal-dialog {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .#{$so-prefix}drawer {
+    width: 100%;
+  }
+
+  .#{$so-prefix}drawer-sm,
+  .#{$so-prefix}drawer-lg,
+  .#{$so-prefix}drawer-xl {
+    width: 100%;
+  }
+}

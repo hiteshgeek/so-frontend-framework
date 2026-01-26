@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit & Loss Statement - Developer Documentation</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="../../common/sixorbit-common.css">
+
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--so-grey-50);
+            font-family: var(--so-font-family);
+        }
+
+        .doc-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--so-space-3xl) var(--so-space-xl);
+        }
+
+        .doc-header {
+            background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);
+            color: white;
+            padding: var(--so-space-4xl) var(--so-space-3xl);
+            border-radius: var(--so-radius-lg);
+            margin-bottom: var(--so-space-3xl);
+            box-shadow: var(--so-shadow-2);
+        }
+
+        .doc-header h1 {
+            margin: 0 0 var(--so-space-md) 0;
+            font-size: 36px;
+            font-weight: 500;
+        }
+
+        .doc-header p {
+            margin: 0;
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--so-space-sm);
+            padding: var(--so-space-sm) var(--so-space-lg);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--so-radius-sm);
+            margin-bottom: var(--so-space-lg);
+            transition: all var(--so-transition-base);
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .doc-section {
+            background: white;
+            padding: var(--so-space-3xl);
+            border-radius: var(--so-radius-lg);
+            margin-bottom: var(--so-space-2xl);
+            box-shadow: var(--so-shadow-1);
+        }
+
+        .doc-section h2 {
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--so-grey-900);
+            margin: 0 0 var(--so-space-lg) 0;
+            padding-bottom: var(--so-space-md);
+            border-bottom: 2px solid var(--so-grey-200);
+        }
+
+        .doc-section h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--so-grey-900);
+            margin: var(--so-space-2xl) 0 var(--so-space-md) 0;
+        }
+
+        .doc-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--so-grey-700);
+            margin-bottom: var(--so-space-lg);
+        }
+
+        .doc-section ul, .doc-section ol {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--so-grey-700);
+            margin-bottom: var(--so-space-lg);
+        }
+
+        .doc-section li {
+            margin-bottom: var(--so-space-sm);
+        }
+
+        .code-block {
+            position: relative;
+            margin: var(--so-space-lg) 0;
+            border-radius: var(--so-radius-md);
+            overflow: hidden;
+            box-shadow: var(--so-shadow-1);
+        }
+
+        .code-header {
+            background: #2d3748;
+            color: white;
+            padding: var(--so-space-md) var(--so-space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .code-language {
+            display: flex;
+            align-items: center;
+            gap: var(--so-space-sm);
+        }
+
+        .copy-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--so-radius-sm);
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all var(--so-transition-base);
+        }
+
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .copy-btn.copied {
+            background: #34a853;
+            border-color: #34a853;
+        }
+
+        .copy-btn .material-icons {
+            font-size: 16px;
+        }
+
+        pre {
+            margin: 0;
+            padding: var(--so-space-xl);
+            background: #1e293b !important;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .inline-code {
+            background: var(--so-grey-100);
+            padding: 2px 6px;
+            border-radius: var(--so-radius-sm);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            color: #e74c3c;
+        }
+
+        .info-box {
+            background: var(--so-info-light);
+            border-left: 4px solid var(--so-info);
+            padding: var(--so-space-lg);
+            border-radius: var(--so-radius-sm);
+            margin: var(--so-space-lg) 0;
+        }
+
+        .warning-box {
+            background: var(--so-warning-light);
+            border-left: 4px solid var(--so-warning);
+            padding: var(--so-space-lg);
+            border-radius: var(--so-radius-sm);
+            margin: var(--so-space-lg) 0;
+        }
+
+        .success-box {
+            background: var(--so-success-light);
+            border-left: 4px solid var(--so-success);
+            padding: var(--so-space-lg);
+            border-radius: var(--so-radius-sm);
+            margin: var(--so-space-lg) 0;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--so-space-lg) 0;
+        }
+
+        .param-table th {
+            background: var(--so-grey-100);
+            padding: var(--so-space-md);
+            text-align: left;
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--so-grey-800);
+            border-bottom: 2px solid var(--so-grey-300);
+        }
+
+        .param-table td {
+            padding: var(--so-space-md);
+            border-bottom: 1px solid var(--so-grey-200);
+            font-size: 14px;
+        }
+
+        .param-table tr:hover {
+            background: var(--so-grey-50);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: var(--so-radius-sm);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .badge-required {
+            background: var(--so-error-light);
+            color: var(--so-error);
+        }
+
+        .badge-optional {
+            background: var(--so-grey-200);
+            color: var(--so-grey-700);
+        }
+
+        .nav-sidebar {
+            background: white;
+            padding: var(--so-space-xl);
+            border-radius: var(--so-radius-md);
+            box-shadow: var(--so-shadow-1);
+            margin-bottom: var(--so-space-2xl);
+        }
+
+        .nav-sidebar h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--so-grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 var(--so-space-md) 0;
+        }
+
+        .nav-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--so-space-md);
+        }
+
+        .nav-sidebar li {
+            margin-bottom: 0;
+        }
+
+        .nav-sidebar a {
+            color: var(--so-grey-700);
+            text-decoration: none;
+            font-size: 14px;
+            padding: var(--so-space-sm) var(--so-space-md);
+            border-radius: var(--so-radius-sm);
+            background: var(--so-grey-50);
+            display: inline-block;
+            transition: all var(--so-transition-fast);
+        }
+
+        .nav-sidebar a:hover {
+            color: var(--so-primary);
+            background: var(--so-primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .doc-container {
+                padding: var(--so-space-xl) var(--so-space-lg);
+            }
+
+            .doc-header {
+                padding: var(--so-space-2xl);
+            }
+
+            .doc-header h1 {
+                font-size: 28px;
+            }
+
+            .doc-section {
+                padding: var(--so-space-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="doc-container">
+        <div class="doc-header">
+            <a href="../../index.html" class="back-btn">
+                <span class="material-icons">arrow_back</span>
+                Back to Library
+            </a>
+            <h1>Profit & Loss Statement</h1>
+            <p>Complete Developer Documentation - v2.0.0</p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="nav-sidebar">
+            <h3>Quick Navigation</h3>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#quick-start">Quick Start</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#data-format">Data Format</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#examples">Examples</a></li>
+            </ul>
+        </div>
+
+        <!-- Overview -->
+        <div class="doc-section" id="overview">
+            <h2>Overview</h2>
+            <p>The Profit & Loss Statement is a comprehensive financial reporting plugin that displays income, expenses, and profit calculations with a two-part accounting structure (Trading Account and P&L Account). It features expandable/collapsible groups, debit/credit/balance columns, percentage of sales calculations, and real-time data updates.</p>
+
+            <div class="info-box">
+                <strong>Module:</strong> Finance<br>
+                <strong>Version:</strong> 2.0.0<br>
+                <strong>Type:</strong> Framework-agnostic JavaScript
+            </div>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li>Two-part P&L structure (Trading Account + P&L Account)</li>
+                <li>Debit, Credit, and Balance columns for each line item</li>
+                <li>Percentage of Sales calculation for all values</li>
+                <li>Hierarchical data structure with unlimited nesting</li>
+                <li>Expand/collapse groups functionality</li>
+                <li>Number format switching (full/short)</li>
+                <li>Automatic totals and subtotals calculation</li>
+                <li>Mobile optimized and fully responsive</li>
+                <li>Real-time data updates</li>
+            </ul>
+
+            <h3>Two-Part P&L Structure</h3>
+            <p>The plugin organizes financial data into two main accounts:</p>
+            <ul>
+                <li><strong>Trading Account:</strong> Contains opening stock, purchases, direct expenses, closing stock, and cost of goods sold calculations</li>
+                <li><strong>P&L Account:</strong> Contains gross profit, operating expenses, other income/expenses, and net profit calculations</li>
+            </ul>
+        </div>
+
+        <!-- Installation -->
+        <div class="doc-section" id="installation">
+            <h2>Installation</h2>
+
+            <h3>Step 1: Include CSS Files</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        HTML
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!-- Common Design System (Required) --&gt;
+&lt;link rel="stylesheet" href="../../common/sixorbit-common.css"&gt;
+
+&lt;!-- Plugin-Specific Styles (Required) --&gt;
+&lt;link rel="stylesheet" href="profit-loss-statement.css"&gt;
+
+&lt;!-- Optional: Google Fonts for better typography --&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"&gt;</code></pre>
+            </div>
+
+            <h3>Step 2: Include JavaScript</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        HTML
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!-- Plugin JavaScript (Required) --&gt;
+&lt;script src="profit-loss-statement-v2.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+
+            <h3>Step 3: Create Container</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        HTML
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!-- Container where the P&L statement will be rendered --&gt;
+&lt;div id="pnl-container"&gt;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Quick Start -->
+        <div class="doc-section" id="quick-start">
+            <h2>Quick Start</h2>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        JavaScript
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Initialize the plugin
+const statement = new ProfitLossStatement('pnl-container', {
+    data: yourProfitLossData,
+    numberFormat: 'short',
+    showPercentageOfSales: true
+});</code></pre>
+            </div>
+
+            <p>That's it! The P&L statement will render with your data.</p>
+        </div>
+
+        <!-- Configuration -->
+        <div class="doc-section" id="configuration">
+            <h2>Configuration Options</h2>
+
+            <table class="param-table">
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>data</code> <span class="badge badge-required">Required</span></td>
+                        <td>Object</td>
+                        <td>-</td>
+                        <td>P&L statement data object (see Data Format below)</td>
+                    </tr>
+                    <tr>
+                        <td><code>numberFormat</code> <span class="badge badge-optional">Optional</span></td>
+                        <td>String</td>
+                        <td>'short'</td>
+                        <td>Number display format: 'full' or 'short'</td>
+                    </tr>
+                    <tr>
+                        <td><code>showPercentageOfSales</code> <span class="badge badge-optional">Optional</span></td>
+                        <td>Boolean</td>
+                        <td>true</td>
+                        <td>Whether to display percentage of sales calculations</td>
+                    </tr>
+                    <tr>
+                        <td><code>currency</code> <span class="badge badge-optional">Optional</span></td>
+                        <td>String</td>
+                        <td>'INR'</td>
+                        <td>Currency code for display (INR, USD, EUR, etc.)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Number Format Options</h3>
+            <ul>
+                <li><span class="inline-code">'full'</span> - Shows full numbers (e.g., 1,234,567.89)</li>
+                <li><span class="inline-code">'short'</span> - Shows abbreviated numbers (e.g., ₹1.23M, ₹45.6K)</li>
+            </ul>
+        </div>
+
+        <!-- Data Format -->
+        <div class="doc-section" id="data-format">
+            <h2>Data Format</h2>
+
+            <p>The plugin requires a specific JSON structure with four main P&L sections: Trade Expense, Trade Income, Indirect Expense, and Indirect Income. This structure follows standard accounting principles for Profit & Loss statements.</p>
+
+            <h3>Root JSON Structure</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        JSON Structure
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">const profitLossData = {
+    // Company Information
+    company: "Your Company Name",
+
+    // Reporting Period
+    period: {
+        start: "2025-01-01",  // YYYY-MM-DD format
+        end: "2025-03-31"      // YYYY-MM-DD format
+    },
+
+    // P&L Statement Data - Four Main Sections
+    plstatement: {
+        trade_expense: {
+            // Trading expenses: Opening Stock, Purchases, Direct Expenses
+            id: "trade_expense",
+            name: "Trade Expense",
+            type: "group",
+            children: [ /* groups and ledgers */ ]
+        },
+        trade_income: {
+            // Trading income: Sales, Direct Income, Closing Stock
+            id: "trade_income",
+            name: "Trade Income",
+            type: "group",
+            children: [ /* groups and ledgers */ ]
+        },
+        indirect_expense: {
+            // Operating and other expenses
+            id: "indirect_expense_root",
+            name: "Indirect Expense",
+            type: "group",
+            children: [ /* groups and ledgers */ ]
+        },
+        indirect_income: {
+            // Other income and non-operating income
+            id: "indirect_income_root",
+            name: "Indirect Income",
+            type: "group",
+            children: [ /* groups and ledgers */ ]
+        }
+    }
+};</code></pre>
+            </div>
+
+            <h3>Node Structure (Groups and Ledgers)</h3>
+            <p>Each node in the P&L hierarchy can be either a <strong>group</strong> (containing children) or a <strong>ledger</strong> (final account entry with debit/credit values).</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        Node Structure
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// GROUP NODE - Can contain other groups or ledgers
+{
+    id: "purchase_accounts",           // Unique identifier
+    name: "Purchase Accounts",          // Display name
+    type: "group",                      // Type: "group"
+    icon: "shopping_cart",              // Optional: Material icon name
+    children: [                         // Array of child nodes
+        { /* child group or ledger */ }
+    ]
+}
+
+// LEDGER NODE - Final account with debit/credit amounts
+{
+    id: "local_purchases",              // Unique identifier
+    name: "Local Purchases",            // Display name
+    type: "ledger",                     // Type: "ledger"
+    icon: "receipt",                    // Optional: Material icon name
+    debit: 5800000,                     // Debit amount (number)
+    credit: 125000                      // Credit amount (number)
+}</code></pre>
+            </div>
+
+            <h3>Field Descriptions</h3>
+            <table class="param-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>String</td>
+                        <td><span class="badge badge-required">Required</span></td>
+                        <td>Unique identifier for the node. Must be unique within its parent scope.</td>
+                    </tr>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>String</td>
+                        <td><span class="badge badge-required">Required</span></td>
+                        <td>Display name shown in the P&L statement (e.g., "Local Purchases", "Office Rent").</td>
+                    </tr>
+                    <tr>
+                        <td><code>type</code></td>
+                        <td>String</td>
+                        <td><span class="badge badge-required">Required</span></td>
+                        <td>Node type: <code>"group"</code> (has children) or <code>"ledger"</code> (has debit/credit values).</td>
+                    </tr>
+                    <tr>
+                        <td><code>icon</code></td>
+                        <td>String</td>
+                        <td><span class="badge badge-optional">Optional</span></td>
+                        <td>Material Icons name (e.g., "inventory_2", "receipt_long"). If not provided, defaults are used based on node type.</td>
+                    </tr>
+                    <tr>
+                        <td><code>debit</code></td>
+                        <td>Number</td>
+                        <td><span class="badge badge-required">For ledgers</span></td>
+                        <td>Debit amount in base currency (use 0 if no debit). Required only for ledger type.</td>
+                    </tr>
+                    <tr>
+                        <td><code>credit</code></td>
+                        <td>Number</td>
+                        <td><span class="badge badge-required">For ledgers</span></td>
+                        <td>Credit amount in base currency (use 0 if no credit). Required only for ledger type.</td>
+                    </tr>
+                    <tr>
+                        <td><code>children</code></td>
+                        <td>Array</td>
+                        <td><span class="badge badge-required">For groups</span></td>
+                        <td>Array of child nodes (groups or ledgers). Required only for group type. Supports unlimited nesting.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Complete Working Example</h3>
+            <p>Below is a complete, working P&L data structure demonstrating all four sections with nested groups and ledgers:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        Complete Example
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">const samplePLData = {
+    company: "Accrete Globus Technology Pvt Ltd",
+    period: {
+        start: "2025-04-01",
+        end: "2026-01-08"
+    },
+    plstatement: {
+        // SECTION 1: Trade Expense (Debit Side of Trading Account)
+        trade_expense: {
+            id: "trade_expense",
+            name: "Trade Expense",
+            type: "group",
+            children: [
+                {
+                    id: "opening_stock",
+                    name: "Opening Stock",
+                    type: "ledger",
+                    icon: "inventory_2",  // Custom icon for stock
+                    debit: 2500000,
+                    credit: 0
+                },
+                {
+                    id: "purchase_accounts",
+                    name: "Purchase Accounts",
+                    type: "group",
+                    children: [
+                        {
+                            id: "local_purchases",
+                            name: "Local Purchases",
+                            type: "ledger",
+                            debit: 5800000,
+                            credit: 125000  // Purchase returns
+                        },
+                        {
+                            id: "interstate_purchases",
+                            name: "Interstate Purchases",
+                            type: "ledger",
+                            debit: 3200000,
+                            credit: 85000
+                        }
+                    ]
+                },
+                {
+                    id: "direct_expenses",
+                    name: "Direct Expenses",
+                    type: "group",
+                    children: [
+                        {
+                            id: "server_expense",
+                            name: "Server Expense",
+                            type: "ledger",
+                            debit: 3926206,
+                            credit: 0
+                        },
+                        {
+                            id: "freight_inward",
+                            name: "Freight Inward",
+                            type: "ledger",
+                            debit: 450000,
+                            credit: 0
+                        }
+                    ]
+                }
+            ]
+        },
+
+        // SECTION 2: Trade Income (Credit Side of Trading Account)
+        trade_income: {
+            id: "trade_income",
+            name: "Trade Income",
+            type: "group",
+            children: [
+                {
+                    id: "sales_accounts",
+                    name: "Sales Accounts",
+                    type: "group",
+                    children: [
+                        {
+                            id: "local_sales",
+                            name: "Local Sales",
+                            type: "ledger",
+                            debit: 380000,   // Sales returns
+                            credit: 12500000
+                        },
+                        {
+                            id: "interstate_sales",
+                            name: "Interstate Sales",
+                            type: "ledger",
+                            debit: 150000,
+                            credit: 8200000
+                        },
+                        {
+                            id: "export_sales",
+                            name: "Export Sales",
+                            type: "ledger",
+                            debit: 0,
+                            credit: 3500000
+                        }
+                    ]
+                },
+                {
+                    id: "direct_incomes",
+                    name: "Direct Incomes",
+                    type: "group",
+                    children: [
+                        {
+                            id: "job_work_income",
+                            name: "Job Work Income",
+                            type: "ledger",
+                            debit: 0,
+                            credit: 850000
+                        }
+                    ]
+                },
+                {
+                    id: "closing_stock",
+                    name: "Closing Stock",
+                    type: "ledger",
+                    icon: "inventory_2",  // Custom icon for stock
+                    debit: 0,
+                    credit: 3200000
+                }
+            ]
+        },
+
+        // SECTION 3: Indirect Expense (Debit Side of P&L Account)
+        indirect_expense: {
+            id: "indirect_expense_root",
+            name: "Indirect Expense",
+            type: "group",
+            children: [
+                {
+                    id: "indirect_expenses",
+                    name: "Indirect Expenses",
+                    type: "group",
+                    children: [
+                        {
+                            id: "office_rent",
+                            name: "Office Rent",
+                            type: "ledger",
+                            debit: 3178424,
+                            credit: 0
+                        },
+                        {
+                            id: "electricity_expenses",
+                            name: "Electricity Expenses",
+                            type: "ledger",
+                            debit: 299106,
+                            credit: 0
+                        },
+                        {
+                            id: "salary_expense",
+                            name: "Salary Expense Group",
+                            type: "group",
+                            children: [
+                                {
+                                    id: "salary_expense_ledger",
+                                    name: "Salary Expense",
+                                    type: "ledger",
+                                    debit: 9147676,
+                                    credit: 0
+                                },
+                                {
+                                    id: "house_rent_allowance",
+                                    name: "House Rent Allowance",
+                                    type: "ledger",
+                                    debit: 2841644,
+                                    credit: 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        // SECTION 4: Indirect Income (Credit Side of P&L Account)
+        indirect_income: {
+            id: "indirect_income_root",
+            name: "Indirect Income",
+            type: "group",
+            children: [
+                {
+                    id: "indirect_incomes",
+                    name: "Indirect Incomes",
+                    type: "group",
+                    children: [
+                        {
+                            id: "notice_buyout",
+                            name: "Notice Buyout Income",
+                            type: "ledger",
+                            debit: 0,
+                            credit: 62852
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+};</code></pre>
+            </div>
+
+            <h3>Section Guidelines</h3>
+            <div class="info-box">
+                <h4 style="margin-top: 0;">1. Trade Expense</h4>
+                <p>Contains direct costs of trading operations:</p>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Opening Stock:</strong> Inventory value at start of period</li>
+                    <li><strong>Purchase Accounts:</strong> Cost of goods purchased (local, interstate, import)</li>
+                    <li><strong>Direct Expenses:</strong> Expenses directly related to production/trading (freight, customs duty, manufacturing costs)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4 style="margin-top: 0;">2. Trade Income</h4>
+                <p>Contains direct revenue from trading operations:</p>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Sales Accounts:</strong> Revenue from sales (local, interstate, export)</li>
+                    <li><strong>Direct Incomes:</strong> Income directly related to trading (job work, scrap sales)</li>
+                    <li><strong>Closing Stock:</strong> Inventory value at end of period</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4 style="margin-top: 0;">3. Indirect Expense</h4>
+                <p>Contains operating expenses and overheads:</p>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Operating Expenses:</strong> Rent, utilities, salaries, office expenses</li>
+                    <li><strong>Administrative Expenses:</strong> Legal fees, professional charges, software expenses</li>
+                    <li><strong>Financial Expenses:</strong> Interest paid, bank charges, forex loss</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4 style="margin-top: 0;">4. Indirect Income</h4>
+                <p>Contains non-operating income:</p>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Other Income:</strong> Interest received, commission income, miscellaneous income</li>
+                    <li><strong>Non-Operating Income:</strong> Gains on asset sales, dividend income</li>
+                </ul>
+            </div>
+
+            <h3>Important Notes</h3>
+            <div class="warning-box">
+                <strong>Percentage Calculation Base:</strong>
+                <p style="margin-bottom: var(--so-space-sm);">The "% of Sales" column is calculated based on the <strong>Sales Accounts</strong> balance (credit - debit), NOT the total trade income. This means:</p>
+                <ul style="margin-bottom: 0;">
+                    <li>The Sales Accounts group balance represents 100%</li>
+                    <li>All other values are shown as a percentage of this Sales Accounts balance</li>
+                    <li>Direct incomes and closing stock are NOT included in the percentage base</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Abnormal Balances:</strong>
+                <p style="margin-bottom: 0;">The plugin automatically highlights abnormal balances in <span style="color: var(--so-error);">red</span>:</p>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Expense Sections:</strong> Credit balances shown in red (e.g., purchase returns, expense refunds)</li>
+                    <li><strong>Income Sections:</strong> Debit balances shown in red (e.g., sales returns, income-related expenses)</li>
+                </ul>
+            </div>
+
+            <div class="success-box">
+                <strong>Custom Icons:</strong>
+                <p style="margin-bottom: 0;">You can customize the icon for any node by adding an <code>icon</code> property with a <a href="https://fonts.google.com/icons" target="_blank" style="color: var(--so-primary);">Material Icons</a> name. Examples:</p>
+                <ul style="margin-bottom: 0;">
+                    <li><code>"icon": "inventory_2"</code> for stock items</li>
+                    <li><code>"icon": "shopping_cart"</code> for purchases</li>
+                    <li><code>"icon": "account_balance"</code> for bank accounts</li>
+                    <li><code>"icon": "receipt_long"</code> for expenses</li>
+                </ul>
+            </div>
+
+            <h3>Validation Tips</h3>
+            <ul>
+                <li>Ensure all nodes have unique <code>id</code> values within their parent scope</li>
+                <li>All ledger nodes must have both <code>debit</code> and <code>credit</code> properties (use 0 if no value)</li>
+                <li>All group nodes must have a <code>children</code> array (can be empty)</li>
+                <li>The <code>type</code> property must be exactly <code>"group"</code> or <code>"ledger"</code></li>
+                <li>Date format for period must be <code>YYYY-MM-DD</code></li>
+                <li>All numeric values should be positive numbers (the plugin handles debit/credit logic)</li>
+            </ul>
+        </div>
+
+        <!-- Methods -->
+        <div class="doc-section" id="methods">
+            <h2>Available Methods</h2>
+
+            <h3>setNumberFormat(format)</h3>
+            <p>Change the number display format between full and short formats.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Switch to full format
+statement.setNumberFormat('full');
+
+// Switch to short format
+statement.setNumberFormat('short');</code></pre>
+            </div>
+
+            <h3>togglePercentage()</h3>
+            <p>Toggle the visibility of percentage of sales column.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Toggle percentage of sales display
+statement.togglePercentage();</code></pre>
+            </div>
+
+            <h3>expandAll()</h3>
+            <p>Expand all collapsible groups in both Trading Account and P&L Account.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">statement.expandAll();</code></pre>
+            </div>
+
+            <h3>collapseAll()</h3>
+            <p>Collapse all collapsible groups in both Trading Account and P&L Account.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">statement.collapseAll();</code></pre>
+            </div>
+
+            <h3>reload(newData)</h3>
+            <p>Reload the statement with fresh P&L data.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Fetch fresh P&L data from your API
+const freshData = await fetch('/api/profit-loss').then(r => r.json());
+
+// Reload statement
+statement.reload(freshData);</code></pre>
+            </div>
+        </div>
+
+        <!-- Examples -->
+        <div class="doc-section" id="examples">
+            <h2>Complete Examples</h2>
+
+            <h3>Basic Implementation</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">HTML + JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="../../common/sixorbit-common.css"&gt;
+    &lt;link rel="stylesheet" href="profit-loss-statement.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="pnl-container"&gt;&lt;/div&gt;
+
+    &lt;script src="profit-loss-statement-v2.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        const data = {
+            company: "My Company",
+            period: { start: "2025-01-01", end: "2025-12-31" },
+            totalSales: 10000000,
+            tradingAccount: {
+                groups: [ /* your trading data */ ]
+            },
+            pnlAccount: {
+                groups: [ /* your P&L data */ ]
+            }
+        };
+
+        const statement = new ProfitLossStatement('pnl-container', {
+            data: data,
+            numberFormat: 'short',
+            showPercentageOfSales: true
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <h3>With Control Buttons</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">HTML</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;div class="controls"&gt;
+    &lt;button onclick="statement.setNumberFormat('full')"&gt;Full Format&lt;/button&gt;
+    &lt;button onclick="statement.setNumberFormat('short')"&gt;Short Format&lt;/button&gt;
+    &lt;button onclick="statement.togglePercentage()"&gt;Toggle %&lt;/button&gt;
+    &lt;button onclick="statement.expandAll()"&gt;Expand All&lt;/button&gt;
+    &lt;button onclick="statement.collapseAll()"&gt;Collapse All&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id="pnl-container"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    const statement = new ProfitLossStatement('pnl-container', {
+        data: profitLossData,
+        numberFormat: 'short',
+        showPercentageOfSales: true
+    });
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <h3>Complete Minimal Example with Full Data Structure</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Complete minimal P&L data
+const minimalPnlData = {
+    company: "Sample Industries Ltd.",
+    period: {
+        start: "2025-04-01",
+        end: "2025-06-30"
+    },
+    totalSales: 10000000,
+
+    tradingAccount: {
+        groups: [
+            {
+                id: "purchases",
+                name: "Purchases",
+                type: "group",
+                children: [
+                    {
+                        id: "purchases-ledger",
+                        name: "Purchases",
+                        type: "ledger",
+                        debit: 5000000,
+                        credit: 0
+                    }
+                ]
+            },
+            {
+                id: "closing-stock",
+                name: "Closing Stock",
+                type: "group",
+                children: [
+                    {
+                        id: "closing-ledger",
+                        name: "Closing Stock",
+                        type: "ledger",
+                        debit: 0,
+                        credit: 1000000
+                    }
+                ]
+            }
+        ]
+    },
+
+    pnlAccount: {
+        groups: [
+            {
+                id: "cogs",
+                name: "Cost of Goods Sold",
+                type: "group",
+                children: [
+                    {
+                        id: "cogs-ledger",
+                        name: "COGS from Trading A/C",
+                        type: "ledger",
+                        debit: 4000000,
+                        credit: 0
+                    }
+                ]
+            },
+            {
+                id: "operating-exp",
+                name: "Operating Expenses",
+                type: "group",
+                children: [
+                    {
+                        id: "salary-ledger",
+                        name: "Salaries",
+                        type: "ledger",
+                        debit: 1000000,
+                        credit: 0
+                    },
+                    {
+                        id: "rent-ledger",
+                        name: "Rent",
+                        type: "ledger",
+                        debit: 500000,
+                        credit: 0
+                    }
+                ]
+            }
+        ]
+    }
+};
+
+// Initialize and render
+const statement = new ProfitLossStatement('pnl-container', {
+    data: minimalPnlData,
+    numberFormat: 'short',
+    showPercentageOfSales: true,
+    currency: 'INR'
+});</code></pre>
+            </div>
+
+            <h3>Dynamic Data Loading with Periodic Refresh</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Initialize with initial data
+let statement = new ProfitLossStatement('pnl-container', {
+    data: initialPnlData,
+    numberFormat: 'short',
+    showPercentageOfSales: true
+});
+
+// Function to refresh P&L data
+async function refreshPnlReport(startDate, endDate) {
+    try {
+        // Fetch fresh data from your API
+        const response = await fetch(
+            `/api/profit-loss?start=${startDate}&end=${endDate}`
+        );
+        const freshData = await response.json();
+
+        // Reload statement with new data
+        statement.reload(freshData);
+
+        console.log('P&L report refreshed successfully');
+    } catch (error) {
+        console.error('Failed to refresh P&L report:', error);
+    }
+}
+
+// Refresh every 10 minutes
+setInterval(() => {
+    refreshPnlReport('2025-01-01', '2025-12-31');
+}, 600000);</code></pre>
+            </div>
+
+            <h3>Event-Driven Reload with User Interaction</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Initialize statement
+const statement = new ProfitLossStatement('pnl-container', {
+    data: profitLossData,
+    numberFormat: 'short'
+});
+
+// Date picker event listeners
+document.getElementById('start-date').addEventListener('change', updateReport);
+document.getElementById('end-date').addEventListener('change', updateReport);
+
+async function updateReport() {
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+
+    if (!startDate || !endDate) return;
+
+    try {
+        const response = await fetch(
+            `/api/profit-loss?start=${startDate}&end=${endDate}`
+        );
+        const updatedData = await response.json();
+        statement.reload(updatedData);
+    } catch (error) {
+        console.error('Error updating report:', error);
+    }
+}
+
+// Button controls
+document.getElementById('format-full').addEventListener('click', () => {
+    statement.setNumberFormat('full');
+});
+
+document.getElementById('format-short').addEventListener('click', () => {
+    statement.setNumberFormat('short');
+});
+
+document.getElementById('expand-btn').addEventListener('click', () => {
+    statement.expandAll();
+});
+
+document.getElementById('collapse-btn').addEventListener('click', () => {
+    statement.collapseAll();
+});
+
+document.getElementById('percentage-toggle').addEventListener('click', () => {
+    statement.togglePercentage();
+});</code></pre>
+            </div>
+
+            <div class="success-box">
+                <strong>Pro Tip:</strong> The <code>reload()</code> method preserves the current expand/collapse state of groups, number format preference, and percentage visibility setting, making it perfect for real-time updates and dynamic data changes. This ensures a smooth user experience when refreshing financial data without losing the user's view preferences.
+            </div>
+        </div>
+
+        <!-- Back to top -->
+        <div style="text-align: center; padding: var(--so-space-3xl) 0;">
+            <a href="#" class="so-btn so-btn-outline" style="text-decoration: none;">
+                <span class="material-icons">arrow_upward</span>
+                Back to Top
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Syntax highlighting
+        hljs.highlightAll();
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<span class="material-icons">check</span> Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

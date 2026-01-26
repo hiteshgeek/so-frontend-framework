@@ -1,0 +1,110 @@
+{
+  "menu": [
+    {
+      "title": "Dashboard",
+      "icon": "dashboard",
+      "url": "index.php"
+    },
+    {
+      "title": "Form Elements",
+      "icon": "input",
+      "url": "form-elements.php"
+    },
+    {
+      "title": "Finance",
+      "icon": "account_balance",
+      "children": [
+        {
+          "title": "Profit & Loss",
+          "icon": "trending_up",
+          "url": "profit-loss.php"
+        },
+        {
+          "title": "Balance Sheet",
+          "icon": "account_balance_wallet",
+          "url": "balance-sheet.php"
+        },
+        {
+          "title": "Cash Flow",
+          "icon": "payments",
+          "url": "cash-flow.php"
+        },
+        {
+          "title": "Trial Balance",
+          "icon": "receipt_long",
+          "url": "trial-balance.php"
+        }
+      ]
+    },
+    {
+      "title": "Inventory",
+      "icon": "inventory_2",
+      "children": [
+        {
+          "title": "Stock Summary",
+          "icon": "inventory",
+          "url": "#"
+        },
+        {
+          "title": "Stock Movement",
+          "icon": "swap_horiz",
+          "url": "#"
+        },
+        {
+          "title": "Item Master",
+          "icon": "category",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "Accounts",
+      "icon": "account_circle",
+      "children": [
+        {
+          "title": "Ledger",
+          "icon": "book",
+          "url": "#"
+        },
+        {
+          "title": "Day Book",
+          "icon": "today",
+          "url": "#"
+        },
+        {
+          "title": "Account Groups",
+          "icon": "folder",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "Video Tutorials",
+      "icon": "play_circle",
+      "url": "video-tutorial.php",
+      "badge": "New",
+      "badgeClass": "so-badge-soft-primary"
+    },
+    {
+      "title": "Settings",
+      "icon": "settings",
+      "children": [
+        {
+          "title": "Company Profile",
+          "icon": "business",
+          "url": "#"
+        },
+        {
+          "title": "User Management",
+          "icon": "people",
+          "url": "#"
+        },
+        {
+          "title": "Preferences",
+          "icon": "tune",
+          "url": "#"
+        }
+      ]
+    }
+  ]
+}

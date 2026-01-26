@@ -1,0 +1,554 @@
+/**
+ * Group Summary Report Plugin Styles
+ * Framework-agnostic styling for Group Summary report
+ * Version: 1.0.0
+ * Uses common sixorbit-common.css for consistent UI elements
+ */
+
+/* Container */
+.gs-statement {
+    font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+/* Metric Cards Grid - 4 per row by default */
+.gs-statement .so-metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Ensure metric values wrap properly and don't overflow */
+.gs-statement .so-metric-value {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.3;
+}
+
+.gs-statement .so-metric-card {
+    min-width: 0;
+}
+
+/* Header */
+.gs-header {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+}
+
+.gs-company-name {
+    font-size: 28px;
+    font-weight: 500;
+    color: #202124;
+    margin: 0 0 4px 0;
+}
+
+.gs-report-title {
+    font-size: 20px;
+    font-weight: 400;
+    color: #5f6368;
+    margin: 0 0 8px 0;
+}
+
+.gs-period {
+    font-size: 14px;
+    color: #5f6368;
+}
+
+/* Control Buttons */
+.gs-control-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    background: white;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #202124;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.gs-control-btn:hover {
+    background: #f8f9fa;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+}
+
+.gs-control-btn.active {
+    background: #e8f0fe;
+    color: #1a73e8;
+    border-color: #1a73e8;
+}
+
+.gs-control-btn .material-symbols-rounded {
+    font-size: 18px;
+}
+
+/* Tree Card */
+.gs-tree-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    overflow: hidden;
+    border: 1px solid #e8eaed;
+    margin-bottom: 20px;
+}
+
+.gs-tree-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8eaed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gs-tree-title {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.gs-tree-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Tree View */
+.gs-tree-view {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: auto;
+    position: relative;
+}
+
+.gs-tree-node {
+    border-bottom: 1px solid #f1f3f4;
+    transition: background 0.2s;
+}
+
+.gs-tree-node:hover {
+    background: #f1f3f4;
+}
+
+.gs-tree-node.level-0 {
+    background: linear-gradient(90deg, rgba(66, 133, 244, 0.05) 0%, transparent 100%);
+}
+
+.gs-tree-node.level-0:hover {
+    background: linear-gradient(90deg, rgba(66, 133, 244, 0.08) 0%, #f1f3f4 100%);
+}
+
+.gs-node-content {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: default;
+    user-select: none;
+}
+
+.gs-node-indent {
+    display: inline-block;
+}
+
+.gs-node-toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    flex-shrink: 0;
+    color: #5f6368;
+    transition: transform 0.2s;
+}
+
+.gs-node-toggle.expanded {
+    transform: rotate(90deg);
+}
+
+.gs-node-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.gs-node-icon.group {
+    color: #4285f4;
+}
+
+.gs-node-icon.ledger {
+    color: #34a853;
+}
+
+.gs-node-icon.group.level-0 {
+    color: #4285f4;
+}
+
+.gs-node-label {
+    flex: 1;
+    font-size: 13px;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.gs-node-label:hover {
+    text-decoration: underline;
+}
+
+.gs-node-label.group {
+    font-weight: 500;
+    color: #4285f4;
+}
+
+.gs-node-label.ledger {
+    font-weight: 400;
+    color: #202124;
+}
+
+.gs-node-label.group.level-0 {
+    font-weight: 500;
+    font-size: 14px;
+    color: #4285f4;
+}
+
+.gs-node-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gs-node-amount {
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    font-size: 13px;
+    text-align: right;
+}
+
+.gs-node-amount.debit {
+    color: #202124;
+}
+
+.gs-node-amount.credit {
+    color: #ea4335;
+}
+
+.gs-node-amount.balance {
+    color: #202124;
+}
+
+.gs-node-children {
+    display: none;
+}
+
+.gs-node-children.expanded {
+    display: block;
+}
+
+/* Tree Footer */
+.gs-tree-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+/* Scrollbar */
+.gs-tree-view::-webkit-scrollbar {
+    width: 8px;
+}
+
+.gs-tree-view::-webkit-scrollbar-track {
+    background: #f1f3f4;
+}
+
+.gs-tree-view::-webkit-scrollbar-thumb {
+    background: #dadce0;
+    border-radius: 4px;
+}
+
+.gs-tree-view::-webkit-scrollbar-thumb:hover {
+    background: #5f6368;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    /* Metric cards: 2x2 layout */
+    .gs-statement .so-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .gs-tree-controls {
+        width: 100%;
+    }
+
+    .gs-control-btn {
+        flex: 1;
+        min-width: calc(25% - 6px);
+        justify-content: center;
+    }
+}
+
+/* Medium screens - adjust for better card display */
+@media (max-width: 900px) {
+    /* Metric cards: still 2x2 but with more space */
+    .gs-statement .so-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Metric cards: 1 per row */
+    .gs-statement .so-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gs-statement {
+        padding: 12px;
+    }
+
+    .gs-header {
+        padding: 16px;
+    }
+
+    .gs-company-name {
+        font-size: 22px;
+    }
+
+    .gs-report-title {
+        font-size: 18px;
+    }
+
+    .gs-control-btn {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .gs-control-btn .material-symbols-rounded {
+        font-size: 16px;
+    }
+
+    .gs-tree-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gs-tree-controls {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .gs-tree-controls .gs-control-btn {
+        flex: 1;
+        min-width: calc(50% - 4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .gs-company-name {
+        font-size: 18px;
+    }
+
+    .gs-report-title {
+        font-size: 16px;
+    }
+
+    .gs-node-amount {
+        font-size: 11px;
+        min-width: 80px !important;
+    }
+}
+
+/* Tabulator Table Styling - Column Headings */
+.gs-statement .tabulator-header {
+    background: #1a73e8;
+    border-bottom: none;
+}
+
+.gs-statement .tabulator-col {
+    background: #1a73e8;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gs-statement .tabulator-col-title {
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 14px 16px;
+}
+
+/* Tabulator Table Styling - Rows */
+.gs-statement .tabulator-row {
+    border-bottom: 1px solid #e8eaed;
+    background: #ffffff;
+}
+
+.gs-statement .tabulator-row:hover {
+    background: #f8f9fa;
+}
+
+.gs-statement .tabulator-row.tabulator-selected {
+    background: #e8f0fe;
+}
+
+.gs-statement .tabulator-cell {
+    border-right: 1px solid #e8eaed;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #202124;
+    line-height: 1.5;
+}
+
+/* Tabulator Footer Totals */
+.gs-statement .tabulator-footer {
+    background: linear-gradient(to bottom, #e8f0fe 0%, #f8f9fa 100%);
+    border-top: 3px solid #185abc;
+    padding: 0;
+}
+
+.gs-statement .tabulator-footer .tabulator-calcs-holder {
+    background: transparent;
+}
+
+.gs-statement .tabulator-footer .tabulator-calcs-holder .tabulator-row {
+    background: transparent;
+    font-weight: 600;
+    border: none;
+}
+
+.gs-statement .tabulator-footer .tabulator-calcs-holder .tabulator-cell {
+    background: transparent;
+    font-weight: 600;
+    color: #202124;
+    border-right: 1px solid #dadce0;
+    padding: 16px 16px;
+    font-size: 14px;
+}
+
+/* Tabulator Pagination - Material UI Style */
+.gs-statement .tabulator-footer .tabulator-paginator {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border-top: 1px solid #e8eaed;
+}
+
+.gs-statement .tabulator-footer .tabulator-page-size {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #5f6368;
+}
+
+.gs-statement .tabulator-footer .tabulator-page-size label {
+    font-weight: 500;
+    color: #202124;
+}
+
+.gs-statement .tabulator-footer .tabulator-page-size select {
+    padding: 6px 12px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    background: white;
+    color: #202124;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.gs-statement .tabulator-footer .tabulator-page-size select:hover {
+    background: #f8f9fa;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+}
+
+.gs-statement .tabulator-footer .tabulator-pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.gs-statement .tabulator-page {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    background: white;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #202124;
+    margin: 0;
+    min-width: 36px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Google Sans', sans-serif;
+}
+
+.gs-statement .tabulator-page:hover:not(.disabled) {
+    background: #f8f9fa;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+}
+
+.gs-statement .tabulator-page.active {
+    background: #e8f0fe;
+    color: #1a73e8;
+    border-color: #1a73e8;
+    font-weight: 500;
+}
+
+.gs-statement .tabulator-page.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: white;
+}
+
+.gs-statement .tabulator-footer .tabulator-page-counter {
+    font-size: 13px;
+    color: #5f6368;
+    font-weight: 400;
+}
+
+/* Print Styles */
+@media print {
+    .gs-statement {
+        background: white;
+        padding: 0;
+    }
+
+    .gs-tree-controls {
+        display: none;
+    }
+
+    .gs-tree-card {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+
+    .tabulator-footer .tabulator-paginator {
+        display: none;
+    }
+}

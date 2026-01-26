@@ -1,0 +1,559 @@
+// ============================================
+// SIXORBIT UI - DROPDOWNS
+// Dropdown menu components
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// BASE DROPDOWN
+// ============================================
+
+.#{$so-prefix}dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+// Dropdown Trigger
+.#{$so-prefix}dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: spacing('2');
+  height: $so-form-height-md;
+  padding: 0 spacing('3');
+  font-size: font-size('base');
+  font-weight: font-weight('medium');
+  font-family: inherit;
+  color: css-var('text-secondary');
+  background: css-var('card-bg');
+  border: 1px solid css-var('border-color');
+  border-radius: radius('base');
+  cursor: pointer;
+  transition: all $so-transition-base;
+
+  &:hover {
+    background: css-var('card-hover-bg');
+  }
+
+  .material-icons {
+    font-size: 18px;
+  }
+
+  .#{$so-prefix}dropdown-arrow {
+    transition: transform $so-transition-normal;
+  }
+}
+
+// Open state
+.#{$so-prefix}dropdown.open {
+  .#{$so-prefix}dropdown-trigger .#{$so-prefix}dropdown-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+// Dropdown Menu
+.#{$so-prefix}dropdown-menu {
+  @include dropdown-menu;
+}
+
+.#{$so-prefix}dropdown.open .#{$so-prefix}dropdown-menu {
+  @include dropdown-open;
+}
+
+// Position right
+.#{$so-prefix}dropdown.dropdown-right .#{$so-prefix}dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+// Dropdown Header
+.#{$so-prefix}dropdown-header {
+  padding: spacing('2') + 2px spacing('3');
+  font-size: font-size('xs');
+  font-weight: font-weight('semibold');
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: css-var('text-secondary');
+  border-bottom: 1px solid css-var('dropdown-border');
+}
+
+// Dropdown Items
+.#{$so-prefix}dropdown-item {
+  @include dropdown-item;
+
+  .material-icons {
+    font-size: 18px;
+    color: css-var('text-secondary');
+  }
+
+  &.active .material-icons {
+    color: css-var('dropdown-item-active-text');
+  }
+
+  .#{$so-prefix}dropdown-check {
+    margin-left: auto;
+    opacity: 0;
+  }
+
+  &.active .#{$so-prefix}dropdown-check {
+    opacity: 1;
+  }
+}
+
+// Dropdown Divider
+.#{$so-prefix}dropdown-divider {
+  height: 1px;
+  margin: spacing('1') 0;
+  background: css-var('dropdown-border');
+}
+
+// Dropdown with Search
+.#{$so-prefix}dropdown-search {
+  padding: spacing('2');
+  border-bottom: 1px solid css-var('dropdown-border');
+
+  .#{$so-prefix}input {
+    height: 36px;
+  }
+}
+
+// ============================================
+// SEARCHABLE DROPDOWN
+// ============================================
+
+.#{$so-prefix}searchable-dropdown {
+  position: relative;
+  display: block;
+}
+
+.#{$so-prefix}searchable-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: spacing('2');
+  width: 100%;
+  height: $so-form-height-md;
+  padding: 0 36px 0 spacing('3');
+  font-size: font-size('base');
+  font-family: inherit;
+  color: css-var('form-text');
+  background: css-var('form-bg');
+  border: 1px solid css-var('form-border');
+  border-radius: radius('base');
+  cursor: pointer;
+  text-align: left;
+  transition: border-color $so-transition-base;
+
+  &:hover {
+    border-color: css-var('form-border-hover');
+  }
+
+  .placeholder {
+    color: css-var('form-placeholder');
+  }
+
+  .#{$so-prefix}dropdown-arrow {
+    position: absolute;
+    right: 12px;
+    color: css-var('text-secondary');
+    transition: transform $so-transition-normal;
+  }
+}
+
+.#{$so-prefix}searchable-dropdown.open {
+  .#{$so-prefix}searchable-dropdown-trigger {
+    border-color: css-var('form-border-focus');
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    .#{$so-prefix}dropdown-arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.#{$so-prefix}searchable-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: css-var('dropdown-bg');
+  border: 1px solid css-var('form-border-focus');
+  border-top: none;
+  border-radius: 0 0 radius('base') radius('base');
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: z-index('dropdown');
+  display: none;
+}
+
+.#{$so-prefix}searchable-dropdown.open .#{$so-prefix}searchable-dropdown-menu {
+  display: block;
+}
+
+.#{$so-prefix}searchable-dropdown-search {
+  padding: spacing('2');
+  border-bottom: 1px solid css-var('dropdown-border');
+
+  .#{$so-prefix}input {
+    height: 36px;
+  }
+}
+
+.#{$so-prefix}searchable-dropdown-list {
+  max-height: 240px;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.#{$so-prefix}searchable-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: spacing('2') + 2px spacing('3');
+  font-size: font-size('base');
+  color: css-var('form-text');
+  cursor: pointer;
+  transition: background $so-transition-base;
+
+  &:hover {
+    background: css-var('dropdown-item-hover');
+  }
+
+  &.selected {
+    background: css-var('dropdown-item-active');
+    color: css-var('dropdown-item-active-text');
+  }
+
+  .check-icon {
+    font-size: 18px;
+    visibility: hidden;
+  }
+
+  &.selected .check-icon {
+    visibility: visible;
+  }
+}
+
+.#{$so-prefix}searchable-dropdown-empty {
+  padding: spacing('4');
+  text-align: center;
+  color: css-var('text-secondary');
+  font-size: font-size('sm');
+}
+
+// ============================================
+// OUTLET DROPDOWN (Icon + Searchable)
+// ============================================
+
+.#{$so-prefix}outlet-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.#{$so-prefix}outlet-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: spacing('2');
+  height: $so-form-height-md;
+  padding: 0 spacing('3');
+  font-size: font-size('base');
+  font-family: inherit;
+  color: css-var('form-text');
+  background: css-var('form-bg');
+  border: 1px solid css-var('form-border');
+  border-radius: radius('base');
+  cursor: pointer;
+  transition: border-color $so-transition-base, background $so-transition-base;
+
+  &:hover {
+    border-color: css-var('form-border-hover');
+    background: css-var('dropdown-item-hover');
+  }
+
+  .outlet-icon {
+    font-size: 18px;
+    color: css-var('text-secondary');
+  }
+
+  .outlet-text {
+    max-width: 150px;
+    @include text-truncate;
+  }
+
+  .outlet-arrow {
+    font-size: 18px;
+    color: css-var('text-secondary');
+    margin-left: auto;
+    transition: transform $so-transition-normal;
+  }
+}
+
+.#{$so-prefix}outlet-dropdown.open {
+  .#{$so-prefix}outlet-dropdown-trigger {
+    border-color: css-var('form-border-focus');
+
+    .outlet-arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.#{$so-prefix}outlet-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 220px;
+  background: css-var('dropdown-bg');
+  border: 1px solid css-var('form-border');
+  border-radius: radius('base');
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: z-index('dropdown');
+  display: none;
+}
+
+.#{$so-prefix}outlet-dropdown.open .#{$so-prefix}outlet-dropdown-menu {
+  display: block;
+}
+
+// Position modifiers
+.#{$so-prefix}outlet-dropdown.position-right .#{$so-prefix}outlet-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+.#{$so-prefix}outlet-dropdown.position-top .#{$so-prefix}outlet-dropdown-menu {
+  top: auto;
+  bottom: calc(100% + 4px);
+}
+
+.#{$so-prefix}outlet-dropdown-search {
+  padding: spacing('2');
+  border-bottom: 1px solid css-var('dropdown-border');
+
+  input {
+    width: 100%;
+    padding: spacing('2') spacing('3');
+    font-size: font-size('sm');
+    font-family: inherit;
+    color: css-var('form-text');
+    background: css-var('form-bg');
+    border: 1px solid css-var('form-border');
+    border-radius: radius('base');
+    outline: none;
+    transition: border-color $so-transition-base;
+
+    &::placeholder {
+      color: css-var('form-placeholder');
+    }
+
+    &:focus {
+      border-color: css-var('form-border-focus');
+    }
+  }
+}
+
+.#{$so-prefix}outlet-dropdown-list {
+  max-height: 240px;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.#{$so-prefix}outlet-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: spacing('2') + 2px spacing('3');
+  font-size: font-size('base');
+  color: css-var('form-text');
+  cursor: pointer;
+  transition: background $so-transition-base;
+
+  &:hover {
+    background: css-var('dropdown-item-hover');
+  }
+
+  &.selected {
+    background: css-var('dropdown-item-active');
+    color: css-var('dropdown-item-active-text');
+  }
+
+  .check-icon {
+    font-size: 18px;
+    visibility: hidden;
+  }
+
+  &.selected .check-icon {
+    visibility: visible;
+  }
+}
+
+.#{$so-prefix}outlet-dropdown-empty {
+  padding: spacing('4');
+  text-align: center;
+  color: css-var('text-secondary');
+  font-size: font-size('sm');
+}
+
+// Size variants
+.#{$so-prefix}outlet-dropdown.#{$so-prefix}outlet-sm {
+  .#{$so-prefix}outlet-dropdown-trigger {
+    height: $so-form-height-sm;
+    padding: 0 spacing('2');
+    font-size: font-size('sm');
+    gap: spacing('1') + 2px;
+
+    .outlet-icon,
+    .outlet-arrow {
+      font-size: 16px;
+    }
+
+    .outlet-text {
+      max-width: 120px;
+    }
+  }
+}
+
+.#{$so-prefix}outlet-dropdown.#{$so-prefix}outlet-lg {
+  .#{$so-prefix}outlet-dropdown-trigger {
+    height: $so-form-height-lg;
+    padding: 0 spacing('4');
+    font-size: font-size('md');
+    gap: spacing('2') + 2px;
+
+    .outlet-text {
+      max-width: 200px;
+    }
+  }
+}
+
+// ============================================
+// OPTIONS DROPDOWN (Icon-only)
+// ============================================
+
+.#{$so-prefix}options-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.#{$so-prefix}options-trigger {
+  display: flex;
+  align-items: center;
+  gap: spacing('1') + 2px;
+  padding: spacing('1') + 2px spacing('3');
+  font-size: font-size('sm');
+  font-weight: font-weight('medium');
+  font-family: inherit;
+  color: css-var('text-secondary');
+  background: css-var('card-bg');
+  border: 1px solid css-var('border-color');
+  border-radius: radius('base');
+  cursor: pointer;
+  transition: all $so-transition-base;
+
+  &:hover {
+    background: css-var('card-hover-bg');
+  }
+
+  .material-icons {
+    font-size: 18px;
+  }
+}
+
+.#{$so-prefix}options-arrow {
+  transition: transform $so-transition-normal;
+}
+
+.#{$so-prefix}options-dropdown.open .#{$so-prefix}options-arrow {
+  transform: rotate(180deg);
+}
+
+.#{$so-prefix}options-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: auto;
+  bottom: auto;
+  min-width: 220px;
+  background: css-var('dropdown-bg');
+  border: 1px solid css-var('dropdown-border');
+  border-radius: radius('lg');
+  box-shadow: css-var('dropdown-shadow');
+  z-index: z-index('dropdown');
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity $so-transition-normal, visibility $so-transition-normal, transform $so-transition-normal;
+}
+
+.#{$so-prefix}options-dropdown.open .#{$so-prefix}options-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+// Position modifiers
+.#{$so-prefix}options-dropdown.position-left .#{$so-prefix}options-menu {
+  right: auto;
+  left: 0;
+}
+
+.#{$so-prefix}options-dropdown.position-top .#{$so-prefix}options-menu {
+  top: auto;
+  bottom: calc(100% + 4px);
+  transform: translateY(8px);
+}
+
+.#{$so-prefix}options-dropdown.position-top.open .#{$so-prefix}options-menu {
+  transform: translateY(0);
+}
+
+.#{$so-prefix}options-item {
+  display: flex;
+  align-items: center;
+  gap: spacing('2') + 2px;
+  padding: spacing('2') + 2px spacing('3') + 2px;
+  font-size: font-size('base');
+  color: css-var('form-text');
+  text-decoration: none;
+  cursor: pointer;
+  transition: background $so-transition-base;
+
+  &:first-child {
+    border-radius: radius('lg') radius('lg') 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 radius('lg') radius('lg');
+  }
+
+  &:only-child {
+    border-radius: radius('lg');
+  }
+
+  &:hover {
+    background: css-var('dropdown-item-hover');
+    text-decoration: none;
+  }
+
+  .material-icons {
+    font-size: 18px;
+    color: css-var('text-secondary');
+  }
+
+  &:hover .material-icons {
+    color: css-var('dropdown-item-active-text');
+  }
+
+  &.danger {
+    color: css-var('accent-danger');
+
+    .material-icons {
+      color: css-var('accent-danger');
+    }
+  }
+}
+
+.#{$so-prefix}options-divider {
+  height: 1px;
+  margin: spacing('1') 0;
+  background: css-var('dropdown-border');
+}

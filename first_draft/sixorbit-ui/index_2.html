@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SixOrbit ERP - Clean Layout</title>
+
+    <!-- Prevent sidebar blink on page load - must be before any CSS -->
+    <script>
+    (function() {
+        try {
+            var state = localStorage.getItem('so-sidebar-state');
+            if (state === 'pinned') {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-pinned');
+            } else {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+            }
+        } catch(e) {
+            document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+        }
+    })();
+    </script>
+
+    <!-- Prevent theme flash on page load - must be before any CSS -->
+    <script>
+    (function() {
+        try {
+            var theme = localStorage.getItem('so-theme-preference') || 'sidebar-dark';
+            var effectiveTheme = theme;
+            var sidebar = null;
+
+            // Handle sidebar-dark theme
+            if (theme === 'sidebar-dark') {
+                effectiveTheme = 'light';
+                // We'll add the sidebar-dark class after DOM is ready
+                document.addEventListener('DOMContentLoaded', function() {
+                    sidebar = document.querySelector('.so-sidebar');
+                    if (sidebar) sidebar.classList.add('sidebar-dark');
+                });
+            } else if (theme === 'system') {
+                // Detect system preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    effectiveTheme = 'dark';
+                } else {
+                    effectiveTheme = 'light';
+                }
+            }
+
+            // Apply theme immediately to prevent flash
+            document.documentElement.setAttribute('data-theme', effectiveTheme);
+        } catch(e) {
+            // Default to sidebar-dark on error
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.addEventListener('DOMContentLoaded', function() {
+                var sidebar = document.querySelector('.so-sidebar');
+                if (sidebar) sidebar.classList.add('sidebar-dark');
+            });
+        }
+    })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- SixOrbit Common Styles -->
+    <link rel="stylesheet" href="../common/sixorbit-common.css">
+
+    <!-- SixOrbit UI Components -->
+    <link rel="stylesheet" href="css/so-theme.css">
+    <link rel="stylesheet" href="css/so-navbar.css">
+    <link rel="stylesheet" href="css/so-sidebar.css">
+    <link rel="stylesheet" href="css/so-panel.css">
+    <link rel="stylesheet" href="css/so-forms.css">
+    <link rel="stylesheet" href="css/so-search.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="so-sidebar">
+        <div class="so-sidebar-header">
+            <div class="so-sidebar-logo">TI</div>
+            <div class="so-sidebar-brand-info">
+                <div class="so-sidebar-brand-name">Trove Innovation</div>
+            </div>
+            <button class="so-sidebar-toggle" title="Pin sidebar">
+                <span class="toggle-circle"></span>
+            </button>
+        </div>
+
+        <div class="so-sidebar-scroll">
+            <ul class="so-sidebar-nav">
+                <!-- Menu items will be loaded dynamically -->
+            </ul>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="so-sidebar-footer" data-server-ip="139.59.29.99" data-version="5.9" data-company-id="166262" data-licence-id="410002934">
+            <!-- Footer Buttons -->
+            <div class="so-sidebar-footer-buttons">
+                <button class="so-sidebar-footer-btn" id="sidebarInfoBtn" title="Connection Info">
+                    <span class="material-icons">info_outline</span>
+                </button>
+                <button class="so-sidebar-footer-btn" id="sidebarFullscreenBtn" title="Fullscreen">
+                    <span class="material-icons">fullscreen</span>
+                </button>
+                <button class="so-sidebar-footer-btn" id="sidebarSwitchCompanyBtn" title="Switch Company">
+                    <span class="material-icons">swap_horiz</span>
+                </button>
+                <button class="so-sidebar-footer-btn" id="sidebarLogoutBtn" title="Logout">
+                    <span class="material-icons">power_settings_new</span>
+                </button>
+            </div>
+
+            <!-- Info Popup (shows on info button click) -->
+            <div class="so-sidebar-info-popup" id="sidebarInfoPopup">
+                <div class="so-sidebar-info-popup-header">
+                    <span class="material-icons">dns</span>
+                    <span>Connection Info</span>
+                </div>
+                <div class="so-sidebar-info-popup-content">
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Server IP</span>
+                        <span class="so-sidebar-info-popup-value" id="popupServerIp">139.59.29.99</span>
+                    </div>
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Version</span>
+                        <span class="so-sidebar-info-popup-value" id="popupVersion">5.9</span>
+                    </div>
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Company ID</span>
+                        <span class="so-sidebar-info-popup-value" id="popupCompanyId">166262</span>
+                    </div>
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Licence ID</span>
+                        <span class="so-sidebar-info-popup-value" id="popupLicenceId">410002934</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="so-sidebar-overlay"></div>
+
+    <!-- NAVBAR -->
+    <nav class="so-navbar">
+        <div class="so-navbar-container">
+            <div class="so-navbar-left">
+                <button class="so-navbar-toggle" data-toggle="sidebar" title="Toggle Menu">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+
+            <div class="so-navbar-center">
+                <div class="so-navbar-search">
+                    <div class="so-navbar-search-wrapper">
+                        <span class="material-icons so-navbar-search-icon">search</span>
+                        <input type="text" class="so-navbar-search-input" placeholder="Search what you want to do.. [CTRL + K]">
+                        <button class="so-navbar-search-clear">
+                            <span class="material-icons">close</span>
+                        </button>
+                    </div>
+                    <div class="so-navbar-search-results">
+                        <div class="so-navbar-search-result-item">
+                            <div class="so-navbar-search-result-icon">
+                                <span class="material-icons">receipt</span>
+                            </div>
+                            <div class="so-navbar-search-result-text">
+                                <div class="so-navbar-search-result-title">Create Sales Invoice</div>
+                                <div class="so-navbar-search-result-path">Finance > Sales Invoice > Add</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-navbar-right">
+                <!-- Outlet Selector -->
+                <div class="so-navbar-outlet-selector">
+                    <button class="so-navbar-outlet-btn" title="Select Outlet">
+                        <span class="material-icons">storefront</span>
+                        <span class="outlet-text">All Outlets</span>
+                        <span class="material-icons">expand_more</span>
+                    </button>
+                    <div class="so-navbar-outlet-dropdown">
+                        <div class="so-navbar-outlet-search">
+                            <input type="text" placeholder="Search outlets...">
+                        </div>
+                        <div class="so-navbar-outlet-list">
+                            <div class="so-navbar-outlet-item selected" data-value="all">
+                                <span>All Outlets</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="head-office">
+                                <span>TROVE Head Office</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="basavanagudi">
+                                <span>TROVE Basavanagudi</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="jayanagar">
+                                <span>TROVE Jayanagar</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="indiranagar">
+                                <span>TROVE Indiranagar</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="so-navbar-divider"></div>
+
+                <!-- Settings Icon -->
+                <button class="so-navbar-icon-btn" title="Settings">
+                    <span class="material-icons">settings</span>
+                </button>
+
+                <!-- Theme Switcher -->
+                <div class="so-navbar-theme">
+                    <button class="so-navbar-icon-btn so-navbar-theme-btn" title="Theme">
+                        <span class="material-icons theme-icon">light_mode</span>
+                    </button>
+                    <div class="so-navbar-theme-dropdown">
+                        <div class="so-navbar-theme-header">Appearance</div>
+                        <button class="so-navbar-theme-option" data-theme="light">
+                            <span class="material-icons">light_mode</span>
+                            <span>Light</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="dark">
+                            <span class="material-icons">dark_mode</span>
+                            <span>Dark</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="system">
+                            <span class="material-icons">computer</span>
+                            <span>System</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="sidebar-dark">
+                            <span class="material-icons">contrast</span>
+                            <span>Dark Sidebar</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Apps Menu -->
+                <div class="so-navbar-apps">
+                    <button class="so-navbar-icon-btn so-navbar-apps-btn" title="Apps">
+                        <span class="material-icons">apps</span>
+                    </button>
+                    <div class="so-navbar-apps-dropdown">
+                        <div class="so-navbar-apps-header">Quick Access</div>
+                        <div class="so-navbar-apps-grid">
+                            <a href="#" class="so-navbar-apps-item">
+                                <div class="so-navbar-apps-icon" style="background: #ea4335;">
+                                    <span class="material-icons">play_circle</span>
+                                </div>
+                                <span class="so-navbar-apps-label">Video Tutorial</span>
+                            </a>
+                            <a href="#" class="so-navbar-apps-item">
+                                <div class="so-navbar-apps-icon" style="background: #4285f4;">
+                                    <span class="material-icons">auto_fix_high</span>
+                                </div>
+                                <span class="so-navbar-apps-label">System Wizard</span>
+                            </a>
+                            <a href="#" class="so-navbar-apps-item">
+                                <div class="so-navbar-apps-icon" style="background: #34a853;">
+                                    <span class="material-icons">help_outline</span>
+                                </div>
+                                <span class="so-navbar-apps-label">Help Center</span>
+                            </a>
+                            <a href="#" class="so-navbar-apps-item">
+                                <div class="so-navbar-apps-icon" style="background: #fbbc04;">
+                                    <span class="material-icons">support_agent</span>
+                                </div>
+                                <span class="so-navbar-apps-label">Support</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="so-navbar-divider"></div>
+
+                <!-- User Menu -->
+                <div class="so-navbar-user">
+                    <button class="so-navbar-user-btn">
+                        <div class="so-navbar-user-avatar" data-color="teal">R</div>
+                    </button>
+                    <div class="so-navbar-user-dropdown">
+                        <div class="so-navbar-user-header">
+                            <div class="so-navbar-user-header-avatar" data-color="teal">R</div>
+                            <div class="so-navbar-user-header-name">Rajeev Chauhan</div>
+                            <div class="so-navbar-user-header-email">rajeev@sixorbit.com</div>
+                        </div>
+                        <div class="so-navbar-user-menu">
+                            <a href="#" class="so-navbar-user-menu-item">
+                                <span class="material-icons">person</span>
+                                <span>My Profile</span>
+                            </a>
+                            <a href="#" class="so-navbar-user-menu-item">
+                                <span class="material-icons">settings</span>
+                                <span>Account Settings</span>
+                            </a>
+                        </div>
+                        <div class="so-navbar-user-footer">
+                            <button class="so-navbar-user-footer-btn" title="Fullscreen">
+                                <span class="material-icons">fullscreen</span>
+                            </button>
+                            <button class="so-navbar-user-footer-btn" title="Lock Screen">
+                                <span class="material-icons">lock</span>
+                            </button>
+                            <button class="so-navbar-user-footer-btn" title="Logout">
+                                <span class="material-icons">power_settings_new</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="so-search-overlay">
+        <div class="so-search-overlay-backdrop"></div>
+        <div class="so-search-overlay-content">
+            <!-- Search Header -->
+            <div class="so-search-overlay-header">
+                <div class="so-search-overlay-input-wrapper">
+                    <span class="material-icons so-search-overlay-icon">search</span>
+                    <input type="text" class="so-search-overlay-input" placeholder="Search products, menus, actions... (Type isv: for item search)" autofocus>
+                    <div class="so-search-overlay-shortcut">
+                        <kbd>ESC</kbd>
+                    </div>
+                    <button class="so-search-overlay-close" type="button" title="Close search">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Bar (visible for ISV search) -->
+            <div class="so-search-filter-bar">
+                <!-- Stock Filter -->
+                <div class="so-search-filter-dropdown" data-filter="stock">
+                    <button class="so-search-filter-btn">
+                        <span class="material-icons">inventory</span>
+                        <span class="filter-label">Stock</span>
+                        <span class="material-icons">expand_more</span>
+                    </button>
+                    <div class="so-search-filter-menu">
+                        <div class="so-search-filter-option selected" data-value="all">All Stock</div>
+                        <div class="so-search-filter-option" data-value="in-stock">In Stock</div>
+                        <div class="so-search-filter-option" data-value="low-stock">Low Stock</div>
+                        <div class="so-search-filter-option" data-value="out-of-stock">Out of Stock</div>
+                    </div>
+                </div>
+
+                <!-- Status Filter -->
+                <div class="so-search-filter-dropdown" data-filter="status">
+                    <button class="so-search-filter-btn">
+                        <span class="material-icons">toggle_on</span>
+                        <span class="filter-label">Status</span>
+                        <span class="material-icons">expand_more</span>
+                    </button>
+                    <div class="so-search-filter-menu">
+                        <div class="so-search-filter-option selected" data-value="all">All Status</div>
+                        <div class="so-search-filter-option" data-value="active">Active</div>
+                        <div class="so-search-filter-option" data-value="liquidation">Liquidation</div>
+                    </div>
+                </div>
+
+                <!-- View Toggle -->
+                <div class="so-search-view-toggle">
+                    <button class="so-search-view-btn active" data-view="grid" title="Grid View">
+                        <span class="material-icons">grid_view</span>
+                    </button>
+                    <button class="so-search-view-btn" data-view="list" title="List View">
+                        <span class="material-icons">view_list</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Tabs (visible for normal search) -->
+            <div class="so-search-category-tabs">
+                <button class="so-search-category-tab active" data-category="all">
+                    All<span class="so-search-category-count">0</span>
+                </button>
+                <button class="so-search-category-tab" data-category="menus">
+                    Menus<span class="so-search-category-count">0</span>
+                </button>
+                <button class="so-search-category-tab" data-category="customers">
+                    Customers<span class="so-search-category-count">0</span>
+                </button>
+                <button class="so-search-category-tab" data-category="vendors">
+                    Vendors<span class="so-search-category-count">0</span>
+                </button>
+                <button class="so-search-category-tab" data-category="ledgers">
+                    Ledgers<span class="so-search-category-count">0</span>
+                </button>
+            </div>
+
+            <!-- Search Body -->
+            <div class="so-search-overlay-body">
+                <!-- Quick Links (visible when search is empty) -->
+                <div class="so-search-quick-links">
+                    <div class="so-search-quick-links-title">Quick Links</div>
+                    <div class="so-search-quick-links-grid">
+                        <a href="#" class="so-search-quick-link" data-action="new-order">
+                            <div class="so-search-quick-link-icon blue">
+                                <span class="material-icons">add_shopping_cart</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Order</span>
+                        </a>
+                        <a href="#" class="so-search-quick-link" data-action="new-customer">
+                            <div class="so-search-quick-link-icon green">
+                                <span class="material-icons">person_add</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Customer</span>
+                        </a>
+                        <a href="#" class="so-search-quick-link" data-action="new-invoice">
+                            <div class="so-search-quick-link-icon orange">
+                                <span class="material-icons">receipt_long</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Invoice</span>
+                        </a>
+                        <a href="#" class="so-search-quick-link" data-action="new-purchase">
+                            <div class="so-search-quick-link-icon red">
+                                <span class="material-icons">shopping_cart</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Purchase</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Results Container -->
+                <div class="so-search-results-container">
+                    <!-- Grid View -->
+                    <div class="so-search-results-grid">
+                        <!-- Item cards will be rendered here by JavaScript -->
+                    </div>
+
+                    <!-- List View -->
+                    <div class="so-search-results-list">
+                        <!-- Item rows will be rendered here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div class="so-search-empty">
+                    <span class="material-icons so-search-empty-icon">search_off</span>
+                    <div class="so-search-empty-title">No results found</div>
+                    <div class="so-search-empty-text">Try adjusting your search or filters</div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="so-search-loading">
+                    <div class="so-search-loading-spinner"></div>
+                </div>
+
+                <!-- Legacy Results Section (for non-ISV search) -->
+                <div class="so-search-overlay-section">
+                    <div class="so-search-overlay-section-title">Recent</div>
+                    <div class="so-search-overlay-results"></div>
+                </div>
+                <div class="so-search-overlay-section">
+                    <div class="so-search-overlay-section-title">Quick Actions</div>
+                    <div class="so-search-overlay-results"></div>
+                </div>
+            </div>
+
+            <!-- Search Footer -->
+            <div class="so-search-overlay-footer">
+                <div class="so-search-overlay-footer-hint">
+                    <kbd>↑</kbd><kbd>↓</kbd> to navigate
+                    <kbd>↵</kbd> to select
+                    <kbd>ESC</kbd> to close
+                    <span style="margin-left: 16px;">Tip: Type <kbd>isv:</kbd> for item search with filters</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="so-main-content">
+        <div class="demo-content">
+            <!-- Empty content area -->
+        </div>
+    </main>
+
+    <!-- MOBILE FLOATING BOTTOM BAR -->
+    <div class="so-mobile-bottom-bar">
+        <button class="so-mobile-bottom-item" id="mobileSearchBtn">
+            <span class="material-icons">search</span>
+            <span class="so-mobile-bottom-item-label">Search</span>
+        </button>
+
+        <div class="so-mobile-outlet-dropdown">
+            <button class="so-mobile-bottom-item" id="mobileOutletBtn">
+                <span class="material-icons">storefront</span>
+                <span class="so-mobile-bottom-item-label">Outlet</span>
+            </button>
+            <div class="so-mobile-outlet-menu">
+                <div class="so-mobile-outlet-header">Select Outlet</div>
+                <div class="so-mobile-outlet-list">
+                    <div class="so-mobile-outlet-item selected" data-value="all">
+                        <span>All Outlets</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                    <div class="so-mobile-outlet-item" data-value="head-office">
+                        <span>TROVE Head Office</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                    <div class="so-mobile-outlet-item" data-value="basavanagudi">
+                        <span>TROVE Basavanagudi</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SixOrbit UI JavaScript -->
+    <script src="js/so-search.js"></script>
+    <script src="js/so-layout.js"></script>
+
+    <script>
+        // Sidebar Menu Data
+        const sidebarMenuData = [
+            { id: 'dashboard', title: 'Dashboard', icon: 'dashboard', href: 'index.html' },
+            {
+                id: 'sixorbit-element',
+                title: 'SixOrbit Element',
+                icon: 'widgets',
+                children: [
+                    { id: 'form-elements', title: 'Form Elements', icon: 'input', href: 'form-elements.html' }
+                ]
+            },
+            {
+                id: 'office',
+                title: 'Office',
+                icon: 'business',
+                children: [
+                    {
+                        id: 'purchase-indent',
+                        title: 'Purchase Indent',
+                        icon: 'assignment',
+                        children: [
+                            { id: 'create-pi', title: 'Create Purchase Indent', href: '#create-pi' },
+                            { id: 'pi-list', title: 'Purchase Indent List', href: '#pi-list' }
+                        ]
+                    },
+                    {
+                        id: 'purchase-order',
+                        title: 'Purchase Order',
+                        icon: 'shopping_cart',
+                        children: [
+                            { id: 'create-po', title: 'Create Purchase Order', href: '#create-po' },
+                            { id: 'po-list', title: 'Purchase Order List', href: '#po-list' }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'finance',
+                title: 'Finance',
+                icon: 'account_balance',
+                children: [
+                    {
+                        id: 'account',
+                        title: 'Account',
+                        icon: 'account_tree',
+                        children: [
+                            { id: 'groups', title: 'Groups', href: '#groups' },
+                            { id: 'ledgers', title: 'Ledgers', href: '#ledgers' }
+                        ]
+                    },
+                    {
+                        id: 'finance-reports',
+                        title: 'Reports',
+                        icon: 'assessment',
+                        children: [
+                            { id: 'cash-flow-summary', title: 'Cash Flow Summary', href: 'cash-flow-summary.html' },
+                            { id: 'trial-balance', title: 'Trial Balance', href: 'trial-balance.html' },
+                            { id: 'profit-loss', title: 'Profit & Loss', href: 'profit-loss.html' },
+                            { id: 'monthwise-profit-loss', title: 'Monthwise P&L', href: 'monthwise-profit-loss.html' },
+                            { id: 'balance-sheet', title: 'Balance Sheet', href: 'balance-sheet.html' },
+                            { id: 'group-summary', title: 'Group Summary', href: 'group-summary.html' },
+                            { id: 'other-reports', title: 'Other Reports', href: 'other-reports.html' }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'sales',
+                title: 'Sales',
+                icon: 'point_of_sale',
+                children: [
+                    {
+                        id: 'customer',
+                        title: 'Customer',
+                        icon: 'people',
+                        children: [
+                            { id: 'create-customer', title: 'Create Customer', href: '#create-customer' },
+                            { id: 'customer-list', title: 'Customer List', href: '#customer-list' }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Load the sidebar menu after DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.soLayout) {
+                window.soLayout.loadMenu(sidebarMenuData, 'dashboard');
+            }
+
+            // Configure search overlay with URL endpoints
+            if (window.soSearchOverlay) {
+                window.soSearchOverlay.configure({
+                    // URL for normal search (menus, customers, vendors, ledgers)
+                    searchUrl: 'data/search-results.json',
+                    // URL for ISV item search (products/items)
+                    // For ISV search, parameters passed: query, stock, status
+                    isvSearchUrl: 'data/isv-search-results.json',
+                    // Debounce delay in milliseconds
+                    debounceDelay: 300,
+                    // Minimum query length to trigger search
+                    minQueryLength: 1,
+                    // Callback when search results are received
+                    onSearchResult: function(data, query, isISV) {
+                        console.log('Search results received:', { query, isISV, resultCount: isISV ? data.items?.length : (data.menus?.length + data.customers?.length + data.vendors?.length + data.ledgers?.length) });
+                    },
+                    // Callback when menu item is clicked
+                    onItemClick: function(id, type, element) {
+                        console.log('Item clicked:', { id, type });
+                        // Example: Handle item selection
+                        // if (type === 'item') {
+                        //     addItemToCart(id);
+                        // }
+                    },
+                    // Callback when account card is clicked
+                    onAccountClick: function(id, category, element) {
+                        console.log('Account clicked:', { id, category });
+                        // Example: Navigate to account page
+                        // window.location.href = `/${category}/${id}`;
+                    },
+                    // Callback when quick action is clicked
+                    onQuickActionClick: function(action, element) {
+                        console.log('Quick action clicked:', action);
+                        // Handle quick actions
+                        // switch(action) {
+                        //     case 'new-order': openNewOrderForm(); break;
+                        //     case 'new-customer': openNewCustomerForm(); break;
+                        // }
+                    }
+                });
+            }
+        });
+
+        // Mobile Search Button
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        if (mobileSearchBtn) {
+            mobileSearchBtn.addEventListener('click', function() {
+                if (window.soSearchOverlay) {
+                    window.soSearchOverlay.open();
+                }
+            });
+        }
+
+        // Mobile Outlet Dropdown
+        const mobileOutletBtn = document.getElementById('mobileOutletBtn');
+        const mobileOutletDropdown = document.querySelector('.so-mobile-outlet-dropdown');
+
+        if (mobileOutletBtn && mobileOutletDropdown) {
+            mobileOutletBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mobileOutletDropdown.classList.toggle('open');
+            });
+
+            mobileOutletDropdown.querySelectorAll('.so-mobile-outlet-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    mobileOutletDropdown.querySelectorAll('.so-mobile-outlet-item').forEach(function(i) {
+                        i.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    mobileOutletDropdown.classList.remove('open');
+                });
+            });
+        }
+
+        document.addEventListener('click', function(e) {
+            if (mobileOutletDropdown && !mobileOutletDropdown.contains(e.target)) {
+                mobileOutletDropdown.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

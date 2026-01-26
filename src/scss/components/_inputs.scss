@@ -1,0 +1,304 @@
+// ============================================
+// SIXORBIT UI - INPUTS
+// Text inputs, textareas, and selects
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// TEXT INPUT
+// ============================================
+
+.#{$so-prefix}input {
+  @include input-base;
+}
+
+// Input Sizes
+.#{$so-prefix}input-sm {
+  @include input-size($so-form-height-sm, spacing('2') + 2px, $so-form-font-size-sm);
+}
+
+.#{$so-prefix}input-lg {
+  @include input-size($so-form-height-lg, spacing('4'), $so-form-font-size-lg);
+}
+
+// ============================================
+// INPUT WITH ICON
+// ============================================
+
+.#{$so-prefix}input-wrapper {
+  position: relative;
+  display: block;
+
+  .#{$so-prefix}input {
+    padding-left: 40px;
+  }
+
+  .#{$so-prefix}input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: css-var('text-secondary');
+    pointer-events: none;
+
+    .material-icons {
+      font-size: 20px;
+    }
+  }
+
+  // Icon on right side
+  &.icon-right {
+    .#{$so-prefix}input {
+      padding-left: spacing('3');
+      padding-right: 40px;
+    }
+
+    .#{$so-prefix}input-icon {
+      left: auto;
+      right: 12px;
+    }
+  }
+
+  // Clear button
+  .#{$so-prefix}input-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: css-var('text-secondary');
+    transition: background $so-transition-base;
+
+    &:hover {
+      background: css-var('card-hover-bg');
+    }
+
+    .material-icons {
+      font-size: 18px;
+    }
+  }
+
+  .#{$so-prefix}input:not(:placeholder-shown) ~ .#{$so-prefix}input-clear {
+    display: flex;
+  }
+}
+
+// ============================================
+// TEXTAREA
+// ============================================
+
+.#{$so-prefix}textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  padding: spacing('2') + 2px spacing('3');
+  font-size: font-size('base');
+  font-family: inherit;
+  color: css-var('form-text');
+  background: css-var('form-bg');
+  border: 1px solid css-var('form-border');
+  border-radius: radius('base');
+  outline: none;
+  resize: vertical;
+  transition: border-color $so-transition-base, box-shadow $so-transition-base;
+
+  &::placeholder {
+    color: css-var('form-placeholder');
+  }
+
+  &:hover:not(:disabled):not(:focus) {
+    border-color: css-var('form-border-hover');
+  }
+
+  &:focus {
+    border-color: css-var('form-border-focus');
+    box-shadow: 0 0 0 3px alpha($so-primary, 0.1);
+  }
+
+  &:disabled {
+    background: css-var('form-disabled-bg');
+    color: css-var('form-disabled-text');
+    cursor: not-allowed;
+  }
+
+  @include dark-mode {
+    &:focus {
+      box-shadow: 0 0 0 3px alpha($so-purple, 0.15);
+    }
+  }
+}
+
+// ============================================
+// SELECT (Native)
+// ============================================
+
+.#{$so-prefix}select {
+  display: block;
+  width: 100%;
+  height: $so-form-height-md;
+  padding: 0 36px 0 spacing('3');
+  font-size: font-size('base');
+  font-family: inherit;
+  color: css-var('form-text');
+  background: css-var('form-bg');
+  border: 1px solid css-var('form-border');
+  border-radius: radius('base');
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235f6368' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color $so-transition-base, box-shadow $so-transition-base;
+
+  &:hover:not(:disabled) {
+    border-color: css-var('form-border-hover');
+  }
+
+  &:focus {
+    border-color: css-var('form-border-focus');
+    box-shadow: 0 0 0 3px alpha($so-primary, 0.1);
+  }
+
+  &:disabled {
+    background-color: css-var('form-disabled-bg');
+    color: css-var('form-disabled-text');
+    cursor: not-allowed;
+  }
+
+  @include dark-mode {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a3a8b8' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+
+    &:focus {
+      box-shadow: 0 0 0 3px alpha($so-purple, 0.15);
+    }
+  }
+}
+
+// Select Sizes
+.#{$so-prefix}select-sm {
+  height: $so-form-height-sm;
+  padding: 0 32px 0 spacing('2') + 2px;
+  font-size: $so-form-font-size-sm;
+}
+
+.#{$so-prefix}select-lg {
+  height: $so-form-height-lg;
+  padding: 0 40px 0 spacing('4');
+  font-size: $so-form-font-size-lg;
+}
+
+// ============================================
+// FORM GROUP
+// ============================================
+
+.#{$so-prefix}form-group {
+  margin-bottom: spacing('4');
+}
+
+.#{$so-prefix}form-label {
+  display: block;
+  margin-bottom: spacing('1') + 2px;
+  font-size: font-size('sm');
+  font-weight: font-weight('medium');
+  color: css-var('form-text');
+
+  &.required::after {
+    content: ' *';
+    color: css-var('accent-danger');
+  }
+}
+
+.#{$so-prefix}form-hint {
+  margin-top: spacing('1');
+  font-size: font-size('xs') + 0.0625rem;
+  color: css-var('text-secondary');
+}
+
+.#{$so-prefix}form-error {
+  margin-top: spacing('1');
+  font-size: font-size('xs') + 0.0625rem;
+  color: css-var('accent-danger');
+}
+
+// Error State
+.#{$so-prefix}form-group.has-error {
+  .#{$so-prefix}input,
+  .#{$so-prefix}select,
+  .#{$so-prefix}textarea {
+    border-color: css-var('accent-danger');
+
+    &:focus {
+      box-shadow: 0 0 0 3px alpha($so-danger, 0.15);
+    }
+  }
+}
+
+// Success State
+.#{$so-prefix}form-group.has-success {
+  .#{$so-prefix}input,
+  .#{$so-prefix}select,
+  .#{$so-prefix}textarea {
+    border-color: css-var('accent-success');
+
+    &:focus {
+      box-shadow: 0 0 0 3px alpha($so-success, 0.15);
+    }
+  }
+}
+
+// ============================================
+// INPUT GROUP
+// ============================================
+
+.#{$so-prefix}input-group {
+  display: flex;
+
+  .#{$so-prefix}input {
+    flex: 1;
+    border-radius: radius('base') 0 0 radius('base');
+  }
+
+  .#{$so-prefix}btn {
+    border-radius: 0 radius('base') radius('base') 0;
+    margin-left: -1px;
+  }
+
+  .#{$so-prefix}input-addon {
+    display: flex;
+    align-items: center;
+    padding: 0 spacing('3');
+    font-size: font-size('base');
+    color: css-var('text-secondary');
+    background: css-var('form-disabled-bg');
+    border: 1px solid css-var('form-border');
+
+    &:first-child {
+      border-radius: radius('base') 0 0 radius('base');
+      border-right: none;
+
+      + .#{$so-prefix}input {
+        border-radius: 0 radius('base') radius('base') 0;
+      }
+    }
+
+    &:last-child {
+      border-radius: 0 radius('base') radius('base') 0;
+      border-left: none;
+    }
+  }
+
+  .#{$so-prefix}input:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+}

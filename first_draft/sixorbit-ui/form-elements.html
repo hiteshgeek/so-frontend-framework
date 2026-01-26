@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SixOrbit ERP - Form Elements</title>
+
+    <!-- Prevent sidebar blink on page load - must be before any CSS -->
+    <script>
+    (function() {
+        try {
+            var state = localStorage.getItem('so-sidebar-state');
+            if (state === 'pinned') {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-pinned');
+            } else {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+            }
+        } catch(e) {
+            document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+        }
+    })();
+    </script>
+
+    <!-- Prevent theme flash on page load - must be before any CSS -->
+    <script>
+    (function() {
+        try {
+            var theme = localStorage.getItem('so-theme-preference') || 'sidebar-dark';
+            var effectiveTheme = theme;
+            var sidebar = null;
+
+            // Handle sidebar-dark theme
+            if (theme === 'sidebar-dark') {
+                effectiveTheme = 'light';
+                // We'll add the sidebar-dark class after DOM is ready
+                document.addEventListener('DOMContentLoaded', function() {
+                    sidebar = document.querySelector('.so-sidebar');
+                    if (sidebar) sidebar.classList.add('sidebar-dark');
+                });
+            } else if (theme === 'system') {
+                // Detect system preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    effectiveTheme = 'dark';
+                } else {
+                    effectiveTheme = 'light';
+                }
+            }
+
+            // Apply theme immediately to prevent flash
+            document.documentElement.setAttribute('data-theme', effectiveTheme);
+        } catch(e) {
+            // Default to sidebar-dark on error
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.addEventListener('DOMContentLoaded', function() {
+                var sidebar = document.querySelector('.so-sidebar');
+                if (sidebar) sidebar.classList.add('sidebar-dark');
+            });
+        }
+    })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Font Awesome (for compatibility with existing icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- SixOrbit Common Styles -->
+    <link rel="stylesheet" href="../common/sixorbit-common.css">
+
+    <!-- SixOrbit UI Components -->
+    <link rel="stylesheet" href="css/so-theme.css">
+    <link rel="stylesheet" href="css/so-navbar.css">
+    <link rel="stylesheet" href="css/so-sidebar.css">
+    <link rel="stylesheet" href="css/so-panel.css">
+    <link rel="stylesheet" href="css/so-forms.css">
+    <link rel="stylesheet" href="css/so-search.css">
+
+    <style>
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Offset scroll for sticky navbar */
+        html {
+            scroll-padding-top: calc(var(--so-navbar-height, 56px) + 100px);
+        }
+
+        /* Active navigation item styling */
+        .nav-jump-link.active {
+            background: var(--so-accent-primary) !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         SIDEBAR (Full Height - Industry Connect Style)
+         ============================================ -->
+    <aside class="so-sidebar">
+        <!-- Sidebar Header with Logo -->
+        <div class="so-sidebar-header">
+            <div class="so-sidebar-logo">TI</div>
+            <div class="so-sidebar-brand-info">
+                <div class="so-sidebar-brand-name">Trove Innovation</div>
+            </div>
+            <button class="so-sidebar-toggle" title="Pin sidebar">
+                <span class="toggle-circle"></span>
+            </button>
+        </div>
+
+        <div class="so-sidebar-scroll">
+            <!-- Menu will be generated from JSON data -->
+            <ul class="so-sidebar-nav">
+                <!-- Menu items will be loaded dynamically via soLayout.loadMenu() -->
+            </ul>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="so-sidebar-footer" data-server-ip="139.59.29.99" data-version="5.9" data-company-id="166262" data-licence-id="410002934">
+            <!-- Footer Buttons -->
+            <div class="so-sidebar-footer-buttons">
+                <button class="so-sidebar-footer-btn" id="sidebarInfoBtn" title="Connection Info">
+                    <span class="material-icons">info_outline</span>
+                </button>
+                <button class="so-sidebar-footer-btn" id="sidebarFullscreenBtn" title="Fullscreen">
+                    <span class="material-icons">fullscreen</span>
+                </button>
+                <button class="so-sidebar-footer-btn" id="sidebarSwitchCompanyBtn" title="Switch Company">
+                    <span class="material-icons">swap_horiz</span>
+                </button>
+                <button class="so-sidebar-footer-btn" id="sidebarLogoutBtn" title="Logout">
+                    <span class="material-icons">power_settings_new</span>
+                </button>
+            </div>
+
+            <!-- Info Popup (shows on info button click) -->
+            <div class="so-sidebar-info-popup" id="sidebarInfoPopup">
+                <div class="so-sidebar-info-popup-header">
+                    <span class="material-icons">dns</span>
+                    <span>Connection Info</span>
+                </div>
+                <div class="so-sidebar-info-popup-content">
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Server IP</span>
+                        <span class="so-sidebar-info-popup-value" id="popupServerIp">139.59.29.99</span>
+                    </div>
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Version</span>
+                        <span class="so-sidebar-info-popup-value" id="popupVersion">5.9</span>
+                    </div>
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Company ID</span>
+                        <span class="so-sidebar-info-popup-value" id="popupCompanyId">166262</span>
+                    </div>
+                    <div class="so-sidebar-info-popup-row">
+                        <span class="so-sidebar-info-popup-label">Licence ID</span>
+                        <span class="so-sidebar-info-popup-value" id="popupLicenceId">410002934</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Sidebar Overlay (for mobile) -->
+    <div class="so-sidebar-overlay"></div>
+
+    <!-- ============================================
+         NAVBAR (Starts after sidebar)
+         ============================================ -->
+    <nav class="so-navbar">
+        <div class="so-navbar-container">
+            <!-- Left Section (Mobile toggle only) -->
+            <div class="so-navbar-left">
+                <button class="so-navbar-toggle" data-toggle="sidebar" title="Toggle Menu">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+
+            <!-- Center Section - Search -->
+            <div class="so-navbar-center">
+                <div class="so-navbar-search">
+                    <div class="so-navbar-search-wrapper">
+                        <span class="material-icons so-navbar-search-icon">search</span>
+                        <input type="text" class="so-navbar-search-input" placeholder="Search what you want to do.. [CTRL + K]">
+                        <button class="so-navbar-search-clear">
+                            <span class="material-icons">close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="so-navbar-right">
+                <!-- Outlet Selector -->
+                <div class="so-navbar-outlet-selector">
+                    <button class="so-navbar-outlet-btn" title="Select Outlet">
+                        <span class="material-icons">storefront</span>
+                        <span class="outlet-text">All Outlets</span>
+                        <span class="material-icons">expand_more</span>
+                    </button>
+                    <div class="so-navbar-outlet-dropdown">
+                        <div class="so-navbar-outlet-search">
+                            <input type="text" placeholder="Search outlets...">
+                        </div>
+                        <div class="so-navbar-outlet-list">
+                            <div class="so-navbar-outlet-item selected" data-value="all">
+                                <span>All Outlets</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="head-office">
+                                <span>TROVE Head Office</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="basavanagudi">
+                                <span>TROVE Basavanagudi</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="jayanagar">
+                                <span>TROVE Jayanagar</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                            <div class="so-navbar-outlet-item" data-value="indiranagar">
+                                <span>TROVE Indiranagar</span>
+                                <span class="material-icons check-icon">check</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="so-navbar-divider"></div>
+
+                <!-- Settings Icon -->
+                <button class="so-navbar-icon-btn" title="Settings">
+                    <span class="material-icons">settings</span>
+                </button>
+
+                <!-- Theme Switcher -->
+                <div class="so-navbar-theme">
+                    <button class="so-navbar-icon-btn so-navbar-theme-btn" title="Theme">
+                        <span class="material-icons theme-icon">light_mode</span>
+                    </button>
+                    <div class="so-navbar-theme-dropdown">
+                        <div class="so-navbar-theme-header">Appearance</div>
+                        <button class="so-navbar-theme-option" data-theme="light">
+                            <span class="material-icons">light_mode</span>
+                            <span>Light</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="dark">
+                            <span class="material-icons">dark_mode</span>
+                            <span>Dark</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="system">
+                            <span class="material-icons">computer</span>
+                            <span>System</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="sidebar-dark">
+                            <span class="material-icons">contrast</span>
+                            <span>Dark Sidebar</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="so-navbar-divider"></div>
+
+                <!-- User Menu -->
+                <div class="so-navbar-user">
+                    <button class="so-navbar-user-btn">
+                        <div class="so-navbar-user-avatar" data-color="teal">R</div>
+                    </button>
+                    <div class="so-navbar-user-dropdown">
+                        <div class="so-navbar-user-header">
+                            <div class="so-navbar-user-header-avatar" data-color="teal">R</div>
+                            <div class="so-navbar-user-header-name">Rajeev Chauhan</div>
+                            <div class="so-navbar-user-header-email">rajeev@sixorbit.com</div>
+                        </div>
+                        <div class="so-navbar-user-menu">
+                            <a href="#" class="so-navbar-user-menu-item">
+                                <span class="material-icons">person</span>
+                                <span>My Profile</span>
+                            </a>
+                            <a href="#" class="so-navbar-user-menu-item">
+                                <span class="material-icons">settings</span>
+                                <span>Account Settings</span>
+                            </a>
+                        </div>
+                        <div class="so-navbar-user-footer">
+                            <button class="so-navbar-user-footer-btn" title="Fullscreen">
+                                <span class="material-icons">fullscreen</span>
+                            </button>
+                            <button class="so-navbar-user-footer-btn" title="Lock Screen">
+                                <span class="material-icons">lock</span>
+                            </button>
+                            <button class="so-navbar-user-footer-btn" title="Logout">
+                                <span class="material-icons">power_settings_new</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         MAIN CONTENT
+         ============================================ -->
+    <main class="so-main-content">
+        <div class="demo-content">
+            <div class="demo-header">
+                <h1 class="demo-title">Form Elements</h1>
+                <p class="demo-subtitle">SixOrbit UI form components library - buttons, inputs, dropdowns, checkboxes, and more.</p>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="so-panel" style="margin-bottom: 24px; position: sticky; top: calc(var(--so-navbar-height, 56px) + 16px); z-index: 100;">
+                <div class="so-panel-body" style="padding: 12px 20px;">
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                        <span style="font-size: 13px; font-weight: 600; color: var(--so-text-secondary); margin-right: 8px;">Jump to:</span>
+                        <a href="#buttons" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Buttons</a>
+                        <a href="#text-inputs" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Text Inputs</a>
+                        <a href="#dropdowns" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Dropdowns</a>
+                        <a href="#checkboxes-radio" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Checkboxes & Radio</a>
+                        <a href="#toggle-switches" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Toggle Switches</a>
+                        <a href="#input-groups" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Input Groups</a>
+                        <a href="#textarea" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Textarea</a>
+                        <a href="#native-select" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Native Select</a>
+                        <a href="#button-groups" class="so-btn so-btn-ghost so-btn-sm nav-jump-link">Button Groups</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Elements Panel -->
+            <div class="so-panel" style="margin-bottom: 24px;">
+                <div class="so-panel-header">
+                    <div class="so-panel-header-left">
+                        <div class="so-panel-icon">
+                            <span class="material-icons">input</span>
+                        </div>
+                        <div>
+                            <h3 class="so-panel-title">Form Elements Library</h3>
+                            <p class="so-panel-subtitle">Complete set of form components for building interfaces</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-panel-body">
+                    <!-- Buttons Section -->
+                    <div class="form-section" id="buttons">
+                        <h4 class="form-section-title">Buttons</h4>
+                        <p style="font-size: 13px; color: var(--so-text-secondary); margin-bottom: 20px;">
+                            Reusable button components with multiple variants, sizes, and states. Use <code>.so-btn</code> as the base class.
+                        </p>
+
+                        <!-- Button Variants -->
+                        <div style="margin-bottom: 32px;">
+                            <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--so-text-heading);">Button Variants</h5>
+                            <div class="form-section-content">
+                                <div class="button-group">
+                                    <button class="so-btn so-btn-primary">Primary</button>
+                                    <button class="so-btn so-btn-secondary">Secondary</button>
+                                    <button class="so-btn so-btn-success">Success</button>
+                                    <button class="so-btn so-btn-danger">Danger</button>
+                                    <button class="so-btn so-btn-warning">Warning</button>
+                                    <button class="so-btn so-btn-ghost">Ghost</button>
+                                    <button class="so-btn so-btn-link">Link</button>
+                                </div>
+                                <pre style="background: var(--so-card-hover-bg); padding: 12px; border-radius: 6px; margin-top: 12px; overflow-x: auto; font-size: 12px; color: var(--so-text-primary);"><code>&lt;!-- Primary - Main action --&gt;
+&lt;button class="so-btn so-btn-primary"&gt;Primary&lt;/button&gt;
+
+&lt;!-- Secondary - Alternative action --&gt;
+&lt;button class="so-btn so-btn-secondary"&gt;Secondary&lt;/button&gt;
+
+&lt;!-- Success - Positive action --&gt;
+&lt;button class="so-btn so-btn-success"&gt;Success&lt;/button&gt;
+
+&lt;!-- Danger - Destructive action --&gt;
+&lt;button class="so-btn so-btn-danger"&gt;Danger&lt;/button&gt;
+
+&lt;!-- Warning - Caution action --&gt;
+&lt;button class="so-btn so-btn-warning"&gt;Warning&lt;/button&gt;
+
+&lt;!-- Ghost - Transparent background --&gt;
+&lt;button class="so-btn so-btn-ghost"&gt;Ghost&lt;/button&gt;
+
+&lt;!-- Link - Text-only button --&gt;
+&lt;button class="so-btn so-btn-link"&gt;Link&lt;/button&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Button Sizes -->
+                        <div style="margin-bottom: 32px;">
+                            <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--so-text-heading);">Button Sizes</h5>
+                            <div class="form-section-content">
+                                <div class="button-group">
+                                    <button class="so-btn so-btn-primary so-btn-sm">Small</button>
+                                    <button class="so-btn so-btn-primary">Default (Medium)</button>
+                                    <button class="so-btn so-btn-primary so-btn-lg">Large</button>
+                                </div>
+                                <pre style="background: var(--so-card-hover-bg); padding: 12px; border-radius: 6px; margin-top: 12px; overflow-x: auto; font-size: 12px; color: var(--so-text-primary);"><code>&lt;!-- Small - Height: 32px --&gt;
+&lt;button class="so-btn so-btn-primary so-btn-sm"&gt;Small&lt;/button&gt;
+
+&lt;!-- Default/Medium - Height: 40px --&gt;
+&lt;button class="so-btn so-btn-primary"&gt;Default&lt;/button&gt;
+
+&lt;!-- Large - Height: 48px --&gt;
+&lt;button class="so-btn so-btn-primary so-btn-lg"&gt;Large&lt;/button&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Buttons with Icons -->
+                        <div style="margin-bottom: 32px;">
+                            <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--so-text-heading);">Buttons with Icons</h5>
+                            <div class="form-section-content">
+                                <div class="button-group">
+                                    <button class="so-btn so-btn-primary">
+                                        <span class="material-icons">add</span>
+                                        Add New
+                                    </button>
+                                    <button class="so-btn so-btn-secondary">
+                                        <span class="material-icons">edit</span>
+                                        Edit
+                                    </button>
+                                    <button class="so-btn so-btn-success">
+                                        <span class="material-icons">check</span>
+                                        Save
+                                    </button>
+                                    <button class="so-btn so-btn-danger">
+                                        <span class="material-icons">delete</span>
+                                        Delete
+                                    </button>
+                                </div>
+                                <pre style="background: var(--so-card-hover-bg); padding: 12px; border-radius: 6px; margin-top: 12px; overflow-x: auto; font-size: 12px; color: var(--so-text-primary);"><code>&lt;!-- Button with icon on the left --&gt;
+&lt;button class="so-btn so-btn-primary"&gt;
+    &lt;span class="material-icons"&gt;add&lt;/span&gt;
+    Add New
+&lt;/button&gt;
+
+&lt;!-- Button with icon on the right --&gt;
+&lt;button class="so-btn so-btn-primary"&gt;
+    Download
+    &lt;span class="material-icons"&gt;download&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Icon-Only Buttons -->
+                        <div style="margin-bottom: 32px;">
+                            <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--so-text-heading);">Icon-Only Buttons</h5>
+                            <div class="form-section-content">
+                                <div class="button-group">
+                                    <button class="so-btn so-btn-icon so-btn-primary" title="Add">
+                                        <span class="material-icons">add</span>
+                                    </button>
+                                    <button class="so-btn so-btn-icon so-btn-secondary" title="Edit">
+                                        <span class="material-icons">edit</span>
+                                    </button>
+                                    <button class="so-btn so-btn-icon so-btn-success" title="Check">
+                                        <span class="material-icons">check</span>
+                                    </button>
+                                    <button class="so-btn so-btn-icon so-btn-danger" title="Delete">
+                                        <span class="material-icons">delete</span>
+                                    </button>
+                                    <button class="so-btn so-btn-icon so-btn-ghost" title="More">
+                                        <span class="material-icons">more_vert</span>
+                                    </button>
+                                </div>
+                                <div class="button-group" style="margin-top: 12px;">
+                                    <button class="so-btn so-btn-icon so-btn-primary so-btn-sm" title="Small">
+                                        <span class="material-icons">add</span>
+                                    </button>
+                                    <button class="so-btn so-btn-icon so-btn-primary" title="Default">
+                                        <span class="material-icons">add</span>
+                                    </button>
+                                    <button class="so-btn so-btn-icon so-btn-primary so-btn-lg" title="Large">
+                                        <span class="material-icons">add</span>
+                                    </button>
+                                </div>
+                                <pre style="background: var(--so-card-hover-bg); padding: 12px; border-radius: 6px; margin-top: 12px; overflow-x: auto; font-size: 12px; color: var(--so-text-primary);"><code>&lt;!-- Icon-only button (square, equal width/height) --&gt;
+&lt;button class="so-btn so-btn-icon so-btn-primary" title="Add"&gt;
+    &lt;span class="material-icons"&gt;add&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Small icon button --&gt;
+&lt;button class="so-btn so-btn-icon so-btn-primary so-btn-sm"&gt;
+    &lt;span class="material-icons"&gt;add&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Button States -->
+                        <div style="margin-bottom: 32px;">
+                            <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--so-text-heading);">Button States</h5>
+                            <div class="form-section-content">
+                                <div class="button-group">
+                                    <button class="so-btn so-btn-primary">Normal</button>
+                                    <button class="so-btn so-btn-primary" disabled>Disabled</button>
+                                    <button class="so-btn so-btn-secondary">Normal</button>
+                                    <button class="so-btn so-btn-secondary" disabled>Disabled</button>
+                                </div>
+                                <pre style="background: var(--so-card-hover-bg); padding: 12px; border-radius: 6px; margin-top: 12px; overflow-x: auto; font-size: 12px; color: var(--so-text-primary);"><code>&lt;!-- Disabled button using HTML attribute --&gt;
+&lt;button class="so-btn so-btn-primary" disabled&gt;Disabled&lt;/button&gt;
+
+&lt;!-- Disabled button using CSS class --&gt;
+&lt;button class="so-btn so-btn-primary disabled"&gt;Disabled&lt;/button&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Button Groups -->
+                        <div style="margin-bottom: 32px;">
+                            <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--so-text-heading);">Button Groups</h5>
+                            <div class="form-section-content">
+                                <div class="so-btn-group">
+                                    <button class="so-btn">Left</button>
+                                    <button class="so-btn active">Center</button>
+                                    <button class="so-btn">Right</button>
+                                </div>
+                                <div class="so-btn-group" style="margin-top: 12px;">
+                                    <button class="so-btn">
+                                        <span class="material-icons">format_align_left</span>
+                                    </button>
+                                    <button class="so-btn active">
+                                        <span class="material-icons">format_align_center</span>
+                                    </button>
+                                    <button class="so-btn">
+                                        <span class="material-icons">format_align_right</span>
+                                    </button>
+                                    <button class="so-btn">
+                                        <span class="material-icons">format_align_justify</span>
+                                    </button>
+                                </div>
+                                <pre style="background: var(--so-card-hover-bg); padding: 12px; border-radius: 6px; margin-top: 12px; overflow-x: auto; font-size: 12px; color: var(--so-text-primary);"><code>&lt;!-- Button group - buttons appear connected --&gt;
+&lt;div class="so-btn-group"&gt;
+    &lt;button class="so-btn"&gt;Left&lt;/button&gt;
+    &lt;button class="so-btn active"&gt;Center&lt;/button&gt;
+    &lt;button class="so-btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Icon button group --&gt;
+&lt;div class="so-btn-group"&gt;
+    &lt;button class="so-btn"&gt;
+        &lt;span class="material-icons"&gt;format_align_left&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="so-btn active"&gt;
+        &lt;span class="material-icons"&gt;format_align_center&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Usage Guidelines -->
+                        <div style="margin-bottom: 20px;">
+                            <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--so-text-heading);">Usage Guidelines</h5>
+                            <div style="background: var(--so-card-hover-bg); padding: 16px; border-radius: 8px; font-size: 13px; color: var(--so-text-secondary);">
+                                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                                    <li><strong>Primary:</strong> Use for the main action on a page (Save, Submit, Create, etc.)</li>
+                                    <li><strong>Secondary:</strong> Use for alternative or less important actions (Cancel, Back, etc.)</li>
+                                    <li><strong>Success:</strong> Use for positive confirmations (Approve, Confirm, Complete)</li>
+                                    <li><strong>Danger:</strong> Use for destructive actions (Delete, Remove, Archive)</li>
+                                    <li><strong>Warning:</strong> Use for caution actions (Suspend, Disable, Force Update)</li>
+                                    <li><strong>Ghost:</strong> Use for tertiary actions with minimal visual weight</li>
+                                    <li><strong>Link:</strong> Use for navigation or inline actions within text</li>
+                                    <li><strong>Icon-only:</strong> Always include a <code>title</code> attribute for accessibility</li>
+                                    <li><strong>Button Groups:</strong> Use for related actions or toggle options (alignment, view modes)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Inputs Section -->
+                    <div class="form-section" id="text-inputs">
+                        <h4 class="form-section-title">Text Inputs</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Default Input</label>
+                                    <input type="text" class="so-input" placeholder="Enter text...">
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">With Icon</label>
+                                    <div class="so-input-wrapper">
+                                        <span class="so-input-icon">
+                                            <span class="material-icons">search</span>
+                                        </span>
+                                        <input type="text" class="so-input" placeholder="Search...">
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Disabled</label>
+                                    <input type="text" class="so-input" placeholder="Disabled input" disabled>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="so-form-group has-error">
+                                    <label class="so-form-label">With Error</label>
+                                    <input type="text" class="so-input" value="Invalid value">
+                                    <span class="so-form-error">This field has an error</span>
+                                </div>
+                                <div class="so-form-group has-success">
+                                    <label class="so-form-label">With Success</label>
+                                    <input type="text" class="so-input" value="Valid value">
+                                    <span class="so-form-hint" style="color: var(--so-btn-success-bg);">Looking good!</span>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">With Helper Text</label>
+                                    <input type="text" class="so-input" placeholder="Enter email">
+                                    <span class="so-form-hint">We'll never share your email</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label required">Required Field</label>
+                                    <input type="text" class="so-input" placeholder="This field is required">
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Small Input</label>
+                                    <input type="text" class="so-input so-input-sm" placeholder="Small size">
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Large Input</label>
+                                    <input type="text" class="so-input so-input-lg" placeholder="Large size">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Dropdowns Section -->
+                    <div class="form-section" id="dropdowns">
+                        <h4 class="form-section-title">Custom Dropdowns</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Basic Dropdown</label>
+                                    <div class="so-dropdown">
+                                        <button type="button" class="so-dropdown-trigger">
+                                            <span class="so-dropdown-selected">Select option</span>
+                                            <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                        </button>
+                                        <div class="so-dropdown-menu">
+                                            <div class="so-dropdown-item" data-value="option1">Option 1</div>
+                                            <div class="so-dropdown-item" data-value="option2">Option 2</div>
+                                            <div class="so-dropdown-item" data-value="option3">Option 3</div>
+                                            <div class="so-dropdown-item" data-value="option4">Option 4</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Searchable Dropdown</label>
+                                    <div class="so-searchable-dropdown">
+                                        <button type="button" class="so-searchable-dropdown-trigger">
+                                            <span class="so-searchable-selected placeholder">Select customer</span>
+                                            <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                        </button>
+                                        <div class="so-searchable-dropdown-menu">
+                                            <div class="so-searchable-dropdown-search">
+                                                <input type="text" class="so-input" placeholder="Search customers...">
+                                            </div>
+                                            <div class="so-searchable-dropdown-list">
+                                                <div class="so-searchable-dropdown-item" data-value="cust1">
+                                                    <span>Acme Corporation</span>
+                                                    <span class="material-icons check-icon">check</span>
+                                                </div>
+                                                <div class="so-searchable-dropdown-item" data-value="cust2">
+                                                    <span>Beta Industries</span>
+                                                    <span class="material-icons check-icon">check</span>
+                                                </div>
+                                                <div class="so-searchable-dropdown-item" data-value="cust3">
+                                                    <span>Gamma Solutions</span>
+                                                    <span class="material-icons check-icon">check</span>
+                                                </div>
+                                                <div class="so-searchable-dropdown-item" data-value="cust4">
+                                                    <span>Delta Enterprises</span>
+                                                    <span class="material-icons check-icon">check</span>
+                                                </div>
+                                                <div class="so-searchable-dropdown-item" data-value="cust5">
+                                                    <span>Epsilon Holdings</span>
+                                                    <span class="material-icons check-icon">check</span>
+                                                </div>
+                                                <div class="so-searchable-dropdown-item" data-value="cust6">
+                                                    <span>Zeta Technologies</span>
+                                                    <span class="material-icons check-icon">check</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Options Menu</label>
+                                    <div class="so-options-dropdown">
+                                        <button type="button" class="so-options-trigger">
+                                            <span class="material-icons">more_vert</span>
+                                        </button>
+                                        <div class="so-options-menu">
+                                            <div class="so-options-item" data-action="edit">
+                                                <span class="material-icons">edit</span>
+                                                <span>Edit</span>
+                                            </div>
+                                            <div class="so-options-item" data-action="duplicate">
+                                                <span class="material-icons">content_copy</span>
+                                                <span>Duplicate</span>
+                                            </div>
+                                            <div class="so-options-divider"></div>
+                                            <div class="so-options-item danger" data-action="delete">
+                                                <span class="material-icons">delete</span>
+                                                <span>Delete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkboxes & Radio Buttons Section -->
+                    <div class="form-section" id="checkboxes-radio">
+                        <h4 class="form-section-title">Checkboxes & Radio Buttons</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Checkboxes</label>
+                                    <div class="checkbox-group">
+                                        <label class="so-checkbox">
+                                            <input type="checkbox" checked>
+                                            <span class="so-checkbox-box">
+                                                <span class="material-icons">check</span>
+                                            </span>
+                                            <span class="so-checkbox-label">Checked option</span>
+                                        </label>
+                                        <label class="so-checkbox">
+                                            <input type="checkbox">
+                                            <span class="so-checkbox-box">
+                                                <span class="material-icons">check</span>
+                                            </span>
+                                            <span class="so-checkbox-label">Unchecked option</span>
+                                        </label>
+                                        <label class="so-checkbox">
+                                            <input type="checkbox" class="indeterminate-checkbox">
+                                            <span class="so-checkbox-box">
+                                                <span class="material-icons">check</span>
+                                            </span>
+                                            <span class="so-checkbox-label">Indeterminate</span>
+                                        </label>
+                                        <label class="so-checkbox">
+                                            <input type="checkbox" disabled>
+                                            <span class="so-checkbox-box">
+                                                <span class="material-icons">check</span>
+                                            </span>
+                                            <span class="so-checkbox-label">Disabled</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Radio Buttons</label>
+                                    <div class="so-radio-group vertical">
+                                        <label class="so-radio">
+                                            <input type="radio" name="demo-radio" checked>
+                                            <span class="so-radio-circle"></span>
+                                            <span class="so-radio-label">Option A</span>
+                                        </label>
+                                        <label class="so-radio">
+                                            <input type="radio" name="demo-radio">
+                                            <span class="so-radio-circle"></span>
+                                            <span class="so-radio-label">Option B</span>
+                                        </label>
+                                        <label class="so-radio">
+                                            <input type="radio" name="demo-radio">
+                                            <span class="so-radio-circle"></span>
+                                            <span class="so-radio-label">Option C</span>
+                                        </label>
+                                        <label class="so-radio">
+                                            <input type="radio" name="demo-radio" disabled>
+                                            <span class="so-radio-circle"></span>
+                                            <span class="so-radio-label">Disabled</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Toggle Switches Section -->
+                    <div class="form-section" id="toggle-switches">
+                        <h4 class="form-section-title">Toggle Switches</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Default Toggles</label>
+                                    <div class="toggle-group">
+                                        <label class="so-toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="so-toggle-track">
+                                                <span class="so-toggle-thumb"></span>
+                                            </span>
+                                            <span class="so-toggle-label">Enabled</span>
+                                        </label>
+                                        <label class="so-toggle">
+                                            <input type="checkbox">
+                                            <span class="so-toggle-track">
+                                                <span class="so-toggle-thumb"></span>
+                                            </span>
+                                            <span class="so-toggle-label">Off</span>
+                                        </label>
+                                        <label class="so-toggle">
+                                            <input type="checkbox" disabled checked>
+                                            <span class="so-toggle-track">
+                                                <span class="so-toggle-thumb"></span>
+                                            </span>
+                                            <span class="so-toggle-label">Locked On</span>
+                                        </label>
+                                        <label class="so-toggle">
+                                            <input type="checkbox" disabled>
+                                            <span class="so-toggle-track">
+                                                <span class="so-toggle-thumb"></span>
+                                            </span>
+                                            <span class="so-toggle-label">Locked Off</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Groups Section -->
+                    <div class="form-section" id="input-groups">
+                        <h4 class="form-section-title">Input Groups</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">With Prefix</label>
+                                    <div class="so-input-group">
+                                        <span class="so-input-addon">&#8377;</span>
+                                        <input type="text" class="so-input" placeholder="0.00">
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">With Suffix</label>
+                                    <div class="so-input-group">
+                                        <input type="text" class="so-input" placeholder="Username">
+                                        <span class="so-input-addon">@company.com</span>
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">With Button</label>
+                                    <div class="so-input-group">
+                                        <input type="text" class="so-input" placeholder="Search...">
+                                        <button class="so-btn so-btn-primary">
+                                            <span class="material-icons">search</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Icon Addon</label>
+                                    <div class="so-input-group">
+                                        <span class="so-input-addon">
+                                            <span class="material-icons">phone</span>
+                                        </span>
+                                        <input type="tel" class="so-input" placeholder="+91 00000 00000">
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Email + Button</label>
+                                    <div class="so-input-group">
+                                        <span class="so-input-addon">
+                                            <span class="material-icons">mail</span>
+                                        </span>
+                                        <input type="email" class="so-input" placeholder="email@example.com">
+                                        <button class="so-btn so-btn-secondary">Verify</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Textarea Section -->
+                    <div class="form-section" id="textarea">
+                        <h4 class="form-section-title">Textarea</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group" style="flex: 2;">
+                                    <label class="so-form-label">Description</label>
+                                    <textarea class="so-textarea" rows="4" placeholder="Enter your message here..."></textarea>
+                                    <span class="so-form-hint">Maximum 500 characters</span>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Short Notes</label>
+                                    <textarea class="so-textarea" rows="4" placeholder="Add notes..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Native Select Section -->
+                    <div class="form-section" id="native-select">
+                        <h4 class="form-section-title">Native Select</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Default Select</label>
+                                    <select class="so-select">
+                                        <option value="">Choose an option...</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">With Optgroup</label>
+                                    <select class="so-select">
+                                        <option value="">Select category...</option>
+                                        <optgroup label="Fruits">
+                                            <option value="apple">Apple</option>
+                                            <option value="banana">Banana</option>
+                                            <option value="orange">Orange</option>
+                                        </optgroup>
+                                        <optgroup label="Vegetables">
+                                            <option value="carrot">Carrot</option>
+                                            <option value="potato">Potato</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Disabled</label>
+                                    <select class="so-select" disabled>
+                                        <option value="">Disabled select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Small Select</label>
+                                    <select class="so-select so-select-sm">
+                                        <option value="">Small size...</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                    </select>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Large Select</label>
+                                    <select class="so-select so-select-lg">
+                                        <option value="">Large size...</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button Groups Section -->
+                    <div class="form-section" id="button-groups">
+                        <h4 class="form-section-title">Button Groups</h4>
+                        <div class="form-section-content">
+                            <div class="form-row">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Default Group</label>
+                                    <div class="so-btn-group">
+                                        <button class="so-btn">Left</button>
+                                        <button class="so-btn active">Middle</button>
+                                        <button class="so-btn">Right</button>
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">With Icons</label>
+                                    <div class="so-btn-group">
+                                        <button class="so-btn">
+                                            <span class="material-icons">format_align_left</span>
+                                        </button>
+                                        <button class="so-btn active">
+                                            <span class="material-icons">format_align_center</span>
+                                        </button>
+                                        <button class="so-btn">
+                                            <span class="material-icons">format_align_right</span>
+                                        </button>
+                                        <button class="so-btn">
+                                            <span class="material-icons">format_align_justify</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================
+         MOBILE FLOATING BOTTOM BAR
+         ============================================ -->
+    <div class="so-mobile-bottom-bar">
+        <!-- Search Button -->
+        <button class="so-mobile-bottom-item" id="mobileSearchBtn">
+            <span class="material-icons">search</span>
+            <span class="so-mobile-bottom-item-label">Search</span>
+        </button>
+
+        <!-- Outlet Selector -->
+        <div class="so-mobile-outlet-dropdown">
+            <button class="so-mobile-bottom-item" id="mobileOutletBtn">
+                <span class="material-icons">storefront</span>
+                <span class="so-mobile-bottom-item-label">Outlet</span>
+            </button>
+            <div class="so-mobile-outlet-menu">
+                <div class="so-mobile-outlet-header">Select Outlet</div>
+                <div class="so-mobile-outlet-list">
+                    <div class="so-mobile-outlet-item selected" data-value="all">
+                        <span>All Outlets</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                    <div class="so-mobile-outlet-item" data-value="head-office">
+                        <span>TROVE Head Office</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                    <div class="so-mobile-outlet-item" data-value="basavanagudi">
+                        <span>TROVE Basavanagudi</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                    <div class="so-mobile-outlet-item" data-value="jayanagar">
+                        <span>TROVE Jayanagar</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                    <div class="so-mobile-outlet-item" data-value="indiranagar">
+                        <span>TROVE Indiranagar</span>
+                        <span class="material-icons check-icon">check</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEARCH OVERLAY
+         ============================================ -->
+    <div class="so-search-overlay">
+        <div class="so-search-overlay-backdrop"></div>
+        <div class="so-search-overlay-content">
+            <!-- Search Header -->
+            <div class="so-search-overlay-header">
+                <div class="so-search-overlay-input-wrapper">
+                    <span class="material-icons so-search-overlay-icon">search</span>
+                    <input type="text" class="so-search-overlay-input" placeholder="Search products, menus, actions..." autofocus>
+                    <div class="so-search-overlay-shortcut">
+                        <kbd>ESC</kbd>
+                    </div>
+                    <button class="so-search-overlay-close" type="button" title="Close search">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search Body -->
+            <div class="so-search-overlay-body">
+                <!-- Quick Links -->
+                <div class="so-search-quick-links">
+                    <div class="so-search-quick-links-title">Quick Links</div>
+                    <div class="so-search-quick-links-grid">
+                        <a href="#" class="so-search-quick-link">
+                            <div class="so-search-quick-link-icon blue">
+                                <span class="material-icons">add_shopping_cart</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Order</span>
+                        </a>
+                        <a href="#" class="so-search-quick-link">
+                            <div class="so-search-quick-link-icon green">
+                                <span class="material-icons">person_add</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Customer</span>
+                        </a>
+                        <a href="#" class="so-search-quick-link">
+                            <div class="so-search-quick-link-icon orange">
+                                <span class="material-icons">receipt_long</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Invoice</span>
+                        </a>
+                        <a href="#" class="so-search-quick-link">
+                            <div class="so-search-quick-link-icon red">
+                                <span class="material-icons">shopping_cart</span>
+                            </div>
+                            <span class="so-search-quick-link-text">New Purchase</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div class="so-search-empty">
+                    <span class="material-icons so-search-empty-icon">search_off</span>
+                    <div class="so-search-empty-title">No results found</div>
+                    <div class="so-search-empty-text">Try adjusting your search</div>
+                </div>
+            </div>
+
+            <!-- Search Footer -->
+            <div class="so-search-overlay-footer">
+                <div class="so-search-overlay-footer-hint">
+                    <kbd>↑</kbd><kbd>↓</kbd> to navigate
+                    <kbd>↵</kbd> to select
+                    <kbd>ESC</kbd> to close
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SixOrbit UI JavaScript -->
+    <script src="js/so-search.js"></script>
+    <script src="js/so-layout.js"></script>
+    <script src="js/so-forms.js"></script>
+
+    <script>
+        // ============================================
+        // SIDEBAR MENU DATA (JSON-based menu generation)
+        // ============================================
+        const sidebarMenuData = [
+            // Dashboard
+            {
+                id: 'dashboard',
+                title: 'Dashboard',
+                icon: 'dashboard',
+                href: 'index.html'
+            },
+            // SixOrbit Element
+            {
+                id: 'sixorbit-element',
+                title: 'SixOrbit Element',
+                icon: 'widgets',
+                children: [
+                    { id: 'form-elements', title: 'Form Elements', icon: 'input', href: 'form-elements.html' }
+                ]
+            },
+            // Office Module
+            {
+                id: 'office',
+                title: 'Office',
+                icon: 'business',
+                children: [
+                    {
+                        id: 'purchase-indent',
+                        title: 'Purchase Indent',
+                        icon: 'assignment',
+                        children: [
+                            { id: 'create-pi', title: 'Create Purchase Indent', href: '#create-pi' },
+                            { id: 'pi-list', title: 'Purchase Indent List', href: '#pi-list' }
+                        ]
+                    },
+                    {
+                        id: 'purchase-order',
+                        title: 'Purchase Order',
+                        icon: 'shopping_cart',
+                        children: [
+                            { id: 'create-po', title: 'Create Purchase Order', href: '#create-po' },
+                            { id: 'po-list', title: 'Purchase Order List', href: '#po-list' }
+                        ]
+                    }
+                ]
+            },
+            // Finance Module
+            {
+                id: 'finance',
+                title: 'Finance',
+                icon: 'account_balance',
+                children: [
+                    {
+                        id: 'sales-invoice',
+                        title: 'Sales Invoice',
+                        icon: 'receipt_long',
+                        children: [
+                            { id: 'create-si', title: 'Create Sales Invoice', href: '#create-si' },
+                            { id: 'si-list', title: 'Sales Invoice List', href: '#si-list' }
+                        ]
+                    }
+                ]
+            },
+            // Sales Module
+            {
+                id: 'sales',
+                title: 'Sales',
+                icon: 'point_of_sale',
+                children: [
+                    {
+                        id: 'quotation',
+                        title: 'Quotation',
+                        icon: 'description',
+                        children: [
+                            { id: 'create-quote', title: 'Create Quotation', href: '#create-quote' },
+                            { id: 'quote-list', title: 'Quotation List', href: '#quote-list' }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Load the sidebar menu after DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.soLayout) {
+                window.soLayout.loadMenu(sidebarMenuData, 'form-elements');
+            }
+
+            // Set indeterminate state for the demo checkbox
+            const indeterminateCheckbox = document.querySelector('.indeterminate-checkbox');
+            if (indeterminateCheckbox) {
+                indeterminateCheckbox.indeterminate = true;
+            }
+
+            // Initialize searchable dropdown functionality
+            initSearchableDropdowns();
+
+            // Initialize jump navigation
+            initJumpNavigation();
+        });
+
+        // Jump Navigation - Highlight active section
+        function initJumpNavigation() {
+            const navLinks = document.querySelectorAll('.nav-jump-link');
+            const sections = document.querySelectorAll('[id^="buttons"], [id^="text-inputs"], [id^="dropdowns"], [id^="checkboxes-radio"], [id^="toggle-switches"], [id^="input-groups"], [id^="textarea"], [id^="native-select"], [id^="button-groups"]');
+
+            // Highlight active link on scroll
+            function highlightActiveLink() {
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 150;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Update on scroll
+            window.addEventListener('scroll', highlightActiveLink);
+
+            // Update on click
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Initial highlight
+            highlightActiveLink();
+        }
+
+        // Searchable Dropdown Implementation
+        function initSearchableDropdowns() {
+            document.querySelectorAll('.so-searchable-dropdown').forEach(dropdown => {
+                const trigger = dropdown.querySelector('.so-searchable-dropdown-trigger');
+                const menu = dropdown.querySelector('.so-searchable-dropdown-menu');
+                const searchInput = menu ? menu.querySelector('.so-input') : null;
+                const items = menu ? menu.querySelectorAll('.so-searchable-dropdown-item') : [];
+                const selectedText = trigger ? trigger.querySelector('.so-searchable-selected') : null;
+
+                if (!trigger || !menu) return;
+
+                // Toggle dropdown on trigger click
+                trigger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = dropdown.classList.contains('open');
+
+                    // Close all other dropdowns first
+                    document.querySelectorAll('.so-searchable-dropdown.open').forEach(d => {
+                        if (d !== dropdown) d.classList.remove('open');
+                    });
+                    document.querySelectorAll('.so-dropdown.open').forEach(d => {
+                        d.classList.remove('open');
+                    });
+                    document.querySelectorAll('.so-options-dropdown.open').forEach(d => {
+                        d.classList.remove('open');
+                    });
+
+                    dropdown.classList.toggle('open');
+
+                    // Focus search input when opened
+                    if (!isOpen && searchInput) {
+                        setTimeout(() => searchInput.focus(), 50);
+                    }
+                });
+
+                // Search functionality
+                if (searchInput) {
+                    searchInput.addEventListener('input', function(e) {
+                        const query = e.target.value.toLowerCase().trim();
+                        items.forEach(item => {
+                            const text = item.textContent.toLowerCase();
+                            item.style.display = (query === '' || text.includes(query)) ? '' : 'none';
+                        });
+                    });
+
+                    searchInput.addEventListener('click', e => e.stopPropagation());
+                }
+
+                // Item selection
+                items.forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.stopPropagation();
+
+                        // Update selected state
+                        items.forEach(i => i.classList.remove('selected'));
+                        item.classList.add('selected');
+
+                        // Update trigger text
+                        if (selectedText) {
+                            selectedText.textContent = item.querySelector('span:first-child').textContent;
+                            selectedText.classList.remove('placeholder');
+                        }
+
+                        // Clear search
+                        if (searchInput) {
+                            searchInput.value = '';
+                            items.forEach(i => i.style.display = '');
+                        }
+
+                        // Close dropdown
+                        dropdown.classList.remove('open');
+
+                        // Dispatch change event
+                        dropdown.dispatchEvent(new CustomEvent('change', {
+                            detail: { value: item.dataset.value, text: item.querySelector('span:first-child').textContent }
+                        }));
+                    });
+                });
+
+                // Prevent menu clicks from closing dropdown
+                menu.addEventListener('click', e => e.stopPropagation());
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.so-searchable-dropdown.open').forEach(d => {
+                    d.classList.remove('open');
+                });
+            });
+        }
+
+        // ============================================
+        // MOBILE BOTTOM BAR
+        // ============================================
+
+        // Mobile Search Button - opens search overlay
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        if (mobileSearchBtn) {
+            mobileSearchBtn.addEventListener('click', function() {
+                // Open search overlay (same as Ctrl+K)
+                if (window.soSearchOverlay) {
+                    window.soSearchOverlay.open();
+                }
+            });
+        }
+
+        // Mobile Outlet Dropdown
+        const mobileOutletBtn = document.getElementById('mobileOutletBtn');
+        const mobileOutletDropdown = document.querySelector('.so-mobile-outlet-dropdown');
+
+        if (mobileOutletBtn && mobileOutletDropdown) {
+            mobileOutletBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mobileOutletDropdown.classList.toggle('open');
+            });
+
+            // Handle outlet item click
+            mobileOutletDropdown.querySelectorAll('.so-mobile-outlet-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    // Remove selected from all items
+                    mobileOutletDropdown.querySelectorAll('.so-mobile-outlet-item').forEach(function(i) {
+                        i.classList.remove('selected');
+                    });
+                    // Add selected to clicked item
+                    this.classList.add('selected');
+
+                    // Sync with navbar outlet selector
+                    const value = this.dataset.value;
+                    const navbarOutletItems = document.querySelectorAll('.so-navbar-outlet-item');
+                    navbarOutletItems.forEach(function(navItem) {
+                        navItem.classList.remove('selected');
+                        if (navItem.dataset.value === value) {
+                            navItem.classList.add('selected');
+                        }
+                    });
+
+                    // Close dropdown
+                    mobileOutletDropdown.classList.remove('open');
+                });
+            });
+        }
+
+        // Close mobile outlet dropdown on outside click
+        document.addEventListener('click', function(e) {
+            if (mobileOutletDropdown && !mobileOutletDropdown.contains(e.target)) {
+                mobileOutletDropdown.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

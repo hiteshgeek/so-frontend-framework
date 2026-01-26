@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trial Balance - Developer Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../common/sixorbit-common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        body{margin:0;padding:0;background:var(--so-grey-50);font-family:var(--so-font-family)}.doc-container{max-width:1200px;margin:0 auto;padding:var(--so-space-3xl) var(--so-space-xl)}.doc-header{background:linear-gradient(135deg,#4285f4 0%,#1a73e8 100%);color:white;padding:var(--so-space-4xl) var(--so-space-3xl);border-radius:var(--so-radius-lg);margin-bottom:var(--so-space-3xl);box-shadow:var(--so-shadow-2)}.doc-header h1{margin:0 0 var(--so-space-md) 0;font-size:36px;font-weight:500}.doc-header p{margin:0;font-size:18px;opacity:.95}.back-btn{display:inline-flex;align-items:center;gap:var(--so-space-sm);padding:var(--so-space-sm) var(--so-space-lg);background:rgba(255,255,255,.2);color:white;text-decoration:none;border-radius:var(--so-radius-sm);margin-bottom:var(--so-space-lg);transition:all var(--so-transition-base)}.back-btn:hover{background:rgba(255,255,255,.3)}.doc-section{background:white;padding:var(--so-space-3xl);border-radius:var(--so-radius-lg);margin-bottom:var(--so-space-2xl);box-shadow:var(--so-shadow-1)}.doc-section h2{font-size:28px;font-weight:500;color:var(--so-grey-900);margin:0 0 var(--so-space-lg) 0;padding-bottom:var(--so-space-md);border-bottom:2px solid var(--so-grey-200)}.doc-section h3{font-size:20px;font-weight:500;color:var(--so-grey-900);margin:var(--so-space-2xl) 0 var(--so-space-md) 0}.doc-section p{font-size:15px;line-height:1.7;color:var(--so-grey-700);margin-bottom:var(--so-space-lg)}.doc-section ul,.doc-section ol{font-size:15px;line-height:1.7;color:var(--so-grey-700);margin-bottom:var(--so-space-lg)}.doc-section li{margin-bottom:var(--so-space-sm)}.code-block{position:relative;margin:var(--so-space-lg) 0;border-radius:var(--so-radius-md);overflow:hidden;box-shadow:var(--so-shadow-1)}.code-header{background:#2d3748;color:white;padding:var(--so-space-md) var(--so-space-lg);display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500}.code-language{display:flex;align-items:center;gap:var(--so-space-sm)}.copy-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;padding:4px 12px;border-radius:var(--so-radius-sm);font-size:12px;cursor:pointer;display:flex;align-items:center;gap:4px;transition:all var(--so-transition-base)}.copy-btn:hover{background:rgba(255,255,255,.2)}.copy-btn.copied{background:#34a853;border-color:#34a853}.copy-btn .material-icons{font-size:16px}pre{margin:0;padding:var(--so-space-xl);background:#1e293b!important;overflow-x:auto}code{font-family:'Roboto Mono',monospace;font-size:13px;line-height:1.6}.inline-code{background:var(--so-grey-100);padding:2px 6px;border-radius:var(--so-radius-sm);font-family:'Roboto Mono',monospace;font-size:13px;color:#e74c3c}.info-box{background:var(--so-info-light);border-left:4px solid var(--so-info);padding:var(--so-space-lg);border-radius:var(--so-radius-sm);margin:var(--so-space-lg) 0}.param-table{width:100%;border-collapse:collapse;margin:var(--so-space-lg) 0;font-size:14px}.param-table th{background:var(--so-grey-100);padding:var(--so-space-md);text-align:left;font-weight:500;border-bottom:2px solid var(--so-grey-300)}.param-table td{padding:var(--so-space-md);border-bottom:1px solid var(--so-grey-200)}.param-table tr:last-child td{border-bottom:none}
+    </style>
+</head>
+<body>
+    <div class="doc-container">
+        <div class="doc-header">
+            <a href="../../index.html" class="back-btn">
+                <span class="material-icons">arrow_back</span>
+                Back to Main Menu
+            </a>
+            <h1>Trial Balance Plugin</h1>
+            <p>Developer Documentation - Version 1.0.0</p>
+        </div>
+
+        <div class="doc-section">
+            <h2>Overview</h2>
+            <p>The Trial Balance plugin displays a hierarchical financial report with multi-level nested groups and ledgers, featuring search functionality, advanced filters, and interactive expand/collapse controls embedded directly in the table header.</p>
+        </div>
+
+        <div class="doc-section">
+            <h2>Features</h2>
+            <ul>
+                <li>Multi-level hierarchical nested groups and ledgers (unlimited depth)</li>
+                <li>All toggle controls embedded in table header (Expand All, Collapse All, Opening, Transactions, Closing, Dr/Cr)</li>
+                <li>Real-time search with highlighting</li>
+                <li>Advanced numeric filters for Opening, Debit, Credit, and Closing balances</li>
+                <li>Interactive expand/collapse functionality for groups</li>
+                <li>Clickable groups and ledgers with callbacks</li>
+                <li>Sticky headers and columns for better navigation</li>
+                <li>Responsive design for all devices</li>
+                <li>Material Design icons and Google Sans typography</li>
+            </ul>
+        </div>
+
+        <div class="doc-section">
+            <h2>Installation</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>HTML</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-html">&lt;!-- Google Fonts & Icons --&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"&gt;
+
+&lt;!-- Common & Plugin Styles --&gt;
+&lt;link rel="stylesheet" href="../../common/sixorbit-common.css"&gt;
+&lt;link rel="stylesheet" href="trial-balance.css"&gt;
+
+&lt;!-- Plugin JavaScript --&gt;
+&lt;script src="trial-balance.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Basic Usage</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-javascript">const trialBalance = new TrialBalance('container-id', {
+    data: trialBalanceData,
+    showOpening: true,
+    showTransactions: true,
+    showClosing: true,
+    showDebitCreditSeparately: true,
+    onGroupClick: function(group) {
+        console.log('Group clicked:', group);
+    },
+    onLedgerClick: function(ledger) {
+        console.log('Ledger clicked:', ledger);
+    }
+});</code></pre>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Configuration Options</h2>
+            <table class="param-table">
+                <thead>
+                    <tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="inline-code">data</code></td><td>Object</td><td><code class="inline-code">null</code></td><td>Trial balance data object</td></tr>
+                    <tr><td><code class="inline-code">showOpening</code></td><td>Boolean</td><td><code class="inline-code">true</code></td><td>Show opening balance columns</td></tr>
+                    <tr><td><code class="inline-code">showTransactions</code></td><td>Boolean</td><td><code class="inline-code">true</code></td><td>Show transaction columns</td></tr>
+                    <tr><td><code class="inline-code">showClosing</code></td><td>Boolean</td><td><code class="inline-code">true</code></td><td>Show closing balance columns</td></tr>
+                    <tr><td><code class="inline-code">showDebitCreditSeparately</code></td><td>Boolean</td><td><code class="inline-code">true</code></td><td>Show separate Dr/Cr columns</td></tr>
+                    <tr><td><code class="inline-code">onGroupClick</code></td><td>Function</td><td><code class="inline-code">null</code></td><td>Callback when group clicked</td></tr>
+                    <tr><td><code class="inline-code">onLedgerClick</code></td><td>Function</td><td><code class="inline-code">null</code></td><td>Callback when ledger clicked</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="doc-section">
+            <h2>Data Format</h2>
+            <p>Trial Balance expects a hierarchical nested JSON structure with groups containing children arrays and ledgers as leaf nodes.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JSON</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-json">{
+    "company": "Company Name",
+    "period": {
+        "start": "2025-04-01",
+        "end": "2026-03-31"
+    },
+    "trialBalance": {
+        "id": "root",
+        "name": "Root",
+        "type": "group",
+        "children": [
+            {
+                "id": "assets",
+                "name": "Assets",
+                "type": "group",
+                "children": [
+                    {
+                        "id": "cash",
+                        "name": "Cash in Hand",
+                        "type": "ledger",
+                        "openingDr": 50000.00,
+                        "openingCr": 0,
+                        "debit": 125000.00,
+                        "credit": 85000.00,
+                        "closingDr": 90000.00,
+                        "closingCr": 0
+                    }
+                ]
+            }
+        ]
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>API Methods</h2>
+
+            <h3>loadData(data)</h3>
+            <p>Load new trial balance data into the plugin.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-javascript">trialBalance.loadData(newData);</code></pre>
+            </div>
+
+            <h3>expandAll()</h3>
+            <p>Expand all groups in the hierarchy.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-javascript">trialBalance.expandAll();</code></pre>
+            </div>
+
+            <h3>collapseAll()</h3>
+            <p>Collapse all groups in the hierarchy.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-javascript">trialBalance.collapseAll();</code></pre>
+            </div>
+
+            <h3>toggleDebitCreditSeparate()</h3>
+            <p>Toggle between separate Dr/Cr columns and combined net columns.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-javascript">trialBalance.toggleDebitCreditSeparate();</code></pre>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Search and Filters</h2>
+            <p>Trial Balance includes powerful search and filtering capabilities.</p>
+
+            <h3>Search Functionality</h3>
+            <p>The search feature allows real-time filtering of groups and ledgers by name. Simply type in the search box to filter the tree. Matching nodes and their parent hierarchy are shown, while non-matching nodes are hidden.</p>
+
+            <h3>Numeric Filters</h3>
+            <p>Advanced numeric filters allow you to filter nodes based on Opening, Debit, Credit, or Closing balances. Each filter supports multiple operators:</p>
+            <ul>
+                <li><strong>Greater than (>)</strong> - Show nodes with balance greater than specified value</li>
+                <li><strong>Less than (&lt;)</strong> - Show nodes with balance less than specified value</li>
+                <li><strong>Equal to (=)</strong> - Show nodes with balance equal to specified value</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>Pro Tip:</strong> Combine search with numeric filters for powerful data exploration. For example, search for "Bank" and filter for Closing > 100000 to find all bank accounts with closing balance over 100,000.
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Events and Callbacks</h2>
+
+            <h3>onGroupClick(groupData)</h3>
+            <p>Called when a group row is clicked. Receives the group node data object.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-javascript">onGroupClick: function(groupData) {
+    console.log('Group ID:', groupData.id);
+    console.log('Group Name:', groupData.name);
+    // Open detailed group view, navigate to another page, etc.
+}</code></pre>
+            </div>
+
+            <h3>onLedgerClick(ledgerData)</h3>
+            <p>Called when a ledger row is clicked. Receives the ledger node data object.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language"><span class="material-icons">code</span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><span class="material-icons">content_copy</span>Copy</button>
+                </div>
+                <pre><code class="language-javascript">onLedgerClick: function(ledgerData) {
+    console.log('Ledger ID:', ledgerData.id);
+    console.log('Ledger Name:', ledgerData.name);
+    // Open ledger details, show transactions, etc.
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Browser Support</h2>
+            <ul>
+                <li>Chrome (latest)</li>
+                <li>Firefox (latest)</li>
+                <li>Safari (latest)</li>
+                <li>Edge (latest)</li>
+                <li>Mobile browsers (iOS Safari, Chrome Mobile)</li>
+            </ul>
+        </div>
+
+        <div class="doc-section">
+            <h2>Example</h2>
+            <p>See <a href="index.html"><code class="inline-code">index.html</code></a> for a complete working example with sample data.</p>
+        </div>
+    </div>
+
+    <script>
+        hljs.highlightAll();
+        function copyCode(button) {
+            const code = button.closest('.code-block').querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(function() {
+                button.classList.add('copied');
+                button.innerHTML = '<span class="material-icons">check</span>Copied!';
+                setTimeout(function() {
+                    button.classList.remove('copied');
+                    button.innerHTML = '<span class="material-icons">content_copy</span>Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

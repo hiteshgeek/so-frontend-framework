@@ -1,0 +1,185 @@
+// ============================================
+// SIXORBIT UI - TOGGLES
+// Toggle switch component
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// TOGGLE SWITCH
+// ============================================
+
+.#{$so-prefix}toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: spacing('2') + 2px;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.#{$so-prefix}toggle-track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: css-var('form-border');
+  border-radius: 12px;
+  transition: background $so-transition-normal;
+  flex-shrink: 0;
+}
+
+.#{$so-prefix}toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: $so-white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform $so-transition-normal;
+}
+
+// Checked state
+.#{$so-prefix}toggle input:checked + .#{$so-prefix}toggle-track {
+  background: css-var('accent-primary');
+
+  .#{$so-prefix}toggle-thumb {
+    transform: translateX(20px);
+  }
+}
+
+// Hover state
+.#{$so-prefix}toggle:hover .#{$so-prefix}toggle-track {
+  background: css-var('text-muted');
+}
+
+.#{$so-prefix}toggle:hover input:checked + .#{$so-prefix}toggle-track {
+  background: css-var('accent-primary-hover', $so-primary-hover);
+}
+
+// Disabled state
+.#{$so-prefix}toggle input:disabled + .#{$so-prefix}toggle-track {
+  background: css-var('form-border');
+  opacity: 0.5;
+  cursor: not-allowed;
+
+  .#{$so-prefix}toggle-thumb {
+    box-shadow: none;
+  }
+}
+
+// Label
+.#{$so-prefix}toggle-label {
+  font-size: font-size('base');
+  color: css-var('form-text');
+}
+
+.#{$so-prefix}toggle input:disabled ~ .#{$so-prefix}toggle-label {
+  color: css-var('form-disabled-text');
+}
+
+// Focus state
+.#{$so-prefix}toggle input:focus-visible + .#{$so-prefix}toggle-track {
+  box-shadow: 0 0 0 3px alpha($so-primary, 0.2);
+}
+
+// ============================================
+// TOGGLE SIZE VARIANTS
+// ============================================
+
+// Small Toggle
+.#{$so-prefix}toggle-sm {
+  .#{$so-prefix}toggle-track {
+    width: 36px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .#{$so-prefix}toggle-thumb {
+    width: 16px;
+    height: 16px;
+  }
+
+  input:checked + .#{$so-prefix}toggle-track .#{$so-prefix}toggle-thumb {
+    transform: translateX(16px);
+  }
+}
+
+// Large Toggle
+.#{$so-prefix}toggle-lg {
+  .#{$so-prefix}toggle-track {
+    width: 52px;
+    height: 28px;
+    border-radius: 14px;
+  }
+
+  .#{$so-prefix}toggle-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  input:checked + .#{$so-prefix}toggle-track .#{$so-prefix}toggle-thumb {
+    transform: translateX(24px);
+  }
+}
+
+// ============================================
+// TOGGLE WITH ICONS
+// ============================================
+
+.#{$so-prefix}toggle-icons {
+  .#{$so-prefix}toggle-track {
+    .#{$so-prefix}toggle-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      transition: opacity $so-transition-base;
+    }
+
+    .#{$so-prefix}toggle-icon-off {
+      right: 6px;
+      color: css-var('text-muted');
+      opacity: 1;
+    }
+
+    .#{$so-prefix}toggle-icon-on {
+      left: 6px;
+      color: $so-white;
+      opacity: 0;
+    }
+  }
+
+  input:checked + .#{$so-prefix}toggle-track {
+    .#{$so-prefix}toggle-icon-off {
+      opacity: 0;
+    }
+
+    .#{$so-prefix}toggle-icon-on {
+      opacity: 1;
+    }
+  }
+}
+
+// ============================================
+// TOGGLE COLORS
+// ============================================
+
+.#{$so-prefix}toggle-success input:checked + .#{$so-prefix}toggle-track {
+  background: css-var('accent-success');
+}
+
+.#{$so-prefix}toggle-danger input:checked + .#{$so-prefix}toggle-track {
+  background: css-var('accent-danger');
+}
+
+.#{$so-prefix}toggle-warning input:checked + .#{$so-prefix}toggle-track {
+  background: css-var('accent-warning');
+}

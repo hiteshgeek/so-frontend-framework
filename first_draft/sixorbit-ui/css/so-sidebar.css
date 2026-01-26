@@ -1,0 +1,1479 @@
+/**
+ * SixOrbit UI - Sidebar Component
+ * Full-height sidebar with hover-expand functionality
+ * Industry Connect inspired design
+ */
+
+/* ============================================
+   CSS VARIABLES - Sidebar Tokens
+   ============================================ */
+:root {
+    /* Sidebar Dimensions */
+    --so-sidebar-width: 260px;
+    --so-sidebar-collapsed-width: 56px;
+
+    /* Breadcrumb Bar Height */
+    --so-breadcrumb-bar-height: 26px;
+
+    /* Sidebar Colors */
+    --so-sidebar-bg: #ffffff;
+    --so-sidebar-border: #e8eaed;
+    --so-sidebar-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.15);
+
+    /* Menu Items - Vuexy inspired colors */
+    --so-sidebar-item-color: #5d596c;
+    --so-sidebar-item-hover-bg: #f1f3f4;
+    --so-sidebar-item-active-bg: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+    --so-sidebar-item-active-color: #ffffff;
+    --so-sidebar-item-icon-color: #5d596c;
+
+    /* Navbar offset when sidebar is present */
+    --so-navbar-left-offset: var(--so-sidebar-width);
+}
+
+/* ============================================
+   DARK MODE - Sidebar Variables (Blue-tinted)
+   To customize colors, simply change the values below
+   ============================================ */
+[data-theme="dark"] {
+    /* Sidebar Colors - Dark tones */
+    --so-sidebar-bg: #2f3349;
+    --so-sidebar-border: #3b4056;
+    --so-sidebar-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+
+    /* Menu Items - Blue color for active state */
+    --so-sidebar-item-color: #d0d4e4;
+    --so-sidebar-item-hover-bg: #3b4056;
+    --so-sidebar-item-active-bg: #1a73e8;
+    --so-sidebar-item-active-color: #ffffff;
+    --so-sidebar-item-icon-color: #a3a8b8;
+}
+
+/* Dark mode specific sidebar overrides */
+[data-theme="dark"] .so-sidebar-logo {
+    background: #7367f0;
+}
+
+[data-theme="dark"] .so-sidebar-brand-name {
+    color: #e7e9f0;
+}
+
+[data-theme="dark"] .so-sidebar-brand-subtitle {
+    color: #a3a8b8;
+}
+
+[data-theme="dark"] .so-sidebar-section {
+    color: #6c7293;
+}
+
+[data-theme="dark"] .so-sidebar-submenu .so-sidebar-link {
+    color: #a3a8b8;
+}
+
+[data-theme="dark"] .so-sidebar-submenu .so-sidebar-link:hover {
+    color: #e7e9f0;
+}
+
+[data-theme="dark"] .so-sidebar-toggle {
+    border-color: #474d64;
+}
+
+[data-theme="dark"] .so-sidebar-toggle:hover {
+    border-color: #8ab4f8;
+}
+
+[data-theme="dark"] .so-sidebar.pinned .so-sidebar-toggle {
+    border-color: #8ab4f8;
+}
+
+[data-theme="dark"] .so-sidebar.pinned .so-sidebar-toggle .toggle-circle {
+    background: #8ab4f8;
+}
+
+[data-theme="dark"] .so-sidebar.collapsed .so-sidebar-section::before {
+    background: #3b4056;
+}
+
+[data-theme="dark"] .so-sidebar-footer {
+    border-top-color: #3b4056;
+    background: #25293c;
+}
+
+[data-theme="dark"] .so-sidebar-footer-btn {
+    color: #a3a8b8;
+}
+
+[data-theme="dark"] .so-sidebar-footer-btn:hover {
+    background: #3b4056;
+    color: #e7e9f0;
+}
+
+[data-theme="dark"] .so-sidebar-info-popup {
+    background: #2f3349;
+    border-color: #3b4056;
+}
+
+[data-theme="dark"] .so-sidebar-info-popup-header {
+    border-bottom-color: #3b4056;
+    color: #e7e9f0;
+}
+
+[data-theme="dark"] .so-sidebar-info-popup-header .material-icons {
+    color: #7367f0;
+}
+
+[data-theme="dark"] .so-sidebar-info-popup-row {
+    border-bottom-color: #3b4056;
+}
+
+[data-theme="dark"] .so-sidebar-info-popup-label {
+    color: #a3a8b8;
+}
+
+[data-theme="dark"] .so-sidebar-info-popup-value {
+    color: #e7e9f0;
+}
+
+[data-theme="dark"] .so-sidebar-footer-item {
+    color: #a3a8b8;
+}
+
+[data-theme="dark"] .so-sidebar-footer-item:hover {
+    background: #3b4056;
+    color: #e7e9f0;
+}
+
+/* Dark mode open menu highlight */
+[data-theme="dark"] .so-sidebar-item.open > .so-sidebar-link {
+    color: #8ab4f8;
+}
+
+[data-theme="dark"] .so-sidebar-item.open > .so-sidebar-link .so-sidebar-icon {
+    color: #8ab4f8;
+}
+
+/* Dark mode active/current item - full width background */
+[data-theme="dark"] .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link,
+[data-theme="dark"] .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link {
+    background: rgba(138, 180, 248, 0.15);
+    color: #8ab4f8;
+}
+
+[data-theme="dark"] .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link .so-sidebar-icon,
+[data-theme="dark"] .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link .so-sidebar-icon {
+    color: #8ab4f8;
+}
+
+/* ============================================
+   SIDEBAR BASE STYLES - Full Height
+   ============================================ */
+.so-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--so-sidebar-width);
+    background: var(--so-sidebar-bg);
+    border-right: 1px solid var(--so-sidebar-border);
+    overflow: hidden;
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Google Sans', 'Google Sans Text', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Disable transitions on initial page load to prevent animation flash */
+.so-sidebar.no-transition,
+.so-sidebar.no-transition *,
+.so-sidebar.no-transition .so-sidebar-submenu {
+    transition: none !important;
+}
+
+/* ============================================
+   INITIAL STATE - Prevent blink on page load
+   These styles apply immediately based on html class set by inline script
+   ============================================ */
+
+/* Hide sidebar until state is determined (prevents flash of wrong state) */
+html:not(.sidebar-ready) .so-sidebar,
+html:not(.sidebar-ready) .so-navbar,
+html:not(.sidebar-ready) .so-main-content {
+    visibility: hidden;
+}
+
+/* Initial collapsed state - no transitions */
+html.sidebar-collapsed .so-sidebar {
+    width: var(--so-sidebar-collapsed-width);
+}
+
+html.sidebar-collapsed .so-navbar {
+    left: var(--so-sidebar-collapsed-width);
+}
+
+html.sidebar-collapsed .so-main-content {
+    margin-left: var(--so-sidebar-collapsed-width);
+}
+
+/* Initial collapsed - hide text elements */
+html.sidebar-collapsed .so-sidebar .so-sidebar-brand-info,
+html.sidebar-collapsed .so-sidebar .so-sidebar-text,
+html.sidebar-collapsed .so-sidebar .so-sidebar-arrow,
+html.sidebar-collapsed .so-sidebar .so-sidebar-section span,
+html.sidebar-collapsed .so-sidebar .so-sidebar-footer-item span:not(.material-icons) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Initial pinned state */
+html.sidebar-pinned .so-sidebar {
+    width: var(--so-sidebar-width);
+}
+
+html.sidebar-pinned .so-navbar {
+    left: var(--so-sidebar-width);
+}
+
+html.sidebar-pinned .so-main-content {
+    margin-left: var(--so-sidebar-width);
+}
+
+/* ============================================
+   SIDEBAR HEADER - Logo & Brand
+   ============================================ */
+.so-sidebar-header {
+    padding: 0 16px 0 6px;  /* Reduced left padding for logo alignment */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    height: var(--so-navbar-height, 56px);
+    border-bottom: 1px solid var(--so-sidebar-border);
+}
+
+.so-sidebar-logo {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    background: #1a73e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.so-sidebar-brand-info {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.so-sidebar-brand-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #202124;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.so-sidebar-brand-subtitle {
+    font-size: 12px;
+    color: #5f6368;
+    white-space: nowrap;
+}
+
+/* Toggle button to pin/unpin sidebar - Circular checkbox style */
+.so-sidebar-toggle {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid #bdc1c6;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.so-sidebar-toggle:hover {
+    border-color: #1a73e8;
+}
+
+/* Inner circle for checked state */
+.so-sidebar-toggle .toggle-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.15s ease;
+}
+
+/* Checked state - when sidebar is pinned */
+.so-sidebar.pinned .so-sidebar-toggle {
+    border-color: #1a73e8;
+}
+
+.so-sidebar.pinned .so-sidebar-toggle .toggle-circle {
+    background: #1a73e8;
+}
+
+/* Scrollable content area */
+.so-sidebar-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px 0;
+    /* Hide scrollbar but keep scroll functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+.so-sidebar-scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* ============================================
+   NAVIGATION LIST
+   ============================================ */
+.so-sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ============================================
+   SECTION HEADING (FOR VENDOR, ADMIN, etc.)
+   ============================================ */
+.so-sidebar-section {
+    padding: 10px 12px 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #9aa0a6;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+/* ============================================
+   MENU ITEM
+   ============================================ */
+.so-sidebar-item {
+    margin: 1px 4px;
+}
+
+.so-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 8px 8px 12px;  /* Extra left padding for better icon alignment */
+    text-decoration: none;
+    color: var(--so-sidebar-item-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    min-height: 36px;
+}
+
+.so-sidebar-link:hover {
+    background: var(--so-sidebar-item-hover-bg);
+    text-decoration: none;
+    color: var(--so-sidebar-item-color);
+}
+
+/* Active/Current State */
+.so-sidebar-item.active > .so-sidebar-link,
+.so-sidebar-item.current > .so-sidebar-link {
+    background: var(--so-sidebar-item-active-bg);
+    color: var(--so-sidebar-item-active-color);
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+
+.so-sidebar-item.active > .so-sidebar-link .so-sidebar-icon,
+.so-sidebar-item.current > .so-sidebar-link .so-sidebar-icon {
+    color: var(--so-sidebar-item-active-color);
+}
+
+.so-sidebar-item.active > .so-sidebar-link .so-sidebar-arrow,
+.so-sidebar-item.current > .so-sidebar-link .so-sidebar-arrow {
+    color: var(--so-sidebar-item-active-color);
+}
+
+/* Icon - Default gray color */
+.so-sidebar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    flex-shrink: 0;
+    color: var(--so-sidebar-item-icon-color);
+    font-size: 20px;
+    transition: color 0.15s ease;
+}
+
+.so-sidebar-icon .material-icons,
+.so-sidebar-icon .material-symbols-rounded,
+.so-sidebar-icon .fa {
+    font-size: 20px;
+}
+
+/* Text */
+.so-sidebar-text {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+/* Arrow for expandable items */
+.so-sidebar-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    color: var(--so-sidebar-item-icon-color);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.so-sidebar-arrow .material-icons {
+    font-size: 18px;
+}
+
+.so-sidebar-item.open > .so-sidebar-link .so-sidebar-arrow {
+    transform: rotate(90deg);
+}
+
+/* ============================================
+   SUBMENU - Consistent indentation per level
+   Using padding instead of margin to keep arrows inside sidebar
+   Indentation: 12px per level
+   ============================================ */
+.so-sidebar-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+/* Open menu items - subtle blue highlight */
+.so-sidebar-item.open > .so-sidebar-link {
+    color: #1a73e8;
+}
+
+.so-sidebar-item.open > .so-sidebar-link .so-sidebar-icon {
+    color: #1a73e8;
+}
+
+.so-sidebar-item.open > .so-sidebar-submenu {
+    max-height: 2000px;
+    transition: max-height 0.3s ease-in;
+}
+
+.so-sidebar-submenu .so-sidebar-item {
+    margin: 0;
+    position: relative;
+}
+
+/* ============================================
+   SUBMENU INDENTATION - Consistent increments
+   Base: 8px, Increment: 16px per level
+   Level 1: 16px (doubled from 8px - items like Purchase Indent under Office)
+   Level 2: 32px (items like Create Purchase Indent under Purchase Indent)
+   Level 3: 48px
+   Level 4: 64px
+   ============================================ */
+
+/* Level 1 submenu items - with icons (e.g., Purchase Indent under Office) */
+.so-sidebar-submenu .so-sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 6px 32px 6px 20px;  /* Extra left padding to align with parent menu icons */
+    font-size: 13px;
+    margin: 0 4px;
+    border-radius: 6px;
+    min-height: 32px;
+    color: #5d596c;
+    position: relative;
+    gap: 10px;
+}
+
+/* Level 1 icons - smaller size */
+.so-sidebar-submenu .so-sidebar-link .so-sidebar-icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    margin-top: 0;
+}
+
+.so-sidebar-submenu .so-sidebar-link .so-sidebar-icon .material-icons {
+    font-size: 18px;
+}
+
+.so-sidebar-submenu .so-sidebar-link .so-sidebar-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+.so-sidebar-submenu .so-sidebar-link:hover {
+    color: #202124;
+}
+
+/* Active/Current submenu item - full width background */
+/* Use same padding as siblings, just extend background to left edge */
+/* margin-left: -100px extends background left, padding compensates for text alignment */
+/* margin-right: -4px extends to right edge (since siblings have margin: 0 4px) */
+/* padding-left includes: 100px (margin compensation) + 4px (sibling left margin) + level padding */
+.so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link,
+.so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link {
+    background: rgba(26, 115, 232, 0.12);
+    color: #1a73e8;
+    box-shadow: none;
+    margin-left: -100px;
+    margin-right: -4px;
+    padding-left: calc(100px + 4px + 16px);  /* 100px + sibling margin + base padding */
+    padding-right: 36px;  /* 32px + 4px to compensate for negative right margin */
+    border-radius: 0;
+}
+
+.so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link .so-sidebar-icon,
+.so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link .so-sidebar-icon {
+    color: #1a73e8;
+}
+
+/* ============================================
+   NESTED SUBMENUS - Level 2 and deeper
+   Level 2+ items have no icons, just text
+   Each level adds 16px padding for consistent indentation
+   ============================================ */
+
+/* Level 2 links - 32px (e.g., Create Purchase Indent under Purchase Indent) */
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-link {
+    padding-left: 32px;
+}
+
+/* Hide icons at Level 2 and deeper */
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-link .so-sidebar-icon {
+    display: none;
+}
+
+/* Level 2 current items - same padding as siblings */
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link,
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link {
+    padding-left: calc(100px + 4px + 32px);  /* 100px + sibling margin + level padding */
+}
+
+/* Level 3 links - 32px + 16px = 48px */
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-link {
+    padding-left: 48px;
+}
+
+/* Level 3 current items */
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link,
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link {
+    padding-left: calc(100px + 4px + 48px);
+}
+
+/* Level 4 links - 48px + 16px = 64px */
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-link {
+    padding-left: 64px;
+}
+
+/* Level 4 current items */
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link,
+.so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link {
+    padding-left: calc(100px + 4px + 64px);
+}
+
+/* ============================================
+   SUBMENU ITEMS WITH CHILDREN - Arrow indicator
+   Arrow stays at fixed position from right edge for ALL levels
+   ============================================ */
+
+/* Arrow style for all submenu items with children - same position for all levels */
+.so-sidebar-submenu .so-sidebar-item.has-children > .so-sidebar-link .so-sidebar-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+}
+
+.so-sidebar-submenu .so-sidebar-item.has-children.open > .so-sidebar-link .so-sidebar-arrow {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* ============================================
+   SECTION DIVIDER
+   ============================================ */
+.so-sidebar-divider {
+    height: 1px;
+    background: var(--so-sidebar-border);
+    margin: 12px 16px;
+}
+
+/* ============================================
+   BADGE ON MENU ITEM
+   ============================================ */
+.so-sidebar-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #ffffff;
+    background: #ea4335;
+    border-radius: 10px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.so-sidebar-badge.primary {
+    background: #1a73e8;
+}
+
+.so-sidebar-badge.success {
+    background: #34a853;
+}
+
+/* ============================================
+   SIDEBAR FOOTER
+   ============================================ */
+.so-sidebar-footer {
+    padding: 6px 8px;
+    border-top: 1px solid var(--so-sidebar-border);
+    background: var(--so-sidebar-bg);
+    position: relative;
+}
+
+/* Footer Buttons Container */
+.so-sidebar-footer-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Footer Button */
+.so-sidebar-footer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: #5f6368;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.so-sidebar-footer-btn:hover {
+    background: var(--so-sidebar-item-hover-bg);
+    color: #202124;
+}
+
+.so-sidebar-footer-btn:active {
+    transform: scale(0.95);
+}
+
+.so-sidebar-footer-btn .material-icons {
+    font-size: 20px;
+}
+
+/* Info Popup */
+.so-sidebar-info-popup {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 8px;
+    right: 8px;
+    background: var(--so-sidebar-bg);
+    border: 1px solid var(--so-sidebar-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.2s ease;
+    z-index: 1050;
+}
+
+.so-sidebar-info-popup.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.so-sidebar-info-popup-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--so-sidebar-border);
+    font-size: 13px;
+    font-weight: 600;
+    color: #202124;
+}
+
+.so-sidebar-info-popup-header .material-icons {
+    font-size: 18px;
+    color: var(--so-primary);
+}
+
+.so-sidebar-info-popup-content {
+    padding: 12px 16px;
+}
+
+.so-sidebar-info-popup-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.so-sidebar-info-popup-row:last-child {
+    border-bottom: none;
+}
+
+.so-sidebar-info-popup-label {
+    font-size: 12px;
+    color: #5f6368;
+}
+
+.so-sidebar-info-popup-value {
+    font-size: 12px;
+    font-weight: 500;
+    color: #202124;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Legacy footer item (keep for backward compatibility) */
+.so-sidebar-footer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    color: #5f6368;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.so-sidebar-footer-item:hover {
+    background: var(--so-sidebar-item-hover-bg);
+    color: #202124;
+}
+
+.so-sidebar-footer-item .material-icons {
+    font-size: 20px;
+}
+
+/* ============================================
+   COLLAPSED / MINI SIDEBAR
+   ============================================ */
+.so-sidebar.collapsed {
+    width: var(--so-sidebar-collapsed-width);
+}
+
+/* On hover, expand the mini sidebar */
+.so-sidebar.collapsed:hover {
+    width: var(--so-sidebar-width);
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Header in collapsed state */
+.so-sidebar.collapsed .so-sidebar-header {
+    padding: 8px;
+    justify-content: center;
+    gap: 0;
+}
+
+.so-sidebar.collapsed .so-sidebar-logo {
+    margin: 0;
+}
+
+.so-sidebar.collapsed .so-sidebar-brand-info,
+.so-sidebar.collapsed .so-sidebar-toggle {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    min-width: 0;
+    flex: 0 0 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    /* Delay hiding until sidebar width transition completes */
+    transition: opacity 0.1s ease 0.15s, visibility 0.1s ease 0.15s, width 0s ease 0.25s, flex 0s ease 0.25s;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-header {
+    padding: 12px 16px 12px 6px;  /* Reduced left padding for logo alignment */
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-logo {
+    margin: 0;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-brand-info {
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    flex: 1;
+    overflow: visible;
+    /* Show immediately on hover */
+    transition: opacity 0.15s ease, visibility 0.15s ease, width 0s ease, flex 0s ease;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-toggle {
+    opacity: 1;
+    visibility: visible;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    overflow: visible;
+    /* Show immediately on hover */
+    transition: opacity 0.15s ease, visibility 0.15s ease, width 0s ease, flex 0s ease;
+}
+
+/* Menu items in collapsed state */
+.so-sidebar.collapsed .so-sidebar-item {
+    margin: 1px 4px;
+}
+
+.so-sidebar.collapsed .so-sidebar-link {
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    min-height: 40px;
+}
+
+.so-sidebar.collapsed .so-sidebar-icon {
+    margin: 0;
+    position: relative;
+    left: 0;
+}
+
+.so-sidebar.collapsed .so-sidebar-text,
+.so-sidebar.collapsed .so-sidebar-arrow,
+.so-sidebar.collapsed .so-sidebar-badge {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    min-width: 0;
+    flex: 0 0 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    /* Delay hiding until sidebar width transition completes */
+    transition: opacity 0.1s ease 0.15s, visibility 0.1s ease 0.15s, width 0s ease 0.25s, flex 0s ease 0.25s;
+}
+
+/* Section becomes a separator line in collapsed view */
+.so-sidebar.collapsed .so-sidebar-section {
+    padding: 0;
+    margin: 0 4px;
+    min-height: 28px;
+    height: 28px;
+    background: transparent;
+    font-size: 0;
+    color: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.so-sidebar.collapsed .so-sidebar-section::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #e8eaed;
+}
+
+.so-sidebar.collapsed .so-sidebar-submenu {
+    display: none !important;
+}
+
+/* On hover expand - show all elements */
+/* Only apply margin to top-level items, not submenu items */
+.so-sidebar.collapsed:hover > .so-sidebar-scroll > .so-sidebar-nav > .so-sidebar-item {
+    margin: 1px 4px;
+}
+
+/* Submenu items should keep margin: 0 to match pinned state */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-item {
+    margin: 0;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-link {
+    padding: 8px 8px 8px 12px;  /* Add extra left padding to reduce icon shift on hover */
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-icon {
+    margin: 0;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-text,
+.so-sidebar.collapsed:hover .so-sidebar-arrow,
+.so-sidebar.collapsed:hover .so-sidebar-badge {
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    overflow: visible;
+    /* Show immediately on hover */
+    transition: opacity 0.15s ease, visibility 0.15s ease, width 0s ease, flex 0s ease;
+}
+
+/* Restore flex properties on hover */
+.so-sidebar.collapsed:hover .so-sidebar-text {
+    flex: 1;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-arrow,
+.so-sidebar.collapsed:hover .so-sidebar-badge {
+    flex: 0 0 auto;
+}
+
+/* Restore section text on hover */
+.so-sidebar.collapsed:hover .so-sidebar-section {
+    display: flex;
+    padding: 10px 12px 4px 12px;
+    margin: 0;
+    min-height: 28px;
+    height: auto;
+    background: transparent;
+    font-size: 11px;
+    color: #9aa0a6;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-section::before {
+    display: none;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-submenu {
+    display: block !important;
+}
+
+/* ============================================
+   COLLAPSED HOVER - Submenu indentation must match pinned state
+   Ensure consistent indentation when sidebar floats on hover
+   ============================================ */
+
+/* Level 1 submenu links when collapsed:hover */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-link {
+    padding: 6px 32px 6px 20px;  /* Add extra left padding to align with parent icons */
+    margin: 0 4px;
+    gap: 10px;  /* Match base submenu link gap */
+    min-height: 32px;  /* Match base submenu link min-height */
+}
+
+/* Level 2 submenu links when collapsed:hover */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-link {
+    padding-left: 32px;
+}
+
+/* Level 3 submenu links when collapsed:hover */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-link {
+    padding-left: 48px;
+}
+
+/* Level 4 submenu links when collapsed:hover */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-link {
+    padding-left: 64px;
+}
+
+/* Current items in collapsed:hover state - maintain same padding as siblings */
+/* The margin-left: -100px extends background left, padding compensates for text alignment */
+/* margin-right: -4px extends to right edge (since siblings have margin: 0 4px) */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link,
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link {
+    margin-left: -100px;
+    margin-right: -4px;
+    padding-left: calc(100px + 4px + 16px);  /* 100px + sibling margin + base padding */
+    padding-right: 36px;  /* 32px padding + 4px to compensate for negative margin */
+}
+
+/* Level 2 current items - sibling has padding-left: 32px */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link,
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link {
+    padding-left: calc(100px + 4px + 32px);  /* 100px + sibling margin + level padding */
+}
+
+/* Level 3 current items - sibling has padding-left: 48px */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link,
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link {
+    padding-left: calc(100px + 4px + 48px);
+}
+
+/* Level 4 current items - sibling has padding-left: 64px */
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link,
+.so-sidebar.collapsed:hover .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link {
+    padding-left: calc(100px + 4px + 64px);
+}
+
+/* Footer in collapsed state */
+.so-sidebar.collapsed .so-sidebar-footer-item {
+    justify-content: center;
+    padding: 12px;
+}
+
+.so-sidebar.collapsed .so-sidebar-footer-item span:not(.material-icons) {
+    display: none;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-footer-item {
+    justify-content: flex-start;
+    padding: 10px 12px;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-footer-item span:not(.material-icons) {
+    display: inline;
+}
+
+/* Footer Buttons - Collapsed state (show only info icon) */
+.so-sidebar.collapsed .so-sidebar-footer {
+    padding: 6px 8px; /* Match base/pinned state */
+}
+
+.so-sidebar.collapsed .so-sidebar-footer-buttons {
+    justify-content: center;
+}
+
+/* Hide all buttons except info button in collapsed state */
+.so-sidebar.collapsed .so-sidebar-footer-btn {
+    display: none;
+}
+
+.so-sidebar.collapsed .so-sidebar-footer-btn#sidebarInfoBtn {
+    display: flex;
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+}
+
+.so-sidebar.collapsed .so-sidebar-info-popup {
+    left: calc(100% + 8px);
+    right: auto;
+    bottom: 0;
+    width: 220px;
+}
+
+/* Footer Buttons - Collapsed hover state (show all buttons) */
+.so-sidebar.collapsed:hover .so-sidebar-footer {
+    padding: 6px 8px; /* Match base/pinned state */
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-footer-buttons {
+    justify-content: space-around;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-footer-btn {
+    display: flex;
+    flex: 1;
+}
+
+/* Reset info button's fixed sizing when hovering to match other buttons */
+.so-sidebar.collapsed:hover .so-sidebar-footer-btn#sidebarInfoBtn {
+    flex: 1;
+    width: auto;
+}
+
+.so-sidebar.collapsed:hover .so-sidebar-info-popup {
+    left: 8px;
+    right: 8px;
+    bottom: calc(100% + 8px);
+    width: auto;
+}
+
+/* Tooltip on collapsed sidebar (when not hovering the sidebar) */
+.so-sidebar.collapsed .so-sidebar-link[data-title]::after {
+    content: attr(data-title);
+    position: absolute;
+    left: calc(100% + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 12px;
+    background: #202124;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: nowrap;
+    border-radius: 4px;
+    z-index: 1050;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.so-sidebar.collapsed .so-sidebar-link:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide tooltip when sidebar is expanded on hover */
+.so-sidebar.collapsed:hover .so-sidebar-link::after {
+    display: none;
+}
+
+/* ============================================
+   NAVBAR & MAIN CONTENT OFFSET
+   ============================================ */
+.so-navbar {
+    left: var(--so-sidebar-width);
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.so-main-content {
+    margin-left: var(--so-sidebar-width);
+    padding-top: var(--so-navbar-height, 56px);
+    min-height: 100vh;
+    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When sidebar is collapsed */
+body.sidebar-collapsed .so-navbar {
+    left: var(--so-sidebar-collapsed-width);
+}
+
+body.sidebar-collapsed .so-main-content {
+    margin-left: var(--so-sidebar-collapsed-width);
+}
+
+/* When sidebar hover-expands, navbar stays in place */
+.so-sidebar.collapsed:hover ~ .so-navbar,
+.so-sidebar.collapsed:hover ~ .so-main-content {
+    /* Don't move - sidebar overlays */
+}
+
+/* ============================================
+   MOBILE / RESPONSIVE STYLES
+   ============================================ */
+@media (max-width: 1024px) {
+    :root {
+        --so-sidebar-width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .so-sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .so-sidebar.open {
+        transform: translateX(0);
+    }
+
+    /* On mobile, ignore collapsed state - always show full sidebar when open */
+    .so-sidebar.collapsed {
+        width: 280px;
+    }
+
+    .so-sidebar.collapsed.open {
+        width: 280px;
+    }
+
+    /* Hide the pin toggle button on mobile */
+    .so-sidebar .so-sidebar-toggle {
+        display: none !important;
+    }
+
+    /* Show all elements in mobile regardless of collapsed state */
+    .so-sidebar.collapsed .so-sidebar-text,
+    .so-sidebar.collapsed .so-sidebar-arrow,
+    .so-sidebar.collapsed .so-sidebar-badge,
+    .so-sidebar.collapsed .so-sidebar-brand-info {
+        display: block !important;
+        opacity: 1 !important;
+        width: auto !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-section {
+        padding: 10px 12px 4px 12px !important;
+        margin: 0 !important;
+        height: auto !important;
+        font-size: 11px !important;
+        color: #9aa0a6 !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-section::before {
+        display: none !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-link {
+        padding: 6px 8px !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-icon {
+        margin: 0 !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-header {
+        padding: 12px 16px !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-logo {
+        margin: 0 !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-submenu {
+        display: block !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-footer-item {
+        justify-content: flex-start !important;
+        padding: 10px 12px !important;
+    }
+
+    .so-sidebar.collapsed .so-sidebar-footer-item span:not(.material-icons) {
+        display: inline !important;
+    }
+
+    /* Hide tooltips on mobile */
+    .so-sidebar.collapsed .so-sidebar-link::after {
+        display: none !important;
+    }
+
+    .so-navbar {
+        left: 0 !important;
+    }
+
+    .so-main-content {
+        margin-left: 0 !important;
+    }
+
+    /* Mobile overlay */
+    .so-sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1035;
+        display: none;
+    }
+
+    .so-sidebar-overlay.active {
+        display: block;
+    }
+}
+
+/* ============================================
+   PINNED STATE (not collapsed)
+   ============================================ */
+.so-sidebar.pinned {
+    width: var(--so-sidebar-width);
+}
+
+.so-sidebar.pinned .so-sidebar-toggle .material-icons::before {
+    content: 'push_pin';
+}
+
+/* ============================================
+   SIDEBAR DARK MODE (Independent of global theme)
+   Matches full dark mode styles exactly
+   ============================================ */
+.so-sidebar.sidebar-dark {
+    --so-sidebar-bg: #2f3349;
+    --so-sidebar-border: #3b4056;
+    --so-sidebar-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+    --so-sidebar-item-color: #d0d4e4;
+    --so-sidebar-item-hover-bg: #3b4056;
+    --so-sidebar-item-active-bg: #1a73e8;
+    --so-sidebar-item-active-color: #ffffff;
+    --so-sidebar-item-icon-color: #a3a8b8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-footer {
+    border-top-color: #3b4056;
+    background: #25293c;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-footer-btn {
+    color: #a3a8b8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-footer-btn:hover {
+    background: #3b4056;
+    color: #e7e9f0;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-header {
+    border-bottom-color: #3b4056;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-logo {
+    background: #1a73e8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-brand-name {
+    color: #e7e9f0;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-brand-tagline,
+.so-sidebar.sidebar-dark .so-sidebar-brand-subtitle {
+    color: #a3a8b8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-section,
+.so-sidebar.sidebar-dark .so-sidebar-section-title {
+    color: #6c7293;
+}
+
+/* Submenu styles for sidebar-dark - match full dark mode */
+.so-sidebar.sidebar-dark .so-sidebar-submenu .so-sidebar-link {
+    color: #a3a8b8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-submenu .so-sidebar-link:hover {
+    color: #e7e9f0;
+}
+
+/* Toggle button styles */
+.so-sidebar.sidebar-dark .so-sidebar-toggle {
+    border-color: #474d64;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-toggle:hover {
+    border-color: #8ab4f8;
+}
+
+.so-sidebar.sidebar-dark.pinned .so-sidebar-toggle {
+    border-color: #8ab4f8;
+}
+
+.so-sidebar.sidebar-dark.pinned .so-sidebar-toggle .toggle-circle {
+    background: #8ab4f8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-menu::-webkit-scrollbar-thumb {
+    background: #3b4056;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-menu::-webkit-scrollbar-thumb:hover {
+    background: #474d64;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup {
+    background: #2f3349;
+    border-color: #3b4056;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup-title {
+    color: #ffffff;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup-item {
+    color: #d0d4e4;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup-label {
+    color: #a3a8b8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup-header {
+    border-bottom-color: #3b4056;
+    color: #e7e9f0;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup-header .material-icons {
+    color: #7367f0;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup-row {
+    border-bottom-color: #3b4056;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-info-popup-value {
+    color: #e7e9f0;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-footer-item {
+    color: #a3a8b8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-footer-item:hover {
+    background: #3b4056;
+    color: #e7e9f0;
+}
+
+/* Dark sidebar open menu highlight */
+.so-sidebar.sidebar-dark .so-sidebar-item.open > .so-sidebar-link {
+    color: #8ab4f8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-item.open > .so-sidebar-link .so-sidebar-icon {
+    color: #8ab4f8;
+}
+
+/* Dark sidebar active/current item in submenu - full width background */
+.so-sidebar.sidebar-dark .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link,
+.so-sidebar.sidebar-dark .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link {
+    background: rgba(138, 180, 248, 0.15);
+    color: #8ab4f8;
+}
+
+.so-sidebar.sidebar-dark .so-sidebar-submenu .so-sidebar-item.active > .so-sidebar-link .so-sidebar-icon,
+.so-sidebar.sidebar-dark .so-sidebar-submenu .so-sidebar-item.current > .so-sidebar-link .so-sidebar-icon {
+    color: #8ab4f8;
+}
+
+/* Collapsed state - section separator line */
+.so-sidebar.sidebar-dark.collapsed .so-sidebar-section::before {
+    background: #3b4056;
+}

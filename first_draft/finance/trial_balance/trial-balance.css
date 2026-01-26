@@ -1,0 +1,391 @@
+/**
+ * Trial Balance Report Plugin Styles
+ * Framework-agnostic styling for Trial Balance report
+ * Version: 1.0.0
+ * Uses common sixorbit-common.css for consistent UI elements
+ */
+
+/* Container */
+.tb-statement {
+    font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+/* Metric Cards Grid - 4 per row by default */
+.tb-statement .so-metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Ensure metric values wrap properly and don't overflow */
+.tb-statement .so-metric-value {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.3;
+}
+
+.tb-statement .so-metric-card {
+    min-width: 0;
+}
+
+/* Header */
+.tb-header {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+}
+
+.tb-company-name {
+    font-size: 28px;
+    font-weight: 500;
+    color: #202124;
+    margin: 0 0 4px 0;
+}
+
+.tb-report-title {
+    font-size: 20px;
+    font-weight: 400;
+    color: #5f6368;
+    margin: 0 0 8px 0;
+}
+
+.tb-period {
+    font-size: 14px;
+    color: #5f6368;
+}
+
+/* Control Buttons */
+.tb-control-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    background: white;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #202124;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tb-control-btn:hover {
+    background: #f8f9fa;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+}
+
+.tb-control-btn.active {
+    background: #e8f0fe;
+    color: #1a73e8;
+    border-color: #1a73e8;
+}
+
+.tb-control-btn .material-symbols-rounded {
+    font-size: 18px;
+}
+
+/* Tree Card */
+.tb-tree-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    overflow: hidden;
+    border: 1px solid #e8eaed;
+    margin-bottom: 20px;
+}
+
+.tb-tree-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8eaed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tb-tree-title {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.tb-tree-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Tree View */
+.tb-tree-view {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: auto;
+    position: relative;
+}
+
+.tb-tree-node {
+    border-bottom: 1px solid #f1f3f4;
+    transition: background 0.2s;
+}
+
+.tb-tree-node:hover {
+    background: #f1f3f4;
+}
+
+.tb-tree-node.level-0 {
+    background: linear-gradient(90deg, rgba(66, 133, 244, 0.05) 0%, transparent 100%);
+}
+
+.tb-tree-node.level-0:hover {
+    background: linear-gradient(90deg, rgba(66, 133, 244, 0.08) 0%, #f1f3f4 100%);
+}
+
+.tb-node-content {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: default;
+    user-select: none;
+}
+
+.tb-node-indent {
+    display: inline-block;
+}
+
+.tb-node-toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    flex-shrink: 0;
+    color: #5f6368;
+    transition: transform 0.2s;
+}
+
+.tb-node-toggle.expanded {
+    transform: rotate(90deg);
+}
+
+.tb-node-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.tb-node-icon.group {
+    color: #4285f4;
+}
+
+.tb-node-icon.ledger {
+    color: #34a853;
+}
+
+.tb-node-icon.group.level-0 {
+    color: #4285f4;
+}
+
+.tb-node-label {
+    flex: 1;
+    font-size: 13px;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.tb-node-label:hover {
+    text-decoration: underline;
+}
+
+.tb-node-label.group {
+    font-weight: 500;
+    color: #4285f4;
+}
+
+.tb-node-label.ledger {
+    font-weight: 400;
+    color: #202124;
+}
+
+.tb-node-label.group.level-0 {
+    font-weight: 500;
+    font-size: 14px;
+    color: #4285f4;
+}
+
+.tb-node-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tb-node-amount {
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    font-size: 13px;
+    text-align: right;
+}
+
+.tb-node-amount.debit {
+    color: #202124;
+}
+
+.tb-node-amount.credit {
+    color: #ea4335;
+}
+
+.tb-node-amount.balance {
+    color: #202124;
+}
+
+.tb-node-children {
+    display: none;
+}
+
+.tb-node-children.expanded {
+    display: block;
+}
+
+/* Tree Footer */
+.tb-tree-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+/* Scrollbar */
+.tb-tree-view::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tb-tree-view::-webkit-scrollbar-track {
+    background: #f1f3f4;
+}
+
+.tb-tree-view::-webkit-scrollbar-thumb {
+    background: #dadce0;
+    border-radius: 4px;
+}
+
+.tb-tree-view::-webkit-scrollbar-thumb:hover {
+    background: #5f6368;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    /* Metric cards: 2x2 layout */
+    .tb-statement .so-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .tb-tree-controls {
+        width: 100%;
+    }
+
+    .tb-control-btn {
+        flex: 1;
+        min-width: calc(25% - 6px);
+        justify-content: center;
+    }
+}
+
+/* Medium screens - adjust for better card display */
+@media (max-width: 900px) {
+    /* Metric cards: still 2x2 but with more space */
+    .tb-statement .so-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Metric cards: 1 per row */
+    .tb-statement .so-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tb-statement {
+        padding: 12px;
+    }
+
+    .tb-header {
+        padding: 16px;
+    }
+
+    .tb-company-name {
+        font-size: 22px;
+    }
+
+    .tb-report-title {
+        font-size: 18px;
+    }
+
+    .tb-control-btn {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .tb-control-btn .material-symbols-rounded {
+        font-size: 16px;
+    }
+
+    .tb-tree-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tb-tree-controls {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .tb-tree-controls .tb-control-btn {
+        flex: 1;
+        min-width: calc(50% - 4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .tb-company-name {
+        font-size: 18px;
+    }
+
+    .tb-report-title {
+        font-size: 16px;
+    }
+
+    .tb-node-amount {
+        font-size: 11px;
+        min-width: 80px !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .tb-statement {
+        background: white;
+        padding: 0;
+    }
+
+    .tb-tree-controls {
+        display: none;
+    }
+
+    .tb-tree-card {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+}

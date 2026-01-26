@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Dashboard - Developer Documentation</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="../../common/sixorbit-common.css">
+
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--so-grey-50);
+            font-family: var(--so-font-family);
+        }
+
+        .doc-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--so-space-3xl) var(--so-space-xl);
+        }
+
+        .doc-header {
+            background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);
+            color: white;
+            padding: var(--so-space-4xl) var(--so-space-3xl);
+            border-radius: var(--so-radius-lg);
+            margin-bottom: var(--so-space-3xl);
+            box-shadow: var(--so-shadow-2);
+        }
+
+        .doc-header h1 {
+            margin: 0 0 var(--so-space-md) 0;
+            font-size: 36px;
+            font-weight: 500;
+        }
+
+        .doc-header p {
+            margin: 0;
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--so-space-sm);
+            padding: var(--so-space-sm) var(--so-space-lg);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--so-radius-sm);
+            margin-bottom: var(--so-space-lg);
+            transition: all var(--so-transition-base);
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .doc-section {
+            background: white;
+            padding: var(--so-space-3xl);
+            border-radius: var(--so-radius-lg);
+            margin-bottom: var(--so-space-2xl);
+            box-shadow: var(--so-shadow-1);
+        }
+
+        .doc-section h2 {
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--so-grey-900);
+            margin: 0 0 var(--so-space-lg) 0;
+            padding-bottom: var(--so-space-md);
+            border-bottom: 2px solid var(--so-grey-200);
+        }
+
+        .doc-section h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--so-grey-900);
+            margin: var(--so-space-2xl) 0 var(--so-space-md) 0;
+        }
+
+        .doc-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--so-grey-700);
+            margin-bottom: var(--so-space-lg);
+        }
+
+        .doc-section ul, .doc-section ol {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--so-grey-700);
+            margin-bottom: var(--so-space-lg);
+        }
+
+        .doc-section li {
+            margin-bottom: var(--so-space-sm);
+        }
+
+        .code-block {
+            position: relative;
+            margin: var(--so-space-lg) 0;
+            border-radius: var(--so-radius-md);
+            overflow: hidden;
+            box-shadow: var(--so-shadow-1);
+        }
+
+        .code-header {
+            background: #2d3748;
+            color: white;
+            padding: var(--so-space-md) var(--so-space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .code-language {
+            display: flex;
+            align-items: center;
+            gap: var(--so-space-sm);
+        }
+
+        .copy-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--so-radius-sm);
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all var(--so-transition-base);
+        }
+
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .copy-btn.copied {
+            background: #34a853;
+            border-color: #34a853;
+        }
+
+        .copy-btn .material-icons {
+            font-size: 16px;
+        }
+
+        pre {
+            margin: 0;
+            padding: var(--so-space-xl);
+            background: #1e293b !important;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .inline-code {
+            background: var(--so-grey-100);
+            padding: 2px 6px;
+            border-radius: var(--so-radius-sm);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            color: #e74c3c;
+        }
+
+        .info-box {
+            background: var(--so-info-light);
+            border-left: 4px solid var(--so-info);
+            padding: var(--so-space-lg);
+            border-radius: var(--so-radius-sm);
+            margin: var(--so-space-lg) 0;
+        }
+
+        .warning-box {
+            background: var(--so-warning-light);
+            border-left: 4px solid var(--so-warning);
+            padding: var(--so-space-lg);
+            border-radius: var(--so-radius-sm);
+            margin: var(--so-space-lg) 0;
+        }
+
+        .success-box {
+            background: var(--so-success-light);
+            border-left: 4px solid var(--so-success);
+            padding: var(--so-space-lg);
+            border-radius: var(--so-radius-sm);
+            margin: var(--so-space-lg) 0;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--so-space-lg) 0;
+        }
+
+        .param-table th {
+            background: var(--so-grey-100);
+            padding: var(--so-space-md);
+            text-align: left;
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--so-grey-800);
+            border-bottom: 2px solid var(--so-grey-300);
+        }
+
+        .param-table td {
+            padding: var(--so-space-md);
+            border-bottom: 1px solid var(--so-grey-200);
+            font-size: 14px;
+        }
+
+        .param-table tr:hover {
+            background: var(--so-grey-50);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: var(--so-radius-sm);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .badge-required {
+            background: var(--so-error-light);
+            color: var(--so-error);
+        }
+
+        .badge-optional {
+            background: var(--so-grey-200);
+            color: var(--so-grey-700);
+        }
+
+        .nav-sidebar {
+            background: white;
+            padding: var(--so-space-xl);
+            border-radius: var(--so-radius-md);
+            box-shadow: var(--so-shadow-1);
+            margin-bottom: var(--so-space-2xl);
+        }
+
+        .nav-sidebar h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--so-grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 var(--so-space-md) 0;
+        }
+
+        .nav-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--so-space-md);
+        }
+
+        .nav-sidebar li {
+            margin-bottom: 0;
+        }
+
+        .nav-sidebar a {
+            color: var(--so-grey-700);
+            text-decoration: none;
+            font-size: 14px;
+            padding: var(--so-space-sm) var(--so-space-md);
+            border-radius: var(--so-radius-sm);
+            background: var(--so-grey-50);
+            display: inline-block;
+            transition: all var(--so-transition-fast);
+        }
+
+        .nav-sidebar a:hover {
+            color: var(--so-primary);
+            background: var(--so-primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .doc-container {
+                padding: var(--so-space-xl) var(--so-space-lg);
+            }
+
+            .doc-header {
+                padding: var(--so-space-2xl);
+            }
+
+            .doc-header h1 {
+                font-size: 28px;
+            }
+
+            .doc-section {
+                padding: var(--so-space-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="doc-container">
+        <div class="doc-header">
+            <a href="../../index.html" class="back-btn">
+                <span class="material-icons">arrow_back</span>
+                Back to Library
+            </a>
+            <h1>Cash Flow Dashboard</h1>
+            <p>Complete Developer Documentation - v2.0.0</p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="nav-sidebar">
+            <h3>Quick Navigation</h3>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#quick-start">Quick Start</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#data-format">Data Format</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#examples">Examples</a></li>
+            </ul>
+        </div>
+
+        <!-- Overview -->
+        <div class="doc-section" id="overview">
+            <h2>Overview</h2>
+            <p>The Cash Flow Dashboard is a hierarchical financial reporting plugin that displays inflow and outflow data with expandable/collapsible groups, visual progress bars, and number formatting options.</p>
+
+            <div class="info-box">
+                <strong>Module:</strong> Finance<br>
+                <strong>Version:</strong> 2.0.0<br>
+                <strong>Type:</strong> Framework-agnostic JavaScript
+            </div>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li>Hierarchical data structure with unlimited nesting</li>
+                <li>Expand/collapse groups functionality</li>
+                <li>Number format switching (full/short)</li>
+                <li>Visual progress bars showing relative amounts</li>
+                <li>Mobile optimized and fully responsive</li>
+                <li>Real-time data updates</li>
+            </ul>
+        </div>
+
+        <!-- Installation -->
+        <div class="doc-section" id="installation">
+            <h2>Installation</h2>
+
+            <h3>Step 1: Include CSS Files</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        HTML
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!-- Common Design System (Required) --&gt;
+&lt;link rel="stylesheet" href="../../common/sixorbit-common.css"&gt;
+
+&lt;!-- Plugin-Specific Styles (Required) --&gt;
+&lt;link rel="stylesheet" href="cashflow-dashboard.css"&gt;
+
+&lt;!-- Optional: Google Fonts for better typography --&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"&gt;</code></pre>
+            </div>
+
+            <h3>Step 2: Include JavaScript</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        HTML
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!-- Plugin JavaScript (Required) --&gt;
+&lt;script src="cashflow-dashboard-v2.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+
+            <h3>Step 3: Create Container</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        HTML
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!-- Container where the dashboard will be rendered --&gt;
+&lt;div id="cashflow-container"&gt;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Quick Start -->
+        <div class="doc-section" id="quick-start">
+            <h2>Quick Start</h2>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        JavaScript
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Initialize the plugin
+const dashboard = new CashFlowDashboard('cashflow-container', {
+    data: yourCashFlowData,
+    numberFormat: 'short',
+    showProgressBarsOnMobile: false
+});</code></pre>
+            </div>
+
+            <p>That's it! The dashboard will render with your data.</p>
+        </div>
+
+        <!-- Configuration -->
+        <div class="doc-section" id="configuration">
+            <h2>Configuration Options</h2>
+
+            <table class="param-table">
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>data</code> <span class="badge badge-required">Required</span></td>
+                        <td>Object</td>
+                        <td>-</td>
+                        <td>Cash flow data object (see Data Format below)</td>
+                    </tr>
+                    <tr>
+                        <td><code>numberFormat</code> <span class="badge badge-optional">Optional</span></td>
+                        <td>String</td>
+                        <td>'short'</td>
+                        <td>Number display format: 'full' or 'short'</td>
+                    </tr>
+                    <tr>
+                        <td><code>showProgressBarsOnMobile</code> <span class="badge badge-optional">Optional</span></td>
+                        <td>Boolean</td>
+                        <td>false</td>
+                        <td>Whether to show progress bars on mobile devices</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Number Format Options</h3>
+            <ul>
+                <li><span class="inline-code">'full'</span> - Shows full numbers (e.g., 1,234,567.89)</li>
+                <li><span class="inline-code">'short'</span> - Shows abbreviated numbers (e.g., ₹1.23M, ₹45.6K)</li>
+            </ul>
+        </div>
+
+        <!-- Data Format -->
+        <div class="doc-section" id="data-format">
+            <h2>Data Format</h2>
+
+            <p>The plugin requires a specific JSON structure for the cash flow data:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">
+                        <span class="material-icons">code</span>
+                        JSON Structure
+                    </span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">const cashflowData = {
+    // Company Information
+    company: "Your Company Name",
+
+    // Reporting Period
+    period: {
+        start: "2025-01-01",  // YYYY-MM-DD format
+        end: "2025-03-31"      // YYYY-MM-DD format
+    },
+
+    // Cash Flow Data
+    cashflow: {
+        // Inflow Section
+        inflow: {
+            groups: [
+                {
+                    id: "revenue",              // Unique ID
+                    name: "Revenue",            // Display name
+                    type: "group",              // Item type: "group"
+                    children: [
+                        // Nested groups or ledgers
+                        {
+                            id: "sales",
+                            name: "Sales Revenue",
+                            type: "ledger",     // Item type: "ledger"
+                            amount: 5000000     // Amount in base currency
+                        }
+                    ]
+                }
+            ]
+        },
+
+        // Outflow Section
+        outflow: {
+            groups: [
+                {
+                    id: "expenses",
+                    name: "Operating Expenses",
+                    type: "group",
+                    children: [
+                        // Nested groups or ledgers
+                    ]
+                }
+            ]
+        }
+    }
+};</code></pre>
+            </div>
+
+            <div class="warning-box">
+                <strong>Important:</strong> Each item must have a unique <code>id</code> within its scope. The <code>type</code> must be either "group" (can have children) or "ledger" (final amount entry).
+            </div>
+        </div>
+
+        <!-- Methods -->
+        <div class="doc-section" id="methods">
+            <h2>Available Methods</h2>
+
+            <h3>setNumberFormat(format)</h3>
+            <p>Change the number display format.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Switch to full format
+dashboard.setNumberFormat('full');
+
+// Switch to short format
+dashboard.setNumberFormat('short');</code></pre>
+            </div>
+
+            <h3>expandAll()</h3>
+            <p>Expand all collapsible groups.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">dashboard.expandAll();</code></pre>
+            </div>
+
+            <h3>collapseAll()</h3>
+            <p>Collapse all collapsible groups.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">dashboard.collapseAll();</code></pre>
+            </div>
+
+            <h3>reload(newData)</h3>
+            <p>Reload the dashboard with fresh data.</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Fetch fresh data from your API
+const freshData = await fetch('/api/cashflow').then(r => r.json());
+
+// Reload dashboard
+dashboard.reload(freshData);</code></pre>
+            </div>
+        </div>
+
+        <!-- Examples -->
+        <div class="doc-section" id="examples">
+            <h2>Complete Examples</h2>
+
+            <h3>Basic Implementation</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">HTML + JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="../../common/sixorbit-common.css"&gt;
+    &lt;link rel="stylesheet" href="cashflow-dashboard.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="cashflow-container"&gt;&lt;/div&gt;
+
+    &lt;script src="cashflow-dashboard-v2.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        const data = {
+            company: "My Company",
+            period: { start: "2025-01-01", end: "2025-12-31" },
+            cashflow: {
+                inflow: { groups: [ /* your data */ ] },
+                outflow: { groups: [ /* your data */ ] }
+            }
+        };
+
+        const dashboard = new CashFlowDashboard('cashflow-container', {
+            data: data,
+            numberFormat: 'short'
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <h3>With Control Buttons</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">HTML</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-html">&lt;div class="controls"&gt;
+    &lt;button onclick="dashboard.setNumberFormat('full')"&gt;Full Format&lt;/button&gt;
+    &lt;button onclick="dashboard.setNumberFormat('short')"&gt;Short Format&lt;/button&gt;
+    &lt;button onclick="dashboard.expandAll()"&gt;Expand All&lt;/button&gt;
+    &lt;button onclick="dashboard.collapseAll()"&gt;Collapse All&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id="cashflow-container"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    const dashboard = new CashFlowDashboard('cashflow-container', {
+        data: cashflowData,
+        numberFormat: 'short'
+    });
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <h3>Dynamic Data Loading with Reload</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+                <pre><code class="language-javascript">// Initialize with initial data
+let dashboard = new CashFlowDashboard('cashflow-container', {
+    data: initialData,
+    numberFormat: 'short'
+});
+
+// Function to refresh data
+async function refreshReport(startDate, endDate) {
+    try {
+        // Fetch fresh data from your API
+        const response = await fetch(
+            `/api/cashflow?start=${startDate}&end=${endDate}`
+        );
+        const freshData = await response.json();
+
+        // Reload dashboard with new data
+        dashboard.reload(freshData);
+
+        console.log('Dashboard refreshed successfully');
+    } catch (error) {
+        console.error('Failed to refresh:', error);
+    }
+}
+
+// Refresh every 5 minutes
+setInterval(() => refreshReport('2025-01-01', '2025-12-31'), 300000);</code></pre>
+            </div>
+
+            <div class="success-box">
+                <strong>Pro Tip:</strong> The <code>reload()</code> method preserves the current expand/collapse state of groups and number format preference, making it perfect for real-time updates.
+            </div>
+        </div>
+
+        <!-- Back to top -->
+        <div style="text-align: center; padding: var(--so-space-3xl) 0;">
+            <a href="#" class="so-btn so-btn-outline" style="text-decoration: none;">
+                <span class="material-icons">arrow_upward</span>
+                Back to Top
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Syntax highlighting
+        hljs.highlightAll();
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<span class="material-icons">check</span> Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

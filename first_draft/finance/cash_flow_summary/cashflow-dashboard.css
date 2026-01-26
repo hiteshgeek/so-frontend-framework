@@ -1,0 +1,616 @@
+/**
+ * Cash Flow Dashboard Plugin Styles
+ * Version: 1.0.0
+ * All styles are scoped to .cashflow-dashboard to avoid conflicts
+ */
+
+/* Container */
+.cashflow-dashboard {
+    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8f9fa;
+    color: #202124;
+    line-height: 1.5;
+    padding: 12px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.cashflow-dashboard *,
+.cashflow-dashboard *::before,
+.cashflow-dashboard *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.cashflow-dashboard .material-symbols-rounded {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Format Toggle Section */
+.cashflow-dashboard .cf-format-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    border: 1px solid #e8eaed;
+}
+
+.cashflow-dashboard .cf-format-label {
+    font-size: 13px;
+    color: #5f6368;
+    font-weight: 500;
+    margin-right: 12px;
+}
+
+.cashflow-dashboard .cf-format-toggle-group {
+    display: flex;
+    gap: 0;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cashflow-dashboard .cf-format-btn {
+    background: white;
+    border: none;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Google Sans', sans-serif;
+    color: #5f6368;
+    transition: all 0.2s;
+    border-right: 1px solid #dadce0;
+}
+
+.cashflow-dashboard .cf-format-btn:last-child {
+    border-right: none;
+}
+
+.cashflow-dashboard .cf-format-btn:hover {
+    background: #f1f3f4;
+}
+
+.cashflow-dashboard .cf-format-btn.active {
+    background: #4285f4;
+    color: white;
+}
+
+/* Metrics Grid - Using common component with cashflow-specific overrides */
+.cashflow-dashboard .cf-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* Use common metric card classes but maintain backward compatibility */
+.cashflow-dashboard .cf-metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #e8eaed;
+    position: relative;
+}
+
+.cashflow-dashboard .cf-metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+}
+
+.cashflow-dashboard .cf-metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cashflow-dashboard .cf-metric-label {
+    font-size: 11px;
+    color: #5f6368;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cashflow-dashboard .cf-metric-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cashflow-dashboard .cf-metric-icon.green {
+    background: rgba(52, 168, 83, 0.1);
+    color: #34a853;
+}
+
+.cashflow-dashboard .cf-metric-icon.red {
+    background: rgba(234, 67, 53, 0.1);
+    color: #ea4335;
+}
+
+.cashflow-dashboard .cf-metric-icon.blue {
+    background: rgba(66, 133, 244, 0.1);
+    color: #4285f4;
+}
+
+.cashflow-dashboard .cf-metric-value {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+/*
+ * Note: This component now aligns with the common .so-metric-card component
+ * in sixorbit-common.css. Future implementations should use the common component directly.
+ */
+
+/* Main Grid */
+.cashflow-dashboard .cf-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* Charts */
+.cashflow-dashboard .cf-chart-card {
+    background: white;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    border: 1px solid #e8eaed;
+}
+
+.cashflow-dashboard .cf-chart-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cashflow-dashboard .cf-chart-card-header .so-fullscreen-btn {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+.cashflow-dashboard .so-fullscreen-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+}
+
+.cashflow-dashboard .so-fullscreen-btn:hover {
+    background: #f8f9fa;
+    border-color: #4285f4;
+}
+
+.cashflow-dashboard .so-fullscreen-btn .material-symbols-rounded {
+    font-size: 20px;
+    color: #5f6368;
+}
+
+.cashflow-dashboard .so-fullscreen-btn:hover .material-symbols-rounded {
+    color: #4285f4;
+}
+
+.cashflow-dashboard .cf-chart-header {
+    margin-bottom: 10px;
+}
+
+.cashflow-dashboard .cf-chart-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.cashflow-dashboard .cf-chart-subtitle {
+    font-size: 12px;
+    color: #5f6368;
+    font-weight: 300;
+}
+
+.cashflow-dashboard .cf-chart-container {
+    height: 280px;
+}
+
+/* Tree Card */
+.cashflow-dashboard .cf-tree-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    overflow: hidden;
+    border: 1px solid #e8eaed;
+    grid-column: 1 / -1;
+}
+
+.cashflow-dashboard .cf-tree-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8eaed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cashflow-dashboard .cf-tree-title {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cashflow-dashboard .cf-tree-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.cashflow-dashboard .cf-control-btn {
+    padding: 5px 12px;
+    border: 1px solid #dadce0;
+    background: white;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Google Sans', sans-serif;
+}
+
+.cashflow-dashboard .cf-control-btn:hover {
+    background: #f1f3f4;
+    border-color: #5f6368;
+}
+
+/* Tabs */
+.cashflow-dashboard .cf-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e8eaed;
+}
+
+.cashflow-dashboard .cf-tab {
+    padding: 10px 18px;
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5f6368;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    font-family: 'Google Sans', sans-serif;
+}
+
+.cashflow-dashboard .cf-tab:hover {
+    color: #4285f4;
+    background: #f1f3f4;
+}
+
+.cashflow-dashboard .cf-tab.active {
+    color: #4285f4;
+    border-bottom-color: #4285f4;
+}
+
+.cashflow-dashboard .cf-tab-content {
+    display: none;
+}
+
+.cashflow-dashboard .cf-tab-content.active {
+    display: block;
+}
+
+/* Tree View */
+.cashflow-dashboard .cf-tree-view {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.cashflow-dashboard .cf-tree-node {
+    border-bottom: 1px solid #f1f3f4;
+    transition: background 0.2s;
+}
+
+.cashflow-dashboard .cf-tree-node:hover {
+    background: #f1f3f4;
+}
+
+.cashflow-dashboard .cf-tree-node.level-0 {
+    background: linear-gradient(90deg, rgba(66, 133, 244, 0.05) 0%, transparent 100%);
+}
+
+.cashflow-dashboard .cf-tree-node.level-0:hover {
+    background: linear-gradient(90deg, rgba(66, 133, 244, 0.08) 0%, #f1f3f4 100%);
+}
+
+.cashflow-dashboard .cf-node-content {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cashflow-dashboard .cf-node-content:hover .cf-node-label {
+    text-decoration: underline;
+}
+
+.cashflow-dashboard .cf-node-indent {
+    display: inline-block;
+}
+
+.cashflow-dashboard .cf-node-toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    flex-shrink: 0;
+    color: #5f6368;
+    transition: transform 0.2s;
+}
+
+.cashflow-dashboard .cf-node-toggle.expanded {
+    transform: rotate(90deg);
+}
+
+.cashflow-dashboard .cf-node-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.cashflow-dashboard .cf-node-icon.group {
+    color: #4285f4;
+}
+
+.cashflow-dashboard .cf-node-icon.ledger {
+    color: #34a853;
+}
+
+.cashflow-dashboard .cf-node-icon.level-0 {
+    color: #4285f4;
+}
+
+.cashflow-dashboard .cf-node-label {
+    flex: 1;
+    font-size: 13px;
+    min-width: 0;
+}
+
+.cashflow-dashboard .cf-node-label.group {
+    font-weight: 500;
+    color: #202124;
+}
+
+.cashflow-dashboard .cf-node-label.ledger {
+    font-weight: 400;
+    color: #5f6368;
+}
+
+.cashflow-dashboard .cf-node-label.level-0 {
+    font-weight: 500;
+    font-size: 14px;
+    color: #4285f4;
+}
+
+.cashflow-dashboard .cf-node-amount {
+    font-weight: 500;
+    margin-right: 12px;
+    font-variant-numeric: tabular-nums;
+    color: #202124;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.cashflow-dashboard .cf-node-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cashflow-dashboard .cf-percentage-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 150px;
+}
+
+.cashflow-dashboard .cf-percentage-bar-track {
+    flex: 1;
+    height: 6px;
+    background: #e8eaed;
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 100px;
+}
+
+.cashflow-dashboard .cf-percentage-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4285f4 0%, #34a853 100%);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.cashflow-dashboard .cf-percentage-bar-fill.outflow {
+    background: linear-gradient(90deg, #ea4335 0%, #ff6d00 100%);
+}
+
+.cashflow-dashboard .cf-node-percentage {
+    font-size: 12px;
+    color: #5f6368;
+    min-width: 50px;
+    text-align: right;
+    font-weight: 400;
+}
+
+.cashflow-dashboard .cf-node-children {
+    display: none;
+}
+
+.cashflow-dashboard .cf-node-children.expanded {
+    display: block;
+}
+
+/* Scrollbar */
+.cashflow-dashboard .cf-tree-view::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cashflow-dashboard .cf-tree-view::-webkit-scrollbar-track {
+    background: #f1f3f4;
+}
+
+.cashflow-dashboard .cf-tree-view::-webkit-scrollbar-thumb {
+    background: #dadce0;
+    border-radius: 4px;
+}
+
+.cashflow-dashboard .cf-tree-view::-webkit-scrollbar-thumb:hover {
+    background: #5f6368;
+}
+
+/* Responsive Styles */
+@media (max-width: 1023px) and (min-width: 769px) {
+    .cashflow-dashboard .cf-main-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .cashflow-dashboard .cf-chart-container {
+        height: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cashflow-dashboard {
+        padding: 10px;
+    }
+    
+    .cashflow-dashboard .cf-format-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .cashflow-dashboard .cf-format-toggle-group {
+        width: 100%;
+    }
+    
+    .cashflow-dashboard .cf-format-btn {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .cashflow-dashboard .cf-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cashflow-dashboard .cf-main-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cashflow-dashboard .cf-metric-value {
+        font-size: 20px;
+    }
+    
+    .cashflow-dashboard .cf-chart-container {
+        height: 240px;
+    }
+    
+    .cashflow-dashboard .cf-node-content {
+        padding: 8px 10px;
+        flex-wrap: wrap;
+    }
+    
+    .cashflow-dashboard .cf-node-amount {
+        font-size: 12px;
+        margin-right: 6px;
+    }
+    
+    .cashflow-dashboard .cf-node-percentage {
+        font-size: 11px;
+        min-width: 42px;
+    }
+    
+    .cashflow-dashboard .cf-percentage-bar-container {
+        display: none !important;
+    }
+    
+    .cashflow-dashboard .cf-tree-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cashflow-dashboard .cf-tree-controls {
+        width: 100%;
+    }
+    
+    .cashflow-dashboard .cf-control-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cashflow-dashboard .cf-metric-card {
+        padding: 12px;
+    }
+    
+    .cashflow-dashboard .cf-chart-card {
+        padding: 12px;
+    }
+    
+    .cashflow-dashboard .cf-chart-container {
+        height: 220px;
+    }
+    
+    .cashflow-dashboard .cf-node-label {
+        font-size: 12px;
+    }
+    
+    .cashflow-dashboard .cf-node-amount {
+        font-size: 11px;
+    }
+    
+    .cashflow-dashboard .cf-node-percentage {
+        font-size: 10px;
+        min-width: 38px;
+    }
+}
+
+/* Override for mobile progress bars when enabled */
+.cashflow-dashboard.show-mobile-bars .cf-percentage-bar-container {
+    display: flex !important;
+}
+
+/* Fullscreen Modal - Ensure consistent styling across plugins */
+.cashflow-dashboard .so-fullscreen-header {
+    padding: 16px 24px !important;
+}

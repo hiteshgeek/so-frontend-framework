@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SixOrbit ERP</title>
+
+    <!-- Prevent theme flash on page load -->
+    <script>
+    (function() {
+        try {
+            var theme = localStorage.getItem('so-theme-preference') || 'light';
+            var effectiveTheme = theme;
+
+            if (theme === 'sidebar-dark') {
+                effectiveTheme = 'light';
+            } else if (theme === 'system') {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    effectiveTheme = 'dark';
+                } else {
+                    effectiveTheme = 'light';
+                }
+            }
+
+            document.documentElement.setAttribute('data-theme', effectiveTheme);
+        } catch(e) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- SixOrbit Common Styles -->
+    <link rel="stylesheet" href="../common/sixorbit-common.css">
+
+    <!-- SixOrbit UI Components -->
+    <link rel="stylesheet" href="css/so-theme.css">
+    <link rel="stylesheet" href="css/so-forms.css">
+    <link rel="stylesheet" href="css/so-auth.css">
+</head>
+<body>
+    <div class="so-auth-page">
+        <div class="so-auth-container">
+            <!-- Left Panel - Branding -->
+            <div class="so-auth-branding">
+                <!-- Customer Logo -->
+                <div class="so-customer-logo">
+                    <div class="so-customer-logo-placeholder" id="customerLogoPlaceholder">
+                        <span id="customerInitials">AC</span>
+                    </div>
+                    <img src="" alt="Company Logo" id="customerLogoImg" style="display: none;">
+                    <div class="so-customer-name" id="customerName">Acme Corporation</div>
+                </div>
+
+                <!-- Feature Carousel -->
+                <div class="so-auth-features">
+                    <div class="so-auth-features-header">What's New</div>
+                    <div class="so-feature-carousel" id="featureCarousel">
+                        <div class="so-feature-slides" id="featureSlides">
+                            <!-- Slides will be populated by JavaScript -->
+                        </div>
+                        <div class="so-feature-dots" id="featureDots">
+                            <!-- Dots will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SixOrbit Branding -->
+                <div class="so-sixorbit-branding">
+                    <div class="so-sixorbit-branding-text">Powered by</div>
+                    <a href="https://sixorbit.com" target="_blank" rel="noopener" class="so-sixorbit-branding-link">
+                        <!-- SixOrbit Logo SVG -->
+                        <svg class="so-sixorbit-logo" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer orbital ring -->
+                            <ellipse cx="24" cy="24" rx="22" ry="10" stroke="currentColor" stroke-width="2" fill="none" transform="rotate(-20 24 24)" opacity="0.6"/>
+                            <!-- Inner hexagon representing "6" -->
+                            <path d="M24 6L38.7 15V33L24 42L9.3 33V15L24 6Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                            <!-- Center dot -->
+                            <circle cx="24" cy="24" r="4" fill="currentColor"/>
+                            <!-- Orbital dots -->
+                            <circle cx="42" cy="18" r="2.5" fill="currentColor"/>
+                            <circle cx="6" cy="30" r="2.5" fill="currentColor"/>
+                        </svg>
+                        SixOrbit ERP
+                        <span class="material-icons">open_in_new</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Panel - Login Form -->
+            <div class="so-auth-card">
+                <div class="so-auth-header">
+                    <h1 class="so-auth-title">Welcome Back</h1>
+                    <p class="so-auth-subtitle">Sign in to continue to your account</p>
+                </div>
+
+                <div class="so-auth-body">
+                    <form id="loginForm" novalidate>
+                        <!-- Login Type Toggle -->
+                        <div class="so-auth-type-toggle">
+                            <button type="button" class="so-auth-type-btn active" data-type="email">
+                                <span class="material-icons">email</span>
+                                Email
+                            </button>
+                            <button type="button" class="so-auth-type-btn" data-type="mobile">
+                                <span class="material-icons">phone</span>
+                                Mobile
+                            </button>
+                        </div>
+
+                        <!-- Email/Mobile Input -->
+                        <div class="so-form-group" id="loginIdGroup">
+                            <label class="so-form-label" for="loginId">Email Address</label>
+                            <div class="so-auth-input-wrapper">
+                                <input type="email"
+                                       id="loginId"
+                                       class="so-input"
+                                       placeholder="Enter your email address"
+                                       autocomplete="email"
+                                       required>
+                                <span class="so-input-icon-left">
+                                    <span class="material-icons" id="loginIdIcon">email</span>
+                                </span>
+                            </div>
+                            <span class="so-form-error" id="loginIdError">Please enter a valid email address</span>
+                        </div>
+
+                        <!-- Password Input -->
+                        <div class="so-form-group" id="passwordGroup">
+                            <label class="so-form-label" for="password">Password</label>
+                            <div class="so-auth-input-wrapper has-toggle">
+                                <input type="password"
+                                       id="password"
+                                       class="so-input"
+                                       placeholder="Enter your password"
+                                       autocomplete="current-password"
+                                       required>
+                                <span class="so-input-icon-left">
+                                    <span class="material-icons">lock</span>
+                                </span>
+                                <button type="button" class="so-password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+                                    <span class="material-icons">visibility</span>
+                                </button>
+                            </div>
+                            <span class="so-form-error" id="passwordError">Password is required</span>
+                        </div>
+
+                        <!-- Options Row -->
+                        <div class="so-auth-options">
+                            <label class="so-checkbox">
+                                <input type="checkbox" id="rememberMe">
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span>Remember me</span>
+                            </label>
+                            <a href="forgot-password.html" class="so-auth-forgot-link">Forgot Password?</a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="so-btn so-btn-primary so-btn-lg" style="width: 100%;" id="loginBtn">
+                            <span class="material-icons">login</span>
+                            Sign In
+                        </button>
+                    </form>
+
+                    <!-- Footer -->
+                    <div class="so-auth-footer">
+                        <span class="so-auth-footer-text">
+                            <a href="index.html" class="so-auth-footer-link">
+                                <span class="material-icons" style="font-size: 16px; vertical-align: middle;">arrow_back</span>
+                                Back to Dashboard
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Configuration -->
+    <script>
+        // Configuration - Can be customized per customer
+        window.authConfig = {
+            customerLogo: '', // Leave empty to use initials
+            customerName: 'Acme Corporation',
+            customerInitials: 'AC',
+            features: [
+                {
+                    icon: 'inventory_2',
+                    title: 'New Inventory Module',
+                    description: 'Track stock levels in real-time with advanced analytics and automated reorder points.'
+                },
+                {
+                    icon: 'assessment',
+                    title: 'Enhanced GST Reports',
+                    description: 'Simplified tax compliance with auto-generated GSTR-1, GSTR-3B, and reconciliation reports.'
+                },
+                {
+                    icon: 'phone_android',
+                    title: 'Mobile App Launched',
+                    description: 'Manage your business on the go with our new iOS and Android applications.'
+                },
+                {
+                    icon: 'security',
+                    title: 'Advanced Security',
+                    description: 'Two-factor authentication and role-based access control for enhanced protection.'
+                }
+            ],
+            carouselInterval: 5000 // 5 seconds
+        };
+    </script>
+
+    <!-- Auth JavaScript -->
+    <script src="js/so-auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+// ============================================
+// SIXORBIT UI - CHECKBOXES & RADIOS
+// Checkbox and radio button components
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// CHECKBOX
+// ============================================
+
+.#{$so-prefix}checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: spacing('2') + 2px;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.#{$so-prefix}checkbox-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid css-var('form-border');
+  border-radius: 3px;
+  background: transparent;
+  transition: all $so-transition-base;
+  flex-shrink: 0;
+
+  .material-icons {
+    font-size: 14px;
+    color: $so-white;
+    opacity: 0;
+    transform: scale(0);
+    transition: all $so-transition-base;
+  }
+}
+
+// Hover state
+.#{$so-prefix}checkbox:hover .#{$so-prefix}checkbox-box {
+  border-color: css-var('accent-primary');
+}
+
+// Checked state
+.#{$so-prefix}checkbox input:checked + .#{$so-prefix}checkbox-box {
+  background: css-var('accent-primary');
+  border-color: css-var('accent-primary');
+
+  .material-icons {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Disabled state
+.#{$so-prefix}checkbox input:disabled + .#{$so-prefix}checkbox-box {
+  border-color: css-var('form-border');
+  background: css-var('form-disabled-bg');
+  cursor: not-allowed;
+}
+
+.#{$so-prefix}checkbox input:disabled:checked + .#{$so-prefix}checkbox-box {
+  background: css-var('text-muted');
+  border-color: css-var('text-muted');
+}
+
+// Indeterminate state
+.#{$so-prefix}checkbox input:indeterminate + .#{$so-prefix}checkbox-box {
+  background: css-var('accent-primary');
+  border-color: css-var('accent-primary');
+
+  .material-icons::before {
+    content: 'remove';
+  }
+}
+
+// Label
+.#{$so-prefix}checkbox-label {
+  font-size: font-size('base');
+  color: css-var('form-text');
+}
+
+.#{$so-prefix}checkbox input:disabled ~ .#{$so-prefix}checkbox-label {
+  color: css-var('form-disabled-text');
+}
+
+// Focus state
+.#{$so-prefix}checkbox input:focus-visible + .#{$so-prefix}checkbox-box {
+  box-shadow: 0 0 0 3px alpha($so-primary, 0.2);
+}
+
+// ============================================
+// RADIO BUTTON
+// ============================================
+
+.#{$so-prefix}radio {
+  display: inline-flex;
+  align-items: center;
+  gap: spacing('2') + 2px;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.#{$so-prefix}radio-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid css-var('form-border');
+  border-radius: 50%;
+  background: transparent;
+  transition: all $so-transition-base;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: css-var('accent-primary');
+    transform: scale(0);
+    transition: transform $so-transition-base;
+  }
+}
+
+// Hover state
+.#{$so-prefix}radio:hover .#{$so-prefix}radio-circle {
+  border-color: css-var('accent-primary');
+}
+
+// Checked state
+.#{$so-prefix}radio input:checked + .#{$so-prefix}radio-circle {
+  border-color: css-var('accent-primary');
+
+  &::after {
+    transform: scale(1);
+  }
+}
+
+// Disabled state
+.#{$so-prefix}radio input:disabled + .#{$so-prefix}radio-circle {
+  border-color: css-var('form-border');
+  cursor: not-allowed;
+}
+
+.#{$so-prefix}radio input:disabled:checked + .#{$so-prefix}radio-circle::after {
+  background: css-var('text-muted');
+}
+
+// Label
+.#{$so-prefix}radio-label {
+  font-size: font-size('base');
+  color: css-var('form-text');
+}
+
+.#{$so-prefix}radio input:disabled ~ .#{$so-prefix}radio-label {
+  color: css-var('form-disabled-text');
+}
+
+// Focus state
+.#{$so-prefix}radio input:focus-visible + .#{$so-prefix}radio-circle {
+  box-shadow: 0 0 0 3px alpha($so-primary, 0.2);
+}
+
+// ============================================
+// RADIO GROUP
+// ============================================
+
+.#{$so-prefix}radio-group {
+  display: flex;
+  gap: spacing('5');
+
+  &.vertical {
+    flex-direction: column;
+    gap: spacing('3');
+  }
+}
+
+// ============================================
+// CHECKBOX GROUP
+// ============================================
+
+.#{$so-prefix}checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: spacing('5');
+
+  &.vertical {
+    flex-direction: column;
+    gap: spacing('3');
+  }
+}

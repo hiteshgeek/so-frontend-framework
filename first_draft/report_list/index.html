@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report List Plugin - Demo</title>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="report-list-plugin.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #f8f9fa;
+        }
+        
+        .demo-info {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .demo-info h1 {
+            margin: 0 0 10px 0;
+            color: #202124;
+            font-size: 24px;
+        }
+        
+        .demo-info p {
+            margin: 5px 0;
+            color: #5f6368;
+        }
+        
+        .demo-info code {
+            background: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-bottom: 10px;
+            background: #5f6368;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .back-button:hover {
+            background: #3c4043;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-info">
+        <a href="../index.html" class="back-button">← Back to Main Menu</a>
+        <h1>📊 Report List Plugin - Demo</h1>
+        <p>A lightweight, framework-agnostic plugin for displaying any type of reports.</p>
+        <p><strong>Features:</strong> Grid/List views, Search, Favorites, Most Used tracking, Responsive design</p>
+        <p><strong>Try:</strong> Click stars to favorite, search, and switch views!</p>
+    </div>
+
+    <div id="reports-container"></div>
+
+    <script src="report-list-data.js"></script>
+    <script src="report-list-plugin.js"></script>
+    <script>
+        const reportsPlugin = new ReportListPlugin('#reports-container', {
+            dataSource: 'json',
+            jsonData: reportListData,
+            onFavoriteAdd: (reportId, reportData) => {
+                alert(`"${reportData.title}" added to favorites!`);
+            },
+            onFavoriteRemove: (reportId, reportData) => {
+                alert(`"${reportData.title}" removed from favorites!`);
+            },
+            onReportClick: (reportId, reportData) => {
+                window.open(reportData.link, '_blank');
+            },
+            labels: {
+                title: 'Sales Reports'
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+// ============================================
+// SIXORBIT UI - CARDS
+// Card container components
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// BASE CARD
+// ============================================
+
+.#{$so-prefix}card {
+  @include card;
+}
+
+// ============================================
+// CARD SECTIONS
+// ============================================
+
+.#{$so-prefix}card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: spacing('3');
+  padding: spacing('4');
+  border-bottom: 1px solid css-var('border-color');
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.#{$so-prefix}card-title {
+  font-size: font-size('md');
+  font-weight: font-weight('semibold');
+  color: css-var('text-heading');
+  margin: 0;
+}
+
+.#{$so-prefix}card-subtitle {
+  font-size: font-size('sm');
+  color: css-var('text-secondary');
+  margin-top: spacing('1');
+}
+
+.#{$so-prefix}card-body {
+  padding: spacing('4');
+}
+
+.#{$so-prefix}card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: spacing('2');
+  padding: spacing('3') spacing('4');
+  border-top: 1px solid css-var('border-color');
+  background: css-var('card-hover-bg');
+  border-radius: 0 0 radius('lg') radius('lg');
+
+  &:first-child {
+    border-top: none;
+    border-radius: radius('lg') radius('lg') 0 0;
+  }
+}
+
+// ============================================
+// CARD VARIANTS
+// ============================================
+
+// Bordered Card
+.#{$so-prefix}card-bordered {
+  border: 1px solid css-var('border-color');
+  box-shadow: none;
+}
+
+// Flat Card (no shadow)
+.#{$so-prefix}card-flat {
+  box-shadow: none;
+}
+
+// Elevated Card (more shadow)
+.#{$so-prefix}card-elevated {
+  box-shadow: css-var('shadow-lg');
+}
+
+// Clickable Card
+.#{$so-prefix}card-clickable {
+  cursor: pointer;
+  transition: all $so-transition-normal;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: css-var('shadow-lg');
+  }
+}
+
+// ============================================
+// CARD COLORS
+// ============================================
+
+.#{$so-prefix}card-primary {
+  background: css-var('accent-primary');
+  color: $so-white;
+
+  .#{$so-prefix}card-title,
+  .#{$so-prefix}card-subtitle {
+    color: $so-white;
+  }
+
+  .#{$so-prefix}card-subtitle {
+    opacity: 0.85;
+  }
+}
+
+.#{$so-prefix}card-success {
+  background: css-var('accent-success');
+  color: $so-white;
+
+  .#{$so-prefix}card-title,
+  .#{$so-prefix}card-subtitle {
+    color: $so-white;
+  }
+}
+
+.#{$so-prefix}card-danger {
+  background: css-var('accent-danger');
+  color: $so-white;
+
+  .#{$so-prefix}card-title,
+  .#{$so-prefix}card-subtitle {
+    color: $so-white;
+  }
+}
+
+.#{$so-prefix}card-warning {
+  background: css-var('accent-warning');
+  color: $so-grey-900;
+}
+
+// ============================================
+// CARD WITH IMAGE
+// ============================================
+
+.#{$so-prefix}card-img {
+  display: block;
+  width: 100%;
+  border-radius: radius('lg') radius('lg') 0 0;
+}
+
+.#{$so-prefix}card-img-bottom {
+  border-radius: 0 0 radius('lg') radius('lg');
+}
+
+.#{$so-prefix}card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: spacing('4');
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: $so-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: radius('lg');
+}
+
+// ============================================
+// CARD GROUP
+// ============================================
+
+.#{$so-prefix}card-group {
+  display: flex;
+  gap: spacing('4');
+
+  .#{$so-prefix}card {
+    flex: 1;
+  }
+}
+
+// ============================================
+// STATS CARD
+// ============================================
+
+.#{$so-prefix}stats-card {
+  @include card;
+  padding: spacing('4');
+
+  .#{$so-prefix}stats-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: radius('lg');
+    background: alpha($so-primary, 0.1);
+    color: css-var('accent-primary');
+    margin-bottom: spacing('3');
+
+    .material-icons {
+      font-size: 24px;
+    }
+  }
+
+  .#{$so-prefix}stats-value {
+    font-size: font-size('3xl');
+    font-weight: font-weight('semibold');
+    color: css-var('text-heading');
+    line-height: line-height('tight');
+  }
+
+  .#{$so-prefix}stats-label {
+    font-size: font-size('sm');
+    color: css-var('text-secondary');
+    margin-top: spacing('1');
+  }
+
+  .#{$so-prefix}stats-change {
+    display: inline-flex;
+    align-items: center;
+    gap: spacing('1');
+    font-size: font-size('xs');
+    margin-top: spacing('2');
+
+    &.positive {
+      color: css-var('accent-success');
+    }
+
+    &.negative {
+      color: css-var('accent-danger');
+    }
+
+    .material-icons {
+      font-size: 16px;
+    }
+  }
+}
+
+// Stats card color variants
+.#{$so-prefix}stats-card.success .#{$so-prefix}stats-icon {
+  background: alpha($so-success, 0.1);
+  color: css-var('accent-success');
+}
+
+.#{$so-prefix}stats-card.danger .#{$so-prefix}stats-icon {
+  background: alpha($so-danger, 0.1);
+  color: css-var('accent-danger');
+}
+
+.#{$so-prefix}stats-card.warning .#{$so-prefix}stats-icon {
+  background: alpha($so-warning, 0.1);
+  color: css-var('accent-warning');
+}
+
+// ============================================
+// PROFILE CARD
+// ============================================
+
+.#{$so-prefix}profile-card {
+  @include card;
+  text-align: center;
+  padding: spacing('6') spacing('4');
+
+  .#{$so-prefix}profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: radius('full');
+    object-fit: cover;
+    margin-bottom: spacing('3');
+  }
+
+  .#{$so-prefix}profile-name {
+    font-size: font-size('lg');
+    font-weight: font-weight('semibold');
+    color: css-var('text-heading');
+    margin-bottom: spacing('1');
+  }
+
+  .#{$so-prefix}profile-role {
+    font-size: font-size('sm');
+    color: css-var('text-secondary');
+    margin-bottom: spacing('4');
+  }
+
+  .#{$so-prefix}profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: spacing('6');
+    padding-top: spacing('4');
+    border-top: 1px solid css-var('border-color');
+  }
+
+  .#{$so-prefix}profile-stat {
+    text-align: center;
+
+    .value {
+      font-size: font-size('xl');
+      font-weight: font-weight('semibold');
+      color: css-var('text-heading');
+    }
+
+    .label {
+      font-size: font-size('xs');
+      color: css-var('text-muted');
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+// ============================================
+// COMPACT CARD (for lists/grids)
+// ============================================
+
+.#{$so-prefix}card-compact {
+  @include card;
+  padding: spacing('3');
+
+  .#{$so-prefix}card-header {
+    padding: 0 0 spacing('2') 0;
+  }
+
+  .#{$so-prefix}card-body {
+    padding: spacing('2') 0;
+  }
+
+  .#{$so-prefix}card-footer {
+    padding: spacing('2') 0 0 0;
+    background: transparent;
+    border-radius: 0;
+  }
+}

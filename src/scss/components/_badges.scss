@@ -1,0 +1,254 @@
+// ============================================
+// SIXORBIT UI - BADGES
+// Badge and label components
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// BASE BADGE
+// ============================================
+
+.#{$so-prefix}badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: spacing('1');
+  height: 22px;
+  padding: 0 spacing('2');
+  font-size: font-size('xs');
+  font-weight: font-weight('medium');
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: radius('full');
+  transition: all $so-transition-base;
+}
+
+// ============================================
+// BADGE VARIANTS
+// ============================================
+
+// Primary Badge
+.#{$so-prefix}badge-primary {
+  background: css-var('accent-primary');
+  color: $so-white;
+}
+
+// Secondary Badge
+.#{$so-prefix}badge-secondary {
+  background: css-var('card-hover-bg');
+  color: css-var('text-secondary');
+}
+
+// Success Badge
+.#{$so-prefix}badge-success {
+  background: css-var('accent-success');
+  color: $so-white;
+}
+
+// Danger Badge
+.#{$so-prefix}badge-danger {
+  background: css-var('accent-danger');
+  color: $so-white;
+}
+
+// Warning Badge
+.#{$so-prefix}badge-warning {
+  background: css-var('accent-warning');
+  color: $so-grey-900;
+}
+
+// Info Badge
+.#{$so-prefix}badge-info {
+  background: css-var('accent-info');
+  color: $so-white;
+}
+
+// ============================================
+// SOFT/LIGHT VARIANTS
+// ============================================
+
+.#{$so-prefix}badge-soft-primary {
+  background: alpha($so-primary, 0.15);
+  color: css-var('accent-primary');
+}
+
+.#{$so-prefix}badge-soft-success {
+  background: alpha($so-success, 0.15);
+  color: css-var('accent-success');
+}
+
+.#{$so-prefix}badge-soft-danger {
+  background: alpha($so-danger, 0.15);
+  color: css-var('accent-danger');
+}
+
+.#{$so-prefix}badge-soft-warning {
+  background: alpha($so-warning, 0.15);
+  color: css-var('accent-warning');
+}
+
+.#{$so-prefix}badge-soft-info {
+  background: alpha($so-info, 0.15);
+  color: css-var('accent-info');
+}
+
+// ============================================
+// OUTLINE VARIANTS
+// ============================================
+
+.#{$so-prefix}badge-outline-primary {
+  background: transparent;
+  border: 1px solid css-var('accent-primary');
+  color: css-var('accent-primary');
+}
+
+.#{$so-prefix}badge-outline-success {
+  background: transparent;
+  border: 1px solid css-var('accent-success');
+  color: css-var('accent-success');
+}
+
+.#{$so-prefix}badge-outline-danger {
+  background: transparent;
+  border: 1px solid css-var('accent-danger');
+  color: css-var('accent-danger');
+}
+
+.#{$so-prefix}badge-outline-warning {
+  background: transparent;
+  border: 1px solid css-var('accent-warning');
+  color: css-var('accent-warning');
+}
+
+// ============================================
+// BADGE SIZES
+// ============================================
+
+// Small Badge
+.#{$so-prefix}badge-sm {
+  height: 18px;
+  padding: 0 spacing('1') + 2px;
+  font-size: 10px;
+}
+
+// Large Badge
+.#{$so-prefix}badge-lg {
+  height: 28px;
+  padding: 0 spacing('3');
+  font-size: font-size('sm');
+}
+
+// ============================================
+// DOT BADGE (Indicator)
+// ============================================
+
+.#{$so-prefix}badge-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: radius('full');
+  background: css-var('accent-primary');
+}
+
+.#{$so-prefix}badge-dot.#{$so-prefix}badge-success {
+  background: css-var('accent-success');
+}
+
+.#{$so-prefix}badge-dot.#{$so-prefix}badge-danger {
+  background: css-var('accent-danger');
+}
+
+.#{$so-prefix}badge-dot.#{$so-prefix}badge-warning {
+  background: css-var('accent-warning');
+}
+
+// ============================================
+// BADGE WITH ICON
+// ============================================
+
+.#{$so-prefix}badge .material-icons {
+  font-size: 14px;
+}
+
+.#{$so-prefix}badge-sm .material-icons {
+  font-size: 12px;
+}
+
+.#{$so-prefix}badge-lg .material-icons {
+  font-size: 16px;
+}
+
+// ============================================
+// STATUS BADGE (for availability indicators)
+// ============================================
+
+.#{$so-prefix}status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: spacing('1') + 2px;
+  font-size: font-size('sm');
+  color: css-var('text-secondary');
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: radius('full');
+    background: css-var('text-muted');
+  }
+
+  &.online::before {
+    background: css-var('accent-success');
+  }
+
+  &.away::before {
+    background: css-var('accent-warning');
+  }
+
+  &.busy::before {
+    background: css-var('accent-danger');
+  }
+
+  &.offline::before {
+    background: css-var('text-muted');
+  }
+}
+
+// ============================================
+// COUNT BADGE (for notifications)
+// ============================================
+
+.#{$so-prefix}badge-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 spacing('1') + 2px;
+  font-size: 11px;
+  font-weight: font-weight('semibold');
+  background: css-var('accent-danger');
+  color: $so-white;
+  border-radius: radius('full');
+}
+
+.#{$so-prefix}badge-count.#{$so-prefix}badge-sm {
+  min-width: 16px;
+  height: 16px;
+  font-size: 10px;
+  padding: 0 4px;
+}
+
+// Position relative container for badge overlay
+.#{$so-prefix}badge-wrapper {
+  position: relative;
+  display: inline-flex;
+
+  .#{$so-prefix}badge-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+  }
+}

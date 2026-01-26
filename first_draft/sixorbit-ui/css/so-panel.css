@@ -1,0 +1,1315 @@
+/**
+ * SixOrbit Panel Component
+ * Google Material Design inspired filter/action panel for ERP reports
+ * Version: 1.1.0
+ *
+ * USAGE NOTES:
+ * - Panel is designed to wrap DataTable for reports that need additional filters
+ * - When used with DataTable, panel provides: header, date range, custom filters, chips
+ * - DataTable provides: export, search, column selector, pagination, footer totals
+ *
+ * COMPONENTS:
+ * - so-panel: Main container
+ * - so-panel-header: Title, icon, subtitle + date range/filters
+ * - so-panel-chips: Active filter indicators
+ * - so-panel-body: Content area (typically contains DataTable)
+ *
+ * OPTIONAL COMPONENTS (when NOT using DataTable):
+ * - so-panel-toolbar: Additional toolbar row
+ * - so-panel-export: Export buttons
+ * - so-panel-search: Search input
+ * - so-panel-columns: Column toggle dropdown
+ * - so-panel-entries: Show entries selector
+ * - so-panel-footer: Footer with stats
+ */
+
+/* ============================================
+   CSS VARIABLES - Light Mode (Default)
+   ============================================ */
+:root {
+    /* Panel Colors */
+    --so-panel-bg: #ffffff;
+    --so-panel-border: #e8eaed;
+    --so-panel-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.15), 0 1px 2px 0 rgba(60, 64, 67, 0.1);
+
+    /* Panel Header */
+    --so-panel-header-bg: #f8f9fa;
+    --so-panel-title-color: #202124;
+    --so-panel-subtitle-color: #5f6368;
+
+    /* Input Fields */
+    --so-panel-input-bg: #ffffff;
+    --so-panel-input-border: #dadce0;
+    --so-panel-input-focus-border: #1a73e8;
+    --so-panel-input-text: #202124;
+    --so-panel-input-placeholder: #9aa0a6;
+
+    /* Buttons */
+    --so-panel-btn-bg: #ffffff;
+    --so-panel-btn-border: #dadce0;
+    --so-panel-btn-text: #3c4043;
+    --so-panel-btn-hover-bg: #f1f3f4;
+    --so-panel-btn-active-bg: #e8f0fe;
+    --so-panel-btn-active-text: #1a73e8;
+    --so-panel-btn-active-border: #1a73e8;
+
+    /* Primary Button */
+    --so-panel-btn-primary-bg: #1a73e8;
+    --so-panel-btn-primary-text: #ffffff;
+    --so-panel-btn-primary-hover-bg: #1557b0;
+
+    /* Chips/Tags */
+    --so-panel-chip-bg: #e8eaed;
+    --so-panel-chip-text: #3c4043;
+    --so-panel-chip-active-bg: #e8f0fe;
+    --so-panel-chip-active-text: #1a73e8;
+
+    /* Dropdown */
+    --so-panel-dropdown-bg: #ffffff;
+    --so-panel-dropdown-border: #dadce0;
+    --so-panel-dropdown-shadow: 0 4px 12px rgba(60, 64, 67, 0.15), 0 2px 4px rgba(60, 64, 67, 0.1);
+    --so-panel-dropdown-item-hover: #f1f3f4;
+
+    /* Divider */
+    --so-panel-divider: #e8eaed;
+
+    /* Badge */
+    --so-panel-badge-bg: #ea4335;
+    --so-panel-badge-text: #ffffff;
+}
+
+/* ============================================
+   CSS VARIABLES - Dark Mode (Vuexy Style)
+   ============================================ */
+[data-theme="dark"] {
+    /* Panel Colors */
+    --so-panel-bg: #2f3349;
+    --so-panel-border: #3b4056;
+    --so-panel-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+
+    /* Panel Header */
+    --so-panel-header-bg: #25293c;
+    --so-panel-title-color: #e7e9f0;
+    --so-panel-subtitle-color: #a3a8b8;
+
+    /* Input Fields */
+    --so-panel-input-bg: #25293c;
+    --so-panel-input-border: #3b4056;
+    --so-panel-input-focus-border: #7367f0;
+    --so-panel-input-text: #d0d4e4;
+    --so-panel-input-placeholder: #6c7293;
+
+    /* Buttons */
+    --so-panel-btn-bg: #2f3349;
+    --so-panel-btn-border: #3b4056;
+    --so-panel-btn-text: #d0d4e4;
+    --so-panel-btn-hover-bg: #3b4056;
+    --so-panel-btn-active-bg: rgba(115, 103, 240, 0.15);
+    --so-panel-btn-active-text: #7367f0;
+    --so-panel-btn-active-border: #7367f0;
+
+    /* Primary Button */
+    --so-panel-btn-primary-bg: #7367f0;
+    --so-panel-btn-primary-text: #ffffff;
+    --so-panel-btn-primary-hover-bg: #9e95f5;
+
+    /* Chips/Tags */
+    --so-panel-chip-bg: #3b4056;
+    --so-panel-chip-text: #d0d4e4;
+    --so-panel-chip-active-bg: rgba(115, 103, 240, 0.15);
+    --so-panel-chip-active-text: #7367f0;
+
+    /* Dropdown */
+    --so-panel-dropdown-bg: #2f3349;
+    --so-panel-dropdown-border: #3b4056;
+    --so-panel-dropdown-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --so-panel-dropdown-item-hover: #3b4056;
+
+    /* Divider */
+    --so-panel-divider: #3b4056;
+
+    /* Badge */
+    --so-panel-badge-bg: #ea5455;
+    --so-panel-badge-text: #ffffff;
+}
+
+/* ============================================
+   PANEL BASE STYLES
+   ============================================ */
+.so-panel {
+    background: var(--so-panel-bg);
+    border: 1px solid var(--so-panel-border);
+    border-radius: 8px;
+    box-shadow: var(--so-panel-shadow);
+    font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+}
+
+/* ============================================
+   PANEL HEADER
+   ============================================ */
+.so-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--so-panel-header-bg);
+    border-bottom: 1px solid var(--so-panel-border);
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.so-panel-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.so-panel-header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Panel Icon */
+.so-panel-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+    border-radius: 8px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.so-panel-icon .material-icons {
+    font-size: 20px;
+}
+
+[data-theme="dark"] .so-panel-icon {
+    background: #7367f0;
+}
+
+/* Panel Title */
+.so-panel-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--so-panel-title-color);
+    margin: 0;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.so-panel-subtitle {
+    font-size: 12px;
+    color: var(--so-panel-subtitle-color);
+    margin: 2px 0 0 0;
+}
+
+/* ============================================
+   PANEL TOOLBAR (Filters & Actions Row)
+   ============================================ */
+.so-panel-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--so-panel-divider);
+}
+
+.so-panel-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.so-panel-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   DATE RANGE PICKER
+   ============================================ */
+.so-panel-date-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--so-panel-input-bg);
+    border: 1px solid var(--so-panel-input-border);
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.so-panel-date-range:hover {
+    border-color: var(--so-panel-input-focus-border);
+}
+
+.so-panel-date-range:focus-within {
+    border-color: var(--so-panel-input-focus-border);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.1);
+}
+
+[data-theme="dark"] .so-panel-date-range:focus-within {
+    box-shadow: 0 0 0 2px rgba(115, 103, 240, 0.15);
+}
+
+.so-panel-date-range .material-icons {
+    font-size: 18px;
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-date-range-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--so-panel-input-text);
+    white-space: nowrap;
+}
+
+.so-panel-date-range-arrow {
+    font-size: 18px !important;
+    color: var(--so-panel-subtitle-color);
+    transition: transform 0.2s ease;
+}
+
+.so-panel-date-range.open .so-panel-date-range-arrow {
+    transform: rotate(180deg);
+}
+
+/* Date Range Dropdown */
+.so-panel-date-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 280px;
+    background: var(--so-panel-dropdown-bg);
+    border: 1px solid var(--so-panel-dropdown-border);
+    border-radius: 8px;
+    box-shadow: var(--so-panel-dropdown-shadow);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+}
+
+.so-panel-date-range.open .so-panel-date-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.so-panel-date-presets {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--so-panel-divider);
+}
+
+.so-panel-date-preset {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--so-panel-btn-text);
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.so-panel-date-preset:hover {
+    background: var(--so-panel-dropdown-item-hover);
+}
+
+.so-panel-date-preset.active {
+    background: var(--so-panel-btn-active-bg);
+    color: var(--so-panel-btn-active-text);
+}
+
+.so-panel-date-preset .material-icons {
+    font-size: 18px;
+    margin-right: 12px;
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-date-preset.active .material-icons {
+    color: var(--so-panel-btn-active-text);
+}
+
+.so-panel-date-custom {
+    padding: 12px 16px;
+}
+
+.so-panel-date-custom-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--so-panel-subtitle-color);
+    margin-bottom: 8px;
+}
+
+.so-panel-date-inputs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.so-panel-date-input {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--so-panel-input-text);
+    background: var(--so-panel-input-bg);
+    border: 1px solid var(--so-panel-input-border);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.so-panel-date-input:focus {
+    border-color: var(--so-panel-input-focus-border);
+}
+
+.so-panel-date-inputs span {
+    color: var(--so-panel-subtitle-color);
+    font-size: 12px;
+}
+
+.so-panel-date-apply {
+    margin-top: 12px;
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--so-panel-btn-primary-text);
+    background: var(--so-panel-btn-primary-bg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.so-panel-date-apply:hover {
+    background: var(--so-panel-btn-primary-hover-bg);
+}
+
+/* ============================================
+   FILTER BUTTON & DROPDOWN
+   ============================================ */
+.so-panel-filter {
+    position: relative;
+}
+
+.so-panel-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--so-panel-btn-text);
+    background: var(--so-panel-btn-bg);
+    border: 1px solid var(--so-panel-btn-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.so-panel-filter-btn:hover {
+    background: var(--so-panel-btn-hover-bg);
+}
+
+.so-panel-filter-btn.active {
+    background: var(--so-panel-btn-active-bg);
+    color: var(--so-panel-btn-active-text);
+    border-color: var(--so-panel-btn-active-border);
+}
+
+.so-panel-filter-btn .material-icons {
+    font-size: 18px;
+}
+
+.so-panel-filter-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--so-panel-badge-text);
+    background: var(--so-panel-badge-bg);
+    border-radius: 9px;
+}
+
+.so-panel-filter-btn.active .so-panel-filter-badge {
+    background: var(--so-panel-btn-active-text);
+    color: #ffffff;
+}
+
+/* Filter Dropdown */
+.so-panel-filter-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 320px;
+    max-width: 400px;
+    background: var(--so-panel-dropdown-bg);
+    border: 1px solid var(--so-panel-dropdown-border);
+    border-radius: 8px;
+    box-shadow: var(--so-panel-dropdown-shadow);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+}
+
+.so-panel-filter.open .so-panel-filter-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.so-panel-filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--so-panel-divider);
+}
+
+.so-panel-filter-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--so-panel-title-color);
+}
+
+.so-panel-filter-clear {
+    font-size: 12px;
+    color: var(--so-panel-btn-active-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+}
+
+.so-panel-filter-clear:hover {
+    text-decoration: underline;
+}
+
+.so-panel-filter-body {
+    padding: 12px 16px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.so-panel-filter-group {
+    margin-bottom: 16px;
+}
+
+.so-panel-filter-group:last-child {
+    margin-bottom: 0;
+}
+
+.so-panel-filter-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--so-panel-subtitle-color);
+    margin-bottom: 8px;
+}
+
+.so-panel-filter-select {
+    width: 100%;
+    padding: 8px 32px 8px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--so-panel-input-text);
+    background: var(--so-panel-input-bg);
+    border: 1px solid var(--so-panel-input-border);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235f6368' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+[data-theme="dark"] .so-panel-filter-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a3a8b8' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+}
+
+.so-panel-filter-select:focus {
+    border-color: var(--so-panel-input-focus-border);
+}
+
+.so-panel-filter-input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--so-panel-input-text);
+    background: var(--so-panel-input-bg);
+    border: 1px solid var(--so-panel-input-border);
+    border-radius: 4px;
+    outline: none;
+}
+
+.so-panel-filter-input:focus {
+    border-color: var(--so-panel-input-focus-border);
+}
+
+.so-panel-filter-input::placeholder {
+    color: var(--so-panel-input-placeholder);
+}
+
+.so-panel-filter-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--so-panel-divider);
+    background: var(--so-panel-header-bg);
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.so-panel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--so-panel-btn-text);
+    background: var(--so-panel-btn-bg);
+    border: 1px solid var(--so-panel-btn-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.so-panel-btn:hover {
+    background: var(--so-panel-btn-hover-bg);
+}
+
+.so-panel-btn:active {
+    background: var(--so-panel-btn-active-bg);
+}
+
+.so-panel-btn .material-icons {
+    font-size: 18px;
+}
+
+/* Primary Button */
+.so-panel-btn-primary {
+    color: var(--so-panel-btn-primary-text);
+    background: var(--so-panel-btn-primary-bg);
+    border-color: var(--so-panel-btn-primary-bg);
+}
+
+.so-panel-btn-primary:hover {
+    background: var(--so-panel-btn-primary-hover-bg);
+    border-color: var(--so-panel-btn-primary-hover-bg);
+}
+
+/* Icon-only Button */
+.so-panel-btn-icon {
+    padding: 6px;
+    min-width: 32px;
+}
+
+.so-panel-btn-icon .material-icons {
+    font-size: 20px;
+}
+
+/* Button Group */
+.so-panel-btn-group {
+    display: inline-flex;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.so-panel-btn-group .so-panel-btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+
+.so-panel-btn-group .so-panel-btn:first-child {
+    border-radius: 4px 0 0 4px;
+    margin-left: 0;
+}
+
+.so-panel-btn-group .so-panel-btn:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.so-panel-btn-group .so-panel-btn:only-child {
+    border-radius: 4px;
+}
+
+.so-panel-btn-group .so-panel-btn.active {
+    background: var(--so-panel-btn-active-bg);
+    color: var(--so-panel-btn-active-text);
+    border-color: var(--so-panel-btn-active-border);
+    z-index: 1;
+}
+
+/* ============================================
+   EXPORT BUTTONS
+   ============================================ */
+.so-panel-export {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.so-panel-export-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--so-panel-btn-text);
+    background: var(--so-panel-btn-bg);
+    border: 1px solid var(--so-panel-btn-border);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.so-panel-export-btn:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.so-panel-export-btn:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.so-panel-export-btn:only-child {
+    border-radius: 4px;
+}
+
+.so-panel-export-btn:not(:first-child) {
+    margin-left: -1px;
+}
+
+.so-panel-export-btn:hover {
+    background: var(--so-panel-btn-hover-bg);
+    z-index: 1;
+}
+
+.so-panel-export-btn .material-icons {
+    font-size: 16px;
+}
+
+/* Export button colors */
+.so-panel-export-btn.copy:hover { background: #e8f0fe; color: #1a73e8; border-color: #1a73e8; }
+.so-panel-export-btn.excel:hover { background: #e6f4ea; color: #34a853; border-color: #34a853; }
+.so-panel-export-btn.pdf:hover { background: #fce8e6; color: #ea4335; border-color: #ea4335; }
+.so-panel-export-btn.csv:hover { background: #fef7e0; color: #f9ab00; border-color: #f9ab00; }
+.so-panel-export-btn.print:hover { background: #f3e8fd; color: #9c27b0; border-color: #9c27b0; }
+
+[data-theme="dark"] .so-panel-export-btn.copy:hover { background: rgba(115, 103, 240, 0.15); color: #7367f0; border-color: #7367f0; }
+[data-theme="dark"] .so-panel-export-btn.excel:hover { background: rgba(40, 199, 111, 0.15); color: #28c76f; border-color: #28c76f; }
+[data-theme="dark"] .so-panel-export-btn.pdf:hover { background: rgba(234, 84, 85, 0.15); color: #ea5455; border-color: #ea5455; }
+[data-theme="dark"] .so-panel-export-btn.csv:hover { background: rgba(255, 159, 67, 0.15); color: #ff9f43; border-color: #ff9f43; }
+[data-theme="dark"] .so-panel-export-btn.print:hover { background: rgba(168, 85, 247, 0.15); color: #a855f7; border-color: #a855f7; }
+
+/* ============================================
+   SEARCH INPUT (in panel)
+   ============================================ */
+.so-panel-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: var(--so-panel-input-bg);
+    border: 1px solid var(--so-panel-input-border);
+    border-radius: 4px;
+    min-width: 200px;
+    transition: all 0.15s ease;
+}
+
+.so-panel-search:focus-within {
+    border-color: var(--so-panel-input-focus-border);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.1);
+}
+
+[data-theme="dark"] .so-panel-search:focus-within {
+    box-shadow: 0 0 0 2px rgba(115, 103, 240, 0.15);
+}
+
+.so-panel-search .material-icons {
+    font-size: 18px;
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--so-panel-input-text);
+    background: transparent;
+}
+
+.so-panel-search-input::placeholder {
+    color: var(--so-panel-input-placeholder);
+}
+
+/* ============================================
+   CHIPS / ACTIVE FILTERS
+   ============================================ */
+.so-panel-chips {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--so-panel-divider);
+}
+
+.so-panel-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--so-panel-chip-text);
+    background: var(--so-panel-chip-bg);
+    border-radius: 16px;
+    transition: all 0.15s ease;
+}
+
+.so-panel-chip-label {
+    color: var(--so-panel-subtitle-color);
+    font-weight: 400;
+}
+
+.so-panel-chip-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    padding: 0;
+}
+
+.so-panel-chip-remove:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .so-panel-chip-remove:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.so-panel-chip-remove .material-icons {
+    font-size: 14px;
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-chips-clear {
+    font-size: 12px;
+    color: var(--so-panel-btn-active-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 4px 8px;
+}
+
+.so-panel-chips-clear:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   PANEL BODY (Content area)
+   ============================================ */
+.so-panel-body {
+    padding: 16px;
+}
+
+/* When panel body contains a DataTable, remove padding */
+.so-panel-body:has(.tabulator) {
+    padding: 0;
+}
+
+/* Ensure DataTable fills panel body completely */
+.so-panel-body .tabulator {
+    border: none;
+    border-radius: 0;
+}
+
+/* Remove top border from DataTable header when inside panel */
+.so-panel-body .dt-header {
+    border-top: none;
+    border-radius: 0;
+}
+
+/* ============================================
+   PANEL FOOTER (Optional summary/pagination)
+   ============================================ */
+.so-panel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--so-panel-header-bg);
+    border-top: 1px solid var(--so-panel-border);
+    font-size: 13px;
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.so-panel-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.so-panel-footer-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.so-panel-footer-stat-label {
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-footer-stat-value {
+    font-weight: 600;
+    color: var(--so-panel-title-color);
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.so-panel-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--so-panel-divider);
+    margin: 0 4px;
+}
+
+.so-panel-divider-horizontal {
+    width: 100%;
+    height: 1px;
+    background: var(--so-panel-divider);
+    margin: 8px 0;
+}
+
+/* ============================================
+   SHOW ENTRIES SELECTOR
+   ============================================ */
+.so-panel-entries {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-entries-select {
+    padding: 5px 28px 5px 8px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--so-panel-input-text);
+    background: var(--so-panel-input-bg);
+    border: 1px solid var(--so-panel-input-border);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235f6368' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+[data-theme="dark"] .so-panel-entries-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a3a8b8' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+}
+
+.so-panel-entries-select:focus {
+    border-color: var(--so-panel-input-focus-border);
+}
+
+/* ============================================
+   COLUMN SELECTOR DROPDOWN
+   ============================================ */
+.so-panel-columns {
+    position: relative;
+}
+
+.so-panel-columns-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 220px;
+    max-height: 320px;
+    background: var(--so-panel-dropdown-bg);
+    border: 1px solid var(--so-panel-dropdown-border);
+    border-radius: 8px;
+    box-shadow: var(--so-panel-dropdown-shadow);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.so-panel-columns.open .so-panel-columns-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.so-panel-columns-header {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--so-panel-divider);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--so-panel-subtitle-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.so-panel-columns-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 0;
+}
+
+.so-panel-columns-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--so-panel-btn-text);
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.so-panel-columns-item:hover {
+    background: var(--so-panel-dropdown-item-hover);
+}
+
+.so-panel-columns-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--so-panel-btn-active-text);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    .so-panel-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .so-panel-toolbar-left,
+    .so-panel-toolbar-right {
+        justify-content: flex-start;
+    }
+
+    .so-panel-date-range {
+        flex: 1;
+    }
+
+    .so-panel-search {
+        min-width: 100%;
+    }
+
+    .so-panel-export {
+        flex-wrap: wrap;
+    }
+
+    .so-panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .so-panel-header-right {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+/* ============================================
+   PANEL INFO SECTION (Additional Data Display)
+   For showing Account Group, Opening Values, etc.
+   ============================================ */
+.so-panel-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 16px;
+    background: var(--so-panel-header-bg);
+    border-bottom: 1px solid var(--so-panel-border);
+    flex-wrap: wrap;
+}
+
+.so-panel-info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.so-panel-info-label {
+    color: var(--so-panel-subtitle-color);
+    font-weight: 400;
+}
+
+.so-panel-info-value {
+    color: var(--so-panel-title-color);
+    font-weight: 500;
+}
+
+.so-panel-info-value.positive {
+    color: #34a853;
+}
+
+[data-theme="dark"] .so-panel-info-value.positive {
+    color: #28c76f;
+}
+
+.so-panel-info-value.negative {
+    color: #ea4335;
+}
+
+[data-theme="dark"] .so-panel-info-value.negative {
+    color: #ea5455;
+}
+
+.so-panel-info-value.highlight {
+    color: #1a73e8;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .so-panel-info-value.highlight {
+    color: #7367f0;
+}
+
+.so-panel-info-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--so-panel-divider);
+}
+
+/* ============================================
+   OPTIONS DROPDOWN (Actions Menu)
+   For Compare Ledger, Pending Invoice, etc.
+   ============================================ */
+.so-panel-options {
+    position: relative;
+}
+
+.so-panel-options-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--so-panel-btn-text);
+    background: var(--so-panel-btn-bg);
+    border: 1px solid var(--so-panel-btn-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.so-panel-options-btn:hover {
+    background: var(--so-panel-btn-hover-bg);
+}
+
+.so-panel-options-btn .material-icons {
+    font-size: 18px;
+}
+
+.so-panel-options-btn .so-panel-options-arrow {
+    transition: transform 0.2s ease;
+}
+
+.so-panel-options.open .so-panel-options-btn .so-panel-options-arrow {
+    transform: rotate(180deg);
+}
+
+/* Options Dropdown Menu */
+.so-panel-options-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 200px;
+    background: var(--so-panel-dropdown-bg);
+    border: 1px solid var(--so-panel-dropdown-border);
+    border-radius: 8px;
+    box-shadow: var(--so-panel-dropdown-shadow);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.so-panel-options.open .so-panel-options-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.so-panel-options-header {
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--so-panel-subtitle-color);
+    border-bottom: 1px solid var(--so-panel-divider);
+}
+
+.so-panel-options-list {
+    padding: 4px 0;
+}
+
+.so-panel-options-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--so-panel-btn-text);
+    cursor: pointer;
+    transition: background 0.15s ease;
+    text-decoration: none;
+}
+
+.so-panel-options-item:hover {
+    background: var(--so-panel-dropdown-item-hover);
+    text-decoration: none;
+}
+
+.so-panel-options-item .material-icons {
+    font-size: 18px;
+    color: var(--so-panel-subtitle-color);
+}
+
+.so-panel-options-item:hover .material-icons {
+    color: var(--so-panel-btn-active-text);
+}
+
+.so-panel-options-divider {
+    height: 1px;
+    background: var(--so-panel-divider);
+    margin: 4px 0;
+}
+
+/* ============================================
+   MATERIAL UI RIPPLE EFFECT
+   ============================================ */
+.so-panel-btn,
+.so-panel-filter-btn,
+.so-panel-export-btn,
+.so-panel-date-preset,
+.so-panel-columns-item,
+.so-panel-options-btn,
+.so-panel-options-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.so-panel-btn::after,
+.so-panel-filter-btn::after,
+.so-panel-export-btn::after,
+.so-panel-date-preset::after,
+.so-panel-columns-item::after,
+.so-panel-options-btn::after,
+.so-panel-options-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.08);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.so-panel-btn:active::after,
+.so-panel-filter-btn:active::after,
+.so-panel-export-btn:active::after,
+.so-panel-date-preset:active::after,
+.so-panel-columns-item:active::after,
+.so-panel-options-btn:active::after,
+.so-panel-options-item:active::after {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+    transition: width 0s, height 0s, opacity 0s;
+}
+
+[data-theme="dark"] .so-panel-btn::after,
+[data-theme="dark"] .so-panel-filter-btn::after,
+[data-theme="dark"] .so-panel-export-btn::after,
+[data-theme="dark"] .so-panel-date-preset::after,
+[data-theme="dark"] .so-panel-columns-item::after,
+[data-theme="dark"] .so-panel-options-btn::after,
+[data-theme="dark"] .so-panel-options-item::after {
+    background: rgba(255, 255, 255, 0.1);
+}

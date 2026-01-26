@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Sheet - SixOrbit ERP</title>
+
+    <!-- Prevent sidebar blink on page load -->
+    <script>
+    (function() {
+        try {
+            var state = localStorage.getItem('so-sidebar-state');
+            if (state === 'pinned') {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-pinned');
+            } else {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+            }
+        } catch(e) {
+            document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+        }
+    })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+    <!-- SixOrbit Common Styles -->
+    <link rel="stylesheet" href="../common/sixorbit-common.css">
+
+    <!-- SixOrbit UI Components -->
+    <link rel="stylesheet" href="css/so-theme.css">
+    <link rel="stylesheet" href="css/so-navbar.css">
+    <link rel="stylesheet" href="css/so-sidebar.css">
+    <link rel="stylesheet" href="css/so-panel.css">
+    <link rel="stylesheet" href="css/so-forms.css">
+    <link rel="stylesheet" href="css/so-search.css">
+
+    <!-- Balance Sheet Plugin CSS -->
+    <link rel="stylesheet" href="../finance/balance_sheet/balance-sheet.css">
+
+    <style>
+        .report-content {
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="so-sidebar">
+        <div class="so-sidebar-header">
+            <div class="so-sidebar-logo">TI</div>
+            <div class="so-sidebar-brand-info">
+                <div class="so-sidebar-brand-name">Trove Innovation</div>
+            </div>
+            <button class="so-sidebar-toggle" title="Pin sidebar">
+                <span class="toggle-circle"></span>
+            </button>
+        </div>
+
+        <div class="so-sidebar-scroll">
+            <ul class="so-sidebar-nav">
+            </ul>
+        </div>
+
+        <div class="so-sidebar-footer">
+            <div class="so-sidebar-footer-item" title="Settings">
+                <span class="material-icons">settings</span>
+                <span>Settings</span>
+            </div>
+        </div>
+    </aside>
+
+    <div class="so-sidebar-overlay"></div>
+
+    <!-- NAVBAR -->
+    <nav class="so-navbar">
+        <div class="so-navbar-container">
+            <div class="so-navbar-left">
+                <button class="so-navbar-toggle" data-toggle="sidebar" title="Toggle Menu">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+
+            <div class="so-navbar-center">
+                <div class="so-navbar-search">
+                    <div class="so-navbar-search-wrapper">
+                        <span class="material-icons so-navbar-search-icon">search</span>
+                        <input type="text" class="so-navbar-search-input" placeholder="Search what you want to do.. [CTRL + K]">
+                        <button class="so-navbar-search-clear">
+                            <span class="material-icons">close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-navbar-right">
+                <!-- Theme Switcher -->
+                <div class="so-navbar-theme">
+                    <button class="so-navbar-icon-btn so-navbar-theme-btn" title="Theme">
+                        <span class="material-icons theme-icon">light_mode</span>
+                    </button>
+                    <div class="so-navbar-theme-dropdown">
+                        <div class="so-navbar-theme-header">Appearance</div>
+                        <button class="so-navbar-theme-option" data-theme="light">
+                            <span class="material-icons">light_mode</span>
+                            <span>Light</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="dark">
+                            <span class="material-icons">dark_mode</span>
+                            <span>Dark</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="system">
+                            <span class="material-icons">computer</span>
+                            <span>System</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="sidebar-dark">
+                            <span class="material-icons">contrast</span>
+                            <span>Dark Sidebar</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="so-navbar-user">
+                    <div class="so-navbar-user-avatar">RC</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="so-main-content">
+        <div class="report-content">
+            <!-- Page Header Card -->
+            <div class="so-page-header-card">
+                <nav class="so-breadcrumb">
+                    <a href="index.html" class="so-breadcrumb-item">
+                        <span class="material-icons" style="font-size: 14px;">home</span>
+                    </a>
+                    <span class="so-breadcrumb-separator">
+                        <span class="material-icons">chevron_right</span>
+                    </span>
+                    <a href="#" class="so-breadcrumb-item">Finance</a>
+                    <span class="so-breadcrumb-separator">
+                        <span class="material-icons">chevron_right</span>
+                    </span>
+                    <a href="#" class="so-breadcrumb-item">Reports</a>
+                    <span class="so-breadcrumb-separator">
+                        <span class="material-icons">chevron_right</span>
+                    </span>
+                    <span class="so-breadcrumb-item active">Balance Sheet</span>
+                </nav>
+                <div class="so-page-header-row">
+                    <h1 class="so-page-title">
+                        <span class="so-page-title-icon">
+                            <span class="material-icons">account_balance</span>
+                        </span>
+                        Balance Sheet
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Panel with Report Container -->
+            <div class="so-panel">
+                <div class="so-panel-header">
+                    <div class="so-panel-header-left">
+                        <div class="so-panel-icon">
+                            <span class="material-icons">account_balance</span>
+                        </div>
+                        <div>
+                            <h3 class="so-panel-title">Balance Sheet</h3>
+                            <p class="so-panel-subtitle">Assets & Liabilities Statement</p>
+                        </div>
+                    </div>
+                    <div class="so-panel-header-right">
+                        <div class="so-panel-date-range" style="position: relative;" onclick="this.classList.toggle('open')">
+                            <span class="material-icons">calendar_today</span>
+                            <span class="so-panel-date-range-text">As on Jan 19, 2026</span>
+                            <span class="material-icons so-panel-date-range-arrow">expand_more</span>
+                            <div class="so-panel-date-dropdown" onclick="event.stopPropagation()">
+                                <div class="so-panel-date-presets">
+                                    <div class="so-panel-date-preset"><span class="material-icons">today</span>Today</div>
+                                    <div class="so-panel-date-preset"><span class="material-icons">calendar_view_month</span>End of Last Month</div>
+                                    <div class="so-panel-date-preset"><span class="material-icons">calendar_view_month</span>End of Last Quarter</div>
+                                    <div class="so-panel-date-preset active"><span class="material-icons">event</span>As on Date</div>
+                                </div>
+                                <div class="so-panel-date-custom">
+                                    <div class="so-panel-date-custom-label">Select Date</div>
+                                    <div class="so-panel-date-inputs">
+                                        <input type="date" class="so-panel-date-input" value="2026-01-19">
+                                    </div>
+                                    <button class="so-panel-date-apply">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-panel-body" style="padding: 0;">
+                    <div id="balance-sheet-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Search Overlay -->
+    <div class="so-search-overlay">
+        <div class="so-search-overlay-backdrop"></div>
+        <div class="so-search-overlay-content">
+            <div class="so-search-overlay-header">
+                <div class="so-search-overlay-input-wrapper">
+                    <span class="material-icons so-search-overlay-icon">search</span>
+                    <input type="text" class="so-search-overlay-input" placeholder="Search modules, reports, actions..." autofocus>
+                    <div class="so-search-overlay-shortcut">
+                        <kbd>ESC</kbd>
+                    </div>
+                    <button class="so-search-overlay-close" type="button" title="Close search">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+            </div>
+            <div class="so-search-overlay-body">
+                <div class="so-search-overlay-section">
+                    <div class="so-search-overlay-section-title">Quick Actions</div>
+                    <div class="so-search-overlay-results"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ECharts Library -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+    <!-- SixOrbit UI JS -->
+    <script src="js/so-search.js"></script>
+    <script src="js/so-layout.js"></script>
+
+    <!-- Balance Sheet Plugin JS -->
+    <script src="../finance/balance_sheet/sample-data.js"></script>
+    <script src="../finance/balance_sheet/balance-sheet.js"></script>
+
+    <script>
+        // Inline menu data (fallback for file:// protocol)
+        const sidebarMenuData = [
+            { id: 'dashboard', title: 'Dashboard', icon: 'dashboard', href: 'index.html' },
+            {
+                id: 'finance', title: 'Finance', icon: 'account_balance',
+                children: [
+                    {
+                        id: 'finance-reports', title: 'Reports', icon: 'assessment',
+                        children: [
+                            { id: 'cash-flow-summary', title: 'Cash Flow Summary', href: 'cash-flow-summary.html' },
+                            { id: 'trial-balance', title: 'Trial Balance', href: 'trial-balance.html' },
+                            { id: 'profit-loss', title: 'Profit & Loss', href: 'profit-loss.html' },
+                            { id: 'monthwise-profit-loss', title: 'Monthwise P&L', href: 'monthwise-profit-loss.html' },
+                            { id: 'balance-sheet', title: 'Balance Sheet', href: 'balance-sheet.html' },
+                            { id: 'group-summary', title: 'Group Summary', href: 'group-summary.html' },
+                            { id: 'other-reports', title: 'Other Reports', href: 'other-reports.html' }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Load sidebar menu from JSON with fallback to inline data
+        fetch('data/sidebar-menu.json')
+            .then(response => response.json())
+            .then(data => {
+                if (window.soLayout) {
+                    window.soLayout.loadMenu(data.menu, 'balance-sheet');
+                }
+            })
+            .catch(error => {
+                console.warn('Error loading menu from JSON, using fallback:', error);
+                if (window.soLayout) {
+                    window.soLayout.loadMenu(sidebarMenuData, 'balance-sheet');
+                }
+            });
+
+        // Initialize Balance Sheet
+        document.addEventListener('DOMContentLoaded', function() {
+            const balanceSheet = new BalanceSheet('balance-sheet-container', {
+                data: sampleBalanceSheetData,
+                onGroupClick: function(groupData) {
+                    console.log('Group clicked:', groupData);
+                },
+                onLedgerClick: function(ledgerData) {
+                    console.log('Ledger clicked:', ledgerData);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

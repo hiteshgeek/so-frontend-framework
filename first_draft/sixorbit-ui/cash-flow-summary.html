@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Summary - SixOrbit ERP</title>
+
+    <!-- Prevent sidebar blink on page load -->
+    <script>
+    (function() {
+        try {
+            var state = localStorage.getItem('so-sidebar-state');
+            if (state === 'pinned') {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-pinned');
+            } else {
+                document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+            }
+        } catch(e) {
+            document.documentElement.classList.add('sidebar-ready', 'sidebar-collapsed');
+        }
+    })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+    <!-- SixOrbit Common Styles -->
+    <link rel="stylesheet" href="../common/sixorbit-common.css">
+
+    <!-- SixOrbit UI Components -->
+    <link rel="stylesheet" href="css/so-theme.css">
+    <link rel="stylesheet" href="css/so-navbar.css">
+    <link rel="stylesheet" href="css/so-sidebar.css">
+    <link rel="stylesheet" href="css/so-panel.css">
+    <link rel="stylesheet" href="css/so-forms.css">
+    <link rel="stylesheet" href="css/so-search.css">
+
+    <!-- Cash Flow Plugin CSS -->
+    <link rel="stylesheet" href="../finance/cash_flow_summary/cashflow-dashboard.css">
+
+    <style>
+        .report-content {
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="so-sidebar">
+        <div class="so-sidebar-header">
+            <div class="so-sidebar-logo">TI</div>
+            <div class="so-sidebar-brand-info">
+                <div class="so-sidebar-brand-name">Trove Innovation</div>
+            </div>
+            <button class="so-sidebar-toggle" title="Pin sidebar">
+                <span class="toggle-circle"></span>
+            </button>
+        </div>
+
+        <div class="so-sidebar-scroll">
+            <ul class="so-sidebar-nav">
+                <!-- Menu items will be loaded dynamically -->
+            </ul>
+        </div>
+
+        <div class="so-sidebar-footer">
+            <div class="so-sidebar-footer-item" title="Settings">
+                <span class="material-icons">settings</span>
+                <span>Settings</span>
+            </div>
+        </div>
+    </aside>
+
+    <div class="so-sidebar-overlay"></div>
+
+    <!-- NAVBAR -->
+    <nav class="so-navbar">
+        <div class="so-navbar-container">
+            <div class="so-navbar-left">
+                <button class="so-navbar-toggle" data-toggle="sidebar" title="Toggle Menu">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+
+            <div class="so-navbar-center">
+                <div class="so-navbar-search">
+                    <div class="so-navbar-search-wrapper">
+                        <span class="material-icons so-navbar-search-icon">search</span>
+                        <input type="text" class="so-navbar-search-input" placeholder="Search what you want to do.. [CTRL + K]">
+                        <button class="so-navbar-search-clear">
+                            <span class="material-icons">close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-navbar-right">
+                <!-- Theme Switcher -->
+                <div class="so-navbar-theme">
+                    <button class="so-navbar-icon-btn so-navbar-theme-btn" title="Theme">
+                        <span class="material-icons theme-icon">light_mode</span>
+                    </button>
+                    <div class="so-navbar-theme-dropdown">
+                        <div class="so-navbar-theme-header">Appearance</div>
+                        <button class="so-navbar-theme-option" data-theme="light">
+                            <span class="material-icons">light_mode</span>
+                            <span>Light</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="dark">
+                            <span class="material-icons">dark_mode</span>
+                            <span>Dark</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="system">
+                            <span class="material-icons">computer</span>
+                            <span>System</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                        <button class="so-navbar-theme-option" data-theme="sidebar-dark">
+                            <span class="material-icons">contrast</span>
+                            <span>Dark Sidebar</span>
+                            <span class="material-icons theme-check">check</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="so-navbar-user">
+                    <div class="so-navbar-user-avatar">RC</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="so-main-content">
+        <div class="report-content">
+            <!-- Page Header Card -->
+            <div class="so-page-header-card">
+                <nav class="so-breadcrumb">
+                    <a href="index.html" class="so-breadcrumb-item">
+                        <span class="material-icons" style="font-size: 14px;">home</span>
+                    </a>
+                    <span class="so-breadcrumb-separator">
+                        <span class="material-icons">chevron_right</span>
+                    </span>
+                    <a href="#" class="so-breadcrumb-item">Finance</a>
+                    <span class="so-breadcrumb-separator">
+                        <span class="material-icons">chevron_right</span>
+                    </span>
+                    <a href="#" class="so-breadcrumb-item">Reports</a>
+                    <span class="so-breadcrumb-separator">
+                        <span class="material-icons">chevron_right</span>
+                    </span>
+                    <span class="so-breadcrumb-item active">Cash Flow Summary</span>
+                </nav>
+                <div class="so-page-header-row">
+                    <h1 class="so-page-title">
+                        <span class="so-page-title-icon">
+                            <span class="material-icons">account_balance_wallet</span>
+                        </span>
+                        Cash Flow Summary
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Panel with Dashboard Container -->
+            <div class="so-panel">
+                <div class="so-panel-header">
+                    <div class="so-panel-header-left">
+                        <div class="so-panel-icon">
+                            <span class="material-icons">account_balance_wallet</span>
+                        </div>
+                        <div>
+                            <h3 class="so-panel-title">Cash Flow Summary</h3>
+                            <p class="so-panel-subtitle">Inflow & Outflow Analysis</p>
+                        </div>
+                    </div>
+                    <div class="so-panel-header-right">
+                        <!-- Date Range Picker -->
+                        <div class="so-panel-date-range" style="position: relative;" onclick="this.classList.toggle('open')">
+                            <span class="material-icons">calendar_today</span>
+                            <span class="so-panel-date-range-text">Apr 1, 2025 - May 30, 2025</span>
+                            <span class="material-icons so-panel-date-range-arrow">expand_more</span>
+
+                            <!-- Date Dropdown -->
+                            <div class="so-panel-date-dropdown" onclick="event.stopPropagation()">
+                                <div class="so-panel-date-presets">
+                                    <div class="so-panel-date-preset">
+                                        <span class="material-icons">today</span>
+                                        Today
+                                    </div>
+                                    <div class="so-panel-date-preset">
+                                        <span class="material-icons">calendar_view_week</span>
+                                        Last 7 Days
+                                    </div>
+                                    <div class="so-panel-date-preset">
+                                        <span class="material-icons">calendar_month</span>
+                                        Last 30 Days
+                                    </div>
+                                    <div class="so-panel-date-preset">
+                                        <span class="material-icons">calendar_view_month</span>
+                                        This Month
+                                    </div>
+                                    <div class="so-panel-date-preset active">
+                                        <span class="material-icons">event</span>
+                                        This Financial Year
+                                    </div>
+                                </div>
+                                <div class="so-panel-date-custom">
+                                    <div class="so-panel-date-custom-label">Custom Range</div>
+                                    <div class="so-panel-date-inputs">
+                                        <input type="date" class="so-panel-date-input" value="2025-04-01">
+                                        <span>to</span>
+                                        <input type="date" class="so-panel-date-input" value="2025-05-30">
+                                    </div>
+                                    <button class="so-panel-date-apply">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="so-panel-body" style="padding: 0;">
+                    <div id="cashflow-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Search Overlay -->
+    <div class="so-search-overlay">
+        <div class="so-search-overlay-backdrop"></div>
+        <div class="so-search-overlay-content">
+            <div class="so-search-overlay-header">
+                <div class="so-search-overlay-input-wrapper">
+                    <span class="material-icons so-search-overlay-icon">search</span>
+                    <input type="text" class="so-search-overlay-input" placeholder="Search modules, reports, actions..." autofocus>
+                    <div class="so-search-overlay-shortcut">
+                        <kbd>ESC</kbd>
+                    </div>
+                    <button class="so-search-overlay-close" type="button" title="Close search">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+            </div>
+            <div class="so-search-overlay-body">
+                <div class="so-search-overlay-section">
+                    <div class="so-search-overlay-section-title">Quick Actions</div>
+                    <div class="so-search-overlay-results"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+    <!-- SixOrbit UI JS -->
+    <script src="js/so-search.js"></script>
+    <script src="js/so-layout.js"></script>
+
+    <!-- Cash Flow Plugin JS -->
+    <script src="../finance/cash_flow_summary/cashflow-dashboard-v2.js"></script>
+
+    <script>
+        // Inline menu data (fallback for file:// protocol)
+        const sidebarMenuData = [
+            { id: 'dashboard', title: 'Dashboard', icon: 'dashboard', href: 'index.html' },
+            {
+                id: 'finance', title: 'Finance', icon: 'account_balance',
+                children: [
+                    {
+                        id: 'finance-reports', title: 'Reports', icon: 'assessment',
+                        children: [
+                            { id: 'cash-flow-summary', title: 'Cash Flow Summary', href: 'cash-flow-summary.html' },
+                            { id: 'trial-balance', title: 'Trial Balance', href: 'trial-balance.html' },
+                            { id: 'profit-loss', title: 'Profit & Loss', href: 'profit-loss.html' },
+                            { id: 'monthwise-profit-loss', title: 'Monthwise P&L', href: 'monthwise-profit-loss.html' },
+                            { id: 'balance-sheet', title: 'Balance Sheet', href: 'balance-sheet.html' },
+                            { id: 'group-summary', title: 'Group Summary', href: 'group-summary.html' },
+                            { id: 'other-reports', title: 'Other Reports', href: 'other-reports.html' }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Load sidebar menu from JSON with fallback to inline data
+        fetch('data/sidebar-menu.json')
+            .then(response => response.json())
+            .then(data => {
+                if (window.soLayout) {
+                    window.soLayout.loadMenu(data.menu, 'cash-flow-summary');
+                }
+            })
+            .catch(error => {
+                console.warn('Error loading menu from JSON, using fallback:', error);
+                if (window.soLayout) {
+                    window.soLayout.loadMenu(sidebarMenuData, 'cash-flow-summary');
+                }
+            });
+
+        // Sample data for cash flow
+        const cashflowData = {"company":"Chhabria & Sons Private Limited","period":{"start":"2025-04-01","end":"2025-05-30"},"cashflow":{"inflow":{"groups":[{"id":"revenue","name":"Revenue","type":"group","children":[{"id":"sales_revenue","name":"Sales Revenue","type":"group","children":[{"id":"domestic_sales","name":"Domestic Sales","type":"group","children":[{"id":"north_region","name":"North Region Sales","type":"ledger","amount":8500000},{"id":"south_region","name":"South Region Sales","type":"ledger","amount":12300000},{"id":"east_region","name":"East Region Sales","type":"ledger","amount":6750000},{"id":"west_region","name":"West Region Sales","type":"ledger","amount":9200000}]},{"id":"export_sales","name":"Export Sales","type":"group","children":[{"id":"asia_exports","name":"Asia Pacific Exports","type":"ledger","amount":4500000},{"id":"europe_exports","name":"Europe Exports","type":"ledger","amount":3200000},{"id":"americas_exports","name":"Americas Exports","type":"ledger","amount":2100000}]}]},{"id":"service_revenue","name":"Service Revenue","type":"group","children":[{"id":"consulting","name":"Consulting Services","type":"ledger","amount":1850000},{"id":"maintenance","name":"Maintenance Services","type":"ledger","amount":950000},{"id":"training","name":"Training Services","type":"ledger","amount":420000}]}]},{"id":"other_income","name":"Other Income","type":"group","children":[{"id":"interest_income","name":"Interest Income","type":"group","children":[{"id":"bank_interest","name":"Bank Interest Received","type":"ledger","amount":185000},{"id":"fd_interest","name":"Fixed Deposit Interest","type":"ledger","amount":320000}]},{"id":"rental_income","name":"Rental Income","type":"ledger","amount":450000},{"id":"dividend_income","name":"Dividend Income","type":"ledger","amount":275000}]},{"id":"receivables","name":"Accounts Receivable Collection","type":"group","children":[{"id":"trade_debtors","name":"Trade Debtors","type":"group","children":[{"id":"major_clients","name":"Major Client Collections","type":"ledger","amount":5600000},{"id":"regular_clients","name":"Regular Client Collections","type":"ledger","amount":3200000},{"id":"small_clients","name":"Small Client Collections","type":"ledger","amount":1450000}]},{"id":"other_debtors","name":"Other Debtors","type":"ledger","amount":890000}]}]},"outflow":{"groups":[{"id":"cost_of_sales","name":"Cost of Sales","type":"group","children":[{"id":"raw_materials","name":"Raw Materials","type":"group","children":[{"id":"primary_materials","name":"Primary Materials","type":"group","children":[{"id":"steel","name":"Steel Purchase","type":"ledger","amount":8500000},{"id":"aluminum","name":"Aluminum Purchase","type":"ledger","amount":4200000},{"id":"copper","name":"Copper Purchase","type":"ledger","amount":2800000}]},{"id":"secondary_materials","name":"Secondary Materials","type":"group","children":[{"id":"plastic","name":"Plastic Components","type":"ledger","amount":1850000},{"id":"rubber","name":"Rubber Materials","type":"ledger","amount":950000},{"id":"packaging","name":"Packaging Materials","type":"ledger","amount":680000}]}]},{"id":"manufacturing","name":"Manufacturing Costs","type":"group","children":[{"id":"labor","name":"Direct Labor","type":"ledger","amount":3200000},{"id":"factory_overhead","name":"Factory Overhead","type":"ledger","amount":1850000},{"id":"maintenance_manufacturing","name":"Equipment Maintenance","type":"ledger","amount":920000}]}]},{"id":"operating_expenses","name":"Operating Expenses","type":"group","children":[{"id":"personnel_costs","name":"Personnel Costs","type":"group","children":[{"id":"salaries_wages","name":"Salaries & Wages","type":"group","children":[{"id":"executive_salaries","name":"Executive Salaries","type":"ledger","amount":1850000},{"id":"manager_salaries","name":"Manager Salaries","type":"ledger","amount":2400000},{"id":"staff_salaries","name":"Staff Salaries","type":"ledger","amount":3600000}]},{"id":"benefits","name":"Employee Benefits","type":"group","children":[{"id":"health_insurance","name":"Health Insurance","type":"ledger","amount":520000},{"id":"provident_fund","name":"Provident Fund","type":"ledger","amount":680000},{"id":"gratuity","name":"Gratuity","type":"ledger","amount":320000},{"id":"staff_welfare","name":"Staff Welfare","type":"ledger","amount":180000}]}]},{"id":"administrative","name":"Administrative Expenses","type":"group","children":[{"id":"office_expenses","name":"Office Expenses","type":"group","children":[{"id":"rent","name":"Office Rent","type":"ledger","amount":850000},{"id":"utilities","name":"Utilities","type":"ledger","amount":320000},{"id":"office_supplies","name":"Office Supplies","type":"ledger","amount":145000},{"id":"telecommunications","name":"Telecommunications","type":"ledger","amount":95000}]},{"id":"professional_fees","name":"Professional Fees","type":"group","children":[{"id":"legal_fees","name":"Legal Fees","type":"ledger","amount":420000},{"id":"audit_fees","name":"Audit Fees","type":"ledger","amount":280000},{"id":"consulting_fees","name":"Consulting Fees","type":"ledger","amount":350000}]},{"id":"it_expenses","name":"IT Expenses","type":"group","children":[{"id":"software_licenses","name":"Software Licenses","type":"ledger","amount":380000},{"id":"it_support","name":"IT Support & Maintenance","type":"ledger","amount":220000},{"id":"cloud_services","name":"Cloud Services","type":"ledger","amount":125000}]}]},{"id":"sales_marketing","name":"Sales & Marketing","type":"group","children":[{"id":"marketing_expenses","name":"Marketing Expenses","type":"group","children":[{"id":"advertising","name":"Advertising","type":"ledger","amount":680000},{"id":"digital_marketing","name":"Digital Marketing","type":"ledger","amount":420000},{"id":"promotions","name":"Promotions & Events","type":"ledger","amount":295000}]},{"id":"sales_expenses","name":"Sales Expenses","type":"group","children":[{"id":"sales_commission","name":"Sales Commission","type":"ledger","amount":1200000},{"id":"travel_sales","name":"Sales Travel","type":"ledger","amount":420000},{"id":"client_entertainment","name":"Client Entertainment","type":"ledger","amount":185000}]}]}]},{"id":"taxes","name":"Taxes & Duties","type":"group","children":[{"id":"direct_taxes","name":"Direct Taxes","type":"group","children":[{"id":"corporate_tax","name":"Corporate Tax","type":"ledger","amount":1850000},{"id":"tds_payments","name":"TDS Payments","type":"ledger","amount":420000}]},{"id":"indirect_taxes","name":"Indirect Taxes","type":"group","children":[{"id":"gst_payments","name":"GST Payments","type":"ledger","amount":1200000},{"id":"customs_duty","name":"Customs Duty","type":"ledger","amount":580000}]}]}]}}};
+
+        // Initialize dashboard
+        let dashboard;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            dashboard = new CashFlowDashboard('cashflow-container', {
+                data: cashflowData,
+                numberFormat: 'short',
+                showProgressBarsOnMobile: false,
+                onGroupClick: function(groupData) {
+                    console.log('Group clicked:', groupData);
+                },
+                onLedgerClick: function(ledgerData) {
+                    console.log('Ledger clicked:', ledgerData);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -745,6 +745,97 @@
 }
 
 // ============================================
+// STATIC MODAL (Cannot be dismissed)
+// Use for mandatory actions where user must interact with footer buttons
+// ============================================
+
+.#{$so-prefix}modal-static {
+  // Hide close button - only footer actions can dismiss
+  .#{$so-prefix}modal-close {
+    display: none !important;
+  }
+
+  // Subtle shake animation when backdrop is clicked
+  &.modal-static-shake .#{$so-prefix}modal-dialog {
+    animation: modalStaticShake 0.3s ease-in-out;
+  }
+
+  // Optional: Add visual indicator that modal requires action
+  .#{$so-prefix}modal-header {
+    position: relative;
+
+    // Optional lock icon indicator
+    &::before {
+      content: '';
+      // Only show if explicitly enabled with .show-lock-indicator
+    }
+  }
+
+  // Show lock indicator if needed
+  &.#{$so-prefix}modal-show-lock .#{$so-prefix}modal-header::before {
+    content: '\e897'; // lock icon from Material Icons
+    font-family: 'Material Icons';
+    font-size: 16px;
+    color: css-var('text-secondary');
+    margin-right: spacing('2');
+  }
+}
+
+// Shake animation keyframes
+@keyframes modalStaticShake {
+  0%, 100% {
+    transform: scale(1) translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: scale(1) translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: scale(1) translateX(5px);
+  }
+}
+
+// Static drawer variant
+.#{$so-prefix}drawer-static {
+  .#{$so-prefix}drawer-close {
+    display: none !important;
+  }
+
+  &.drawer-static-shake {
+    animation: drawerStaticShake 0.3s ease-in-out;
+  }
+}
+
+@keyframes drawerStaticShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(calc(100% - 5px));
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(calc(100% + 5px));
+  }
+}
+
+.#{$so-prefix}drawer-static.show {
+  &.drawer-static-shake {
+    animation: drawerStaticShakeOpen 0.3s ease-in-out;
+  }
+}
+
+@keyframes drawerStaticShakeOpen {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+// ============================================
 // RESPONSIVE ADJUSTMENTS
 // ============================================
 

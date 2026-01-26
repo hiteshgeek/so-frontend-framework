@@ -457,6 +457,119 @@ modal.show();</code></pre>
         </div>
     </div>
 
+    <!-- Static Modal (Non-Dismissable) -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Static Modal (Non-Dismissable)</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">A static modal cannot be dismissed by clicking the backdrop, pressing Escape, or clicking a close button. The user must interact with footer actions to close it. Use this for mandatory actions like accepting terms, completing required steps, or critical confirmations.</p>
+
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="showStaticModal()">
+                    Static Modal
+                </button>
+                <button type="button" class="so-btn so-btn-warning" onclick="showStaticModalWithLock()">
+                    Static Modal with Lock Icon
+                </button>
+                <button type="button" class="so-btn so-btn-danger" onclick="showStaticConfirmModal()">
+                    Mandatory Confirmation
+                </button>
+            </div>
+
+            <div class="so-alert so-alert-info so-alert-sm so-mb-4">
+                <span class="material-icons">info</span>
+                <div>Try clicking outside the modal or pressing Escape - it won't close! A subtle shake animation indicates the modal requires action.</div>
+            </div>
+
+            <div class="so-code-block so-mt-4">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-html">&lt;!-- Static Modal - cannot be dismissed except via footer actions --&gt;
+&lt;div class="so-modal so-modal-static" data-so-static="true"&gt;
+    &lt;div class="so-modal-dialog"&gt;
+        &lt;div class="so-modal-header"&gt;
+            &lt;h5 class="so-modal-title"&gt;Required Action&lt;/h5&gt;
+            &lt;!-- No close button shown --&gt;
+        &lt;/div&gt;
+        &lt;div class="so-modal-body"&gt;
+            &lt;p&gt;You must complete this action to continue.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="so-modal-footer"&gt;
+            &lt;button class="so-btn so-btn-primary" data-dismiss="modal"&gt;
+                Accept &amp; Continue
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- With lock icon indicator --&gt;
+&lt;div class="so-modal so-modal-static so-modal-show-lock" data-so-static="true"&gt;
+    ...
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="so-code-block so-mt-4">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-javascript">// Create static modal programmatically
+const modal = SOModal.create({
+    title: 'Terms of Service',
+    content: '&lt;p&gt;Please accept our terms to continue.&lt;/p&gt;',
+    static: true,  // Prevents backdrop/ESC close, hides close button
+    footer: `
+        &lt;button class="so-btn so-btn-outline" onclick="handleDecline(this)"&gt;Decline&lt;/button&gt;
+        &lt;button class="so-btn so-btn-primary" onclick="handleAccept(this)"&gt;Accept&lt;/button&gt;
+    `
+});
+modal.show();
+
+// Handler functions - close modal after action
+function handleAccept(btn) {
+    // Perform your action here (e.g., save to server, update state)
+    console.log('User accepted');
+
+    // Close the modal
+    const modal = btn.closest('.so-modal');
+    SOModal.getInstance(modal)?.hide();
+}
+
+function handleDecline(btn) {
+    // Perform your action here
+    console.log('User declined');
+
+    // Close the modal
+    const modal = btn.closest('.so-modal');
+    SOModal.getInstance(modal)?.hide();
+}
+
+// Static confirmation using SOModal.confirm()
+const result = await SOModal.confirm({
+    title: 'Delete Account',
+    message: 'This action is permanent and cannot be undone.',
+    static: true,  // Cannot dismiss without clicking a button
+    confirmText: 'Delete Account',
+    cancelText: 'Keep Account',
+    danger: true
+});
+
+if (result) {
+    console.log('User confirmed deletion');
+} else {
+    console.log('User cancelled');
+}</code></pre>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript API -->
     <div class="so-card so-mb-4">
         <div class="so-card-header">
@@ -840,6 +953,16 @@ function closeDrawer(btn) {
 // Close on Escape key - only for manually created modals (not SOModal instances)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+        // Check for static modals first - don't close them, just shake
+        const staticModals = document.querySelectorAll('.so-modal-static.show');
+        if (staticModals.length > 0) {
+            staticModals.forEach(modal => {
+                modal.classList.add('modal-static-shake');
+                setTimeout(() => modal.classList.remove('modal-static-shake'), 300);
+            });
+            return; // Don't close anything
+        }
+
         // Only close the static demo modal (basicModal)
         const basicModal = document.getElementById('basicModal');
         if (basicModal && basicModal.classList.contains('show')) {
@@ -858,4 +981,138 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// Static Modal functions
+function showStaticModal() {
+    const modal = SOModal.create({
+        title: 'Terms of Service',
+        content: `
+            <p>Please read and accept our Terms of Service to continue using the application.</p>
+            <div class="so-border so-rounded-md so-p-3 so-bg-light" style="max-height: 200px; overflow-y: auto;">
+                <h6>1. Acceptance of Terms</h6>
+                <p class="so-text-secondary so-text-sm">By accessing or using our service, you agree to be bound by these Terms of Service.</p>
+                <h6>2. Use of Service</h6>
+                <p class="so-text-secondary so-text-sm">You agree to use the service only for lawful purposes and in accordance with these Terms.</p>
+                <h6>3. Privacy Policy</h6>
+                <p class="so-text-secondary so-text-sm">Your use of the service is also governed by our Privacy Policy.</p>
+            </div>
+            <div class="so-mt-3">
+                <label class="so-checkbox">
+                    <input type="checkbox" id="accept-terms">
+                    <span class="so-checkbox-mark"></span>
+                    <span class="so-checkbox-label">I have read and agree to the Terms of Service</span>
+                </label>
+            </div>
+        `,
+        className: 'so-modal-static',
+        static: true,
+        footer: `
+            <button class="so-btn so-btn-outline" onclick="handleDeclineTerms(this)">Decline</button>
+            <button class="so-btn so-btn-primary" onclick="handleAcceptTerms(this)">Accept & Continue</button>
+        `
+    });
+    modal.show();
+}
+
+function handleAcceptTerms(btn) {
+    const modal = btn.closest('.so-modal');
+    if (modal) {
+        SOModal.getInstance(modal)?.hide();
+    }
+    SOToast?.show({ message: 'Terms accepted! Welcome aboard.', type: 'success' });
+}
+
+function handleDeclineTerms(btn) {
+    const modal = btn.closest('.so-modal');
+    SOModal.getInstance(modal)?.hide();
+    SOToast?.show({ message: 'You declined the terms of service.', type: 'warning' });
+}
+
+function showStaticModalWithLock() {
+    const modal = SOModal.create({
+        title: 'Session Timeout Warning',
+        content: `
+            <div class="so-text-center so-py-3">
+                <div class="so-confirm-icon warning so-mx-auto">
+                    <span class="material-icons">timer</span>
+                </div>
+                <h5 class="so-mt-3">Your session is about to expire</h5>
+                <p class="so-text-secondary">Due to inactivity, you will be logged out in <strong id="countdown">30</strong> seconds.</p>
+                <p class="so-text-secondary so-text-sm">Click "Stay Logged In" to continue your session.</p>
+            </div>
+        `,
+        className: 'so-modal-static so-modal-show-lock',
+        static: true,
+        size: 'sm',
+        footer: `
+            <button class="so-btn so-btn-outline" onclick="handleLogout(this)">Log Out Now</button>
+            <button class="so-btn so-btn-primary" onclick="handleStayLoggedIn(this)">Stay Logged In</button>
+        `
+    });
+    modal.show();
+
+    // Simulate countdown
+    let count = 30;
+    const countdownEl = document.getElementById('countdown');
+    const countdownInterval = setInterval(() => {
+        count--;
+        if (countdownEl) countdownEl.textContent = count;
+        if (count <= 0) {
+            clearInterval(countdownInterval);
+            handleLogout(document.querySelector('.so-modal-static .so-btn-outline'));
+        }
+    }, 1000);
+
+    // Store interval ID to clear if modal is closed
+    modal.element._countdownInterval = countdownInterval;
+}
+
+function handleStayLoggedIn(btn) {
+    const modal = btn.closest('.so-modal');
+    if (modal?._countdownInterval) clearInterval(modal._countdownInterval);
+    SOModal.getInstance(modal)?.hide();
+    SOToast?.show({ message: 'Session extended successfully!', type: 'success' });
+}
+
+function handleLogout(btn) {
+    const modal = btn.closest('.so-modal');
+    if (modal?._countdownInterval) clearInterval(modal._countdownInterval);
+    SOModal.getInstance(modal)?.hide();
+    SOToast?.show({ message: 'You have been logged out.', type: 'info' });
+}
+
+function showStaticConfirmModal() {
+    const modal = SOModal.create({
+        title: 'Delete Your Account',
+        content: `
+            <div class="so-text-center so-py-2">
+                <div class="so-confirm-icon danger so-mx-auto">
+                    <span class="material-icons">warning</span>
+                </div>
+                <h5 class="so-mt-3 so-text-danger">This action is irreversible!</h5>
+                <p class="so-text-secondary">All your data, including files, settings, and history will be permanently deleted.</p>
+                <p class="so-text-secondary so-text-sm so-mt-2">Are you sure you want to proceed?</p>
+            </div>
+        `,
+        className: 'so-modal-static so-modal-danger',
+        static: true,
+        footer: `
+            <button class="so-btn so-btn-outline" onclick="handleCancelDelete(this)">Cancel</button>
+            <button class="so-btn so-btn-danger" onclick="handleConfirmDelete(this)">Delete Account</button>
+        `
+    });
+    modal.show();
+}
+
+function handleCancelDelete(btn) {
+    const modal = btn.closest('.so-modal');
+    SOModal.getInstance(modal)?.hide();
+    SOToast?.show({ message: 'Account deletion cancelled.', type: 'info' });
+}
+
+function handleConfirmDelete(btn) {
+    const modal = btn.closest('.so-modal');
+    SOModal.getInstance(modal)?.hide();
+    SOToast?.show({ message: 'Account has been deleted.', type: 'danger' });
+}
 </script>

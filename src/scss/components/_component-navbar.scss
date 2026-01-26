@@ -2,6 +2,28 @@
 // SIXORBIT UI - COMPONENT NAVBAR
 // Standalone reusable navbar component
 // ============================================
+//
+// COMPONENT INTEGRATION:
+// This navbar integrates with existing framework components:
+//
+// - DROPDOWNS: Uses .so-dropdown, .so-dropdown-menu, .so-dropdown-item
+//   Example: <li class="so-dropdown"><a class="so-dropdown-toggle">...</a>
+//
+// - COLLAPSE: Uses .so-collapse, .so-collapsing classes
+//   Example: <div class="so-component-navbar-collapse so-collapse">
+//
+// - OFFCANVAS: Follows .so-modal-backdrop pattern
+//   Can use .so-modal-backdrop for backdrop
+//
+// - BADGES: Works with .so-badge inside links
+//   Example: <a class="so-component-navbar-link">Menu <span class="so-badge">New</span></a>
+//
+// - BUTTONS: Toggler can be replaced with .so-btn .so-btn-ghost
+//   Example: <button class="so-btn so-btn-ghost so-btn-icon">
+//
+// - LIST GROUP: Offcanvas body supports .so-list-group for nav items
+//
+// ============================================
 
 @use '../abstracts' as *;
 
@@ -237,6 +259,7 @@ $component-navbar-toggler-size: 40px !default;
 
 // ============================================
 // COLLAPSIBLE SECTION
+// Uses existing .so-collapse and .so-collapsing classes
 // ============================================
 
 .#{$so-prefix}component-navbar-collapse {
@@ -244,8 +267,10 @@ $component-navbar-toggler-size: 40px !default;
   flex-grow: 1;
   align-items: center;
 
-  // Hidden by default on mobile
-  display: none;
+  // Extends .so-collapse behavior
+  &:not(.show) {
+    display: none;
+  }
 
   &.show {
     display: flex;
@@ -254,12 +279,13 @@ $component-navbar-toggler-size: 40px !default;
     padding-top: spacing('3');
   }
 
-  &.collapsing {
+  // Uses existing .so-collapsing class for animation
+  &.#{$so-prefix}collapsing {
     display: flex;
     flex-direction: column;
     height: 0;
     overflow: hidden;
-    transition: height $so-transition-slow;
+    transition: height 0.35s ease;
   }
 }
 
@@ -696,6 +722,7 @@ $component-navbar-toggler-size: 40px !default;
 
 // ============================================
 // RESPONSIVE EXPAND VARIANTS
+// Uses .so-collapsing class from collapse component
 // ============================================
 
 // Expand at SM breakpoint (576px)
@@ -712,13 +739,14 @@ $component-navbar-toggler-size: 40px !default;
       display: flex;
       flex-basis: auto;
 
-      &.collapsing {
+      &.#{$so-prefix}collapsing {
         height: auto;
         overflow: visible;
       }
     }
 
-    .#{$so-prefix}component-navbar-toggler {
+    .#{$so-prefix}component-navbar-toggler,
+    .#{$so-prefix}hamburger {
       display: none;
     }
   }
@@ -738,13 +766,14 @@ $component-navbar-toggler-size: 40px !default;
       display: flex;
       flex-basis: auto;
 
-      &.collapsing {
+      &.#{$so-prefix}collapsing {
         height: auto;
         overflow: visible;
       }
     }
 
-    .#{$so-prefix}component-navbar-toggler {
+    .#{$so-prefix}component-navbar-toggler,
+    .#{$so-prefix}hamburger {
       display: none;
     }
   }
@@ -764,13 +793,14 @@ $component-navbar-toggler-size: 40px !default;
       display: flex;
       flex-basis: auto;
 
-      &.collapsing {
+      &.#{$so-prefix}collapsing {
         height: auto;
         overflow: visible;
       }
     }
 
-    .#{$so-prefix}component-navbar-toggler {
+    .#{$so-prefix}component-navbar-toggler,
+    .#{$so-prefix}hamburger {
       display: none;
     }
   }
@@ -790,13 +820,14 @@ $component-navbar-toggler-size: 40px !default;
       display: flex;
       flex-basis: auto;
 
-      &.collapsing {
+      &.#{$so-prefix}collapsing {
         height: auto;
         overflow: visible;
       }
     }
 
-    .#{$so-prefix}component-navbar-toggler {
+    .#{$so-prefix}component-navbar-toggler,
+    .#{$so-prefix}hamburger {
       display: none;
     }
   }
@@ -816,40 +847,52 @@ $component-navbar-toggler-size: 40px !default;
     flex-basis: auto;
   }
 
-  .#{$so-prefix}component-navbar-toggler {
+  .#{$so-prefix}component-navbar-toggler,
+  .#{$so-prefix}hamburger {
     display: none;
   }
 }
 
 // ============================================
 // DROPDOWN INTEGRATION
+// Uses existing .so-dropdown component
 // ============================================
 
 .#{$so-prefix}component-navbar-nav {
+  // Dropdown inherits from .so-dropdown base styles
   .#{$so-prefix}dropdown {
     position: relative;
   }
 
+  // Dropdown menu positioning for navbar context
   .#{$so-prefix}dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
-    min-width: 200px;
     margin-top: spacing('1');
 
     // Right-align dropdown for end items
-    &.dropdown-menu-end {
+    &.dropdown-menu-end,
+    &.#{$so-prefix}dropdown-menu-end {
       left: auto;
       right: 0;
     }
   }
 
+  // Navbar link as dropdown trigger
+  .#{$so-prefix}component-navbar-link.#{$so-prefix}dropdown-toggle,
   .#{$so-prefix}dropdown-toggle {
     display: flex;
     align-items: center;
     gap: spacing('1');
 
-    &::after {
+    // Uses existing .so-dropdown-arrow class if present
+    .#{$so-prefix}dropdown-arrow {
+      transition: transform $so-transition-normal;
+    }
+
+    // Fallback caret using ::after
+    &:not(:has(.#{$so-prefix}dropdown-arrow))::after {
       content: '';
       display: inline-block;
       width: 0;
@@ -861,8 +904,16 @@ $component-navbar-toggler-size: 40px !default;
       border-left: 4px solid transparent;
       transition: transform $so-transition-normal;
     }
+  }
 
-    &[aria-expanded="true"]::after {
+  // Open state - arrow rotation
+  .#{$so-prefix}dropdown.open,
+  .#{$so-prefix}dropdown.show {
+    .#{$so-prefix}dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .#{$so-prefix}dropdown-toggle::after {
       transform: rotate(180deg);
     }
   }
@@ -889,6 +940,7 @@ $component-navbar-toggler-size: 40px !default;
 
 // ============================================
 // OFFCANVAS MOBILE MENU
+// Extends modal backdrop pattern from .so-modal-backdrop
 // ============================================
 
 .#{$so-prefix}component-navbar-offcanvas {
@@ -956,6 +1008,7 @@ $component-navbar-toggler-size: 40px !default;
   font-weight: font-weight('medium');
 }
 
+// Close button - can use .so-btn .so-btn-ghost .so-btn-icon as alternative
 .#{$so-prefix}component-navbar-offcanvas-close {
   display: flex;
   align-items: center;
@@ -968,16 +1021,23 @@ $component-navbar-toggler-size: 40px !default;
   border-radius: radius('full');
   cursor: pointer;
   color: css-var('text-secondary');
+  transition: background $so-transition-fast, color $so-transition-fast;
 
   &:hover {
     background: css-var('card-hover-bg');
     color: css-var('text-primary');
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px alpha($so-primary, 0.15);
   }
 }
 
 .#{$so-prefix}component-navbar-offcanvas-body {
   padding: spacing('4');
 
+  // Nav inside offcanvas uses list-group-like styling
   .#{$so-prefix}component-navbar-nav {
     flex-direction: column;
 
@@ -986,9 +1046,25 @@ $component-navbar-toggler-size: 40px !default;
       border-radius: radius('lg');
     }
   }
+
+  // Support for existing .so-list-group inside offcanvas
+  .#{$so-prefix}list-group {
+    margin: 0 spacing('-4');
+    border-radius: 0;
+
+    .#{$so-prefix}list-group-item {
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+
+      &:first-child {
+        border-top: 0;
+      }
+    }
+  }
 }
 
-// Offcanvas backdrop
+// Offcanvas backdrop - extends .so-modal-backdrop pattern
 .#{$so-prefix}component-navbar-offcanvas-backdrop {
   position: fixed;
   top: 0;
@@ -1005,6 +1081,11 @@ $component-navbar-toggler-size: 40px !default;
     opacity: 1;
     visibility: visible;
   }
+}
+
+// Allow using .so-modal-backdrop as navbar offcanvas backdrop
+.#{$so-prefix}modal-backdrop.#{$so-prefix}component-navbar-backdrop {
+  // Inherits all modal-backdrop styles
 }
 
 // ============================================

@@ -20,6 +20,7 @@ class SOModal extends SOComponent {
     closable: true,
     size: 'default', // 'sm', 'default', 'lg', 'xl', 'fullscreen'
     animation: true,
+    static: false, // When true, modal cannot be dismissed via backdrop/escape/close button
   };
 
   static EVENTS = {
@@ -49,6 +50,18 @@ class SOModal extends SOComponent {
     this._focusTrapCleanup = null;
     this._previousActiveElement = null;
 
+    // Check for static mode from data attribute, class, or options
+    // (options.static may already be set from constructor)
+    if (this.element.hasAttribute('data-so-static') ||
+        this.element.classList.contains('so-modal-static') ||
+        this.options.static === true) {
+      this.options.static = true;
+      this.options.closable = false;
+      this.options.keyboard = false;
+      // Add static class if not present
+      this.element.classList.add('so-modal-static');
+    }
+
     // Bind events
     this._bindEvents();
   }
@@ -58,14 +71,23 @@ class SOModal extends SOComponent {
    * @private
    */
   _bindEvents() {
-    // Close button
-    this.delegate('click', '.so-modal-close, [data-dismiss="modal"]', () => this.hide());
+    // Close button (only if closable/not static)
+    this.delegate('click', '.so-modal-close, [data-dismiss="modal"]', () => {
+      if (!this.options.static) {
+        this.hide();
+      }
+    });
 
     // Backdrop click
-    if (this.options.backdrop && this.options.closable) {
+    if (this.options.backdrop) {
       this.on('click', (e) => {
         if (e.target === this.element) {
-          this.hide();
+          if (this.options.static) {
+            // Shake animation for static modal
+            this._shakeModal();
+          } else if (this.options.closable) {
+            this.hide();
+          }
         }
       });
     }
@@ -85,18 +107,34 @@ class SOModal extends SOComponent {
   }
 
   /**
+   * Shake the modal to indicate it cannot be dismissed
+   * @private
+   */
+  _shakeModal() {
+    this.element.classList.add('modal-static-shake');
+    setTimeout(() => {
+      this.element.classList.remove('modal-static-shake');
+    }, 300);
+  }
+
+  /**
    * Handle keyboard events
    * @param {KeyboardEvent} e - Keyboard event
    * @private
    */
   _handleKeydown(e) {
     // Only handle if this is the topmost modal
-    if (e.key === 'Escape' && this.options.closable && this._isOpen) {
+    if (e.key === 'Escape' && this._isOpen) {
       const openModals = SOModal._openModals;
       if (openModals.length > 0 && openModals[openModals.length - 1] === this) {
         e.preventDefault();
         e.stopPropagation();
-        this.hide();
+        if (this.options.static) {
+          // Shake animation for static modal
+          this._shakeModal();
+        } else if (this.options.closable) {
+          this.hide();
+        }
       }
     }
   }
@@ -366,14 +404,21 @@ class SOModal extends SOComponent {
       closable = true,
       footer = null,
       className = '',
+      static: isStatic = false,
     } = options;
 
     // Size class goes on the modal container, not the dialog
     const sizeClass = size !== 'default' ? `so-modal-${size}` : '';
+    const staticClass = isStatic ? 'so-modal-static' : '';
 
     const modal = document.createElement('div');
-    modal.className = `so-modal fade ${sizeClass} ${className}`.trim().replace(/\s+/g, ' ');
+    modal.className = `so-modal fade ${sizeClass} ${staticClass} ${className}`.trim().replace(/\s+/g, ' ');
     modal.tabIndex = -1;
+
+    // For static modals, set the data attribute
+    if (isStatic) {
+      modal.setAttribute('data-so-static', 'true');
+    }
 
     let footerHtml = '';
     if (footer) {
@@ -384,12 +429,15 @@ class SOModal extends SOComponent {
       `;
     }
 
+    // Don't show close button if static or not closable
+    const showCloseButton = closable && !isStatic;
+
     modal.innerHTML = `
       <div class="so-modal-dialog">
         <div class="so-modal-content">
           <div class="so-modal-header">
             <h5 class="so-modal-title">${title}</h5>
-            ${closable ? '<button type="button" class="so-modal-close" data-dismiss="modal"><span class="material-icons">close</span></button>' : ''}
+            ${showCloseButton ? '<button type="button" class="so-modal-close" data-dismiss="modal"><span class="material-icons">close</span></button>' : ''}
           </div>
           <div class="so-modal-body">
             ${content}
@@ -401,7 +449,10 @@ class SOModal extends SOComponent {
 
     document.body.appendChild(modal);
 
-    const instance = new SOModal(modal, { ...options, animation: true });
+    const instance = new SOModal(modal, { ...options, animation: true, static: isStatic });
+
+    // Store the instance on the element for easy retrieval
+    modal._soModalInstance = instance;
 
     // Remove from DOM when hidden
     modal.addEventListener(SixOrbit.evt(SOModal.EVENTS.HIDDEN), () => {
@@ -420,6 +471,7 @@ class SOModal extends SOComponent {
    * @param {string} options.confirmText - Text for confirm button (simple mode)
    * @param {string} options.cancelText - Text for cancel button (simple mode)
    * @param {boolean} options.danger - Use danger styling for confirm button
+   * @param {boolean} options.static - When true, modal cannot be dismissed without clicking a button
    * @returns {Promise<string|boolean>} Resolves with action id/true/false or 'dismiss' if closed
    */
   static confirm(options = {}) {
@@ -432,6 +484,7 @@ class SOModal extends SOComponent {
       confirmClass = 'so-btn-primary',
       danger = false,
       closable = true,
+      static: isStatic = false,
     } = options;
 
     return new Promise((resolve) => {
@@ -457,7 +510,8 @@ class SOModal extends SOComponent {
         title,
         content: `<p>${message}</p>`,
         size: 'sm',
-        closable,
+        closable: isStatic ? false : closable,
+        static: isStatic,
         footer: footerHtml,
       });
 
@@ -529,6 +583,26 @@ class SOModal extends SOComponent {
       modal.element.addEventListener(SixOrbit.evt(SOModal.EVENTS.HIDDEN), () => resolve());
       modal.show();
     });
+  }
+
+  /**
+   * Get modal instance from element
+   * Override to also check for instance stored on element (from create())
+   * @param {Element|string} element - DOM element or selector
+   * @param {Object} [options={}] - Component options
+   * @returns {SOModal} Modal instance
+   */
+  static getInstance(element, options = {}) {
+    const el = typeof element === 'string' ? document.querySelector(element) : element;
+    if (!el) return null;
+
+    // First check for instance stored directly on element (from SOModal.create())
+    if (el._soModalInstance) {
+      return el._soModalInstance;
+    }
+
+    // Fall back to standard SixOrbit instance lookup
+    return SixOrbit.getInstance(el, this.NAME, options);
   }
 }
 

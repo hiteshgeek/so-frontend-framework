@@ -3,21 +3,21 @@
 // Data tables with Bootstrap & Material Design features
 // ============================================
 
-@use 'sass:color';
-@use '../abstracts' as *;
+@use "sass:color";
+@use "../abstracts" as *;
 
 // ============================================
 // VARIABLES
 // ============================================
 
-$table-cell-padding-y: spacing('3');
-$table-cell-padding-x: spacing('4');
-$table-cell-padding-y-sm: spacing('2');
-$table-cell-padding-x-sm: spacing('3');
-$table-cell-padding-y-lg: spacing('4');
-$table-cell-padding-x-lg: spacing('5');
+$table-cell-padding-y: spacing("3");
+$table-cell-padding-x: spacing("4");
+$table-cell-padding-y-sm: spacing("2");
+$table-cell-padding-x-sm: spacing("3");
+$table-cell-padding-y-lg: spacing("4");
+$table-cell-padding-x-lg: spacing("5");
 
-$table-border-color: css-var('border-color');
+$table-border-color: css-var("border-color");
 $table-striped-bg: rgba(0, 0, 0, 0.02);
 $table-hover-bg: rgba(0, 0, 0, 0.04);
 $table-active-bg: alpha($so-primary, 0.08);
@@ -32,7 +32,7 @@ $breakpoints: (
   md: 768px,
   lg: 1024px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1400px,
 );
 
 // ============================================
@@ -41,8 +41,8 @@ $breakpoints: (
 
 .#{$so-prefix}table {
   width: 100%;
-  margin-bottom: spacing('4');
-  color: css-var('text-primary');
+  margin-bottom: spacing("4");
+  color: css-var("text-primary");
   vertical-align: middle;
   border-color: $table-border-color;
 
@@ -56,10 +56,10 @@ $breakpoints: (
 
     > tr > th {
       padding: $table-cell-padding-y $table-cell-padding-x;
-      font-weight: font-weight('semibold');
+      font-weight: font-weight("semibold");
       text-align: left;
-      color: css-var('text-primary');
-      background: css-var('card-bg');
+      color: css-var("text-primary");
+      background: css-var("card-bg");
       border-bottom: 2px solid $table-border-color;
     }
   }
@@ -77,7 +77,7 @@ $breakpoints: (
     > tr > td,
     > tr > th {
       padding: $table-cell-padding-y $table-cell-padding-x;
-      font-weight: font-weight('semibold');
+      font-weight: font-weight("semibold");
       border-top: 2px solid $table-border-color;
     }
   }
@@ -85,7 +85,7 @@ $breakpoints: (
   // Caption
   > caption {
     padding: $table-cell-padding-y $table-cell-padding-x;
-    color: css-var('text-secondary');
+    color: css-var("text-secondary");
     text-align: left;
     caption-side: bottom;
   }
@@ -206,8 +206,8 @@ $breakpoints: (
     height: $table-row-height-dense;
 
     > td {
-      padding-top: spacing('1');
-      padding-bottom: spacing('1');
+      padding-top: spacing("1");
+      padding-bottom: spacing("1");
     }
   }
 }
@@ -217,8 +217,8 @@ $breakpoints: (
     height: $table-row-height-comfortable;
 
     > td {
-      padding-top: spacing('4');
-      padding-bottom: spacing('4');
+      padding-top: spacing("4");
+      padding-bottom: spacing("4");
     }
   }
 }
@@ -229,8 +229,8 @@ $breakpoints: (
 
 .#{$so-prefix}thead-light {
   > tr > th {
-    background-color: css-var('bg-secondary');
-    color: css-var('text-primary');
+    background-color: css-var("bg-secondary");
+    color: css-var("text-primary");
   }
 }
 
@@ -247,14 +247,14 @@ $breakpoints: (
 // ============================================
 
 $table-colors: (
-  'primary': $so-primary,
-  'secondary': $so-secondary,
-  'success': $so-success,
-  'danger': $so-danger,
-  'warning': $so-warning,
-  'info': $so-info,
-  'light': $so-grey-100,
-  'dark': $so-grey-800
+  "primary": $so-primary,
+  "secondary": $so-secondary,
+  "success": $so-success,
+  "danger": $so-danger,
+  "warning": $so-warning,
+  "info": $so-info,
+  "light": $so-grey-100,
+  "dark": $so-grey-800,
 );
 
 @each $name, $color in $table-colors {
@@ -262,9 +262,9 @@ $table-colors: (
   .#{$so-prefix}table-#{$name} {
     $bg-color: alpha($color, 0.1);
     $text-color: $color;
-    @if $name == 'light' {
+    @if $name == "light" {
       $text-color: $so-grey-800;
-    } @else if $name == 'dark' {
+    } @else if $name == "dark" {
       $text-color: $so-white;
     } @else {
       $text-color: darken-color($color, 10%);
@@ -313,10 +313,10 @@ $table-colors: (
   > thead {
     position: sticky;
     top: 0;
-    z-index: z-index('sticky');
+    z-index: z-index("sticky");
 
     > tr > th {
-      background: css-var('card-bg');
+      background: css-var("card-bg");
       box-shadow: 0 1px 0 $table-border-color;
     }
   }
@@ -342,7 +342,7 @@ $table-colors: (
     transition: background-color $so-transition-fast;
 
     &:hover {
-      background: css-var('bg-secondary');
+      background: css-var("bg-secondary");
     }
   }
 
@@ -350,12 +350,14 @@ $table-colors: (
   .#{$so-prefix}table-sort {
     display: inline-flex;
     align-items: center;
-    gap: spacing('1');
+    gap: spacing("1");
   }
 
   .#{$so-prefix}table-sort-icon {
     opacity: 0.3;
-    transition: opacity $so-transition-fast, transform $so-transition-fast;
+    transition:
+      opacity $so-transition-fast,
+      transform $so-transition-fast;
 
     .material-icons {
       font-size: 18px;
@@ -372,7 +374,7 @@ $table-colors: (
   > thead > tr > th[aria-sort="descending"] {
     .#{$so-prefix}table-sort-icon {
       opacity: 1;
-      color: css-var('accent-primary');
+      color: css-var("accent-primary");
     }
   }
 
@@ -402,7 +404,7 @@ $table-colors: (
   // Checkbox cell styling
   .#{$so-prefix}table-check {
     width: 48px;
-    padding: spacing('2');
+    padding: spacing("2");
     text-align: center;
     vertical-align: middle;
 
@@ -429,7 +431,7 @@ $table-colors: (
 .#{$so-prefix}table-expandable {
   .#{$so-prefix}table-expand-cell {
     width: 48px;
-    padding: spacing('2');
+    padding: spacing("2");
     text-align: center;
     vertical-align: middle;
   }
@@ -443,14 +445,16 @@ $table-colors: (
     padding: 0;
     background: transparent;
     border: none;
-    border-radius: radius('full');
+    border-radius: radius("full");
     cursor: pointer;
-    color: css-var('text-secondary');
-    transition: background-color $so-transition-fast, color $so-transition-fast;
+    color: css-var("text-secondary");
+    transition:
+      background-color $so-transition-fast,
+      color $so-transition-fast;
 
     &:hover {
-      background: css-var('bg-secondary');
-      color: css-var('text-primary');
+      background: css-var("bg-secondary");
+      color: css-var("text-primary");
     }
 
     .material-icons {
@@ -459,7 +463,7 @@ $table-colors: (
     }
 
     &.#{$so-prefix}expanded {
-      color: css-var('accent-primary');
+      color: css-var("accent-primary");
 
       .material-icons {
         transform: rotate(180deg);
@@ -480,8 +484,8 @@ $table-colors: (
   }
 
   .#{$so-prefix}table-expand-content {
-    padding: spacing('4');
-    background: css-var('bg-secondary');
+    padding: spacing("4");
+    background: css-var("bg-secondary");
   }
 }
 
@@ -494,7 +498,7 @@ $table-colors: (
   pointer-events: none;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: rgba(255, 255, 255, 0.7);
@@ -516,7 +520,7 @@ $table-colors: (
     pointer-events: none;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: rgba(255, 255, 255, 0.7);
@@ -537,18 +541,18 @@ $table-colors: (
 
 .#{$so-prefix}table-empty {
   text-align: center;
-  padding: spacing('8') spacing('4');
-  color: css-var('text-secondary');
+  padding: spacing("8") spacing("4");
+  color: css-var("text-secondary");
 
   .material-icons {
     font-size: 48px;
-    margin-bottom: spacing('3');
+    margin-bottom: spacing("3");
     opacity: 0.5;
   }
 
   p {
     margin: 0;
-    font-size: font-size('base');
+    font-size: font-size("base");
   }
 }
 
@@ -560,34 +564,34 @@ $table-colors: (
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: spacing('3');
-  padding: spacing('3') spacing('4');
-  background: css-var('card-bg');
+  gap: spacing("3");
+  padding: spacing("3") spacing("4");
+  background: css-var("card-bg");
   border: 1px solid $table-border-color;
   border-bottom: none;
-  border-radius: radius('lg') radius('lg') 0 0;
+  border-radius: radius("lg") radius("lg") 0 0;
 
   .#{$so-prefix}table-title {
-    font-size: font-size('lg');
-    font-weight: font-weight('semibold');
-    color: css-var('text-primary');
+    font-size: font-size("lg");
+    font-weight: font-weight("semibold");
+    color: css-var("text-primary");
     margin: 0;
   }
 
   .#{$so-prefix}table-actions {
     display: flex;
     align-items: center;
-    gap: spacing('2');
+    gap: spacing("2");
   }
 
   // Selection info
   .#{$so-prefix}table-selection-info {
-    font-size: font-size('sm');
-    color: css-var('text-secondary');
+    font-size: font-size("sm");
+    color: css-var("text-secondary");
 
     strong {
-      color: css-var('accent-primary');
-      font-weight: font-weight('semibold');
+      color: css-var("accent-primary");
+      font-weight: font-weight("semibold");
     }
   }
 }
@@ -596,13 +600,15 @@ $table-colors: (
 .#{$so-prefix}table-toolbar + .#{$so-prefix}table-responsive,
 .#{$so-prefix}table-toolbar + .#{$so-prefix}table {
   border: 1px solid $table-border-color;
-  border-top: none;
+  // border-top: none;
   border-radius: 0;
 }
 
 // When followed by footer, remove bottom border from table container
-.#{$so-prefix}table-toolbar + .#{$so-prefix}table-responsive:has(+ .#{$so-prefix}table-footer),
-.#{$so-prefix}table-toolbar + .#{$so-prefix}table:has(+ .#{$so-prefix}table-footer) {
+.#{$so-prefix}table-toolbar
+  + .#{$so-prefix}table-responsive:has(+ .#{$so-prefix}table-footer),
+.#{$so-prefix}table-toolbar
+  + .#{$so-prefix}table:has(+ .#{$so-prefix}table-footer) {
   border-bottom: none;
 }
 
@@ -614,12 +620,12 @@ $table-colors: (
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: spacing('3');
-  padding: spacing('3') spacing('4');
-  background: css-var('card-bg');
+  gap: spacing("3");
+  padding: spacing("3") spacing("4");
+  background: css-var("card-bg");
   border: 1px solid $table-border-color;
   border-top: none;
-  border-radius: 0 0 radius('lg') radius('lg');
+  border-radius: 0 0 radius("lg") radius("lg");
 }
 
 // ============================================
@@ -690,36 +696,36 @@ $table-colors: (
 
 @include dark-mode {
   .#{$so-prefix}table {
-    color: css-var('text-primary');
+    color: css-var("text-primary");
 
     > thead > tr > th {
-      background: css-var('card-bg');
-      border-bottom-color: css-var('border-color');
+      background: css-var("card-bg");
+      border-bottom-color: css-var("border-color");
     }
 
     > tbody > tr > td {
-      border-bottom-color: css-var('border-color');
+      border-bottom-color: css-var("border-color");
     }
   }
 
   .#{$so-prefix}thead-light {
     > tr > th {
-      background-color: css-var('bg-secondary');
-      color: css-var('text-primary');
+      background-color: css-var("bg-secondary");
+      color: css-var("text-primary");
     }
   }
 
   .#{$so-prefix}table-bordered {
-    border-color: css-var('border-color');
+    border-color: css-var("border-color");
 
     > :not(caption) > * > * {
-      border-color: css-var('border-color');
+      border-color: css-var("border-color");
     }
   }
 
   .#{$so-prefix}table-toolbar,
   .#{$so-prefix}table-footer {
-    background: css-var('card-bg');
-    border-color: css-var('border-color');
+    background: css-var("card-bg");
+    border-color: css-var("border-color");
   }
 }

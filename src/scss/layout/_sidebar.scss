@@ -92,6 +92,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   flex-shrink: 0;
   height: css-var('navbar-height');
   border-bottom: 1px solid css-var('sidebar-border');
+  transition: none;
 }
 
 .#{$so-prefix}sidebar-logo {
@@ -221,7 +222,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   color: css-var('sidebar-item-color');
   border-radius: radius('md');
   cursor: pointer;
-  transition: all $so-transition-base;
+  transition: background $so-transition-base, color $so-transition-base, box-shadow $so-transition-base;
   position: relative;
   min-height: 36px;
 
@@ -289,7 +290,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   height: 20px;
   min-width: 20px;
   color: css-var('sidebar-item-icon-color');
-  transition: transform $so-transition-normal;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
 
   .material-icons {
@@ -325,7 +326,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 .#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-submenu {
-  max-height: 2000px;
+  max-height: 500px;
   transition: max-height 0.3s ease-in;
 }
 
@@ -441,7 +442,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  transition: transform $so-transition-normal;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.has-children.#{$so-prefix}open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-arrow {
@@ -627,11 +628,15 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed {
   width: css-var('sidebar-collapsed-width');
+  min-width: css-var('sidebar-collapsed-width');
+  max-width: css-var('sidebar-collapsed-width');
 }
 
 // On hover, expand the mini sidebar
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover {
   width: css-var('sidebar-width');
+  min-width: css-var('sidebar-width');
+  max-width: css-var('sidebar-width');
   box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
 }
 
@@ -640,6 +645,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   padding: spacing('2');
   justify-content: center;
   gap: 0;
+  transition: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-logo {
@@ -656,13 +662,14 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  transition: opacity 0.1s ease 0.15s, visibility 0.1s ease 0.15s, width 0s ease 0.25s, flex 0s ease 0.25s;
+  transition: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-header {
   padding: spacing('3') spacing('4') spacing('3') spacing('1') + 2px;
   justify-content: flex-start;
   gap: spacing('3');
+  transition: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-brand-info {
@@ -671,7 +678,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   width: auto;
   flex: 1;
   overflow: visible;
-  transition: opacity $so-transition-base, visibility $so-transition-base, width 0s ease, flex 0s ease;
+  transition: opacity 0.15s ease 0.1s, visibility 0.15s ease 0.1s;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-toggle {
@@ -682,7 +689,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   height: 20px;
   flex: 0 0 20px;
   overflow: visible;
-  transition: opacity $so-transition-base, visibility $so-transition-base, width 0s ease, flex 0s ease;
+  transition: opacity 0.15s ease 0.1s, visibility 0.15s ease 0.1s;
 }
 
 // Menu items in collapsed state
@@ -696,12 +703,14 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   align-items: center;
   gap: 0;
   min-height: 40px;
+  transition: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-icon {
   margin: 0;
-  position: relative;
-  left: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-text,
@@ -715,7 +724,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  transition: opacity 0.1s ease 0.15s, visibility 0.1s ease 0.15s, width 0s ease 0.25s, flex 0s ease 0.25s;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
 }
 
 // Section becomes a separator line in collapsed view
@@ -741,7 +750,10 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-submenu {
-  display: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0;
+  visibility: hidden;
 }
 
 // On hover expand - show all elements
@@ -757,10 +769,14 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   padding: spacing('2') spacing('2') spacing('2') spacing('3');
   justify-content: flex-start;
   gap: spacing('2') + 2px;
+  transition: background $so-transition-base, color $so-transition-base, box-shadow $so-transition-base;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-icon {
   margin: 0;
+  position: relative;
+  left: 0;
+  transform: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-text,
@@ -770,7 +786,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   visibility: visible;
   width: auto;
   overflow: visible;
-  transition: opacity $so-transition-base, visibility $so-transition-base, width 0s ease, flex 0s ease;
+  transition: opacity 0.15s ease 0.1s, visibility 0.15s ease 0.1s;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-text {
@@ -798,8 +814,12 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   }
 }
 
-.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu {
-  display: block !important;
+// Only show submenu if parent item is open (user clicked)
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-submenu {
+  max-height: 500px !important;
+  opacity: 1;
+  visibility: visible;
+  transition: max-height 0.3s ease-in, opacity 0.2s ease;
 }
 
 // ============================================

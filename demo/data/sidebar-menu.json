@@ -1,115 +1,76 @@
 {
   "menu": [
     {
+      "id": "dashboard",
       "title": "Dashboard",
       "icon": "dashboard",
       "url": "index.php"
     },
     {
+      "id": "grid-system",
+      "title": "Grid System",
+      "icon": "grid_view",
+      "url": "grid.php"
+    },
+    {
+      "id": "form-elements",
       "title": "Form Elements",
       "icon": "input",
       "url": "form-elements.php"
     },
     {
-      "title": "Grid System",
-      "icon": "grid_view",
-      "url": "grid.php",
-      "badge": "New",
-      "badgeClass": "so-badge-soft-success"
-    },
-    {
-      "title": "Finance",
-      "icon": "account_balance",
+      "id": "reports",
+      "title": "Reports",
+      "icon": "assessment",
       "children": [
         {
+          "id": "profit-loss",
           "title": "Profit & Loss",
-          "icon": "trending_up",
           "url": "profit-loss.php"
         },
         {
+          "id": "balance-sheet",
           "title": "Balance Sheet",
-          "icon": "account_balance_wallet",
           "url": "balance-sheet.php"
         },
         {
+          "id": "cash-flow",
           "title": "Cash Flow",
-          "icon": "payments",
           "url": "cash-flow.php"
         },
         {
+          "id": "trial-balance",
           "title": "Trial Balance",
-          "icon": "receipt_long",
           "url": "trial-balance.php"
         }
       ]
     },
     {
-      "title": "Inventory",
-      "icon": "inventory_2",
-      "children": [
-        {
-          "title": "Stock Summary",
-          "icon": "inventory",
-          "url": "#"
-        },
-        {
-          "title": "Stock Movement",
-          "icon": "swap_horiz",
-          "url": "#"
-        },
-        {
-          "title": "Item Master",
-          "icon": "category",
-          "url": "#"
-        }
-      ]
+      "id": "wallet",
+      "title": "Customer Wallet",
+      "icon": "account_balance_wallet",
+      "url": "wallet.php"
     },
     {
-      "title": "Accounts",
-      "icon": "account_circle",
-      "children": [
-        {
-          "title": "Ledger",
-          "icon": "book",
-          "url": "#"
-        },
-        {
-          "title": "Day Book",
-          "icon": "today",
-          "url": "#"
-        },
-        {
-          "title": "Account Groups",
-          "icon": "folder",
-          "url": "#"
-        }
-      ]
-    },
-    {
+      "id": "video-tutorial",
       "title": "Video Tutorials",
       "icon": "play_circle",
-      "url": "video-tutorial.php",
-      "badge": "New",
-      "badgeClass": "so-badge-soft-primary"
+      "url": "video-tutorial.php"
     },
     {
-      "title": "Settings",
-      "icon": "settings",
+      "id": "auth-pages",
+      "title": "Auth Pages",
+      "icon": "lock",
       "children": [
         {
-          "title": "Company Profile",
-          "icon": "business",
-          "url": "#"
+          "id": "login",
+          "title": "Login",
+          "url": "login.php"
         },
         {
-          "title": "User Management",
-          "icon": "people",
-          "url": "#"
-        },
-        {
-          "title": "Preferences",
-          "icon": "tune",
-          "url": "#"
+          "id": "forgot-password",
+          "title": "Forgot Password",
+          "url": "forgot-password.php"
         }
       ]
     }

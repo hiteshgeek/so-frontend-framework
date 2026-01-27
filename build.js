@@ -35,6 +35,14 @@ const jsModules = [
   { name: "sixorbit-full", entry: "sixorbit-full.js", globalName: "SixOrbit" },
 ];
 
+// Page-specific Modules Configuration
+// Each page is a folder in src/pages/ containing optional .scss and .js files
+// These are NOT part of the framework - they are app/demo specific files
+const pageModules = [
+  { name: "search", hasCSS: false, hasJS: true },
+  // { name: "dashboard", hasCSS: true, hasJS: true },
+];
+
 // Obfuscator options (production only)
 const obfuscatorOptions = {
   compact: true,
@@ -263,18 +271,208 @@ function copyAssets() {
 }
 
 // ============================================
+// PAGE-SPECIFIC BUILD FUNCTIONS
+// ============================================
+
+/**
+ * Build page-specific SCSS
+ * @param {string} name - Page name
+ * @param {string} scssPath - Path to SCSS file
+ * @param {string} outputDir - Output directory
+ * @returns {Promise<string|null>} - Relative path to compiled CSS or null
+ */
+async function compilePageSCSS(name, scssPath, outputDir) {
+  try {
+    const generateSourceMap = isDev || isWatch;
+
+    // Clean old versions first
+    ensureDir(outputDir);
+    cleanOldVersions(outputDir, name, "css");
+
+    // Compile SCSS - can import framework abstracts
+    const result = sass.compile(scssPath, {
+      style: isProd ? "compressed" : "expanded",
+      sourceMap: generateSourceMap,
+      sourceMapIncludeSources: generateSourceMap,
+      loadPaths: [path.join(srcDir, "scss"), path.dirname(scssPath)],
+    });
+
+    // Process with PostCSS
+    const processed = await postcss([autoprefixer]).process(result.css, {
+      from: scssPath,
+      map: generateSourceMap
+        ? { prev: result.sourceMap, inline: false, annotation: false }
+        : false,
+    });
+
+    const hash = generateHash(processed.css);
+    const filename = `${name}.${hash}.css`;
+    const mapFilename = `${name}.${hash}.css.map`;
+
+    ensureDir(outputDir);
+
+    // Write CSS
+    let cssContent = processed.css;
+    if (generateSourceMap) {
+      cssContent += `\n/*# sourceMappingURL=${mapFilename} */`;
+      fs.writeFileSync(path.join(outputDir, mapFilename), processed.map.toString());
+    }
+
+    fs.writeFileSync(path.join(outputDir, filename), cssContent);
+    const relativePath = `pages/${name}/${filename}`;
+    console.log(`  CSS: ${relativePath}${generateSourceMap ? ` + map` : ""}`);
+
+    return relativePath;
+  } catch (error) {
+    console.error(`  Page SCSS Error (${name}):`, error.message);
+    return null;
+  }
+}
+
+/**
+ * Build page-specific JS
+ * @param {string} name - Page name
+ * @param {string} jsPath - Path to JS file
+ * @param {string} outputDir - Output directory
+ * @returns {Promise<string|null>} - Relative path to bundled JS or null
+ */
+async function bundlePageJS(name, jsPath, outputDir) {
+  try {
+    const generateSourceMap = isDev || isWatch;
+
+    // Clean old versions first
+    ensureDir(outputDir);
+    cleanOldVersions(outputDir, name, "js");
+
+    // Bundle with esbuild - NO obfuscation for page JS
+    const result = await esbuild.build({
+      entryPoints: [jsPath],
+      bundle: true,
+      minify: isProd,
+      sourcemap: generateSourceMap ? "inline" : false,
+      write: false,
+      target: ["es2015"],
+      format: "iife",
+      // No globalName - self-executing
+    });
+
+    let content = result.outputFiles[0].text;
+    let sourceMap = null;
+
+    // Extract inline sourcemap
+    if (generateSourceMap) {
+      const sourceMapMatch = content.match(
+        /\/\/# sourceMappingURL=data:application\/json;base64,(.+)$/
+      );
+      if (sourceMapMatch) {
+        sourceMap = Buffer.from(sourceMapMatch[1], "base64").toString("utf8");
+        content = content.replace(
+          /\/\/# sourceMappingURL=data:application\/json;base64,.+$/,
+          ""
+        );
+      }
+    }
+
+    // Note: NO obfuscation for page JS - it should remain readable
+
+    const hash = generateHash(content);
+    const filename = `${name}.${hash}.js`;
+    const mapFilename = `${name}.${hash}.js.map`;
+
+    ensureDir(outputDir);
+
+    // Write JS
+    if (generateSourceMap && sourceMap) {
+      content += `//# sourceMappingURL=${mapFilename}`;
+      fs.writeFileSync(path.join(outputDir, mapFilename), sourceMap);
+    }
+
+    fs.writeFileSync(path.join(outputDir, filename), content);
+    const relativePath = `pages/${name}/${filename}`;
+    console.log(`  JS: ${relativePath}${generateSourceMap ? ` + map` : ""}`);
+
+    return relativePath;
+  } catch (error) {
+    console.error(`  Page JS Error (${name}):`, error.message);
+    return null;
+  }
+}
+
+/**
+ * Build a single page module (CSS and/or JS)
+ * @param {Object} page - Page module configuration
+ * @returns {Promise<Object>} - { css: path|null, js: path|null }
+ */
+async function buildPageModule(page) {
+  const pageDir = path.join(srcDir, "pages", page.name);
+  const outputDir = path.join(distDir, "pages", page.name);
+
+  // Check if page source directory exists
+  if (!fs.existsSync(pageDir)) {
+    console.warn(`  Page directory not found: src/pages/${page.name}/`);
+    return { css: null, js: null };
+  }
+
+  const result = { css: null, js: null };
+
+  // Build SCSS if configured
+  if (page.hasCSS) {
+    const scssPath = path.join(pageDir, `${page.name}.scss`);
+    if (fs.existsSync(scssPath)) {
+      result.css = await compilePageSCSS(page.name, scssPath, outputDir);
+    } else {
+      console.warn(`  Page SCSS not found: src/pages/${page.name}/${page.name}.scss`);
+    }
+  }
+
+  // Build JS if configured
+  if (page.hasJS) {
+    const jsPath = path.join(pageDir, `${page.name}.js`);
+    if (fs.existsSync(jsPath)) {
+      result.js = await bundlePageJS(page.name, jsPath, outputDir);
+    } else {
+      console.warn(`  Page JS not found: src/pages/${page.name}/${page.name}.js`);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Build all page modules
+ * @returns {Promise<Object>} - { pageName: { css: path, js: path }, ... }
+ */
+async function buildPageModules() {
+  const pageAssets = {};
+
+  for (const page of pageModules) {
+    console.log(`\n  Building page: ${page.name}`);
+    const result = await buildPageModule(page);
+
+    if (result.css || result.js) {
+      pageAssets[page.name] = {};
+      if (result.css) pageAssets[page.name].css = result.css;
+      if (result.js) pageAssets[page.name].js = result.js;
+    }
+  }
+
+  return pageAssets;
+}
+
+// ============================================
 // MANIFEST GENERATION
 // ============================================
-function writeManifest(assets) {
+function writeManifest(assets, pageAssets = {}) {
   const manifest = {
     css: {},
     js: {},
+    pages: {},
     generated: new Date().toISOString(),
     mode: isProd ? "production" : "development",
     version: "1.0.0",
   };
 
-  // Organize assets by type
+  // Organize framework assets by type
   Object.entries(assets).forEach(([key, value]) => {
     // Keys are prefixed with 'css:' or 'js:' to avoid collisions
     const [type, name] = key.split(':');
@@ -283,6 +481,11 @@ function writeManifest(assets) {
     } else if (type === 'js' && value.startsWith("js/")) {
       manifest.js[name] = value;
     }
+  });
+
+  // Add page assets
+  Object.entries(pageAssets).forEach(([pageName, files]) => {
+    manifest.pages[pageName] = files;
   });
 
   ensureDir(distDir);
@@ -330,9 +533,13 @@ async function build() {
   console.log("\n--- Static Assets ---");
   copyAssets();
 
+  // Build page-specific modules
+  console.log("\n--- Page Modules ---");
+  const pageAssets = await buildPageModules();
+
   // Write manifest
   console.log("\n--- Manifest ---");
-  writeManifest(assets);
+  writeManifest(assets, pageAssets);
 
   console.log("\n========================================");
   console.log("Build complete!");
@@ -354,12 +561,15 @@ async function watch() {
   console.log("Starting watch mode (development)...\n");
   await build();
 
-  let isRebuilding = false;
+  // Separate locks for each rebuild type to avoid blocking each other
+  let isRebuildingCSS = false;
+  let isRebuildingJS = false;
+  let isRebuildingPages = false;
 
   // Rebuild CSS
   const rebuildCSS = debounce(async () => {
-    if (isRebuilding) return;
-    isRebuilding = true;
+    if (isRebuildingCSS) return;
+    isRebuildingCSS = true;
     try {
       console.log("\n--- Rebuilding CSS ---");
       const manifestPath = path.join(distDir, "manifest.json");
@@ -377,14 +587,14 @@ async function watch() {
     } catch (error) {
       console.error("CSS rebuild error:", error.message);
     } finally {
-      isRebuilding = false;
+      isRebuildingCSS = false;
     }
   }, 100);
 
   // Rebuild JS
   const rebuildJS = debounce(async () => {
-    if (isRebuilding) return;
-    isRebuilding = true;
+    if (isRebuildingJS) return;
+    isRebuildingJS = true;
     try {
       console.log("\n--- Rebuilding JS ---");
       const manifestPath = path.join(distDir, "manifest.json");
@@ -402,7 +612,7 @@ async function watch() {
     } catch (error) {
       console.error("JS rebuild error:", error.message);
     } finally {
-      isRebuilding = false;
+      isRebuildingJS = false;
     }
   }, 100);
 
@@ -444,6 +654,59 @@ async function watch() {
     })
     .on("ready", () => console.log("JS watcher ready"));
 
+  // Rebuild page modules
+  const rebuildPages = debounce(async () => {
+    if (isRebuildingPages) return;
+    isRebuildingPages = true;
+    try {
+      console.log("\n--- Rebuilding Page Modules ---");
+      const manifestPath = path.join(distDir, "manifest.json");
+      const manifest = JSON.parse(fs.readFileSync(manifestPath));
+
+      // Rebuild all page modules
+      const pageAssets = await buildPageModules();
+      manifest.pages = pageAssets;
+
+      manifest.generated = new Date().toISOString();
+      fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+      console.log("Page modules rebuild complete!");
+    } catch (error) {
+      console.error("Page modules rebuild error:", error.message);
+    } finally {
+      isRebuildingPages = false;
+    }
+  }, 100);
+
+  // Watch page modules - ensure directory exists first
+  const pagesDir = path.join(srcDir, "pages");
+  ensureDir(pagesDir); // Create if doesn't exist
+
+  const pagesWatcher = chokidar.watch(pagesDir, {
+    ignoreInitial: true,
+    usePolling: true,
+    interval: 300,
+    ignored: /(^|[\/\\])\../,
+    persistent: true,
+    awaitWriteFinish: {
+      stabilityThreshold: 100,
+      pollInterval: 50
+    }
+  });
+
+  pagesWatcher
+    .on("change", (filePath) => {
+      console.log(`\nPage changed: ${path.relative(srcDir, filePath)}`);
+      rebuildPages();
+    })
+    .on("add", (filePath) => {
+      console.log(`\nPage added: ${path.relative(srcDir, filePath)}`);
+      rebuildPages();
+    })
+    .on("error", (error) => {
+      console.error("Pages watcher error:", error.message);
+    })
+    .on("ready", () => console.log("Pages watcher ready"));
+
   console.log("\nWatching for changes... (Press Ctrl+C to stop)\n");
 
   // Graceful shutdown
@@ -451,6 +714,7 @@ async function watch() {
     console.log("\nStopping watch mode...");
     scssWatcher.close();
     jsWatcher.close();
+    pagesWatcher.close();
     process.exit(0);
   });
 }

@@ -20,7 +20,7 @@
             <div class="so-navbar-search">
                 <div class="so-navbar-search-wrapper">
                     <span class="material-icons so-navbar-search-icon">search</span>
-                    <input type="text" class="so-navbar-search-input" placeholder="Search what you want to do.. [CTRL + K]">
+                    <input type="text" class="so-navbar-search-input" placeholder="Search what you want to do.. [CTRL + K]" autocomplete="off" name="so_nav_search_q" data-lpignore="true" data-form-type="other" readonly onfocus="this.removeAttribute('readonly')">
                     <button class="so-navbar-search-clear">
                         <span class="material-icons">close</span>
                     </button>
@@ -289,19 +289,80 @@
         <div class="so-search-overlay-header">
             <div class="so-search-overlay-input-wrapper">
                 <span class="material-icons so-search-overlay-icon">search</span>
-                <input type="text" class="so-search-overlay-input" placeholder="Search products, menus, actions... (Type isv: for item search)" autofocus>
+                <input type="text" class="so-search-overlay-input" placeholder="Search products, menus, actions... (Type isv: for item search)" autofocus autocomplete="off" name="so_search_overlay_q" data-lpignore="true" data-form-type="other">
                 <div class="so-search-overlay-shortcut">
                     <kbd>ESC</kbd>
                 </div>
-                <button class="so-search-overlay-close" title="Close">
+                <button class="so-search-overlay-close" type="button" title="Close search">
                     <span class="material-icons">close</span>
                 </button>
             </div>
         </div>
 
+        <!-- Filter Bar (visible for ISV search) -->
+        <div class="so-search-filter-bar">
+            <!-- Stock Filter -->
+            <div class="so-search-filter-dropdown" data-filter="stock">
+                <button class="so-search-filter-btn">
+                    <span class="material-icons">inventory</span>
+                    <span class="filter-label">Stock</span>
+                    <span class="material-icons">expand_more</span>
+                </button>
+                <div class="so-search-filter-menu">
+                    <div class="so-search-filter-option selected" data-value="all">All Stock</div>
+                    <div class="so-search-filter-option" data-value="in-stock">In Stock</div>
+                    <div class="so-search-filter-option" data-value="low-stock">Low Stock</div>
+                    <div class="so-search-filter-option" data-value="out-of-stock">Out of Stock</div>
+                </div>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="so-search-filter-dropdown" data-filter="status">
+                <button class="so-search-filter-btn">
+                    <span class="material-icons">toggle_on</span>
+                    <span class="filter-label">Status</span>
+                    <span class="material-icons">expand_more</span>
+                </button>
+                <div class="so-search-filter-menu">
+                    <div class="so-search-filter-option selected" data-value="all">All Status</div>
+                    <div class="so-search-filter-option" data-value="active">Active</div>
+                    <div class="so-search-filter-option" data-value="liquidation">Liquidation</div>
+                </div>
+            </div>
+
+            <!-- View Toggle -->
+            <div class="so-search-view-toggle">
+                <button class="so-search-view-btn active" data-view="grid" title="Grid View">
+                    <span class="material-icons">grid_view</span>
+                </button>
+                <button class="so-search-view-btn" data-view="list" title="List View">
+                    <span class="material-icons">view_list</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Tabs (visible for normal search - not ISV) -->
+        <div class="so-search-category-tabs">
+            <button class="so-search-category-tab active" data-category="all">
+                All<span class="so-search-category-count">0</span>
+            </button>
+            <button class="so-search-category-tab" data-category="menus">
+                Menus<span class="so-search-category-count">0</span>
+            </button>
+            <button class="so-search-category-tab" data-category="customers">
+                Customers<span class="so-search-category-count">0</span>
+            </button>
+            <button class="so-search-category-tab" data-category="vendors">
+                Vendors<span class="so-search-category-count">0</span>
+            </button>
+            <button class="so-search-category-tab" data-category="ledgers">
+                Ledgers<span class="so-search-category-count">0</span>
+            </button>
+        </div>
+
         <!-- Search Body -->
         <div class="so-search-overlay-body">
-            <!-- Quick Links -->
+            <!-- Quick Links (visible when search is empty) -->
             <div class="so-search-quick-links">
                 <div class="so-search-quick-links-title">Quick Links</div>
                 <div class="so-search-quick-links-grid">
@@ -344,16 +405,32 @@
                 </div>
             </div>
 
-            <!-- Empty State (initial) -->
-            <div class="so-search-empty visible">
+            <!-- Results Container -->
+            <div class="so-search-results-container">
+                <!-- Grid View -->
+                <div class="so-search-results-grid">
+                    <!-- Item cards will be rendered here by JavaScript -->
+                </div>
+
+                <!-- List View -->
+                <div class="so-search-results-list">
+                    <!-- List Header -->
+                    <div class="so-search-list-header">
+                        <span>Item</span>
+                        <span>SKU</span>
+                        <span>Stock</span>
+                        <span>Price</span>
+                        <span>Status</span>
+                    </div>
+                    <!-- Item rows will be rendered here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="so-search-empty">
                 <span class="material-icons so-search-empty-icon">search</span>
                 <div class="so-search-empty-title">Start typing to search</div>
                 <div class="so-search-empty-text">Search for menus, customers, vendors, ledgers or type "isv:" for item search</div>
-            </div>
-
-            <!-- Results Container (hidden by default) -->
-            <div class="so-search-results-container" style="display: none;">
-                <!-- Results will be populated dynamically -->
             </div>
 
             <!-- Loading State -->

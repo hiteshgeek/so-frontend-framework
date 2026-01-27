@@ -48,6 +48,31 @@ function so_asset($type, $name) {
 }
 
 /**
+ * Get page-specific asset path from manifest
+ * @param string $page - Page name (e.g., 'search')
+ * @param string $type - 'css' or 'js'
+ * @return string|null - Full path to asset or null if not found
+ */
+function so_page_asset($page, $type) {
+    global $manifest;
+
+    // Get versioned filename from manifest pages section
+    $filename = $manifest['pages'][$page][$type] ?? null;
+
+    if ($filename) {
+        return SO_DIST_PATH . '/' . $filename;
+    }
+
+    // Fallback to non-versioned path
+    $fallbackPath = SO_DIST_PATH . "/pages/{$page}/{$page}.{$type}";
+    if (file_exists($fallbackPath)) {
+        return $fallbackPath;
+    }
+
+    return null;
+}
+
+/**
  * Load JSON data file
  * @param string $filename - File name without path
  * @return array - Parsed JSON data

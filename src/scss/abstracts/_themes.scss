@@ -70,12 +70,19 @@ $so-theme-light: (
 
   // Sidebar specific
   'sidebar-bg': #ffffff,
+  'sidebar-border': #e8eaed,
   'sidebar-text': #5f6368,
   'sidebar-text-active': #1a73e8,
   'sidebar-icon': #5f6368,
   'sidebar-icon-active': #1a73e8,
   'sidebar-hover-bg': #f1f3f4,
   'sidebar-active-bg': #e8f0fe,
+  // Sidebar item colors (matching plugin)
+  'sidebar-item-color': #5d596c,
+  'sidebar-item-hover-bg': #f1f3f4,
+  'sidebar-item-active-bg': linear-gradient(135deg, #1a73e8 0%, #4285f4 100%),
+  'sidebar-item-active-color': #ffffff,
+  'sidebar-item-icon-color': #5d596c,
 
   // Navbar specific
   'navbar-bg': #ffffff,
@@ -158,12 +165,19 @@ $so-theme-dark: (
 
   // Sidebar specific
   'sidebar-bg': #2f3349,
+  'sidebar-border': #3b4056,
   'sidebar-text': #a3a8b8,
   'sidebar-text-active': #1a73e8,
   'sidebar-icon': #a3a8b8,
   'sidebar-icon-active': #1a73e8,
   'sidebar-hover-bg': #3b4056,
   'sidebar-active-bg': rgba(26, 115, 232, 0.15),
+  // Sidebar item colors (dark theme)
+  'sidebar-item-color': #d0d4e4,
+  'sidebar-item-hover-bg': #3b4056,
+  'sidebar-item-active-bg': #1a73e8,
+  'sidebar-item-active-color': #ffffff,
+  'sidebar-item-icon-color': #a3a8b8,
 
   // Navbar specific
   'navbar-bg': #2f3349,
@@ -189,14 +203,20 @@ $so-theme-dark: (
 $so-theme-sidebar-dark: (
   // Sidebar overrides (dark sidebar on light page)
   'sidebar-bg': #2f3349,
+  'sidebar-border': #3b4056,
   'sidebar-text': #a3a8b8,
   'sidebar-text-active': #1a73e8,
   'sidebar-icon': #a3a8b8,
   'sidebar-icon-active': #1a73e8,
   'sidebar-hover-bg': #3b4056,
   'sidebar-active-bg': rgba(26, 115, 232, 0.15),
-  'sidebar-border': #3b4056,
   'sidebar-section-text': #6c7293,
+  // Sidebar item colors (dark sidebar)
+  'sidebar-item-color': #d0d4e4,
+  'sidebar-item-hover-bg': #3b4056,
+  'sidebar-item-active-bg': #1a73e8,
+  'sidebar-item-active-color': #ffffff,
+  'sidebar-item-icon-color': #a3a8b8,
 ) !default;
 
 // ============================================

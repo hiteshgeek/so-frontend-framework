@@ -83,7 +83,7 @@
             }
 
             if (hasCurrentChild || (item.children && item.children.length > 0 && item.open)) {
-                li.classList.add('open');
+                li.classList.add('so-open');
             }
 
             // Create the link
@@ -292,6 +292,8 @@
                     this.sidebar.classList.remove('no-transition');
                     // Remove html initial state classes - sidebar now handles its own state
                     document.documentElement.classList.remove('sidebar-collapsed', 'sidebar-pinned');
+                    // Mark sidebar as ready
+                    document.documentElement.classList.add('sidebar-ready');
                 });
             });
         }
@@ -408,7 +410,7 @@
 
             // Escape key to close mobile sidebar
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && this.isMobile && this.sidebar.classList.contains('open')) {
+                if (e.key === 'Escape' && this.isMobile && this.sidebar.classList.contains('so-open')) {
                     this.closeMobileSidebar();
                 }
             });
@@ -419,10 +421,10 @@
             this.isCollapsed = !this.isCollapsed;
 
             if (this.isCollapsed) {
-                this.sidebar.classList.add('collapsed');
+                this.sidebar.classList.add('so-collapsed');
                 this.sidebar.classList.remove('pinned');
             } else {
-                this.sidebar.classList.remove('collapsed');
+                this.sidebar.classList.remove('so-collapsed');
                 this.sidebar.classList.add('pinned');
             }
 
@@ -441,7 +443,7 @@
 
         // Toggle mobile sidebar
         toggleMobileSidebar() {
-            const isOpen = this.sidebar.classList.contains('open');
+            const isOpen = this.sidebar.classList.contains('so-open');
 
             if (isOpen) {
                 this.closeMobileSidebar();
@@ -452,7 +454,7 @@
 
         // Open mobile sidebar
         openMobileSidebar() {
-            this.sidebar.classList.add('open');
+            this.sidebar.classList.add('so-open');
             if (this.overlay) {
                 this.overlay.classList.add('active');
             }
@@ -462,7 +464,7 @@
 
         // Close mobile sidebar
         closeMobileSidebar() {
-            this.sidebar.classList.remove('open');
+            this.sidebar.classList.remove('so-open');
             if (this.overlay) {
                 this.overlay.classList.remove('active');
             }
@@ -472,9 +474,9 @@
 
         // Toggle submenu
         toggleSubmenu(item) {
-            const isOpen = item.classList.contains('open');
+            const isOpen = item.classList.contains('so-open');
             const parent = item.parentElement;
-            const siblings = parent.querySelectorAll(':scope > .so-sidebar-item.open');
+            const siblings = parent.querySelectorAll(':scope > .so-sidebar-item.so-open');
 
             // Batch all DOM changes together in a single operation
             // This ensures both close and open animations start simultaneously
@@ -482,10 +484,10 @@
                 // Close siblings and toggle current in the same frame
                 siblings.forEach(sibling => {
                     if (sibling !== item) {
-                        sibling.classList.remove('open');
+                        sibling.classList.remove('so-open');
                     }
                 });
-                item.classList.toggle('open', !isOpen);
+                item.classList.toggle('so-open', !isOpen);
             });
         }
 
@@ -516,7 +518,7 @@
             activeItems.forEach(item => {
                 let parent = item.parentElement.closest('.so-sidebar-item');
                 while (parent) {
-                    parent.classList.add('open');
+                    parent.classList.add('so-open');
                     parent = parent.parentElement.closest('.so-sidebar-item');
                 }
             });
@@ -539,17 +541,17 @@
                 const state = localStorage.getItem(this.options.storageKey);
                 if (state === 'pinned') {
                     this.isCollapsed = false;
-                    this.sidebar.classList.remove('collapsed');
+                    this.sidebar.classList.remove('so-collapsed');
                     this.sidebar.classList.add('pinned');
                 } else {
                     // Default to collapsed
                     this.isCollapsed = true;
-                    this.sidebar.classList.add('collapsed');
+                    this.sidebar.classList.add('so-collapsed');
                 }
                 this.updateToggleIcon();
             } catch (e) {
                 // localStorage not available - default to collapsed
-                this.sidebar.classList.add('collapsed');
+                this.sidebar.classList.add('so-collapsed');
             }
         }
 
@@ -605,8 +607,8 @@
             if (searchInput) {
                 searchInput.addEventListener('focus', () => {
                     // Open search overlay instead of inline results
-                    if (global.soSearchOverlay) {
-                        global.soSearchOverlay.open();
+                    if (global.globalSearch) {
+                        global.globalSearch.open();
                     }
                 });
             }
@@ -768,10 +770,6 @@
     }
 
     // ============================================
-    // SEARCH OVERLAY CLASS - Moved to so-search.js
-    // ============================================
-
-    // ============================================
     // THEME CONTROLLER CLASS
     // ============================================
     class SixOrbitTheme {
@@ -873,7 +871,9 @@
         }
 
         closeDropdown() {
-            this.themeContainer.classList.remove('open');
+            if (this.themeContainer) {
+                this.themeContainer.classList.remove('open');
+            }
         }
 
         setTheme(theme) {
@@ -1021,176 +1021,6 @@
                 return 'light';
             }
             return this.currentTheme;
-        }
-    }
-
-    // ============================================
-    // USER STATUS SELECTOR CLASS
-    // ============================================
-    class SixOrbitUserStatus {
-        constructor(options = {}) {
-            this.options = {
-                containerSelector: '#userStatusSelector',
-                storageKey: 'so-user-status',
-                defaultStatus: 'available',
-                statuses: {
-                    'available': { label: 'Available', desc: 'Ready for new assignments' },
-                    'with-customer': { label: 'With Customer', desc: 'Attending a walk-in customer' },
-                    'in-meeting': { label: 'In Meeting', desc: 'In a scheduled meeting' },
-                    'on-call': { label: 'On Call', desc: 'On a phone/video call' },
-                    'on-leave': { label: 'On Leave', desc: 'Not available today' },
-                    'away': { label: 'Away', desc: 'Temporarily away from desk' }
-                },
-                onChange: null,
-                ...options
-            };
-
-            this.container = null;
-            this.currentStatus = this.options.defaultStatus;
-            this.isOpen = false;
-
-            this.init();
-        }
-
-        init() {
-            this.container = document.querySelector(this.options.containerSelector);
-            if (!this.container) return;
-
-            this.statusBtn = this.container.querySelector('.so-navbar-status-btn');
-            this.statusDropdown = this.container.querySelector('.so-navbar-status-dropdown');
-            this.statusIndicator = this.container.querySelector('#statusIndicator');
-            this.statusText = this.container.querySelector('#statusText');
-            this.statusOptions = this.container.querySelectorAll('.so-navbar-status-option');
-
-            this.loadStatus();
-            this.bindEvents();
-            this.applyStatus();
-        }
-
-        bindEvents() {
-            // Toggle dropdown
-            this.statusBtn?.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleDropdown();
-            });
-
-            // Status option clicks
-            this.statusOptions?.forEach(option => {
-                option.addEventListener('click', () => {
-                    const status = option.dataset.status;
-                    this.setStatus(status);
-                    this.closeDropdown();
-                });
-            });
-
-            // Close dropdown on outside click
-            document.addEventListener('click', (e) => {
-                if (this.isOpen && !this.container.contains(e.target)) {
-                    this.closeDropdown();
-                }
-            });
-
-            // Close on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && this.isOpen) {
-                    this.closeDropdown();
-                }
-            });
-        }
-
-        toggleDropdown() {
-            if (this.isOpen) {
-                this.closeDropdown();
-            } else {
-                this.openDropdown();
-            }
-        }
-
-        openDropdown() {
-            this.isOpen = true;
-            this.container.classList.add('open');
-        }
-
-        closeDropdown() {
-            this.isOpen = false;
-            this.container.classList.remove('open');
-        }
-
-        setStatus(status) {
-            if (!this.options.statuses[status]) return;
-
-            const previousStatus = this.currentStatus;
-            this.currentStatus = status;
-            this.saveStatus();
-            this.applyStatus();
-
-            // Emit custom event
-            const event = new CustomEvent('userStatusChanged', {
-                detail: {
-                    status: status,
-                    previousStatus: previousStatus,
-                    statusInfo: this.options.statuses[status]
-                }
-            });
-            document.dispatchEvent(event);
-
-            // Call onChange callback if provided
-            if (typeof this.options.onChange === 'function') {
-                this.options.onChange(status, previousStatus);
-            }
-        }
-
-        applyStatus() {
-            const statusInfo = this.options.statuses[this.currentStatus];
-            if (!statusInfo) return;
-
-            // Update indicator
-            if (this.statusIndicator) {
-                this.statusIndicator.className = 'so-navbar-status-indicator ' + this.currentStatus;
-            }
-
-            // Update text
-            if (this.statusText) {
-                this.statusText.textContent = statusInfo.label;
-            }
-
-            // Update selected option
-            this.statusOptions?.forEach(option => {
-                const isSelected = option.dataset.status === this.currentStatus;
-                option.classList.toggle('selected', isSelected);
-            });
-        }
-
-        loadStatus() {
-            try {
-                const saved = localStorage.getItem(this.options.storageKey);
-                if (saved && this.options.statuses[saved]) {
-                    this.currentStatus = saved;
-                }
-            } catch (e) {
-                // Ignore errors
-            }
-        }
-
-        saveStatus() {
-            try {
-                localStorage.setItem(this.options.storageKey, this.currentStatus);
-            } catch (e) {
-                // Ignore errors
-            }
-        }
-
-        // Public API
-        getStatus() {
-            return this.currentStatus;
-        }
-
-        getStatusInfo() {
-            return this.options.statuses[this.currentStatus];
-        }
-
-        isAvailable() {
-            return this.currentStatus === 'available';
         }
     }
 
@@ -1475,24 +1305,20 @@
     // ============================================
     function initSixOrbitLayout() {
         // Initialize layout components
-        // Note: SixOrbitSearchOverlay is now in so-search.js and initializes itself
         const layout = new SixOrbitLayout();
         const navbar = new SixOrbitNavbar();
         const theme = new SixOrbitTheme();
-        const userStatus = new SixOrbitUserStatus();
         const sidebarFooter = new SixOrbitSidebarFooter();
 
         // Expose to global scope
         global.SixOrbitLayout = SixOrbitLayout;
         global.SixOrbitNavbar = SixOrbitNavbar;
         global.SixOrbitTheme = SixOrbitTheme;
-        global.SixOrbitUserStatus = SixOrbitUserStatus;
         global.SixOrbitSidebarMenu = SixOrbitSidebarMenu;
         global.SixOrbitSidebarFooter = SixOrbitSidebarFooter;
         global.soLayout = layout;
         global.soNavbar = navbar;
         global.soTheme = theme;
-        global.soUserStatus = userStatus;
         global.soSidebarFooter = sidebarFooter;
     }
 

@@ -195,10 +195,10 @@ class SOSidebar extends SOComponent {
 
     if (this._isCollapsed) {
       this.addClass('so-collapsed');
-      this.removeClass('so-pinned');
+      this.removeClass('pinned');
     } else {
       this.removeClass('so-collapsed');
-      this.addClass('so-pinned');
+      this.addClass('pinned');
     }
 
     this._updateBodyClass();
@@ -295,18 +295,15 @@ class SOSidebar extends SOComponent {
     const isOpen = item.classList.contains('so-open');
     const parent = item.parentElement;
 
-    // Batch DOM changes
-    requestAnimationFrame(() => {
-      // Close siblings
-      parent.querySelectorAll(':scope > .so-sidebar-item.so-open').forEach(sibling => {
-        if (sibling !== item) {
-          sibling.classList.remove('so-open');
-        }
-      });
-
-      // Toggle current
-      item.classList.toggle('so-open', !isOpen);
+    // Close siblings
+    parent.querySelectorAll(':scope > .so-sidebar-item.so-open').forEach(sibling => {
+      if (sibling !== item) {
+        sibling.classList.remove('so-open');
+      }
     });
+
+    // Toggle current
+    item.classList.toggle('so-open', !isOpen);
 
     this.emit(SOSidebar.EVENTS.SUBMENU_TOGGLE, {
       item,
@@ -373,7 +370,7 @@ class SOSidebar extends SOComponent {
     if (state === 'pinned') {
       this._isCollapsed = false;
       this.removeClass('so-collapsed');
-      this.addClass('so-pinned');
+      this.addClass('pinned');
     } else {
       this._isCollapsed = true;
       this.addClass('so-collapsed');

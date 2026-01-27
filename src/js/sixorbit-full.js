@@ -22,6 +22,8 @@ import SOButtonGroup from './components/so-button-group.js';
 import SOAlert from './components/so-alert.js';
 import SOToast from './components/so-toast.js';
 import SOSelect from './components/so-select.js';
+import SOTable from './components/so-table.js';
+import SOPagination from './components/so-pagination.js';
 
 // Features
 import SOForms from './features/so-forms.js';
@@ -83,6 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize custom selects
   SOSelect.initAll();
 
+  // Initialize tables
+  SOTable.initAll();
+
+  // Initialize pagination
+  SOPagination.initAll();
+
   console.log('SixOrbit UI Full initialized');
 });
 
@@ -105,6 +113,8 @@ export {
   SOAlert,
   SOToast,
   SOSelect,
+  SOTable,
+  SOPagination,
   SOForms,
   SOSearchOverlay,
   SOFeatureCarousel,

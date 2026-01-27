@@ -123,6 +123,14 @@ require_once 'includes/navbar.php';
                     <span class="material-icons">view_carousel</span>
                     Carousel
                 </button>
+                <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-tables">
+                    <span class="material-icons">table_chart</span>
+                    Tables
+                </button>
+                <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-pagination">
+                    <span class="material-icons">last_page</span>
+                    Pagination
+                </button>
             </div>
 
             <!-- Tab Content -->
@@ -151,6 +159,8 @@ require_once 'includes/navbar.php';
                 <?php include 'includes/form-elements/scrollspy.php'; ?>
                 <?php include 'includes/form-elements/collapse.php'; ?>
                 <?php include 'includes/form-elements/carousel.php'; ?>
+                <?php include 'includes/form-elements/tables.php'; ?>
+                <?php include 'includes/form-elements/pagination.php'; ?>
             </div>
         </div>
     </div>

@@ -543,13 +543,20 @@
       border-color: css-var('accent-primary');
     }
 
-    &.#{$so-prefix}selected .#{$so-prefix}checkbox-box {
-      background: css-var('accent-primary');
-      border-color: css-var('accent-primary');
+    // Override: no background on selected, only checkbox indicator
+    &.#{$so-prefix}selected {
+      background: transparent;
+      color: inherit;
+      font-weight: inherit;
 
-      .material-icons {
-        opacity: 1;
-        transform: scale(1);
+      .#{$so-prefix}checkbox-box {
+        background: css-var('accent-primary');
+        border-color: css-var('accent-primary');
+
+        .material-icons {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
     }
 
@@ -628,11 +635,18 @@
       border-color: css-var('accent-primary');
     }
 
-    &.#{$so-prefix}selected .#{$so-prefix}radio-circle {
-      border-color: css-var('accent-primary');
+    // Override: no background on selected, only radio indicator
+    &.#{$so-prefix}selected {
+      background: transparent;
+      color: inherit;
+      font-weight: inherit;
 
-      &::after {
-        transform: scale(1);
+      .#{$so-prefix}radio-circle {
+        border-color: css-var('accent-primary');
+
+        &::after {
+          transform: scale(1);
+        }
       }
     }
 

@@ -71,6 +71,27 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
+
+                <div class="so-code-block so-mt-3">
+                    <div class="so-code-header">
+                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                        <button class="so-code-copy" onclick="copyCode(this)">
+                            <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                    <pre class="so-code-content"><code class="language-javascript">// Auto-initialized with data-so-carousel attribute
+// Or initialize manually:
+const carousel = new SOCarousel(document.getElementById('my-carousel'), {
+    autoplay: false,
+    interval: 5000,
+    loop: true
+});
+
+// Navigate programmatically
+carousel.next();
+carousel.prev();
+carousel.goTo(2);</code></pre>
+                </div>
             </div>
         </div>
 
@@ -191,6 +212,20 @@
     &lt;button class="so-carousel-indicator"&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
                 </div>
+
+                <div class="so-code-block so-mt-3">
+                    <div class="so-code-header">
+                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                        <button class="so-code-copy" onclick="copyCode(this)">
+                            <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                    <pre class="so-code-content"><code class="language-javascript">// Fade transition is CSS-based via .so-carousel-fade class
+// Initialize normally:
+const carousel = new SOCarousel(element, {
+    // options
+});</code></pre>
+                </div>
             </div>
         </div>
 
@@ -278,6 +313,24 @@
     &lt;/div&gt;
     &lt;!-- controls... --&gt;
 &lt;/div&gt;</code></pre>
+                </div>
+
+                <div class="so-code-block so-mt-3">
+                    <div class="so-code-header">
+                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                        <button class="so-code-copy" onclick="copyCode(this)">
+                            <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                    <pre class="so-code-content"><code class="language-javascript">// Multi-item carousel with responsive items
+const carousel = new SOCarousel(element, {
+    itemsVisible: 3,           // Show 3 items at once
+    itemsToScroll: 1,          // Scroll 1 item at a time
+    responsive: {
+        768: { itemsVisible: 2 },  // 2 items on tablet
+        480: { itemsVisible: 1 }   // 1 item on mobile
+    }
+});</code></pre>
                 </div>
             </div>
         </div>
@@ -483,6 +536,26 @@
         &lt;div class="so-carousel-progress-bar"&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+                </div>
+
+                <div class="so-code-block so-mt-3">
+                    <div class="so-code-header">
+                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                        <button class="so-code-copy" onclick="copyCode(this)">
+                            <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                    <pre class="so-code-content"><code class="language-javascript">// Initialize with autoplay
+const carousel = new SOCarousel(element, {
+    autoplay: true,
+    interval: 4000,    // 4 seconds between slides
+    pauseOnHover: true // Pause when mouse hovers
+});
+
+// Control autoplay programmatically
+carousel.play();   // Start autoplay
+carousel.pause();  // Pause autoplay
+carousel.stop();   // Stop and reset</code></pre>
                 </div>
             </div>
         </div>
@@ -1085,6 +1158,11 @@ class SOCarousel {
         this._bindEvents();
         this._updateIndicators();
 
+        // Delay transform update to ensure DOM is ready
+        requestAnimationFrame(() => {
+            this._updateTransform();
+        });
+
         if (this.options.autoplay) {
             this.play();
         }
@@ -1305,6 +1383,9 @@ class SOCarousel {
         // Reset progress bar animation
         this._resetProgress();
 
+        // Translate inner for hero/multi carousel
+        this._updateTransform();
+
         // Complete transition
         setTimeout(() => {
             this.isSliding = false;
@@ -1322,6 +1403,41 @@ class SOCarousel {
         }, 600);
 
         return this;
+    }
+
+    _updateTransform() {
+        if (!this.inner) return;
+
+        const isHero = this.element.classList.contains('so-carousel-hero');
+        const isMulti = this.element.classList.contains('so-carousel-multi');
+
+        if (isHero || isMulti) {
+            const slide = this.slides[this.currentIndex];
+            if (!slide) return;
+
+            // Use the slide's offsetLeft relative to the inner container
+            const slideOffset = slide.offsetLeft;
+            const slideStyle = getComputedStyle(slide);
+            const slideMargin = parseFloat(slideStyle.marginLeft) || 0;
+
+            let translateX = slideOffset - slideMargin;
+
+            // For hero carousel, center the slide
+            if (isHero) {
+                const containerPadding = parseFloat(getComputedStyle(this.element).paddingLeft) || 0;
+                // First slide should be at 0 translate (already centered by padding)
+                // Subsequent slides need to move by their full width including margins
+                if (this.currentIndex > 0) {
+                    const slideWidth = slide.offsetWidth;
+                    const slideFullWidth = slideWidth + (slideMargin * 2);
+                    translateX = this.currentIndex * slideFullWidth;
+                } else {
+                    translateX = 0;
+                }
+            }
+
+            this.inner.style.transform = `translateX(-${translateX}px)`;
+        }
     }
 
     _updateIndicators() {

@@ -705,7 +705,7 @@
       flex-shrink: 0;
       min-width: 180px;
       align-self: flex-start;
-      max-height: calc(100vh - #{spacing("8")});
+      max-height: calc(100vh - 100px);
       overflow-y: auto;
       flex-wrap: nowrap;
       scrollbar-width: thin;

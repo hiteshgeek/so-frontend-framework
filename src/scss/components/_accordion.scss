@@ -49,7 +49,7 @@
     border-bottom-left-radius: var(--accordion-border-radius);
     border-bottom-right-radius: var(--accordion-border-radius);
 
-    > .#{$so-prefix}accordion-header .#{$so-prefix}accordion-button.collapsed {
+    > .#{$so-prefix}accordion-header .#{$so-prefix}accordion-button.#{$so-prefix}collapsed {
       border-bottom-left-radius: calc(var(--accordion-border-radius) - var(--accordion-border-width));
       border-bottom-right-radius: calc(var(--accordion-border-radius) - var(--accordion-border-width));
     }
@@ -84,7 +84,7 @@
               background-color $so-transition-fast,
               box-shadow $so-transition-fast;
 
-  &:not(.collapsed) {
+  &:not(.#{$so-prefix}collapsed) {
     color: var(--accordion-active-color);
     background-color: var(--accordion-active-bg);
     box-shadow: inset 0 calc(var(--accordion-border-width) * -1) 0 var(--accordion-border-color);
@@ -121,11 +121,11 @@
   overflow: hidden;
   transition: height 0.35s ease;
 
-  &:not(.show):not(.collapsing) {
+  &:not(.#{$so-prefix}show):not(.#{$so-prefix}collapsing) {
     display: none;
   }
 
-  &.collapsing {
+  &.#{$so-prefix}collapsing {
     height: 0;
   }
 }
@@ -172,19 +172,19 @@
   .#{$so-prefix}accordion-item {
     border-left-width: 3px;
 
-    &:not(.collapsed) {
+    &:not(.#{$so-prefix}collapsed) {
       border-left-color: $so-primary;
     }
   }
 
   @each $color-name, $color-value in $so-colors {
     &.#{$so-prefix}accordion-#{$color-name} {
-      .#{$so-prefix}accordion-item:not(.collapsed),
-      .#{$so-prefix}accordion-item:has(.#{$so-prefix}accordion-button:not(.collapsed)) {
+      .#{$so-prefix}accordion-item:not(.#{$so-prefix}collapsed),
+      .#{$so-prefix}accordion-item:has(.#{$so-prefix}accordion-button:not(.#{$so-prefix}collapsed)) {
         border-left-color: $color-value;
       }
 
-      .#{$so-prefix}accordion-button:not(.collapsed) {
+      .#{$so-prefix}accordion-button:not(.#{$so-prefix}collapsed) {
         color: $color-value;
         background-color: rgba($color-value, 0.05);
       }
@@ -219,7 +219,7 @@
       transform: none;
     }
 
-    &:not(.collapsed)::after {
+    &:not(.#{$so-prefix}collapsed)::after {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
       transform: none;
     }
@@ -234,7 +234,7 @@
       transform: rotate(0deg);
     }
 
-    &:not(.collapsed)::after {
+    &:not(.#{$so-prefix}collapsed)::after {
       transform: rotate(90deg);
     }
   }
@@ -262,7 +262,7 @@
       transition: var(--accordion-icon-transition);
     }
 
-    &:not(.collapsed)::before {
+    &:not(.#{$so-prefix}collapsed)::before {
       transform: var(--accordion-icon-transform);
     }
 
@@ -341,7 +341,7 @@
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23e1e1e1'%3e%3cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
       }
 
-      &:not(.collapsed)::after {
+      &:not(.#{$so-prefix}collapsed)::after {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23e1e1e1'%3e%3cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
       }
     }

@@ -14,7 +14,7 @@
                     Toggle Content
                 </button>
 
-                <div id="basicCollapse1" class="so-collapse show">
+                <div id="basicCollapse1" class="so-collapse so-show">
                     <div class="so-card">
                         <div class="so-card-body">
                             This is some placeholder content for a basic collapse. It can be any element or component. Click the button above to toggle this content.
@@ -33,7 +33,7 @@
     Toggle Content
 &lt;/button&gt;
 
-&lt;div id="myCollapse" class="so-collapse show"&gt;
+&lt;div id="myCollapse" class="so-collapse so-show"&gt;
     &lt;div class="so-card"&gt;
         &lt;div class="so-card-body"&gt;
             Collapsible content here...
@@ -102,7 +102,7 @@
                 </button>
 
                 <div style="min-height: 120px;">
-                    <div id="horizontalCollapse" class="so-collapse so-collapse-horizontal show">
+                    <div id="horizontalCollapse" class="so-collapse so-collapse-horizontal so-show">
                         <div class="so-card so-card-body" style="width: 300px;">
                             This content collapses horizontally. It's useful for sidebars or panels that slide in/out from the side.
                         </div>
@@ -116,7 +116,7 @@
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div id="horizontalCollapse" class="so-collapse so-collapse-horizontal show"&gt;
+                    <pre class="so-code-content"><code class="language-html">&lt;div id="horizontalCollapse" class="so-collapse so-collapse-horizontal so-show"&gt;
     &lt;div class="so-card so-card-body" style="width: 300px;"&gt;
         Horizontal collapse content...
     &lt;/div&gt;
@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="so-grid so-grid-cols-1 md:so-grid-cols-2 so-gap-4">
-                    <div id="multiCollapse1" class="so-collapse multi-collapse show">
+                    <div id="multiCollapse1" class="so-collapse multi-collapse so-show">
                         <div class="so-card">
                             <div class="so-card-body">
                                 First collapse element. Toggled individually or together with the "Toggle Both" button.
@@ -174,7 +174,7 @@
     Toggle Both
 &lt;/button&gt;
 
-&lt;div id="multiCollapse1" class="so-collapse multi-collapse show"&gt;...&lt;/div&gt;
+&lt;div id="multiCollapse1" class="so-collapse multi-collapse so-show"&gt;...&lt;/div&gt;
 &lt;div id="multiCollapse2" class="so-collapse multi-collapse"&gt;...&lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -193,7 +193,7 @@
                         <h5 class="so-collapse-title">Section Title</h5>
                         <span class="material-icons so-collapse-icon">expand_more</span>
                     </div>
-                    <div id="containerCollapse1" class="so-collapse show">
+                    <div id="containerCollapse1" class="so-collapse so-show">
                         <div class="so-collapse-body">
                             This is the body content of a collapse container. It has predefined styling for headers and content areas.
                         </div>
@@ -224,7 +224,7 @@
         &lt;h5 class="so-collapse-title"&gt;Section Title&lt;/h5&gt;
         &lt;span class="material-icons so-collapse-icon"&gt;expand_more&lt;/span&gt;
     &lt;/div&gt;
-    &lt;div id="myContainer" class="so-collapse show"&gt;
+    &lt;div id="myContainer" class="so-collapse so-show"&gt;
         &lt;div class="so-collapse-body"&gt;
             Content here...
         &lt;/div&gt;
@@ -248,7 +248,7 @@
                             <h5 class="so-collapse-title">First Panel</h5>
                             <span class="material-icons so-collapse-icon">expand_more</span>
                         </div>
-                        <div id="groupCollapse1" class="so-collapse show">
+                        <div id="groupCollapse1" class="so-collapse so-show">
                             <div class="so-collapse-body">
                                 Content for the first panel in the group.
                             </div>
@@ -309,7 +309,7 @@
                         <button class="so-btn so-btn-sm so-btn-outline-primary so-mb-2" type="button" data-so-toggle="collapse" data-so-target="#fadeCollapse">
                             Toggle Fade
                         </button>
-                        <div id="fadeCollapse" class="so-collapse so-collapse-fade show">
+                        <div id="fadeCollapse" class="so-collapse so-collapse-fade so-show">
                             <div class="so-card so-card-body">
                                 Fades in and out with opacity transition.
                             </div>
@@ -322,7 +322,7 @@
                         <button class="so-btn so-btn-sm so-btn-outline-secondary so-mb-2" type="button" data-so-toggle="collapse" data-so-target="#slideCollapse">
                             Toggle Slide
                         </button>
-                        <div id="slideCollapse" class="so-collapse so-collapse-slide show">
+                        <div id="slideCollapse" class="so-collapse so-collapse-slide so-show">
                             <div class="so-card so-card-body">
                                 Slides in from the left.
                             </div>
@@ -335,7 +335,7 @@
                         <button class="so-btn so-btn-sm so-btn-outline-info so-mb-2" type="button" data-so-toggle="collapse" data-so-target="#scaleCollapse">
                             Toggle Scale
                         </button>
-                        <div id="scaleCollapse" class="so-collapse so-collapse-scale show">
+                        <div id="scaleCollapse" class="so-collapse so-collapse-scale so-show">
                             <div class="so-card so-card-body">
                                 Scales up from small to full size.
                             </div>
@@ -379,7 +379,7 @@
                                 <h5 class="so-collapse-title">Small Collapse</h5>
                                 <span class="material-icons so-collapse-icon">expand_more</span>
                             </div>
-                            <div id="smCollapse" class="so-collapse show">
+                            <div id="smCollapse" class="so-collapse so-show">
                                 <div class="so-collapse-body">
                                     Compact content area for small UI elements.
                                 </div>
@@ -395,7 +395,7 @@
                                 <h5 class="so-collapse-title">Large Collapse</h5>
                                 <span class="material-icons so-collapse-icon">expand_more</span>
                             </div>
-                            <div id="lgCollapse" class="so-collapse show">
+                            <div id="lgCollapse" class="so-collapse so-show">
                                 <div class="so-collapse-body">
                                     More spacious content area for larger sections.
                                 </div>
@@ -431,7 +431,7 @@
                             <h5 class="so-collapse-title">Primary</h5>
                             <span class="material-icons so-collapse-icon">expand_more</span>
                         </div>
-                        <div id="colorPrimary" class="so-collapse show">
+                        <div id="colorPrimary" class="so-collapse so-show">
                             <div class="so-collapse-body">Primary color theme.</div>
                         </div>
                     </div>
@@ -440,7 +440,7 @@
                             <h5 class="so-collapse-title">Success</h5>
                             <span class="material-icons so-collapse-icon">expand_more</span>
                         </div>
-                        <div id="colorSuccess" class="so-collapse show">
+                        <div id="colorSuccess" class="so-collapse so-show">
                             <div class="so-collapse-body">Success color theme.</div>
                         </div>
                     </div>
@@ -449,7 +449,7 @@
                             <h5 class="so-collapse-title">Warning</h5>
                             <span class="material-icons so-collapse-icon">expand_more</span>
                         </div>
-                        <div id="colorWarning" class="so-collapse show">
+                        <div id="colorWarning" class="so-collapse so-show">
                             <div class="so-collapse-body">Warning color theme.</div>
                         </div>
                     </div>
@@ -458,7 +458,7 @@
                             <h5 class="so-collapse-title">Danger</h5>
                             <span class="material-icons so-collapse-icon">expand_more</span>
                         </div>
-                        <div id="colorDanger" class="so-collapse show">
+                        <div id="colorDanger" class="so-collapse so-show">
                             <div class="so-collapse-body">Danger color theme.</div>
                         </div>
                     </div>
@@ -492,7 +492,7 @@
                         <h5 class="so-mb-0">Collapsible Card</h5>
                         <span class="material-icons so-collapse-icon">expand_more</span>
                     </div>
-                    <div id="cardCollapse1" class="so-collapse show">
+                    <div id="cardCollapse1" class="so-collapse so-show">
                         <div class="so-card-body">
                             This is a card with a collapsible body. Click the header to toggle the content. The header styling changes when collapsed.
                         </div>
@@ -500,7 +500,7 @@
                 </div>
 
                 <div class="so-card so-card-collapsible">
-                    <div class="so-card-header collapsed" data-so-toggle="collapse" data-so-target="#cardCollapse2" aria-expanded="false">
+                    <div class="so-card-header so-collapsed" data-so-toggle="collapse" data-so-target="#cardCollapse2" aria-expanded="false">
                         <h5 class="so-mb-0">Initially Collapsed Card</h5>
                         <span class="material-icons so-collapse-icon">expand_more</span>
                     </div>
@@ -523,7 +523,7 @@
         &lt;h5 class="so-mb-0"&gt;Card Title&lt;/h5&gt;
         &lt;span class="material-icons so-collapse-icon"&gt;expand_more&lt;/span&gt;
     &lt;/div&gt;
-    &lt;div id="cardBody" class="so-collapse show"&gt;
+    &lt;div id="cardBody" class="so-collapse so-show"&gt;
         &lt;div class="so-card-body"&gt;
             Card content here...
         &lt;/div&gt;
@@ -583,7 +583,7 @@
                         <h5 class="so-collapse-title">Parent Section</h5>
                         <span class="material-icons so-collapse-icon">expand_more</span>
                     </div>
-                    <div id="nestedParent" class="so-collapse show">
+                    <div id="nestedParent" class="so-collapse so-show">
                         <div class="so-collapse-body">
                             <p>This is the parent content. It contains nested collapse elements.</p>
 
@@ -592,7 +592,7 @@
                                     <span class="material-icons so-collapse-icon">expand_more</span>
                                     Nested Item 1
                                 </button>
-                                <div id="nestedChild1" class="so-collapse show">
+                                <div id="nestedChild1" class="so-collapse so-show">
                                     <p class="so-text-muted">Content for nested item 1.</p>
                                 </div>
                             </div>
@@ -621,7 +621,7 @@
     &lt;div class="so-collapse-header" data-so-toggle="collapse" data-so-target="#parent"&gt;
         Parent Section
     &lt;/div&gt;
-    &lt;div id="parent" class="so-collapse show"&gt;
+    &lt;div id="parent" class="so-collapse so-show"&gt;
         &lt;div class="so-collapse-body"&gt;
             Parent content...
 

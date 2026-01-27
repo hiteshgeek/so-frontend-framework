@@ -1,4 +1,4 @@
-<div class="so-tab-pane fade" id="pane-utilities" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-utilities" role="tabpanel">
 
     <style>
         .demo-col {
@@ -242,6 +242,529 @@
   &lt;div class="so-col so-order-md-2"&gt;First on mobile, second on md+&lt;/div&gt;
   &lt;div class="so-col so-order-md-1"&gt;Second on mobile, first on md+&lt;/div&gt;
 &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spacing (Margin) Utilities -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Spacing (Margin) Utilities</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Use <code>.so-m-*</code> classes to add margin to elements. The scale ranges from 0-8 plus auto.</p>
+
+            <style>
+                .spacing-demo-box {
+                    background: var(--so-accent-primary);
+                    color: white;
+                    padding: 0.5rem;
+                    text-align: center;
+                    border-radius: var(--so-radius-sm);
+                    font-size: 12px;
+                }
+                .spacing-demo-wrapper {
+                    background: var(--so-grey-200);
+                    border-radius: var(--so-radius-md);
+                    display: inline-block;
+                }
+            </style>
+
+            <h6 class="so-mb-3">Margin Scale</h6>
+            <div class="so-flex so-flex-wrap so-gap-3 so-mb-4">
+                <div>
+                    <div class="spacing-demo-wrapper">
+                        <div class="spacing-demo-box so-m-0">m-0</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">0</div>
+                </div>
+                <div>
+                    <div class="spacing-demo-wrapper">
+                        <div class="spacing-demo-box so-m-1">m-1</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">0.25rem</div>
+                </div>
+                <div>
+                    <div class="spacing-demo-wrapper">
+                        <div class="spacing-demo-box so-m-2">m-2</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">0.5rem</div>
+                </div>
+                <div>
+                    <div class="spacing-demo-wrapper">
+                        <div class="spacing-demo-box so-m-3">m-3</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">1rem</div>
+                </div>
+                <div>
+                    <div class="spacing-demo-wrapper">
+                        <div class="spacing-demo-box so-m-4">m-4</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">1.5rem</div>
+                </div>
+                <div>
+                    <div class="spacing-demo-wrapper">
+                        <div class="spacing-demo-box so-m-5">m-5</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">3rem</div>
+                </div>
+            </div>
+
+            <h6 class="so-mb-3">Directional Margins</h6>
+            <div class="so-row so-mb-4">
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-wrapper so-d-block">
+                        <div class="spacing-demo-box so-mt-3">mt-3</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">margin-top</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-wrapper so-d-block">
+                        <div class="spacing-demo-box so-mb-3">mb-3</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">margin-bottom</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-wrapper so-d-block">
+                        <div class="spacing-demo-box so-ms-3">ms-3</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">margin-start (left)</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-wrapper so-d-block">
+                        <div class="spacing-demo-box so-me-3">me-3</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">margin-end (right)</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-wrapper so-d-block">
+                        <div class="spacing-demo-box so-mx-3">mx-3</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">margin-x (left+right)</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-wrapper so-d-block">
+                        <div class="spacing-demo-box so-my-3">my-3</div>
+                    </div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">margin-y (top+bottom)</div>
+                </div>
+            </div>
+
+            <h6 class="so-mb-3">Auto Margins (Centering)</h6>
+            <div class="so-p-3 so-mb-4" style="background: var(--so-grey-100); border-radius: var(--so-radius-lg);">
+                <div class="spacing-demo-box so-mx-auto" style="width: 150px;">mx-auto (centered)</div>
+            </div>
+            <div class="so-p-3 so-mb-4" style="background: var(--so-grey-100); border-radius: var(--so-radius-lg);">
+                <div class="spacing-demo-box so-ms-auto" style="width: 150px;">ms-auto (right)</div>
+            </div>
+
+            <div class="so-code-block">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-html">&lt;!-- All sides margin --&gt;
+&lt;div class="so-m-0"&gt;...&lt;/div&gt;  &lt;!-- margin: 0 --&gt;
+&lt;div class="so-m-1"&gt;...&lt;/div&gt;  &lt;!-- margin: 0.25rem (4px) --&gt;
+&lt;div class="so-m-2"&gt;...&lt;/div&gt;  &lt;!-- margin: 0.5rem (8px) --&gt;
+&lt;div class="so-m-3"&gt;...&lt;/div&gt;  &lt;!-- margin: 1rem (16px) --&gt;
+&lt;div class="so-m-4"&gt;...&lt;/div&gt;  &lt;!-- margin: 1.5rem (24px) --&gt;
+&lt;div class="so-m-5"&gt;...&lt;/div&gt;  &lt;!-- margin: 3rem (48px) --&gt;
+&lt;div class="so-m-6"&gt;...&lt;/div&gt;  &lt;!-- margin: 4rem (64px) --&gt;
+&lt;div class="so-m-7"&gt;...&lt;/div&gt;  &lt;!-- margin: 5rem (80px) --&gt;
+&lt;div class="so-m-8"&gt;...&lt;/div&gt;  &lt;!-- margin: 6rem (96px) --&gt;
+
+&lt;!-- Directional margins --&gt;
+&lt;div class="so-mt-3"&gt;...&lt;/div&gt;  &lt;!-- margin-top --&gt;
+&lt;div class="so-mb-3"&gt;...&lt;/div&gt;  &lt;!-- margin-bottom --&gt;
+&lt;div class="so-ms-3"&gt;...&lt;/div&gt;  &lt;!-- margin-start (left in LTR) --&gt;
+&lt;div class="so-me-3"&gt;...&lt;/div&gt;  &lt;!-- margin-end (right in LTR) --&gt;
+&lt;div class="so-mx-3"&gt;...&lt;/div&gt;  &lt;!-- margin-left + margin-right --&gt;
+&lt;div class="so-my-3"&gt;...&lt;/div&gt;  &lt;!-- margin-top + margin-bottom --&gt;
+
+&lt;!-- Auto margins for centering --&gt;
+&lt;div class="so-mx-auto"&gt;...&lt;/div&gt;  &lt;!-- Center horizontally --&gt;
+&lt;div class="so-ms-auto"&gt;...&lt;/div&gt;  &lt;!-- Push to right --&gt;
+&lt;div class="so-me-auto"&gt;...&lt;/div&gt;  &lt;!-- Push to left --&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Padding Utilities -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Padding Utilities</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Use <code>.so-p-*</code> classes to add padding to elements. Same scale as margins (0-8).</p>
+
+            <h6 class="so-mb-3">Padding Scale</h6>
+            <div class="so-flex so-flex-wrap so-gap-3 so-mb-4">
+                <div class="spacing-demo-box so-p-0">p-0</div>
+                <div class="spacing-demo-box so-p-1">p-1</div>
+                <div class="spacing-demo-box so-p-2">p-2</div>
+                <div class="spacing-demo-box so-p-3">p-3</div>
+                <div class="spacing-demo-box so-p-4">p-4</div>
+                <div class="spacing-demo-box so-p-5">p-5</div>
+            </div>
+
+            <h6 class="so-mb-3">Directional Padding</h6>
+            <div class="so-row so-mb-4">
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-box so-pt-4">pt-4</div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">padding-top</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-box so-pb-4">pb-4</div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">padding-bottom</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-box so-ps-4">ps-4</div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">padding-start (left)</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-box so-pe-4">pe-4</div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">padding-end (right)</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-box so-px-4">px-4</div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">padding-x</div>
+                </div>
+                <div class="so-col-6 so-col-md-4 so-col-lg-2 so-mb-3">
+                    <div class="spacing-demo-box so-py-4">py-4</div>
+                    <div class="so-text-muted so-text-center" style="font-size: 11px;">padding-y</div>
+                </div>
+            </div>
+
+            <div class="so-code-block">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-html">&lt;!-- All sides padding --&gt;
+&lt;div class="so-p-0"&gt;...&lt;/div&gt;  &lt;!-- padding: 0 --&gt;
+&lt;div class="so-p-1"&gt;...&lt;/div&gt;  &lt;!-- padding: 0.25rem (4px) --&gt;
+&lt;div class="so-p-2"&gt;...&lt;/div&gt;  &lt;!-- padding: 0.5rem (8px) --&gt;
+&lt;div class="so-p-3"&gt;...&lt;/div&gt;  &lt;!-- padding: 1rem (16px) --&gt;
+&lt;div class="so-p-4"&gt;...&lt;/div&gt;  &lt;!-- padding: 1.5rem (24px) --&gt;
+&lt;div class="so-p-5"&gt;...&lt;/div&gt;  &lt;!-- padding: 3rem (48px) --&gt;
+
+&lt;!-- Directional padding --&gt;
+&lt;div class="so-pt-3"&gt;...&lt;/div&gt;  &lt;!-- padding-top --&gt;
+&lt;div class="so-pb-3"&gt;...&lt;/div&gt;  &lt;!-- padding-bottom --&gt;
+&lt;div class="so-ps-3"&gt;...&lt;/div&gt;  &lt;!-- padding-start (left in LTR) --&gt;
+&lt;div class="so-pe-3"&gt;...&lt;/div&gt;  &lt;!-- padding-end (right in LTR) --&gt;
+&lt;div class="so-px-3"&gt;...&lt;/div&gt;  &lt;!-- padding-left + padding-right --&gt;
+&lt;div class="so-py-3"&gt;...&lt;/div&gt;  &lt;!-- padding-top + padding-bottom --&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gap Utilities -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Gap Utilities (Flexbox & Grid)</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Use <code>.so-gap-*</code> classes to add spacing between flex or grid items without affecting outer margins.</p>
+
+            <h6 class="so-mb-3">Gap Scale</h6>
+            <div class="so-row so-mb-4">
+                <div class="so-col-md-4 so-mb-3">
+                    <p class="so-mb-2"><code>.so-gap-1</code> (0.25rem)</p>
+                    <div class="so-flex so-flex-wrap so-gap-1 so-p-3" style="background: var(--so-grey-100); border-radius: var(--so-radius-md);">
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                    </div>
+                </div>
+                <div class="so-col-md-4 so-mb-3">
+                    <p class="so-mb-2"><code>.so-gap-3</code> (1rem)</p>
+                    <div class="so-flex so-flex-wrap so-gap-3 so-p-3" style="background: var(--so-grey-100); border-radius: var(--so-radius-md);">
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                    </div>
+                </div>
+                <div class="so-col-md-4 so-mb-3">
+                    <p class="so-mb-2"><code>.so-gap-5</code> (3rem)</p>
+                    <div class="so-flex so-flex-wrap so-gap-5 so-p-3" style="background: var(--so-grey-100); border-radius: var(--so-radius-md);">
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                    </div>
+                </div>
+            </div>
+
+            <h6 class="so-mb-3">Row Gap & Column Gap</h6>
+            <div class="so-row so-mb-4">
+                <div class="so-col-md-6 so-mb-3">
+                    <p class="so-mb-2"><code>.so-row-gap-3 .so-column-gap-1</code></p>
+                    <div class="so-flex so-flex-wrap so-row-gap-3 so-column-gap-1 so-p-3" style="background: var(--so-grey-100); border-radius: var(--so-radius-md);">
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                    </div>
+                </div>
+                <div class="so-col-md-6 so-mb-3">
+                    <p class="so-mb-2"><code>.so-row-gap-1 .so-column-gap-4</code></p>
+                    <div class="so-flex so-flex-wrap so-row-gap-1 so-column-gap-4 so-p-3" style="background: var(--so-grey-100); border-radius: var(--so-radius-md);">
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                        <div class="spacing-demo-box">Item</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so-code-block">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-html">&lt;!-- Gap on both axes --&gt;
+&lt;div class="so-flex so-gap-3"&gt;
+    &lt;div&gt;Item&lt;/div&gt;
+    &lt;div&gt;Item&lt;/div&gt;
+    &lt;div&gt;Item&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Different row and column gaps --&gt;
+&lt;div class="so-flex so-flex-wrap so-row-gap-3 so-column-gap-1"&gt;
+    &lt;div&gt;Item&lt;/div&gt;
+    &lt;div&gt;Item&lt;/div&gt;
+    &lt;div&gt;Item&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Available gap classes: so-gap-{0-8} --&gt;
+&lt;!-- Also: so-row-gap-{0-8} and so-column-gap-{0-8} --&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Negative Margins -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Negative Margins</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Use <code>.so-m-n*</code> classes to apply negative margins, useful for pulling elements outside their container or overlapping elements.</p>
+
+            <div class="so-p-4 so-mb-4" style="background: var(--so-grey-100); border-radius: var(--so-radius-lg);">
+                <div class="so-p-3" style="background: var(--so-grey-200); border-radius: var(--so-radius-md);">
+                    <div class="spacing-demo-box so-mx-n3">mx-n3 (negative margin pulling outside)</div>
+                </div>
+            </div>
+
+            <div class="so-code-block">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-html">&lt;!-- Negative margins --&gt;
+&lt;div class="so-m-n1"&gt;...&lt;/div&gt;  &lt;!-- margin: -0.25rem --&gt;
+&lt;div class="so-m-n2"&gt;...&lt;/div&gt;  &lt;!-- margin: -0.5rem --&gt;
+&lt;div class="so-m-n3"&gt;...&lt;/div&gt;  &lt;!-- margin: -1rem --&gt;
+
+&lt;!-- Directional negative margins --&gt;
+&lt;div class="so-mt-n3"&gt;...&lt;/div&gt;  &lt;!-- margin-top: -1rem --&gt;
+&lt;div class="so-mx-n3"&gt;...&lt;/div&gt;  &lt;!-- margin-left + margin-right: -1rem --&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Spacing -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Responsive Spacing</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">All spacing utilities support responsive breakpoints. Use <code>.so-{property}-{breakpoint}-{size}</code> format.</p>
+
+            <div class="so-alert so-alert-info so-mb-4">
+                <span class="material-icons">info</span>
+                <div>Resize your browser to see the spacing change at different breakpoints.</div>
+            </div>
+
+            <div class="so-p-3 so-mb-4" style="background: var(--so-grey-100); border-radius: var(--so-radius-lg);">
+                <div class="spacing-demo-box so-p-2 so-p-md-4 so-p-lg-5">
+                    p-2 on mobile, p-4 on md, p-5 on lg
+                </div>
+            </div>
+
+            <div class="so-code-block">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-html">&lt;!-- Responsive margins --&gt;
+&lt;div class="so-m-2 so-m-md-4 so-m-lg-5"&gt;...&lt;/div&gt;
+
+&lt;!-- Responsive padding --&gt;
+&lt;div class="so-p-2 so-p-md-4 so-p-lg-5"&gt;...&lt;/div&gt;
+
+&lt;!-- Responsive directional spacing --&gt;
+&lt;div class="so-mt-3 so-mt-md-5"&gt;...&lt;/div&gt;
+&lt;div class="so-px-2 so-px-lg-4"&gt;...&lt;/div&gt;
+
+&lt;!-- Responsive gap --&gt;
+&lt;div class="so-flex so-gap-2 so-gap-md-4"&gt;...&lt;/div&gt;
+
+&lt;!-- Breakpoints: sm (576px), md (768px), lg (1024px), xl (1200px), xxl (1400px) --&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spacing Reference Table -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Spacing Scale Reference</h3>
+        </div>
+        <div class="so-card-body">
+            <div class="so-table-responsive">
+                <table class="so-table so-table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Value</th>
+                            <th>Pixels</th>
+                            <th>Margin Class</th>
+                            <th>Padding Class</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0px</td>
+                            <td><code>.so-m-0</code></td>
+                            <td><code>.so-p-0</code></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0.25rem</td>
+                            <td>4px</td>
+                            <td><code>.so-m-1</code></td>
+                            <td><code>.so-p-1</code></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>0.5rem</td>
+                            <td>8px</td>
+                            <td><code>.so-m-2</code></td>
+                            <td><code>.so-p-2</code></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>1rem</td>
+                            <td>16px</td>
+                            <td><code>.so-m-3</code></td>
+                            <td><code>.so-p-3</code></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>1.5rem</td>
+                            <td>24px</td>
+                            <td><code>.so-m-4</code></td>
+                            <td><code>.so-p-4</code></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>3rem</td>
+                            <td>48px</td>
+                            <td><code>.so-m-5</code></td>
+                            <td><code>.so-p-5</code></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>4rem</td>
+                            <td>64px</td>
+                            <td><code>.so-m-6</code></td>
+                            <td><code>.so-p-6</code></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>5rem</td>
+                            <td>80px</td>
+                            <td><code>.so-m-7</code></td>
+                            <td><code>.so-p-7</code></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>6rem</td>
+                            <td>96px</td>
+                            <td><code>.so-m-8</code></td>
+                            <td><code>.so-p-8</code></td>
+                        </tr>
+                        <tr>
+                            <td>auto</td>
+                            <td>auto</td>
+                            <td>-</td>
+                            <td><code>.so-m-auto</code></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 class="so-mt-4 so-mb-3">Direction Abbreviations</h6>
+            <div class="so-table-responsive">
+                <table class="so-table so-table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Abbreviation</th>
+                            <th>Description</th>
+                            <th>CSS Property</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>t</code></td>
+                            <td>Top</td>
+                            <td>margin-top / padding-top</td>
+                        </tr>
+                        <tr>
+                            <td><code>b</code></td>
+                            <td>Bottom</td>
+                            <td>margin-bottom / padding-bottom</td>
+                        </tr>
+                        <tr>
+                            <td><code>s</code></td>
+                            <td>Start (left in LTR)</td>
+                            <td>margin-left / padding-left</td>
+                        </tr>
+                        <tr>
+                            <td><code>e</code></td>
+                            <td>End (right in LTR)</td>
+                            <td>margin-right / padding-right</td>
+                        </tr>
+                        <tr>
+                            <td><code>x</code></td>
+                            <td>Horizontal (left + right)</td>
+                            <td>margin-left + margin-right</td>
+                        </tr>
+                        <tr>
+                            <td><code>y</code></td>
+                            <td>Vertical (top + bottom)</td>
+                            <td>margin-top + margin-bottom</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="so-tab-pane fade" id="pane-css-grid" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-css-grid" role="tabpanel">
 
     <style>
         .demo-grid-item {

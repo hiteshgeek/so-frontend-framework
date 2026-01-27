@@ -722,7 +722,7 @@
       border-radius: radius('base');
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       background: css-var('dropdown-item-active');
       color: css-var('dropdown-item-active-text');
       border-color: css-var('border-color');
@@ -873,7 +873,7 @@
       border-radius: radius('base');
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       background: css-var('dropdown-item-active');
       color: css-var('dropdown-item-active-text');
       border-color: css-var('dropdown-item-active-text');
@@ -1688,7 +1688,7 @@
   position: relative;
 
   // Progress bar element (inner div)
-  .btn-progress-bar {
+  .#{$so-prefix}btn-progress-bar {
     position: absolute;
     top: 0;
     left: 0;
@@ -1701,7 +1701,7 @@
   }
 
   // Text content wrapper - ensure it's above the progress bar
-  .btn-text {
+  .#{$so-prefix}btn-text {
     position: relative;
     z-index: 1;
     display: inline-flex;
@@ -1716,7 +1716,7 @@
   }
 
   // Start label - hidden by default, visible only during progress, hides on complete
-  .btn-start {
+  .#{$so-prefix}btn-start {
     position: relative;
     z-index: 1;
     display: inline-flex;
@@ -1736,14 +1736,14 @@
   }
 
   // When progress is active, start label becomes visible and expands
-  &.progressing .btn-start {
+  &.#{$so-prefix}progressing .#{$so-prefix}btn-start {
     max-width: 200px; // Large enough to fit content
     margin-right: 8px;
     opacity: 1;
   }
 
   // Icon in button text
-  .btn-icon {
+  .#{$so-prefix}btn-icon {
     position: relative;
     z-index: 1;
     display: inline-flex;
@@ -1757,7 +1757,7 @@
   }
 
   // Done state content
-  .btn-done {
+  .#{$so-prefix}btn-done {
     position: absolute;
     top: 0;
     left: 0;
@@ -1779,28 +1779,28 @@
   }
 
   // Completed state
-  &.completed {
+  &.#{$so-prefix}completed {
     transition: background-color 0.3s ease, border-color 0.3s ease;
 
-    .btn-progress-bar {
+    .#{$so-prefix}btn-progress-bar {
       width: 100%;
     }
 
-    .btn-text {
+    .#{$so-prefix}btn-text {
       opacity: 0;
       transform: scale(0.8);
     }
 
-    .btn-start {
+    .#{$so-prefix}btn-start {
       opacity: 0;
     }
 
-    .btn-icon {
+    .#{$so-prefix}btn-icon {
       opacity: 0;
       transform: scale(0.8);
     }
 
-    .btn-done {
+    .#{$so-prefix}btn-done {
       opacity: 1;
       transform: scale(1);
     }
@@ -1809,12 +1809,12 @@
   // Outline button progress - darker overlay
   &.#{$so-prefix}btn-outline,
   &[class*="btn-outline-"] {
-    .btn-progress-bar {
+    .#{$so-prefix}btn-progress-bar {
       background: currentColor;
       opacity: 0.15;
     }
 
-    &.completed .btn-progress-bar {
+    &.#{$so-prefix}completed .#{$so-prefix}btn-progress-bar {
       opacity: 0.2;
     }
   }
@@ -1822,19 +1822,19 @@
   // Ghost button progress
   &.#{$so-prefix}btn-ghost,
   &[class*="btn-light-"] {
-    .btn-progress-bar {
+    .#{$so-prefix}btn-progress-bar {
       background: currentColor;
       opacity: 0.1;
     }
 
-    &.completed .btn-progress-bar {
+    &.#{$so-prefix}completed .#{$so-prefix}btn-progress-bar {
       opacity: 0.15;
     }
   }
 }
 
 // Progress button with contextual success state
-.#{$so-prefix}btn-progress.completed {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed {
   // Primary -> Success transition
   &.#{$so-prefix}btn-primary {
     background: css-var('accent-success');
@@ -1874,7 +1874,7 @@
 // ============================================
 
 // Match parent button color (no transition to success)
-.#{$so-prefix}btn-progress.completed.btn-done-match {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed.btn-done-match {
   &.#{$so-prefix}btn-primary {
     background: css-var('accent-primary');
     border-color: css-var('accent-primary');
@@ -1979,7 +1979,7 @@
 // Use: .btn-done-success, .btn-done-danger, etc.
 
 // Done state -> Primary
-.#{$so-prefix}btn-progress.completed.btn-done-primary {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed.btn-done-primary {
   background: css-var('accent-primary') !important;
   border-color: css-var('accent-primary') !important;
   color: $so-white !important;
@@ -1991,7 +1991,7 @@
 }
 
 // Done state -> Success (default, but can be explicit)
-.#{$so-prefix}btn-progress.completed.btn-done-success {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed.btn-done-success {
   background: css-var('accent-success') !important;
   border-color: css-var('accent-success') !important;
   color: $so-white !important;
@@ -2003,7 +2003,7 @@
 }
 
 // Done state -> Danger
-.#{$so-prefix}btn-progress.completed.btn-done-danger {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed.btn-done-danger {
   background: css-var('accent-danger') !important;
   border-color: css-var('accent-danger') !important;
   color: $so-white !important;
@@ -2015,7 +2015,7 @@
 }
 
 // Done state -> Warning
-.#{$so-prefix}btn-progress.completed.btn-done-warning {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed.btn-done-warning {
   background: css-var('accent-warning') !important;
   border-color: css-var('accent-warning') !important;
   color: $so-grey-900 !important;
@@ -2027,7 +2027,7 @@
 }
 
 // Done state -> Info
-.#{$so-prefix}btn-progress.completed.btn-done-info {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed.btn-done-info {
   background: css-var('accent-info') !important;
   border-color: css-var('accent-info') !important;
   color: $so-white !important;
@@ -2039,7 +2039,7 @@
 }
 
 // Done state -> Secondary
-.#{$so-prefix}btn-progress.completed.btn-done-secondary {
+.#{$so-prefix}btn-progress.#{$so-prefix}completed.btn-done-secondary {
   background: $so-secondary !important;
   border-color: $so-secondary !important;
   color: $so-white !important;

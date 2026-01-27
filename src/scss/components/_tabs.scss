@@ -91,7 +91,7 @@
   }
 
   // Active state
-  &.active,
+  &.#{$so-prefix}active,
   &[aria-selected="true"] {
     color: css-var("accent-primary");
 
@@ -101,7 +101,7 @@
   }
 
   // Disabled state
-  &.disabled,
+  &.#{$so-prefix}disabled,
   &:disabled,
   &[aria-disabled="true"] {
     color: css-var("text-disabled");
@@ -138,7 +138,7 @@
       background: css-var("card-hover-bg");
     }
 
-    &.active,
+    &.#{$so-prefix}active,
     &[aria-selected="true"] {
       color: $so-white;
       background: css-var("accent-primary");
@@ -173,7 +173,7 @@
       background: rgba(0, 0, 0, 0.05);
     }
 
-    &.active,
+    &.#{$so-prefix}active,
     &[aria-selected="true"] {
       color: css-var("text-primary");
       background: css-var("card-bg");
@@ -205,7 +205,7 @@
       background: css-var("card-hover-bg");
     }
 
-    &.active,
+    &.#{$so-prefix}active,
     &[aria-selected="true"] {
       color: css-var("accent-primary");
       background: alpha($so-primary, 0.1);
@@ -239,7 +239,7 @@
       background: css-var("card-hover-bg");
     }
 
-    &.active,
+    &.#{$so-prefix}active,
     &[aria-selected="true"] {
       color: css-var("accent-primary");
       border-color: css-var("accent-primary");
@@ -676,17 +676,17 @@
 .#{$so-prefix}tab-pane {
   display: none;
 
-  &.active,
-  &.show {
+  &.#{$so-prefix}active,
+  &.#{$so-prefix}show {
     display: block;
   }
 
   // Fade animation
-  &.fade {
+  &.#{$so-prefix}fade {
     opacity: 0;
     transition: opacity $so-transition-normal;
 
-    &.show {
+    &.#{$so-prefix}show {
       opacity: 1;
     }
   }

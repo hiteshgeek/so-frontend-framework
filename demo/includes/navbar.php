@@ -49,19 +49,19 @@
                         <input type="text" class="so-dropdown-search-input" placeholder="Search outlets...">
                     </div>
                     <div class="so-dropdown-items">
-                        <a href="#" class="so-dropdown-item active" data-value="head-office">
+                        <a href="#" class="so-dropdown-item so-active" data-value="head-office">
                             <span>TROVE Head Office</span>
                             <span class="material-icons so-dropdown-check">check</span>
                         </a>
-                        <a href="#" class="so-dropdown-item active" data-value="basavanagudi">
+                        <a href="#" class="so-dropdown-item so-active" data-value="basavanagudi">
                             <span>TROVE Basavanagudi</span>
                             <span class="material-icons so-dropdown-check">check</span>
                         </a>
-                        <a href="#" class="so-dropdown-item active" data-value="jayanagar">
+                        <a href="#" class="so-dropdown-item so-active" data-value="jayanagar">
                             <span>TROVE Jayanagar</span>
                             <span class="material-icons so-dropdown-check">check</span>
                         </a>
-                        <a href="#" class="so-dropdown-item active" data-value="indiranagar">
+                        <a href="#" class="so-dropdown-item so-active" data-value="indiranagar">
                             <span>TROVE Indiranagar</span>
                             <span class="material-icons so-dropdown-check">check</span>
                         </a>
@@ -84,7 +84,7 @@
                         Set Your Status
                     </div>
                     <div class="so-dropdown-items">
-                        <a href="#" class="so-dropdown-item active" data-status="available">
+                        <a href="#" class="so-dropdown-item so-active" data-status="available">
                             <span class="status-indicator available"></span>
                             <div class="status-option-content">
                                 <span class="status-option-title">Available</span>
@@ -159,7 +159,7 @@
                         Appearance
                     </div>
                     <div class="so-dropdown-items" data-group="theme">
-                        <a href="#" class="so-dropdown-item active" data-theme="light">
+                        <a href="#" class="so-dropdown-item so-active" data-theme="light">
                             <span class="material-icons">light_mode</span>
                             <span>Light</span>
                             <span class="material-icons so-dropdown-check">check</span>
@@ -191,7 +191,7 @@
                             <span>Small</span>
                             <span class="material-icons so-dropdown-check">check</span>
                         </a>
-                        <a href="#" class="so-dropdown-item active" data-fontsize="default">
+                        <a href="#" class="so-dropdown-item so-active" data-fontsize="default">
                             <span class="material-icons">format_size</span>
                             <span>Default</span>
                             <span class="material-icons so-dropdown-check">check</span>

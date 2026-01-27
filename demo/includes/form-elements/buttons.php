@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade show active" id="pane-buttons" role="tabpanel">
+            <div class="so-tab-pane so-fade so-show so-active" id="pane-buttons" role="tabpanel">
 
                 <!-- Section 1: Button Variants -->
                 <div class="so-card so-mb-4">
@@ -558,34 +558,34 @@ btn.classList.toggle('loading');
                                 <h5 class="so-demo-section-title">Solid Variants</h5>
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-4">
                                     <button class="so-btn so-btn-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Primary</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Done</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Primary</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Done</span>
                                     </button>
                                     <button class="so-btn so-btn-secondary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Secondary</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Secondary</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-success so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Success</span>
-                                        <span class="btn-done"><span class="material-icons">check_circle</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Success</span>
+                                        <span class="so-btn-done"><span class="material-icons">check_circle</span></span>
                                     </button>
                                     <button class="so-btn so-btn-danger so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Danger</span>
-                                        <span class="btn-done"><span class="material-icons">close</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Danger</span>
+                                        <span class="so-btn-done"><span class="material-icons">close</span></span>
                                     </button>
                                     <button class="so-btn so-btn-warning so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Warning</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Warning</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-info so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Info</span>
-                                        <span class="btn-done">Synced!</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Info</span>
+                                        <span class="so-btn-done">Synced!</span>
                                     </button>
                                 </div>
 
@@ -593,29 +593,29 @@ btn.classList.toggle('loading');
                                 <h5 class="so-demo-section-title">Outline Variants</h5>
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-4">
                                     <button class="so-btn so-btn-outline-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Primary</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Primary</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-outline-success so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Success</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Success</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-outline-danger so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Danger</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Danger</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-outline-warning so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Warning</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Warning</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-outline-info so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Info</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Info</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                 </div>
 
@@ -623,29 +623,29 @@ btn.classList.toggle('loading');
                                 <h5 class="so-demo-section-title">Light (Soft) Variants</h5>
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-4">
                                     <button class="so-btn so-btn-light-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Primary</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Primary</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-light-success so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Success</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Success</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-light-danger so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Danger</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Danger</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-light-warning so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Warning</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Warning</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-light-info so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Info</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Info</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                 </div>
 
@@ -653,24 +653,24 @@ btn.classList.toggle('loading');
                                 <h5 class="so-demo-section-title">Size Variants</h5>
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-4">
                                     <button class="so-btn so-btn-primary so-btn-xs so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Extra Small</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Extra Small</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-primary so-btn-sm so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Small</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Small</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Default</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Default</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <button class="so-btn so-btn-primary so-btn-lg so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Large</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Large</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                 </div>
 
@@ -679,119 +679,119 @@ btn.classList.toggle('loading');
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-3">
                                     <!-- Text Only -->
                                     <button class="so-btn so-btn-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Text Only</span>
-                                        <span class="btn-done">Done!</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Text Only</span>
+                                        <span class="so-btn-done">Done!</span>
                                     </button>
                                     <!-- Icon Only -->
                                     <button class="so-btn so-btn-primary so-btn-icon so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text"><span class="material-icons">cloud_upload</span></span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text"><span class="material-icons">cloud_upload</span></span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                     <!-- Icon + Label -->
                                     <button class="so-btn so-btn-success so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text"><span class="material-icons">save</span> Save</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Saved</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text"><span class="material-icons">save</span> Save</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Saved</span>
                                     </button>
                                     <!-- Label + Icon -->
                                     <button class="so-btn so-btn-info so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Sync <span class="material-icons">sync</span></span>
-                                        <span class="btn-done"><span class="material-icons">cloud_done</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Sync <span class="material-icons">sync</span></span>
+                                        <span class="so-btn-done"><span class="material-icons">cloud_done</span></span>
                                     </button>
                                 </div>
 
                                 <!-- Start Content - Different content shown only during progress -->
                                 <h5 class="so-demo-section-title">Start Content (Progress-Only)</h5>
-                                <p class="so-demo-hint">Use <code>.btn-start</code> for content that appears <strong>only during progress</strong> - hidden by default, visible while progressing, hidden on complete. Can be icon, text, or any combination.</p>
+                                <p class="so-demo-hint">Use <code>.so-btn-start</code> for content that appears <strong>only during progress</strong> - hidden by default, visible while progressing, hidden on complete. Can be icon, text, or any combination.</p>
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-3">
                                     <!-- Start Icon + Progress Text -->
                                     <button class="so-btn so-btn-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-start"><span class="material-icons">cloud_upload</span></span>
-                                        <span class="btn-text">Uploading...</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Uploaded</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-start"><span class="material-icons">cloud_upload</span></span>
+                                        <span class="so-btn-text">Uploading...</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Uploaded</span>
                                     </button>
                                     <!-- Start Label + Progress Text -->
                                     <button class="so-btn so-btn-success so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-start">File:</span>
-                                        <span class="btn-text">Processing...</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Complete</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-start">File:</span>
+                                        <span class="so-btn-text">Processing...</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Complete</span>
                                     </button>
                                     <!-- Start Icon + Label + Progress -->
                                     <button class="so-btn so-btn-outline-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-start"><span class="material-icons">folder</span> docs/</span>
-                                        <span class="btn-text">Syncing...</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Synced</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-start"><span class="material-icons">folder</span> docs/</span>
+                                        <span class="so-btn-text">Syncing...</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Synced</span>
                                     </button>
                                     <!-- Download with filename -->
                                     <button class="so-btn so-btn-light-info so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-start"><span class="material-icons">download</span></span>
-                                        <span class="btn-text">report.pdf</span>
-                                        <span class="btn-done"><span class="material-icons">check</span></span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-start"><span class="material-icons">download</span></span>
+                                        <span class="so-btn-text">report.pdf</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span></span>
                                     </button>
                                 </div>
                                 <p class="so-demo-progress-hint">Click buttons to see progress animation</p>
 
                                 <!-- Done State Color Modifiers -->
                                 <h5 class="so-demo-done-state-title">Done State Color Control</h5>
-                                <p class="so-demo-hint">Override the completed state color with <code>.btn-done-{color}</code> or keep parent color with <code>.btn-done-match</code></p>
+                                <p class="so-demo-hint">Override the completed state color with <code>.so-btn-done-{color}</code> or keep parent color with <code>.so-btn-done-match</code></p>
 
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-3">
                                     <!-- Default: Primary -> Success -->
                                     <button class="so-btn so-btn-primary so-btn-progress" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Default (→ Success)</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Done</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Default (→ Success)</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Done</span>
                                     </button>
                                     <!-- Match Parent Color -->
-                                    <button class="so-btn so-btn-primary so-btn-progress btn-done-match" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Match Parent</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Done</span>
+                                    <button class="so-btn so-btn-primary so-btn-progress so-btn-done-match" onclick="simulateProgress(this)">
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Match Parent</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Done</span>
                                     </button>
                                     <!-- Force Danger -->
-                                    <button class="so-btn so-btn-primary so-btn-progress btn-done-danger" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Force Danger</span>
-                                        <span class="btn-done"><span class="material-icons">warning</span> Error</span>
+                                    <button class="so-btn so-btn-primary so-btn-progress so-btn-done-danger" onclick="simulateProgress(this)">
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Force Danger</span>
+                                        <span class="so-btn-done"><span class="material-icons">warning</span> Error</span>
                                     </button>
                                     <!-- Force Info -->
-                                    <button class="so-btn so-btn-warning so-btn-progress btn-done-info" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Warning → Info</span>
-                                        <span class="btn-done"><span class="material-icons">info</span> Complete</span>
+                                    <button class="so-btn so-btn-warning so-btn-progress so-btn-done-info" onclick="simulateProgress(this)">
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Warning → Info</span>
+                                        <span class="so-btn-done"><span class="material-icons">info</span> Complete</span>
                                     </button>
                                 </div>
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-3">
                                     <!-- Outline with Match -->
-                                    <button class="so-btn so-btn-outline-danger so-btn-progress btn-done-match" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Outline Match</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Done</span>
+                                    <button class="so-btn so-btn-outline-danger so-btn-progress so-btn-done-match" onclick="simulateProgress(this)">
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Outline Match</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Done</span>
                                     </button>
                                     <!-- Outline Force Success -->
-                                    <button class="so-btn so-btn-outline-secondary so-btn-progress btn-done-success" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Secondary → Success</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Done</span>
+                                    <button class="so-btn so-btn-outline-secondary so-btn-progress so-btn-done-success" onclick="simulateProgress(this)">
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Secondary → Success</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Done</span>
                                     </button>
                                     <!-- Light with Match -->
-                                    <button class="so-btn so-btn-light-info so-btn-progress btn-done-match" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Light Match</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Done</span>
+                                    <button class="so-btn so-btn-light-info so-btn-progress so-btn-done-match" onclick="simulateProgress(this)">
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Light Match</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Done</span>
                                     </button>
                                     <!-- Light Force Primary -->
-                                    <button class="so-btn so-btn-light-danger so-btn-progress btn-done-primary" onclick="simulateProgress(this)">
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-text">Light → Primary</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Done</span>
+                                    <button class="so-btn so-btn-light-danger so-btn-progress so-btn-done-primary" onclick="simulateProgress(this)">
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-text">Light → Primary</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Done</span>
                                     </button>
                                 </div>
 
@@ -802,10 +802,10 @@ btn.classList.toggle('loading');
                                 <div class="so-flex so-gap-3 so-flex-wrap so-items-center so-mb-3">
                                     <!-- Demo button with API -->
                                     <button id="demo-progress-btn" class="so-btn so-btn-primary so-btn-progress" data-so-progress>
-                                        <span class="btn-progress-bar"></span>
-                                        <span class="btn-start"><span class="material-icons">cloud_upload</span></span>
-                                        <span class="btn-text">Upload File</span>
-                                        <span class="btn-done"><span class="material-icons">check</span> Uploaded</span>
+                                        <span class="so-btn-progress-bar"></span>
+                                        <span class="so-btn-start"><span class="material-icons">cloud_upload</span></span>
+                                        <span class="so-btn-text">Upload File</span>
+                                        <span class="so-btn-done"><span class="material-icons">check</span> Uploaded</span>
                                     </button>
                                 </div>
 
@@ -863,59 +863,59 @@ btn.classList.toggle('loading');
                                 </div>
                                 <pre class="so-code-content"><code class="language-html">&lt;!-- Text Only --&gt;
 &lt;button class="so-btn so-btn-primary so-btn-progress"&gt;
-    &lt;span class="btn-progress-bar"&gt;&lt;/span&gt;
-    &lt;span class="btn-text"&gt;Upload File&lt;/span&gt;
-    &lt;span class="btn-done"&gt;Done!&lt;/span&gt;
+    &lt;span class="so-btn-progress-bar"&gt;&lt;/span&gt;
+    &lt;span class="so-btn-text"&gt;Upload File&lt;/span&gt;
+    &lt;span class="so-btn-done"&gt;Done!&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- Icon Only --&gt;
 &lt;button class="so-btn so-btn-primary so-btn-icon so-btn-progress"&gt;
-    &lt;span class="btn-progress-bar"&gt;&lt;/span&gt;
-    &lt;span class="btn-text"&gt;&lt;span class="material-icons"&gt;cloud_upload&lt;/span&gt;&lt;/span&gt;
-    &lt;span class="btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="so-btn-progress-bar"&gt;&lt;/span&gt;
+    &lt;span class="so-btn-text"&gt;&lt;span class="material-icons"&gt;cloud_upload&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="so-btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt;&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- Icon + Label --&gt;
 &lt;button class="so-btn so-btn-success so-btn-progress"&gt;
-    &lt;span class="btn-progress-bar"&gt;&lt;/span&gt;
-    &lt;span class="btn-text"&gt;&lt;span class="material-icons"&gt;save&lt;/span&gt; Save&lt;/span&gt;
-    &lt;span class="btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Saved&lt;/span&gt;
+    &lt;span class="so-btn-progress-bar"&gt;&lt;/span&gt;
+    &lt;span class="so-btn-text"&gt;&lt;span class="material-icons"&gt;save&lt;/span&gt; Save&lt;/span&gt;
+    &lt;span class="so-btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Saved&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- Start Content (hidden by default, appears only during progress) --&gt;
 &lt;!-- Start with Icon only --&gt;
 &lt;button class="so-btn so-btn-primary so-btn-progress"&gt;
-    &lt;span class="btn-progress-bar"&gt;&lt;/span&gt;
-    &lt;span class="btn-start"&gt;&lt;span class="material-icons"&gt;cloud_upload&lt;/span&gt;&lt;/span&gt;
-    &lt;span class="btn-text"&gt;Uploading...&lt;/span&gt;
-    &lt;span class="btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Uploaded&lt;/span&gt;
+    &lt;span class="so-btn-progress-bar"&gt;&lt;/span&gt;
+    &lt;span class="so-btn-start"&gt;&lt;span class="material-icons"&gt;cloud_upload&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="so-btn-text"&gt;Uploading...&lt;/span&gt;
+    &lt;span class="so-btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Uploaded&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- Start with Icon + Text --&gt;
 &lt;button class="so-btn so-btn-outline-primary so-btn-progress"&gt;
-    &lt;span class="btn-progress-bar"&gt;&lt;/span&gt;
-    &lt;span class="btn-start"&gt;&lt;span class="material-icons"&gt;folder&lt;/span&gt; docs/&lt;/span&gt;
-    &lt;span class="btn-text"&gt;Syncing...&lt;/span&gt;
-    &lt;span class="btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Synced&lt;/span&gt;
+    &lt;span class="so-btn-progress-bar"&gt;&lt;/span&gt;
+    &lt;span class="so-btn-start"&gt;&lt;span class="material-icons"&gt;folder&lt;/span&gt; docs/&lt;/span&gt;
+    &lt;span class="so-btn-text"&gt;Syncing...&lt;/span&gt;
+    &lt;span class="so-btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Synced&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- Start with Text only --&gt;
 &lt;button class="so-btn so-btn-success so-btn-progress"&gt;
-    &lt;span class="btn-progress-bar"&gt;&lt;/span&gt;
-    &lt;span class="btn-start"&gt;Step 1:&lt;/span&gt;
-    &lt;span class="btn-text"&gt;Processing...&lt;/span&gt;
-    &lt;span class="btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Done&lt;/span&gt;
+    &lt;span class="so-btn-progress-bar"&gt;&lt;/span&gt;
+    &lt;span class="so-btn-start"&gt;Step 1:&lt;/span&gt;
+    &lt;span class="so-btn-text"&gt;Processing...&lt;/span&gt;
+    &lt;span class="so-btn-done"&gt;&lt;span class="material-icons"&gt;check&lt;/span&gt; Done&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- Done State Color Modifiers --&gt;
-&lt;button class="so-btn so-btn-primary so-btn-progress btn-done-match"&gt;...&lt;/button&gt;
-&lt;button class="so-btn so-btn-primary so-btn-progress btn-done-danger"&gt;...&lt;/button&gt;
+&lt;button class="so-btn so-btn-primary so-btn-progress so-btn-done-match"&gt;...&lt;/button&gt;
+&lt;button class="so-btn so-btn-primary so-btn-progress so-btn-done-danger"&gt;...&lt;/button&gt;
 
 &lt;!-- Programmatic Control with SOProgressButton --&gt;
 &lt;button id="my-btn" class="so-btn so-btn-primary so-btn-progress" data-so-progress&gt;
-    &lt;span class="btn-progress-bar"&gt;&lt;/span&gt;
-    &lt;span class="btn-text"&gt;Upload&lt;/span&gt;
-    &lt;span class="btn-done"&gt;Done&lt;/span&gt;
+    &lt;span class="so-btn-progress-bar"&gt;&lt;/span&gt;
+    &lt;span class="so-btn-text"&gt;Upload&lt;/span&gt;
+    &lt;span class="so-btn-done"&gt;Done&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;script&gt;
@@ -971,14 +971,15 @@ document.getElementById('my-btn').addEventListener('so:progress:reset', (e) =&gt
 // Progress button demo helper function
 function simulateProgress(btn) {
     // Reset if already completed
-    if (btn.classList.contains('completed')) {
-        btn.classList.remove('completed');
+    if (btn.classList.contains('so-completed')) {
+        btn.classList.remove('so-completed');
         btn.style.setProperty('--progress', '0%');
         return;
     }
 
     let progress = 0;
     btn.disabled = true;
+    btn.classList.add('so-progressing');
 
     const interval = setInterval(() => {
         progress += Math.random() * 15 + 5;
@@ -989,7 +990,8 @@ function simulateProgress(btn) {
 
             // Add completed class after a brief moment
             setTimeout(() => {
-                btn.classList.add('completed');
+                btn.classList.remove('so-progressing');
+                btn.classList.add('so-completed');
                 btn.disabled = false;
             }, 200);
         } else {

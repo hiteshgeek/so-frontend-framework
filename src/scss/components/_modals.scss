@@ -22,7 +22,7 @@
   visibility: hidden;
   transition: opacity $so-transition-normal, visibility $so-transition-normal;
 
-  &.show {
+  &.#{$so-prefix}show {
     opacity: 1;
     visibility: visible;
   }
@@ -52,7 +52,7 @@
   visibility: hidden;
   transition: opacity $so-transition-normal, visibility $so-transition-normal;
 
-  &.show {
+  &.#{$so-prefix}show {
     opacity: 1;
     visibility: visible;
 
@@ -251,22 +251,22 @@
       font-size: 32px;
     }
 
-    &.warning {
+    &.#{$so-prefix}warning {
       background: alpha($so-warning, 0.15);
       color: css-var('accent-warning');
     }
 
-    &.danger {
+    &.#{$so-prefix}danger {
       background: alpha($so-danger, 0.15);
       color: css-var('accent-danger');
     }
 
-    &.success {
+    &.#{$so-prefix}success {
       background: alpha($so-success, 0.15);
       color: css-var('accent-success');
     }
 
-    &.info {
+    &.#{$so-prefix}info {
       background: alpha($so-info, 0.15);
       color: css-var('accent-info');
     }
@@ -618,7 +618,7 @@
   display: flex;
   flex-direction: column;
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: translateX(0);
   }
 }
@@ -630,7 +630,7 @@
   transform: translateX(-100%);
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: translateX(0);
   }
 }
@@ -706,7 +706,7 @@
   visibility: hidden;
   transition: opacity $so-transition-normal, visibility $so-transition-normal;
 
-  &.show {
+  &.#{$so-prefix}show {
     opacity: 1;
     visibility: visible;
   }

@@ -297,7 +297,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   }
 }
 
-.#{$so-prefix}sidebar-item.open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-arrow {
+.#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-arrow {
   transform: rotate(90deg);
 }
 
@@ -316,15 +316,15 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 // Open menu items - subtle highlight
-.#{$so-prefix}sidebar-item.open > .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-link {
   color: css-var('accent-primary');
 }
 
-.#{$so-prefix}sidebar-item.open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-icon {
+.#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-icon {
   color: css-var('accent-primary');
 }
 
-.#{$so-prefix}sidebar-item.open > .#{$so-prefix}sidebar-submenu {
+.#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-submenu {
   max-height: 2000px;
   transition: max-height 0.3s ease-in;
 }
@@ -444,7 +444,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   transition: transform $so-transition-normal;
 }
 
-.#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.has-children.open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-arrow {
+.#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.has-children.#{$so-prefix}open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-arrow {
   transform: translateY(-50%) rotate(90deg);
 }
 
@@ -625,29 +625,29 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 // COLLAPSED / MINI SIDEBAR
 // ============================================
 
-.#{$so-prefix}sidebar.collapsed {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed {
   width: css-var('sidebar-collapsed-width');
 }
 
 // On hover, expand the mini sidebar
-.#{$so-prefix}sidebar.collapsed:hover {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover {
   width: css-var('sidebar-width');
   box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
 }
 
 // Header in collapsed state
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-header {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-header {
   padding: spacing('2');
   justify-content: center;
   gap: 0;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-logo {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-logo {
   margin: 0;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-brand-info,
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-toggle {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-brand-info,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-toggle {
   opacity: 0;
   visibility: hidden;
   width: 0;
@@ -659,13 +659,13 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   transition: opacity 0.1s ease 0.15s, visibility 0.1s ease 0.15s, width 0s ease 0.25s, flex 0s ease 0.25s;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-header {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-header {
   padding: spacing('3') spacing('4') spacing('3') spacing('1') + 2px;
   justify-content: flex-start;
   gap: spacing('3');
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-brand-info {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-brand-info {
   opacity: 1;
   visibility: visible;
   width: auto;
@@ -674,7 +674,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   transition: opacity $so-transition-base, visibility $so-transition-base, width 0s ease, flex 0s ease;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-toggle {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-toggle {
   opacity: 1;
   visibility: visible;
   width: 20px;
@@ -686,11 +686,11 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 // Menu items in collapsed state
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-item {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-item {
   margin: 1px spacing('1');
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-link {
   padding: spacing('2');
   justify-content: center;
   align-items: center;
@@ -698,15 +698,15 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   min-height: 40px;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-icon {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-icon {
   margin: 0;
   position: relative;
   left: 0;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-text,
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-arrow,
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-badge {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-text,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-arrow,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-badge {
   opacity: 0;
   visibility: hidden;
   width: 0;
@@ -719,7 +719,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 // Section becomes a separator line in collapsed view
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-section {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-section {
   padding: 0;
   margin: 0 spacing('1');
   min-height: 28px;
@@ -740,32 +740,32 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   }
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-submenu {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-submenu {
   display: none !important;
 }
 
 // On hover expand - show all elements
-.#{$so-prefix}sidebar.collapsed:hover > .#{$so-prefix}sidebar-scroll > .#{$so-prefix}sidebar-nav > .#{$so-prefix}sidebar-item {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover > .#{$so-prefix}sidebar-scroll > .#{$so-prefix}sidebar-nav > .#{$so-prefix}sidebar-item {
   margin: 1px spacing('1');
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item {
   margin: 0;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-link {
   padding: spacing('2') spacing('2') spacing('2') spacing('3');
   justify-content: flex-start;
   gap: spacing('2') + 2px;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-icon {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-icon {
   margin: 0;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-text,
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-arrow,
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-badge {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-text,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-arrow,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-badge {
   opacity: 1;
   visibility: visible;
   width: auto;
@@ -773,17 +773,17 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   transition: opacity $so-transition-base, visibility $so-transition-base, width 0s ease, flex 0s ease;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-text {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-text {
   flex: 1;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-arrow,
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-badge {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-arrow,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-badge {
   flex: 0 0 auto;
 }
 
 // Restore section text on hover
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-section {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-section {
   display: flex;
   padding: spacing('2') + 2px spacing('3') spacing('1') spacing('3');
   margin: 0;
@@ -798,7 +798,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   }
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu {
   display: block !important;
 }
 
@@ -806,89 +806,89 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 // COLLAPSED HOVER - Submenu indentation
 // ============================================
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
   padding: spacing('1') + 2px spacing('8') spacing('1') + 2px spacing('5');
   margin: 0 spacing('1');
   gap: spacing('2') + 2px;
   min-height: 32px;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
   padding-left: 32px;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
   padding-left: 48px;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-link {
   padding-left: 64px;
 }
 
 // Current items in collapsed:hover state
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
   margin-left: -100px;
   margin-right: -4px;
   padding-left: calc(100px + 4px + 16px);
   padding-right: 36px;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
   padding-left: calc(100px + 4px + 32px);
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
   padding-left: calc(100px + 4px + 48px);
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.current > .#{$so-prefix}sidebar-link,
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-submenu .#{$so-prefix}sidebar-item.active > .#{$so-prefix}sidebar-link {
   padding-left: calc(100px + 4px + 64px);
 }
 
 // Footer in collapsed state
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-footer-item {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer-item {
   justify-content: center;
   padding: spacing('3');
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-footer-item span:not(.material-icons) {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer-item span:not(.material-icons) {
   display: none;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-footer-item {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-footer-item {
   justify-content: flex-start;
   padding: spacing('2') + 2px spacing('3');
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-footer-item span:not(.material-icons) {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-footer-item span:not(.material-icons) {
   display: inline;
 }
 
 // Footer Buttons - Collapsed state
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-footer {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer {
   padding: spacing('1') + 2px spacing('2');
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-footer-buttons {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer-buttons {
   justify-content: center;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-footer-btn {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer-btn {
   display: none;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-footer-btn#sidebarInfoBtn {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer-btn#sidebarInfoBtn {
   display: flex;
   flex: 0 0 auto;
   width: 32px;
   height: 32px;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-info-popup {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-info-popup {
   left: calc(100% + 8px);
   right: auto;
   bottom: 0;
@@ -896,25 +896,25 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 // Footer Buttons - Collapsed hover state
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-footer {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-footer {
   padding: spacing('1') + 2px spacing('2');
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-footer-buttons {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-footer-buttons {
   justify-content: space-around;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-footer-btn {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-footer-btn {
   display: flex;
   flex: 1;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-footer-btn#sidebarInfoBtn {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-footer-btn#sidebarInfoBtn {
   flex: 1;
   width: auto;
 }
 
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-info-popup {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-info-popup {
   left: spacing('2');
   right: spacing('2');
   bottom: calc(100% + 8px);
@@ -922,7 +922,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 // Tooltip on collapsed sidebar
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-link[data-title]::after {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-link[data-title]::after {
   content: attr(data-title);
   position: absolute;
   left: calc(100% + 16px);
@@ -943,13 +943,13 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   transition: opacity $so-transition-base, visibility $so-transition-base;
 }
 
-.#{$so-prefix}sidebar.collapsed .#{$so-prefix}sidebar-link:hover::after {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-link:hover::after {
   opacity: 1;
   visibility: visible;
 }
 
 // Hide tooltip when sidebar is expanded on hover
-.#{$so-prefix}sidebar.collapsed:hover .#{$so-prefix}sidebar-link::after {
+.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-link::after {
   display: none;
 }
 
@@ -989,16 +989,16 @@ body.sidebar-collapsed .#{$so-prefix}main-content {
     width: 280px;
     box-shadow: 4px 0 16px rgba(0, 0, 0, 0.1);
 
-    &.open {
+    &.#{$so-prefix}open {
       transform: translateX(0);
     }
 
     // On mobile, ignore collapsed state
-    &.collapsed {
+    &.#{$so-prefix}collapsed {
       width: 280px;
     }
 
-    &.collapsed.open {
+    &.#{$so-prefix}collapsed.#{$so-prefix}open {
       width: 280px;
     }
 
@@ -1008,16 +1008,16 @@ body.sidebar-collapsed .#{$so-prefix}main-content {
     }
 
     // Show all elements in mobile regardless of collapsed state
-    &.collapsed .#{$so-prefix}sidebar-text,
-    &.collapsed .#{$so-prefix}sidebar-arrow,
-    &.collapsed .#{$so-prefix}sidebar-badge,
-    &.collapsed .#{$so-prefix}sidebar-brand-info {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-text,
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-arrow,
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-badge,
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-brand-info {
       display: block !important;
       opacity: 1 !important;
       width: auto !important;
     }
 
-    &.collapsed .#{$so-prefix}sidebar-section {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-section {
       padding: spacing('2') + 2px spacing('3') spacing('1') spacing('3') !important;
       margin: 0 !important;
       height: auto !important;
@@ -1029,41 +1029,41 @@ body.sidebar-collapsed .#{$so-prefix}main-content {
       }
     }
 
-    &.collapsed .#{$so-prefix}sidebar-link {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-link {
       padding: spacing('1') + 2px spacing('2') !important;
       justify-content: flex-start !important;
       gap: spacing('2') + 2px !important;
     }
 
-    &.collapsed .#{$so-prefix}sidebar-icon {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-icon {
       margin: 0 !important;
     }
 
-    &.collapsed .#{$so-prefix}sidebar-header {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-header {
       padding: spacing('3') spacing('4') !important;
       justify-content: flex-start !important;
       gap: spacing('3') !important;
     }
 
-    &.collapsed .#{$so-prefix}sidebar-logo {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-logo {
       margin: 0 !important;
     }
 
-    &.collapsed .#{$so-prefix}sidebar-submenu {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-submenu {
       display: block !important;
     }
 
-    &.collapsed .#{$so-prefix}sidebar-footer-item {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer-item {
       justify-content: flex-start !important;
       padding: spacing('2') + 2px spacing('3') !important;
     }
 
-    &.collapsed .#{$so-prefix}sidebar-footer-item span:not(.material-icons) {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-footer-item span:not(.material-icons) {
       display: inline !important;
     }
 
     // Hide tooltips on mobile
-    &.collapsed .#{$so-prefix}sidebar-link::after {
+    &.#{$so-prefix}collapsed .#{$so-prefix}sidebar-link::after {
       display: none !important;
     }
   }
@@ -1172,11 +1172,11 @@ body.sidebar-collapsed .#{$so-prefix}main-content {
 }
 
 // Dark sidebar open menu highlight
-.#{$so-prefix}sidebar.sidebar-dark .#{$so-prefix}sidebar-item.open > .#{$so-prefix}sidebar-link {
+.#{$so-prefix}sidebar.sidebar-dark .#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-link {
   color: #8ab4f8;
 }
 
-.#{$so-prefix}sidebar.sidebar-dark .#{$so-prefix}sidebar-item.open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-icon {
+.#{$so-prefix}sidebar.sidebar-dark .#{$so-prefix}sidebar-item.#{$so-prefix}open > .#{$so-prefix}sidebar-link .#{$so-prefix}sidebar-icon {
   color: #8ab4f8;
 }
 
@@ -1193,7 +1193,7 @@ body.sidebar-collapsed .#{$so-prefix}main-content {
 }
 
 // Collapsed state - section separator line
-.#{$so-prefix}sidebar.sidebar-dark.collapsed .#{$so-prefix}sidebar-section::before {
+.#{$so-prefix}sidebar.sidebar-dark.#{$so-prefix}collapsed .#{$so-prefix}sidebar-section::before {
   background: #3b4056;
 }
 

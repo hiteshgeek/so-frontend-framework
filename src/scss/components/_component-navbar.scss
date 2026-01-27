@@ -146,11 +146,11 @@ $component-navbar-toggler-size: 40px !default;
     text-decoration: none;
   }
 
-  &.active {
+  &.#{$so-prefix}active {
     color: css-var('accent-primary');
   }
 
-  &.disabled {
+  &.#{$so-prefix}disabled {
     color: css-var('text-disabled');
     pointer-events: none;
     cursor: not-allowed;
@@ -268,11 +268,11 @@ $component-navbar-toggler-size: 40px !default;
   align-items: center;
 
   // Extends .so-collapse behavior
-  &:not(.show) {
+  &:not(.#{$so-prefix}show) {
     display: none;
   }
 
-  &.show {
+  &.#{$so-prefix}show {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -343,7 +343,7 @@ $component-navbar-toggler-size: 40px !default;
       color: css-var('text-primary');
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       color: css-var('accent-primary');
     }
   }
@@ -376,11 +376,11 @@ $component-navbar-toggler-size: 40px !default;
       background: rgba($so-white, 0.1);
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       color: $so-white;
     }
 
-    &.disabled {
+    &.#{$so-prefix}disabled {
       color: $so-grey-600;
     }
   }
@@ -429,12 +429,12 @@ $component-navbar-toggler-size: 40px !default;
       background: rgba($so-white, 0.15);
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       color: $so-white;
       background: rgba($so-white, 0.2);
     }
 
-    &.disabled {
+    &.#{$so-prefix}disabled {
       color: rgba($so-white, 0.5);
     }
   }
@@ -907,7 +907,7 @@ $component-navbar-toggler-size: 40px !default;
   }
 
   // Open state - arrow rotation
-  .#{$so-prefix}dropdown.open,
+  .#{$so-prefix}dropdown.#{$so-prefix}open,
   .#{$so-prefix}dropdown.show {
     .#{$so-prefix}dropdown-arrow {
       transform: rotate(180deg);
@@ -960,7 +960,7 @@ $component-navbar-toggler-size: 40px !default;
   right: auto;
   transform: translateX(-100%);
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: translateX(0);
   }
 }
@@ -971,7 +971,7 @@ $component-navbar-toggler-size: 40px !default;
   right: auto;
   transform: translateX(-100%);
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: translateX(0);
   }
 }
@@ -983,7 +983,7 @@ $component-navbar-toggler-size: 40px !default;
   right: 0;
   transform: translateX(100%);
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: translateX(0);
   }
 }
@@ -1077,7 +1077,7 @@ $component-navbar-toggler-size: 40px !default;
   visibility: hidden;
   transition: opacity $so-transition-normal, visibility $so-transition-normal;
 
-  &.show {
+  &.#{$so-prefix}show {
     opacity: 1;
     visibility: visible;
   }
@@ -1412,7 +1412,7 @@ $component-navbar-toggler-size: 40px !default;
         background: css-var('card-hover-bg');
       }
 
-      &.active {
+      &.#{$so-prefix}active {
         color: css-var('accent-primary');
       }
     }

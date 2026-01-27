@@ -188,7 +188,7 @@ class SOSearchOverlay extends SOComponent {
 
     // Update active state
     this._overlay.querySelectorAll(this.options.categorySelector).forEach(t => {
-      t.classList.toggle('active', t === tab);
+      t.classList.toggle('so-active', t === tab);
     });
 
     this._currentCategory = category;
@@ -210,7 +210,7 @@ class SOSearchOverlay extends SOComponent {
 
     // Update button states
     this._overlay.querySelectorAll(this.options.viewToggleSelector).forEach(b => {
-      b.classList.toggle('active', b === btn);
+      b.classList.toggle('so-active', b === btn);
     });
 
     // Update results view
@@ -421,7 +421,7 @@ class SOSearchOverlay extends SOComponent {
     if (this._isOpen) return this;
 
     this._isOpen = true;
-    this._overlay.classList.add('active');
+    this._overlay.classList.add('so-active');
     document.body.style.overflow = 'hidden';
 
     // Focus input
@@ -441,7 +441,7 @@ class SOSearchOverlay extends SOComponent {
     if (!this._isOpen) return this;
 
     this._isOpen = false;
-    this._overlay.classList.remove('active');
+    this._overlay.classList.remove('so-active');
     document.body.style.overflow = '';
 
     // Clear input

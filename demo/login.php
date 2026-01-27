@@ -80,7 +80,7 @@ require_once 'includes/config.php';
 
                 <!-- Login Type Toggle -->
                 <div class="so-auth-type-toggle">
-                    <button type="button" class="so-auth-type-btn active" data-type="email">
+                    <button type="button" class="so-auth-type-btn so-active" data-type="email">
                         <span class="material-icons">email</span>
                         Email
                     </button>

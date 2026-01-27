@@ -1,4 +1,4 @@
-<div class="so-tab-pane fade" id="pane-z-index" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-z-index" role="tabpanel">
 
     <!-- Z-index Overview -->
     <div class="so-card so-mb-4">

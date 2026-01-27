@@ -330,7 +330,7 @@ class SODropdown extends SOComponent {
    * @private
    */
   _getInitialSelection() {
-    const selectedItems = this._menu?.querySelectorAll('.selected, .active') || [];
+    const selectedItems = this._menu?.querySelectorAll('.so-selected, .so-active') || [];
     selectedItems.forEach(item => {
       const value = item.dataset.value;
       const text = this._getItemText(item);
@@ -436,7 +436,7 @@ class SODropdown extends SOComponent {
     e.stopPropagation();
 
     // Check if item is disabled
-    if (item.classList.contains('disabled') || item.hasAttribute('disabled') || item.getAttribute('aria-disabled') === 'true') {
+    if (item.classList.contains('so-disabled') || item.hasAttribute('disabled') || item.getAttribute('aria-disabled') === 'true') {
       return;
     }
 
@@ -614,7 +614,7 @@ class SODropdown extends SOComponent {
   _getNavigableItems() {
     const selector = this._getItemSelector();
     return this.$$(selector).filter(item =>
-      !item.classList.contains('disabled') &&
+      !item.classList.contains('so-disabled') &&
       !item.hasAttribute('disabled') &&
       item.getAttribute('aria-disabled') !== 'true' &&
       !item.classList.contains('so-dropdown-header') &&
@@ -650,12 +650,12 @@ class SODropdown extends SOComponent {
   _focusItem(items, index) {
     // Remove focus from all items
     const allItems = this.$$(this._getItemSelector());
-    allItems.forEach(item => item.classList.remove('focused'));
+    allItems.forEach(item => item.classList.remove('so-focused'));
 
     // Set new focus
     this._focusedIndex = index;
     if (items[index]) {
-      items[index].classList.add('focused');
+      items[index].classList.add('so-focused');
       items[index].scrollIntoView({ block: 'nearest' });
     }
   }
@@ -666,7 +666,7 @@ class SODropdown extends SOComponent {
    */
   _clearFocusedItem() {
     const items = this.$$(this._getItemSelector());
-    items.forEach(item => item.classList.remove('focused'));
+    items.forEach(item => item.classList.remove('so-focused'));
     this._focusedIndex = -1;
   }
 
@@ -676,9 +676,9 @@ class SODropdown extends SOComponent {
    */
   _closeOtherDropdowns() {
     // Close other SODropdown instances
-    document.querySelectorAll('.so-dropdown.open, .so-searchable-dropdown.open, .so-options-dropdown.open, .so-outlet-dropdown.open').forEach(dropdown => {
+    document.querySelectorAll('.so-dropdown.so-open, .so-searchable-dropdown.so-open, .so-options-dropdown.so-open, .so-outlet-dropdown.so-open').forEach(dropdown => {
       if (dropdown !== this.element) {
-        dropdown.classList.remove('open', 'position-left', 'position-top');
+        dropdown.classList.remove('so-open', 'position-left', 'position-top');
         // Also remove directional classes
         dropdown.classList.remove('so-dropup', 'so-dropstart', 'so-dropend', 'so-dropdown-menu-end');
       }
@@ -765,7 +765,7 @@ class SODropdown extends SOComponent {
     if (!showAllowed) return this;
 
     this._isOpen = true;
-    this.addClass('open');
+    this.addClass('so-open');
     this._applyDirectionClasses();
 
     // Reset keyboard navigation
@@ -802,7 +802,7 @@ class SODropdown extends SOComponent {
     if (!hideAllowed) return this;
 
     this._isOpen = false;
-    this.removeClass('open');
+    this.removeClass('so-open');
 
     // Clear focused item
     this._clearFocusedItem();
@@ -858,8 +858,8 @@ class SODropdown extends SOComponent {
       const isSelected = clickedItem
         ? item === clickedItem
         : (item.dataset.value !== undefined ? item.dataset.value === value : this._getItemText(item) === value);
-      item.classList.toggle('selected', isSelected);
-      item.classList.toggle('active', isSelected);
+      item.classList.toggle('so-selected', isSelected);
+      item.classList.toggle('so-active', isSelected);
     });
 
     // Emit change event
@@ -894,7 +894,7 @@ class SODropdown extends SOComponent {
       // Deselect
       this._selectedValues.splice(index, 1);
       this._selectedTexts.splice(index, 1);
-      item.classList.remove('selected', 'active');
+      item.classList.remove('so-selected', 'so-active');
     } else {
       // Check max selections
       if (this.options.maxSelections && this._selectedValues.length >= this.options.maxSelections) {
@@ -903,7 +903,7 @@ class SODropdown extends SOComponent {
       // Select
       this._selectedValues.push(value);
       this._selectedTexts.push(text);
-      item.classList.add('selected', 'active');
+      item.classList.add('so-selected', 'so-active');
     }
 
     // Update display
@@ -934,18 +934,18 @@ class SODropdown extends SOComponent {
 
     if (count === 0) {
       this._selectedEl.textContent = this.options.placeholder;
-      this._selectedEl.classList.add('placeholder');
+      this._selectedEl.classList.add('so-placeholder');
     } else if (count === totalItems && this.options.allSelectedText) {
       // All items selected and custom text provided
       this._selectedEl.textContent = this.options.allSelectedText;
-      this._selectedEl.classList.remove('placeholder');
+      this._selectedEl.classList.remove('so-placeholder');
     } else if (count === 1) {
       this._selectedEl.textContent = this._selectedTexts[0];
-      this._selectedEl.classList.remove('placeholder');
+      this._selectedEl.classList.remove('so-placeholder');
     } else {
       // Use template with {count} placeholder
       this._selectedEl.textContent = this.options.multipleSelectedText.replace('{count}', count);
-      this._selectedEl.classList.remove('placeholder');
+      this._selectedEl.classList.remove('so-placeholder');
     }
   }
 
@@ -957,7 +957,7 @@ class SODropdown extends SOComponent {
   _getTotalSelectableItems() {
     const itemSelector = this._getItemSelector();
     return this.$$(itemSelector).filter(item =>
-      !item.classList.contains('disabled') &&
+      !item.classList.contains('so-disabled') &&
       !item.hasAttribute('disabled') &&
       item.getAttribute('aria-disabled') !== 'true'
     ).length;
@@ -1008,7 +1008,7 @@ class SODropdown extends SOComponent {
     // Update UI
     const itemSelector = this._getItemSelector();
     this.$$(itemSelector).forEach(item => {
-      item.classList.remove('selected', 'active');
+      item.classList.remove('so-selected', 'so-active');
     });
 
     // Update display
@@ -1016,7 +1016,7 @@ class SODropdown extends SOComponent {
       this._updateMultipleDisplay();
     } else if (this._selectedEl) {
       this._selectedEl.textContent = this.options.placeholder;
-      this._selectedEl.classList.add('placeholder');
+      this._selectedEl.classList.add('so-placeholder');
     }
 
     // Emit change event
@@ -1048,7 +1048,7 @@ class SODropdown extends SOComponent {
 
     items.forEach(item => {
       // Skip disabled items
-      if (item.classList.contains('disabled') ||
+      if (item.classList.contains('so-disabled') ||
           item.hasAttribute('disabled') ||
           item.getAttribute('aria-disabled') === 'true') {
         return;
@@ -1069,7 +1069,7 @@ class SODropdown extends SOComponent {
 
       this._selectedValues.push(value);
       this._selectedTexts.push(text);
-      item.classList.add('selected', 'active');
+      item.classList.add('so-selected', 'so-active');
     });
 
     // Update display
@@ -1109,7 +1109,7 @@ class SODropdown extends SOComponent {
     // Update UI
     const itemSelector = this._getItemSelector();
     this.$$(itemSelector).forEach(item => {
-      item.classList.remove('selected', 'active');
+      item.classList.remove('so-selected', 'so-active');
     });
 
     // Update display
@@ -1153,7 +1153,7 @@ class SODropdown extends SOComponent {
    */
   disable() {
     this._disabled = true;
-    this.addClass('disabled');
+    this.addClass('so-disabled');
     if (this._trigger) {
       this._trigger.setAttribute('disabled', '');
       this._trigger.setAttribute('aria-disabled', 'true');
@@ -1170,7 +1170,7 @@ class SODropdown extends SOComponent {
    */
   enable() {
     this._disabled = false;
-    this.removeClass('disabled');
+    this.removeClass('so-disabled');
     if (this._trigger) {
       this._trigger.removeAttribute('disabled');
       this._trigger.removeAttribute('aria-disabled');
@@ -1199,7 +1199,7 @@ class SODropdown extends SOComponent {
       : items.find(i => i.dataset.value === identifier);
 
     if (item) {
-      item.classList.toggle('disabled', disabled);
+      item.classList.toggle('so-disabled', disabled);
       if (disabled) {
         item.setAttribute('aria-disabled', 'true');
       } else {
@@ -1233,7 +1233,7 @@ class SODropdown extends SOComponent {
       </button>
       <div class="so-dropdown-menu">
         ${items.map(item => `
-          <div class="so-dropdown-item ${item.selected ? 'selected' : ''} ${item.disabled ? 'disabled' : ''}"
+          <div class="so-dropdown-item ${item.selected ? 'so-selected' : ''} ${item.disabled ? 'so-disabled' : ''}"
                data-value="${item.value}"
                ${item.disabled ? 'aria-disabled="true"' : ''}>
             ${item.icon ? `<span class="material-icons">${item.icon}</span>` : ''}
@@ -1276,7 +1276,7 @@ class SODropdown extends SOComponent {
         </div>
         <div class="so-searchable-items">
           ${items.map(item => `
-            <div class="so-searchable-item ${item.selected ? 'selected' : ''} ${item.disabled ? 'disabled' : ''}"
+            <div class="so-searchable-item ${item.selected ? 'so-selected' : ''} ${item.disabled ? 'so-disabled' : ''}"
                  data-value="${item.value}"
                  ${item.disabled ? 'aria-disabled="true"' : ''}>
               ${item.label}
@@ -1313,7 +1313,7 @@ class SODropdown extends SOComponent {
             return `<div class="so-dropdown-header">${item.header}</div>`;
           }
           return `
-            <div class="so-options-item ${item.danger ? 'danger' : ''} ${item.disabled ? 'disabled' : ''}"
+            <div class="so-options-item ${item.danger ? 'so-danger' : ''} ${item.disabled ? 'so-disabled' : ''}"
                  data-action="${item.action || ''}"
                  ${item.disabled ? 'aria-disabled="true"' : ''}>
               ${item.icon ? `<span class="material-icons">${item.icon}</span>` : ''}

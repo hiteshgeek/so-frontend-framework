@@ -93,14 +93,14 @@ class SOTheme extends SOComponent {
    */
   _handleToggle(e) {
     e.stopPropagation();
-    const isOpen = this.hasClass('open');
+    const isOpen = this.hasClass('so-open');
 
     if (!isOpen) {
       // Close other dropdowns
       document.dispatchEvent(new CustomEvent('closeAllDropdowns'));
     }
 
-    this.toggleClass('open');
+    this.toggleClass('so-open');
   }
 
   /**
@@ -148,7 +148,7 @@ class SOTheme extends SOComponent {
    * @private
    */
   _closeDropdown() {
-    this.removeClass('open');
+    this.removeClass('so-open');
   }
 
   // ============================================
@@ -272,7 +272,7 @@ class SOTheme extends SOComponent {
   _updateActiveOption() {
     this.$$('.so-navbar-theme-option').forEach(option => {
       const isActive = option.dataset.theme === this._currentTheme;
-      option.classList.toggle('active', isActive);
+      option.classList.toggle('so-active', isActive);
     });
   }
 
@@ -355,7 +355,7 @@ class SOTheme extends SOComponent {
     this.$$('.so-navbar-theme-option').forEach(option => {
       if (option.dataset.fontsize) {
         const isActive = option.dataset.fontsize === this._currentFontSize;
-        option.classList.toggle('active', isActive);
+        option.classList.toggle('so-active', isActive);
       }
     });
   }

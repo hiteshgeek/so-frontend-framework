@@ -27,7 +27,7 @@ require_once 'includes/navbar.php';
         <div class="so-tabs-container so-tabs-container-vertical">
             <!-- Tabbed Navigation (Vertical Left) -->
             <div class="so-tabs so-tabs-vertical so-tabs-pills so-tabs-sticky" role="tablist" data-so-tabs>
-                <button class="so-tab active" role="tab" aria-selected="true" data-so-target="#pane-breakpoints">
+                <button class="so-tab so-active" role="tab" aria-selected="true" data-so-target="#pane-breakpoints">
                     <span class="material-icons">devices</span>
                     Breakpoints
                 </button>

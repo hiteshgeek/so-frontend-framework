@@ -128,12 +128,12 @@ class SOFeatureCarousel extends SOComponent {
 
     // Update slides
     this._slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
+      slide.classList.toggle('so-active', i === index);
     });
 
     // Update dots
     this._dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
+      dot.classList.toggle('so-active', i === index);
     });
 
     this.emit(SOFeatureCarousel.EVENTS.CHANGE, {
@@ -336,8 +336,8 @@ class SOAuth {
     // Login type toggle
     toggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        toggleBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        toggleBtns.forEach(b => b.classList.remove('so-active'));
+        btn.classList.add('so-active');
         loginType = btn.dataset.type;
 
         const group = document.getElementById('loginIdGroup');
@@ -455,16 +455,16 @@ class SOAuth {
     // Show specific step
     const showStep = (stepNumber) => {
       steps.forEach(step => {
-        step.classList.toggle('active', parseInt(step.dataset.step, 10) === stepNumber);
+        step.classList.toggle('so-active', parseInt(step.dataset.step, 10) === stepNumber);
       });
 
       // Update step dots
       document.querySelectorAll('.so-auth-step-dot').forEach((dot, index) => {
-        dot.classList.remove('active', 'completed');
+        dot.classList.remove('so-active', 'so-completed');
         if (index + 1 < stepNumber) {
-          dot.classList.add('completed');
+          dot.classList.add('so-completed');
         } else if (index + 1 === stepNumber) {
-          dot.classList.add('active');
+          dot.classList.add('so-active');
         }
       });
 
@@ -489,8 +489,8 @@ class SOAuth {
     // Recovery type toggle
     document.querySelectorAll('.so-auth-type-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.so-auth-type-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        document.querySelectorAll('.so-auth-type-btn').forEach(b => b.classList.remove('so-active'));
+        btn.classList.add('so-active');
         recoveryType = btn.dataset.type;
 
         const input = document.getElementById('recoveryId');

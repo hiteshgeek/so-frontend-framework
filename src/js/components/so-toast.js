@@ -212,13 +212,13 @@ class SOToast extends SOComponent {
     if (this.options.animation) {
       // Force reflow
       this.element.offsetHeight;
-      this.addClass('show');
+      this.addClass('so-show');
 
       this.element.addEventListener('transitionend', () => {
         this.emit(SOToast.EVENTS.SHOWN);
       }, { once: true });
     } else {
-      this.addClass('show');
+      this.addClass('so-show');
       this.emit(SOToast.EVENTS.SHOWN);
     }
 
@@ -247,8 +247,8 @@ class SOToast extends SOComponent {
     this._clearAutohide();
 
     // Hide with animation
-    this.removeClass('show');
-    this.addClass('hiding');
+    this.removeClass('so-show');
+    this.addClass('so-hiding');
 
     const hideComplete = () => {
       // Guard against multiple calls

@@ -515,7 +515,7 @@ class SOTooltip extends SOComponent {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         if (this._tooltipEl) {
-          this._tooltipEl.classList.add('show');
+          this._tooltipEl.classList.add('so-show');
         }
       });
     });
@@ -558,7 +558,7 @@ class SOTooltip extends SOComponent {
 
     // Hide with animation
     if (this._tooltipEl) {
-      this._tooltipEl.classList.remove('show');
+      this._tooltipEl.classList.remove('so-show');
 
       // Remove after transition
       setTimeout(() => {
@@ -649,7 +649,7 @@ class SOTooltip extends SOComponent {
       // Remove existing color classes
       this._tooltipEl.className = this._getTooltipClasses();
       if (this._isVisible) {
-        this._tooltipEl.classList.add('show');
+        this._tooltipEl.classList.add('so-show');
       }
     }
 
@@ -667,7 +667,7 @@ class SOTooltip extends SOComponent {
     if (this._tooltipEl) {
       this._tooltipEl.className = this._getTooltipClasses();
       if (this._isVisible) {
-        this._tooltipEl.classList.add('show');
+        this._tooltipEl.classList.add('so-show');
       }
       this._positionTooltip();
     }
@@ -748,7 +748,7 @@ class SOTooltip extends SOComponent {
    */
   static hideAll() {
     document.querySelectorAll('.so-tooltip-popup.show').forEach(tooltip => {
-      tooltip.classList.remove('show');
+      tooltip.classList.remove('so-show');
       setTimeout(() => tooltip.remove(), 150);
     });
   }

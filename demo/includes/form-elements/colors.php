@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade" id="pane-colors" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-colors" role="tabpanel">
                 <!-- Text Colors -->
                 <div class="so-card so-mb-4">
                     <div class="so-card-header">

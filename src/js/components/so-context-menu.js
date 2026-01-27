@@ -158,7 +158,7 @@ class SOContextMenu extends SOComponent {
       const group = document.createElement('div');
       group.className = 'so-context-menu-group';
       group.dataset.groupId = item.groupId || item.id || '';
-      if (item.disabled) group.classList.add('disabled');
+      if (item.disabled) group.classList.add('so-disabled');
 
       // Render group items
       if (item.items && item.items.length > 0) {
@@ -171,14 +171,14 @@ class SOContextMenu extends SOComponent {
     const itemEl = document.createElement('div');
     itemEl.className = 'so-context-menu-item';
     if (item.id) itemEl.dataset.id = item.id;
-    if (item.disabled) itemEl.classList.add('disabled');
-    if (item.danger) itemEl.classList.add('danger');
+    if (item.disabled) itemEl.classList.add('so-disabled');
+    if (item.danger) itemEl.classList.add('so-danger');
     if (item.checked) itemEl.classList.add('checked');
     if (item.data) itemEl.dataset.data = JSON.stringify(item.data);
 
     // Has submenu?
     const hasSubmenu = item.items && item.items.length > 0 && level < 2;
-    if (hasSubmenu) itemEl.classList.add('has-submenu');
+    if (hasSubmenu) itemEl.classList.add('so-has-submenu');
 
     // Build inner HTML
     let html = '';
@@ -301,7 +301,7 @@ class SOContextMenu extends SOComponent {
         label: textEl ? textEl.textContent.trim() : el.textContent.trim(),
         icon: iconEl ? iconEl.textContent.trim() : null,
         shortcut: shortcutEl ? shortcutEl.textContent.trim() : null,
-        disabled: el.classList.contains('disabled'),
+        disabled: el.classList.contains('so-disabled'),
         danger: el.classList.contains('danger'),
         checked: el.classList.contains('checked'),
         data: el.dataset.data ? JSON.parse(el.dataset.data) : {},
@@ -389,13 +389,13 @@ class SOContextMenu extends SOComponent {
     if (!itemEl) return;
 
     // Check if disabled
-    if (itemEl.classList.contains('disabled')) {
+    if (itemEl.classList.contains('so-disabled')) {
       e.stopPropagation();
       return;
     }
 
     // Check if has submenu (don't select, let hover handle it)
-    if (itemEl.classList.contains('has-submenu')) {
+    if (itemEl.classList.contains('so-has-submenu')) {
       e.stopPropagation();
       return;
     }
@@ -454,12 +454,12 @@ class SOContextMenu extends SOComponent {
       if (sib !== itemEl) {
         sib.classList.remove('submenu-open');
         const submenu = sib.querySelector('.so-context-menu-submenu');
-        if (submenu) submenu.classList.remove('open');
+        if (submenu) submenu.classList.remove('so-open');
       }
     });
 
     // Check if has submenu
-    if (!itemEl.classList.contains('has-submenu')) return;
+    if (!itemEl.classList.contains('so-has-submenu')) return;
 
     // Open submenu with delay
     this._submenuTimeout = setTimeout(() => {
@@ -496,7 +496,7 @@ class SOContextMenu extends SOComponent {
     this._positionSubmenu(parentItem, submenu);
 
     // Show submenu
-    submenu.classList.add('open');
+    submenu.classList.add('so-open');
 
     // Emit event
     const itemId = parentItem.dataset.id;
@@ -517,7 +517,7 @@ class SOContextMenu extends SOComponent {
    */
   _positionSubmenu(parentItem, submenu) {
     // Reset position classes
-    submenu.classList.remove('flip-x');
+    submenu.classList.remove('so-flip-x');
 
     const parentRect = parentItem.getBoundingClientRect();
     const submenuWidth = submenu.offsetWidth || 160;
@@ -525,7 +525,7 @@ class SOContextMenu extends SOComponent {
 
     // Check if submenu would overflow right edge
     if (parentRect.right + submenuWidth > viewportWidth - 10) {
-      submenu.classList.add('flip-x');
+      submenu.classList.add('so-flip-x');
     }
 
     // Vertical position - align top with parent
@@ -668,11 +668,11 @@ class SOContextMenu extends SOComponent {
     const items = this._getNavigableItems();
 
     // Remove focus from all
-    items.forEach(item => item.classList.remove('focused'));
+    items.forEach(item => item.classList.remove('so-focused'));
 
     this._focusedIndex = index;
     if (items[index]) {
-      items[index].classList.add('focused');
+      items[index].classList.add('so-focused');
       items[index].scrollIntoView({ block: 'nearest' });
     }
   }
@@ -686,13 +686,13 @@ class SOContextMenu extends SOComponent {
     if (this._focusedIndex < 0 || !items[this._focusedIndex]) return;
 
     const item = items[this._focusedIndex];
-    if (item.classList.contains('has-submenu')) {
+    if (item.classList.contains('so-has-submenu')) {
       this._openSubmenu(item);
       // Focus first item in submenu
       const submenu = item.querySelector('.so-context-menu-submenu');
       if (submenu) {
         const subItems = this._getNavigableItems(submenu);
-        if (subItems[0]) subItems[0].classList.add('focused');
+        if (subItems[0]) subItems[0].classList.add('so-focused');
       }
     }
   }
@@ -707,7 +707,7 @@ class SOContextMenu extends SOComponent {
     const parentItem = this._activeSubmenu.closest('.so-context-menu-item');
     if (parentItem) {
       parentItem.classList.remove('submenu-open');
-      this._activeSubmenu.classList.remove('open');
+      this._activeSubmenu.classList.remove('so-open');
 
       // Emit event
       const itemId = parentItem.dataset.id;
@@ -729,7 +729,7 @@ class SOContextMenu extends SOComponent {
     const item = items[this._focusedIndex];
 
     // If has submenu, open it
-    if (item.classList.contains('has-submenu')) {
+    if (item.classList.contains('so-has-submenu')) {
       this._openFocusedSubmenu();
       return;
     }
@@ -767,7 +767,7 @@ class SOContextMenu extends SOComponent {
     this._positionMenu(x, y);
 
     // Show menu
-    this._menuElement.classList.add('open');
+    this._menuElement.classList.add('so-open');
 
     // Reset focus
     this._focusedIndex = -1;
@@ -790,7 +790,7 @@ class SOContextMenu extends SOComponent {
     const menu = this._menuElement;
 
     // Reset position classes
-    menu.classList.remove('flip-x', 'flip-y');
+    menu.classList.remove('so-flip-x', 'so-flip-y');
 
     // Temporarily show to get dimensions
     menu.style.visibility = 'hidden';
@@ -813,13 +813,13 @@ class SOContextMenu extends SOComponent {
     // Check right edge
     if (x + menuWidth > viewportWidth - 10) {
       finalX = x - menuWidth;
-      menu.classList.add('flip-x');
+      menu.classList.add('so-flip-x');
     }
 
     // Check bottom edge
     if (y + menuHeight > viewportHeight - 10) {
       finalY = y - menuHeight;
-      menu.classList.add('flip-y');
+      menu.classList.add('so-flip-y');
     }
 
     // Ensure minimum bounds
@@ -847,19 +847,19 @@ class SOContextMenu extends SOComponent {
     this._closeAllSubmenus();
 
     // Clear focus
-    const focused = this._menuElement.querySelector('.so-context-menu-item.focused');
-    if (focused) focused.classList.remove('focused');
+    const focused = this._menuElement.querySelector('.so-context-menu-item.so-focused');
+    if (focused) focused.classList.remove('so-focused');
     this._focusedIndex = -1;
 
     // Hide menu
     if (this.options.animated) {
-      this._menuElement.classList.add('closing');
+      this._menuElement.classList.add('so-closing');
       setTimeout(() => {
-        this._menuElement.classList.remove('open', 'closing');
+        this._menuElement.classList.remove('so-open', 'so-closing');
         this.emit(SOContextMenu.EVENTS.HIDDEN);
       }, 150);
     } else {
-      this._menuElement.classList.remove('open');
+      this._menuElement.classList.remove('so-open');
       setTimeout(() => {
         this.emit(SOContextMenu.EVENTS.HIDDEN);
       }, 150);
@@ -875,8 +875,8 @@ class SOContextMenu extends SOComponent {
   _closeAllSubmenus() {
     if (!this._menuElement) return;
 
-    const openSubmenus = this._menuElement.querySelectorAll('.so-context-menu-submenu.open');
-    openSubmenus.forEach(submenu => submenu.classList.remove('open'));
+    const openSubmenus = this._menuElement.querySelectorAll('.so-context-menu-submenu.so-open');
+    openSubmenus.forEach(submenu => submenu.classList.remove('so-open'));
 
     const openParents = this._menuElement.querySelectorAll('.so-context-menu-item.submenu-open');
     openParents.forEach(parent => parent.classList.remove('submenu-open'));
@@ -1152,11 +1152,11 @@ class SOContextMenu extends SOComponent {
     }
 
     if (updates.disabled !== undefined) {
-      el.classList.toggle('disabled', updates.disabled);
+      el.classList.toggle('so-disabled', updates.disabled);
     }
 
     if (updates.danger !== undefined) {
-      el.classList.toggle('danger', updates.danger);
+      el.classList.toggle('so-danger', updates.danger);
     }
 
     if (updates.checked !== undefined) {
@@ -1214,7 +1214,7 @@ class SOContextMenu extends SOComponent {
     // Enable via DOM class
     const groupEl = this._menuElement?.querySelector(`[data-group-id="${groupId}"]`);
     if (groupEl) {
-      groupEl.classList.remove('disabled');
+      groupEl.classList.remove('so-disabled');
     }
 
     // Enable individual items
@@ -1233,7 +1233,7 @@ class SOContextMenu extends SOComponent {
     // Disable via DOM class
     const groupEl = this._menuElement?.querySelector(`[data-group-id="${groupId}"]`);
     if (groupEl) {
-      groupEl.classList.add('disabled');
+      groupEl.classList.add('so-disabled');
     }
 
     // Disable individual items

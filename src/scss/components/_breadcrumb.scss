@@ -47,7 +47,7 @@
   }
 
   // Active state
-  &.active {
+  &.#{$so-prefix}active {
     color: var(--breadcrumb-item-active-color);
   }
 
@@ -129,7 +129,7 @@
         }
       }
 
-      &.active {
+      &.#{$so-prefix}active {
         color: color.adjust($color-value, $lightness: -20%);
       }
     }
@@ -185,7 +185,7 @@
     }
 
     a,
-    &.active {
+    &.#{$so-prefix}active {
       display: inline-block;
       padding: spacing('1') spacing('3');
       border-radius: css-var('border-radius-full');
@@ -197,7 +197,7 @@
       text-decoration: none;
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       background-color: $so-primary;
       color: #fff;
     }
@@ -240,7 +240,7 @@
       margin-left: 0;
     }
 
-    &.active::after {
+    &.#{$so-prefix}active::after {
       color: #fff;
       background-color: $so-primary;
     }
@@ -331,7 +331,7 @@
   .#{$so-prefix}breadcrumb-pills {
     .#{$so-prefix}breadcrumb-item {
       a,
-      &.active {
+      &.#{$so-prefix}active {
         background-color: css-var('hover-bg');
       }
 
@@ -339,7 +339,7 @@
         background-color: css-var('active-bg');
       }
 
-      &.active {
+      &.#{$so-prefix}active {
         background-color: $so-primary;
       }
     }

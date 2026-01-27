@@ -1,4 +1,4 @@
-<div class="so-tab-pane fade" id="pane-gutters" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-gutters" role="tabpanel">
 
     <style>
         .demo-col {

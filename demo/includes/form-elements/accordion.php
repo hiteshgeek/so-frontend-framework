@@ -17,7 +17,7 @@
                                 Accordion Item #1
                             </button>
                         </h2>
-                        <div id="collapse1" class="so-accordion-collapse show" data-so-parent="#basicAccordion">
+                        <div id="collapse1" class="so-accordion-collapse so-show" data-so-parent="#basicAccordion">
                             <div class="so-accordion-body">
                                 <strong>This is the first item's accordion body.</strong> It is shown by default. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
                             </div>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="so-accordion-item">
                         <h2 class="so-accordion-header">
-                            <button class="so-accordion-button collapsed" type="button" data-so-toggle="collapse" data-so-target="#collapse2">
+                            <button class="so-accordion-button so-collapsed" type="button" data-so-toggle="collapse" data-so-target="#collapse2">
                                 Accordion Item #2
                             </button>
                         </h2>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="so-accordion-item">
                         <h2 class="so-accordion-header">
-                            <button class="so-accordion-button collapsed" type="button" data-so-toggle="collapse" data-so-target="#collapse3">
+                            <button class="so-accordion-button so-collapsed" type="button" data-so-toggle="collapse" data-so-target="#collapse3">
                                 Accordion Item #3
                             </button>
                         </h2>
@@ -63,7 +63,7 @@
                 Accordion Item #1
             &lt;/button&gt;
         &lt;/h2&gt;
-        &lt;div id="collapse1" class="so-accordion-collapse show" data-so-parent="#myAccordion"&gt;
+        &lt;div id="collapse1" class="so-accordion-collapse so-show" data-so-parent="#myAccordion"&gt;
             &lt;div class="so-accordion-body"&gt;
                 Content here...
             &lt;/div&gt;
@@ -89,7 +89,7 @@
                                 Accordion Item #1
                             </button>
                         </h2>
-                        <div id="openCollapse1" class="so-accordion-collapse show">
+                        <div id="openCollapse1" class="so-accordion-collapse so-show">
                             <div class="so-accordion-body">
                                 <strong>First panel.</strong> This accordion allows multiple panels to be open at the same time.
                             </div>
@@ -101,7 +101,7 @@
                                 Accordion Item #2
                             </button>
                         </h2>
-                        <div id="openCollapse2" class="so-accordion-collapse show">
+                        <div id="openCollapse2" class="so-accordion-collapse so-show">
                             <div class="so-accordion-body">
                                 <strong>Second panel.</strong> Both can be open without closing the other.
                             </div>
@@ -117,7 +117,7 @@
                         </button>
                     </div>
                     <pre class="so-code-content"><code class="language-html">&lt;!-- No data-so-parent attribute allows multiple open --&gt;
-&lt;div id="openCollapse1" class="so-accordion-collapse show"&gt;
+&lt;div id="openCollapse1" class="so-accordion-collapse so-show"&gt;
     &lt;!-- No data-so-parent here --&gt;
 &lt;/div&gt;</code></pre>
                 </div>
@@ -139,7 +139,7 @@
                                 Accordion Item #1
                             </button>
                         </h2>
-                        <div id="flushCollapse1" class="so-accordion-collapse show" data-so-parent="#flushAccordion">
+                        <div id="flushCollapse1" class="so-accordion-collapse so-show" data-so-parent="#flushAccordion">
                             <div class="so-accordion-body">
                                 Content for the first flush accordion item.
                             </div>
@@ -147,7 +147,7 @@
                     </div>
                     <div class="so-accordion-item">
                         <h2 class="so-accordion-header">
-                            <button class="so-accordion-button collapsed" type="button" data-so-toggle="collapse" data-so-target="#flushCollapse2">
+                            <button class="so-accordion-button so-collapsed" type="button" data-so-toggle="collapse" data-so-target="#flushCollapse2">
                                 Accordion Item #2
                             </button>
                         </h2>
@@ -187,7 +187,7 @@
                                     Primary Accordion
                                 </button>
                             </h2>
-                            <div id="colorPrimary" class="so-accordion-collapse show">
+                            <div id="colorPrimary" class="so-accordion-collapse so-show">
                                 <div class="so-accordion-body">Primary color theme content.</div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                                     Success Accordion
                                 </button>
                             </h2>
-                            <div id="colorSuccess" class="so-accordion-collapse show">
+                            <div id="colorSuccess" class="so-accordion-collapse so-show">
                                 <div class="so-accordion-body">Success color theme content.</div>
                             </div>
                         </div>
@@ -239,7 +239,7 @@
                                         Plus/Minus Icon
                                     </button>
                                 </h2>
-                                <div id="plusMinusCollapse" class="so-accordion-collapse show">
+                                <div id="plusMinusCollapse" class="so-accordion-collapse so-show">
                                     <div class="so-accordion-body">Content with plus/minus icon.</div>
                                 </div>
                             </div>
@@ -256,7 +256,7 @@
                                         Arrow Icon
                                     </button>
                                 </h2>
-                                <div id="arrowCollapse" class="so-accordion-collapse show">
+                                <div id="arrowCollapse" class="so-accordion-collapse so-show">
                                     <div class="so-accordion-body">Content with arrow icon.</div>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@
                                         Icon on Left
                                     </button>
                                 </h2>
-                                <div id="iconLeftCollapse" class="so-accordion-collapse show">
+                                <div id="iconLeftCollapse" class="so-accordion-collapse so-show">
                                     <div class="so-accordion-body">Content with icon on the left.</div>
                                 </div>
                             </div>
@@ -290,7 +290,7 @@
                                         No Icon
                                     </button>
                                 </h2>
-                                <div id="noIconCollapse" class="so-accordion-collapse show">
+                                <div id="noIconCollapse" class="so-accordion-collapse so-show">
                                     <div class="so-accordion-body">Content without any icon.</div>
                                 </div>
                             </div>
@@ -331,7 +331,7 @@
                                         Small Accordion
                                     </button>
                                 </h2>
-                                <div id="smCollapse" class="so-accordion-collapse show">
+                                <div id="smCollapse" class="so-accordion-collapse so-show">
                                     <div class="so-accordion-body">Compact content.</div>
                                 </div>
                             </div>
@@ -346,7 +346,7 @@
                                         Large Accordion
                                     </button>
                                 </h2>
-                                <div id="lgCollapse" class="so-accordion-collapse show">
+                                <div id="lgCollapse" class="so-accordion-collapse so-show">
                                     <div class="so-accordion-body">More spacious content area.</div>
                                 </div>
                             </div>
@@ -378,7 +378,7 @@
                 <div class="so-accordion so-mb-4" id="apiAccordion" data-so-accordion>
                     <div class="so-accordion-item">
                         <h2 class="so-accordion-header">
-                            <button class="so-accordion-button collapsed" data-so-toggle="collapse" data-so-target="#apiCollapse1">
+                            <button class="so-accordion-button so-collapsed" data-so-toggle="collapse" data-so-target="#apiCollapse1">
                                 API Demo Panel
                             </button>
                         </h2>

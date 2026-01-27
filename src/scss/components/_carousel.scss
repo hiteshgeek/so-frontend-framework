@@ -83,7 +83,7 @@ $carousel-gap: 16px !default;
   backface-visibility: hidden;
   overflow: hidden;
 
-  &.active {
+  &.#{$so-prefix}active {
     display: flex;
   }
 
@@ -127,7 +127,7 @@ $carousel-gap: 16px !default;
     transition: opacity var(--carousel-transition-duration)
       var(--carousel-transition-timing);
 
-    &.active {
+    &.#{$so-prefix}active {
       position: relative;
       opacity: 1;
       z-index: 1;
@@ -172,7 +172,7 @@ $carousel-gap: 16px !default;
   }
 
   &:disabled,
-  &.disabled {
+  &.#{$so-prefix}disabled {
     opacity: 0.3;
     cursor: not-allowed;
     pointer-events: none;
@@ -234,7 +234,7 @@ $carousel-gap: 16px !default;
     background: alpha($so-white, 0.75);
   }
 
-  &.active {
+  &.#{$so-prefix}active {
     width: $carousel-indicator-active-width;
     background: var(--carousel-indicator-active-bg);
     border-radius: radius("full");
@@ -253,7 +253,7 @@ $carousel-gap: 16px !default;
     height: 3px;
     border-radius: radius("sm");
 
-    &.active {
+    &.#{$so-prefix}active {
       width: 36px;
     }
   }
@@ -274,7 +274,7 @@ $carousel-gap: 16px !default;
     align-items: center;
     justify-content: center;
 
-    &.active {
+    &.#{$so-prefix}active {
       width: 28px;
       color: $so-grey-800;
     }
@@ -317,7 +317,7 @@ $carousel-gap: 16px !default;
     animation: so-carousel-progress var(--carousel-interval, 5s) linear;
   }
 
-  &.paused .#{$so-prefix}carousel-progress-bar {
+  &.#{$so-prefix}paused .#{$so-prefix}carousel-progress-bar {
     animation-play-state: paused;
   }
 }
@@ -445,12 +445,12 @@ $carousel-gap: 16px !default;
       object-fit: cover;
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       transform: scale(1);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
 
-    &:not(.active) {
+    &:not(.#{$so-prefix}active) {
       transform: scale(0.9);
       opacity: 0.6;
     }
@@ -518,7 +518,7 @@ $carousel-gap: 16px !default;
     opacity: 0.8;
   }
 
-  &.active {
+  &.#{$so-prefix}active {
     border-color: css-var("accent-primary");
     opacity: 1;
   }
@@ -727,7 +727,7 @@ $carousel-gap: 16px !default;
     opacity: 0;
     transition: opacity $so-transition-slow;
 
-    &.loaded {
+    &.#{$so-prefix}loaded {
       opacity: 1;
     }
   }
@@ -865,7 +865,7 @@ $carousel-gap: 16px !default;
   }
 
   .#{$so-prefix}carousel-thumbnail {
-    &.active {
+    &.#{$so-prefix}active {
       border-color: css-var("accent-primary");
     }
   }

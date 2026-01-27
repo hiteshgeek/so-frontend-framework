@@ -27,22 +27,22 @@
   user-select: none;
 
   // Open state
-  &.open {
+  &.#{$so-prefix}open {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
   }
 
   // Position variants for viewport edge handling
-  &.flip-x {
+  &.#{$so-prefix}flip-x {
     transform-origin: top right;
   }
 
-  &.flip-y {
+  &.#{$so-prefix}flip-y {
     transform-origin: bottom left;
   }
 
-  &.flip-x.flip-y {
+  &.#{$so-prefix}flip-x.#{$so-prefix}flip-y {
     transform-origin: bottom right;
   }
 }
@@ -91,38 +91,38 @@
   transition: background $so-transition-base;
   position: relative;
 
-  &:hover:not(.disabled) {
+  &:hover:not(.#{$so-prefix}disabled) {
     background: css-var('dropdown-item-hover');
   }
 
   // Focused state (keyboard navigation)
-  &.focused:not(.disabled) {
+  &.#{$so-prefix}focused:not(.#{$so-prefix}disabled) {
     background: css-var('dropdown-item-hover');
     outline: none;
   }
 
   // Disabled state
-  &.disabled {
+  &.#{$so-prefix}disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
   }
 
   // Danger/destructive action
-  &.danger {
+  &.#{$so-prefix}danger {
     color: css-var('accent-danger');
 
     .#{$so-prefix}context-menu-item-icon {
       color: css-var('accent-danger');
     }
 
-    &:hover:not(.disabled) {
+    &:hover:not(.#{$so-prefix}disabled) {
       background: alpha($so-danger, 0.1);
     }
   }
 
   // Has submenu indicator
-  &.has-submenu {
+  &.#{$so-prefix}has-submenu {
     padding-right: spacing('2');
   }
 }
@@ -194,21 +194,21 @@
   z-index: 1;
 
   // Visible state
-  &.open {
+  &.#{$so-prefix}open {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
   }
 
   // Flip to left when near right edge
-  &.flip-x {
+  &.#{$so-prefix}flip-x {
     left: auto;
     right: 100%;
     margin-left: 0;
     margin-right: -4px;
     transform: translateX(8px);
 
-    &.open {
+    &.#{$so-prefix}open {
       transform: translateX(0);
     }
   }
@@ -232,7 +232,7 @@
   // Group container - no visual styling, just for JS targeting
 
   // Disabled group
-  &.disabled {
+  &.#{$so-prefix}disabled {
     .#{$so-prefix}context-menu-item {
       opacity: 0.5;
       cursor: not-allowed;
@@ -406,11 +406,11 @@
 
 // Animated variant (optional - use class .so-context-menu-animated)
 .#{$so-prefix}context-menu-animated {
-  &.open {
+  &.#{$so-prefix}open {
     animation: so-context-menu-fade-in 150ms ease-out forwards;
   }
 
-  &.closing {
+  &.#{$so-prefix}closing {
     animation: so-context-menu-fade-out 150ms ease-in forwards;
   }
 }

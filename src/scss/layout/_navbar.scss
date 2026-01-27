@@ -620,7 +620,7 @@
   overflow: hidden;
 }
 
-.#{$so-prefix}navbar-theme.open .#{$so-prefix}navbar-theme-dropdown {
+.#{$so-prefix}navbar-theme.#{$so-prefix}open .#{$so-prefix}navbar-theme-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -742,7 +742,7 @@
   overflow: hidden;
 }
 
-.#{$so-prefix}navbar-apps.open .#{$so-prefix}navbar-apps-dropdown {
+.#{$so-prefix}navbar-apps.#{$so-prefix}open .#{$so-prefix}navbar-apps-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -886,7 +886,7 @@
   overflow: hidden;
 }
 
-.#{$so-prefix}mobile-outlet-dropdown.open .#{$so-prefix}mobile-outlet-menu {
+.#{$so-prefix}mobile-outlet-dropdown.#{$so-prefix}open .#{$so-prefix}mobile-outlet-menu {
   opacity: 1;
   visibility: visible;
 }

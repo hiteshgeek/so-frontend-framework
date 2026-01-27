@@ -357,7 +357,7 @@
   z-index: z-index('dropdown') + 10;
   display: none;
 
-  &.open {
+  &.#{$so-prefix}open {
     display: block;
   }
 }

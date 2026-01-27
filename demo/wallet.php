@@ -29,7 +29,7 @@ $currentPage = 'wallet';
             <span class="so-breadcrumb-bar-separator">
                 <span class="material-icons">chevron_right</span>
             </span>
-            <span class="so-breadcrumb-bar-item active">Wallet</span>
+            <span class="so-breadcrumb-bar-item so-active">Wallet</span>
         </div>
 
         <div class="demo-content" style="padding: 16px;">
@@ -179,7 +179,7 @@ $currentPage = 'wallet';
 
                         <!-- Filter Button -->
                         <div class="so-panel-filter">
-                            <button class="so-panel-filter-btn active">
+                            <button class="so-panel-filter-btn so-active">
                                 <span class="material-icons">filter_list</span>
                                 Filter
                                 <span class="so-panel-filter-badge">1</span>
@@ -243,7 +243,7 @@ $currentPage = 'wallet';
                                         <span class="material-icons">calendar_month</span>
                                         This Month
                                     </div>
-                                    <div class="so-panel-date-preset active">
+                                    <div class="so-panel-date-preset so-active">
                                         <span class="material-icons">event_note</span>
                                         This Financial Year
                                     </div>

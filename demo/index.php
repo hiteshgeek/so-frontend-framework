@@ -30,7 +30,7 @@ require_once 'includes/navbar.php';
         <span class="so-breadcrumb-bar-separator">
             <span class="material-icons">chevron_right</span>
         </span>
-        <span class="so-breadcrumb-bar-item active">Wallet</span>
+        <span class="so-breadcrumb-bar-item so-active">Wallet</span>
     </div>
 
     <div class="demo-content">
@@ -41,7 +41,7 @@ require_once 'includes/navbar.php';
                 <span class="so-breadcrumb-separator"><span class="material-icons">chevron_right</span></span>
                 <a href="#" class="so-breadcrumb-item">Latha Mohan</a>
                 <span class="so-breadcrumb-separator"><span class="material-icons">chevron_right</span></span>
-                <span class="so-breadcrumb-item active">Wallet</span>
+                <span class="so-breadcrumb-item so-active">Wallet</span>
             </nav>
             <div class="so-page-header-row">
                 <h1 class="so-page-title">
@@ -288,7 +288,7 @@ require_once 'includes/navbar.php';
                                     <span class="material-icons">calendar_view_month</span>
                                     This Month
                                 </div>
-                                <div class="so-panel-date-preset active">
+                                <div class="so-panel-date-preset so-active">
                                     <span class="material-icons">event</span>
                                     This Financial Year
                                 </div>
@@ -367,7 +367,7 @@ require_once 'includes/navbar.php';
         <div class="so-mobile-outlet-menu">
             <div class="so-mobile-outlet-header">Select Outlet</div>
             <div class="so-mobile-outlet-list">
-                <div class="so-mobile-outlet-item selected" data-value="all">
+                <div class="so-mobile-outlet-item so-selected" data-value="all">
                     <span>All Outlets</span>
                     <span class="material-icons check-icon">check</span>
                 </div>

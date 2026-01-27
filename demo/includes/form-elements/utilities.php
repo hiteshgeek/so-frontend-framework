@@ -1,7 +1,7 @@
 <!-- ============================================
      UTILITIES - Comprehensive Demo
      ============================================ -->
-<div class="so-tab-pane fade" id="pane-utilities" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-utilities" role="tabpanel">
 
     <!-- Introduction -->
     <div class="so-card so-mb-4">

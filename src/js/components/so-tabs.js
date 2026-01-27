@@ -56,12 +56,12 @@ class SOTabs extends SOComponent {
    */
   _findActiveTab() {
     // Look for explicitly active tab
-    this._activeTab = this.$('.so-tab.active') || this.$('.so-tab[aria-selected="true"]');
+    this._activeTab = this.$('.so-tab.so-active') || this.$('.so-tab[aria-selected="true"]');
 
     // Default to first tab if none active
     if (!this._activeTab && this._tabs.length > 0) {
       this._activeTab = this._tabs[0];
-      this._activeTab.classList.add('active');
+      this._activeTab.classList.add('so-active');
     }
 
     // Find associated pane
@@ -70,9 +70,9 @@ class SOTabs extends SOComponent {
       if (target) {
         this._activePane = document.querySelector(target);
         if (this._activePane) {
-          this._activePane.classList.add('active');
+          this._activePane.classList.add('so-active');
           if (this.options.animation) {
-            this._activePane.classList.add('show');
+            this._activePane.classList.add('so-show');
           }
         }
       }
@@ -165,7 +165,7 @@ class SOTabs extends SOComponent {
   _handleTabClick(e, tab) {
     e.preventDefault();
 
-    if (tab.classList.contains('disabled') || tab.hasAttribute('disabled')) {
+    if (tab.classList.contains('so-disabled') || tab.hasAttribute('disabled')) {
       return;
     }
 
@@ -179,7 +179,7 @@ class SOTabs extends SOComponent {
    * @private
    */
   _handleTabFocus(e, tab) {
-    if (tab.classList.contains('disabled') || tab.hasAttribute('disabled')) {
+    if (tab.classList.contains('so-disabled') || tab.hasAttribute('disabled')) {
       return;
     }
 
@@ -194,7 +194,7 @@ class SOTabs extends SOComponent {
   _handleKeydown(e) {
     const isVertical = this.element.classList.contains('so-tabs-vertical');
     const enabledTabs = this._tabs.filter(
-      tab => !tab.classList.contains('disabled') && !tab.hasAttribute('disabled')
+      tab => !tab.classList.contains('so-disabled') && !tab.hasAttribute('disabled')
     );
 
     if (enabledTabs.length === 0) return;
@@ -325,32 +325,32 @@ class SOTabs extends SOComponent {
 
     // Deactivate previous tab
     if (previousTab) {
-      previousTab.classList.remove('active');
+      previousTab.classList.remove('so-active');
       previousTab.setAttribute('aria-selected', 'false');
       previousTab.setAttribute('tabindex', '-1');
     }
 
     // Deactivate previous pane
     if (previousPane) {
-      previousPane.classList.remove('active');
+      previousPane.classList.remove('so-active');
       if (this.options.animation) {
-        previousPane.classList.remove('show');
+        previousPane.classList.remove('so-show');
       }
     }
 
     // Activate new tab
-    tab.classList.add('active');
+    tab.classList.add('so-active');
     tab.setAttribute('aria-selected', 'true');
     tab.setAttribute('tabindex', '0');
 
     // Activate new pane
     if (newPane) {
-      newPane.classList.add('active');
+      newPane.classList.add('so-active');
 
       if (this.options.animation) {
         // Use requestAnimationFrame for fade animation
         requestAnimationFrame(() => {
-          newPane.classList.add('show');
+          newPane.classList.add('so-show');
         });
       }
     }
@@ -411,7 +411,7 @@ class SOTabs extends SOComponent {
    */
   show(index) {
     const tab = this._tabs[index];
-    if (tab && !tab.classList.contains('disabled') && !tab.hasAttribute('disabled')) {
+    if (tab && !tab.classList.contains('so-disabled') && !tab.hasAttribute('disabled')) {
       this._activateTab(tab);
     }
     return this;
@@ -425,7 +425,7 @@ class SOTabs extends SOComponent {
   showById(id) {
     const targetId = id.startsWith('#') ? id : `#${id}`;
     const tab = this._tabs.find(t => this._getTabTarget(t) === targetId);
-    if (tab && !tab.classList.contains('disabled') && !tab.hasAttribute('disabled')) {
+    if (tab && !tab.classList.contains('so-disabled') && !tab.hasAttribute('disabled')) {
       this._activateTab(tab);
     }
     return this;
@@ -437,7 +437,7 @@ class SOTabs extends SOComponent {
    */
   next() {
     const enabledTabs = this._tabs.filter(
-      tab => !tab.classList.contains('disabled') && !tab.hasAttribute('disabled')
+      tab => !tab.classList.contains('so-disabled') && !tab.hasAttribute('disabled')
     );
     const currentIndex = enabledTabs.indexOf(this._activeTab);
     const nextIndex = (currentIndex + 1) % enabledTabs.length;
@@ -451,7 +451,7 @@ class SOTabs extends SOComponent {
    */
   prev() {
     const enabledTabs = this._tabs.filter(
-      tab => !tab.classList.contains('disabled') && !tab.hasAttribute('disabled')
+      tab => !tab.classList.contains('so-disabled') && !tab.hasAttribute('disabled')
     );
     const currentIndex = enabledTabs.indexOf(this._activeTab);
     const prevIndex = currentIndex - 1 < 0 ? enabledTabs.length - 1 : currentIndex - 1;

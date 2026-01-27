@@ -1,4 +1,4 @@
-<div class="so-tab-pane fade" id="pane-layouts" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-layouts" role="tabpanel">
 
     <style>
         .demo-box {

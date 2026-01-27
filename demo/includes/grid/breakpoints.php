@@ -1,4 +1,4 @@
-<div class="so-tab-pane fade show active" id="pane-breakpoints" role="tabpanel">
+<div class="so-tab-pane so-fade so-show so-active" id="pane-breakpoints" role="tabpanel">
 
     <!-- Breakpoints Overview -->
     <div class="so-card so-mb-4">

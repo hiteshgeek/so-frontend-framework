@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade" id="pane-navbar" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-navbar" role="tabpanel">
 
                 <!-- Section 1: Basic Navbar -->
                 <div class="so-card so-mb-4">
@@ -20,7 +20,7 @@
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav so-component-navbar-nav-start">
                                         <li class="so-component-navbar-item">
-                                            <a href="#" class="so-component-navbar-link active">Home</a>
+                                            <a href="#" class="so-component-navbar-link so-active">Home</a>
                                         </li>
                                         <li class="so-component-navbar-item">
                                             <a href="#" class="so-component-navbar-link">Features</a>
@@ -29,7 +29,7 @@
                                             <a href="#" class="so-component-navbar-link">Pricing</a>
                                         </li>
                                         <li class="so-component-navbar-item">
-                                            <a href="#" class="so-component-navbar-link disabled">Disabled</a>
+                                            <a href="#" class="so-component-navbar-link so-disabled">Disabled</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -55,7 +55,7 @@
         &lt;div class="so-component-navbar-collapse"&gt;
             &lt;ul class="so-component-navbar-nav so-component-navbar-nav-start"&gt;
                 &lt;li class="so-component-navbar-item"&gt;
-                    &lt;a href="#" class="so-component-navbar-link active"&gt;Home&lt;/a&gt;
+                    &lt;a href="#" class="so-component-navbar-link so-active"&gt;Home&lt;/a&gt;
                 &lt;/li&gt;
                 &lt;li class="so-component-navbar-item"&gt;
                     &lt;a href="#" class="so-component-navbar-link"&gt;Features&lt;/a&gt;
@@ -64,7 +64,7 @@
                     &lt;a href="#" class="so-component-navbar-link"&gt;Pricing&lt;/a&gt;
                 &lt;/li&gt;
                 &lt;li class="so-component-navbar-item"&gt;
-                    &lt;a href="#" class="so-component-navbar-link disabled"&gt;Disabled&lt;/a&gt;
+                    &lt;a href="#" class="so-component-navbar-link so-disabled"&gt;Disabled&lt;/a&gt;
                 &lt;/li&gt;
             &lt;/ul&gt;
         &lt;/div&gt;
@@ -88,7 +88,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Light</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Dark</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -112,7 +112,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Primary</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -124,7 +124,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Secondary</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -136,7 +136,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Success</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -148,7 +148,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Danger</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -160,7 +160,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Warning</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -172,7 +172,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Info</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -298,7 +298,7 @@
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav so-component-navbar-nav-start">
                                         <li class="so-component-navbar-item">
-                                            <a href="#" class="so-component-navbar-link active">Dashboard</a>
+                                            <a href="#" class="so-component-navbar-link so-active">Dashboard</a>
                                         </li>
                                         <li class="so-component-navbar-item so-dropdown">
                                             <a href="#" class="so-component-navbar-link so-dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('show'); this.nextElementSibling.classList.toggle('show');">
@@ -395,7 +395,7 @@
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav so-component-navbar-nav-start">
                                         <li class="so-component-navbar-item">
-                                            <a href="#" class="so-component-navbar-link active">Home</a>
+                                            <a href="#" class="so-component-navbar-link so-active">Home</a>
                                         </li>
                                         <li class="so-component-navbar-item">
                                             <a href="#" class="so-component-navbar-link">Features</a>
@@ -485,7 +485,7 @@
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav so-component-navbar-nav-start">
                                         <li class="so-component-navbar-item">
-                                            <a href="#" class="so-component-navbar-link active">
+                                            <a href="#" class="so-component-navbar-link so-active">
                                                 <span class="material-icons">home</span>
                                                 Home
                                             </a>
@@ -560,7 +560,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Shadow Navbar</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -572,7 +572,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Bordered Navbar</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -585,7 +585,7 @@
                                 <div class="so-component-navbar-container">
                                     <a href="#" class="so-component-navbar-brand">Transparent</a>
                                     <ul class="so-component-navbar-nav">
-                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                         <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                     </ul>
                                 </div>
@@ -636,7 +636,7 @@
                                 </button>
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav">
-                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                         <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                         <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Contact</a></li>
                                     </ul>
@@ -654,7 +654,7 @@
                                 </button>
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav">
-                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                         <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                         <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Contact</a></li>
                                     </ul>
@@ -672,7 +672,7 @@
                                 </button>
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav">
-                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                        <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                         <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                         <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Contact</a></li>
                                     </ul>
@@ -686,7 +686,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Always Expand</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Contact</a></li>
                                 </ul>
@@ -732,7 +732,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Fluid Navbar</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -744,7 +744,7 @@
                             <div class="so-component-navbar-container">
                                 <a href="#" class="so-component-navbar-brand">Contained Navbar</a>
                                 <ul class="so-component-navbar-nav">
-                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link active">Home</a></li>
+                                    <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link so-active">Home</a></li>
                                     <li class="so-component-navbar-item"><a href="#" class="so-component-navbar-link">Link</a></li>
                                 </ul>
                             </div>
@@ -905,7 +905,7 @@
                                 <div class="so-component-navbar-collapse">
                                     <ul class="so-component-navbar-nav so-component-navbar-nav-start">
                                         <li class="so-component-navbar-item">
-                                            <a href="#" class="so-component-navbar-link active">
+                                            <a href="#" class="so-component-navbar-link so-active">
                                                 <span class="material-icons">dashboard</span>
                                                 Dashboard
                                             </a>
@@ -998,7 +998,7 @@
         &lt;div class="so-component-navbar-collapse"&gt;
             &lt;ul class="so-component-navbar-nav so-component-navbar-nav-start"&gt;
                 &lt;li class="so-component-navbar-item"&gt;
-                    &lt;a href="#" class="so-component-navbar-link active"&gt;
+                    &lt;a href="#" class="so-component-navbar-link so-active"&gt;
                         &lt;span class="material-icons"&gt;dashboard&lt;/span&gt;
                         Dashboard
                     &lt;/a&gt;
@@ -1087,7 +1087,7 @@
                             <div class="so-component-navbar-offcanvas-body">
                                 <ul class="so-component-navbar-nav">
                                     <li class="so-component-navbar-item">
-                                        <a href="#" class="so-component-navbar-link active">
+                                        <a href="#" class="so-component-navbar-link so-active">
                                             <span class="material-icons">home</span>
                                             Home
                                         </a>

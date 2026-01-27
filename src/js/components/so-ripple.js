@@ -46,7 +46,7 @@ class SORipple extends SOComponent {
     if (!target) return;
 
     // Don't add ripple to disabled buttons
-    if (target.disabled || target.classList.contains('disabled')) return;
+    if (target.disabled || target.classList.contains('so-disabled')) return;
 
     this._createRipple(target, e);
   }

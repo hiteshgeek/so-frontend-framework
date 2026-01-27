@@ -12,7 +12,7 @@
 
                 <div class="so-carousel" data-so-carousel id="basic-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <img src="https://picsum.photos/800/400?random=1" alt="Slide 1">
                         </div>
                         <div class="so-carousel-slide">
@@ -31,7 +31,7 @@
                     </button>
 
                     <div class="so-carousel-indicators">
-                        <button class="so-carousel-indicator active" data-so-slide="0" aria-label="Go to slide 1"></button>
+                        <button class="so-carousel-indicator so-active" data-so-slide="0" aria-label="Go to slide 1"></button>
                         <button class="so-carousel-indicator" data-so-slide="1" aria-label="Go to slide 2"></button>
                         <button class="so-carousel-indicator" data-so-slide="2" aria-label="Go to slide 3"></button>
                     </div>
@@ -105,7 +105,7 @@ carousel.goTo(2);</code></pre>
 
                 <div class="so-carousel" data-so-carousel id="caption-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <img src="https://picsum.photos/800/450?random=4" alt="Mountains">
                             <div class="so-carousel-caption">
                                 <h4 class="so-carousel-caption-title">Mountain Adventure</h4>
@@ -136,7 +136,7 @@ carousel.goTo(2);</code></pre>
                     </button>
 
                     <div class="so-carousel-indicators">
-                        <button class="so-carousel-indicator active" data-so-slide="0"></button>
+                        <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
                         <button class="so-carousel-indicator" data-so-slide="1"></button>
                         <button class="so-carousel-indicator" data-so-slide="2"></button>
                     </div>
@@ -170,7 +170,7 @@ carousel.goTo(2);</code></pre>
 
                 <div class="so-carousel so-carousel-fade" data-so-carousel id="fade-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <img src="https://picsum.photos/800/400?random=7" alt="Slide 1">
                         </div>
                         <div class="so-carousel-slide">
@@ -189,7 +189,7 @@ carousel.goTo(2);</code></pre>
                     </button>
 
                     <div class="so-carousel-indicators so-carousel-indicators-line">
-                        <button class="so-carousel-indicator active" data-so-slide="0"></button>
+                        <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
                         <button class="so-carousel-indicator" data-so-slide="1"></button>
                         <button class="so-carousel-indicator" data-so-slide="2"></button>
                     </div>
@@ -239,7 +239,7 @@ const carousel = new SOCarousel(element, {
 
                 <div class="so-carousel so-carousel-multi so-carousel-cards" data-so-carousel data-so-items="3" id="multi-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <div class="so-card">
                                 <img src="https://picsum.photos/400/250?random=10" alt="Product 1" style="width:100%; border-radius: 8px 8px 0 0;">
                                 <div class="so-card-body">
@@ -345,7 +345,7 @@ const carousel = new SOCarousel(element, {
 
                 <div class="so-carousel so-carousel-hero" data-so-carousel id="hero-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <img src="https://picsum.photos/900/500?random=15" alt="Hero 1">
                         </div>
                         <div class="so-carousel-slide">
@@ -364,7 +364,7 @@ const carousel = new SOCarousel(element, {
                     </button>
 
                     <div class="so-carousel-indicators">
-                        <button class="so-carousel-indicator active" data-so-slide="0"></button>
+                        <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
                         <button class="so-carousel-indicator" data-so-slide="1"></button>
                         <button class="so-carousel-indicator" data-so-slide="2"></button>
                     </div>
@@ -401,7 +401,7 @@ const carousel = new SOCarousel(element, {
                 <div class="so-carousel-gallery">
                     <div class="so-carousel" data-so-carousel id="gallery-carousel">
                         <div class="so-carousel-inner">
-                            <div class="so-carousel-slide active">
+                            <div class="so-carousel-slide so-active">
                                 <img src="https://picsum.photos/800/500?random=18" alt="Gallery 1">
                             </div>
                             <div class="so-carousel-slide">
@@ -427,7 +427,7 @@ const carousel = new SOCarousel(element, {
                     </div>
 
                     <div class="so-carousel-thumbnails">
-                        <button class="so-carousel-thumbnail active" data-so-slide="0">
+                        <button class="so-carousel-thumbnail so-active" data-so-slide="0">
                             <img src="https://picsum.photos/800/500?random=18" alt="Thumb 1">
                         </button>
                         <button class="so-carousel-thumbnail" data-so-slide="1">
@@ -481,7 +481,7 @@ const carousel = new SOCarousel(element, {
 
                 <div class="so-carousel so-carousel-autoplay" data-so-carousel data-so-autoplay="true" data-so-interval="4000" id="autoplay-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <img src="https://picsum.photos/800/400?random=23" alt="Auto 1">
                         </div>
                         <div class="so-carousel-slide">
@@ -500,7 +500,7 @@ const carousel = new SOCarousel(element, {
                     </button>
 
                     <div class="so-carousel-indicators">
-                        <button class="so-carousel-indicator active" data-so-slide="0"></button>
+                        <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
                         <button class="so-carousel-indicator" data-so-slide="1"></button>
                         <button class="so-carousel-indicator" data-so-slide="2"></button>
                     </div>
@@ -574,7 +574,7 @@ carousel.stop();   // Stop and reset</code></pre>
                         <label class="so-slider-label so-mb-2">Hover to Show Controls</label>
                         <div class="so-carousel so-carousel-controls-hover" data-so-carousel>
                             <div class="so-carousel-inner">
-                                <div class="so-carousel-slide active">
+                                <div class="so-carousel-slide so-active">
                                     <img src="https://picsum.photos/400/250?random=26" alt="Hover 1">
                                 </div>
                                 <div class="so-carousel-slide">
@@ -591,7 +591,7 @@ carousel.stop();   // Stop and reset</code></pre>
                         <label class="so-slider-label so-mb-2">Dark Controls</label>
                         <div class="so-carousel so-carousel-dark" data-so-carousel>
                             <div class="so-carousel-inner">
-                                <div class="so-carousel-slide active">
+                                <div class="so-carousel-slide so-active">
                                     <img src="https://picsum.photos/400/250?random=28" alt="Dark 1">
                                 </div>
                                 <div class="so-carousel-slide">
@@ -601,7 +601,7 @@ carousel.stop();   // Stop and reset</code></pre>
                             <button class="so-carousel-control so-carousel-control-prev"><span class="material-icons">chevron_left</span></button>
                             <button class="so-carousel-control so-carousel-control-next"><span class="material-icons">chevron_right</span></button>
                             <div class="so-carousel-indicators">
-                                <button class="so-carousel-indicator active" data-so-slide="0"></button>
+                                <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
                                 <button class="so-carousel-indicator" data-so-slide="1"></button>
                             </div>
                         </div>
@@ -644,7 +644,7 @@ carousel.stop();   // Stop and reset</code></pre>
                         <label class="so-slider-label so-mb-2">Small (.so-carousel-sm)</label>
                         <div class="so-carousel so-carousel-sm" data-so-carousel>
                             <div class="so-carousel-inner">
-                                <div class="so-carousel-slide active">
+                                <div class="so-carousel-slide so-active">
                                     <img src="https://picsum.photos/400/250?random=30" alt="Small 1">
                                 </div>
                                 <div class="so-carousel-slide">
@@ -661,7 +661,7 @@ carousel.stop();   // Stop and reset</code></pre>
                         <label class="so-slider-label so-mb-2">Large (.so-carousel-lg)</label>
                         <div class="so-carousel so-carousel-lg" data-so-carousel>
                             <div class="so-carousel-inner">
-                                <div class="so-carousel-slide active">
+                                <div class="so-carousel-slide so-active">
                                     <img src="https://picsum.photos/400/250?random=32" alt="Large 1">
                                 </div>
                                 <div class="so-carousel-slide">
@@ -697,7 +697,7 @@ carousel.stop();   // Stop and reset</code></pre>
 
                 <div class="so-carousel" data-so-carousel id="api-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <img src="https://picsum.photos/800/350?random=34" alt="API 1">
                         </div>
                         <div class="so-carousel-slide">
@@ -711,7 +711,7 @@ carousel.stop();   // Stop and reset</code></pre>
                         </div>
                     </div>
                     <div class="so-carousel-indicators">
-                        <button class="so-carousel-indicator active" data-so-slide="0"></button>
+                        <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
                         <button class="so-carousel-indicator" data-so-slide="1"></button>
                         <button class="so-carousel-indicator" data-so-slide="2"></button>
                         <button class="so-carousel-indicator" data-so-slide="3"></button>
@@ -773,7 +773,7 @@ carousel.destroy();</code></pre>
 
                 <div class="so-carousel" data-so-carousel id="events-carousel">
                     <div class="so-carousel-inner">
-                        <div class="so-carousel-slide active">
+                        <div class="so-carousel-slide so-active">
                             <img src="https://picsum.photos/800/350?random=38" alt="Event 1">
                         </div>
                         <div class="so-carousel-slide">
@@ -786,7 +786,7 @@ carousel.destroy();</code></pre>
                     <button class="so-carousel-control so-carousel-control-prev"><span class="material-icons">chevron_left</span></button>
                     <button class="so-carousel-control so-carousel-control-next"><span class="material-icons">chevron_right</span></button>
                     <div class="so-carousel-indicators">
-                        <button class="so-carousel-indicator active" data-so-slide="0"></button>
+                        <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
                         <button class="so-carousel-indicator" data-so-slide="1"></button>
                         <button class="so-carousel-indicator" data-so-slide="2"></button>
                     </div>

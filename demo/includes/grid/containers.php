@@ -1,4 +1,4 @@
-<div class="so-tab-pane fade" id="pane-containers" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-containers" role="tabpanel">
 
     <!-- Containers Overview -->
     <div class="so-card so-mb-4">

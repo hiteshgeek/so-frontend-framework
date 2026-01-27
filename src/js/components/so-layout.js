@@ -194,11 +194,11 @@ class SOSidebar extends SOComponent {
     this._isCollapsed = !this._isCollapsed;
 
     if (this._isCollapsed) {
-      this.addClass('collapsed');
-      this.removeClass('pinned');
+      this.addClass('so-collapsed');
+      this.removeClass('so-pinned');
     } else {
-      this.removeClass('collapsed');
-      this.addClass('pinned');
+      this.removeClass('so-collapsed');
+      this.addClass('so-pinned');
     }
 
     this._updateBodyClass();
@@ -257,9 +257,9 @@ class SOSidebar extends SOComponent {
    */
   _openMobile() {
     this._isOpen = true;
-    this.addClass('open');
-    this._overlay?.classList.add('active');
-    document.body.classList.add('sidebar-open');
+    this.addClass('so-open');
+    this._overlay?.classList.add('so-active');
+    document.body.classList.add('so-sidebar-open');
     document.body.style.overflow = 'hidden';
 
     this.emit(SOSidebar.EVENTS.MOBILE_OPEN);
@@ -273,9 +273,9 @@ class SOSidebar extends SOComponent {
    */
   _closeMobile() {
     this._isOpen = false;
-    this.removeClass('open');
-    this._overlay?.classList.remove('active');
-    document.body.classList.remove('sidebar-open');
+    this.removeClass('so-open');
+    this._overlay?.classList.remove('so-active');
+    document.body.classList.remove('so-sidebar-open');
     document.body.style.overflow = '';
 
     this.emit(SOSidebar.EVENTS.MOBILE_CLOSE);
@@ -292,20 +292,20 @@ class SOSidebar extends SOComponent {
    * @private
    */
   _toggleSubmenu(item) {
-    const isOpen = item.classList.contains('open');
+    const isOpen = item.classList.contains('so-open');
     const parent = item.parentElement;
 
     // Batch DOM changes
     requestAnimationFrame(() => {
       // Close siblings
-      parent.querySelectorAll(':scope > .so-sidebar-item.open').forEach(sibling => {
+      parent.querySelectorAll(':scope > .so-sidebar-item.so-open').forEach(sibling => {
         if (sibling !== item) {
-          sibling.classList.remove('open');
+          sibling.classList.remove('so-open');
         }
       });
 
       // Toggle current
-      item.classList.toggle('open', !isOpen);
+      item.classList.toggle('so-open', !isOpen);
     });
 
     this.emit(SOSidebar.EVENTS.SUBMENU_TOGGLE, {
@@ -340,10 +340,10 @@ class SOSidebar extends SOComponent {
    * @private
    */
   _initSubmenuState() {
-    this.$$('.so-sidebar-item.current, .so-sidebar-item.active').forEach(item => {
+    this.$$('.so-sidebar-item.so-current, .so-sidebar-item.so-active').forEach(item => {
       let parent = item.parentElement.closest('.so-sidebar-item');
       while (parent) {
-        parent.classList.add('open');
+        parent.classList.add('so-open');
         parent = parent.parentElement.closest('.so-sidebar-item');
       }
     });
@@ -372,11 +372,11 @@ class SOSidebar extends SOComponent {
     const state = SixOrbit.getStorage(this.options.storageKey);
     if (state === 'pinned') {
       this._isCollapsed = false;
-      this.removeClass('collapsed');
-      this.addClass('pinned');
+      this.removeClass('so-collapsed');
+      this.addClass('so-pinned');
     } else {
       this._isCollapsed = true;
-      this.addClass('collapsed');
+      this.addClass('so-collapsed');
     }
   }
 }
@@ -521,7 +521,7 @@ class SONavbar extends SOComponent {
 
         // Update selected state
         outletDropdown.querySelectorAll('.so-navbar-outlet-item').forEach(i => {
-          i.classList.toggle('selected', i === item);
+          i.classList.toggle('so-selected', i === item);
         });
 
         // Update button text
@@ -573,7 +573,7 @@ class SONavbar extends SOComponent {
 
         // Update selected state
         statusDropdown.querySelectorAll('.so-navbar-status-option').forEach(o => {
-          o.classList.toggle('selected', o === option);
+          o.classList.toggle('so-selected', o === option);
         });
 
         // Update button indicator and text
@@ -659,13 +659,13 @@ class SONavbar extends SOComponent {
    * @private
    */
   _toggleStatusDropdown(container) {
-    const isOpen = container.classList.contains('open');
+    const isOpen = container.classList.contains('so-open');
 
     // Close all first
     this.closeAllDropdowns();
 
     if (!isOpen) {
-      container.classList.add('open');
+      container.classList.add('so-open');
       this._activeDropdown = { dropdown: container, type: 'status' };
 
       this.emit(SONavbar.EVENTS.DROPDOWN_OPEN, { dropdown: container, type: 'status' });
@@ -680,31 +680,31 @@ class SONavbar extends SOComponent {
   _closeNavbarDropdowns() {
     // Close user dropdown
     this.$$('.so-navbar-user-dropdown').forEach(dropdown => {
-      dropdown.classList.remove('active');
+      dropdown.classList.remove('so-active');
     });
     this.$$('.so-navbar-user-btn').forEach(btn => {
-      btn.classList.remove('active');
+      btn.classList.remove('so-active');
     });
 
     // Close apps dropdown
     const appsContainer = this.$(this.options.appsContainerSelector);
     if (appsContainer) {
-      appsContainer.classList.remove('open');
+      appsContainer.classList.remove('so-open');
     }
 
     // Close outlet dropdown
     this.$$('.so-navbar-outlet-dropdown').forEach(dropdown => {
-      dropdown.classList.remove('active');
+      dropdown.classList.remove('so-active');
     });
 
     // Close status dropdown (uses 'open' on parent container)
     this.$$('.so-navbar-status').forEach(container => {
-      container.classList.remove('open');
+      container.classList.remove('so-open');
     });
 
     // Close theme dropdown
     this.$$('.so-navbar-theme-dropdown').forEach(dropdown => {
-      dropdown.classList.remove('active');
+      dropdown.classList.remove('so-active');
     });
 
     this._activeDropdown = null;
@@ -720,7 +720,7 @@ class SONavbar extends SOComponent {
     this._closeNavbarDropdowns();
 
     // Close all SODropdown instances
-    this.$$('.so-dropdown.open').forEach(dropdown => {
+    this.$$('.so-dropdown.so-open').forEach(dropdown => {
       const instance = SixOrbit.getInstance(dropdown, 'dropdown');
       if (instance && typeof instance.close === 'function') {
         instance.close();

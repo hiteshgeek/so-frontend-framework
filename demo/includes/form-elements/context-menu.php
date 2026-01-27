@@ -235,12 +235,12 @@
                             <span class="so-context-menu-item-icon"><span class="material-icons">content_copy</span></span>
                             <span class="so-context-menu-item-text">Duplicate</span>
                         </div>
-                        <div class="so-context-menu-item disabled" data-id="share">
+                        <div class="so-context-menu-item so-disabled" data-id="share">
                             <span class="so-context-menu-item-icon"><span class="material-icons">share</span></span>
                             <span class="so-context-menu-item-text">Share</span>
                             <span class="so-context-menu-item-shortcut">Unavailable</span>
                         </div>
-                        <div class="so-context-menu-item disabled" data-id="export">
+                        <div class="so-context-menu-item so-disabled" data-id="export">
                             <span class="so-context-menu-item-icon"><span class="material-icons">download</span></span>
                             <span class="so-context-menu-item-text">Export</span>
                         </div>
@@ -249,7 +249,7 @@
                             <span class="so-context-menu-item-icon"><span class="material-icons">archive</span></span>
                             <span class="so-context-menu-item-text">Archive</span>
                         </div>
-                        <div class="so-context-menu-item danger" data-id="delete">
+                        <div class="so-context-menu-item so-danger" data-id="delete">
                             <span class="so-context-menu-item-icon"><span class="material-icons">delete</span></span>
                             <span class="so-context-menu-item-text">Delete</span>
                             <span class="so-context-menu-item-shortcut">Del</span>
@@ -259,12 +259,12 @@
 
                 <div class="demo-code">
 <pre><code class="language-html">&lt;!-- Disabled item --&gt;
-&lt;div class="so-context-menu-item disabled"&gt;
+&lt;div class="so-context-menu-item so-disabled"&gt;
     &lt;span class="so-context-menu-item-text"&gt;Share&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;!-- Danger/Destructive action --&gt;
-&lt;div class="so-context-menu-item danger"&gt;
+&lt;div class="so-context-menu-item so-danger"&gt;
     &lt;span class="so-context-menu-item-icon"&gt;
         &lt;span class="material-icons"&gt;delete&lt;/span&gt;
     &lt;/span&gt;
@@ -301,7 +301,7 @@
                         <div class="so-context-menu-item" data-id="view"><span class="so-context-menu-item-text">View</span></div>
                         <div class="so-context-menu-item" data-id="edit"><span class="so-context-menu-item-text">Edit</span></div>
                         <div class="so-context-menu-divider"></div>
-                        <div class="so-context-menu-item danger" data-id="delete"><span class="so-context-menu-item-text">Delete</span></div>
+                        <div class="so-context-menu-item so-danger" data-id="delete"><span class="so-context-menu-item-text">Delete</span></div>
                     </div>
 
                     <!-- Default Menu -->
@@ -315,7 +315,7 @@
                             <span class="so-context-menu-item-text">Edit</span>
                         </div>
                         <div class="so-context-menu-divider"></div>
-                        <div class="so-context-menu-item danger" data-id="delete">
+                        <div class="so-context-menu-item so-danger" data-id="delete">
                             <span class="so-context-menu-item-icon"><span class="material-icons">delete</span></span>
                             <span class="so-context-menu-item-text">Delete</span>
                         </div>
@@ -332,7 +332,7 @@
                             <span class="so-context-menu-item-text">Edit Item</span>
                         </div>
                         <div class="so-context-menu-divider"></div>
-                        <div class="so-context-menu-item danger" data-id="delete">
+                        <div class="so-context-menu-item so-danger" data-id="delete">
                             <span class="so-context-menu-item-icon"><span class="material-icons">delete</span></span>
                             <span class="so-context-menu-item-text">Delete Item</span>
                         </div>
@@ -388,7 +388,7 @@
                             <span class="so-context-menu-item-text">Edit</span>
                         </div>
                         <div class="so-context-menu-divider"></div>
-                        <div class="so-context-menu-item danger" data-id="delete">
+                        <div class="so-context-menu-item so-danger" data-id="delete">
                             <span class="so-context-menu-item-icon"><span class="material-icons">delete</span></span>
                             <span class="so-context-menu-item-text">Delete</span>
                         </div>
@@ -502,7 +502,7 @@ menu.element.addEventListener('so:contextmenu:select', (e) => {
                                 <span class="so-context-menu-item-text">Open</span>
                             </div>
                             <div class="so-context-menu-divider"></div>
-                            <div class="so-context-menu-item disabled">
+                            <div class="so-context-menu-item so-disabled">
                                 <span class="so-context-menu-item-icon"><span class="material-icons">save</span></span>
                                 <span class="so-context-menu-item-text">Save</span>
                             </div>
@@ -515,7 +515,7 @@ menu.element.addEventListener('so:contextmenu:select', (e) => {
                             <div class="so-context-menu-item">
                                 <span class="so-context-menu-item-text">Option 2</span>
                             </div>
-                            <div class="so-context-menu-item danger">
+                            <div class="so-context-menu-item so-danger">
                                 <span class="so-context-menu-item-text">Remove</span>
                             </div>
                         </div>

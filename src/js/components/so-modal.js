@@ -111,9 +111,9 @@ class SOModal extends SOComponent {
    * @private
    */
   _shakeModal() {
-    this.element.classList.add('modal-static-shake');
+    this.element.classList.add('so-modal-static-shake');
     setTimeout(() => {
-      this.element.classList.remove('modal-static-shake');
+      this.element.classList.remove('so-modal-static-shake');
     }, 300);
   }
 
@@ -171,14 +171,14 @@ class SOModal extends SOComponent {
     this._backdrop.className = 'so-modal-backdrop';
 
     if (this.options.animation) {
-      this._backdrop.classList.add('fade');
+      this._backdrop.classList.add('so-fade');
     }
 
     document.body.appendChild(this._backdrop);
 
     // Force reflow for animation
     this._backdrop.offsetHeight;
-    this._backdrop.classList.add('show');
+    this._backdrop.classList.add('so-show');
   }
 
   /**
@@ -188,7 +188,7 @@ class SOModal extends SOComponent {
   _hideBackdrop() {
     if (!this._backdrop) return;
 
-    this._backdrop.classList.remove('show');
+    this._backdrop.classList.remove('so-show');
 
     if (this.options.animation) {
       this._backdrop.addEventListener('transitionend', () => {
@@ -248,12 +248,12 @@ class SOModal extends SOComponent {
     this.element.style.display = 'flex';
 
     if (this.options.animation) {
-      this.addClass('fade');
+      this.addClass('so-fade');
       // Force reflow
       this.element.offsetHeight;
     }
 
-    this.addClass('show');
+    this.addClass('so-show');
 
     // Set up focus trap
     if (this.options.focus) {
@@ -305,7 +305,7 @@ class SOModal extends SOComponent {
     this._unbindDocumentKeydown();
 
     // Hide modal
-    this.removeClass('show');
+    this.removeClass('so-show');
 
     const hideComplete = () => {
       this.element.style.display = 'none';
@@ -412,7 +412,7 @@ class SOModal extends SOComponent {
     const staticClass = isStatic ? 'so-modal-static' : '';
 
     const modal = document.createElement('div');
-    modal.className = `so-modal fade ${sizeClass} ${staticClass} ${className}`.trim().replace(/\s+/g, ' ');
+    modal.className = `so-modal so-fade ${sizeClass} ${staticClass} ${className}`.trim().replace(/\s+/g, ' ');
     modal.tabIndex = -1;
 
     // For static modals, set the data attribute

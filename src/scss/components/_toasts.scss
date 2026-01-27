@@ -99,42 +99,42 @@
     transition: all $so-transition-slow;
 
     // Show state
-    &.show {
+    &.#{$so-prefix}show {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 
     // Hiding state
-    &.hiding {
+    &.#{$so-prefix}hiding {
         opacity: 0;
         transform: translateY(-20px) scale(0.95);
     }
 
     // Bottom positioned toasts animate from bottom
-    .bottom-left &,
-    .bottom-right &,
-    .bottom-center & {
+    .#{$so-prefix}bottom-left &,
+    .#{$so-prefix}bottom-right &,
+    .#{$so-prefix}bottom-center & {
         transform: translateY(20px) scale(0.95);
 
-        &.show {
+        &.#{$so-prefix}show {
             transform: translateY(0) scale(1);
         }
 
-        &.hiding {
+        &.#{$so-prefix}hiding {
             transform: translateY(20px) scale(0.95);
         }
     }
 
     // Center positioned toasts scale from center
-    .center &,
-    .custom & {
+    .#{$so-prefix}center &,
+    .#{$so-prefix}custom & {
         transform: scale(0.9);
 
-        &.show {
+        &.#{$so-prefix}show {
             transform: scale(1);
         }
 
-        &.hiding {
+        &.#{$so-prefix}hiding {
             transform: scale(0.9);
         }
     }

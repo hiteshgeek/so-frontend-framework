@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade" id="pane-badges" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-badges" role="tabpanel">
                 <div class="so-card">
                     <div class="so-card-header">
                         <h3 class="so-card-title">Badges</h3>

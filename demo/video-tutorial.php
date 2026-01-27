@@ -20,7 +20,7 @@ $currentPage = 'video-tutorial';
             <span class="so-breadcrumb-bar-separator">
                 <span class="material-icons">chevron_right</span>
             </span>
-            <span class="so-breadcrumb-bar-item active">Video Tutorials</span>
+            <span class="so-breadcrumb-bar-item so-active">Video Tutorials</span>
         </div>
 
         <div class="demo-content" style="padding: 16px;">
@@ -48,7 +48,7 @@ $currentPage = 'video-tutorial';
 
             <!-- Category Tabs -->
             <div class="so-lms-categories">
-                <button class="so-lms-category-btn active" data-category="all">
+                <button class="so-lms-category-btn so-active" data-category="all">
                     <span class="material-icons">apps</span>
                     All
                 </button>

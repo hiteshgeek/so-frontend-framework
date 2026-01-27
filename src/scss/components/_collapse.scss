@@ -85,7 +85,7 @@
       transform: rotate(180deg);
     }
 
-    &.collapsed {
+    &.#{$so-prefix}collapsed {
       border-bottom: none;
       border-radius: css-var('border-radius');
     }
@@ -119,7 +119,7 @@
       pointer-events: none;
     }
 
-    &.show {
+    &.#{$so-prefix}show {
       max-height: none;
 
       &::after {
@@ -141,7 +141,7 @@
   transition: width $so-transition-base, min-width $so-transition-base;
   overflow: hidden;
 
-  &.collapsed {
+  &.#{$so-prefix}collapsed {
     width: 0 !important;
     min-width: 0 !important;
     padding: 0 !important;
@@ -166,11 +166,11 @@
   opacity: 0;
   transition: opacity $so-transition-base, height 0.35s ease;
 
-  &.show {
+  &.#{$so-prefix}show {
     opacity: 1;
   }
 
-  &.collapsing {
+  &.#{$so-prefix}collapsing {
     opacity: 0;
   }
 }
@@ -180,7 +180,7 @@
   transform: translateX(-100%);
   transition: transform $so-transition-base;
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: translateX(0);
   }
 }
@@ -191,7 +191,7 @@
   opacity: 0;
   transition: transform $so-transition-base, opacity $so-transition-base, height 0.35s ease;
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: scale(1);
     opacity: 1;
   }

@@ -14,14 +14,14 @@
                     <ol class="so-breadcrumb">
                         <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                         <li class="so-breadcrumb-item"><a href="#">Library</a></li>
-                        <li class="so-breadcrumb-item active" aria-current="page">Data</li>
+                        <li class="so-breadcrumb-item so-active" aria-current="page">Data</li>
                     </ol>
                 </nav>
 
                 <nav aria-label="breadcrumb" class="so-mb-6">
                     <ol class="so-breadcrumb">
                         <li class="so-breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="so-breadcrumb-item active" aria-current="page">Library</li>
+                        <li class="so-breadcrumb-item so-active" aria-current="page">Library</li>
                     </ol>
                 </nav>
 
@@ -36,7 +36,7 @@
     &lt;ol class="so-breadcrumb"&gt;
         &lt;li class="so-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
         &lt;li class="so-breadcrumb-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
-        &lt;li class="so-breadcrumb-item active" aria-current="page"&gt;Data&lt;/li&gt;
+        &lt;li class="so-breadcrumb-item so-active" aria-current="page"&gt;Data&lt;/li&gt;
     &lt;/ol&gt;
 &lt;/nav&gt;</code></pre>
                 </div>
@@ -58,7 +58,7 @@
                             <ol class="so-breadcrumb so-breadcrumb-slash">
                                 <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                                <li class="so-breadcrumb-item active">Details</li>
+                                <li class="so-breadcrumb-item so-active">Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -69,7 +69,7 @@
                             <ol class="so-breadcrumb so-breadcrumb-chevron">
                                 <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                                <li class="so-breadcrumb-item active">Details</li>
+                                <li class="so-breadcrumb-item so-active">Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -80,7 +80,7 @@
                             <ol class="so-breadcrumb so-breadcrumb-arrow">
                                 <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                                <li class="so-breadcrumb-item active">Details</li>
+                                <li class="so-breadcrumb-item so-active">Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -91,7 +91,7 @@
                             <ol class="so-breadcrumb so-breadcrumb-pipe">
                                 <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                                <li class="so-breadcrumb-item active">Details</li>
+                                <li class="so-breadcrumb-item so-active">Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -102,7 +102,7 @@
                             <ol class="so-breadcrumb so-breadcrumb-dot">
                                 <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                                <li class="so-breadcrumb-item active">Details</li>
+                                <li class="so-breadcrumb-item so-active">Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -113,7 +113,7 @@
                             <ol class="so-breadcrumb so-breadcrumb-icon">
                                 <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                                <li class="so-breadcrumb-item active">Details</li>
+                                <li class="so-breadcrumb-item so-active">Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -151,7 +151,7 @@
                         <li class="so-breadcrumb-item">
                             <a href="#"><span class="material-icons">folder</span> Projects</a>
                         </li>
-                        <li class="so-breadcrumb-item active">
+                        <li class="so-breadcrumb-item so-active">
                             <span class="material-icons">description</span> Document
                         </li>
                     </ol>
@@ -165,7 +165,7 @@
                         <li class="so-breadcrumb-item">
                             <a href="#">Settings</a>
                         </li>
-                        <li class="so-breadcrumb-item active">Profile</li>
+                        <li class="so-breadcrumb-item so-active">Profile</li>
                     </ol>
                 </nav>
 
@@ -195,7 +195,7 @@
                     <ol class="so-breadcrumb so-breadcrumb-filled so-breadcrumb-chevron">
                         <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                         <li class="so-breadcrumb-item"><a href="#">Category</a></li>
-                        <li class="so-breadcrumb-item active">Current Page</li>
+                        <li class="so-breadcrumb-item so-active">Current Page</li>
                     </ol>
                 </nav>
 
@@ -224,7 +224,7 @@
                         <ol class="so-breadcrumb so-breadcrumb-primary so-breadcrumb-chevron">
                             <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                             <li class="so-breadcrumb-item"><a href="#">Library</a></li>
-                            <li class="so-breadcrumb-item active">Primary</li>
+                            <li class="so-breadcrumb-item so-active">Primary</li>
                         </ol>
                     </nav>
 
@@ -232,7 +232,7 @@
                         <ol class="so-breadcrumb so-breadcrumb-success so-breadcrumb-chevron">
                             <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                             <li class="so-breadcrumb-item"><a href="#">Library</a></li>
-                            <li class="so-breadcrumb-item active">Success</li>
+                            <li class="so-breadcrumb-item so-active">Success</li>
                         </ol>
                     </nav>
 
@@ -240,7 +240,7 @@
                         <ol class="so-breadcrumb so-breadcrumb-danger so-breadcrumb-chevron">
                             <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                             <li class="so-breadcrumb-item"><a href="#">Library</a></li>
-                            <li class="so-breadcrumb-item active">Danger</li>
+                            <li class="so-breadcrumb-item so-active">Danger</li>
                         </ol>
                     </nav>
                 </div>
@@ -272,7 +272,7 @@
                         <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                         <li class="so-breadcrumb-item"><a href="#">Products</a></li>
                         <li class="so-breadcrumb-item"><a href="#">Electronics</a></li>
-                        <li class="so-breadcrumb-item active">Smartphones</li>
+                        <li class="so-breadcrumb-item so-active">Smartphones</li>
                     </ol>
                 </nav>
 
@@ -286,7 +286,7 @@
                     <pre class="so-code-content"><code class="language-html">&lt;ol class="so-breadcrumb so-breadcrumb-pills"&gt;
     &lt;li class="so-breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li class="so-breadcrumb-item"&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="so-breadcrumb-item active"&gt;Current&lt;/li&gt;
+    &lt;li class="so-breadcrumb-item so-active"&gt;Current&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
                 </div>
             </div>
@@ -306,7 +306,7 @@
                         <ol class="so-breadcrumb so-breadcrumb-sm so-breadcrumb-chevron">
                             <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                             <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                            <li class="so-breadcrumb-item active">Details</li>
+                            <li class="so-breadcrumb-item so-active">Details</li>
                         </ol>
                     </nav>
                 </div>
@@ -317,7 +317,7 @@
                         <ol class="so-breadcrumb so-breadcrumb-lg so-breadcrumb-chevron">
                             <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                             <li class="so-breadcrumb-item"><a href="#">Products</a></li>
-                            <li class="so-breadcrumb-item active">Details</li>
+                            <li class="so-breadcrumb-item so-active">Details</li>
                         </ol>
                     </nav>
                 </div>
@@ -349,7 +349,7 @@
                         <ol class="so-breadcrumb so-breadcrumb-truncate so-breadcrumb-chevron">
                             <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                             <li class="so-breadcrumb-item"><a href="#">Very Long Category Name That Should Truncate</a></li>
-                            <li class="so-breadcrumb-item active">Current Page With Long Name</li>
+                            <li class="so-breadcrumb-item so-active">Current Page With Long Name</li>
                         </ol>
                     </nav>
                 </div>
@@ -361,7 +361,7 @@
                             <li class="so-breadcrumb-item"><a href="#">Home</a></li>
                             <li class="so-breadcrumb-item so-breadcrumb-ellipsis"><a href="#">...</a></li>
                             <li class="so-breadcrumb-item"><a href="#">Parent</a></li>
-                            <li class="so-breadcrumb-item active">Current</li>
+                            <li class="so-breadcrumb-item so-active">Current</li>
                         </ol>
                     </nav>
                 </div>

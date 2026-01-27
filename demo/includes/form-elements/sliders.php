@@ -514,7 +514,7 @@
                 <div class="so-grid so-grid-cols-1 md:so-grid-cols-2 so-gap-4 so-mb-6">
                     <div>
                         <label class="so-slider-label">Disabled Primary</label>
-                        <div class="so-slider so-slider-primary disabled" data-so-slider>
+                        <div class="so-slider so-slider-primary so-disabled" data-so-slider>
                             <input type="range" class="so-slider-input" min="0" max="100" value="40" disabled>
                             <div class="so-slider-track">
                                 <div class="so-slider-fill"></div>
@@ -525,7 +525,7 @@
 
                     <div>
                         <label class="so-slider-label">Disabled Success</label>
-                        <div class="so-slider so-slider-success disabled" data-so-slider>
+                        <div class="so-slider so-slider-success so-disabled" data-so-slider>
                             <input type="range" class="so-slider-input" min="0" max="100" value="75" disabled>
                             <div class="so-slider-track">
                                 <div class="so-slider-fill"></div>
@@ -542,7 +542,7 @@
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-slider so-slider-primary disabled" data-so-slider&gt;
+                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-slider so-slider-primary so-disabled" data-so-slider&gt;
     &lt;input type="range" class="so-slider-input" min="0" max="100" value="40" disabled&gt;
     &lt;div class="so-slider-track"&gt;
         &lt;div class="so-slider-fill"&gt;&lt;/div&gt;

@@ -14,7 +14,7 @@
                     <!-- Navigation -->
                     <div class="so-col-span-3">
                         <nav class="so-scrollspy-nav so-scrollspy-bordered so-scrollspy-sticky" id="scrollspy-nav-1" data-so-scrollspy data-so-target="#scrollspy-content-1">
-                            <a class="so-scrollspy-link active" href="#section1">Section 1</a>
+                            <a class="so-scrollspy-link so-active" href="#section1">Section 1</a>
                             <a class="so-scrollspy-link" href="#section2">Section 2</a>
                             <a class="so-scrollspy-link" href="#section3">Section 3</a>
                             <a class="so-scrollspy-link" href="#section4">Section 4</a>
@@ -86,7 +86,7 @@
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Default</label>
                         <nav class="so-scrollspy-nav">
-                            <a class="so-scrollspy-link active" href="#">Overview</a>
+                            <a class="so-scrollspy-link so-active" href="#">Overview</a>
                             <a class="so-scrollspy-link" href="#">Features</a>
                             <a class="so-scrollspy-link" href="#">Pricing</a>
                             <a class="so-scrollspy-link" href="#">FAQ</a>
@@ -97,7 +97,7 @@
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Bordered (.so-scrollspy-bordered)</label>
                         <nav class="so-scrollspy-nav so-scrollspy-bordered">
-                            <a class="so-scrollspy-link active" href="#">Overview</a>
+                            <a class="so-scrollspy-link so-active" href="#">Overview</a>
                             <a class="so-scrollspy-link" href="#">Features</a>
                             <a class="so-scrollspy-link" href="#">Pricing</a>
                             <a class="so-scrollspy-link" href="#">FAQ</a>
@@ -108,7 +108,7 @@
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Pills (.so-scrollspy-pills)</label>
                         <nav class="so-scrollspy-nav so-scrollspy-pills">
-                            <a class="so-scrollspy-link active" href="#">Overview</a>
+                            <a class="so-scrollspy-link so-active" href="#">Overview</a>
                             <a class="so-scrollspy-link" href="#">Features</a>
                             <a class="so-scrollspy-link" href="#">Pricing</a>
                             <a class="so-scrollspy-link" href="#">FAQ</a>
@@ -119,7 +119,7 @@
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Numbered (.so-scrollspy-numbered)</label>
                         <nav class="so-scrollspy-nav so-scrollspy-numbered">
-                            <a class="so-scrollspy-link active" href="#">Overview</a>
+                            <a class="so-scrollspy-link so-active" href="#">Overview</a>
                             <a class="so-scrollspy-link" href="#">Features</a>
                             <a class="so-scrollspy-link" href="#">Pricing</a>
                             <a class="so-scrollspy-link" href="#">FAQ</a>
@@ -153,7 +153,7 @@
                 <div class="so-mb-6">
                     <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Underline (.so-scrollspy-underline)</label>
                     <nav class="so-scrollspy-nav so-scrollspy-underline">
-                        <a class="so-scrollspy-link active" href="#">Overview</a>
+                        <a class="so-scrollspy-link so-active" href="#">Overview</a>
                         <a class="so-scrollspy-link" href="#">Features</a>
                         <a class="so-scrollspy-link" href="#">Pricing</a>
                         <a class="so-scrollspy-link" href="#">FAQ</a>
@@ -163,7 +163,7 @@
                 <div class="so-mb-6">
                     <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Horizontal (.so-scrollspy-horizontal)</label>
                     <nav class="so-scrollspy-nav so-scrollspy-horizontal">
-                        <a class="so-scrollspy-link active" href="#">Overview</a>
+                        <a class="so-scrollspy-link so-active" href="#">Overview</a>
                         <a class="so-scrollspy-link" href="#">Features</a>
                         <a class="so-scrollspy-link" href="#">Pricing</a>
                         <a class="so-scrollspy-link" href="#">FAQ</a>
@@ -194,7 +194,7 @@
                 <p class="so-text-muted so-mb-4">Add Material Icons to navigation items.</p>
 
                 <nav class="so-scrollspy-nav so-scrollspy-bordered so-mb-6" style="max-width: 250px;">
-                    <a class="so-scrollspy-link active" href="#">
+                    <a class="so-scrollspy-link so-active" href="#">
                         <span class="material-icons">home</span>
                         Overview
                     </a>
@@ -239,7 +239,7 @@
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Primary</label>
                         <nav class="so-scrollspy-nav so-scrollspy-bordered so-scrollspy-primary">
-                            <a class="so-scrollspy-link active" href="#">Active</a>
+                            <a class="so-scrollspy-link so-active" href="#">Active</a>
                             <a class="so-scrollspy-link" href="#">Link</a>
                             <a class="so-scrollspy-link" href="#">Link</a>
                         </nav>
@@ -247,7 +247,7 @@
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Success</label>
                         <nav class="so-scrollspy-nav so-scrollspy-bordered so-scrollspy-success">
-                            <a class="so-scrollspy-link active" href="#">Active</a>
+                            <a class="so-scrollspy-link so-active" href="#">Active</a>
                             <a class="so-scrollspy-link" href="#">Link</a>
                             <a class="so-scrollspy-link" href="#">Link</a>
                         </nav>
@@ -255,7 +255,7 @@
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Danger</label>
                         <nav class="so-scrollspy-nav so-scrollspy-bordered so-scrollspy-danger">
-                            <a class="so-scrollspy-link active" href="#">Active</a>
+                            <a class="so-scrollspy-link so-active" href="#">Active</a>
                             <a class="so-scrollspy-link" href="#">Link</a>
                             <a class="so-scrollspy-link" href="#">Link</a>
                         </nav>

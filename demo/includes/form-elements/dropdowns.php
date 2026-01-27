@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade" id="pane-dropdowns" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-dropdowns" role="tabpanel">
 
                 <!-- Section 1: Basic Dropdowns -->
                 <div class="so-card so-mb-4">
@@ -195,9 +195,9 @@
                                     </button>
                                     <div class="so-dropdown-menu">
                                         <div class="so-dropdown-item" data-value="1">Available Option</div>
-                                        <div class="so-dropdown-item disabled" data-value="2">Unavailable (disabled)</div>
+                                        <div class="so-dropdown-item so-disabled" data-value="2">Unavailable (disabled)</div>
                                         <div class="so-dropdown-item" data-value="3">Another Option</div>
-                                        <div class="so-dropdown-item disabled" data-value="4">Also Disabled</div>
+                                        <div class="so-dropdown-item so-disabled" data-value="4">Also Disabled</div>
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +212,7 @@
                                     </button>
                                     <div class="so-dropdown-menu">
                                         <div class="so-dropdown-item" data-value="1">Option 1</div>
-                                        <div class="so-dropdown-item active" data-value="2">
+                                        <div class="so-dropdown-item so-active" data-value="2">
                                             Option 2
                                             <span class="material-icons so-dropdown-check">check</span>
                                         </div>
@@ -543,7 +543,7 @@
                             </div>
                         </div>
 
-                        <h4 class="so-demo-section-heading">Programmatic Control</h4>
+                        <h4 class="so-demo-section-heading so-mt-6">Programmatic Control</h4>
                         <div class="so-flex so-gap-2 so-flex-wrap so-mb-3">
                             <button class="so-btn so-btn-outline" onclick="window.demoDropdown && demoDropdown.open()">
                                 <span class="material-icons">expand_more</span>
@@ -1034,12 +1034,12 @@ dropdown.clearSelection();  // Clear all selections
                             <div class="so-form-group">
                                 <label class="so-form-label">Min 1 Selection Required</label>
                                 <div class="so-dropdown so-dropdown-searchable" data-so-dropdown
-                                     data-so-multiple="true"
-                                     data-so-min-selections="1"
-                                     data-so-show-actions="true"
-                                     data-so-select-none-text=""
-                                     data-so-all-selected-text="All Outlets"
-                                     data-so-multiple-selected-text="{count} Outlets">
+                                    data-so-multiple="true"
+                                    data-so-min-selections="1"
+                                    data-so-show-actions="true"
+                                    data-so-select-none-text=""
+                                    data-so-all-selected-text="All Outlets"
+                                    data-so-multiple-selected-text="{count} Outlets">
                                     <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
                                         <span class="material-icons">storefront</span>
                                         <span class="so-dropdown-selected">All Outlets</span>
@@ -1050,19 +1050,19 @@ dropdown.clearSelection();  // Clear all selections
                                             <input type="text" class="so-dropdown-search-input" placeholder="Search outlets...">
                                         </div>
                                         <div class="so-dropdown-items">
-                                            <div class="so-dropdown-item active" data-value="head-office">
+                                            <div class="so-dropdown-item so-active" data-value="head-office">
                                                 Head Office
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="downtown">
+                                            <div class="so-dropdown-item so-active" data-value="downtown">
                                                 Downtown Branch
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="mall">
+                                            <div class="so-dropdown-item so-active" data-value="mall">
                                                 Mall Location
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="airport">
+                                            <div class="so-dropdown-item so-active" data-value="airport">
                                                 Airport Store
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
@@ -1076,10 +1076,10 @@ dropdown.clearSelection();  // Clear all selections
                             <div class="so-form-group">
                                 <label class="so-form-label">Min 2 Selections Required</label>
                                 <div class="so-dropdown so-dropdown-searchable" data-so-dropdown
-                                     data-so-multiple="true"
-                                     data-so-min-selections="2"
-                                     data-so-all-selected-text="All Categories"
-                                     data-so-multiple-selected-text="{count} Categories">
+                                    data-so-multiple="true"
+                                    data-so-min-selections="2"
+                                    data-so-all-selected-text="All Categories"
+                                    data-so-multiple-selected-text="{count} Categories">
                                     <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
                                         <span class="material-icons">category</span>
                                         <span class="so-dropdown-selected">All Categories</span>
@@ -1087,19 +1087,19 @@ dropdown.clearSelection();  // Clear all selections
                                     </button>
                                     <div class="so-dropdown-menu">
                                         <div class="so-dropdown-items">
-                                            <div class="so-dropdown-item active" data-value="electronics">
+                                            <div class="so-dropdown-item so-active" data-value="electronics">
                                                 Electronics
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="clothing">
+                                            <div class="so-dropdown-item so-active" data-value="clothing">
                                                 Clothing
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="food">
+                                            <div class="so-dropdown-item so-active" data-value="food">
                                                 Food & Beverages
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="home">
+                                            <div class="so-dropdown-item so-active" data-value="home">
                                                 Home & Garden
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
@@ -1113,10 +1113,10 @@ dropdown.clearSelection();  // Clear all selections
                             <div class="so-form-group">
                                 <label class="so-form-label">Custom Display Text</label>
                                 <div class="so-dropdown so-dropdown-searchable" data-so-dropdown
-                                     data-so-multiple="true"
-                                     data-so-show-actions="true"
-                                     data-so-all-selected-text="All Team Members"
-                                     data-so-multiple-selected-text="{count} people assigned">
+                                    data-so-multiple="true"
+                                    data-so-show-actions="true"
+                                    data-so-all-selected-text="All Team Members"
+                                    data-so-multiple-selected-text="{count} people assigned">
                                     <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
                                         <span class="material-icons">group</span>
                                         <span class="so-dropdown-selected placeholder">Assign team</span>
@@ -1195,9 +1195,9 @@ dropdown.clearSelection();  // Clear all selections
                             <div class="so-form-group">
                                 <label class="so-form-label">Checkbox Style (default)</label>
                                 <div class="so-dropdown" data-so-dropdown
-                                     data-so-multiple="true"
-                                     data-so-multiple-style="checkbox"
-                                     data-so-show-actions="true">
+                                    data-so-multiple="true"
+                                    data-so-multiple-style="checkbox"
+                                    data-so-show-actions="true">
                                     <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
                                         <span class="material-icons">label</span>
                                         <span class="so-dropdown-selected">2 selected</span>
@@ -1205,8 +1205,8 @@ dropdown.clearSelection();  // Clear all selections
                                     </button>
                                     <div class="so-dropdown-menu">
                                         <div class="so-dropdown-items">
-                                            <div class="so-dropdown-item active" data-value="important">Important</div>
-                                            <div class="so-dropdown-item active" data-value="urgent">Urgent</div>
+                                            <div class="so-dropdown-item so-active" data-value="important">Important</div>
+                                            <div class="so-dropdown-item so-active" data-value="urgent">Urgent</div>
                                             <div class="so-dropdown-item" data-value="review">Needs Review</div>
                                             <div class="so-dropdown-item" data-value="approved">Approved</div>
                                         </div>
@@ -1219,10 +1219,10 @@ dropdown.clearSelection();  // Clear all selections
                             <div class="so-form-group">
                                 <label class="so-form-label">Check Style (icon only)</label>
                                 <div class="so-dropdown" data-so-dropdown
-                                     data-so-multiple="true"
-                                     data-so-multiple-style="check"
-                                     data-so-show-actions="true"
-                                     data-so-select-none-text="">
+                                    data-so-multiple="true"
+                                    data-so-multiple-style="check"
+                                    data-so-show-actions="true"
+                                    data-so-select-none-text="">
                                     <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
                                         <span class="material-icons">flag</span>
                                         <span class="so-dropdown-selected">2 selected</span>
@@ -1230,11 +1230,11 @@ dropdown.clearSelection();  // Clear all selections
                                     </button>
                                     <div class="so-dropdown-menu">
                                         <div class="so-dropdown-items">
-                                            <div class="so-dropdown-item active" data-value="high">
+                                            <div class="so-dropdown-item so-active" data-value="high">
                                                 High Priority
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="medium">
+                                            <div class="so-dropdown-item so-active" data-value="medium">
                                                 Medium Priority
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
@@ -1256,13 +1256,13 @@ dropdown.clearSelection();  // Clear all selections
                             <div class="so-form-group">
                                 <label class="so-form-label">Check Style + Min Selection</label>
                                 <div class="so-dropdown so-dropdown-searchable" data-so-dropdown
-                                     data-so-multiple="true"
-                                     data-so-multiple-style="check"
-                                     data-so-min-selections="1"
-                                     data-so-show-actions="true"
-                                     data-so-select-none-text=""
-                                     data-so-all-selected-text="All Locations"
-                                     data-so-multiple-selected-text="{count} Locations">
+                                    data-so-multiple="true"
+                                    data-so-multiple-style="check"
+                                    data-so-min-selections="1"
+                                    data-so-show-actions="true"
+                                    data-so-select-none-text=""
+                                    data-so-all-selected-text="All Locations"
+                                    data-so-multiple-selected-text="{count} Locations">
                                     <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
                                         <span class="material-icons">location_on</span>
                                         <span class="so-dropdown-selected">All Locations</span>
@@ -1273,19 +1273,19 @@ dropdown.clearSelection();  // Clear all selections
                                             <input type="text" class="so-dropdown-search-input" placeholder="Search locations...">
                                         </div>
                                         <div class="so-dropdown-items">
-                                            <div class="so-dropdown-item active" data-value="new-york">
+                                            <div class="so-dropdown-item so-active" data-value="new-york">
                                                 New York
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="los-angeles">
+                                            <div class="so-dropdown-item so-active" data-value="los-angeles">
                                                 Los Angeles
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="chicago">
+                                            <div class="so-dropdown-item so-active" data-value="chicago">
                                                 Chicago
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
-                                            <div class="so-dropdown-item active" data-value="houston">
+                                            <div class="so-dropdown-item so-active" data-value="houston">
                                                 Houston
                                                 <span class="material-icons so-dropdown-check">check</span>
                                             </div>
@@ -1299,9 +1299,9 @@ dropdown.clearSelection();  // Clear all selections
                             <div class="so-form-group">
                                 <label class="so-form-label">Checkbox with All/None Actions</label>
                                 <div class="so-dropdown" data-so-dropdown
-                                     data-so-multiple="true"
-                                     data-so-multiple-style="checkbox"
-                                     data-so-show-actions="true">
+                                    data-so-multiple="true"
+                                    data-so-multiple-style="checkbox"
+                                    data-so-show-actions="true">
                                     <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
                                         <span class="material-icons">folder</span>
                                         <span class="so-dropdown-selected placeholder">Select folders</span>
@@ -1717,4 +1717,3 @@ dropdown.clearSelection();  // Clear all selections
                 </div>
 
             </div>
-

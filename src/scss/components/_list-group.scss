@@ -41,7 +41,7 @@
   }
 
   // Disabled state
-  &.disabled,
+  &.#{$so-prefix}disabled,
   &:disabled {
     color: css-var('text-muted');
     pointer-events: none;
@@ -50,7 +50,7 @@
   }
 
   // Active state
-  &.active {
+  &.#{$so-prefix}active {
     z-index: 2;
     color: #fff;
     background-color: $so-primary;
@@ -196,7 +196,7 @@
         background-color: rgba($color-value, 0.2);
       }
 
-      &.active {
+      &.#{$so-prefix}active {
         color: #fff;
         background-color: $color-value;
         border-color: $color-value;
@@ -227,7 +227,7 @@
     color: css-var('text-muted');
   }
 
-  &.active {
+  &.#{$so-prefix}active {
     > .material-icons,
     > .#{$so-prefix}list-group-icon {
       color: inherit;
@@ -462,7 +462,7 @@
     border-color: css-var('border-color');
     color: css-var('text-color');
 
-    &.active {
+    &.#{$so-prefix}active {
       background-color: $so-primary;
       border-color: $so-primary;
     }

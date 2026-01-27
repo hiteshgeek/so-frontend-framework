@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade" id="pane-checkboxes" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-checkboxes" role="tabpanel">
 
                 <!-- Section 1: Basic Checkboxes -->
                 <div class="so-card so-mb-4">
@@ -31,14 +31,14 @@
                                         </span>
                                         <span class="so-checkbox-label">Indeterminate checkbox</span>
                                     </label>
-                                    <label class="so-checkbox disabled">
+                                    <label class="so-checkbox so-disabled">
                                         <input type="checkbox" disabled>
                                         <span class="so-checkbox-box">
                                             <span class="material-icons">check</span>
                                         </span>
                                         <span class="so-checkbox-label">Disabled checkbox</span>
                                     </label>
-                                    <label class="so-checkbox disabled">
+                                    <label class="so-checkbox so-disabled">
                                         <input type="checkbox" checked disabled>
                                         <span class="so-checkbox-box">
                                             <span class="material-icons">check</span>
@@ -123,7 +123,7 @@
 &lt;script&gt;document.getElementById('myCheckbox').indeterminate = true;&lt;/script&gt;
 
 &lt;!-- Disabled --&gt;
-&lt;label class="so-checkbox disabled"&gt;
+&lt;label class="so-checkbox so-disabled"&gt;
     &lt;input type="checkbox" disabled&gt;
     ...
 &lt;/label&gt;
@@ -365,7 +365,7 @@
                                         <span class="so-radio-circle"></span>
                                         <span class="so-radio-label">Option 3</span>
                                     </label>
-                                    <label class="so-radio disabled">
+                                    <label class="so-radio so-disabled">
                                         <input type="radio" name="radio-demo-1" value="4" disabled>
                                         <span class="so-radio-circle"></span>
                                         <span class="so-radio-label">Disabled option</span>
@@ -613,12 +613,12 @@
                                         <span class="so-switch-track"></span>
                                         <span class="so-switch-label">Checked switch</span>
                                     </label>
-                                    <label class="so-switch disabled">
+                                    <label class="so-switch so-disabled">
                                         <input type="checkbox" disabled>
                                         <span class="so-switch-track"></span>
                                         <span class="so-switch-label">Disabled switch</span>
                                     </label>
-                                    <label class="so-switch disabled">
+                                    <label class="so-switch so-disabled">
                                         <input type="checkbox" checked disabled>
                                         <span class="so-switch-track"></span>
                                         <span class="so-switch-label">Disabled checked</span>

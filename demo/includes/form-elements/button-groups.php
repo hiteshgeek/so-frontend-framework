@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade" id="pane-button-groups" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-button-groups" role="tabpanel">
                 <!-- Basic Button Group -->
                 <div class="so-card so-mb-4">
                     <div class="so-card-header">
@@ -192,7 +192,7 @@
                             <div>
                                 <label class="so-form-label so-mb-2">Toggle Buttons</label>
                                 <div class="so-btn-group" role="group">
-                                    <button type="button" class="so-btn so-btn-outline active">Day</button>
+                                    <button type="button" class="so-btn so-btn-outline so-active">Day</button>
                                     <button type="button" class="so-btn so-btn-outline">Week</button>
                                     <button type="button" class="so-btn so-btn-outline">Month</button>
                                     <button type="button" class="so-btn so-btn-outline">Year</button>
@@ -225,7 +225,7 @@
 
 &lt;!-- Toggle Buttons --&gt;
 &lt;div class="so-btn-group" role="group"&gt;
-    &lt;button class="so-btn so-btn-outline active"&gt;Day&lt;/button&gt;
+    &lt;button class="so-btn so-btn-outline so-active"&gt;Day&lt;/button&gt;
     &lt;button class="so-btn so-btn-outline"&gt;Week&lt;/button&gt;
     &lt;button class="so-btn so-btn-outline"&gt;Month&lt;/button&gt;
 &lt;/div&gt;
@@ -1102,18 +1102,18 @@ element.addEventListener('so:toggle:change', (e) => {
                         <h6 class="so-mb-3">Block Toggle Groups</h6>
                         <div class="so-flex so-flex-col so-gap-3 so-mb-4" style="max-width: 500px;">
                             <div class="so-btn-group so-btn-group-toggle so-btn-group-block" data-so-toggle="buttons" data-toggle-type="radio">
-                                <button type="button" class="so-btn so-btn-outline-primary active" data-value="daily">Daily</button>
+                                <button type="button" class="so-btn so-btn-outline-primary so-active" data-value="daily">Daily</button>
                                 <button type="button" class="so-btn so-btn-outline-primary" data-value="weekly">Weekly</button>
                                 <button type="button" class="so-btn so-btn-outline-primary" data-value="monthly">Monthly</button>
                             </div>
                             <div class="so-btn-group so-btn-group-toggle so-btn-group-block" data-so-toggle="buttons" data-toggle-type="checkbox">
-                                <button type="button" class="so-btn so-btn-light-primary active" data-value="bold">
+                                <button type="button" class="so-btn so-btn-light-primary so-active" data-value="bold">
                                     <span class="material-icons">format_bold</span>
                                 </button>
                                 <button type="button" class="so-btn so-btn-light-primary" data-value="italic">
                                     <span class="material-icons">format_italic</span>
                                 </button>
-                                <button type="button" class="so-btn so-btn-light-primary active" data-value="underline">
+                                <button type="button" class="so-btn so-btn-light-primary so-active" data-value="underline">
                                     <span class="material-icons">format_underlined</span>
                                 </button>
                                 <button type="button" class="so-btn so-btn-light-primary" data-value="strikethrough">
@@ -1238,7 +1238,7 @@ element.addEventListener('so:toggle:change', (e) => {
 
 &lt;!-- Block Toggle Group --&gt;
 &lt;div class="so-btn-group so-btn-group-toggle so-btn-group-block" data-so-toggle="buttons" data-toggle-type="radio"&gt;
-    &lt;button type="button" class="so-btn so-btn-outline-primary active" data-value="daily"&gt;Daily&lt;/button&gt;
+    &lt;button type="button" class="so-btn so-btn-outline-primary so-active" data-value="daily"&gt;Daily&lt;/button&gt;
     &lt;button type="button" class="so-btn so-btn-outline-primary" data-value="weekly"&gt;Weekly&lt;/button&gt;
     &lt;button type="button" class="so-btn so-btn-outline-primary" data-value="monthly"&gt;Monthly&lt;/button&gt;
 &lt;/div&gt;

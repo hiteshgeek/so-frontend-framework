@@ -534,13 +534,13 @@
                 <div class="so-mb-4">
                     <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Order Status (Step 3 of 5)</label>
                     <div class="so-progress so-progress-stepped so-progress-primary">
-                        <div class="so-progress-step active">
+                        <div class="so-progress-step so-active">
                             <div class="so-progress-step-fill"></div>
                         </div>
-                        <div class="so-progress-step active">
+                        <div class="so-progress-step so-active">
                             <div class="so-progress-step-fill"></div>
                         </div>
-                        <div class="so-progress-step active">
+                        <div class="so-progress-step so-active">
                             <div class="so-progress-step-fill"></div>
                         </div>
                         <div class="so-progress-step">
@@ -555,10 +555,10 @@
                 <div class="so-mb-6">
                     <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Password Strength (Partial Step)</label>
                     <div class="so-progress so-progress-stepped so-progress-success">
-                        <div class="so-progress-step active">
+                        <div class="so-progress-step so-active">
                             <div class="so-progress-step-fill"></div>
                         </div>
-                        <div class="so-progress-step active">
+                        <div class="so-progress-step so-active">
                             <div class="so-progress-step-fill"></div>
                         </div>
                         <div class="so-progress-step partial" style="--step-progress: 60%">
@@ -578,10 +578,10 @@
                         </button>
                     </div>
                     <pre class="so-code-content"><code class="language-html">&lt;div class="so-progress so-progress-stepped so-progress-primary"&gt;
-    &lt;div class="so-progress-step active"&gt;
+    &lt;div class="so-progress-step so-active"&gt;
         &lt;div class="so-progress-step-fill"&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="so-progress-step active"&gt;
+    &lt;div class="so-progress-step so-active"&gt;
         &lt;div class="so-progress-step-fill"&gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="so-progress-step"&gt;

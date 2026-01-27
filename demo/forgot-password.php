@@ -43,7 +43,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
             <div class="so-auth-card">
                 <!-- Step Indicator -->
                 <div class="so-auth-steps">
-                    <div class="so-auth-step-dot active"></div>
+                    <div class="so-auth-step-dot so-active"></div>
                     <div class="so-auth-step-dot"></div>
                     <div class="so-auth-step-dot"></div>
                     <div class="so-auth-step-dot"></div>
@@ -51,7 +51,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
 
                 <div class="so-auth-body">
                     <!-- Step 1: Enter Email/Mobile -->
-                    <div class="so-auth-step active" data-step="1">
+                    <div class="so-auth-step so-active" data-step="1">
                         <div class="so-auth-header">
                             <h1 class="so-auth-title">Reset Password</h1>
                             <p class="so-auth-subtitle">Enter your email or mobile to receive a verification code</p>
@@ -60,7 +60,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                         <form id="sendOtpForm" novalidate>
                             <!-- Recovery Type Toggle -->
                             <div class="so-auth-type-toggle">
-                                <button type="button" class="so-auth-type-btn active" data-type="email">
+                                <button type="button" class="so-auth-type-btn so-active" data-type="email">
                                     <span class="material-icons">email</span>
                                     Email
                                 </button>

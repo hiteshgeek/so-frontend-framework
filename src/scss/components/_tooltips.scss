@@ -470,7 +470,7 @@
   opacity: 0;
   visibility: hidden;
 
-  &.show {
+  &.#{$so-prefix}show {
     opacity: 1;
     visibility: visible;
   }
@@ -865,7 +865,7 @@
   transform: scale(0.95);
   transition: all $so-transition-fast;
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: scale(1);
   }
 }
@@ -890,7 +890,7 @@
     transform: translateX(-8px);
   }
 
-  &.show {
+  &.#{$so-prefix}show {
     transform: translate(0);
   }
 }

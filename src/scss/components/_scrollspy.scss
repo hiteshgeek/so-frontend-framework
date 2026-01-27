@@ -32,7 +32,7 @@
     background-color: css-var('hover-bg');
   }
 
-  &.active {
+  &.#{$so-prefix}active {
     color: $so-primary;
     background-color: rgba($so-primary, 0.1);
     font-weight: font-weight('medium');
@@ -61,7 +61,7 @@
       color: css-var('text-color');
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       color: $so-primary;
       border-left-color: $so-primary;
       background: transparent;
@@ -77,7 +77,7 @@
   .#{$so-prefix}scrollspy-link {
     border-radius: css-var('border-radius-full');
 
-    &.active {
+    &.#{$so-prefix}active {
       background-color: $so-primary;
       color: #fff;
     }
@@ -106,7 +106,7 @@
       border-bottom-color: css-var('border-color');
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       background: transparent;
       border-bottom-color: $so-primary;
     }
@@ -177,7 +177,7 @@
     opacity: 0.7;
   }
 
-  &.active {
+  &.#{$so-prefix}active {
     .material-icons,
     .#{$so-prefix}scrollspy-icon {
       opacity: 1;
@@ -203,7 +203,7 @@
       min-width: 1.5rem;
     }
 
-    &.active::before {
+    &.#{$so-prefix}active::before {
       color: inherit;
     }
   }
@@ -216,23 +216,23 @@
 @each $color-name, $color-value in $so-colors {
   .#{$so-prefix}scrollspy-#{$color-name} {
     .#{$so-prefix}scrollspy-link {
-      &.active {
+      &.#{$so-prefix}active {
         color: $color-value;
         background-color: rgba($color-value, 0.1);
       }
     }
 
-    &.#{$so-prefix}scrollspy-bordered .#{$so-prefix}scrollspy-link.active {
+    &.#{$so-prefix}scrollspy-bordered .#{$so-prefix}scrollspy-link.#{$so-prefix}active {
       border-left-color: $color-value;
       background: transparent;
     }
 
-    &.#{$so-prefix}scrollspy-pills .#{$so-prefix}scrollspy-link.active {
+    &.#{$so-prefix}scrollspy-pills .#{$so-prefix}scrollspy-link.#{$so-prefix}active {
       background-color: $color-value;
       color: #fff;
     }
 
-    &.#{$so-prefix}scrollspy-underline .#{$so-prefix}scrollspy-link.active {
+    &.#{$so-prefix}scrollspy-underline .#{$so-prefix}scrollspy-link.#{$so-prefix}active {
       border-bottom-color: $color-value;
       background: transparent;
     }
@@ -312,7 +312,7 @@
       background-color: css-var('hover-bg');
     }
 
-    &.active {
+    &.#{$so-prefix}active {
       color: $so-primary;
       background-color: rgba($so-primary, 0.15);
     }
@@ -321,7 +321,7 @@
   .#{$so-prefix}scrollspy-bordered {
     border-left-color: css-var('border-color');
 
-    .#{$so-prefix}scrollspy-link.active {
+    .#{$so-prefix}scrollspy-link.#{$so-prefix}active {
       background: transparent;
     }
   }

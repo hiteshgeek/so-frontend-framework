@@ -255,7 +255,7 @@
     color: panel-var('subtitle-color');
   }
 
-  &.open .#{$so-prefix}panel-date-range-arrow {
+  &.#{$so-prefix}open .#{$so-prefix}panel-date-range-arrow {
     transform: rotate(180deg);
   }
 }
@@ -289,7 +289,7 @@
   transform: translateY(-8px);
   transition: all $so-transition-normal;
 
-  .#{$so-prefix}panel-date-range.open & {
+  .#{$so-prefix}panel-date-range.#{$so-prefix}open & {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -466,7 +466,7 @@
   transform: translateY(-8px);
   transition: all $so-transition-normal;
 
-  .#{$so-prefix}panel-filter.open & {
+  .#{$so-prefix}panel-filter.#{$so-prefix}open & {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -1052,7 +1052,7 @@
   display: flex;
   flex-direction: column;
 
-  .#{$so-prefix}panel-columns.open & {
+  .#{$so-prefix}panel-columns.#{$so-prefix}open & {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -1195,7 +1195,7 @@
     transition: transform $so-transition-normal;
   }
 
-  .#{$so-prefix}panel-options.open & .#{$so-prefix}panel-options-arrow {
+  .#{$so-prefix}panel-options.#{$so-prefix}open & .#{$so-prefix}panel-options-arrow {
     transform: rotate(180deg);
   }
 }
@@ -1216,7 +1216,7 @@
   transition: all $so-transition-normal;
   overflow: hidden;
 
-  .#{$so-prefix}panel-options.open & {
+  .#{$so-prefix}panel-options.#{$so-prefix}open & {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);

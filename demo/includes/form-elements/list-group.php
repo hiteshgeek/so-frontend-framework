@@ -43,10 +43,10 @@
                 <p class="so-text-muted so-mb-4">Add <code>.active</code> or <code>.disabled</code> classes to indicate state.</p>
 
                 <ul class="so-list-group so-mb-6" style="max-width: 400px;">
-                    <li class="so-list-group-item active">Active item</li>
+                    <li class="so-list-group-item so-active">Active item</li>
                     <li class="so-list-group-item">Normal item</li>
                     <li class="so-list-group-item">Normal item</li>
-                    <li class="so-list-group-item disabled">Disabled item</li>
+                    <li class="so-list-group-item so-disabled">Disabled item</li>
                     <li class="so-list-group-item">Normal item</li>
                 </ul>
 
@@ -57,8 +57,8 @@
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;li class="so-list-group-item active"&gt;Active item&lt;/li&gt;
-&lt;li class="so-list-group-item disabled"&gt;Disabled item&lt;/li&gt;</code></pre>
+                    <pre class="so-code-content"><code class="language-html">&lt;li class="so-list-group-item so-active"&gt;Active item&lt;/li&gt;
+&lt;li class="so-list-group-item so-disabled"&gt;Disabled item&lt;/li&gt;</code></pre>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                 <p class="so-text-muted so-mb-4">Use <code>.so-list-group-item-action</code> for clickable items with hover states.</p>
 
                 <div class="so-list-group so-mb-6" style="max-width: 400px;">
-                    <a href="#" class="so-list-group-item so-list-group-item-action active">
+                    <a href="#" class="so-list-group-item so-list-group-item-action so-active">
                         Active link item
                     </a>
                     <a href="#" class="so-list-group-item so-list-group-item-action">
@@ -81,7 +81,7 @@
                     <button type="button" class="so-list-group-item so-list-group-item-action">
                         Button item
                     </button>
-                    <a href="#" class="so-list-group-item so-list-group-item-action disabled">
+                    <a href="#" class="so-list-group-item so-list-group-item-action so-disabled">
                         Disabled link item
                     </a>
                 </div>
@@ -94,7 +94,7 @@
                         </button>
                     </div>
                     <pre class="so-code-content"><code class="language-html">&lt;div class="so-list-group"&gt;
-    &lt;a href="#" class="so-list-group-item so-list-group-item-action active"&gt;
+    &lt;a href="#" class="so-list-group-item so-list-group-item-action so-active"&gt;
         Active link item
     &lt;/a&gt;
     &lt;button class="so-list-group-item so-list-group-item-action"&gt;
@@ -246,7 +246,7 @@
                         <span class="material-icons">home</span>
                         Home
                     </li>
-                    <li class="so-list-group-item active">
+                    <li class="so-list-group-item so-active">
                         <span class="material-icons">dashboard</span>
                         Dashboard
                     </li>
@@ -330,7 +330,7 @@
                 <p class="so-text-muted so-mb-4">Use <code>.so-list-group-item-content</code>, <code>.so-list-group-item-heading</code>, and <code>.so-list-group-item-text</code> for rich content.</p>
 
                 <div class="so-list-group so-mb-6" style="max-width: 500px;">
-                    <a href="#" class="so-list-group-item so-list-group-item-action active">
+                    <a href="#" class="so-list-group-item so-list-group-item-action so-active">
                         <div class="so-list-group-item-content">
                             <h5 class="so-list-group-item-heading">List group item heading</h5>
                             <p class="so-list-group-item-text">Some placeholder content in a paragraph below the heading.</p>

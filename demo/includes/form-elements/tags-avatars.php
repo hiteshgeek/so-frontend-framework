@@ -1,4 +1,4 @@
-            <div class="so-tab-pane fade" id="pane-tags-avatars" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-tags-avatars" role="tabpanel">
 
                 <!-- ============================================ -->
                 <!-- SECTION 1: BADGES -->

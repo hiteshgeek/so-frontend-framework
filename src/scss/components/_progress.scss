@@ -596,13 +596,13 @@ $progress-stroke-width: 4px !default;
     position: relative;
     overflow: hidden;
 
-    &.active {
+    &.#{$so-prefix}active {
       .#{$so-prefix}progress-step-fill {
         width: 100%;
       }
     }
 
-    &.partial {
+    &.#{$so-prefix}partial {
       .#{$so-prefix}progress-step-fill {
         width: var(--step-progress, 50%);
       }

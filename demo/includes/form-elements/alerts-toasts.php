@@ -1,5 +1,5 @@
 <!-- Alerts & Toasts Pane -->
-<div class="so-tab-pane fade" id="pane-alerts-toasts" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-alerts-toasts" role="tabpanel">
 
     <!-- ============================================
          ALERTS SECTION

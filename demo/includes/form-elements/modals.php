@@ -1,5 +1,5 @@
 <!-- Modals Pane -->
-<div class="so-tab-pane fade" id="pane-modals" role="tabpanel">
+<div class="so-tab-pane so-fade" id="pane-modals" role="tabpanel">
 
     <!-- Basic Modal -->
     <div class="so-card so-mb-4">
@@ -642,7 +642,7 @@ modal.element.addEventListener('so:modal:cancel', () => {
 </div>
 
 <!-- Basic Modal (for demo) -->
-<div class="so-modal fade" id="basicModal" tabindex="-1">
+<div class="so-modal so-fade" id="basicModal" tabindex="-1">
     <div class="so-modal-dialog">
         <div class="so-modal-header">
             <h5 class="so-modal-title">Basic Modal</h5>
@@ -662,14 +662,14 @@ modal.element.addEventListener('so:modal:cancel', () => {
 </div>
 
 <!-- Modal Backdrop -->
-<div class="so-modal-backdrop fade" onclick="closeAllModals()"></div>
+<div class="so-modal-backdrop so-fade" onclick="closeAllModals()"></div>
 
 <script>
 function createBackdrop() {
     let backdrop = document.querySelector('.so-modal-backdrop');
     if (!backdrop) {
         backdrop = document.createElement('div');
-        backdrop.className = 'so-modal-backdrop fade';
+        backdrop.className = 'so-modal-backdrop so-fade';
         backdrop.onclick = closeAllModals;
         document.body.appendChild(backdrop);
     }

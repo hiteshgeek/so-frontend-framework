@@ -17,7 +17,7 @@
         <span class="so-breadcrumb-separator">
             <span class="material-icons">chevron_right</span>
         </span>
-        <span class="so-breadcrumb-item active"><?= $reportTitle ?? 'Report' ?></span>
+        <span class="so-breadcrumb-item so-active"><?= $reportTitle ?? 'Report' ?></span>
     </nav>
     <div class="so-page-header-row">
         <h1 class="so-page-title">
@@ -52,7 +52,7 @@
                         <div class="so-panel-date-preset"><span class="material-icons">calendar_view_week</span>Last 7 Days</div>
                         <div class="so-panel-date-preset"><span class="material-icons">calendar_month</span>Last 30 Days</div>
                         <div class="so-panel-date-preset"><span class="material-icons">calendar_view_month</span>This Month</div>
-                        <div class="so-panel-date-preset active"><span class="material-icons">event</span>This Financial Year</div>
+                        <div class="so-panel-date-preset so-active"><span class="material-icons">event</span>This Financial Year</div>
                     </div>
                     <div class="so-panel-date-custom">
                         <div class="so-panel-date-custom-label">Custom Range</div>

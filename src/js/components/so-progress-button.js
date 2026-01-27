@@ -49,10 +49,10 @@ class SOProgressButton extends SOComponent {
     this._simulateInterval = null;
 
     // Cache elements
-    this._progressBar = this.$('.btn-progress-bar');
-    this._textEl = this.$('.btn-text');
-    this._startEl = this.$('.btn-start');
-    this._doneEl = this.$('.btn-done');
+    this._progressBar = this.$('.so-btn-progress-bar');
+    this._textEl = this.$('.so-btn-text');
+    this._startEl = this.$('.so-btn-start');
+    this._doneEl = this.$('.so-btn-done');
 
     // Parse options from data attributes
     this._parseDataOptions();
@@ -121,8 +121,8 @@ class SOProgressButton extends SOComponent {
     this._progress = Math.max(0, Math.min(100, initialProgress));
 
     // Update UI
-    this.element.classList.add('progressing');
-    this.element.classList.remove('completed');
+    this.element.classList.add('so-progressing');
+    this.element.classList.remove('so-completed');
     this._updateProgressBar();
 
     // Disable if configured
@@ -213,8 +213,8 @@ class SOProgressButton extends SOComponent {
     this._state = SOProgressButton.STATES.COMPLETED;
 
     // Update UI
-    this.element.classList.remove('progressing');
-    this.element.classList.add('completed');
+    this.element.classList.remove('so-progressing');
+    this.element.classList.add('so-completed');
 
     // Re-enable button
     if (this.options.autoDisable) {
@@ -245,7 +245,7 @@ class SOProgressButton extends SOComponent {
     this._progress = 0;
 
     // Update UI
-    this.element.classList.remove('progressing', 'completed');
+    this.element.classList.remove('so-progressing', 'so-completed');
     this._updateProgressBar();
 
     // Re-enable button

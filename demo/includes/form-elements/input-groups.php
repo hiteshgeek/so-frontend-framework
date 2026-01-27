@@ -1,5 +1,5 @@
             <!-- Input Groups Pane -->
-            <div class="so-tab-pane fade" id="pane-input-groups" role="tabpanel">
+            <div class="so-tab-pane so-fade" id="pane-input-groups" role="tabpanel">
                 <!-- Basic Input Groups -->
                 <div class="so-card so-mb-4">
                     <div class="so-card-header">

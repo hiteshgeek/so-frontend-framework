@@ -37,7 +37,7 @@ require_once 'includes/navbar.php';
                 </button>
                 <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-inputs">
                     <span class="material-icons">edit_note</span>
-                    Text Inputs
+                    Form Elements
                 </button>
                 <button class="so-tab" role="tab" aria-selected="false" data-so-target="#pane-input-groups">
                     <span class="material-icons">input</span>

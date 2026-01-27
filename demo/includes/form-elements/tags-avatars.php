@@ -671,22 +671,80 @@
                         </div>
 
                         <h5 class="so-mb-3">Interactive Demo</h5>
-                        <p class="so-text-muted so-mb-3">Try adding, removing, and selecting chips. Watch the console for events.</p>
+                        <p class="so-text-muted so-mb-3">Try adding, removing, and selecting chips. Choose style and size options below.</p>
 
-                        <!-- Add Chip Input -->
-                        <div class="so-flex so-gap-2 so-items-center so-mb-3">
-                            <div class="so-input-group" style="max-width: 300px;">
+                        <!-- Add Chip Input with Style Options -->
+                        <div class="so-row so-mb-3">
+                            <div class="so-col-12 so-col-md-4 so-mb-2 so-mb-md-0">
+                                <label class="so-form-label so-text-xs so-mb-1">Tag Name</label>
                                 <input type="text" class="so-form-control" id="chip-input" placeholder="Type a tag name...">
-                                <button class="so-btn so-btn-primary" id="add-chip-btn">
+                            </div>
+                            <div class="so-col-6 so-col-md-3 so-mb-2 so-mb-md-0">
+                                <label class="so-form-label so-text-xs so-mb-1">Style</label>
+                                <select class="so-form-select" id="chip-style-select">
+                                    <optgroup label="Solid">
+                                        <option value="so-chip-primary">Primary</option>
+                                        <option value="so-chip-secondary">Secondary</option>
+                                        <option value="so-chip-success">Success</option>
+                                        <option value="so-chip-danger">Danger</option>
+                                        <option value="so-chip-warning">Warning</option>
+                                        <option value="so-chip-info">Info</option>
+                                        <option value="so-chip-light">Light</option>
+                                        <option value="so-chip-dark">Dark</option>
+                                    </optgroup>
+                                    <optgroup label="Soft">
+                                        <option value="so-chip-soft-primary" selected>Soft Primary</option>
+                                        <option value="so-chip-soft-secondary">Soft Secondary</option>
+                                        <option value="so-chip-soft-success">Soft Success</option>
+                                        <option value="so-chip-soft-danger">Soft Danger</option>
+                                        <option value="so-chip-soft-warning">Soft Warning</option>
+                                        <option value="so-chip-soft-info">Soft Info</option>
+                                        <option value="so-chip-soft-light">Soft Light</option>
+                                        <option value="so-chip-soft-dark">Soft Dark</option>
+                                    </optgroup>
+                                    <optgroup label="Outline">
+                                        <option value="so-chip-outline-primary">Outline Primary</option>
+                                        <option value="so-chip-outline-secondary">Outline Secondary</option>
+                                        <option value="so-chip-outline-success">Outline Success</option>
+                                        <option value="so-chip-outline-danger">Outline Danger</option>
+                                        <option value="so-chip-outline-warning">Outline Warning</option>
+                                        <option value="so-chip-outline-info">Outline Info</option>
+                                        <option value="so-chip-outline-light">Outline Light</option>
+                                        <option value="so-chip-outline-dark">Outline Dark</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="so-col-6 so-col-md-2 so-mb-2 so-mb-md-0">
+                                <label class="so-form-label so-text-xs so-mb-1">Size</label>
+                                <select class="so-form-select" id="chip-size-select">
+                                    <option value="so-chip-sm">Small</option>
+                                    <option value="" selected>Default</option>
+                                    <option value="so-chip-lg">Large</option>
+                                </select>
+                            </div>
+                            <div class="so-col-12 so-col-md-3 so-d-flex so-items-end">
+                                <button class="so-btn so-btn-primary so-w-100" id="add-chip-btn">
                                     <span class="material-icons">add</span>
-                                    Add
+                                    Add Chip
                                 </button>
                             </div>
                         </div>
 
+                        <!-- Style Preview -->
+                        <div class="so-mb-3">
+                            <label class="so-form-label so-text-xs so-mb-1">Preview</label>
+                            <div class="so-p-3 so-rounded" style="background: var(--so-grey-100);">
+                                <span class="so-chip so-chip-soft-primary" id="chip-preview">
+                                    Sample Chip
+                                    <button class="so-chip-close"><span class="material-icons">close</span></button>
+                                </span>
+                            </div>
+                        </div>
+
                         <!-- Dynamic Chips Container -->
-                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4" id="interactive-chips-container">
-                            <span class="so-chip so-chip-soft-primary" data-so-chip data-so-chip-closable data-value="HTML">
+                        <label class="so-form-label so-text-xs so-mb-1">Added Chips</label>
+                        <div class="so-flex so-gap-2 so-flex-wrap so-mb-4 so-p-3 so-rounded" id="interactive-chips-container" style="background: var(--so-grey-100); min-height: 50px;">
+                            <span class="so-chip so-chip-primary" data-so-chip data-so-chip-closable data-value="HTML">
                                 HTML
                                 <button class="so-chip-close"><span class="material-icons">close</span></button>
                             </span>
@@ -694,8 +752,16 @@
                                 CSS
                                 <button class="so-chip-close"><span class="material-icons">close</span></button>
                             </span>
-                            <span class="so-chip so-chip-soft-warning" data-so-chip data-so-chip-closable data-value="JavaScript">
+                            <span class="so-chip so-chip-outline-warning" data-so-chip data-so-chip-closable data-value="JavaScript">
                                 JavaScript
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-chip so-chip-soft-info so-chip-sm" data-so-chip data-so-chip-closable data-value="React">
+                                React
+                                <button class="so-chip-close"><span class="material-icons">close</span></button>
+                            </span>
+                            <span class="so-chip so-chip-danger so-chip-lg" data-so-chip data-so-chip-closable data-value="Vue">
+                                Vue
                                 <button class="so-chip-close"><span class="material-icons">close</span></button>
                             </span>
                         </div>
@@ -747,41 +813,74 @@
                             const container = document.getElementById('interactive-chips-container');
                             const input = document.getElementById('chip-input');
                             const addBtn = document.getElementById('add-chip-btn');
+                            const styleSelect = document.getElementById('chip-style-select');
+                            const sizeSelect = document.getElementById('chip-size-select');
+                            const preview = document.getElementById('chip-preview');
                             const eventLog = document.getElementById('chip-event-log');
                             const clearLogBtn = document.getElementById('clear-log-btn');
                             const filterContainer = document.getElementById('category-filter-chips');
                             const selectedFiltersEl = document.getElementById('selected-filters');
 
-                            // Colors for new chips
-                            const chipColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info'];
-                            let colorIndex = 0;
+                            // Update preview chip when options change
+                            function updatePreview() {
+                                const style = styleSelect.value;
+                                const size = sizeSelect.value;
+                                const text = input.value.trim() || 'Sample Chip';
+
+                                // Remove all chip style/size classes
+                                preview.className = 'so-chip';
+
+                                // Add selected style
+                                if (style) {
+                                    preview.classList.add(style);
+                                }
+
+                                // Add selected size
+                                if (size) {
+                                    preview.classList.add(size);
+                                }
+
+                                // Update text (keep close button)
+                                preview.innerHTML = text + '<button class="so-chip-close"><span class="material-icons">close</span></button>';
+                            }
+
+                            // Listen for changes
+                            styleSelect.addEventListener('change', updatePreview);
+                            sizeSelect.addEventListener('change', updatePreview);
+                            input.addEventListener('input', updatePreview);
 
                             // Log events
-                            function logEvent(type, value) {
+                            function logEvent(type, value, details) {
                                 const time = new Date().toLocaleTimeString();
                                 const entry = document.createElement('div');
                                 entry.className = type.includes('close') ? 'so-text-danger' :
                                                   type.includes('select') ? 'so-text-success' :
                                                   type.includes('deselect') ? 'so-text-warning' : 'so-text-info';
-                                entry.textContent = '[' + time + '] ' + type + ': "' + value + '"';
+                                let text = '[' + time + '] ' + type + ': "' + value + '"';
+                                if (details) {
+                                    text += ' <span class="so-text-muted">(' + details + ')</span>';
+                                }
+                                entry.innerHTML = text;
 
                                 // Remove placeholder if exists
-                                const placeholder = eventLog.querySelector('.so-text-muted');
-                                if (placeholder) placeholder.remove();
+                                const placeholder = eventLog.querySelector('.so-text-muted:not(span)');
+                                if (placeholder && placeholder.parentNode === eventLog) placeholder.remove();
 
                                 eventLog.insertBefore(entry, eventLog.firstChild);
                             }
 
-                            // Add chip
+                            // Add chip with selected style and size
                             function addChip() {
                                 const value = input.value.trim();
                                 if (!value) return;
 
-                                const color = chipColors[colorIndex % chipColors.length];
-                                colorIndex++;
+                                const style = styleSelect.value;
+                                const size = sizeSelect.value;
 
                                 const chip = document.createElement('span');
-                                chip.className = 'so-chip so-chip-soft-' + color;
+                                chip.className = 'so-chip';
+                                if (style) chip.classList.add(style);
+                                if (size) chip.classList.add(size);
                                 chip.setAttribute('data-so-chip', '');
                                 chip.setAttribute('data-so-chip-closable', '');
                                 chip.setAttribute('data-value', value);
@@ -789,7 +888,14 @@
 
                                 container.appendChild(chip);
                                 input.value = '';
-                                logEvent('chip:added', value);
+
+                                // Get human-readable style/size info
+                                const styleText = styleSelect.options[styleSelect.selectedIndex].text;
+                                const sizeText = sizeSelect.options[sizeSelect.selectedIndex].text;
+                                logEvent('chip:added', value, styleText + ', ' + sizeText);
+
+                                // Reset preview
+                                updatePreview();
 
                                 // Bind close event
                                 chip.querySelector('.so-chip-close').addEventListener('click', function(e) {
@@ -797,6 +903,7 @@
                                     const chipValue = chip.getAttribute('data-value');
                                     chip.style.opacity = '0';
                                     chip.style.transform = 'scale(0.8)';
+                                    chip.style.transition = 'all 0.15s ease';
                                     setTimeout(function() {
                                         chip.remove();
                                     }, 150);
@@ -826,6 +933,7 @@
                                     const chip = e.target.closest('[data-so-chip]');
                                     if (chip) {
                                         const value = chip.getAttribute('data-value');
+                                        chip.style.transition = 'all 0.15s ease';
                                         chip.style.opacity = '0';
                                         chip.style.transform = 'scale(0.8)';
                                         setTimeout(function() {

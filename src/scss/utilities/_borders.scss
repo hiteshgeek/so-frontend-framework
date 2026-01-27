@@ -409,3 +409,228 @@ $border-opacities: (
 .#{$so-prefix}ring-inset {
   box-shadow: inset 0 0 0 3px rgba($so-primary, 0.5) !important;
 }
+
+// ============================================
+// SEPARATOR
+// Horizontal and vertical line separators
+// ============================================
+
+// Horizontal separator (default)
+.#{$so-prefix}separator {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: spacing('2') 0;
+  background: css-var('border-color');
+  border: none;
+
+  // No margin variant
+  &.#{$so-prefix}separator-flush {
+    margin: 0;
+  }
+
+  // Size variants
+  &.#{$so-prefix}separator-sm {
+    margin: spacing('1') 0;
+  }
+
+  &.#{$so-prefix}separator-lg {
+    margin: spacing('4') 0;
+  }
+
+  &.#{$so-prefix}separator-xl {
+    margin: spacing('6') 0;
+  }
+
+  // Thickness variants
+  &.#{$so-prefix}separator-2 {
+    height: 2px;
+  }
+
+  &.#{$so-prefix}separator-3 {
+    height: 3px;
+  }
+
+  &.#{$so-prefix}separator-4 {
+    height: 4px;
+  }
+
+  // Style variants
+  &.#{$so-prefix}separator-dashed {
+    height: 0;
+    background: transparent;
+    border-top: 1px dashed css-var('border-color');
+  }
+
+  &.#{$so-prefix}separator-dotted {
+    height: 0;
+    background: transparent;
+    border-top: 1px dotted css-var('border-color');
+  }
+
+  // Color variants
+  &.#{$so-prefix}separator-primary {
+    background: $so-primary;
+  }
+
+  &.#{$so-prefix}separator-secondary {
+    background: $so-secondary;
+  }
+
+  &.#{$so-prefix}separator-success {
+    background: $so-success;
+  }
+
+  &.#{$so-prefix}separator-danger {
+    background: $so-danger;
+  }
+
+  &.#{$so-prefix}separator-warning {
+    background: $so-warning;
+  }
+
+  &.#{$so-prefix}separator-info {
+    background: $so-info;
+  }
+
+  &.#{$so-prefix}separator-light {
+    background: $so-grey-300;
+  }
+
+  &.#{$so-prefix}separator-dark {
+    background: $so-grey-800;
+  }
+
+  // Subtle (uses dropdown divider color for consistency)
+  &.#{$so-prefix}separator-subtle {
+    background: css-var('dropdown-divider');
+  }
+
+  // Opacity variants
+  &.#{$so-prefix}separator-muted {
+    opacity: 0.5;
+  }
+
+  // With text in middle (using flex parent)
+  &.#{$so-prefix}separator-text {
+    display: flex;
+    align-items: center;
+    height: auto;
+    background: transparent;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: css-var('border-color');
+    }
+
+    &::before {
+      margin-right: spacing('3');
+    }
+
+    &::after {
+      margin-left: spacing('3');
+    }
+  }
+}
+
+// Vertical separator
+.#{$so-prefix}separator-vertical {
+  display: inline-block;
+  width: 1px;
+  height: 100%;
+  min-height: 1rem;
+  margin: 0 spacing('2');
+  background: css-var('border-color');
+  vertical-align: middle;
+
+  // No margin variant
+  &.#{$so-prefix}separator-flush {
+    margin: 0;
+  }
+
+  // Size variants
+  &.#{$so-prefix}separator-sm {
+    margin: 0 spacing('1');
+  }
+
+  &.#{$so-prefix}separator-lg {
+    margin: 0 spacing('4');
+  }
+
+  // Thickness variants
+  &.#{$so-prefix}separator-2 {
+    width: 2px;
+  }
+
+  &.#{$so-prefix}separator-3 {
+    width: 3px;
+  }
+
+  // Color variants
+  &.#{$so-prefix}separator-primary {
+    background: $so-primary;
+  }
+
+  &.#{$so-prefix}separator-secondary {
+    background: $so-secondary;
+  }
+
+  &.#{$so-prefix}separator-success {
+    background: $so-success;
+  }
+
+  &.#{$so-prefix}separator-danger {
+    background: $so-danger;
+  }
+
+  &.#{$so-prefix}separator-warning {
+    background: $so-warning;
+  }
+
+  &.#{$so-prefix}separator-info {
+    background: $so-info;
+  }
+
+  &.#{$so-prefix}separator-light {
+    background: $so-grey-300;
+  }
+
+  &.#{$so-prefix}separator-dark {
+    background: $so-grey-800;
+  }
+
+  &.#{$so-prefix}separator-subtle {
+    background: css-var('dropdown-divider');
+  }
+
+  // With text in middle (requires flex parent with column direction)
+  &.#{$so-prefix}separator-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    min-height: auto;
+    background: transparent;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 1px;
+      flex: 1;
+      min-height: 1rem;
+      background: css-var('border-color');
+    }
+
+    &::before {
+      margin-bottom: spacing('2');
+    }
+
+    &::after {
+      margin-top: spacing('2');
+    }
+  }
+}

@@ -220,66 +220,6 @@
 }
 
 // ============================================
-// SELECT (Native)
-// ============================================
-
-.#{$so-prefix}select {
-  display: block;
-  width: 100%;
-  height: $so-form-height-md;
-  padding: 0 36px 0 spacing('3');
-  font-size: font-size('base');
-  font-family: inherit;
-  color: css-var('form-text');
-  background: css-var('form-bg');
-  border: 1px solid css-var('form-border');
-  border-radius: radius('base');
-  outline: none;
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235f6368' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  transition: border-color $so-transition-base, box-shadow $so-transition-base;
-
-  &:hover:not(:disabled) {
-    border-color: css-var('form-border-hover');
-  }
-
-  &:focus {
-    border-color: css-var('form-border-focus');
-    box-shadow: 0 0 0 3px alpha($so-primary, 0.1);
-  }
-
-  &:disabled {
-    background-color: css-var('form-disabled-bg');
-    color: css-var('form-disabled-text');
-    cursor: not-allowed;
-  }
-
-  @include dark-mode {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a3a8b8' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
-
-    &:focus {
-      box-shadow: 0 0 0 3px alpha($so-purple, 0.15);
-    }
-  }
-}
-
-// Select Sizes
-.#{$so-prefix}select-sm {
-  height: $so-form-height-sm;
-  padding: 0 32px 0 spacing('2') + 2px;
-  font-size: $so-form-font-size-sm;
-}
-
-.#{$so-prefix}select-lg {
-  height: $so-form-height-lg;
-  padding: 0 40px 0 spacing('4');
-  font-size: $so-form-font-size-lg;
-}
-
-// ============================================
 // FORM GROUP
 // ============================================
 

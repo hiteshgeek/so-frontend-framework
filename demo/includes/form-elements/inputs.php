@@ -576,5 +576,1291 @@ autosize.destroy();</code></pre>
                     </div>
                 </div>
 
+                <!-- Section 9: Custom Select - Basic -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Custom Select - Basic</h3>
+                        <span class="so-badge so-badge-info">Enhances native &lt;select&gt;</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Simply add <code>data-so-select</code> to any native <code>&lt;select&gt;</code> element to automatically convert it to a custom styled select.</p>
+                        <div class="so-grid so-grid-cols-3 so-grid-cols-sm-1">
+                            <div class="so-form-group">
+                                <label class="so-form-label">Standard Select</label>
+                                <select class="so-form-control" data-so-select>
+                                    <option value="">Select an option</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                    <option value="4">Option 4</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">With Pre-selected Value</label>
+                                <select class="so-form-control" data-so-select>
+                                    <option value="1">Option 1</option>
+                                    <option value="2" selected>Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Disabled Select</label>
+                                <select class="so-form-control" data-so-select disabled>
+                                    <option value="">Cannot select</option>
+                                    <option value="1">Option 1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Basic Select (recommended) --&gt;
+&lt;select class="so-form-control" data-so-select&gt;
+    &lt;option value=""&gt;Select an option&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Pre-selected value --&gt;
+&lt;select class="so-form-control" data-so-select&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2" selected&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Disabled select --&gt;
+&lt;select class="so-form-control" data-so-select disabled&gt;
+    &lt;option value=""&gt;Cannot select&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Auto-initialization (uses data-so-select attribute)
+// Just add data-so-select to any &lt;select&gt; element
+
+// Manual initialization
+const selectEl = document.querySelector('.so-form-control');
+const select = SOSelect.getInstance(selectEl, {
+    searchable: false,
+    clearable: false,
+    placeholder: 'Select an option'
+});
+
+// Get/Set value
+select.setValue('1');
+const value = select.getValue();  // Returns '1'
+
+// Listen to change event
+selectEl.addEventListener('so:select:change', (e) => {
+    console.log('Selected:', e.detail.value);
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 10: Select Sizes -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Select Sizes</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <div class="so-grid so-grid-cols-3 so-grid-cols-sm-1">
+                            <div class="so-form-group">
+                                <label class="so-form-label">Small</label>
+                                <select class="so-form-control" data-so-select data-so-size="sm">
+                                    <option value="">Small select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Default</label>
+                                <select class="so-form-control" data-so-select>
+                                    <option value="">Default select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Large</label>
+                                <select class="so-form-control" data-so-select data-so-size="lg">
+                                    <option value="">Large select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Small --&gt;
+&lt;select class="so-form-control" data-so-select data-so-size="sm"&gt;
+    &lt;option value=""&gt;Small select&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Default --&gt;
+&lt;select class="so-form-control" data-so-select&gt;
+    &lt;option value=""&gt;Default select&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Large --&gt;
+&lt;select class="so-form-control" data-so-select data-so-size="lg"&gt;
+    &lt;option value=""&gt;Large select&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Initialize with size option
+const select = SOSelect.getInstance(selectEl, {
+    size: 'sm'  // 'sm', null (default), or 'lg'
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 11: Searchable Select -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Searchable Select</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
+                            <div class="so-form-group">
+                                <label class="so-form-label">Searchable</label>
+                                <select class="so-form-control" data-so-select data-so-searchable="true" data-so-placeholder="Search countries...">
+                                    <option value="">Search countries...</option>
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="de">Germany</option>
+                                    <option value="fr">France</option>
+                                    <option value="it">Italy</option>
+                                    <option value="es">Spain</option>
+                                    <option value="jp">Japan</option>
+                                    <option value="cn">China</option>
+                                    <option value="in">India</option>
+                                    <option value="br">Brazil</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Clearable</label>
+                                <select class="so-form-control" data-so-select data-so-clearable="true">
+                                    <option value="">Select with clear</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Searchable Select --&gt;
+&lt;select class="so-form-control" data-so-select data-so-searchable="true"&gt;
+    &lt;option value=""&gt;Search...&lt;/option&gt;
+    &lt;option value="us"&gt;United States&lt;/option&gt;
+    &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+    ...
+&lt;/select&gt;
+
+&lt;!-- Clearable Select --&gt;
+&lt;select class="so-form-control" data-so-select data-so-clearable="true"&gt;
+    &lt;option value=""&gt;Select with clear&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Initialize with searchable and clearable options
+const select = SOSelect.getInstance(selectEl, {
+    searchable: true,
+    searchPlaceholder: 'Type to search...',
+    clearable: true,
+    noResultsText: 'No matches found'
+});
+
+// Listen to search event
+selectEl.addEventListener('so:select:search', (e) => {
+    console.log('Search query:', e.detail.query);
+});
+
+// Listen to clear event
+selectEl.addEventListener('so:select:clear', () => {
+    console.log('Selection cleared');
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 12: Multiple Select -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Multiple Select</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
+                            <div class="so-form-group">
+                                <label class="so-form-label">Text Display Mode</label>
+                                <select class="so-form-control" data-so-select multiple data-so-display-mode="text" data-so-multiple-selected-text="{count} items selected">
+                                    <option value="1">Item 1</option>
+                                    <option value="2">Item 2</option>
+                                    <option value="3">Item 3</option>
+                                    <option value="4">Item 4</option>
+                                    <option value="5">Item 5</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Chips Display Mode</label>
+                                <select class="so-form-control" data-so-select multiple data-so-display-mode="chips">
+                                    <option value="1">Apple</option>
+                                    <option value="2">Banana</option>
+                                    <option value="3">Cherry</option>
+                                    <option value="4">Date</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Chips with Overflow (+N more)</label>
+                                <select class="so-form-control" data-so-select multiple data-so-display-mode="chips-overflow" data-so-max-visible-chips="2">
+                                    <option value="red">Red</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="yellow">Yellow</option>
+                                    <option value="purple">Purple</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">With Select All/None Actions</label>
+                                <select class="so-form-control" data-so-select multiple data-so-show-actions="true" data-so-select-all-text="Select All" data-so-select-none-text="Clear">
+                                    <option value="important">Important</option>
+                                    <option value="urgent">Urgent</option>
+                                    <option value="todo">To Do</option>
+                                    <option value="done">Done</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Multiple Select with Text Display --&gt;
+&lt;select class="so-form-control" data-so-select multiple
+        data-so-display-mode="text"
+        data-so-multiple-selected-text="{count} items selected"&gt;
+    &lt;option value="1"&gt;Item 1&lt;/option&gt;
+    &lt;option value="2"&gt;Item 2&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Multiple Select with Chips --&gt;
+&lt;select class="so-form-control" data-so-select multiple
+        data-so-display-mode="chips"&gt;
+    &lt;option value="1"&gt;Apple&lt;/option&gt;
+    &lt;option value="2"&gt;Banana&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- With Chips Overflow --&gt;
+&lt;select class="so-form-control" data-so-select multiple
+        data-so-display-mode="chips-overflow"
+        data-so-max-visible-chips="2"&gt;
+    ...
+&lt;/select&gt;
+
+&lt;!-- With Actions Bar --&gt;
+&lt;select class="so-form-control" data-so-select multiple
+        data-so-show-actions="true"
+        data-so-select-all-text="Select All"
+        data-so-select-none-text="Clear"&gt;
+    ...
+&lt;/select&gt;</code></pre>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Initialize multiple select with options
+const select = SOSelect.getInstance(selectEl, {
+    multiple: true,
+    displayMode: 'chips-overflow',  // 'text', 'chips', 'chips-overflow'
+    maxVisibleChips: 3,
+    multipleSelectedText: '{count} items selected',
+    allSelectedText: 'All {count} items',
+    overflowText: '+{count} more',
+    showActions: true,
+    selectAllText: 'Select All',
+    selectNoneText: 'Clear All',
+    minSelections: 1,   // Require at least 1 selection
+    maxSelections: 5    // Allow max 5 selections
+});
+
+// Multi-select API
+select.setValues(['1', '2', '3']);
+select.addValue('4');
+select.removeValue('2');
+select.selectAll();
+select.selectNone();
+const values = select.getValues();  // Returns array</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 13: Grouped Options -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Grouped Options</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
+                            <div class="so-form-group">
+                                <label class="so-form-label">With Groups (optgroup)</label>
+                                <select class="so-form-control" data-so-select data-so-searchable="true">
+                                    <option value="">Select a country</option>
+                                    <optgroup label="Europe">
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="de">Germany</option>
+                                        <option value="fr">France</option>
+                                    </optgroup>
+                                    <optgroup label="Asia">
+                                        <option value="jp">Japan</option>
+                                        <option value="cn">China</option>
+                                        <option value="in">India</option>
+                                    </optgroup>
+                                    <optgroup label="Americas">
+                                        <option value="us">United States</option>
+                                        <option value="ca">Canada</option>
+                                        <option value="br">Brazil</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">With Icons (data attributes)</label>
+                                <select class="so-form-control" data-so-select>
+                                    <option value="">Select a plan</option>
+                                    <option value="free" data-icon="star_outline" data-description="Basic features, 5 users">Free Plan</option>
+                                    <option value="pro" data-icon="star_half" data-description="Advanced features, 25 users">Pro Plan</option>
+                                    <option value="enterprise" data-icon="star" data-description="All features, unlimited users">Enterprise Plan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Grouped Options using optgroup --&gt;
+&lt;select class="so-form-control" data-so-select&gt;
+    &lt;option value=""&gt;Select a country&lt;/option&gt;
+    &lt;optgroup label="Europe"&gt;
+        &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+        &lt;option value="de"&gt;Germany&lt;/option&gt;
+    &lt;/optgroup&gt;
+    &lt;optgroup label="Asia"&gt;
+        &lt;option value="jp"&gt;Japan&lt;/option&gt;
+        &lt;option value="cn"&gt;China&lt;/option&gt;
+    &lt;/optgroup&gt;
+&lt;/select&gt;
+
+&lt;!-- With Icons &amp; Descriptions using data attributes --&gt;
+&lt;select class="so-form-control" data-so-select&gt;
+    &lt;option value=""&gt;Select a plan&lt;/option&gt;
+    &lt;option value="free" data-icon="star_outline" data-description="Basic features"&gt;Free Plan&lt;/option&gt;
+    &lt;option value="pro" data-icon="star_half" data-description="Advanced features"&gt;Pro Plan&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Programmatically add options with icons and descriptions
+const select = SOSelect.getInstance(selectEl);
+
+// Add option with icon and description
+select.addOption({
+    value: 'premium',
+    label: 'Premium Plan',
+    icon: 'workspace_premium',
+    description: 'Enterprise features, priority support'
+});
+
+// Add a new group with options
+select.addGroup('New Region', [
+    { value: 'au', label: 'Australia', icon: 'flag' },
+    { value: 'nz', label: 'New Zealand', icon: 'flag' }
+]);
+
+// Add option to existing group
+select.addOptionToGroup({
+    value: 'it',
+    label: 'Italy',
+    icon: 'flag'
+}, 'Europe');</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 14: Selection Styles -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Selection Styles</h3>
+                        <span class="so-badge so-badge-info">Single & Multiple</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Different indicator styles for showing selected state. Use <strong>radio</strong> styles for single select, <strong>checkbox</strong> for multiple.</p>
+
+                        <h5 class="so-mb-3">Single Select Styles</h5>
+                        <div class="so-grid so-grid-cols-5 so-grid-cols-md-3 so-grid-cols-sm-2 so-mb-5">
+                            <div class="so-form-group">
+                                <label class="so-form-label">icon-bg <span class="so-badge so-badge-sm so-badge-primary">Default</span></label>
+                                <select class="so-form-control" data-so-select data-so-selection-style="icon-bg">
+                                    <option value="">Select...</option>
+                                    <option value="1">Apple</option>
+                                    <option value="2">Banana</option>
+                                    <option value="3">Cherry</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">icon</label>
+                                <select class="so-form-control" data-so-select data-so-selection-style="icon">
+                                    <option value="">Select...</option>
+                                    <option value="1">Apple</option>
+                                    <option value="2">Banana</option>
+                                    <option value="3">Cherry</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">bg</label>
+                                <select class="so-form-control" data-so-select data-so-selection-style="bg">
+                                    <option value="">Select...</option>
+                                    <option value="1">Apple</option>
+                                    <option value="2">Banana</option>
+                                    <option value="3">Cherry</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">radio</label>
+                                <select class="so-form-control" data-so-select data-so-selection-style="radio">
+                                    <option value="">Select...</option>
+                                    <option value="1">Apple</option>
+                                    <option value="2">Banana</option>
+                                    <option value="3">Cherry</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">radio-bg</label>
+                                <select class="so-form-control" data-so-select data-so-selection-style="radio-bg">
+                                    <option value="">Select...</option>
+                                    <option value="1">Apple</option>
+                                    <option value="2">Banana</option>
+                                    <option value="3">Cherry</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h5 class="so-mb-3">Multiple Select Styles</h5>
+                        <div class="so-grid so-grid-cols-5 so-grid-cols-md-3 so-grid-cols-sm-2 so-mb-5">
+                            <div class="so-form-group">
+                                <label class="so-form-label">icon-bg <span class="so-badge so-badge-sm so-badge-primary">Default</span></label>
+                                <select class="so-form-control" data-so-select multiple data-so-selection-style="icon-bg">
+                                    <option value="1">Red</option>
+                                    <option value="2">Green</option>
+                                    <option value="3">Blue</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">icon</label>
+                                <select class="so-form-control" data-so-select multiple data-so-selection-style="icon">
+                                    <option value="1">Red</option>
+                                    <option value="2">Green</option>
+                                    <option value="3">Blue</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">bg</label>
+                                <select class="so-form-control" data-so-select multiple data-so-selection-style="bg">
+                                    <option value="1">Red</option>
+                                    <option value="2">Green</option>
+                                    <option value="3">Blue</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">checkbox</label>
+                                <select class="so-form-control" data-so-select multiple data-so-selection-style="checkbox">
+                                    <option value="1">Red</option>
+                                    <option value="2">Green</option>
+                                    <option value="3">Blue</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">checkbox-bg</label>
+                                <select class="so-form-control" data-so-select multiple data-so-selection-style="checkbox-bg">
+                                    <option value="1">Red</option>
+                                    <option value="2">Green</option>
+                                    <option value="3">Blue</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="so-separator so-separator-lg"></div>
+
+                        <!-- Interactive Style Switcher -->
+                        <h5 class="so-mb-3">Interactive Demo - Try Different Styles</h5>
+                        <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1 so-gap-4">
+                            <div>
+                                <div class="so-form-group so-mb-3">
+                                    <label class="so-form-label">Select Mode</label>
+                                    <div class="so-d-flex so-gap-2">
+                                        <button class="so-btn so-btn-primary so-btn-sm" id="style-demo-single-btn" onclick="styleDemoSetMode('single')">Single</button>
+                                        <button class="so-btn so-btn-outline-primary so-btn-sm" id="style-demo-multi-btn" onclick="styleDemoSetMode('multiple')">Multiple</button>
+                                    </div>
+                                </div>
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Selection Style</label>
+                                    <div class="so-d-flex so-flex-wrap so-gap-2" id="style-buttons-container">
+                                        <button class="so-btn so-btn-dark so-btn-sm" onclick="styleDemoSetStyle('icon-bg')">icon-bg</button>
+                                        <button class="so-btn so-btn-outline-dark so-btn-sm" onclick="styleDemoSetStyle('icon')">icon</button>
+                                        <button class="so-btn so-btn-outline-dark so-btn-sm" onclick="styleDemoSetStyle('bg')">bg</button>
+                                        <button class="so-btn so-btn-outline-dark so-btn-sm style-radio-btn" onclick="styleDemoSetStyle('radio')">radio</button>
+                                        <button class="so-btn so-btn-outline-dark so-btn-sm style-radio-btn" onclick="styleDemoSetStyle('radio-bg')">radio-bg</button>
+                                        <button class="so-btn so-btn-outline-dark so-btn-sm style-checkbox-btn" onclick="styleDemoSetStyle('checkbox')" style="display:none;">checkbox</button>
+                                        <button class="so-btn so-btn-outline-dark so-btn-sm style-checkbox-btn" onclick="styleDemoSetStyle('checkbox-bg')" style="display:none;">checkbox-bg</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="so-form-label">Live Preview</label>
+                                <div id="style-demo-container">
+                                    <select id="style-demo-select" class="so-form-control" data-so-select data-so-selection-style="icon-bg">
+                                        <option value="">Select a country...</option>
+                                        <option value="us" data-icon="flag">United States</option>
+                                        <option value="uk" data-icon="flag">United Kingdom</option>
+                                        <option value="de" data-icon="flag">Germany</option>
+                                        <option value="fr" data-icon="flag">France</option>
+                                        <option value="jp" data-icon="flag">Japan</option>
+                                    </select>
+                                </div>
+                                <div class="so-mt-2 so-text-muted so-text-sm" id="style-demo-info">
+                                    Mode: <strong>Single</strong> | Style: <strong>icon-bg</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            let currentStyleDemoMode = 'single';
+                            let currentStyleDemoStyle = 'icon-bg';
+
+                            function styleDemoSetMode(mode) {
+                                currentStyleDemoMode = mode;
+                                // Update buttons
+                                document.getElementById('style-demo-single-btn').className = mode === 'single' ? 'so-btn so-btn-primary so-btn-sm' : 'so-btn so-btn-outline-primary so-btn-sm';
+                                document.getElementById('style-demo-multi-btn').className = mode === 'multiple' ? 'so-btn so-btn-primary so-btn-sm' : 'so-btn so-btn-outline-primary so-btn-sm';
+
+                                // Show/hide style buttons based on mode
+                                const radioBtns = document.querySelectorAll('.style-radio-btn');
+                                const checkboxBtns = document.querySelectorAll('.style-checkbox-btn');
+                                radioBtns.forEach(btn => btn.style.display = mode === 'single' ? '' : 'none');
+                                checkboxBtns.forEach(btn => btn.style.display = mode === 'multiple' ? '' : 'none');
+
+                                // Reset to appropriate default style
+                                if (mode === 'multiple' && (currentStyleDemoStyle === 'radio' || currentStyleDemoStyle === 'radio-bg')) {
+                                    styleDemoSetStyle('icon-bg');
+                                } else if (mode === 'single' && (currentStyleDemoStyle === 'checkbox' || currentStyleDemoStyle === 'checkbox-bg')) {
+                                    styleDemoSetStyle('icon-bg');
+                                } else {
+                                    styleDemoRebuild();
+                                }
+                            }
+
+                            function styleDemoSetStyle(style) {
+                                currentStyleDemoStyle = style;
+                                // Update style buttons
+                                document.querySelectorAll('#style-buttons-container button').forEach(btn => {
+                                    if (btn.textContent === style) {
+                                        btn.className = btn.className.replace('so-btn-outline-dark', 'so-btn-dark');
+                                    } else {
+                                        btn.className = btn.className.replace('so-btn-dark', 'so-btn-outline-dark');
+                                    }
+                                });
+                                styleDemoRebuild();
+                            }
+
+                            function styleDemoRebuild() {
+                                const container = document.getElementById('style-demo-container');
+                                const isMultiple = currentStyleDemoMode === 'multiple';
+
+                                // Rebuild the select
+                                container.innerHTML = `
+                                    <select id="style-demo-select" class="so-form-control" data-so-select
+                                            ${isMultiple ? 'multiple' : ''}
+                                            data-so-selection-style="${currentStyleDemoStyle}">
+                                        ${isMultiple ? '' : '<option value="">Select a country...</option>'}
+                                        <option value="us" data-icon="flag">United States</option>
+                                        <option value="uk" data-icon="flag">United Kingdom</option>
+                                        <option value="de" data-icon="flag">Germany</option>
+                                        <option value="fr" data-icon="flag">France</option>
+                                        <option value="jp" data-icon="flag">Japan</option>
+                                    </select>
+                                `;
+
+                                // Initialize the new select
+                                const newSelect = document.getElementById('style-demo-select');
+                                SOSelect.getInstance(newSelect);
+
+                                // Update info
+                                document.getElementById('style-demo-info').innerHTML =
+                                    `Mode: <strong>${isMultiple ? 'Multiple' : 'Single'}</strong> | Style: <strong>${currentStyleDemoStyle}</strong>`;
+                            }
+                        </script>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Selection Styles --&gt;
+&lt;!-- For multiple: checkbox, checkbox-bg, icon, bg, icon-bg --&gt;
+&lt;!-- For single: radio, radio-bg, icon, bg, icon-bg --&gt;
+
+&lt;!-- Icon + Background (default) --&gt;
+&lt;select class="so-form-control" data-so-select data-so-selection-style="icon-bg"&gt;
+    &lt;option value=""&gt;Select...&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Checkbox Style (for multi-select) --&gt;
+&lt;select class="so-form-control" data-so-select multiple data-so-selection-style="checkbox"&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Radio Style (for single select) --&gt;
+&lt;select class="so-form-control" data-so-select data-so-selection-style="radio"&gt;
+    &lt;option value=""&gt;Select...&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Radio with Background --&gt;
+&lt;select class="so-form-control" data-so-select data-so-selection-style="radio-bg"&gt;
+    &lt;option value=""&gt;Select...&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Background Only Style --&gt;
+&lt;select class="so-form-control" data-so-select data-so-selection-style="bg"&gt;
+    &lt;option value=""&gt;Select...&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Initialize with selection style options
+const select = SOSelect.getInstance(selectEl, {
+    // For multiple: 'checkbox', 'checkbox-bg', 'icon', 'bg', 'icon-bg'
+    // For single: 'radio', 'radio-bg', 'icon', 'bg', 'icon-bg'
+    selectionStyle: 'radio-bg',
+    selectionIcon: 'done'  // Only used with icon/icon-bg styles
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 15: Contextual Colors -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Contextual Colors</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <div class="so-grid so-grid-cols-4 so-grid-cols-md-2 so-grid-cols-sm-1">
+                            <div class="so-form-group">
+                                <label class="so-form-label">Primary</label>
+                                <select class="so-form-control" data-so-select data-so-variant="primary">
+                                    <option value="">Primary select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Secondary</label>
+                                <select class="so-form-control" data-so-select data-so-variant="secondary">
+                                    <option value="">Secondary select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Success</label>
+                                <select class="so-form-control" data-so-select data-so-variant="success">
+                                    <option value="">Success select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Danger</label>
+                                <select class="so-form-control" data-so-select data-so-variant="danger">
+                                    <option value="">Danger select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Warning</label>
+                                <select class="so-form-control" data-so-select data-so-variant="warning">
+                                    <option value="">Warning select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Info</label>
+                                <select class="so-form-control" data-so-select data-so-variant="info">
+                                    <option value="">Info select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Light</label>
+                                <select class="so-form-control" data-so-select data-so-variant="light">
+                                    <option value="">Light select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+
+                            <div class="so-form-group">
+                                <label class="so-form-label">Dark</label>
+                                <select class="so-form-control" data-so-select data-so-variant="dark">
+                                    <option value="">Dark select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Contextual Colors using data-so-variant --&gt;
+&lt;select class="so-form-control" data-so-select data-so-variant="primary"&gt;
+    &lt;option value=""&gt;Primary select&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;select class="so-form-control" data-so-select data-so-variant="secondary"&gt;...&lt;/select&gt;
+&lt;select class="so-form-control" data-so-select data-so-variant="success"&gt;...&lt;/select&gt;
+&lt;select class="so-form-control" data-so-select data-so-variant="danger"&gt;...&lt;/select&gt;
+&lt;select class="so-form-control" data-so-select data-so-variant="warning"&gt;...&lt;/select&gt;
+&lt;select class="so-form-control" data-so-select data-so-variant="info"&gt;...&lt;/select&gt;
+&lt;select class="so-form-control" data-so-select data-so-variant="light"&gt;...&lt;/select&gt;
+&lt;select class="so-form-control" data-so-select data-so-variant="dark"&gt;...&lt;/select&gt;</code></pre>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Initialize with variant option
+const select = SOSelect.getInstance(selectEl, {
+    variant: 'primary'  // 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 16: Interactive Demo -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Interactive JavaScript Demo</h3>
+                        <span class="so-badge so-badge-primary">Try it!</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-4">Use the buttons below to interact with the select component programmatically.</p>
+
+                        <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1 so-gap-4">
+                            <div>
+                                <label class="so-form-label">Demo Select (Single)</label>
+                                <select id="demo-select-single" class="so-form-control" data-so-select data-so-clearable="true">
+                                    <option value="">Select a fruit</option>
+                                    <option value="apple">Apple</option>
+                                    <option value="banana">Banana</option>
+                                    <option value="cherry">Cherry</option>
+                                    <option value="date">Date</option>
+                                    <option value="elderberry">Elderberry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="so-form-label">Demo Select (Multiple)</label>
+                                <select id="demo-select-multiple" class="so-form-control" data-so-select multiple data-so-display-mode="chips" data-so-show-actions="true">
+                                    <option value="red">Red</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="yellow">Yellow</option>
+                                    <option value="purple">Purple</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="so-separator so-separator-lg"></div>
+
+                        <h5 class="so-mb-3">Value Operations</h5>
+                        <div class="so-d-flex so-flex-wrap so-gap-2 so-mb-4">
+                            <button class="so-btn so-btn-primary so-btn-sm" onclick="demoSetValue('banana')">Set Value: Banana</button>
+                            <button class="so-btn so-btn-primary so-btn-sm" onclick="demoSetValue('cherry')">Set Value: Cherry</button>
+                            <button class="so-btn so-btn-outline-primary so-btn-sm" onclick="demoGetValue()">Get Value</button>
+                            <button class="so-btn so-btn-outline-danger so-btn-sm" onclick="demoClear()">Clear</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Multiple Select Operations</h5>
+                        <div class="so-d-flex so-flex-wrap so-gap-2 so-mb-4">
+                            <button class="so-btn so-btn-success so-btn-sm" onclick="demoSetMultiple(['red', 'blue'])">Set: Red, Blue</button>
+                            <button class="so-btn so-btn-success so-btn-sm" onclick="demoAddValue('green')">Add: Green</button>
+                            <button class="so-btn so-btn-warning so-btn-sm" onclick="demoRemoveValue('red')">Remove: Red</button>
+                            <button class="so-btn so-btn-info so-btn-sm" onclick="demoSelectAll()">Select All</button>
+                            <button class="so-btn so-btn-outline-secondary so-btn-sm" onclick="demoSelectNone()">Select None</button>
+                            <button class="so-btn so-btn-outline-primary so-btn-sm" onclick="demoGetMultipleValues()">Get Values</button>
+                        </div>
+
+                        <h5 class="so-mb-3">Option Management</h5>
+                        <div class="so-d-flex so-flex-wrap so-gap-2 so-mb-4">
+                            <button class="so-btn so-btn-secondary so-btn-sm" onclick="demoAddOption()">Add: Mango</button>
+                            <button class="so-btn so-btn-secondary so-btn-sm" onclick="demoRemoveOption()">Remove: Date</button>
+                            <button class="so-btn so-btn-secondary so-btn-sm" onclick="demoUpdateOption()">Update: Apple → Green Apple</button>
+                        </div>
+
+                        <h5 class="so-mb-3">State Control</h5>
+                        <div class="so-d-flex so-flex-wrap so-gap-2 so-mb-4">
+                            <button class="so-btn so-btn-dark so-btn-sm" onclick="demoDisable()">Disable</button>
+                            <button class="so-btn so-btn-light so-btn-sm" onclick="demoEnable()">Enable</button>
+                            <button class="so-btn so-btn-outline-dark so-btn-sm" onclick="demoOpen()">Open</button>
+                            <button class="so-btn so-btn-outline-dark so-btn-sm" onclick="demoClose()">Close</button>
+                        </div>
+
+                        <div class="so-separator"></div>
+
+                        <h5 class="so-mb-3">Output Log</h5>
+                        <div id="demo-output" class="so-bg-light so-p-3 so-rounded" style="min-height: 80px; font-family: monospace; font-size: 13px;">
+                            <span class="so-text-muted">Click buttons above to see the output...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    // Demo helper functions
+                    function logOutput(message) {
+                        const output = document.getElementById('demo-output');
+                        const timestamp = new Date().toLocaleTimeString();
+                        output.innerHTML = `<div class="so-text-primary">[${timestamp}]</div>${message}`;
+                    }
+
+                    function getSingleSelect() {
+                        const el = document.getElementById('demo-select-single');
+                        if (!el) {
+                            logOutput('<span class="so-text-danger">Error: demo-select-single element not found</span>');
+                            return null;
+                        }
+                        const select = SOSelect.getInstance(el);
+                        if (!select) {
+                            logOutput('<span class="so-text-danger">Error: SOSelect instance not found for single select</span>');
+                            return null;
+                        }
+                        return select;
+                    }
+
+                    function getMultipleSelect() {
+                        const el = document.getElementById('demo-select-multiple');
+                        if (!el) {
+                            logOutput('<span class="so-text-danger">Error: demo-select-multiple element not found</span>');
+                            return null;
+                        }
+                        const select = SOSelect.getInstance(el);
+                        if (!select) {
+                            logOutput('<span class="so-text-danger">Error: SOSelect instance not found for multiple select</span>');
+                            return null;
+                        }
+                        return select;
+                    }
+
+                    // Single Select Operations
+                    function demoSetValue(value) {
+                        const select = getSingleSelect();
+                        if (select) {
+                            select.setValue(value);
+                            logOutput(`setValue('${value}')<br>Current value: <strong>${select.getValue()}</strong><br>Display text: <strong>${select.getText()}</strong>`);
+                        }
+                    }
+
+                    function demoGetValue() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            const value = select.getValue();
+                            const text = select.getText();
+                            logOutput(`getValue(): <strong>${value || '(empty)'}</strong><br>getText(): <strong>${text || '(empty)'}</strong>`);
+                        }
+                    }
+
+                    function demoClear() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            select.clear();
+                            logOutput(`clear()<br>Value cleared!`);
+                        }
+                    }
+
+                    // Multiple Select Operations
+                    function demoSetMultiple(values) {
+                        const select = getMultipleSelect();
+                        if (select) {
+                            select.setValues(values);
+                            logOutput(`setValues([${values.map(v => `'${v}'`).join(', ')}])<br>Current values: <strong>${JSON.stringify(select.getValues())}</strong>`);
+                        }
+                    }
+
+                    function demoAddValue(value) {
+                        const select = getMultipleSelect();
+                        if (select) {
+                            select.addValue(value);
+                            logOutput(`addValue('${value}')<br>Current values: <strong>${JSON.stringify(select.getValues())}</strong>`);
+                        }
+                    }
+
+                    function demoRemoveValue(value) {
+                        const select = getMultipleSelect();
+                        if (select) {
+                            select.removeValue(value);
+                            logOutput(`removeValue('${value}')<br>Current values: <strong>${JSON.stringify(select.getValues())}</strong>`);
+                        }
+                    }
+
+                    function demoSelectAll() {
+                        const select = getMultipleSelect();
+                        if (select) {
+                            select.selectAll();
+                            logOutput(`selectAll()<br>Current values: <strong>${JSON.stringify(select.getValues())}</strong>`);
+                        }
+                    }
+
+                    function demoSelectNone() {
+                        const select = getMultipleSelect();
+                        if (select) {
+                            select.selectNone();
+                            logOutput(`selectNone()<br>Current values: <strong>${JSON.stringify(select.getValues())}</strong>`);
+                        }
+                    }
+
+                    function demoGetMultipleValues() {
+                        const select = getMultipleSelect();
+                        if (select) {
+                            const values = select.getValues();
+                            const texts = select.getTexts();
+                            logOutput(`getValues(): <strong>${JSON.stringify(values)}</strong><br>getTexts(): <strong>${JSON.stringify(texts)}</strong>`);
+                        }
+                    }
+
+                    // Option Management
+                    function demoAddOption() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            if (!select.hasOption('mango')) {
+                                select.addOption({ value: 'mango', label: 'Mango' });
+                                logOutput(`addOption({ value: 'mango', label: 'Mango' })<br>Option "Mango" added!`);
+                            } else {
+                                logOutput(`Option "Mango" already exists!`);
+                            }
+                        }
+                    }
+
+                    function demoRemoveOption() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            if (select.hasOption('date')) {
+                                select.removeOption('date');
+                                logOutput(`removeOption('date')<br>Option "Date" removed!`);
+                            } else {
+                                logOutput(`Option "Date" doesn't exist or already removed!`);
+                            }
+                        }
+                    }
+
+                    function demoUpdateOption() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            if (select.hasOption('apple')) {
+                                select.updateOption('apple', { label: 'Green Apple' });
+                                logOutput(`updateOption('apple', { label: 'Green Apple' })<br>Option updated!`);
+                            } else {
+                                logOutput(`Option "Apple" doesn't exist!`);
+                            }
+                        }
+                    }
+
+                    // State Control
+                    function demoDisable() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            select.disable();
+                            logOutput(`disable()<br>Select is now disabled!`);
+                        }
+                    }
+
+                    function demoEnable() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            select.enable();
+                            logOutput(`enable()<br>Select is now enabled!`);
+                        }
+                    }
+
+                    function demoOpen() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            select.open();
+                            logOutput(`open()<br>Dropdown opened!`);
+                        }
+                    }
+
+                    function demoClose() {
+                        const select = getSingleSelect();
+                        if (select) {
+                            select.close();
+                            logOutput(`close()<br>Dropdown closed!`);
+                        }
+                    }
+
+                    // Listen to events
+                    document.addEventListener('DOMContentLoaded', function() {
+                        setTimeout(() => {
+                            const singleEl = document.getElementById('demo-select-single');
+                            const multiEl = document.getElementById('demo-select-multiple');
+
+                            if (singleEl && singleEl.nextElementSibling) {
+                                singleEl.nextElementSibling.addEventListener('so:select:change', (e) => {
+                                    console.log('Single select changed:', e.detail);
+                                });
+                            }
+
+                            if (multiEl && multiEl.nextElementSibling) {
+                                multiEl.nextElementSibling.addEventListener('so:select:change', (e) => {
+                                    console.log('Multiple select changed:', e.detail);
+                                });
+                            }
+                        }, 500);
+                    });
+                </script>
+
+                <!-- Section 17: JavaScript API -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">JavaScript API Reference</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <h4 class="so-mb-3">Initialization</h4>
+                        <div class="so-code-block so-mt-2">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Auto-initialize via data attribute (done automatically)
+// Or manually get/create instance:
+const selectEl = document.querySelector('.so-select');
+const select = SOSelect.getInstance(selectEl, {
+    searchable: true,
+    multiple: true,
+    displayMode: 'chips',
+    showActions: true,
+    selectAllText: 'Select All',
+    selectNoneText: 'Clear All',
+    multipleSelectedText: '{count} items selected',
+    allSelectedText: 'All items selected'
+});</code></pre>
+                        </div>
+
+                        <h4 class="so-mt-4 so-mb-3">Value Management</h4>
+                        <div class="so-code-block so-mt-2">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Get values
+const value = select.getValue();    // Single value or first
+const values = select.getValues();  // Array of all selected
+const text = select.getText();      // Display text
+const texts = select.getTexts();    // Array of texts
+
+// Set values
+select.setValue('us');              // Single value
+select.setValues(['us', 'uk']);     // Multiple values
+select.addValue('de');              // Add to selection
+select.removeValue('us');           // Remove from selection
+select.clear();                     // Clear all
+select.selectAll();                 // Select all (multi)
+select.selectNone();                // Deselect all (multi)</code></pre>
+                        </div>
+
+                        <h4 class="so-mt-4 so-mb-3">Programmatic Option Management</h4>
+                        <div class="so-code-block so-mt-2">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Add options
+select.addOption({ value: 'new', label: 'New Option' });
+select.prependOption({ value: 'first', label: 'First' });
+select.addOptionAt({ value: 'mid', label: 'Middle' }, 2);
+select.addOptionBefore({ value: 'x', label: 'Before UK' }, 'uk');
+select.addOptionAfter({ value: 'y', label: 'After US' }, 'us');
+
+// Add to groups
+select.addOptionToGroup({ value: 'fr', label: 'France' }, 'Europe');
+select.addGroup('Oceania', [
+    { value: 'au', label: 'Australia' },
+    { value: 'nz', label: 'New Zealand' }
+]);
+
+// Remove options
+select.removeOption('us');
+select.removeGroup('Europe');
+select.clearOptions();
+
+// Update options
+select.updateOption('uk', { label: 'United Kingdom (Updated)' });</code></pre>
+                        </div>
+
+                        <h4 class="so-mt-4 so-mb-3">Events</h4>
+                        <div class="so-code-block so-mt-2">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">const selectEl = document.querySelector('.so-select');
+
+// Change event
+selectEl.addEventListener('so:select:change', (e) => {
+    console.log('Selected value:', e.detail.value);
+    console.log('All values:', e.detail.values);
+    console.log('Previous values:', e.detail.previousValues);
+    console.log('Action:', e.detail.action); // 'select', 'deselect', 'clear', 'selectAll'
+});
+
+// Search event
+selectEl.addEventListener('so:select:search', (e) => {
+    console.log('Search query:', e.detail.query);
+});
+
+// Open/Close events
+selectEl.addEventListener('so:select:open', () => console.log('Opening'));
+selectEl.addEventListener('so:select:opened', () => console.log('Opened'));
+selectEl.addEventListener('so:select:close', () => console.log('Closing'));
+selectEl.addEventListener('so:select:closed', () => console.log('Closed'));
+selectEl.addEventListener('so:select:clear', () => console.log('Cleared'));</code></pre>
+                        </div>
+
+                        <h4 class="so-mt-4 so-mb-3">Control Methods</h4>
+                        <div class="so-code-block so-mt-2">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-javascript">// Dropdown control
+select.open();
+select.close();
+select.toggle();
+
+// State control
+select.enable();
+select.disable();
+select.setOptionDisabled('us', true);  // Disable specific option
+
+// Check state
+select.isOpen();
+select.isDisabled();
+select.hasOption('us');
+select.getOption('us');  // Returns option object</code></pre>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>

@@ -683,6 +683,209 @@
     </div>
 
     <!-- ============================================
+         SEPARATOR UTILITIES
+         ============================================ -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Separator</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-muted so-mb-4">Horizontal and vertical line separators for dividing content sections.</p>
+
+            <!-- Basic Horizontal Separator -->
+            <h5 class="so-fw-semibold so-mb-3">Horizontal Separator</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <div class="so-bg-white so-p-3 so-rounded">Section 1</div>
+                <div class="so-separator"></div>
+                <div class="so-bg-white so-p-3 so-rounded">Section 2</div>
+                <div class="so-separator"></div>
+                <div class="so-bg-white so-p-3 so-rounded">Section 3</div>
+            </div>
+
+            <!-- Separator Sizes -->
+            <h5 class="so-fw-semibold so-mb-3">Separator Spacing Sizes</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-flush (no margin)</p>
+                <div class="so-separator so-separator-flush"></div>
+                <p class="so-text-muted so-fs-sm so-mt-3 so-mb-2">.so-separator-sm</p>
+                <div class="so-separator so-separator-sm"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator (default)</p>
+                <div class="so-separator"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-lg</p>
+                <div class="so-separator so-separator-lg"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-xl</p>
+                <div class="so-separator so-separator-xl"></div>
+            </div>
+
+            <!-- Separator Thickness -->
+            <h5 class="so-fw-semibold so-mb-3">Separator Thickness</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator (1px default)</p>
+                <div class="so-separator"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-2</p>
+                <div class="so-separator so-separator-2"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-3</p>
+                <div class="so-separator so-separator-3"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-4</p>
+                <div class="so-separator so-separator-4"></div>
+            </div>
+
+            <!-- Separator Styles -->
+            <h5 class="so-fw-semibold so-mb-3">Separator Styles</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator (solid)</p>
+                <div class="so-separator"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-dashed</p>
+                <div class="so-separator so-separator-dashed"></div>
+                <p class="so-text-muted so-fs-sm so-mb-2">.so-separator-dotted</p>
+                <div class="so-separator so-separator-dotted"></div>
+            </div>
+
+            <!-- Separator Colors -->
+            <h5 class="so-fw-semibold so-mb-3">Separator Colors</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <div class="so-d-flex so-flex-column so-gap-3">
+                    <div>
+                        <span class="so-text-muted so-fs-sm">.so-separator-primary</span>
+                        <div class="so-separator so-separator-primary so-separator-2"></div>
+                    </div>
+                    <div>
+                        <span class="so-text-muted so-fs-sm">.so-separator-success</span>
+                        <div class="so-separator so-separator-success so-separator-2"></div>
+                    </div>
+                    <div>
+                        <span class="so-text-muted so-fs-sm">.so-separator-danger</span>
+                        <div class="so-separator so-separator-danger so-separator-2"></div>
+                    </div>
+                    <div>
+                        <span class="so-text-muted so-fs-sm">.so-separator-warning</span>
+                        <div class="so-separator so-separator-warning so-separator-2"></div>
+                    </div>
+                    <div>
+                        <span class="so-text-muted so-fs-sm">.so-separator-info</span>
+                        <div class="so-separator so-separator-info so-separator-2"></div>
+                    </div>
+                    <div>
+                        <span class="so-text-muted so-fs-sm">.so-separator-subtle</span>
+                        <div class="so-separator so-separator-subtle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vertical Separator -->
+            <h5 class="so-fw-semibold so-mb-3">Vertical Separator</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <div class="so-d-flex so-align-items-center so-gap-0">
+                    <div class="so-bg-white so-p-3 so-rounded">Left</div>
+                    <div class="so-separator-vertical" style="height: 40px;"></div>
+                    <div class="so-bg-white so-p-3 so-rounded">Center</div>
+                    <div class="so-separator-vertical" style="height: 40px;"></div>
+                    <div class="so-bg-white so-p-3 so-rounded">Right</div>
+                </div>
+            </div>
+
+            <!-- Vertical Separator Colors -->
+            <h5 class="so-fw-semibold so-mb-3">Vertical Separator Colors</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <div class="so-d-flex so-align-items-center so-flex-wrap so-gap-4">
+                    <div class="so-d-flex so-align-items-center so-gap-0">
+                        <span class="so-fs-sm">Primary</span>
+                        <div class="so-separator-vertical so-separator-primary so-separator-2" style="height: 30px;"></div>
+                        <span class="so-fs-sm">Text</span>
+                    </div>
+                    <div class="so-d-flex so-align-items-center so-gap-0">
+                        <span class="so-fs-sm">Success</span>
+                        <div class="so-separator-vertical so-separator-success so-separator-2" style="height: 30px;"></div>
+                        <span class="so-fs-sm">Text</span>
+                    </div>
+                    <div class="so-d-flex so-align-items-center so-gap-0">
+                        <span class="so-fs-sm">Danger</span>
+                        <div class="so-separator-vertical so-separator-danger so-separator-2" style="height: 30px;"></div>
+                        <span class="so-fs-sm">Text</span>
+                    </div>
+                    <div class="so-d-flex so-align-items-center so-gap-0">
+                        <span class="so-fs-sm">Warning</span>
+                        <div class="so-separator-vertical so-separator-warning so-separator-2" style="height: 30px;"></div>
+                        <span class="so-fs-sm">Text</span>
+                    </div>
+                    <div class="so-d-flex so-align-items-center so-gap-0">
+                        <span class="so-fs-sm">Info</span>
+                        <div class="so-separator-vertical so-separator-info so-separator-2" style="height: 30px;"></div>
+                        <span class="so-fs-sm">Text</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Separator with Text -->
+            <h5 class="so-fw-semibold so-mb-3">Separator with Text</h5>
+            <div class="so-bg-body-secondary so-p-4 so-rounded so-mb-4">
+                <p class="so-text-muted so-fs-sm so-mb-2">Horizontal</p>
+                <div class="so-separator so-separator-text so-text-muted so-fs-sm">OR</div>
+                <div class="so-mt-4">
+                    <div class="so-separator so-separator-text so-text-muted so-fs-sm">Continue with</div>
+                </div>
+
+                <p class="so-text-muted so-fs-sm so-mb-2 so-mt-4">Vertical</p>
+                <div class="so-d-flex so-align-items-stretch so-gap-4" style="height: 120px;">
+                    <div class="so-bg-white so-p-3 so-rounded so-d-flex so-align-items-center">Left Content</div>
+                    <div class="so-separator-vertical so-separator-text so-text-muted so-fs-sm">OR</div>
+                    <div class="so-bg-white so-p-3 so-rounded so-d-flex so-align-items-center">Right Content</div>
+                </div>
+            </div>
+
+            <div class="so-code-block">
+                <div class="so-code-header">
+                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <button class="so-code-copy" onclick="copyCode(this)">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+                <pre class="so-code-content"><code class="language-html">&lt;!-- Basic horizontal separator --&gt;
+&lt;div class="so-separator"&gt;&lt;/div&gt;
+
+&lt;!-- With spacing sizes --&gt;
+&lt;div class="so-separator so-separator-sm"&gt;&lt;/div&gt;
+&lt;div class="so-separator so-separator-lg"&gt;&lt;/div&gt;
+
+&lt;!-- With thickness --&gt;
+&lt;div class="so-separator so-separator-2"&gt;&lt;/div&gt;
+
+&lt;!-- With styles --&gt;
+&lt;div class="so-separator so-separator-dashed"&gt;&lt;/div&gt;
+&lt;div class="so-separator so-separator-dotted"&gt;&lt;/div&gt;
+
+&lt;!-- With colors --&gt;
+&lt;div class="so-separator so-separator-primary"&gt;&lt;/div&gt;
+&lt;div class="so-separator so-separator-subtle"&gt;&lt;/div&gt;
+
+&lt;!-- Vertical separator --&gt;
+&lt;div class="so-d-flex so-align-items-center"&gt;
+  &lt;span&gt;Left&lt;/span&gt;
+  &lt;div class="so-separator-vertical" style="height: 20px;"&gt;&lt;/div&gt;
+  &lt;span&gt;Right&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Vertical separator with colors --&gt;
+&lt;div class="so-d-flex so-align-items-center"&gt;
+  &lt;span&gt;Left&lt;/span&gt;
+  &lt;div class="so-separator-vertical so-separator-primary so-separator-2" style="height: 20px;"&gt;&lt;/div&gt;
+  &lt;span&gt;Right&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Separator with text (horizontal) --&gt;
+&lt;div class="so-separator so-separator-text"&gt;OR&lt;/div&gt;
+
+&lt;!-- Separator with text (vertical) --&gt;
+&lt;div class="so-d-flex so-align-items-stretch" style="height: 100px;"&gt;
+  &lt;div&gt;Left&lt;/div&gt;
+  &lt;div class="so-separator-vertical so-separator-text"&gt;OR&lt;/div&gt;
+  &lt;div&gt;Right&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
          SHADOWS UTILITIES
          ============================================ -->
     <div class="so-card so-mb-4">

@@ -158,6 +158,25 @@ require_once 'includes/navbar.php';
 
 <?php
 $inlineJs = <<<JS
+// Tabs demo functions (global for onclick handlers)
+function demoTabsNext() {
+    const tabsEl = document.querySelector('#demo-events-tabs');
+    const tabs = SOTabs.getInstance(tabsEl);
+    if (tabs) tabs.next();
+}
+
+function demoTabsPrev() {
+    const tabsEl = document.querySelector('#demo-events-tabs');
+    const tabs = SOTabs.getInstance(tabsEl);
+    if (tabs) tabs.prev();
+}
+
+function demoTabsShowById() {
+    const tabsEl = document.querySelector('#demo-events-tabs');
+    const tabs = SOTabs.getInstance(tabsEl);
+    if (tabs) tabs.showById('demo-events-3');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Progress button API demo
     const progressBtns = document.querySelectorAll('.so-btn-progress[data-so-progress]');

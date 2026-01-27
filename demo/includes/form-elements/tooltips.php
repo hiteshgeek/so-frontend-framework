@@ -506,18 +506,36 @@ element.addEventListener('so:tooltip:hidden', (e) => {});</code></pre>
                         <script>
                         // Initialize demo tooltip
                         let demoTooltip;
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const target = document.getElementById('demo-tooltip-target');
-                            if (target && typeof SOTooltip !== 'undefined') {
-                                demoTooltip = SOTooltip.getInstance(target);
+                        let eventListenersAdded = false;
 
-                                // Event listeners for logging
+                        function initDemoTooltip() {
+                            const target = document.getElementById('demo-tooltip-target');
+                            if (!target) return;
+
+                            // Add event listeners only once
+                            if (!eventListenersAdded) {
                                 target.addEventListener('so:tooltip:show', (e) => logEvent('so:tooltip:show', 'About to show tooltip'));
                                 target.addEventListener('so:tooltip:shown', (e) => logEvent('so:tooltip:shown', 'Tooltip is now visible'));
                                 target.addEventListener('so:tooltip:hide', (e) => logEvent('so:tooltip:hide', 'About to hide tooltip'));
                                 target.addEventListener('so:tooltip:hidden', (e) => logEvent('so:tooltip:hidden', 'Tooltip is now hidden'));
+                                eventListenersAdded = true;
                             }
-                        });
+
+                            // Initialize tooltip instance when SOTooltip is available
+                            if (typeof SOTooltip !== 'undefined' && !demoTooltip) {
+                                demoTooltip = SOTooltip.getInstance(target);
+                            }
+                        }
+
+                        // Initialize when DOM is ready
+                        if (document.readyState === 'loading') {
+                            document.addEventListener('DOMContentLoaded', initDemoTooltip);
+                        } else {
+                            initDemoTooltip();
+                        }
+
+                        // Also try again after window load (ensures JS bundle is loaded)
+                        window.addEventListener('load', initDemoTooltip);
 
                         function logEvent(eventName, message) {
                             const log = document.getElementById('tooltip-event-log');

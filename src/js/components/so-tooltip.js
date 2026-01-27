@@ -508,16 +508,32 @@ class SOTooltip extends SOComponent {
     // Set aria-describedby on trigger
     this.element.setAttribute('aria-describedby', this._tooltipId);
 
-    // Position tooltip
-    this._positionTooltip();
-
-    // Show with animation (use requestAnimationFrame for transition)
+    // Position tooltip accurately without animation shift:
+    // 1. Force scale(1) immediately (no transition) to get accurate dimensions
+    // 2. Position the tooltip
+    // 3. Then enable animation for opacity
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        if (this._tooltipEl) {
-          this._tooltipEl.classList.add('so-show');
-        }
-      });
+      if (this._tooltipEl) {
+        // Temporarily disable transition and force full scale for accurate measurement
+        this._tooltipEl.style.transform = 'scale(1)';
+        this._tooltipEl.style.transition = 'none';
+
+        // Force reflow to apply styles immediately
+        this._tooltipEl.offsetHeight;
+
+        // Position with correct full-scale dimensions
+        this._positionTooltip();
+
+        // Re-enable CSS control and add show class
+        // Since we're already at scale(1), adding so-show won't cause visual shift
+        requestAnimationFrame(() => {
+          if (this._tooltipEl) {
+            this._tooltipEl.style.transform = '';
+            this._tooltipEl.style.transition = '';
+            this._tooltipEl.classList.add('so-show');
+          }
+        });
+      }
     });
 
     // Emit shown event after transition

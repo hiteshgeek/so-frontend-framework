@@ -630,6 +630,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   width: css-var('sidebar-collapsed-width');
   min-width: css-var('sidebar-collapsed-width');
   max-width: css-var('sidebar-collapsed-width');
+  transition: width 0.2s ease-out, min-width 0.2s ease-out, max-width 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
 // On hover, expand the mini sidebar
@@ -642,9 +643,9 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 
 // Header in collapsed state
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-header {
-  padding: spacing('2');
-  justify-content: center;
-  gap: 0;
+  padding: 0 spacing('4') 0 spacing('1') + 2px;
+  justify-content: flex-start;
+  gap: spacing('3');
   transition: none;
 }
 
@@ -678,7 +679,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   width: auto;
   flex: 1;
   overflow: visible;
-  transition: opacity 0.15s ease 0.1s, visibility 0.15s ease 0.1s;
+  transition: opacity 0.2s ease 0.15s, visibility 0.2s ease 0.15s;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-toggle {
@@ -689,7 +690,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   height: 20px;
   flex: 0 0 20px;
   overflow: visible;
-  transition: opacity 0.15s ease 0.1s, visibility 0.15s ease 0.1s;
+  transition: opacity 0.2s ease 0.15s, visibility 0.2s ease 0.15s;
 }
 
 // Menu items in collapsed state
@@ -698,19 +699,19 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-link {
-  padding: spacing('2');
-  justify-content: center;
+  padding: spacing('2') spacing('2') spacing('2') spacing('3');
+  justify-content: flex-start;
   align-items: center;
-  gap: 0;
+  gap: spacing('2') + 2px;
   min-height: 40px;
   transition: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-icon {
   margin: 0;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  left: 0;
+  transform: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed .#{$so-prefix}sidebar-text,
@@ -754,6 +755,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   overflow: hidden !important;
   opacity: 0;
   visibility: hidden;
+  transition: none !important;
 }
 
 // On hover expand - show all elements
@@ -766,17 +768,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-link {
-  padding: spacing('2') spacing('2') spacing('2') spacing('3');
-  justify-content: flex-start;
-  gap: spacing('2') + 2px;
   transition: background $so-transition-base, color $so-transition-base, box-shadow $so-transition-base;
-}
-
-.#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-icon {
-  margin: 0;
-  position: relative;
-  left: 0;
-  transform: none;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-text,
@@ -786,7 +778,7 @@ html.sidebar-pinned .#{$so-prefix}main-content {
   visibility: visible;
   width: auto;
   overflow: visible;
-  transition: opacity 0.15s ease 0.1s, visibility 0.15s ease 0.1s;
+  transition: opacity 0.2s ease 0.15s, visibility 0.2s ease 0.15s;
 }
 
 .#{$so-prefix}sidebar.#{$so-prefix}collapsed:hover .#{$so-prefix}sidebar-text {

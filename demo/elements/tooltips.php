@@ -132,34 +132,79 @@ require_once '../includes/navbar.php';
                         <h3 class="so-card-title">Color Variants</h3>
                     </div>
                     <div class="so-card-body">
-                                                        <div class="so-flex so-gap-3 so-flex-wrap">
-                                    <button class="so-btn so-btn-outline" data-so-tooltip="Default tooltip">Default</button>
-                                    <button class="so-btn so-btn-outline-primary" data-so-tooltip="Primary color" data-so-tooltip-color="primary">Primary</button>
-                                    <button class="so-btn so-btn-outline-success" data-so-tooltip="Success message" data-so-tooltip-color="success">Success</button>
-                                    <button class="so-btn so-btn-outline-danger" data-so-tooltip="Danger alert" data-so-tooltip-color="danger">Danger</button>
-                                    <button class="so-btn so-btn-outline-warning" data-so-tooltip="Warning notice" data-so-tooltip-color="warning">Warning</button>
-                                    <button class="so-btn so-btn-outline-info" data-so-tooltip="Info hint" data-so-tooltip-color="info">Info</button>
-                                    <button class="so-btn so-btn-outline-secondary" data-so-tooltip="Secondary style" data-so-tooltip-color="secondary">Secondary</button>
-                                    <button class="so-btn so-btn-outline-light" data-so-tooltip="Light theme" data-so-tooltip-color="light">Light</button>
-                                    <button class="so-btn so-btn-outline-dark" data-so-tooltip="Dark theme" data-so-tooltip-color="dark">Dark</button>
-                                </div>
+                        <p class="so-demo-desc">
+                            Three tooltip styles available: <strong>Solid</strong> (filled background), <strong>Outline</strong> (bordered), and <strong>Soft</strong> (pastel background).
+                        </p>
+
+                        <!-- Solid Tooltips -->
+                        <h4 class="so-demo-section-heading-spaced">Solid (Filled)</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-primary" data-so-tooltip="Primary tooltip" data-so-tooltip-color="primary">Primary</button>
+                            <button class="so-btn so-btn-success" data-so-tooltip="Success tooltip" data-so-tooltip-color="success">Success</button>
+                            <button class="so-btn so-btn-danger" data-so-tooltip="Danger tooltip" data-so-tooltip-color="danger">Danger</button>
+                            <button class="so-btn so-btn-warning" data-so-tooltip="Warning tooltip" data-so-tooltip-color="warning">Warning</button>
+                            <button class="so-btn so-btn-info" data-so-tooltip="Info tooltip" data-so-tooltip-color="info">Info</button>
+                            <button class="so-btn so-btn-secondary" data-so-tooltip="Secondary tooltip" data-so-tooltip-color="secondary">Secondary</button>
+                        </div>
+
+                        <!-- Outline Tooltips -->
+                        <h4 class="so-demo-section-heading-spaced">Outline (Bordered)</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-outline-primary" data-so-tooltip="Primary outline" data-so-tooltip-color="outline-primary">Primary</button>
+                            <button class="so-btn so-btn-outline-success" data-so-tooltip="Success outline" data-so-tooltip-color="outline-success">Success</button>
+                            <button class="so-btn so-btn-outline-danger" data-so-tooltip="Danger outline" data-so-tooltip-color="outline-danger">Danger</button>
+                            <button class="so-btn so-btn-outline-warning" data-so-tooltip="Warning outline" data-so-tooltip-color="outline-warning">Warning</button>
+                            <button class="so-btn so-btn-outline-info" data-so-tooltip="Info outline" data-so-tooltip-color="outline-info">Info</button>
+                            <button class="so-btn so-btn-outline-secondary" data-so-tooltip="Secondary outline" data-so-tooltip-color="outline-secondary">Secondary</button>
+                        </div>
+
+                        <!-- Soft Tooltips -->
+                        <h4 class="so-demo-section-heading-spaced">Soft (Pastel)</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-soft-primary" data-so-tooltip="Primary soft" data-so-tooltip-color="soft-primary">Primary</button>
+                            <button class="so-btn so-btn-soft-success" data-so-tooltip="Success soft" data-so-tooltip-color="soft-success">Success</button>
+                            <button class="so-btn so-btn-soft-danger" data-so-tooltip="Danger soft" data-so-tooltip-color="soft-danger">Danger</button>
+                            <button class="so-btn so-btn-soft-warning" data-so-tooltip="Warning soft" data-so-tooltip-color="soft-warning">Warning</button>
+                            <button class="so-btn so-btn-soft-info" data-so-tooltip="Info soft" data-so-tooltip-color="soft-info">Info</button>
+                            <button class="so-btn so-btn-soft-secondary" data-so-tooltip="Secondary soft" data-so-tooltip-color="soft-secondary">Secondary</button>
+                        </div>
+
+                        <!-- Additional Colors -->
+                        <h4 class="so-demo-section-heading-spaced">Additional Options</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap">
+                            <button class="so-btn so-btn-outline" data-so-tooltip="Default dark tooltip">Default</button>
+                            <button class="so-btn so-btn-light" data-so-tooltip="Light theme tooltip" data-so-tooltip-color="light">Light Theme</button>
+                            <button class="so-btn so-btn-dark" data-so-tooltip="Dark tooltip" data-so-tooltip-color="dark">Dark</button>
+                        </div>
+
                         <div class="so-code-block so-mt-4">
-                                <div class="so-code-header">
-                                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
-                                    <button class="so-code-copy" onclick="copyCode(this)" data-so-tooltip="Copy code" data-so-shortcut="Ctrl+C">
-                                        <span class="material-icons">content_copy</span>
-                                    </button>
-                                </div>
-                                <pre class="so-code-content"><code class="language-html">&lt;button data-so-tooltip="Default tooltip"&gt;Default&lt;/button&gt;
-&lt;button data-so-tooltip="Primary color" data-so-tooltip-color="primary"&gt;Primary&lt;/button&gt;
-&lt;button data-so-tooltip="Success message" data-so-tooltip-color="success"&gt;Success&lt;/button&gt;
-&lt;button data-so-tooltip="Danger alert" data-so-tooltip-color="danger"&gt;Danger&lt;/button&gt;
-&lt;button data-so-tooltip="Warning notice" data-so-tooltip-color="warning"&gt;Warning&lt;/button&gt;
-&lt;button data-so-tooltip="Info hint" data-so-tooltip-color="info"&gt;Info&lt;/button&gt;
-&lt;button data-so-tooltip="Secondary style" data-so-tooltip-color="secondary"&gt;Secondary&lt;/button&gt;
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)" data-so-tooltip="Copy code" data-so-shortcut="Ctrl+C">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Solid (filled background) --&gt;
+&lt;button data-so-tooltip="Primary" data-so-tooltip-color="primary"&gt;Primary&lt;/button&gt;
+&lt;button data-so-tooltip="Success" data-so-tooltip-color="success"&gt;Success&lt;/button&gt;
+&lt;button data-so-tooltip="Danger" data-so-tooltip-color="danger"&gt;Danger&lt;/button&gt;
+&lt;button data-so-tooltip="Warning" data-so-tooltip-color="warning"&gt;Warning&lt;/button&gt;
+&lt;button data-so-tooltip="Info" data-so-tooltip-color="info"&gt;Info&lt;/button&gt;
+
+&lt;!-- Outline (bordered) --&gt;
+&lt;button data-so-tooltip="Primary" data-so-tooltip-color="outline-primary"&gt;Outline&lt;/button&gt;
+&lt;button data-so-tooltip="Success" data-so-tooltip-color="outline-success"&gt;Outline&lt;/button&gt;
+&lt;button data-so-tooltip="Danger" data-so-tooltip-color="outline-danger"&gt;Outline&lt;/button&gt;
+
+&lt;!-- Soft (pastel background) --&gt;
+&lt;button data-so-tooltip="Primary" data-so-tooltip-color="soft-primary"&gt;Soft&lt;/button&gt;
+&lt;button data-so-tooltip="Success" data-so-tooltip-color="soft-success"&gt;Soft&lt;/button&gt;
+&lt;button data-so-tooltip="Danger" data-so-tooltip-color="soft-danger"&gt;Soft&lt;/button&gt;
+
+&lt;!-- Other options --&gt;
 &lt;button data-so-tooltip="Light theme" data-so-tooltip-color="light"&gt;Light&lt;/button&gt;
 &lt;button data-so-tooltip="Dark theme" data-so-tooltip-color="dark"&gt;Dark&lt;/button&gt;</code></pre>
-                            </div>
+                        </div>
                     </div>
                 </div>
 

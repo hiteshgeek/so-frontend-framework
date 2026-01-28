@@ -813,41 +813,544 @@
 }
 
 // ============================================
-// POPUP LIGHT THEME
+// POPUP OUTLINE COLOR VARIANTS
 // ============================================
 
-.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-light {
+// Outline mixin - creates bordered arrow with two triangles
+@mixin tooltip-outline-arrows($border-color, $fill-color: css-var('card-bg')) {
   .#{$so-prefix}tooltip-inner {
-    color: css-var('text-primary');
+    // Add ::before for border triangle
+    &::before {
+      content: '';
+      position: absolute;
+      border: 6px solid transparent;
+    }
+    // ::after is already the fill triangle (5px)
+    &::after {
+      border-width: 5px;
+    }
+  }
+
+  // Top position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-top .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: $border-color;
+    }
+    &::after {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: $fill-color;
+      margin-top: -1px;
+    }
+  }
+
+  // Bottom position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-bottom .#{$so-prefix}tooltip-inner {
+    &::before {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: $border-color;
+    }
+    &::after {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: $fill-color;
+      margin-bottom: -1px;
+    }
+  }
+
+  // Left position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-left .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      border-left-color: $border-color;
+    }
+    &::after {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      border-left-color: $fill-color;
+      margin-left: -1px;
+    }
+  }
+
+  // Right position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-right .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-right-color: $border-color;
+    }
+    &::after {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-right-color: $fill-color;
+      margin-right: -1px;
+    }
+  }
+}
+
+// Primary Outline
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-outline-primary {
+  .#{$so-prefix}tooltip-inner {
     background: css-var('card-bg');
-    border: 1px solid css-var('border-color');
-    box-shadow: css-var('shadow');
+    color: $so-primary;
+    border: 1px solid $so-primary;
 
     kbd {
-      color: css-var('text-primary');
-      background: css-var('card-hover-bg');
-      border-color: css-var('border-color');
+      color: $so-primary;
+      background: rgba($so-primary, 0.1);
+      border-color: rgba($so-primary, 0.3);
     }
   }
 
   .#{$so-prefix}tooltip-divider {
-    background: css-var('border-color');
+    background: rgba($so-primary, 0.3);
   }
 
-  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-top .#{$so-prefix}tooltip-inner::after {
-    border-top-color: css-var('card-bg');
+  @include tooltip-outline-arrows($so-primary);
+}
+
+// Success Outline
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-outline-success {
+  .#{$so-prefix}tooltip-inner {
+    background: css-var('card-bg');
+    color: $so-success;
+    border: 1px solid $so-success;
+
+    kbd {
+      color: $so-success;
+      background: rgba($so-success, 0.1);
+      border-color: rgba($so-success, 0.3);
+    }
   }
 
-  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-bottom .#{$so-prefix}tooltip-inner::after {
-    border-bottom-color: css-var('card-bg');
+  .#{$so-prefix}tooltip-divider {
+    background: rgba($so-success, 0.3);
   }
 
-  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-left .#{$so-prefix}tooltip-inner::after {
-    border-left-color: css-var('card-bg');
+  @include tooltip-outline-arrows($so-success);
+}
+
+// Danger Outline
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-outline-danger {
+  .#{$so-prefix}tooltip-inner {
+    background: css-var('card-bg');
+    color: $so-danger;
+    border: 1px solid $so-danger;
+
+    kbd {
+      color: $so-danger;
+      background: rgba($so-danger, 0.1);
+      border-color: rgba($so-danger, 0.3);
+    }
   }
 
-  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-right .#{$so-prefix}tooltip-inner::after {
-    border-right-color: css-var('card-bg');
+  .#{$so-prefix}tooltip-divider {
+    background: rgba($so-danger, 0.3);
+  }
+
+  @include tooltip-outline-arrows($so-danger);
+}
+
+// Warning Outline
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-outline-warning {
+  .#{$so-prefix}tooltip-inner {
+    background: css-var('card-bg');
+    color: $so-warning-dark;
+    border: 1px solid $so-warning;
+
+    kbd {
+      color: $so-warning-dark;
+      background: rgba($so-warning, 0.15);
+      border-color: rgba($so-warning, 0.4);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: rgba($so-warning, 0.4);
+  }
+
+  @include tooltip-outline-arrows($so-warning);
+}
+
+// Info Outline
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-outline-info {
+  .#{$so-prefix}tooltip-inner {
+    background: css-var('card-bg');
+    color: $so-info;
+    border: 1px solid $so-info;
+
+    kbd {
+      color: $so-info;
+      background: rgba($so-info, 0.1);
+      border-color: rgba($so-info, 0.3);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: rgba($so-info, 0.3);
+  }
+
+  @include tooltip-outline-arrows($so-info);
+}
+
+// Secondary Outline
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-outline-secondary {
+  .#{$so-prefix}tooltip-inner {
+    background: css-var('card-bg');
+    color: $so-secondary;
+    border: 1px solid $so-secondary;
+
+    kbd {
+      color: $so-secondary;
+      background: rgba($so-secondary, 0.1);
+      border-color: rgba($so-secondary, 0.3);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: rgba($so-secondary, 0.3);
+  }
+
+  @include tooltip-outline-arrows($so-secondary);
+}
+
+// ============================================
+// POPUP SOFT/LIGHT COLOR VARIANTS
+// Uses solid light colors instead of rgba for better appearance
+// ============================================
+
+// Soft mixin - creates bordered arrow with two triangles
+@mixin tooltip-soft-arrows($border-color, $fill-color) {
+  .#{$so-prefix}tooltip-inner {
+    // Add ::before for border triangle
+    &::before {
+      content: '';
+      position: absolute;
+      border: 6px solid transparent;
+    }
+    // ::after is the fill triangle (5px)
+    &::after {
+      border-width: 5px;
+    }
+  }
+
+  // Top position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-top .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: $border-color;
+    }
+    &::after {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: $fill-color;
+      margin-top: -1px;
+    }
+  }
+
+  // Bottom position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-bottom .#{$so-prefix}tooltip-inner {
+    &::before {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: $border-color;
+    }
+    &::after {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: $fill-color;
+      margin-bottom: -1px;
+    }
+  }
+
+  // Left position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-left .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      border-left-color: $border-color;
+    }
+    &::after {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      border-left-color: $fill-color;
+      margin-left: -1px;
+    }
+  }
+
+  // Right position
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-right .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-right-color: $border-color;
+    }
+    &::after {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-right-color: $fill-color;
+      margin-right: -1px;
+    }
+  }
+}
+
+// Primary Soft
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-soft-primary {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-primary-light;
+    color: $so-primary;
+    border: 1px solid lighten-color($so-primary, 60%);
+
+    kbd {
+      color: $so-primary;
+      background: lighten-color($so-primary, 70%);
+      border-color: lighten-color($so-primary, 50%);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: lighten-color($so-primary, 50%);
+  }
+
+  @include tooltip-soft-arrows(lighten-color($so-primary, 60%), $so-primary-light);
+}
+
+// Success Soft
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-soft-success {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-success-light;
+    color: darken-color($so-success, 15%);
+    border: 1px solid lighten-color($so-success, 60%);
+
+    kbd {
+      color: darken-color($so-success, 15%);
+      background: lighten-color($so-success, 70%);
+      border-color: lighten-color($so-success, 50%);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: lighten-color($so-success, 50%);
+  }
+
+  @include tooltip-soft-arrows(lighten-color($so-success, 60%), $so-success-light);
+}
+
+// Danger Soft
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-soft-danger {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-danger-light;
+    color: darken-color($so-danger, 15%);
+    border: 1px solid lighten-color($so-danger, 60%);
+
+    kbd {
+      color: darken-color($so-danger, 15%);
+      background: lighten-color($so-danger, 70%);
+      border-color: lighten-color($so-danger, 50%);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: lighten-color($so-danger, 50%);
+  }
+
+  @include tooltip-soft-arrows(lighten-color($so-danger, 60%), $so-danger-light);
+}
+
+// Warning Soft
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-soft-warning {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-warning-light;
+    color: $so-warning-dark;
+    border: 1px solid lighten-color($so-warning, 40%);
+
+    kbd {
+      color: $so-warning-dark;
+      background: lighten-color($so-warning, 50%);
+      border-color: lighten-color($so-warning, 30%);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: lighten-color($so-warning, 30%);
+  }
+
+  @include tooltip-soft-arrows(lighten-color($so-warning, 40%), $so-warning-light);
+}
+
+// Info Soft
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-soft-info {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-info-light;
+    color: darken-color($so-info, 15%);
+    border: 1px solid lighten-color($so-info, 60%);
+
+    kbd {
+      color: darken-color($so-info, 15%);
+      background: lighten-color($so-info, 70%);
+      border-color: lighten-color($so-info, 50%);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: lighten-color($so-info, 50%);
+  }
+
+  @include tooltip-soft-arrows(lighten-color($so-info, 60%), $so-info-light);
+}
+
+// Secondary Soft
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-soft-secondary {
+  .#{$so-prefix}tooltip-inner {
+    background: $so-secondary-light;
+    color: $so-secondary;
+    border: 1px solid lighten-color($so-secondary, 60%);
+
+    kbd {
+      color: $so-secondary;
+      background: lighten-color($so-secondary, 70%);
+      border-color: lighten-color($so-secondary, 50%);
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: lighten-color($so-secondary, 50%);
+  }
+
+  @include tooltip-soft-arrows(lighten-color($so-secondary, 60%), $so-secondary-light);
+}
+
+// ============================================
+// POPUP LIGHT THEME
+// Always shows light colors regardless of theme
+// ============================================
+
+// Light tooltip colors (fixed, not theme-dependent)
+$tooltip-light-bg: $so-white;
+$tooltip-light-text: $so-grey-800;
+$tooltip-light-border: $so-grey-200;
+$tooltip-light-kbd-bg: $so-grey-100;
+
+.#{$so-prefix}tooltip-popup.#{$so-prefix}tooltip-light {
+  // Use drop-shadow filter on popup for arrow shadow
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+
+  .#{$so-prefix}tooltip-inner {
+    color: $tooltip-light-text;
+    background: $tooltip-light-bg;
+    border: 1px solid $tooltip-light-border;
+    box-shadow: none;
+
+    kbd {
+      color: $tooltip-light-text;
+      background: $tooltip-light-kbd-bg;
+      border-color: $tooltip-light-border;
+    }
+
+    // Arrow needs both ::before (border) and ::after (fill)
+    &::before {
+      content: '';
+      position: absolute;
+      border: 6px solid transparent;
+    }
+
+    &::after {
+      border-width: 5px;
+    }
+  }
+
+  .#{$so-prefix}tooltip-divider {
+    background: $tooltip-light-border;
+  }
+
+  // Top position arrows
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-top .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: $tooltip-light-border;
+      margin-top: 0;
+    }
+
+    &::after {
+      border-top-color: $tooltip-light-bg;
+      margin-top: -1px;
+    }
+  }
+
+  // Bottom position arrows
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-bottom .#{$so-prefix}tooltip-inner {
+    &::before {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: $tooltip-light-border;
+      margin-bottom: 0;
+    }
+
+    &::after {
+      border-bottom-color: $tooltip-light-bg;
+      margin-bottom: -1px;
+    }
+  }
+
+  // Left position arrows
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-left .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      border-left-color: $tooltip-light-border;
+      margin-left: 0;
+    }
+
+    &::after {
+      border-left-color: $tooltip-light-bg;
+      margin-left: -1px;
+    }
+  }
+
+  // Right position arrows
+  &.#{$so-prefix}tooltip-arrow.#{$so-prefix}tooltip-right .#{$so-prefix}tooltip-inner {
+    &::before {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-right-color: $tooltip-light-border;
+      margin-right: 0;
+    }
+
+    &::after {
+      border-right-color: $tooltip-light-bg;
+      margin-right: -1px;
+    }
+  }
+
+  // Dark mode - stronger shadow for visibility against dark backgrounds
+  [data-so-theme="dark"] & {
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
   }
 }
 

@@ -751,10 +751,10 @@ class SOTooltip extends SOComponent {
 
   /**
    * Initialize all tooltips matching selector
-   * @param {string} [selector='[data-so-tooltip]'] - CSS selector
+   * @param {string} [selector='[data-so-tooltip], [data-so-shortcut]'] - CSS selector
    * @returns {SOTooltip[]}
    */
-  static initAll(selector = '[data-so-tooltip]') {
+  static initAll(selector = '[data-so-tooltip], [data-so-shortcut]') {
     const elements = document.querySelectorAll(selector);
     return Array.from(elements).map(el => SOTooltip.getInstance(el));
   }

@@ -36,13 +36,16 @@ require_once '../includes/navbar.php';
                                     <button class="so-tab so-disabled" role="tab">Disabled</button>
                                 </div>
                                 <div class="so-tab-content">
-                                    <p>Home tab content. This is the default underline style.</p>
+                                    <div class="so-tab-pane so-fade so-show so-active" id="demo-default-1" role="tabpanel">
+                                        <p>Home tab content. This is the default underline style.</p>
                                     </div>
-                                    <p>Profile tab content with user information.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-default-2" role="tabpanel">
+                                        <p>Profile tab content with user information.</p>
                                     </div>
-                                    <p>Settings tab content for configuration options.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-default-3" role="tabpanel">
+                                        <p>Settings tab content for configuration options.</p>
                                     </div>
-                        </div>
+                                </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -84,13 +87,16 @@ require_once '../includes/navbar.php';
                                     <button class="so-tab" role="tab" data-so-target="#demo-pills-3">Pricing</button>
                                 </div>
                                 <div class="so-tab-content">
-                                    <p>Pills have a rounded background on the active tab.</p>
+                                    <div class="so-tab-pane so-fade so-show so-active" id="demo-pills-1" role="tabpanel">
+                                        <p>Pills have a rounded background on the active tab.</p>
                                     </div>
-                                    <p>Features content goes here.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-pills-2" role="tabpanel">
+                                        <p>Features content goes here.</p>
                                     </div>
-                                    <p>Pricing information displayed here.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-pills-3" role="tabpanel">
+                                        <p>Pricing information displayed here.</p>
                                     </div>
-                        </div>
+                                </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -120,15 +126,19 @@ require_once '../includes/navbar.php';
                                     <button class="so-tab" role="tab" data-so-target="#demo-boxed-4">Year</button>
                                 </div>
                                 <div class="so-tab-content">
-                                    <p>Daily view - Boxed tabs look like a segmented control.</p>
+                                    <div class="so-tab-pane so-fade so-show so-active" id="demo-boxed-1" role="tabpanel">
+                                        <p>Daily view - Boxed tabs look like a segmented control.</p>
                                     </div>
-                                    <p>Weekly view content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-boxed-2" role="tabpanel">
+                                        <p>Weekly view content.</p>
                                     </div>
-                                    <p>Monthly view content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-boxed-3" role="tabpanel">
+                                        <p>Monthly view content.</p>
                                     </div>
-                                    <p>Yearly view content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-boxed-4" role="tabpanel">
+                                        <p>Yearly view content.</p>
                                     </div>
-                        </div>
+                                </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -158,13 +168,16 @@ require_once '../includes/navbar.php';
                                     <button class="so-tab" role="tab" data-so-target="#demo-ghost-3">Completed</button>
                                 </div>
                                 <div class="so-tab-content">
-                                    <p>Ghost tabs have minimal styling with a soft background on active.</p>
+                                    <div class="so-tab-pane so-fade so-show so-active" id="demo-ghost-1" role="tabpanel">
+                                        <p>Ghost tabs have minimal styling with a soft background on active.</p>
                                     </div>
-                                    <p>Active items content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-ghost-2" role="tabpanel">
+                                        <p>Active items content.</p>
                                     </div>
-                                    <p>Completed items content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-ghost-3" role="tabpanel">
+                                        <p>Completed items content.</p>
                                     </div>
-                        </div>
+                                </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -193,13 +206,16 @@ require_once '../includes/navbar.php';
                                     <button class="so-tab" role="tab" data-so-target="#demo-bordered-3">FAQ</button>
                                 </div>
                                 <div class="so-tab-content">
-                                    <p>Bordered tabs have individual borders around each tab.</p>
+                                    <div class="so-tab-pane so-fade so-show so-active" id="demo-bordered-1" role="tabpanel">
+                                        <p>Bordered tabs have individual borders around each tab.</p>
                                     </div>
-                                    <p>Reviews content goes here.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-bordered-2" role="tabpanel">
+                                        <p>Reviews content goes here.</p>
                                     </div>
-                                    <p>Frequently asked questions.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-bordered-3" role="tabpanel">
+                                        <p>Frequently asked questions.</p>
                                     </div>
-                        </div>
+                                </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -369,15 +385,19 @@ require_once '../includes/navbar.php';
                                     </button>
                                 </div>
                                 <div class="so-tab-content">
-                                    <p>Home content with icon in tab.</p>
+                                    <div class="so-tab-pane so-fade so-show so-active" id="demo-icons-1" role="tabpanel">
+                                        <p>Home content with icon in tab.</p>
                                     </div>
-                                    <p>Profile content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-icons-2" role="tabpanel">
+                                        <p>Profile content.</p>
                                     </div>
-                                    <p>Messages content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-icons-3" role="tabpanel">
+                                        <p>Messages content.</p>
                                     </div>
-                                    <p>Settings content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-icons-4" role="tabpanel">
+                                        <p>Settings content.</p>
                                     </div>
-                        </div>
+                                </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -413,20 +433,24 @@ require_once '../includes/navbar.php';
                                         <button class="so-tab" role="tab" data-so-target="#demo-vert-4">Privacy</button>
                                     </div>
                                     <div class="so-tab-content">
-                                        <h5 class="so-demo-card-title">General Settings</h5>
+                                        <div class="so-tab-pane so-fade so-show so-active" id="demo-vert-1" role="tabpanel">
+                                            <h5 class="so-demo-card-title">General Settings</h5>
                                             <p>Configure your general application settings here. Vertical tabs are great for settings pages with many sections.</p>
                                         </div>
-                                        <h5 class="so-demo-card-title">Security Settings</h5>
+                                        <div class="so-tab-pane so-fade" id="demo-vert-2" role="tabpanel">
+                                            <h5 class="so-demo-card-title">Security Settings</h5>
                                             <p>Manage your security preferences and two-factor authentication.</p>
                                         </div>
-                                        <h5 class="so-demo-card-title">Notification Preferences</h5>
+                                        <div class="so-tab-pane so-fade" id="demo-vert-3" role="tabpanel">
+                                            <h5 class="so-demo-card-title">Notification Preferences</h5>
                                             <p>Control which notifications you receive and how.</p>
                                         </div>
-                                        <h5 class="so-demo-card-title">Privacy Settings</h5>
+                                        <div class="so-tab-pane so-fade" id="demo-vert-4" role="tabpanel">
+                                            <h5 class="so-demo-card-title">Privacy Settings</h5>
                                             <p>Manage your privacy and data sharing preferences.</p>
                                         </div>
                                     </div>
-                        </div>
+                                </div>
                         <div class="so-code-block so-mt-4">
                                 <div class="so-code-header">
                                     <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -510,11 +534,14 @@ require_once '../includes/navbar.php';
                                     <button class="so-tab" role="tab" data-so-target="#demo-events-3">Tab 3</button>
                                 </div>
                                 <div class="so-tab-content">
-                                    <p>Tab 1 content - Check the console to see events firing.</p>
+                                    <div class="so-tab-pane so-fade so-show so-active" id="demo-events-1" role="tabpanel">
+                                        <p>Tab 1 content - Check the console to see events firing.</p>
                                     </div>
-                                    <p>Tab 2 content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-events-2" role="tabpanel">
+                                        <p>Tab 2 content.</p>
                                     </div>
-                                    <p>Tab 3 content.</p>
+                                    <div class="so-tab-pane so-fade" id="demo-events-3" role="tabpanel">
+                                        <p>Tab 3 content.</p>
                                     </div>
                                 </div>
                                 <div>
@@ -563,8 +590,55 @@ tabsEl.addEventListener('so:tab:hidden', (e) => {
                             </div>
                     </div>
                 </div>
-    
+
+    </div>
 </main>
+
+<script>
+// Demo functions for JavaScript API section
+function demoTabsNext() {
+    const tabsEl = document.querySelector('#demo-events-tabs');
+    if (tabsEl && typeof SOTabs !== 'undefined') {
+        const tabs = SOTabs.getInstance(tabsEl);
+        if (tabs) tabs.next();
+    }
+}
+
+function demoTabsPrev() {
+    const tabsEl = document.querySelector('#demo-events-tabs');
+    if (tabsEl && typeof SOTabs !== 'undefined') {
+        const tabs = SOTabs.getInstance(tabsEl);
+        if (tabs) tabs.prev();
+    }
+}
+
+function demoTabsShowById() {
+    const tabsEl = document.querySelector('#demo-events-tabs');
+    if (tabsEl && typeof SOTabs !== 'undefined') {
+        const tabs = SOTabs.getInstance(tabsEl);
+        if (tabs) tabs.showById('demo-events-3');
+    }
+}
+
+// Event listeners for demo
+document.addEventListener('DOMContentLoaded', function() {
+    const tabsEl = document.querySelector('#demo-events-tabs');
+    if (tabsEl) {
+        tabsEl.addEventListener('so:tab:show', (e) => {
+            console.log('so:tab:show - About to show:', e.detail);
+        });
+        tabsEl.addEventListener('so:tab:shown', (e) => {
+            console.log('so:tab:shown - Tab shown:', e.detail);
+        });
+        tabsEl.addEventListener('so:tab:hide', (e) => {
+            console.log('so:tab:hide - About to hide:', e.detail);
+        });
+        tabsEl.addEventListener('so:tab:hidden', (e) => {
+            console.log('so:tab:hidden - Tab hidden:', e.detail);
+        });
+    }
+});
+</script>
 
 <?php
 require_once '../includes/footer.php';

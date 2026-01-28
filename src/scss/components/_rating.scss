@@ -1,0 +1,371 @@
+// ============================================
+// SIXORBIT UI - RATING / STARS
+// Star rating component for user feedback
+// ============================================
+
+@use '../abstracts' as *;
+
+// ============================================
+// BASE RATING
+// ============================================
+
+.#{$so-prefix}rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+// ============================================
+// RATING ITEM (Star/Icon)
+// ============================================
+
+.#{$so-prefix}rating-item {
+  position: relative;
+  color: css-var('border-color');
+  font-size: 24px;
+  cursor: pointer;
+  transition: color $so-transition-fast, transform $so-transition-fast;
+
+  .material-icons {
+    display: block;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Filled state
+.#{$so-prefix}rating-item-filled {
+  color: css-var('accent-warning');
+}
+
+// Half-filled state
+.#{$so-prefix}rating-item-half {
+  position: relative;
+
+  &::before {
+    content: 'star_half';
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: css-var('accent-warning');
+  }
+
+  .material-icons {
+    color: css-var('border-color');
+  }
+}
+
+// ============================================
+// INTERACTIVE RATING (with hidden inputs)
+// ============================================
+
+.#{$so-prefix}rating-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.#{$so-prefix}rating-label {
+  position: relative;
+  color: css-var('border-color');
+  font-size: 24px;
+  cursor: pointer;
+  transition: color $so-transition-fast, transform $so-transition-fast;
+
+  .material-icons {
+    display: block;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Reverse order for CSS-only hover effect
+.#{$so-prefix}rating-interactive {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  .#{$so-prefix}rating-label {
+    &:hover,
+    &:hover ~ .#{$so-prefix}rating-label {
+      color: css-var('accent-warning');
+    }
+  }
+
+  .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label {
+    color: css-var('accent-warning');
+  }
+
+  // Focus state
+  .#{$so-prefix}rating-input:focus + .#{$so-prefix}rating-label {
+    outline: 2px solid css-var('accent-primary');
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// ============================================
+// READ-ONLY RATING
+// ============================================
+
+.#{$so-prefix}rating-readonly {
+  pointer-events: none;
+
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    cursor: default;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// ============================================
+// SIZE VARIANTS
+// ============================================
+
+.#{$so-prefix}rating-xs {
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    font-size: 14px;
+  }
+}
+
+.#{$so-prefix}rating-sm {
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    font-size: 18px;
+  }
+}
+
+.#{$so-prefix}rating-md {
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    font-size: 24px;
+  }
+}
+
+.#{$so-prefix}rating-lg {
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    font-size: 32px;
+  }
+
+  gap: 4px;
+}
+
+.#{$so-prefix}rating-xl {
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    font-size: 40px;
+  }
+
+  gap: 6px;
+}
+
+// ============================================
+// COLOR VARIANTS
+// ============================================
+
+.#{$so-prefix}rating-primary {
+  .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
+  .#{$so-prefix}rating-label:hover,
+  .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
+    color: css-var('accent-primary');
+  }
+}
+
+.#{$so-prefix}rating-danger {
+  .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
+  .#{$so-prefix}rating-label:hover,
+  .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
+    color: css-var('accent-danger');
+  }
+}
+
+.#{$so-prefix}rating-success {
+  .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
+  .#{$so-prefix}rating-label:hover,
+  .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
+    color: css-var('accent-success');
+  }
+}
+
+.#{$so-prefix}rating-info {
+  .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
+  .#{$so-prefix}rating-label:hover,
+  .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
+    color: css-var('accent-info');
+  }
+}
+
+// ============================================
+// RATING WITH VALUE DISPLAY
+// ============================================
+
+.#{$so-prefix}rating-with-value {
+  display: inline-flex;
+  align-items: center;
+  gap: spacing('2');
+}
+
+.#{$so-prefix}rating-value {
+  font-size: font-size('lg');
+  font-weight: font-weight('semibold');
+  color: css-var('text-primary');
+}
+
+.#{$so-prefix}rating-count {
+  font-size: font-size('sm');
+  color: css-var('text-muted');
+}
+
+// ============================================
+// HEARTS VARIANT
+// ============================================
+
+.#{$so-prefix}rating-hearts {
+  .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
+  .#{$so-prefix}rating-label:hover,
+  .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
+    color: css-var('accent-danger');
+  }
+}
+
+// ============================================
+// THUMBS VARIANT
+// ============================================
+
+.#{$so-prefix}rating-thumbs {
+  gap: spacing('3');
+
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    padding: spacing('2');
+    border-radius: radius('md');
+    background: css-var('card-hover-bg');
+
+    &:hover {
+      transform: none;
+      background: css-var('border-color');
+    }
+  }
+
+  .#{$so-prefix}rating-item-filled {
+    &[data-value="up"] {
+      color: css-var('accent-success');
+      background: alpha($so-success, 0.1);
+    }
+
+    &[data-value="down"] {
+      color: css-var('accent-danger');
+      background: alpha($so-danger, 0.1);
+    }
+  }
+}
+
+// ============================================
+// EMOJI VARIANT
+// ============================================
+
+.#{$so-prefix}rating-emoji {
+  gap: spacing('2');
+
+  .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-label {
+    font-size: 28px;
+    filter: grayscale(1);
+    opacity: 0.5;
+    transition: filter $so-transition-fast, opacity $so-transition-fast, transform $so-transition-fast;
+
+    &:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+  }
+
+  .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-input:checked + .#{$so-prefix}rating-label {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+}
+
+// ============================================
+// RATING BAR (Progress-style display)
+// ============================================
+
+.#{$so-prefix}rating-bar {
+  display: flex;
+  align-items: center;
+  gap: spacing('2');
+  width: 100%;
+}
+
+.#{$so-prefix}rating-bar-label {
+  font-size: font-size('sm');
+  color: css-var('text-secondary');
+  white-space: nowrap;
+  min-width: 60px;
+}
+
+.#{$so-prefix}rating-bar-track {
+  flex: 1;
+  height: 8px;
+  background: css-var('border-color');
+  border-radius: radius('full');
+  overflow: hidden;
+}
+
+.#{$so-prefix}rating-bar-fill {
+  height: 100%;
+  background: css-var('accent-warning');
+  border-radius: radius('full');
+  transition: width $so-transition-base;
+}
+
+.#{$so-prefix}rating-bar-count {
+  font-size: font-size('sm');
+  color: css-var('text-muted');
+  min-width: 40px;
+  text-align: right;
+}
+
+// ============================================
+// RATING SUMMARY (Distribution)
+// ============================================
+
+.#{$so-prefix}rating-summary {
+  display: flex;
+  gap: spacing('6');
+}
+
+.#{$so-prefix}rating-summary-score {
+  text-align: center;
+
+  .#{$so-prefix}rating-value {
+    font-size: 48px;
+    font-weight: font-weight('bold');
+    line-height: 1;
+  }
+}
+
+.#{$so-prefix}rating-summary-bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: spacing('2');
+}

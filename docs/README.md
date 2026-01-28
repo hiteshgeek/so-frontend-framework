@@ -4,9 +4,20 @@ Welcome to the SixOrbit UI Framework documentation. This guide covers the build 
 
 ## Table of Contents
 
-1. [Bundle Options](./bundles.md) - Understanding Core vs Full bundles
-2. [Build System](./build.md) - How to compile CSS and JS files
-3. [Project Structure](./structure.md) - Directory layout and file organization
+### Getting Started
+
+- [Bundle Options](./bundles.md) - Understanding Core vs Full bundles
+- [Build System](./build.md) - How to compile CSS and JS files
+- [Project Structure](./structure.md) - Directory layout and file organization
+
+### Guides
+
+- [Theming & Customization](./theming.md) - CSS variables, SCSS customization, dark mode
+- [Grid System](./grid.md) - Flexbox and CSS Grid layouts
+
+### Reference
+
+- [Components](./components.md) - JavaScript component API (Modal, Toast, Dropdown, etc.)
 
 ## Quick Start
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SixOrbit UI Demo - Dashboard (Wallet Page)
  * Matches the original first_draft/sixorbit-ui/index.html exactly
@@ -187,60 +188,54 @@ require_once 'includes/navbar.php';
                 </div>
                 <div class="so-panel-header-right">
                     <!-- Options Dropdown (leftmost in right section) -->
-                    <div class="so-panel-options" style="position: relative;">
-                        <button class="so-panel-options-btn" onclick="this.parentElement.classList.toggle('open')">
+                    <div class="so-dropdown so-dropdown-no-scroll" data-so-dropdown>
+                        <button class="so-btn so-btn-default so-btn-sm so-dropdown-trigger">
                             <span class="material-icons">more_vert</span>
                             Options
-                            <span class="material-icons so-panel-options-arrow">expand_more</span>
+                            <span class="material-icons so-dropdown-arrow">expand_more</span>
                         </button>
-
-                        <!-- Options Dropdown Menu -->
-                        <div class="so-panel-options-dropdown" onclick="event.stopPropagation()">
-                            <div class="so-panel-options-header">Report Actions</div>
-                            <div class="so-panel-options-list">
-                                <a href="#" class="so-panel-options-item" onclick="alert('Compare Ledger clicked')">
-                                    <span class="material-icons">compare_arrows</span>
-                                    Compare Ledger
-                                </a>
-                                <a href="#" class="so-panel-options-item" onclick="alert('Pending Invoice clicked')">
-                                    <span class="material-icons">pending_actions</span>
-                                    Pending Invoice
-                                </a>
-                                <a href="#" class="so-panel-options-item" onclick="alert('Month Wise Report clicked')">
-                                    <span class="material-icons">calendar_view_month</span>
-                                    Month Wise Report
-                                </a>
-                                <div class="so-panel-options-divider"></div>
-                                <a href="#" class="so-panel-options-item" onclick="alert('Outstanding Analysis clicked')">
-                                    <span class="material-icons">analytics</span>
-                                    Outstanding Analysis
-                                </a>
-                                <a href="#" class="so-panel-options-item" onclick="alert('Payment History clicked')">
-                                    <span class="material-icons">history</span>
-                                    Payment History
-                                </a>
-                            </div>
+                        <div class="so-dropdown-menu so-dropdown-menu-end">
+                            <div class="so-dropdown-header">Report Actions</div>
+                            <a href="#" class="so-dropdown-item" onclick="alert('Compare Ledger clicked')">
+                                <span class="material-icons">compare_arrows</span>
+                                Compare Ledger
+                            </a>
+                            <a href="#" class="so-dropdown-item" onclick="alert('Pending Invoice clicked')">
+                                <span class="material-icons">pending_actions</span>
+                                Pending Invoice
+                            </a>
+                            <a href="#" class="so-dropdown-item" onclick="alert('Month Wise Report clicked')">
+                                <span class="material-icons">calendar_view_month</span>
+                                Month Wise Report
+                            </a>
+                            <div class="so-dropdown-divider"></div>
+                            <a href="#" class="so-dropdown-item" onclick="alert('Outstanding Analysis clicked')">
+                                <span class="material-icons">analytics</span>
+                                Outstanding Analysis
+                            </a>
+                            <a href="#" class="so-dropdown-item" onclick="alert('Payment History clicked')">
+                                <span class="material-icons">history</span>
+                                Payment History
+                            </a>
                         </div>
                     </div>
 
                     <!-- Filter Button -->
-                    <div class="so-panel-filter" style="position: relative;">
-                        <button class="so-panel-filter-btn" onclick="this.parentElement.classList.toggle('open')">
+                    <div class="so-dropdown so-dropdown-no-scroll" data-so-dropdown data-so-auto-close="outside">
+                        <button class="so-btn so-btn-default so-btn-sm so-dropdown-trigger">
                             <span class="material-icons">filter_list</span>
                             Filter
-                            <span class="so-panel-filter-badge">1</span>
+                            <span class="so-badge so-badge-primary so-badge-sm" style="margin-left: 4px;">1</span>
                         </button>
-
-                        <!-- Filter Dropdown -->
-                        <div class="so-panel-filter-dropdown" onclick="event.stopPropagation()">
-                            <div class="so-panel-filter-header">
-                                <span class="so-panel-filter-title">Filters</span>
-                                <button class="so-panel-filter-clear">Clear all</button>
+                        <div class="so-dropdown-menu so-dropdown-menu-end" style="min-width: 280px; padding: 0;">
+                            <div class="so-dropdown-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Filters</span>
+                                <button class="so-btn so-btn-link so-btn-sm" style="padding: 0; height: auto;">Clear all</button>
                             </div>
-                            <div class="so-panel-filter-body">
-                                <div class="so-panel-filter-group">
-                                    <label class="so-panel-filter-group-label">Voucher Type</label>
-                                    <select class="so-panel-filter-select">
+                            <div style="padding: 12px 16px;">
+                                <div class="so-form-group so-mb-3">
+                                    <label class="so-form-label">Voucher Type</label>
+                                    <select class="so-form-control so-form-control-sm">
                                         <option value="">All Types</option>
                                         <option value="sales" selected>Sales</option>
                                         <option value="purchase">Purchase</option>
@@ -248,9 +243,9 @@ require_once 'includes/navbar.php';
                                         <option value="payment">Payment</option>
                                     </select>
                                 </div>
-                                <div class="so-panel-filter-group">
-                                    <label class="so-panel-filter-group-label">Outlet</label>
-                                    <select class="so-panel-filter-select">
+                                <div class="so-form-group">
+                                    <label class="so-form-label">Outlet</label>
+                                    <select class="so-form-control so-form-control-sm">
                                         <option value="">All Outlets</option>
                                         <option value="head-office">TROVE Head Office</option>
                                         <option value="branch-1">VPS Branch (Flagship Store)</option>
@@ -258,9 +253,10 @@ require_once 'includes/navbar.php';
                                     </select>
                                 </div>
                             </div>
-                            <div class="so-panel-filter-footer">
-                                <button class="so-panel-btn" onclick="this.closest('.so-panel-filter').classList.remove('open')">Cancel</button>
-                                <button class="so-panel-btn so-panel-btn-primary">Apply Filters</button>
+                            <div class="so-dropdown-divider" style="margin: 0;"></div>
+                            <div style="padding: 12px 16px; display: flex; gap: 8px; justify-content: flex-end;">
+                                <button class="so-btn so-btn-light so-btn-sm" onclick="SODropdown.getInstance(this.closest('.so-dropdown')).close()">Cancel</button>
+                                <button class="so-btn so-btn-primary so-btn-sm">Apply Filters</button>
                             </div>
                         </div>
                     </div>
@@ -400,469 +396,532 @@ require_once 'includes/navbar.php';
 
 <!-- Page Overlay Styles -->
 <style>
-/* Lock Screen Overlay */
-.so-lock-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
-    background: linear-gradient(135deg, #1a1c2e 0%, #0d0e17 100%);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-.so-lock-screen.active {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-}
-.so-lock-screen-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-}
-.so-lock-screen-time {
-    font-size: 72px;
-    font-weight: 200;
-    color: #fff;
-    margin-bottom: 8px;
-}
-.so-lock-screen-date {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 48px;
-}
-.so-lock-screen-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 16px;
-}
-.so-lock-screen-avatar[data-color="teal"] {
-    background: linear-gradient(135deg, #00897b, #26a69a);
-}
-.so-lock-screen-name {
-    font-size: 24px;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 8px;
-}
-.so-lock-screen-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 32px;
-}
-.so-lock-screen-status .material-icons {
-    font-size: 18px;
-}
-.so-lock-screen-form {
-    margin-bottom: 16px;
-}
-.so-lock-screen-input-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.so-lock-screen-input {
-    width: 280px;
-    padding: 12px 16px;
-    font-size: 16px;
-    font-family: inherit;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.2s ease, background 0.2s ease;
-}
-.so-lock-screen-input:focus {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-}
-.so-lock-screen-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-.so-lock-screen-submit {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-.so-lock-screen-submit:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-.so-lock-screen-hint {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.4);
-}
-.so-lock-screen-branding {
-    position: absolute;
-    bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.4);
-}
-.so-lock-screen-branding svg {
-    width: 24px;
-    height: 24px;
-}
-
-/* Keyboard Shortcuts Overlay */
-.so-shortcuts-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9998;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-.so-shortcuts-overlay.active {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-}
-.so-shortcuts-popup {
-    width: 100%;
-    max-width: 520px;
-    background: var(--so-card-bg, #fff);
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    transform: scale(0.95);
-    transition: transform 0.2s ease;
-}
-.so-shortcuts-overlay.active .so-shortcuts-popup {
-    transform: scale(1);
-}
-.so-shortcuts-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--so-border-color, #f0f0f0);
-}
-.so-shortcuts-header h2 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--so-text-heading, #1e293b);
-}
-.so-shortcuts-header h2 .material-icons {
-    font-size: 24px;
-    color: var(--so-accent-primary, #7367f0);
-}
-.so-shortcuts-close {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    border-radius: 6px;
-    color: var(--so-text-secondary, #64748b);
-    cursor: pointer;
-    transition: background 0.15s ease;
-}
-.so-shortcuts-close:hover {
-    background: var(--so-grey-100, #f1f5f9);
-}
-.so-shortcuts-content {
-    padding: 16px 24px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-.so-shortcuts-section {
-    margin-bottom: 20px;
-}
-.so-shortcuts-section:last-child {
-    margin-bottom: 0;
-}
-.so-shortcuts-section h3 {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--so-text-muted, #94a3b8);
-    margin: 0 0 8px 0;
-}
-.so-shortcut-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 0;
-}
-.so-shortcut-desc {
-    font-size: 14px;
-    color: var(--so-text-primary, #334155);
-}
-.so-shortcut-keys {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.so-shortcut-keys kbd {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 32px;
-    height: 28px;
-    padding: 0 10px;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--so-text-secondary, #64748b);
-    background: var(--so-grey-100, #f1f5f9);
-    border: 1px solid var(--so-border-color, #e2e8f0);
-    border-radius: 6px;
-}
-.so-shortcuts-footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 16px 24px;
-    font-size: 14px;
-    color: var(--so-text-secondary, #64748b);
-    background: var(--so-grey-50, #f8fafc);
-    border-top: 1px solid var(--so-border-color, #f0f0f0);
-}
-.so-shortcuts-footer .material-icons {
-    font-size: 18px;
-    color: var(--so-accent-primary, #7367f0);
-}
-.so-shortcuts-footer kbd {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 24px;
-    height: 24px;
-    padding: 0 8px;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--so-text-secondary, #64748b);
-    background: #fff;
-    border: 1px solid var(--so-border-color, #e2e8f0);
-    border-radius: 4px;
-}
-
-/* Logout Confirmation Overlay */
-.so-confirm-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9997;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-.so-confirm-overlay.active {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-}
-.so-confirm-popup {
-    width: 100%;
-    max-width: 400px;
-    padding: 32px;
-    background: var(--so-card-bg, #fff);
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    transform: scale(0.95);
-    transition: transform 0.2s ease;
-}
-.so-confirm-overlay.active .so-confirm-popup {
-    transform: scale(1);
-}
-.so-confirm-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(234, 84, 85, 0.1);
-    border-radius: 50%;
-}
-.so-confirm-icon .material-icons {
-    font-size: 32px;
-    color: #ea5455;
-}
-.so-confirm-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--so-text-heading, #1e293b);
-    margin: 0 0 8px 0;
-}
-.so-confirm-message {
-    font-size: 14px;
-    color: var(--so-text-secondary, #64748b);
-    margin: 0 0 24px 0;
-    line-height: 1.5;
-}
-.so-confirm-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .so-shortcuts-popup,
-[data-theme="dark"] .so-confirm-popup {
-    background: var(--so-card-bg, #1e293b);
-}
-[data-theme="dark"] .so-shortcuts-close:hover {
-    background: var(--so-grey-800, #334155);
-}
-[data-theme="dark"] .so-shortcut-keys kbd,
-[data-theme="dark"] .so-shortcuts-footer kbd {
-    background: var(--so-grey-800, #334155);
-    border-color: var(--so-grey-700, #475569);
-}
-[data-theme="dark"] .so-shortcuts-footer {
-    background: var(--so-grey-900, #0f172a);
-    border-color: var(--so-grey-800, #334155);
-}
-
-/* Mobile Bottom Bar */
-.so-mobile-bottom-bar {
-    display: none;
-}
-@media (max-width: 768px) {
-    .so-mobile-bottom-bar {
+    /* Lock Screen Overlay */
+    .so-lock-screen {
         position: fixed;
-        bottom: 0;
+        top: 0;
         left: 0;
         right: 0;
-        z-index: 1000;
+        bottom: 0;
+        z-index: 9999;
+        background: linear-gradient(135deg, #1a1c2e 0%, #0d0e17 100%);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .so-lock-screen.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .so-lock-screen-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+    }
+
+    .so-lock-screen-time {
+        font-size: 72px;
+        font-weight: 200;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .so-lock-screen-date {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 48px;
+    }
+
+    .so-lock-screen-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        padding: 8px 16px 12px;
-        background: var(--so-card-bg, #fff);
-        border-top: 1px solid var(--so-border-color, #e2e8f0);
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 16px;
     }
-}
-.so-mobile-bottom-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 8px 16px;
-    background: transparent;
-    border: none;
-    color: var(--so-text-secondary, #64748b);
-    cursor: pointer;
-    transition: color 0.15s ease;
-}
-.so-mobile-bottom-item:hover {
-    color: var(--so-accent-primary, #7367f0);
-}
-.so-mobile-bottom-item .material-icons {
-    font-size: 24px;
-}
-.so-mobile-bottom-item-label {
-    font-size: 11px;
-    font-weight: 500;
-}
-.so-mobile-outlet-dropdown {
-    position: relative;
-}
-.so-mobile-outlet-menu {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 8px;
-    width: 220px;
-    background: var(--so-card-bg, #fff);
-    border-radius: 12px;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-    display: none;
-    overflow: hidden;
-}
-.so-mobile-outlet-dropdown.open .so-mobile-outlet-menu {
-    display: block;
-}
-.so-mobile-outlet-header {
-    padding: 12px 16px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--so-text-muted, #94a3b8);
-    border-bottom: 1px solid var(--so-border-color, #e2e8f0);
-}
-.so-mobile-outlet-list {
-    padding: 8px 0;
-}
-.so-mobile-outlet-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 16px;
-    font-size: 14px;
-    color: var(--so-text-primary, #334155);
-    cursor: pointer;
-    transition: background 0.15s ease;
-}
-.so-mobile-outlet-item:hover {
-    background: var(--so-grey-50, #f8fafc);
-}
-.so-mobile-outlet-item .check-icon {
-    display: none;
-    font-size: 18px;
-    color: var(--so-accent-primary, #7367f0);
-}
-.so-mobile-outlet-item.so-selected .check-icon {
-    display: inline-flex;
-}
+
+    .so-lock-screen-avatar[data-color="teal"] {
+        background: linear-gradient(135deg, #00897b, #26a69a);
+    }
+
+    .so-lock-screen-name {
+        font-size: 24px;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .so-lock-screen-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 32px;
+    }
+
+    .so-lock-screen-status .material-icons {
+        font-size: 18px;
+    }
+
+    .so-lock-screen-form {
+        margin-bottom: 16px;
+    }
+
+    .so-lock-screen-input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .so-lock-screen-input {
+        width: 280px;
+        padding: 12px 16px;
+        font-size: 16px;
+        font-family: inherit;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .so-lock-screen-input:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .so-lock-screen-input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .so-lock-screen-submit {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .so-lock-screen-submit:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .so-lock-screen-hint {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .so-lock-screen-branding {
+        position: absolute;
+        bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .so-lock-screen-branding svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Keyboard Shortcuts Overlay */
+    .so-shortcuts-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9998;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .so-shortcuts-overlay.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .so-shortcuts-popup {
+        width: 100%;
+        max-width: 520px;
+        background: var(--so-card-bg, #fff);
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transform: scale(0.95);
+        transition: transform 0.2s ease;
+    }
+
+    .so-shortcuts-overlay.active .so-shortcuts-popup {
+        transform: scale(1);
+    }
+
+    .so-shortcuts-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--so-border-color, #f0f0f0);
+    }
+
+    .so-shortcuts-header h2 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--so-text-heading, #1e293b);
+    }
+
+    .so-shortcuts-header h2 .material-icons {
+        font-size: 24px;
+        color: var(--so-accent-primary, #7367f0);
+    }
+
+    .so-shortcuts-close {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        color: var(--so-text-secondary, #64748b);
+        cursor: pointer;
+        transition: background 0.15s ease;
+    }
+
+    .so-shortcuts-close:hover {
+        background: var(--so-grey-100, #f1f5f9);
+    }
+
+    .so-shortcuts-content {
+        padding: 16px 24px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .so-shortcuts-section {
+        margin-bottom: 20px;
+    }
+
+    .so-shortcuts-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .so-shortcuts-section h3 {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--so-text-muted, #94a3b8);
+        margin: 0 0 8px 0;
+    }
+
+    .so-shortcut-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+    }
+
+    .so-shortcut-desc {
+        font-size: 14px;
+        color: var(--so-text-primary, #334155);
+    }
+
+    .so-shortcut-keys {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .so-shortcut-keys kbd {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 32px;
+        height: 28px;
+        padding: 0 10px;
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--so-text-secondary, #64748b);
+        background: var(--so-grey-100, #f1f5f9);
+        border: 1px solid var(--so-border-color, #e2e8f0);
+        border-radius: 6px;
+    }
+
+    .so-shortcuts-footer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 24px;
+        font-size: 14px;
+        color: var(--so-text-secondary, #64748b);
+        background: var(--so-grey-50, #f8fafc);
+        border-top: 1px solid var(--so-border-color, #f0f0f0);
+    }
+
+    .so-shortcuts-footer .material-icons {
+        font-size: 18px;
+        color: var(--so-accent-primary, #7367f0);
+    }
+
+    .so-shortcuts-footer kbd {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 24px;
+        height: 24px;
+        padding: 0 8px;
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--so-text-secondary, #64748b);
+        background: #fff;
+        border: 1px solid var(--so-border-color, #e2e8f0);
+        border-radius: 4px;
+    }
+
+    /* Logout Confirmation Overlay */
+    .so-confirm-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9997;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .so-confirm-overlay.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .so-confirm-popup {
+        width: 100%;
+        max-width: 400px;
+        padding: 32px;
+        background: var(--so-card-bg, #fff);
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transform: scale(0.95);
+        transition: transform 0.2s ease;
+    }
+
+    .so-confirm-overlay.active .so-confirm-popup {
+        transform: scale(1);
+    }
+
+    .so-confirm-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(234, 84, 85, 0.1);
+        border-radius: 50%;
+    }
+
+    .so-confirm-icon .material-icons {
+        font-size: 32px;
+        color: #ea5455;
+    }
+
+    .so-confirm-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--so-text-heading, #1e293b);
+        margin: 0 0 8px 0;
+    }
+
+    .so-confirm-message {
+        font-size: 14px;
+        color: var(--so-text-secondary, #64748b);
+        margin: 0 0 24px 0;
+        line-height: 1.5;
+    }
+
+    .so-confirm-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    /* Dark mode adjustments */
+    [data-theme="dark"] .so-shortcuts-popup,
+    [data-theme="dark"] .so-confirm-popup {
+        background: var(--so-card-bg, #1e293b);
+    }
+
+    [data-theme="dark"] .so-shortcuts-close:hover {
+        background: var(--so-grey-800, #334155);
+    }
+
+    [data-theme="dark"] .so-shortcut-keys kbd,
+    [data-theme="dark"] .so-shortcuts-footer kbd {
+        background: var(--so-grey-800, #334155);
+        border-color: var(--so-grey-700, #475569);
+    }
+
+    [data-theme="dark"] .so-shortcuts-footer {
+        background: var(--so-grey-900, #0f172a);
+        border-color: var(--so-grey-800, #334155);
+    }
+
+    /* Mobile Bottom Bar */
+    .so-mobile-bottom-bar {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .so-mobile-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 8px 16px 12px;
+            background: var(--so-card-bg, #fff);
+            border-top: 1px solid var(--so-border-color, #e2e8f0);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .so-mobile-bottom-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 16px;
+        background: transparent;
+        border: none;
+        color: var(--so-text-secondary, #64748b);
+        cursor: pointer;
+        transition: color 0.15s ease;
+    }
+
+    .so-mobile-bottom-item:hover {
+        color: var(--so-accent-primary, #7367f0);
+    }
+
+    .so-mobile-bottom-item .material-icons {
+        font-size: 24px;
+    }
+
+    .so-mobile-bottom-item-label {
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .so-mobile-outlet-dropdown {
+        position: relative;
+    }
+
+    .so-mobile-outlet-menu {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 8px;
+        width: 220px;
+        background: var(--so-card-bg, #fff);
+        border-radius: 12px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        display: none;
+        overflow: hidden;
+    }
+
+    .so-mobile-outlet-dropdown.open .so-mobile-outlet-menu {
+        display: block;
+    }
+
+    .so-mobile-outlet-header {
+        padding: 12px 16px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--so-text-muted, #94a3b8);
+        border-bottom: 1px solid var(--so-border-color, #e2e8f0);
+    }
+
+    .so-mobile-outlet-list {
+        padding: 8px 0;
+    }
+
+    .so-mobile-outlet-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px;
+        font-size: 14px;
+        color: var(--so-text-primary, #334155);
+        cursor: pointer;
+        transition: background 0.15s ease;
+    }
+
+    .so-mobile-outlet-item:hover {
+        background: var(--so-grey-50, #f8fafc);
+    }
+
+    .so-mobile-outlet-item .check-icon {
+        display: none;
+        font-size: 18px;
+        color: var(--so-accent-primary, #7367f0);
+    }
+
+    .so-mobile-outlet-item.so-selected .check-icon {
+        display: inline-flex;
+    }
 </style>
 
 <!-- Lock Screen Overlay -->
@@ -881,10 +940,10 @@ require_once 'includes/navbar.php';
         <form class="so-lock-screen-form" id="lockScreenForm">
             <div class="so-lock-screen-input-wrapper">
                 <input type="password"
-                       class="so-lock-screen-input"
-                       id="lockScreenPassword"
-                       placeholder="Enter password to unlock"
-                       autocomplete="off">
+                    class="so-lock-screen-input"
+                    id="lockScreenPassword"
+                    placeholder="Enter password to unlock"
+                    autocomplete="off">
                 <button type="submit" class="so-lock-screen-submit" title="Unlock">
                     <span class="material-icons">arrow_forward</span>
                 </button>
@@ -898,9 +957,9 @@ require_once 'includes/navbar.php';
 
     <div class="so-lock-screen-branding">
         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="24" cy="24" rx="22" ry="10" stroke="currentColor" stroke-width="2" fill="none" transform="rotate(-20 24 24)" opacity="0.6"/>
-            <path d="M24 6L38.7 15V33L24 42L9.3 33V15L24 6Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
-            <circle cx="24" cy="24" r="4" fill="currentColor"/>
+            <ellipse cx="24" cy="24" rx="22" ry="10" stroke="currentColor" stroke-width="2" fill="none" transform="rotate(-20 24 24)" opacity="0.6" />
+            <path d="M24 6L38.7 15V33L24 42L9.3 33V15L24 6Z" stroke="currentColor" stroke-width="2.5" fill="none" />
+            <circle cx="24" cy="24" r="4" fill="currentColor" />
         </svg>
         SixOrbit ERP
     </div>
@@ -1011,30 +1070,184 @@ require_once 'includes/navbar.php';
 
 <script>
     // Sample Wallet Transaction Data (for panel demo)
-    const walletData = [
-        { id: 1, date: "2026-01-15", docNo: "SL-2026-0042", refNo: "INV-0042", voucher: "Sales", voucherType: "Tax Invoice", particulars: "Sales - Cash", debit: 15600, credit: 0, outlet: "VPS Branch" },
-        { id: 2, date: "2026-01-14", docNo: "RC-2026-0018", refNo: "REC-0018", voucher: "Receipt", voucherType: "Cash Receipt", particulars: "Payment Received", debit: 0, credit: 25000, outlet: "VPS Branch" },
-        { id: 3, date: "2026-01-12", docNo: "SL-2026-0038", refNo: "INV-0038", voucher: "Sales", voucherType: "Tax Invoice", particulars: "Sales - Credit", debit: 45200, credit: 0, outlet: "Head Office" },
-        { id: 4, date: "2026-01-10", docNo: "CN-2026-0005", refNo: "CN-0005", voucher: "Credit Note", voucherType: "Sales Return", particulars: "Return - Damaged", debit: 0, credit: 3500, outlet: "VPS Branch" },
-        { id: 5, date: "2026-01-08", docNo: "SL-2026-0035", refNo: "INV-0035", voucher: "Sales", voucherType: "Tax Invoice", particulars: "Sales - Cash", debit: 28900, credit: 0, outlet: "Basavanagudi" },
-        { id: 6, date: "2026-01-05", docNo: "RC-2026-0015", refNo: "REC-0015", voucher: "Receipt", voucherType: "Bank Transfer", particulars: "Payment Received", debit: 0, credit: 50000, outlet: "Head Office" },
-        { id: 7, date: "2026-01-03", docNo: "SL-2026-0031", refNo: "INV-0031", voucher: "Sales", voucherType: "Tax Invoice", particulars: "Sales - Credit", debit: 67800, credit: 0, outlet: "VPS Branch" },
-        { id: 8, date: "2025-12-28", docNo: "SL-2026-0028", refNo: "INV-0028", voucher: "Sales", voucherType: "Tax Invoice", particulars: "Sales - Cash", debit: 12450, credit: 0, outlet: "Basavanagudi" },
-        { id: 9, date: "2025-12-25", docNo: "RC-2026-0012", refNo: "REC-0012", voucher: "Receipt", voucherType: "Cheque", particulars: "Payment Received", debit: 0, credit: 35000, outlet: "VPS Branch" },
-        { id: 10, date: "2025-12-20", docNo: "SL-2026-0025", refNo: "INV-0025", voucher: "Sales", voucherType: "Tax Invoice", particulars: "Sales - Credit", debit: 89500, credit: 0, outlet: "Head Office" }
+    const walletData = [{
+            id: 1,
+            date: "2026-01-15",
+            docNo: "SL-2026-0042",
+            refNo: "INV-0042",
+            voucher: "Sales",
+            voucherType: "Tax Invoice",
+            particulars: "Sales - Cash",
+            debit: 15600,
+            credit: 0,
+            outlet: "VPS Branch"
+        },
+        {
+            id: 2,
+            date: "2026-01-14",
+            docNo: "RC-2026-0018",
+            refNo: "REC-0018",
+            voucher: "Receipt",
+            voucherType: "Cash Receipt",
+            particulars: "Payment Received",
+            debit: 0,
+            credit: 25000,
+            outlet: "VPS Branch"
+        },
+        {
+            id: 3,
+            date: "2026-01-12",
+            docNo: "SL-2026-0038",
+            refNo: "INV-0038",
+            voucher: "Sales",
+            voucherType: "Tax Invoice",
+            particulars: "Sales - Credit",
+            debit: 45200,
+            credit: 0,
+            outlet: "Head Office"
+        },
+        {
+            id: 4,
+            date: "2026-01-10",
+            docNo: "CN-2026-0005",
+            refNo: "CN-0005",
+            voucher: "Credit Note",
+            voucherType: "Sales Return",
+            particulars: "Return - Damaged",
+            debit: 0,
+            credit: 3500,
+            outlet: "VPS Branch"
+        },
+        {
+            id: 5,
+            date: "2026-01-08",
+            docNo: "SL-2026-0035",
+            refNo: "INV-0035",
+            voucher: "Sales",
+            voucherType: "Tax Invoice",
+            particulars: "Sales - Cash",
+            debit: 28900,
+            credit: 0,
+            outlet: "Basavanagudi"
+        },
+        {
+            id: 6,
+            date: "2026-01-05",
+            docNo: "RC-2026-0015",
+            refNo: "REC-0015",
+            voucher: "Receipt",
+            voucherType: "Bank Transfer",
+            particulars: "Payment Received",
+            debit: 0,
+            credit: 50000,
+            outlet: "Head Office"
+        },
+        {
+            id: 7,
+            date: "2026-01-03",
+            docNo: "SL-2026-0031",
+            refNo: "INV-0031",
+            voucher: "Sales",
+            voucherType: "Tax Invoice",
+            particulars: "Sales - Credit",
+            debit: 67800,
+            credit: 0,
+            outlet: "VPS Branch"
+        },
+        {
+            id: 8,
+            date: "2025-12-28",
+            docNo: "SL-2026-0028",
+            refNo: "INV-0028",
+            voucher: "Sales",
+            voucherType: "Tax Invoice",
+            particulars: "Sales - Cash",
+            debit: 12450,
+            credit: 0,
+            outlet: "Basavanagudi"
+        },
+        {
+            id: 9,
+            date: "2025-12-25",
+            docNo: "RC-2026-0012",
+            refNo: "REC-0012",
+            voucher: "Receipt",
+            voucherType: "Cheque",
+            particulars: "Payment Received",
+            debit: 0,
+            credit: 35000,
+            outlet: "VPS Branch"
+        },
+        {
+            id: 10,
+            date: "2025-12-20",
+            docNo: "SL-2026-0025",
+            refNo: "INV-0025",
+            voucher: "Sales",
+            voucherType: "Tax Invoice",
+            particulars: "Sales - Credit",
+            debit: 89500,
+            credit: 0,
+            outlet: "Head Office"
+        }
     ];
 
     // Wallet Columns
-    const walletColumns = [
-        { title: "Date", field: "date", minWidth: 100 },
-        { title: "Doc No.", field: "docNo", minWidth: 120 },
-        { title: "Ref No.", field: "refNo", minWidth: 100 },
-        { title: "Voucher", field: "voucher", minWidth: 100 },
-        { title: "Voucher Type", field: "voucherType", minWidth: 120 },
-        { title: "Particulars", field: "particulars", minWidth: 140 },
-        { title: "Debit", field: "debit", formatter: "money", formatterParams: { symbol: "₹", precision: 0 }, minWidth: 100 },
-        { title: "Credit", field: "credit", formatter: "money", formatterParams: { symbol: "₹", precision: 0 }, minWidth: 100 },
-        { title: "Outlet", field: "outlet", minWidth: 120 }
+    const walletColumns = [{
+            title: "Date",
+            field: "date",
+            minWidth: 100
+        },
+        {
+            title: "Doc No.",
+            field: "docNo",
+            minWidth: 120
+        },
+        {
+            title: "Ref No.",
+            field: "refNo",
+            minWidth: 100
+        },
+        {
+            title: "Voucher",
+            field: "voucher",
+            minWidth: 100
+        },
+        {
+            title: "Voucher Type",
+            field: "voucherType",
+            minWidth: 120
+        },
+        {
+            title: "Particulars",
+            field: "particulars",
+            minWidth: 140
+        },
+        {
+            title: "Debit",
+            field: "debit",
+            formatter: "money",
+            formatterParams: {
+                symbol: "₹",
+                precision: 0
+            },
+            minWidth: 100
+        },
+        {
+            title: "Credit",
+            field: "credit",
+            formatter: "money",
+            formatterParams: {
+                symbol: "₹",
+                precision: 0
+            },
+            minWidth: 100
+        },
+        {
+            title: "Outlet",
+            field: "outlet",
+            minWidth: 120
+        }
     ];
 
     // Initialize Wallet DataTable (inside panel)
@@ -1056,8 +1269,7 @@ require_once 'includes/navbar.php';
                 showSerialNumber: true,
                 exportFilename: 'wallet_history',
                 layout: 'fitColumns',
-                actions: [
-                    {
+                actions: [{
                         id: 'view',
                         label: 'View Details',
                         icon: 'visibility',
@@ -1256,7 +1468,11 @@ require_once 'includes/navbar.php';
             lockScreenTime.textContent = `${hours}:${minutes}`;
         }
 
-        const options = { weekday: 'long', month: 'long', day: 'numeric' };
+        const options = {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric'
+        };
         if (lockScreenDate) {
             lockScreenDate.textContent = now.toLocaleDateString('en-US', options);
         }
@@ -1374,8 +1590,8 @@ require_once 'includes/navbar.php';
     // Global Keyboard Shortcuts
     document.addEventListener('keydown', function(e) {
         const isInputFocused = document.activeElement.tagName === 'INPUT' ||
-                               document.activeElement.tagName === 'TEXTAREA' ||
-                               document.activeElement.isContentEditable;
+            document.activeElement.tagName === 'TEXTAREA' ||
+            document.activeElement.isContentEditable;
 
         if (e.key === 'Escape') {
             if (logoutConfirmOverlay && logoutConfirmOverlay.classList.contains('active')) {

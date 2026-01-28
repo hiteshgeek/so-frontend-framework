@@ -675,12 +675,20 @@ class SODropdown extends SOComponent {
    * @private
    */
   _closeOtherDropdowns() {
-    // Close other SODropdown instances
+    // Close other SODropdown instances properly via their close() method
     document.querySelectorAll('.so-dropdown.so-open, .so-searchable-dropdown.so-open, .so-options-dropdown.so-open, .so-outlet-dropdown.so-open').forEach(dropdown => {
       if (dropdown !== this.element) {
-        dropdown.classList.remove('so-open', 'position-left', 'position-top');
-        // Also remove directional classes
-        dropdown.classList.remove('so-dropup', 'so-dropstart', 'so-dropend', 'so-dropdown-menu-end');
+        // Try to get the instance and close it properly
+        const instance = SODropdown.getInstance(dropdown);
+        if (instance && instance._isOpen) {
+          instance._isOpen = false;
+          instance.removeClass('so-open', 'position-left', 'position-top');
+          instance._removeDirectionClasses();
+        } else {
+          // Fallback: just remove classes if no instance found
+          dropdown.classList.remove('so-open', 'position-left', 'position-top');
+          dropdown.classList.remove('so-dropup', 'so-dropstart', 'so-dropend', 'so-dropdown-menu-end');
+        }
       }
     });
 

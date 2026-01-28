@@ -1211,11 +1211,11 @@ class SOCarousel {
     }
 
     _findInitialSlide() {
-        const activeIndex = this.slides.findIndex(s => s.classList.contains('active'));
+        const activeIndex = this.slides.findIndex(s => s.classList.contains('so-active'));
         this.currentIndex = activeIndex >= 0 ? activeIndex : 0;
 
         if (activeIndex < 0 && this.slides.length > 0) {
-            this.slides[0].classList.add('active');
+            this.slides[0].classList.add('so-active');
         }
     }
 
@@ -1412,8 +1412,8 @@ class SOCarousel {
         this.element.classList.add('so-carousel-sliding');
 
         // Update slides
-        this.slides[prevIndex].classList.remove('active');
-        this.slides[index].classList.add('active');
+        this.slides[prevIndex].classList.remove('so-active');
+        this.slides[index].classList.add('so-active');
         this.currentIndex = index;
 
         // Update indicators
@@ -1447,45 +1447,45 @@ class SOCarousel {
     _updateTransform() {
         if (!this.inner) return;
 
+        const isFade = this.element.classList.contains('so-carousel-fade');
         const isHero = this.element.classList.contains('so-carousel-hero');
         const isMulti = this.element.classList.contains('so-carousel-multi');
 
-        if (isHero || isMulti) {
-            const slide = this.slides[this.currentIndex];
-            if (!slide) return;
+        // Fade carousels use opacity, no transform needed
+        if (isFade) return;
 
-            // Use the slide's offsetLeft relative to the inner container
+        const slide = this.slides[this.currentIndex];
+        if (!slide) return;
+
+        if (isHero) {
+            // For hero carousel, calculate based on slide width and margins
+            const slideStyle = getComputedStyle(slide);
+            const slideMargin = parseFloat(slideStyle.marginLeft) || 0;
+            const slideWidth = slide.offsetWidth;
+            const slideFullWidth = slideWidth + (slideMargin * 2);
+            const translateX = this.currentIndex * slideFullWidth;
+            this.inner.style.transform = `translateX(-${translateX}px)`;
+        } else if (isMulti) {
+            // For multi-item carousel
             const slideOffset = slide.offsetLeft;
             const slideStyle = getComputedStyle(slide);
             const slideMargin = parseFloat(slideStyle.marginLeft) || 0;
-
-            let translateX = slideOffset - slideMargin;
-
-            // For hero carousel, center the slide
-            if (isHero) {
-                const containerPadding = parseFloat(getComputedStyle(this.element).paddingLeft) || 0;
-                // First slide should be at 0 translate (already centered by padding)
-                // Subsequent slides need to move by their full width including margins
-                if (this.currentIndex > 0) {
-                    const slideWidth = slide.offsetWidth;
-                    const slideFullWidth = slideWidth + (slideMargin * 2);
-                    translateX = this.currentIndex * slideFullWidth;
-                } else {
-                    translateX = 0;
-                }
-            }
-
+            const translateX = slideOffset - slideMargin;
             this.inner.style.transform = `translateX(-${translateX}px)`;
+        } else {
+            // Standard carousel - translate by percentage
+            const translateX = this.currentIndex * 100;
+            this.inner.style.transform = `translateX(-${translateX}%)`;
         }
     }
 
     _updateIndicators() {
         this.indicators.forEach((ind, i) => {
-            ind.classList.toggle('active', i === this.currentIndex);
+            ind.classList.toggle('so-active', i === this.currentIndex);
         });
 
         this.thumbnails.forEach((thumb, i) => {
-            thumb.classList.toggle('active', i === this.currentIndex);
+            thumb.classList.toggle('so-active', i === this.currentIndex);
         });
     }
 

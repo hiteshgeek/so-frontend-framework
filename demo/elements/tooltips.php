@@ -284,6 +284,187 @@ require_once '../includes/navbar.php';
                     </div>
                 </div>
 
+                <!-- HTML Content Tooltips -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">HTML Content Tooltips</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-demo-desc">
+                            Enable rich HTML content in tooltips using <code>data-so-tooltip-html="true"</code>. Perfect for formatted text, icons, lists, and more.
+                        </p>
+
+                        <!-- Basic HTML -->
+                        <h4 class="so-demo-section-heading-spaced">Rich Text Formatting</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-primary"
+                                data-so-tooltip="<strong>Bold</strong> and <em>italic</em> text"
+                                data-so-tooltip-html="true">
+                                Bold & Italic
+                            </button>
+                            <button class="so-btn so-btn-success"
+                                data-so-tooltip="Status: <span style='color: #22c55e;'>● Online</span>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="light">
+                                With Status
+                            </button>
+                            <button class="so-btn so-btn-info"
+                                data-so-tooltip="<span class='material-icons' style='font-size:14px;vertical-align:middle;margin-right:4px;'>info</span> Helpful information"
+                                data-so-tooltip-html="true">
+                                With Icon
+                            </button>
+                        </div>
+
+                        <!-- User Info Card -->
+                        <h4 class="so-demo-section-heading-spaced">User Info Card</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-outline"
+                                data-so-tooltip="<div style='display:flex;align-items:center;gap:8px;'><img src='https://ui-avatars.com/api/?name=John+Doe&size=32&background=6366f1&color=fff' style='width:32px;height:32px;border-radius:50%;'><div><div style='font-weight:600;'>John Doe</div><div style='font-size:11px;opacity:0.8;'>Product Designer</div></div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="light"
+                                data-so-tooltip-size="lg">
+                                <span class="material-icons">person</span>
+                                Hover for Profile
+                            </button>
+                            <button class="so-btn so-btn-outline"
+                                data-so-tooltip="<div style='text-align:center;'><div style='font-size:24px;margin-bottom:4px;'>⭐⭐⭐⭐⭐</div><div style='font-weight:600;'>5.0 Rating</div><div style='font-size:11px;opacity:0.8;'>Based on 128 reviews</div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="soft-warning"
+                                data-so-tooltip-size="lg">
+                                <span class="material-icons">star</span>
+                                Rating Info
+                            </button>
+                        </div>
+
+                        <!-- Feature List -->
+                        <h4 class="so-demo-section-heading-spaced">Feature Lists & Details</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-secondary"
+                                data-so-tooltip="<div style='text-align:left;'><div style='font-weight:600;margin-bottom:6px;'>Features Included:</div><div style='font-size:12px;'>✓ Unlimited projects<br>✓ Priority support<br>✓ Advanced analytics<br>✓ Custom branding</div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="light"
+                                data-so-tooltip-size="lg">
+                                <span class="material-icons">checklist</span>
+                                Feature List
+                            </button>
+                            <button class="so-btn so-btn-danger"
+                                data-so-tooltip="<div style='text-align:left;'><div style='font-weight:600;margin-bottom:4px;'>⚠️ Warning</div><div style='font-size:12px;'>This action cannot be undone.<br>All data will be permanently deleted.</div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="soft-danger"
+                                data-so-tooltip-size="lg">
+                                <span class="material-icons">delete</span>
+                                Delete Warning
+                            </button>
+                            <button class="so-btn so-btn-warning"
+                                data-so-tooltip="<div style='text-align:left;'><div style='font-weight:600;margin-bottom:4px;'>📦 Package Info</div><div style='font-size:12px;'><strong>Size:</strong> 2.4 MB<br><strong>Version:</strong> 3.2.1<br><strong>License:</strong> MIT</div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="light"
+                                data-so-tooltip-size="lg">
+                                <span class="material-icons">inventory_2</span>
+                                Package Details
+                            </button>
+                        </div>
+
+                        <!-- Statistics -->
+                        <h4 class="so-demo-section-heading-spaced">Statistics & Metrics</h4>
+                        <div class="so-flex so-gap-3 so-flex-wrap so-mb-4">
+                            <button class="so-btn so-btn-outline-success"
+                                data-so-tooltip="<div style='text-align:center;'><div style='font-size:20px;font-weight:700;color:#22c55e;'>+24.5%</div><div style='font-size:11px;'>vs last month</div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="soft-success">
+                                <span class="material-icons">trending_up</span>
+                                Growth Stats
+                            </button>
+                            <button class="so-btn so-btn-outline-info"
+                                data-so-tooltip="<div style='display:flex;gap:12px;'><div style='text-align:center;'><div style='font-size:16px;font-weight:700;'>1.2K</div><div style='font-size:10px;opacity:0.8;'>Views</div></div><div style='text-align:center;'><div style='font-size:16px;font-weight:700;'>348</div><div style='font-size:10px;opacity:0.8;'>Clicks</div></div><div style='text-align:center;'><div style='font-size:16px;font-weight:700;'>29%</div><div style='font-size:10px;opacity:0.8;'>CTR</div></div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="light"
+                                data-so-tooltip-size="lg">
+                                <span class="material-icons">analytics</span>
+                                Quick Stats
+                            </button>
+                            <button class="so-btn so-btn-outline-primary"
+                                data-so-tooltip="<div style='width:120px;'><div style='display:flex;justify-content:space-between;margin-bottom:4px;'><span style='font-size:11px;'>Progress</span><span style='font-size:11px;font-weight:600;'>75%</span></div><div style='height:6px;background:rgba(99,102,241,0.2);border-radius:3px;overflow:hidden;'><div style='width:75%;height:100%;background:#6366f1;border-radius:3px;'></div></div></div>"
+                                data-so-tooltip-html="true"
+                                data-so-tooltip-color="light"
+                                data-so-tooltip-size="lg">
+                                <span class="material-icons">donut_large</span>
+                                Progress Bar
+                            </button>
+                        </div>
+
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)" data-so-tooltip="Copy code" data-so-shortcut="Ctrl+C">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Basic rich text --&gt;
+&lt;button
+    data-so-tooltip="&lt;strong&gt;Bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; text"
+    data-so-tooltip-html="true"&gt;
+    Rich Text
+&lt;/button&gt;
+
+&lt;!-- With icon --&gt;
+&lt;button
+    data-so-tooltip="&lt;span class='material-icons' style='font-size:14px;vertical-align:middle;margin-right:4px;'&gt;info&lt;/span&gt; Helpful info"
+    data-so-tooltip-html="true"&gt;
+    With Icon
+&lt;/button&gt;
+
+&lt;!-- User profile card --&gt;
+&lt;button
+    data-so-tooltip="&lt;div style='display:flex;align-items:center;gap:8px;'&gt;
+        &lt;img src='avatar.jpg' style='width:32px;height:32px;border-radius:50%;'&gt;
+        &lt;div&gt;
+            &lt;div style='font-weight:600;'&gt;John Doe&lt;/div&gt;
+            &lt;div style='font-size:11px;opacity:0.8;'&gt;Product Designer&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;"
+    data-so-tooltip-html="true"
+    data-so-tooltip-color="light"
+    data-so-tooltip-size="lg"&gt;
+    User Card
+&lt;/button&gt;
+
+&lt;!-- Feature list --&gt;
+&lt;button
+    data-so-tooltip="&lt;div style='text-align:left;'&gt;
+        &lt;div style='font-weight:600;margin-bottom:6px;'&gt;Features:&lt;/div&gt;
+        &lt;div style='font-size:12px;'&gt;
+            ✓ Unlimited projects&lt;br&gt;
+            ✓ Priority support&lt;br&gt;
+            ✓ Advanced analytics
+        &lt;/div&gt;
+    &lt;/div&gt;"
+    data-so-tooltip-html="true"
+    data-so-tooltip-color="light"
+    data-so-tooltip-size="lg"&gt;
+    Features
+&lt;/button&gt;
+
+&lt;!-- Statistics with mini progress bar --&gt;
+&lt;button
+    data-so-tooltip="&lt;div style='width:120px;'&gt;
+        &lt;div style='display:flex;justify-content:space-between;margin-bottom:4px;'&gt;
+            &lt;span style='font-size:11px;'&gt;Progress&lt;/span&gt;
+            &lt;span style='font-size:11px;font-weight:600;'&gt;75%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div style='height:6px;background:rgba(99,102,241,0.2);border-radius:3px;'&gt;
+            &lt;div style='width:75%;height:100%;background:#6366f1;border-radius:3px;'&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;"
+    data-so-tooltip-html="true"
+    data-so-tooltip-color="light"
+    data-so-tooltip-size="lg"&gt;
+    Progress
+&lt;/button&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- JavaScript API -->
                 <div class="so-card so-mb-4">
                     <div class="so-card-header">

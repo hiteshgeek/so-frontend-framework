@@ -25,7 +25,7 @@ require_once '../includes/navbar.php';
     <div class="so-page-body">
 
         <!-- ===================== BORDER SPINNER ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Border Spinner</h3>
                 <p class="so-card-subtitle">The default spinner using a rotating border animation.</p>
@@ -47,7 +47,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== SPINNER SIZES ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Spinner Sizes</h3>
                 <p class="so-card-subtitle">Extra small to extra large spinner variants.</p>
@@ -77,7 +77,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== SPINNER COLORS ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Spinner Colors</h3>
                 <p class="so-card-subtitle">Color variants for different contexts.</p>
@@ -115,7 +115,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== GROWING SPINNER ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Growing Spinner</h3>
                 <p class="so-card-subtitle">A pulsing dot animation that grows and fades.</p>
@@ -147,7 +147,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== DOTS SPINNER ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Dots Spinner</h3>
                 <p class="so-card-subtitle">Three bouncing dots animation.</p>
@@ -197,7 +197,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== BARS SPINNER ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Bars Spinner</h3>
                 <p class="so-card-subtitle">Animated loading bars like an equalizer.</p>
@@ -247,7 +247,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== PULSE SPINNER ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Pulse Spinner</h3>
                 <p class="so-card-subtitle">Expanding rings animation.</p>
@@ -279,7 +279,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== SPINNER WITH TEXT ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Spinner with Text</h3>
                 <p class="so-card-subtitle">Inline spinner combined with loading text.</p>
@@ -324,7 +324,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== BUTTON LOADING STATES ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Button Loading States</h3>
                 <p class="so-card-subtitle">Spinners inside buttons for async actions.</p>
@@ -381,7 +381,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== LOADING OVERLAY ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Loading Overlay</h3>
                 <p class="so-card-subtitle">Full-screen or contained loading overlay.</p>

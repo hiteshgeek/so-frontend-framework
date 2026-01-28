@@ -338,6 +338,226 @@
 }
 
 // ============================================
+// OUTLINE VARIANT
+// ============================================
+
+.#{$so-prefix}stepper-outline {
+  .#{$so-prefix}step-icon {
+    background: transparent;
+    border: 2px solid css-var('border-color');
+    color: css-var('text-secondary');
+  }
+
+  // Active step outline
+  .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+    background: transparent;
+    border-color: css-var('accent-primary');
+    color: css-var('accent-primary');
+  }
+
+  // Completed step outline
+  .#{$so-prefix}step-completed .#{$so-prefix}step-icon {
+    background: transparent;
+    border-color: css-var('accent-success');
+    color: css-var('accent-success');
+  }
+
+  // Error step outline
+  .#{$so-prefix}step-error .#{$so-prefix}step-icon {
+    background: transparent;
+    border-color: css-var('accent-danger');
+    color: css-var('accent-danger');
+  }
+}
+
+// ============================================
+// LIGHT (SOFT) VARIANT
+// ============================================
+
+.#{$so-prefix}stepper-light {
+  .#{$so-prefix}step-icon {
+    background: css-var('card-hover-bg');
+    border: none;
+    color: css-var('text-secondary');
+  }
+
+  // Active step light
+  .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+    background: alpha($so-primary, 0.15);
+    color: css-var('accent-primary');
+  }
+
+  // Completed step light
+  .#{$so-prefix}step-completed .#{$so-prefix}step-icon {
+    background: alpha($so-success, 0.15);
+    color: css-var('accent-success');
+  }
+
+  // Error step light
+  .#{$so-prefix}step-error .#{$so-prefix}step-icon {
+    background: alpha($so-danger, 0.15);
+    color: css-var('accent-danger');
+  }
+}
+
+// ============================================
+// COLOR VARIANTS
+// ============================================
+
+// Primary variant
+.#{$so-prefix}stepper-primary {
+  .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+    background: css-var('accent-primary');
+    border-color: css-var('accent-primary');
+    color: $so-white;
+  }
+
+  &.#{$so-prefix}stepper-horizontal .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after,
+  &.#{$so-prefix}stepper-vertical .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after {
+    background: css-var('accent-primary');
+  }
+
+  .#{$so-prefix}step-completed .#{$so-prefix}step-icon {
+    background: css-var('accent-primary');
+    border-color: css-var('accent-primary');
+    color: $so-white;
+  }
+
+  &.#{$so-prefix}stepper-outline {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon,
+    .#{$so-prefix}step-completed .#{$so-prefix}step-icon {
+      background: transparent;
+      border-color: css-var('accent-primary');
+      color: css-var('accent-primary');
+    }
+  }
+
+  &.#{$so-prefix}stepper-light {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon,
+    .#{$so-prefix}step-completed .#{$so-prefix}step-icon {
+      background: alpha($so-primary, 0.15);
+      color: css-var('accent-primary');
+    }
+  }
+}
+
+// Success variant
+.#{$so-prefix}stepper-success {
+  .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+    background: css-var('accent-success');
+    border-color: css-var('accent-success');
+    color: $so-white;
+  }
+
+  &.#{$so-prefix}stepper-horizontal .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after,
+  &.#{$so-prefix}stepper-vertical .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after {
+    background: css-var('accent-success');
+  }
+
+  &.#{$so-prefix}stepper-outline {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: transparent;
+      border-color: css-var('accent-success');
+      color: css-var('accent-success');
+    }
+  }
+
+  &.#{$so-prefix}stepper-light {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: alpha($so-success, 0.15);
+      color: css-var('accent-success');
+    }
+  }
+}
+
+// Danger variant
+.#{$so-prefix}stepper-danger {
+  .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+    background: css-var('accent-danger');
+    border-color: css-var('accent-danger');
+    color: $so-white;
+  }
+
+  &.#{$so-prefix}stepper-horizontal .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after,
+  &.#{$so-prefix}stepper-vertical .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after {
+    background: css-var('accent-danger');
+  }
+
+  &.#{$so-prefix}stepper-outline {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: transparent;
+      border-color: css-var('accent-danger');
+      color: css-var('accent-danger');
+    }
+  }
+
+  &.#{$so-prefix}stepper-light {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: alpha($so-danger, 0.15);
+      color: css-var('accent-danger');
+    }
+  }
+}
+
+// Warning variant
+.#{$so-prefix}stepper-warning {
+  .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+    background: css-var('accent-warning');
+    border-color: css-var('accent-warning');
+    color: $so-grey-900;
+  }
+
+  &.#{$so-prefix}stepper-horizontal .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after,
+  &.#{$so-prefix}stepper-vertical .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after {
+    background: css-var('accent-warning');
+  }
+
+  &.#{$so-prefix}stepper-outline {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: transparent;
+      border-color: css-var('accent-warning');
+      color: css-var('accent-warning');
+    }
+  }
+
+  &.#{$so-prefix}stepper-light {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: alpha($so-warning, 0.15);
+      color: css-var('accent-warning');
+    }
+  }
+}
+
+// Info variant
+.#{$so-prefix}stepper-info {
+  .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+    background: css-var('accent-info');
+    border-color: css-var('accent-info');
+    color: $so-white;
+  }
+
+  &.#{$so-prefix}stepper-horizontal .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after,
+  &.#{$so-prefix}stepper-vertical .#{$so-prefix}step.#{$so-prefix}step-completed:not(:last-child)::after {
+    background: css-var('accent-info');
+  }
+
+  &.#{$so-prefix}stepper-outline {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: transparent;
+      border-color: css-var('accent-info');
+      color: css-var('accent-info');
+    }
+  }
+
+  &.#{$so-prefix}stepper-light {
+    .#{$so-prefix}step-active .#{$so-prefix}step-icon {
+      background: alpha($so-info, 0.15);
+      color: css-var('accent-info');
+    }
+  }
+}
+
+// ============================================
 // RESPONSIVE
 // ============================================
 

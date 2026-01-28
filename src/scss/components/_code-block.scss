@@ -31,13 +31,13 @@
 
 .#{$so-prefix}code-block {
   position: relative;
-  background: css-var('code-bg', #1e1e1e);
+  background: #1e1e1e;
   border-radius: radius('lg');
   overflow: hidden;
   margin: spacing('4') 0;
 
-  // Dark theme code block
-  [data-theme="dark"] & {
+  // Dark theme code block - slightly darker
+  [data-so-theme="dark"] & {
     background: #0d1117;
   }
 }

@@ -114,6 +114,70 @@ function is_page($pages) {
 }
 
 /**
+ * Generate a single-language code block
+ * @param string $code - The code to display (will be HTML escaped)
+ * @param string $language - Language for syntax highlighting (html, css, javascript, php, etc.)
+ * @return string - HTML for the code block
+ */
+function so_code_block($code, $language = 'html') {
+    $escaped = htmlspecialchars($code, ENT_QUOTES, 'UTF-8');
+    return <<<HTML
+<div class="so-code-block">
+    <div class="so-code-header">
+        <span class="so-code-label"><span class="material-icons">code</span> {$language}</span>
+        <button class="so-code-copy" onclick="copyCode(this)"><span class="material-icons">content_copy</span></button>
+    </div>
+    <pre class="so-code-content"><code class="language-{$language}">{$escaped}</code></pre>
+</div>
+HTML;
+}
+
+/**
+ * Generate a tabbed code block with multiple languages
+ * @param string $id - Unique ID for the tabs
+ * @param array $tabs - Array of tabs: [['label' => 'HTML', 'language' => 'html', 'icon' => 'code', 'code' => '...'], ...]
+ * @return string - HTML for the tabbed code block
+ */
+function so_code_tabs($id, $tabs) {
+    $tabButtons = '';
+    $tabPanes = '';
+
+    foreach ($tabs as $index => $tab) {
+        $isActive = $index === 0 ? ' so-active' : '';
+        $label = $tab['label'] ?? strtoupper($tab['language']);
+        $icon = $tab['icon'] ?? ($tab['language'] === 'javascript' ? 'javascript' : 'code');
+        $escaped = htmlspecialchars($tab['code'], ENT_QUOTES, 'UTF-8');
+        $paneId = "{$id}-{$tab['language']}";
+
+        $tabButtons .= <<<HTML
+            <button class="so-code-tab{$isActive}" data-so-target="#{$paneId}">
+                <span class="material-icons">{$icon}</span> {$label}
+            </button>
+HTML;
+
+        $tabPanes .= <<<HTML
+        <div class="so-code-pane{$isActive}" id="{$paneId}">
+            <pre class="so-code-content"><code class="language-{$tab['language']}">{$escaped}</code></pre>
+        </div>
+HTML;
+    }
+
+    return <<<HTML
+<div class="so-code-block so-code-block-tabbed">
+    <div class="so-code-header">
+        <div class="so-code-tabs">
+{$tabButtons}
+        </div>
+        <button class="so-code-copy" onclick="copyCode(this)"><span class="material-icons">content_copy</span></button>
+    </div>
+    <div class="so-code-body">
+{$tabPanes}
+    </div>
+</div>
+HTML;
+}
+
+/**
  * Generate random demo data
  * @param string $type - Type of data (name, email, amount, etc.)
  * @return string - Random value

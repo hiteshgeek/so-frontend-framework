@@ -25,7 +25,7 @@ require_once '../includes/navbar.php';
     <div class="so-page-body">
 
         <!-- ===================== FILE INPUT ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">File Input</h3>
                 <p class="so-card-subtitle">A styled file input with browse button and filename display.</p>
@@ -94,7 +94,7 @@ document.querySelectorAll('.so-form-control-file input[type="file"]').forEach(in
         </div>
 
         <!-- ===================== MULTIPLE FILES ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Multiple Files</h3>
                 <p class="so-card-subtitle">Allow users to select multiple files at once.</p>
@@ -138,7 +138,7 @@ document.querySelectorAll('.so-form-control-file input[type="file"]').forEach(in
         </div>
 
         <!-- ===================== FILE INPUT SIZES ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">File Input Sizes</h3>
                 <p class="so-card-subtitle">Small, default, and large file input variants.</p>
@@ -220,7 +220,7 @@ document.querySelectorAll('.so-form-control-file input[type="file"]').forEach(in
         </div>
 
         <!-- ===================== DROPZONE ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Drag & Drop Zone</h3>
                 <p class="so-card-subtitle">A large dropzone area for drag-and-drop file uploads.</p>
@@ -330,7 +330,7 @@ function handleFiles(files, dropzone) {
         </div>
 
         <!-- ===================== IMAGE DROPZONE ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Image Dropzone</h3>
                 <p class="so-card-subtitle">Compact dropzone variant for image uploads.</p>
@@ -380,7 +380,7 @@ function handleFiles(files, dropzone) {
         </div>
 
         <!-- ===================== COLOR INPUT ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Color Input</h3>
                 <p class="so-card-subtitle">A styled color picker with swatch preview.</p>
@@ -451,7 +451,7 @@ document.querySelectorAll('.so-form-control-color input[type="color"]').forEach(
         </div>
 
         <!-- ===================== COLOR INPUT SIZES ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Color Input Sizes</h3>
                 <p class="so-card-subtitle">Small, default, and large color picker variants.</p>
@@ -517,7 +517,7 @@ document.querySelectorAll('.so-form-control-color input[type="color"]').forEach(
         </div>
 
         <!-- ===================== COLOR INPUT WITH HEX FIELD ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Color Input with Hex Field</h3>
                 <p class="so-card-subtitle">Combined color picker with editable hex value input.</p>
@@ -597,7 +597,7 @@ document.querySelectorAll('.so-form-color-input').forEach(wrapper => {
         </div>
 
         <!-- ===================== THEME COLORS ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Theme Colors</h3>
                 <p class="so-card-subtitle">Example of multiple color pickers for theme customization.</p>

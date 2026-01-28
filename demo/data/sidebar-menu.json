@@ -34,6 +34,7 @@
           "children": [
             { "id": "accordion", "title": "Accordion", "icon": "expand_more", "url": "elements/accordion.php" },
             { "id": "alerts-toasts", "title": "Alerts & Toasts", "icon": "notifications", "url": "elements/alerts-toasts.php" },
+            { "id": "animations", "title": "Animations", "icon": "animation", "url": "elements/animations.php", "badge": "New" },
             { "id": "badges", "title": "Badges", "icon": "new_releases", "url": "elements/badges.php" },
             { "id": "breadcrumb", "title": "Breadcrumb", "icon": "navigation", "url": "elements/breadcrumb.php" },
             { "id": "button-groups", "title": "Button Groups", "icon": "view_week", "url": "elements/button-groups.php" },

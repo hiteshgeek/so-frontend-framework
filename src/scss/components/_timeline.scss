@@ -51,7 +51,12 @@
   z-index: 1;
 }
 
-// Marker variants
+// Marker color variants (dot style - no icon)
+.#{$so-prefix}timeline-marker-primary {
+  background: css-var('accent-primary');
+  box-shadow: 0 0 0 2px css-var('accent-primary');
+}
+
 .#{$so-prefix}timeline-marker-success {
   background: css-var('accent-success');
   box-shadow: 0 0 0 2px css-var('accent-success');
@@ -77,8 +82,13 @@
   box-shadow: 0 0 0 2px $so-secondary;
 }
 
-// Marker with icon
-.#{$so-prefix}timeline-marker-icon {
+// ============================================
+// MARKER WITH ICON
+// When marker contains an icon, expand size and remove ring
+// ============================================
+
+// Base icon marker styles - using :has() for automatic detection
+.#{$so-prefix}timeline-marker:has(.material-icons) {
   width: 32px;
   height: 32px;
   display: flex;
@@ -94,6 +104,52 @@
   .material-icons {
     font-size: 18px;
   }
+}
+
+// Icon marker color variants - must override the base color variant box-shadow
+.#{$so-prefix}timeline-marker-primary:has(.material-icons) {
+  background: css-var('accent-primary');
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.#{$so-prefix}timeline-marker-success:has(.material-icons) {
+  background: css-var('accent-success');
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.#{$so-prefix}timeline-marker-danger:has(.material-icons) {
+  background: css-var('accent-danger');
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.#{$so-prefix}timeline-marker-warning:has(.material-icons) {
+  background: css-var('accent-warning');
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: $so-grey-900;
+}
+
+.#{$so-prefix}timeline-marker-info:has(.material-icons) {
+  background: css-var('accent-info');
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.#{$so-prefix}timeline-marker-secondary:has(.material-icons) {
+  background: $so-secondary;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.#{$so-prefix}timeline-marker.#{$so-prefix}timeline-marker-primary:has(.material-icons),
+.#{$so-prefix}timeline-marker.#{$so-prefix}timeline-marker-icon.#{$so-prefix}timeline-marker-primary {
+  background: css-var('accent-primary');
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.#{$so-prefix}timeline-marker.#{$so-prefix}timeline-marker-secondary:has(.material-icons),
+.#{$so-prefix}timeline-marker.#{$so-prefix}timeline-marker-icon.#{$so-prefix}timeline-marker-secondary {
+  background: $so-secondary;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 // ============================================
@@ -370,6 +426,35 @@
     left: auto;
     top: auto;
     margin: 0 auto spacing('3');
+    width: 32px;
+    height: 32px;
+    background: css-var('card-bg');
+    border: 2px solid css-var('border-color');
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: font-size('sm');
+    font-weight: font-weight('semibold');
+    color: css-var('text-secondary');
+
+    .material-icons {
+      font-size: 16px;
+    }
+  }
+
+  // Completed items in horizontal timeline
+  .#{$so-prefix}timeline-item-completed .#{$so-prefix}timeline-marker {
+    background: css-var('accent-success');
+    border-color: css-var('accent-success');
+    color: $so-white;
+  }
+
+  // Active item in horizontal timeline
+  .#{$so-prefix}timeline-item-active .#{$so-prefix}timeline-marker {
+    background: css-var('accent-primary');
+    border-color: css-var('accent-primary');
+    color: $so-white;
   }
 
   .#{$so-prefix}timeline-connector {

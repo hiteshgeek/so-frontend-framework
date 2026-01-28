@@ -25,7 +25,7 @@ require_once '../includes/navbar.php';
     <div class="so-page-body">
 
         <!-- ===================== VALIDATION STATES ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Validation States</h3>
                 <p class="so-card-subtitle">Apply <code>has-error</code>, <code>has-success</code>, <code>has-warning</code>, or <code>has-info</code> classes to the form group.</p>
@@ -116,7 +116,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== SHAKE ANIMATION ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Error Animation</h3>
                 <p class="so-card-subtitle">Add <code>so-shake</code> class to trigger a shake animation on errors.</p>
@@ -187,7 +187,7 @@ el.addEventListener('animationend', function() {
         </div>
 
         <!-- ===================== INPUT HINTS ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Input Hints</h3>
                 <p class="so-card-subtitle">Use hints to show helper text, character counters, or requirements.</p>
@@ -244,7 +244,7 @@ el.addEventListener('animationend', function() {
         </div>
 
         <!-- ===================== INTERACTIVE VALIDATION DEMO ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Interactive Validation Demo</h3>
                 <p class="so-card-subtitle">Try submitting the form with empty or invalid values to see validation in action.</p>
@@ -412,7 +412,7 @@ form.addEventListener('submit', function(e) {
         </div>
 
         <!-- ===================== VALIDATION ICONS ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Validation Icons</h3>
                 <p class="so-card-subtitle">Add <code>so-show-success-icon</code> or <code>so-show-error-icon</code> to <code>so-input-wrapper</code> to show icons automatically based on validation state.</p>

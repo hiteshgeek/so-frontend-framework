@@ -19,7 +19,8 @@
 // RATING ITEM (Star/Icon)
 // ============================================
 
-.#{$so-prefix}rating-item {
+.#{$so-prefix}rating-item,
+.#{$so-prefix}rating-star {
   position: relative;
   color: css-var('border-color');
   font-size: 24px;
@@ -36,26 +37,15 @@
 }
 
 // Filled state
-.#{$so-prefix}rating-item-filled {
+.#{$so-prefix}rating-item-filled,
+.#{$so-prefix}rating-filled {
   color: css-var('accent-warning');
 }
 
 // Half-filled state
-.#{$so-prefix}rating-item-half {
-  position: relative;
-
-  &::before {
-    content: 'star_half';
-    font-family: 'Material Icons';
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: css-var('accent-warning');
-  }
-
-  .material-icons {
-    color: css-var('border-color');
-  }
+.#{$so-prefix}rating-item-half,
+.#{$so-prefix}rating-half {
+  color: css-var('accent-warning');
 }
 
 // ============================================
@@ -119,6 +109,7 @@
   pointer-events: none;
 
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     cursor: default;
 
@@ -134,6 +125,7 @@
 
 .#{$so-prefix}rating-xs {
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     font-size: 14px;
   }
@@ -141,6 +133,7 @@
 
 .#{$so-prefix}rating-sm {
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     font-size: 18px;
   }
@@ -148,6 +141,7 @@
 
 .#{$so-prefix}rating-md {
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     font-size: 24px;
   }
@@ -155,6 +149,7 @@
 
 .#{$so-prefix}rating-lg {
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     font-size: 32px;
   }
@@ -164,6 +159,7 @@
 
 .#{$so-prefix}rating-xl {
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     font-size: 40px;
   }
@@ -177,6 +173,7 @@
 
 .#{$so-prefix}rating-primary {
   .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-filled,
   .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
   .#{$so-prefix}rating-label:hover,
   .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
@@ -186,6 +183,7 @@
 
 .#{$so-prefix}rating-danger {
   .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-filled,
   .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
   .#{$so-prefix}rating-label:hover,
   .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
@@ -195,6 +193,7 @@
 
 .#{$so-prefix}rating-success {
   .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-filled,
   .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
   .#{$so-prefix}rating-label:hover,
   .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
@@ -204,6 +203,7 @@
 
 .#{$so-prefix}rating-info {
   .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-filled,
   .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
   .#{$so-prefix}rating-label:hover,
   .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
@@ -238,6 +238,7 @@
 
 .#{$so-prefix}rating-hearts {
   .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-filled,
   .#{$so-prefix}rating-input:checked ~ .#{$so-prefix}rating-label,
   .#{$so-prefix}rating-label:hover,
   .#{$so-prefix}rating-label:hover ~ .#{$so-prefix}rating-label {
@@ -253,6 +254,7 @@
   gap: spacing('3');
 
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     padding: spacing('2');
     border-radius: radius('md');
@@ -264,16 +266,9 @@
     }
   }
 
-  .#{$so-prefix}rating-item-filled {
-    &[data-value="up"] {
-      color: css-var('accent-success');
-      background: alpha($so-success, 0.1);
-    }
-
-    &[data-value="down"] {
-      color: css-var('accent-danger');
-      background: alpha($so-danger, 0.1);
-    }
+  .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-filled {
+    color: css-var('accent-success');
   }
 }
 
@@ -285,6 +280,7 @@
   gap: spacing('2');
 
   .#{$so-prefix}rating-item,
+  .#{$so-prefix}rating-star,
   .#{$so-prefix}rating-label {
     font-size: 28px;
     filter: grayscale(1);
@@ -298,6 +294,7 @@
   }
 
   .#{$so-prefix}rating-item-filled,
+  .#{$so-prefix}rating-filled,
   .#{$so-prefix}rating-input:checked + .#{$so-prefix}rating-label {
     filter: grayscale(0);
     opacity: 1;
@@ -368,4 +365,206 @@
   display: flex;
   flex-direction: column;
   gap: spacing('2');
+}
+
+// ============================================
+// RATING DISPLAY (Value + Stars + Count)
+// ============================================
+
+.#{$so-prefix}rating-display {
+  display: inline-flex;
+  align-items: center;
+  gap: spacing('2');
+}
+
+// ============================================
+// RATING SUMMARY COMPONENTS
+// ============================================
+
+.#{$so-prefix}rating-summary-header {
+  display: flex;
+  align-items: center;
+  gap: spacing('4');
+  margin-bottom: spacing('4');
+}
+
+.#{$so-prefix}rating-summary-score {
+  font-size: 48px;
+  font-weight: font-weight('bold');
+  line-height: 1;
+  color: css-var('text-primary');
+}
+
+.#{$so-prefix}rating-summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: spacing('1');
+}
+
+.#{$so-prefix}rating-bars {
+  display: flex;
+  flex-direction: column;
+  gap: spacing('2');
+}
+
+.#{$so-prefix}rating-bar-item {
+  display: flex;
+  align-items: center;
+  gap: spacing('3');
+
+  .#{$so-prefix}rating-bar-label {
+    min-width: 16px;
+    font-size: font-size('sm');
+    font-weight: font-weight('medium');
+    color: css-var('text-secondary');
+    text-align: center;
+  }
+
+  .#{$so-prefix}progress {
+    flex: 1;
+  }
+
+  .#{$so-prefix}rating-bar-count {
+    min-width: 50px;
+    font-size: font-size('sm');
+    color: css-var('text-muted');
+    text-align: right;
+  }
+}
+
+// ============================================
+// FRACTIONAL RATING
+// Displays precise fractional values (e.g., 3.7, 4.2)
+// Uses two-layer approach for precise fill percentages
+// ============================================
+
+.#{$so-prefix}rating-fraction {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+// Two-layer approach - most reliable method
+.#{$so-prefix}rating-star-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.#{$so-prefix}rating-star-empty {
+  color: css-var('border-color');
+
+  .material-icons {
+    display: block;
+  }
+}
+
+.#{$so-prefix}rating-star-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  color: css-var('accent-warning');
+  // Width is set via inline style or CSS variable: style="width: 75%" or --fill: 75%
+  width: var(--fill, 0%);
+
+  .material-icons {
+    display: block;
+  }
+}
+
+// Fractional rating size variants
+.#{$so-prefix}rating-fraction-xs {
+  .#{$so-prefix}rating-star-wrap {
+    font-size: 14px;
+  }
+}
+
+.#{$so-prefix}rating-fraction-sm {
+  .#{$so-prefix}rating-star-wrap {
+    font-size: 18px;
+  }
+}
+
+.#{$so-prefix}rating-fraction-md {
+  .#{$so-prefix}rating-star-wrap {
+    font-size: 24px;
+  }
+}
+
+.#{$so-prefix}rating-fraction-lg {
+  gap: 4px;
+
+  .#{$so-prefix}rating-star-wrap {
+    font-size: 32px;
+  }
+}
+
+.#{$so-prefix}rating-fraction-xl {
+  gap: 6px;
+
+  .#{$so-prefix}rating-star-wrap {
+    font-size: 40px;
+  }
+}
+
+// Fractional rating color variants
+.#{$so-prefix}rating-fraction-primary {
+  .#{$so-prefix}rating-star-fill {
+    color: css-var('accent-primary');
+  }
+}
+
+.#{$so-prefix}rating-fraction-danger {
+  .#{$so-prefix}rating-star-fill {
+    color: css-var('accent-danger');
+  }
+}
+
+.#{$so-prefix}rating-fraction-success {
+  .#{$so-prefix}rating-star-fill {
+    color: css-var('accent-success');
+  }
+}
+
+.#{$so-prefix}rating-fraction-info {
+  .#{$so-prefix}rating-star-fill {
+    color: css-var('accent-info');
+  }
+}
+
+// ============================================
+// INTERACTIVE FRACTIONAL RATING
+// Allows clicking to select precise fractional values
+// ============================================
+
+.#{$so-prefix}rating-fraction-interactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+
+  .#{$so-prefix}rating-star-wrap {
+    cursor: pointer;
+    transition: transform $so-transition-fast;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Fractional rating readonly
+.#{$so-prefix}rating-fraction-readonly {
+  pointer-events: none;
+
+  .#{$so-prefix}rating-star-wrap {
+    cursor: default;
+
+    &:hover {
+      transform: none;
+    }
+  }
 }

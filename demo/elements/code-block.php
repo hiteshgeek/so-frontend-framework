@@ -25,7 +25,7 @@ require_once '../includes/navbar.php';
     <div class="so-page-body">
 
 <!-- Inline Code -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Inline Code</h3>
     </div>
@@ -39,7 +39,7 @@ require_once '../includes/navbar.php';
 </div>
 
 <!-- Basic Code Block -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Basic Code Block</h3>
     </div>
@@ -61,7 +61,7 @@ greetUser('World');</code></pre>
 </div>
 
 <!-- Code Block with Header -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Code Block with Header</h3>
     </div>
@@ -92,7 +92,7 @@ greetUser('World');</code></pre>
 </div>
 
 <!-- Code Block with Filename -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Code Block with Filename</h3>
     </div>
@@ -128,7 +128,7 @@ export function Button({ children, onClick, variant = 'primary' }) {
 </div>
 
 <!-- Code Block with Line Numbers -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Code Block with Line Numbers</h3>
     </div>
@@ -169,7 +169,7 @@ export function Button({ children, onClick, variant = 'primary' }) {
 </div>
 
 <!-- Highlighted Lines -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Highlighted Lines</h3>
     </div>
@@ -203,7 +203,7 @@ export function Button({ children, onClick, variant = 'primary' }) {
 </div>
 
 <!-- Diff View -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Diff View</h3>
     </div>
@@ -239,7 +239,7 @@ export function Button({ children, onClick, variant = 'primary' }) {
 </div>
 
 <!-- Light Theme -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Light Theme</h3>
     </div>
@@ -273,7 +273,7 @@ export function Button({ children, onClick, variant = 'primary' }) {
 </div>
 
 <!-- Terminal Style -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Terminal Style</h3>
     </div>
@@ -297,7 +297,7 @@ Server running at http://localhost:3000</code></pre>
 </div>
 
 <!-- Size Variants -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Size Variants</h3>
     </div>
@@ -328,7 +328,7 @@ Server running at http://localhost:3000</code></pre>
 </div>
 
 <!-- Syntax Highlighting -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Syntax Highlighting</h3>
     </div>
@@ -356,7 +356,7 @@ Server running at http://localhost:3000</code></pre>
 </div>
 
 <!-- Multiple Languages -->
-<div class="so-card">
+<div class="so-card so-mb-4">
     <div class="so-card-header">
         <h3 class="so-card-title">Multiple Languages</h3>
     </div>

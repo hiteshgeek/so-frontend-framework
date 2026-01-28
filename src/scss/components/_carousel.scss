@@ -77,34 +77,17 @@ $carousel-gap: 16px !default;
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   backface-visibility: hidden;
   overflow: hidden;
-
-  &.#{$so-prefix}active {
-    display: flex;
-  }
 
   img {
     width: 100%;
     height: auto;
     max-height: 100%;
     object-fit: cover;
-  }
-}
-
-// Slide transition (transform-based)
-.#{$so-prefix}carousel-slide-transform {
-  .#{$so-prefix}carousel-inner {
-    display: flex;
-  }
-
-  .#{$so-prefix}carousel-slide {
-    display: flex;
-    flex: 0 0 100%;
-    opacity: 1;
   }
 }
 

@@ -25,7 +25,7 @@ require_once '../includes/navbar.php';
     <div class="so-page-body">
 
         <!-- ===================== LOGIN FORM ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Login Form</h3>
                 <p class="so-card-subtitle">A clean login form with social authentication options.</p>
@@ -131,7 +131,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== REGISTRATION FORM ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Registration Form</h3>
                 <p class="so-card-subtitle">A user registration form with password requirements.</p>
@@ -239,7 +239,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== CONTACT FORM ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Contact Form</h3>
                 <p class="so-card-subtitle">A contact form with file attachments.</p>
@@ -311,7 +311,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== SETTINGS FORM ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Settings Form (Horizontal)</h3>
                 <p class="so-card-subtitle">A horizontal settings form with sections and switches.</p>
@@ -408,7 +408,7 @@ require_once '../includes/navbar.php';
         </div>
 
         <!-- ===================== CHECKOUT FORM ===================== -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Checkout Form</h3>
                 <p class="so-card-subtitle">A payment checkout form with billing and card details.</p>

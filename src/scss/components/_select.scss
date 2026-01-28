@@ -849,6 +849,34 @@
 }
 
 // ============================================
+// NOWRAP MODIFIER
+// Prevents text wrapping in dropdown options
+// ============================================
+
+.#{$so-prefix}select-nowrap {
+  .#{$so-prefix}select-dropdown {
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+  }
+
+  .#{$so-prefix}select-option {
+    white-space: nowrap;
+  }
+
+  .#{$so-prefix}select-option-content,
+  .#{$so-prefix}select-option-text {
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .#{$so-prefix}select-group-label {
+    white-space: nowrap;
+  }
+}
+
+// ============================================
 // NATIVE SELECT ENHANCEMENT
 // Hidden native select when enhanced
 // ============================================

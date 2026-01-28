@@ -548,175 +548,6 @@ require_once 'includes/navbar.php';
         height: 24px;
     }
 
-    /* Keyboard Shortcuts Overlay */
-    .so-shortcuts-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 9998;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(4px);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.2s ease, visibility 0.2s ease;
-    }
-
-    .so-shortcuts-overlay.active {
-        display: flex;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .so-shortcuts-popup {
-        width: 100%;
-        max-width: 520px;
-        background: var(--so-card-bg, #fff);
-        border-radius: 12px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        transform: scale(0.95);
-        transition: transform 0.2s ease;
-    }
-
-    .so-shortcuts-overlay.active .so-shortcuts-popup {
-        transform: scale(1);
-    }
-
-    .so-shortcuts-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 24px;
-        border-bottom: 1px solid var(--so-border-color, #f0f0f0);
-    }
-
-    .so-shortcuts-header h2 {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 0;
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--so-text-heading, #1e293b);
-    }
-
-    .so-shortcuts-header h2 .material-icons {
-        font-size: 24px;
-        color: var(--so-accent-primary, #7367f0);
-    }
-
-    .so-shortcuts-close {
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        border: none;
-        border-radius: 6px;
-        color: var(--so-text-secondary, #64748b);
-        cursor: pointer;
-        transition: background 0.15s ease;
-    }
-
-    .so-shortcuts-close:hover {
-        background: var(--so-grey-100, #f1f5f9);
-    }
-
-    .so-shortcuts-content {
-        padding: 16px 24px;
-        max-height: 400px;
-        overflow-y: auto;
-    }
-
-    .so-shortcuts-section {
-        margin-bottom: 20px;
-    }
-
-    .so-shortcuts-section:last-child {
-        margin-bottom: 0;
-    }
-
-    .so-shortcuts-section h3 {
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--so-text-muted, #94a3b8);
-        margin: 0 0 8px 0;
-    }
-
-    .so-shortcut-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 8px 0;
-    }
-
-    .so-shortcut-desc {
-        font-size: 14px;
-        color: var(--so-text-primary, #334155);
-    }
-
-    .so-shortcut-keys {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .so-shortcut-keys kbd {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 32px;
-        height: 28px;
-        padding: 0 10px;
-        font-family: inherit;
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--so-text-secondary, #64748b);
-        background: var(--so-grey-100, #f1f5f9);
-        border: 1px solid var(--so-border-color, #e2e8f0);
-        border-radius: 6px;
-    }
-
-    .so-shortcuts-footer {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 16px 24px;
-        font-size: 14px;
-        color: var(--so-text-secondary, #64748b);
-        background: var(--so-grey-50, #f8fafc);
-        border-top: 1px solid var(--so-border-color, #f0f0f0);
-    }
-
-    .so-shortcuts-footer .material-icons {
-        font-size: 18px;
-        color: var(--so-accent-primary, #7367f0);
-    }
-
-    .so-shortcuts-footer kbd {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 24px;
-        height: 24px;
-        padding: 0 8px;
-        font-family: inherit;
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--so-text-secondary, #64748b);
-        background: #fff;
-        border: 1px solid var(--so-border-color, #e2e8f0);
-        border-radius: 4px;
-    }
-
     /* Logout Confirmation Overlay */
     .so-confirm-overlay {
         position: fixed;
@@ -794,24 +625,8 @@ require_once 'includes/navbar.php';
     }
 
     /* Dark mode adjustments */
-    [data-theme="dark"] .so-shortcuts-popup,
     [data-theme="dark"] .so-confirm-popup {
         background: var(--so-card-bg, #1e293b);
-    }
-
-    [data-theme="dark"] .so-shortcuts-close:hover {
-        background: var(--so-grey-800, #334155);
-    }
-
-    [data-theme="dark"] .so-shortcut-keys kbd,
-    [data-theme="dark"] .so-shortcuts-footer kbd {
-        background: var(--so-grey-800, #334155);
-        border-color: var(--so-grey-700, #475569);
-    }
-
-    [data-theme="dark"] .so-shortcuts-footer {
-        background: var(--so-grey-900, #0f172a);
-        border-color: var(--so-grey-800, #334155);
     }
 
     /* Mobile Bottom Bar */
@@ -962,84 +777,6 @@ require_once 'includes/navbar.php';
             <circle cx="24" cy="24" r="4" fill="currentColor" />
         </svg>
         SixOrbit ERP
-    </div>
-</div>
-
-<!-- Keyboard Shortcuts Popup -->
-<div class="so-shortcuts-overlay" id="shortcutsOverlay">
-    <div class="so-shortcuts-popup">
-        <div class="so-shortcuts-header">
-            <h2>
-                <span class="material-icons">keyboard</span>
-                Keyboard Shortcuts
-            </h2>
-            <button class="so-shortcuts-close" id="shortcutsCloseBtn" title="Close (Esc)">
-                <span class="material-icons">close</span>
-            </button>
-        </div>
-        <div class="so-shortcuts-content">
-            <div class="so-shortcuts-section">
-                <h3>Navigation</h3>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Global Search</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>Ctrl</kbd> + <kbd>K</kbd>
-                    </span>
-                </div>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Toggle Sidebar</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>Ctrl</kbd> + <kbd>B</kbd>
-                    </span>
-                </div>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Go to Dashboard</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>Ctrl</kbd> + <kbd>H</kbd>
-                    </span>
-                </div>
-            </div>
-            <div class="so-shortcuts-section">
-                <h3>Actions</h3>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Lock Screen</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>Ctrl</kbd> + <kbd>L</kbd>
-                    </span>
-                </div>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Logout</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
-                    </span>
-                </div>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Toggle Fullscreen</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>F11</kbd>
-                    </span>
-                </div>
-            </div>
-            <div class="so-shortcuts-section">
-                <h3>Help</h3>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Show Shortcuts</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>?</kbd>
-                    </span>
-                </div>
-                <div class="so-shortcut-item">
-                    <span class="so-shortcut-desc">Close Popup</span>
-                    <span class="so-shortcut-keys">
-                        <kbd>Esc</kbd>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="so-shortcuts-footer">
-            <span class="material-icons">info</span>
-            Press <kbd>?</kbd> anytime to view shortcuts
-        </div>
     </div>
 </div>
 
@@ -1554,39 +1291,6 @@ require_once 'includes/navbar.php';
     setInterval(updateLockScreenTime, 60000);
     checkLockState();
 
-    // Keyboard Shortcuts Popup
-    const shortcutsOverlay = document.getElementById('shortcutsOverlay');
-    const shortcutsCloseBtn = document.getElementById('shortcutsCloseBtn');
-    const keyboardShortcutsBtn = document.getElementById('keyboardShortcutsBtn');
-
-    function showShortcutsPopup() {
-        if (shortcutsOverlay) {
-            shortcutsOverlay.classList.add('active');
-        }
-    }
-
-    function hideShortcutsPopup() {
-        if (shortcutsOverlay) {
-            shortcutsOverlay.classList.remove('active');
-        }
-    }
-
-    if (keyboardShortcutsBtn) {
-        keyboardShortcutsBtn.addEventListener('click', showShortcutsPopup);
-    }
-
-    if (shortcutsCloseBtn) {
-        shortcutsCloseBtn.addEventListener('click', hideShortcutsPopup);
-    }
-
-    if (shortcutsOverlay) {
-        shortcutsOverlay.addEventListener('click', function(e) {
-            if (e.target === shortcutsOverlay) {
-                hideShortcutsPopup();
-            }
-        });
-    }
-
     // Global Keyboard Shortcuts
     document.addEventListener('keydown', function(e) {
         const isInputFocused = document.activeElement.tagName === 'INPUT' ||
@@ -1598,21 +1302,13 @@ require_once 'includes/navbar.php';
                 hideLogoutConfirmation();
                 return;
             }
-            if (shortcutsOverlay && shortcutsOverlay.classList.contains('active')) {
-                hideShortcutsPopup();
-                return;
-            }
         }
 
         if (isInputFocused && e.key !== 'Escape') return;
 
         if (lockScreen && lockScreen.classList.contains('active')) return;
 
-        if (e.key === '?' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-            e.preventDefault();
-            showShortcutsPopup();
-            return;
-        }
+        // Note: '?' key for keyboard shortcuts is handled by navbar.php
 
         if ((e.ctrlKey || e.metaKey) && e.key === 'l' && !e.shiftKey) {
             e.preventDefault();

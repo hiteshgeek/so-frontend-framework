@@ -84,7 +84,7 @@
 
 // Base validation message mixin
 @mixin validation-message {
-  display: flex;
+  display: none; // Hidden by default
   align-items: flex-start;
   gap: spacing('1');
   margin-top: spacing('1');
@@ -119,6 +119,23 @@
 .#{$so-prefix}form-info {
   @include validation-message;
   color: css-var('accent-info');
+}
+
+// Show messages based on validation state
+.#{$so-prefix}form-group.has-error .#{$so-prefix}form-error {
+  display: flex;
+}
+
+.#{$so-prefix}form-group.has-success .#{$so-prefix}form-success {
+  display: flex;
+}
+
+.#{$so-prefix}form-group.has-warning .#{$so-prefix}form-warning {
+  display: flex;
+}
+
+.#{$so-prefix}form-group.has-info .#{$so-prefix}form-info {
+  display: flex;
 }
 
 // ============================================

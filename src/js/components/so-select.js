@@ -50,6 +50,7 @@ class SOSelect extends SOComponent {
     // Visual options
     size: null, // 'sm', 'lg', or null for default
     variant: null, // 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'
+    nowrap: false, // Prevent text wrapping in dropdown options
 
     // Async options
     async: false,
@@ -115,6 +116,9 @@ class SOSelect extends SOComponent {
 
     // Re-assign element to wrapper for component methods
     this.element = wrapper;
+
+    // Store reference on wrapper for static methods (closeAllExcept, etc.)
+    wrapper._soSelectInstance = this;
 
     // Cache elements
     this._cacheElements();
@@ -530,6 +534,11 @@ class SOSelect extends SOComponent {
     // Color variants
     if (this.options.variant) {
       this.addClass(`so-select-${this.options.variant}`);
+    }
+
+    // Nowrap - prevent text wrapping in options
+    if (this.options.nowrap) {
+      this.addClass('so-select-nowrap');
     }
   }
 
@@ -1097,6 +1106,9 @@ class SOSelect extends SOComponent {
     const allowed = this.emit(SOSelect.EVENTS.OPEN, {}, true, true);
     if (!allowed) return this;
 
+    // Close any other open selects before opening this one
+    SOSelect.closeAllExcept(this);
+
     this._isOpen = true;
     this.addClass('so-select-open');
 
@@ -1603,6 +1615,28 @@ class SOSelect extends SOComponent {
 
   static createFromSelect(selectElement, options = {}) {
     return SOSelect.getInstance(selectElement, options);
+  }
+
+  /**
+   * Close all open selects except the specified one
+   * @param {SOSelect} exceptInstance - Instance to exclude from closing
+   */
+  static closeAllExcept(exceptInstance = null) {
+    const openSelects = document.querySelectorAll('.so-select.so-select-open');
+    openSelects.forEach(wrapperEl => {
+      // Get instance from wrapper's stored reference
+      const instance = wrapperEl._soSelectInstance;
+      if (instance && instance !== exceptInstance && instance._isOpen) {
+        instance.close();
+      }
+    });
+  }
+
+  /**
+   * Close all open selects
+   */
+  static closeAll() {
+    SOSelect.closeAllExcept(null);
   }
 }
 

@@ -894,6 +894,1013 @@ require_once '../includes/navbar.php';
                         </div>
                     </div>
                 </div>
+
+                <!-- Section 8: MUI-Style Soft/Muted Variants -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Soft/Muted Variants (MUI-Style)</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Soft variants have a subtle, muted background and colored icon when checked - inspired by Material UI.</p>
+
+                        <h5 class="so-mb-3">Soft Checkboxes</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-mb-4">
+                            <label class="so-checkbox so-checkbox-soft-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Soft Primary</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-soft-success">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Soft Success</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-soft-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Soft Danger</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-soft-warning">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Soft Warning</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-soft-info">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Soft Info</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-soft-secondary">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Soft Secondary</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Soft Radios</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-mb-4">
+                            <label class="so-radio so-radio-soft-primary">
+                                <input type="radio" name="soft-radio" value="primary" checked>
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Soft Primary</span>
+                            </label>
+                            <label class="so-radio so-radio-soft-success">
+                                <input type="radio" name="soft-radio" value="success">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Soft Success</span>
+                            </label>
+                            <label class="so-radio so-radio-soft-danger">
+                                <input type="radio" name="soft-radio" value="danger">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Soft Danger</span>
+                            </label>
+                            <label class="so-radio so-radio-soft-warning">
+                                <input type="radio" name="soft-radio" value="warning">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Soft Warning</span>
+                            </label>
+                            <label class="so-radio so-radio-soft-info">
+                                <input type="radio" name="soft-radio" value="info">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Soft Info</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Soft Switches</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap">
+                            <label class="so-switch so-switch-soft-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Soft Primary</span>
+                            </label>
+                            <label class="so-switch so-switch-soft-success">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Soft Success</span>
+                            </label>
+                            <label class="so-switch so-switch-soft-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Soft Danger</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Soft Checkbox --&gt;
+&lt;label class="so-checkbox so-checkbox-soft-primary"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-checkbox-box"&gt;
+        &lt;span class="material-icons"&gt;check&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="so-checkbox-label"&gt;Soft Primary&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Soft Radio --&gt;
+&lt;label class="so-radio so-radio-soft-success"&gt;
+    &lt;input type="radio" name="group" value="1"&gt;
+    &lt;span class="so-radio-circle"&gt;&lt;/span&gt;
+    &lt;span class="so-radio-label"&gt;Soft Success&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Soft Switch --&gt;
+&lt;label class="so-switch so-switch-soft-danger"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-switch-track"&gt;&lt;/span&gt;
+    &lt;span class="so-switch-label"&gt;Soft Danger&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Available: soft-primary, soft-secondary, soft-success, soft-danger, soft-warning, soft-info --&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 9: Outlined Variants -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Outlined Variants (MUI-Style)</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Outlined variants show only border and icon colors - no filled background when checked.</p>
+
+                        <h5 class="so-mb-3">Outlined Checkboxes</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-mb-4">
+                            <label class="so-checkbox so-checkbox-outlined-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Outlined Primary</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-outlined-success">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Outlined Success</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-outlined-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Outlined Danger</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-outlined-warning">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Outlined Warning</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-outlined-info">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Outlined Info</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Outlined Radios</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap">
+                            <label class="so-radio so-radio-outlined-primary">
+                                <input type="radio" name="outlined-radio" value="primary" checked>
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Outlined Primary</span>
+                            </label>
+                            <label class="so-radio so-radio-outlined-success">
+                                <input type="radio" name="outlined-radio" value="success">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Outlined Success</span>
+                            </label>
+                            <label class="so-radio so-radio-outlined-danger">
+                                <input type="radio" name="outlined-radio" value="danger">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Outlined Danger</span>
+                            </label>
+                            <label class="so-radio so-radio-outlined-warning">
+                                <input type="radio" name="outlined-radio" value="warning">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Outlined Warning</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Outlined Checkbox --&gt;
+&lt;label class="so-checkbox so-checkbox-outlined-primary"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-checkbox-box"&gt;
+        &lt;span class="material-icons"&gt;check&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="so-checkbox-label"&gt;Outlined Primary&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Outlined Radio --&gt;
+&lt;label class="so-radio so-radio-outlined-success"&gt;
+    &lt;input type="radio" name="group" value="1"&gt;
+    &lt;span class="so-radio-circle"&gt;&lt;/span&gt;
+    &lt;span class="so-radio-label"&gt;Outlined Success&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 10: Filled Style -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Filled Style Variants</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Filled variants have a subtle background even when unchecked, creating a more prominent visual style.</p>
+
+                        <h5 class="so-mb-3">Filled Checkboxes</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-mb-4">
+                            <label class="so-checkbox so-checkbox-filled so-checkbox-filled-primary">
+                                <input type="checkbox">
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Unchecked</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-filled so-checkbox-filled-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Filled Primary</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-filled so-checkbox-filled-success">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Filled Success</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-filled so-checkbox-filled-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Filled Danger</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Filled Radios</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap">
+                            <label class="so-radio so-radio-filled so-radio-filled-primary">
+                                <input type="radio" name="filled-radio" value="primary" checked>
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Filled Primary</span>
+                            </label>
+                            <label class="so-radio so-radio-filled so-radio-filled-success">
+                                <input type="radio" name="filled-radio" value="success">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Filled Success</span>
+                            </label>
+                            <label class="so-radio so-radio-filled so-radio-filled-danger">
+                                <input type="radio" name="filled-radio" value="danger">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Filled Danger</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Filled Checkbox --&gt;
+&lt;label class="so-checkbox so-checkbox-filled so-checkbox-filled-primary"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-checkbox-box"&gt;
+        &lt;span class="material-icons"&gt;check&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="so-checkbox-label"&gt;Filled Primary&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Filled Radio --&gt;
+&lt;label class="so-radio so-radio-filled so-radio-filled-success"&gt;
+    &lt;input type="radio" name="group" value="1"&gt;
+    &lt;span class="so-radio-circle"&gt;&lt;/span&gt;
+    &lt;span class="so-radio-label"&gt;Filled Success&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 11: iOS-Style Switches -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">iOS-Style Switches</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Clean, rounded iOS-inspired switch design with smooth animations.</p>
+
+                        <h5 class="so-mb-3">Default iOS Switch</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-ios">
+                                <input type="checkbox">
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Off</span>
+                            </label>
+                            <label class="so-switch so-switch-ios">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">On</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">iOS Switch Color Variants</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-ios so-switch-ios-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Primary</span>
+                            </label>
+                            <label class="so-switch so-switch-ios so-switch-ios-success">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Success</span>
+                            </label>
+                            <label class="so-switch so-switch-ios so-switch-ios-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Danger</span>
+                            </label>
+                            <label class="so-switch so-switch-ios so-switch-ios-warning">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Warning</span>
+                            </label>
+                            <label class="so-switch so-switch-ios so-switch-ios-info">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Info</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">iOS Switch Sizes</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center">
+                            <label class="so-switch so-switch-ios so-switch-ios-sm">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Small</span>
+                            </label>
+                            <label class="so-switch so-switch-ios">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Default</span>
+                            </label>
+                            <label class="so-switch so-switch-ios so-switch-ios-lg">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Large</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- iOS Style Switch --&gt;
+&lt;label class="so-switch so-switch-ios"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-switch-track"&gt;&lt;/span&gt;
+    &lt;span class="so-switch-label"&gt;iOS Switch&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- iOS Switch with Color --&gt;
+&lt;label class="so-switch so-switch-ios so-switch-ios-primary"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-ios so-switch-ios-success"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-ios so-switch-ios-danger"&gt;...&lt;/label&gt;
+
+&lt;!-- iOS Switch Sizes --&gt;
+&lt;label class="so-switch so-switch-ios so-switch-ios-sm"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-ios"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-ios so-switch-ios-lg"&gt;...&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 12: Android/Material Switches -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Android/Material Switches</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Material Design 2 style switch with elevated thumb and hover ripple effect.</p>
+
+                        <h5 class="so-mb-3">Default Android Switch</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-android">
+                                <input type="checkbox">
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Off</span>
+                            </label>
+                            <label class="so-switch so-switch-android">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">On</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Android Switch Color Variants</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-android so-switch-android-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Primary</span>
+                            </label>
+                            <label class="so-switch so-switch-android so-switch-android-success">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Success</span>
+                            </label>
+                            <label class="so-switch so-switch-android so-switch-android-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Danger</span>
+                            </label>
+                            <label class="so-switch so-switch-android so-switch-android-warning">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Warning</span>
+                            </label>
+                            <label class="so-switch so-switch-android so-switch-android-info">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Info</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Android Switch Sizes</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center">
+                            <label class="so-switch so-switch-android so-switch-android-sm">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Small</span>
+                            </label>
+                            <label class="so-switch so-switch-android">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Default</span>
+                            </label>
+                            <label class="so-switch so-switch-android so-switch-android-lg">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Large</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Android/Material Style Switch --&gt;
+&lt;label class="so-switch so-switch-android"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-switch-track"&gt;&lt;/span&gt;
+    &lt;span class="so-switch-label"&gt;Android Switch&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Android Switch with Color --&gt;
+&lt;label class="so-switch so-switch-android so-switch-android-primary"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-android so-switch-android-success"&gt;...&lt;/label&gt;
+
+&lt;!-- Android Switch Sizes --&gt;
+&lt;label class="so-switch so-switch-android so-switch-android-sm"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-android so-switch-android-lg"&gt;...&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 13: Material 3 Switches -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Material 3 Switches</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Latest Material Design 3 style with bordered track and expanding thumb.</p>
+
+                        <h5 class="so-mb-3">Default M3 Switch</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-m3">
+                                <input type="checkbox">
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Off</span>
+                            </label>
+                            <label class="so-switch so-switch-m3">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">On</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">M3 Switch Color Variants</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-m3 so-switch-m3-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Primary</span>
+                            </label>
+                            <label class="so-switch so-switch-m3 so-switch-m3-success">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Success</span>
+                            </label>
+                            <label class="so-switch so-switch-m3 so-switch-m3-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Danger</span>
+                            </label>
+                            <label class="so-switch so-switch-m3 so-switch-m3-warning">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Warning</span>
+                            </label>
+                            <label class="so-switch so-switch-m3 so-switch-m3-info">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Info</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">M3 Switch with Icons</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-m3 so-switch-m3-success">
+                                <input type="checkbox">
+                                <span class="so-switch-track">
+                                    <span class="so-switch-icon-on material-icons">check</span>
+                                    <span class="so-switch-icon-off material-icons">close</span>
+                                </span>
+                                <span class="so-switch-label">With Icons (Off)</span>
+                            </label>
+                            <label class="so-switch so-switch-m3 so-switch-m3-success">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track">
+                                    <span class="so-switch-icon-on material-icons">check</span>
+                                    <span class="so-switch-icon-off material-icons">close</span>
+                                </span>
+                                <span class="so-switch-label">With Icons (On)</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">M3 Switch Sizes</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center">
+                            <label class="so-switch so-switch-m3 so-switch-m3-sm">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Small</span>
+                            </label>
+                            <label class="so-switch so-switch-m3">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Default</span>
+                            </label>
+                            <label class="so-switch so-switch-m3 so-switch-m3-lg">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Large</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Material 3 Style Switch --&gt;
+&lt;label class="so-switch so-switch-m3"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-switch-track"&gt;&lt;/span&gt;
+    &lt;span class="so-switch-label"&gt;M3 Switch&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- M3 Switch with Icons --&gt;
+&lt;label class="so-switch so-switch-m3 so-switch-m3-success"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-switch-track"&gt;
+        &lt;span class="so-switch-icon-on material-icons"&gt;check&lt;/span&gt;
+        &lt;span class="so-switch-icon-off material-icons"&gt;close&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="so-switch-label"&gt;With Icons&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- M3 Switch with Color --&gt;
+&lt;label class="so-switch so-switch-m3 so-switch-m3-primary"&gt;...&lt;/label&gt;
+
+&lt;!-- M3 Switch Sizes --&gt;
+&lt;label class="so-switch so-switch-m3 so-switch-m3-sm"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-m3 so-switch-m3-lg"&gt;...&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 14: Ant Design Switches -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Ant Design Switches</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Ant Design inspired compact switch style.</p>
+
+                        <h5 class="so-mb-3">Default Ant Design Switch</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-ant">
+                                <input type="checkbox">
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Off</span>
+                            </label>
+                            <label class="so-switch so-switch-ant">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">On</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Ant Design Switch Color Variants</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center so-mb-4">
+                            <label class="so-switch so-switch-ant so-switch-ant-primary">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Primary</span>
+                            </label>
+                            <label class="so-switch so-switch-ant so-switch-ant-success">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Success</span>
+                            </label>
+                            <label class="so-switch so-switch-ant so-switch-ant-danger">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Danger</span>
+                            </label>
+                            <label class="so-switch so-switch-ant so-switch-ant-warning">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Warning</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Ant Design Switch Sizes</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-items-center">
+                            <label class="so-switch so-switch-ant so-switch-ant-sm">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Small</span>
+                            </label>
+                            <label class="so-switch so-switch-ant">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Default</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Ant Design Style Switch --&gt;
+&lt;label class="so-switch so-switch-ant"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-switch-track"&gt;&lt;/span&gt;
+    &lt;span class="so-switch-label"&gt;Ant Switch&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Ant Switch with Color --&gt;
+&lt;label class="so-switch so-switch-ant so-switch-ant-primary"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-ant so-switch-ant-success"&gt;...&lt;/label&gt;
+
+&lt;!-- Ant Switch Small --&gt;
+&lt;label class="so-switch so-switch-ant so-switch-ant-sm"&gt;...&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 15: Label Placement -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Label Placement (MUI-Style)</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Control the position of labels relative to the checkbox/radio/switch - just like Material UI.</p>
+
+                        <h5 class="so-mb-3">Checkbox Label Positions</h5>
+                        <div class="so-flex so-gap-6 so-flex-wrap so-items-start so-mb-4">
+                            <label class="so-checkbox so-checkbox-label-end">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Label End (Default)</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-label-start">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Label Start</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-label-top">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Label Top</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-label-bottom">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Label Bottom</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Radio Label Positions</h5>
+                        <div class="so-flex so-gap-6 so-flex-wrap so-items-start so-mb-4">
+                            <label class="so-radio so-radio-label-end">
+                                <input type="radio" name="label-pos-radio" value="end" checked>
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Label End</span>
+                            </label>
+                            <label class="so-radio so-radio-label-start">
+                                <input type="radio" name="label-pos-radio" value="start">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Label Start</span>
+                            </label>
+                            <label class="so-radio so-radio-label-top">
+                                <input type="radio" name="label-pos-radio" value="top">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Label Top</span>
+                            </label>
+                            <label class="so-radio so-radio-label-bottom">
+                                <input type="radio" name="label-pos-radio" value="bottom">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Label Bottom</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Switch Label Positions</h5>
+                        <div class="so-flex so-gap-6 so-flex-wrap so-items-start">
+                            <label class="so-switch so-switch-label-end">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Label End</span>
+                            </label>
+                            <label class="so-switch so-switch-label-start">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Label Start</span>
+                            </label>
+                            <label class="so-switch so-switch-label-top">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Label Top</span>
+                            </label>
+                            <label class="so-switch so-switch-label-bottom">
+                                <input type="checkbox" checked>
+                                <span class="so-switch-track"></span>
+                                <span class="so-switch-label">Label Bottom</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Label End (Default) --&gt;
+&lt;label class="so-checkbox so-checkbox-label-end"&gt;...&lt;/label&gt;
+
+&lt;!-- Label Start (Before Input) --&gt;
+&lt;label class="so-checkbox so-checkbox-label-start"&gt;...&lt;/label&gt;
+&lt;label class="so-radio so-radio-label-start"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-label-start"&gt;...&lt;/label&gt;
+
+&lt;!-- Label Top --&gt;
+&lt;label class="so-checkbox so-checkbox-label-top"&gt;...&lt;/label&gt;
+&lt;label class="so-radio so-radio-label-top"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-label-top"&gt;...&lt;/label&gt;
+
+&lt;!-- Label Bottom --&gt;
+&lt;label class="so-checkbox so-checkbox-label-bottom"&gt;...&lt;/label&gt;
+&lt;label class="so-radio so-radio-label-bottom"&gt;...&lt;/label&gt;
+&lt;label class="so-switch so-switch-label-bottom"&gt;...&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 16: Card Style Checkbox/Radio -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Card Style Checkbox &amp; Radio</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Selectable card-style checkboxes and radios for rich selection interfaces.</p>
+
+                        <h5 class="so-mb-3">Card Checkboxes</h5>
+                        <div class="so-grid so-grid-cols-3 so-grid-cols-md-2 so-grid-cols-sm-1 so-gap-3 so-mb-4">
+                            <label class="so-checkbox so-checkbox-card">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <div class="so-checkbox-card-content">
+                                    <div class="so-checkbox-card-title">Standard Plan</div>
+                                    <div class="so-checkbox-card-description">Best for individuals and small teams</div>
+                                </div>
+                            </label>
+                            <label class="so-checkbox so-checkbox-card so-checkbox-card-success">
+                                <input type="checkbox">
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <div class="so-checkbox-card-content">
+                                    <div class="so-checkbox-card-title">Professional Plan</div>
+                                    <div class="so-checkbox-card-description">For growing businesses</div>
+                                </div>
+                            </label>
+                            <label class="so-checkbox so-checkbox-card so-checkbox-card-primary">
+                                <input type="checkbox">
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <div class="so-checkbox-card-content">
+                                    <div class="so-checkbox-card-title">Enterprise Plan</div>
+                                    <div class="so-checkbox-card-description">For large organizations</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Card Radios</h5>
+                        <div class="so-grid so-grid-cols-3 so-grid-cols-md-2 so-grid-cols-sm-1 so-gap-3">
+                            <label class="so-radio so-radio-card">
+                                <input type="radio" name="card-radio" value="free" checked>
+                                <span class="so-radio-circle"></span>
+                                <div class="so-radio-card-content">
+                                    <div class="so-radio-card-title">Free</div>
+                                    <div class="so-radio-card-description">$0/month - Basic features</div>
+                                </div>
+                            </label>
+                            <label class="so-radio so-radio-card so-radio-card-success">
+                                <input type="radio" name="card-radio" value="pro">
+                                <span class="so-radio-circle"></span>
+                                <div class="so-radio-card-content">
+                                    <div class="so-radio-card-title">Pro</div>
+                                    <div class="so-radio-card-description">$19/month - Advanced features</div>
+                                </div>
+                            </label>
+                            <label class="so-radio so-radio-card so-radio-card-primary">
+                                <input type="radio" name="card-radio" value="team">
+                                <span class="so-radio-circle"></span>
+                                <div class="so-radio-card-content">
+                                    <div class="so-radio-card-title">Team</div>
+                                    <div class="so-radio-card-description">$49/month - Team collaboration</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Card Checkbox --&gt;
+&lt;label class="so-checkbox so-checkbox-card"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-checkbox-box"&gt;
+        &lt;span class="material-icons"&gt;check&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;div class="so-checkbox-card-content"&gt;
+        &lt;div class="so-checkbox-card-title"&gt;Plan Name&lt;/div&gt;
+        &lt;div class="so-checkbox-card-description"&gt;Description text&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/label&gt;
+
+&lt;!-- Card Radio --&gt;
+&lt;label class="so-radio so-radio-card"&gt;
+    &lt;input type="radio" name="group" value="1"&gt;
+    &lt;span class="so-radio-circle"&gt;&lt;/span&gt;
+    &lt;div class="so-radio-card-content"&gt;
+        &lt;div class="so-radio-card-title"&gt;Option Title&lt;/div&gt;
+        &lt;div class="so-radio-card-description"&gt;Option description&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/label&gt;
+
+&lt;!-- Card with Color Variant --&gt;
+&lt;label class="so-checkbox so-checkbox-card so-checkbox-card-success"&gt;...&lt;/label&gt;
+&lt;label class="so-radio so-radio-card so-radio-card-primary"&gt;...&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 17: Ripple Effect -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Ripple Effect (MUI-Style)</h3>
+                        <span class="so-badge so-badge-primary">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Add Material UI style ripple/pulse animation on hover and click.</p>
+
+                        <h5 class="so-mb-3">Checkbox with Ripple</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap so-mb-4">
+                            <label class="so-checkbox so-checkbox-ripple so-checkbox-primary">
+                                <input type="checkbox">
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Hover/Click for Ripple</span>
+                            </label>
+                            <label class="so-checkbox so-checkbox-ripple so-checkbox-success">
+                                <input type="checkbox" checked>
+                                <span class="so-checkbox-box">
+                                    <span class="material-icons">check</span>
+                                </span>
+                                <span class="so-checkbox-label">Success Ripple</span>
+                            </label>
+                        </div>
+
+                        <h5 class="so-mb-3">Radio with Ripple</h5>
+                        <div class="so-flex so-gap-4 so-flex-wrap">
+                            <label class="so-radio so-radio-ripple so-radio-primary">
+                                <input type="radio" name="ripple-radio" value="1" checked>
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Option 1</span>
+                            </label>
+                            <label class="so-radio so-radio-ripple so-radio-primary">
+                                <input type="radio" name="ripple-radio" value="2">
+                                <span class="so-radio-circle"></span>
+                                <span class="so-radio-label">Option 2</span>
+                            </label>
+                        </div>
+                        <div class="so-code-block so-mt-4">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Checkbox with Ripple Effect --&gt;
+&lt;label class="so-checkbox so-checkbox-ripple so-checkbox-primary"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="so-checkbox-box"&gt;
+        &lt;span class="material-icons"&gt;check&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="so-checkbox-label"&gt;With Ripple&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Radio with Ripple Effect --&gt;
+&lt;label class="so-radio so-radio-ripple so-radio-primary"&gt;
+    &lt;input type="radio" name="group" value="1"&gt;
+    &lt;span class="so-radio-circle"&gt;&lt;/span&gt;
+    &lt;span class="so-radio-label"&gt;With Ripple&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
     </div>
 </main>
 

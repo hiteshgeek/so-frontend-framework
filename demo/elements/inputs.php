@@ -41,7 +41,7 @@ require_once '../includes/navbar.php';
                             </div>
 
                             <div class="so-form-group">
-                                <label class="so-form-label required" for="input-required">Required Field</label>
+                                <label class="so-form-label so-required" for="input-required">Required Field</label>
                                 <input type="text" id="input-required" class="so-form-control" placeholder="This field is required" required>
                             </div>
 
@@ -63,7 +63,7 @@ require_once '../includes/navbar.php';
 &lt;/div&gt;
 
 &lt;div class="so-form-group"&gt;
-    &lt;label class="so-form-label required" for="required-input"&gt;Required Field&lt;/label&gt;
+    &lt;label class="so-form-label so-required" for="required-input"&gt;Required Field&lt;/label&gt;
     &lt;input type="text" id="required-input" class="so-form-control" placeholder="This field is required" required&gt;
 &lt;/div&gt;</code></pre>
                         </div>
@@ -301,14 +301,23 @@ require_once '../includes/navbar.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#validation-states-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#validation-states-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Error State --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="validation-states-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Error State --&gt;
 &lt;div class="so-form-group has-error"&gt;
     &lt;label class="so-form-label" for="email"&gt;Email&lt;/label&gt;
     &lt;input type="email" id="email" class="so-form-control" value="invalid-email" aria-describedby="email-error"&gt;
@@ -347,17 +356,9 @@ require_once '../includes/navbar.php';
         We'll send a verification code
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                        </div>
-
-                        <h4 class="so-mt-4 so-mb-3">JavaScript Validation Helpers</h4>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Show error state
+                                </div>
+                                <div class="so-code-pane" id="validation-states-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Show error state
 SOForms.showError('email', 'Please enter a valid email');
 
 // Show success state
@@ -374,6 +375,8 @@ SOForms.clearValidation('email');
 
 // Clear error only
 SOForms.clearError('email');</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -543,14 +546,23 @@ SOForms.clearError('email');</code></pre>
                                 <textarea id="textarea-lg" class="so-form-control so-form-control-autosize-lg" placeholder="Large autosize (120-600px)"></textarea>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#textarea-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#textarea-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Basic Textarea (with resize) --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="textarea-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Basic Textarea (with resize) --&gt;
 &lt;label class="so-form-label" for="description"&gt;Description&lt;/label&gt;
 &lt;textarea id="description" class="so-form-control" rows="4" placeholder="Enter description..."&gt;&lt;/textarea&gt;
 
@@ -567,17 +579,9 @@ SOForms.clearError('email');</code></pre>
 
 &lt;label class="so-form-label" for="large-textarea"&gt;Large&lt;/label&gt;
 &lt;textarea id="large-textarea" class="so-form-control so-form-control-autosize-lg"&gt;&lt;/textarea&gt;</code></pre>
-                        </div>
-
-                        <h4 class="so-mt-4 so-mb-3">JavaScript API</h4>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Get or create autosize instance
+                                </div>
+                                <div class="so-code-pane" id="textarea-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Get or create autosize instance
 const textarea = document.querySelector('.so-form-control-autosize');
 const autosize = SOTextareaAutosize.getInstance(textarea, {
     minHeight: 80,
@@ -595,6 +599,8 @@ textarea.addEventListener('so:autosize', (e) => {
 
 // Destroy instance
 autosize.destroy();</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -636,14 +642,23 @@ autosize.destroy();</code></pre>
                                 </select>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#select-basic-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#select-basic-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Basic Select (recommended) --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="select-basic-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Basic Select (recommended) --&gt;
 &lt;select class="so-form-control" data-so-select&gt;
     &lt;option value=""&gt;Select an option&lt;/option&gt;
     &lt;option value="1"&gt;Option 1&lt;/option&gt;
@@ -660,16 +675,9 @@ autosize.destroy();</code></pre>
 &lt;select class="so-form-control" data-so-select disabled&gt;
     &lt;option value=""&gt;Cannot select&lt;/option&gt;
 &lt;/select&gt;</code></pre>
-                        </div>
-
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Auto-initialization (uses data-so-select attribute)
+                                </div>
+                                <div class="so-code-pane" id="select-basic-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Auto-initialization (uses data-so-select attribute)
 // Just add data-so-select to any &lt;select&gt; element
 
 // Manual initialization
@@ -688,6 +696,8 @@ const value = select.getValue();  // Returns '1'
 selectEl.addEventListener('so:select:change', (e) => {
     console.log('Selected:', e.detail.value);
 });</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -726,14 +736,23 @@ selectEl.addEventListener('so:select:change', (e) => {
                                 </select>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#select-sizes-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#select-sizes-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Small --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="select-sizes-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Small --&gt;
 &lt;select class="so-form-control" data-so-select data-so-size="sm"&gt;
     &lt;option value=""&gt;Small select&lt;/option&gt;
     &lt;option value="1"&gt;Option 1&lt;/option&gt;
@@ -750,18 +769,14 @@ selectEl.addEventListener('so:select:change', (e) => {
     &lt;option value=""&gt;Large select&lt;/option&gt;
     &lt;option value="1"&gt;Option 1&lt;/option&gt;
 &lt;/select&gt;</code></pre>
-                        </div>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Initialize with size option
+                                </div>
+                                <div class="so-code-pane" id="select-sizes-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Initialize with size option
 const select = SOSelect.getInstance(selectEl, {
     size: 'sm'  // 'sm', null (default), or 'lg'
 });</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -800,14 +815,23 @@ const select = SOSelect.getInstance(selectEl, {
                                 </select>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#searchable-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#searchable-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Searchable Select --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="searchable-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Searchable Select --&gt;
 &lt;select class="so-form-control" data-so-select data-so-searchable="true"&gt;
     &lt;option value=""&gt;Search...&lt;/option&gt;
     &lt;option value="us"&gt;United States&lt;/option&gt;
@@ -820,15 +844,9 @@ const select = SOSelect.getInstance(selectEl, {
     &lt;option value=""&gt;Select with clear&lt;/option&gt;
     &lt;option value="1"&gt;Option 1&lt;/option&gt;
 &lt;/select&gt;</code></pre>
-                        </div>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Initialize with searchable and clearable options
+                                </div>
+                                <div class="so-code-pane" id="searchable-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Initialize with searchable and clearable options
 const select = SOSelect.getInstance(selectEl, {
     searchable: true,
     searchPlaceholder: 'Type to search...',
@@ -845,6 +863,8 @@ selectEl.addEventListener('so:select:search', (e) => {
 selectEl.addEventListener('so:select:clear', () => {
     console.log('Selection cleared');
 });</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -898,14 +918,23 @@ selectEl.addEventListener('so:select:clear', () => {
                                 </select>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#multiple-select-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#multiple-select-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Multiple Select with Text Display --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="multiple-select-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Multiple Select with Text Display --&gt;
 &lt;select class="so-form-control" data-so-select multiple
         data-so-display-mode="text"
         data-so-multiple-selected-text="{count} items selected"&gt;
@@ -934,15 +963,9 @@ selectEl.addEventListener('so:select:clear', () => {
         data-so-select-none-text="Clear"&gt;
     ...
 &lt;/select&gt;</code></pre>
-                        </div>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Initialize multiple select with options
+                                </div>
+                                <div class="so-code-pane" id="multiple-select-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Initialize multiple select with options
 const select = SOSelect.getInstance(selectEl, {
     multiple: true,
     displayMode: 'chips-overflow',  // 'text', 'chips', 'chips-overflow'
@@ -964,6 +987,8 @@ select.removeValue('2');
 select.selectAll();
 select.selectNone();
 const values = select.getValues();  // Returns array</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1007,14 +1032,23 @@ const values = select.getValues();  // Returns array</code></pre>
                                 </select>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#grouped-options-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#grouped-options-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Grouped Options using optgroup --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="grouped-options-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Grouped Options using optgroup --&gt;
 &lt;select class="so-form-control" data-so-select&gt;
     &lt;option value=""&gt;Select a country&lt;/option&gt;
     &lt;optgroup label="Europe"&gt;
@@ -1033,15 +1067,9 @@ const values = select.getValues();  // Returns array</code></pre>
     &lt;option value="free" data-icon="star_outline" data-description="Basic features"&gt;Free Plan&lt;/option&gt;
     &lt;option value="pro" data-icon="star_half" data-description="Advanced features"&gt;Pro Plan&lt;/option&gt;
 &lt;/select&gt;</code></pre>
-                        </div>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Programmatically add options with icons and descriptions
+                                </div>
+                                <div class="so-code-pane" id="grouped-options-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Programmatically add options with icons and descriptions
 const select = SOSelect.getInstance(selectEl);
 
 // Add option with icon and description
@@ -1064,6 +1092,8 @@ select.addOptionToGroup({
     label: 'Italy',
     icon: 'flag'
 }, 'Europe');</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1289,14 +1319,23 @@ select.addOptionToGroup({
                             }
                         </script>
 
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#selection-styles-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#selection-styles-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Selection Styles --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="selection-styles-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Selection Styles --&gt;
 &lt;!-- For multiple: checkbox, checkbox-bg, icon, bg, icon-bg --&gt;
 &lt;!-- For single: radio, radio-bg, icon, bg, icon-bg --&gt;
 
@@ -1329,21 +1368,17 @@ select.addOptionToGroup({
     &lt;option value=""&gt;Select...&lt;/option&gt;
     &lt;option value="1"&gt;Option 1&lt;/option&gt;
 &lt;/select&gt;</code></pre>
-                        </div>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Initialize with selection style options
+                                </div>
+                                <div class="so-code-pane" id="selection-styles-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Initialize with selection style options
 const select = SOSelect.getInstance(selectEl, {
     // For multiple: 'checkbox', 'checkbox-bg', 'icon', 'bg', 'icon-bg'
     // For single: 'radio', 'radio-bg', 'icon', 'bg', 'icon-bg'
     selectionStyle: 'radio-bg',
     selectionIcon: 'done'  // Only used with icon/icon-bg styles
 });</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1427,14 +1462,23 @@ const select = SOSelect.getInstance(selectEl, {
                                 </select>
                             </div>
                         </div>
-                        <div class="so-code-block so-mt-4">
+                        <div class="so-code-block so-code-block-tabbed so-mt-4">
                             <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <div class="so-code-tabs">
+                                    <button class="so-code-tab so-active" data-so-target="#contextual-colors-html">
+                                        <span class="material-icons">code</span> HTML
+                                    </button>
+                                    <button class="so-code-tab" data-so-target="#contextual-colors-js">
+                                        <span class="material-icons">javascript</span> JavaScript
+                                    </button>
+                                </div>
                                 <button class="so-code-copy" onclick="copyCode(this)">
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Contextual Colors using data-so-variant --&gt;
+                            <div class="so-code-body">
+                                <div class="so-code-pane so-active" id="contextual-colors-html">
+                                    <pre class="so-code-content"><code class="language-html">&lt;!-- Contextual Colors using data-so-variant --&gt;
 &lt;select class="so-form-control" data-so-select data-so-variant="primary"&gt;
     &lt;option value=""&gt;Primary select&lt;/option&gt;
     &lt;option value="1"&gt;Option 1&lt;/option&gt;
@@ -1447,18 +1491,14 @@ const select = SOSelect.getInstance(selectEl, {
 &lt;select class="so-form-control" data-so-select data-so-variant="info"&gt;...&lt;/select&gt;
 &lt;select class="so-form-control" data-so-select data-so-variant="light"&gt;...&lt;/select&gt;
 &lt;select class="so-form-control" data-so-select data-so-variant="dark"&gt;...&lt;/select&gt;</code></pre>
-                        </div>
-                        <div class="so-code-block so-mt-4">
-                            <div class="so-code-header">
-                                <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                                <button class="so-code-copy" onclick="copyCode(this)">
-                                    <span class="material-icons">content_copy</span>
-                                </button>
-                            </div>
-                            <pre class="so-code-content"><code class="language-javascript">// Initialize with variant option
+                                </div>
+                                <div class="so-code-pane" id="contextual-colors-js">
+                                    <pre class="so-code-content"><code class="language-javascript">// Initialize with variant option
 const select = SOSelect.getInstance(selectEl, {
     variant: 'primary'  // 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'
 });</code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

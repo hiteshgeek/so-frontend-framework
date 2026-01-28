@@ -18,7 +18,10 @@
   textarea#{&} {
     height: auto;
     min-height: 100px;
+    padding-top: spacing('3');
+    padding-bottom: spacing('3');
     resize: vertical;
+    line-height: line-height('relaxed');
   }
 }
 
@@ -30,6 +33,8 @@
   textarea#{&} {
     height: auto;
     min-height: 80px;
+    padding-top: spacing('2');
+    padding-bottom: spacing('2');
   }
 }
 
@@ -40,6 +45,8 @@
   textarea#{&} {
     height: auto;
     min-height: 120px;
+    padding-top: spacing('4');
+    padding-bottom: spacing('4');
   }
 }
 
@@ -135,10 +142,6 @@
   position: relative;
   display: block;
 
-  .#{$so-prefix}form-control {
-    padding-left: 40px;
-  }
-
   .#{$so-prefix}input-icon {
     position: absolute;
     left: 12px;
@@ -152,10 +155,16 @@
     }
   }
 
+  // Add left padding to input when wrapper has a left-positioned icon
+  &:has(.#{$so-prefix}input-icon):not(.icon-right) {
+    .#{$so-prefix}form-control {
+      padding-left: 40px;
+    }
+  }
+
   // Icon on right side
   &.icon-right {
     .#{$so-prefix}form-control {
-      padding-left: spacing('3');
       padding-right: 40px;
     }
 
@@ -234,7 +243,7 @@
   font-weight: font-weight('medium');
   color: css-var('form-text');
 
-  &.required::after {
+  &.#{$so-prefix}required::after {
     content: ' *';
     color: css-var('accent-danger');
   }
@@ -290,42 +299,164 @@
 
 .#{$so-prefix}input-group {
   display: flex;
+  align-items: stretch;
 
-  .#{$so-prefix}form-control {
-    flex: 1;
+  // Reset all children border-radius first
+  > * {
+    border-radius: 0;
+  }
+
+  // First child gets left radius
+  > *:first-child {
     border-radius: radius('base') 0 0 radius('base');
   }
 
-  .#{$so-prefix}btn {
+  // Last child gets right radius
+  > *:last-child {
     border-radius: 0 radius('base') radius('base') 0;
-    margin-left: -1px;
   }
 
+  // Only child gets full radius
+  > *:only-child {
+    border-radius: radius('base');
+  }
+
+  // Form control
+  .#{$so-prefix}form-control {
+    flex: 1;
+    min-width: 0;
+    margin-left: -1px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  // Buttons
+  .#{$so-prefix}btn {
+    flex-shrink: 0;
+    margin-left: -1px;
+    z-index: 1;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover,
+    &:focus {
+      z-index: 3;
+    }
+
+    // Consecutive buttons - no double borders
+    + .#{$so-prefix}btn {
+      margin-left: -1px;
+    }
+  }
+
+  // Input addon (text, icons, etc.)
   .#{$so-prefix}input-addon {
     display: flex;
     align-items: center;
+    gap: spacing('1');
     padding: 0 spacing('3');
     font-size: font-size('base');
     color: css-var('text-secondary');
     background: css-var('form-disabled-bg');
     border: 1px solid css-var('form-border');
+    white-space: nowrap;
+    flex-shrink: 0;
 
-    &:first-child {
-      border-radius: radius('base') 0 0 radius('base');
-      border-right: none;
-
-      + .#{$so-prefix}form-control {
-        border-radius: 0 radius('base') radius('base') 0;
-      }
+    .material-icons {
+      font-size: 20px;
     }
 
-    &:last-child {
-      border-radius: 0 radius('base') radius('base') 0;
-      border-left: none;
+    // Consecutive addons
+    + .#{$so-prefix}input-addon {
+      margin-left: -1px;
     }
   }
 
-  .#{$so-prefix}form-control:not(:first-child):not(:last-child) {
-    border-radius: 0;
+  // Select handling (native select with so-form-control)
+  select.#{$so-prefix}form-control {
+    flex-shrink: 0;
+  }
+
+  // Custom select component wrapper (from data-so-select)
+  .#{$so-prefix}select {
+    flex: 0 0 auto;
+    width: auto; // Override default width: 100%
+    min-width: 100px; // Minimum reasonable width
+    margin-left: -1px;
+
+    // Base trigger styles (must come before positional overrides)
+    .#{$so-prefix}select-trigger {
+      border-radius: 0;
+      min-height: 100%;
+      height: 100%;
+      width: 100%;
+    }
+
+    // Positional border-radius overrides
+    &:first-child {
+      margin-left: 0;
+
+      .#{$so-prefix}select-trigger {
+        border-radius: radius('base') 0 0 radius('base');
+      }
+    }
+
+    &:last-child .#{$so-prefix}select-trigger {
+      border-radius: 0 radius('base') radius('base') 0;
+    }
+
+    &:only-child .#{$so-prefix}select-trigger {
+      border-radius: radius('base');
+    }
+
+    // Consecutive custom selects
+    + .#{$so-prefix}select {
+      margin-left: -1px;
+    }
+  }
+
+  // Fix consecutive elements border overlap
+  > *:not(:first-child) {
+    margin-left: -1px;
+  }
+
+  // Ensure proper stacking for focus states
+  > *:focus,
+  > *:focus-within {
+    z-index: 2;
+  }
+
+  // Checkbox/Radio inside input group addon
+  .#{$so-prefix}input-addon {
+    // Native checkbox/radio (simple usage)
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin: 0;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    // Label next to checkbox/radio
+    label {
+      margin: 0;
+      margin-left: spacing('1');
+      cursor: pointer;
+      font-size: font-size('sm');
+      white-space: nowrap;
+    }
+
+    // Framework switch component
+    .#{$so-prefix}switch {
+      margin: 0;
+    }
   }
 }

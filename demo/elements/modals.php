@@ -299,14 +299,23 @@ console.log('Alert was closed');</code></pre>
                 <button type="button" class="so-btn so-btn-outline" onclick="showContextualModal('dark-light')">Dark Light</button>
             </div>
 
-            <div class="so-code-block so-mt-4">
+            <div class="so-code-block so-code-block-tabbed so-mt-4">
                 <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <div class="so-code-tabs">
+                        <button class="so-code-tab so-active" data-so-target="#contextual-modal-html">
+                            <span class="material-icons">code</span> HTML
+                        </button>
+                        <button class="so-code-tab" data-so-target="#contextual-modal-js">
+                            <span class="material-icons">javascript</span> JavaScript
+                        </button>
+                    </div>
                     <button class="so-code-copy" onclick="copyCode(this)">
                         <span class="material-icons">content_copy</span>
                     </button>
                 </div>
-                <pre class="so-code-content"><code class="language-html">&lt;!-- Solid colored headers --&gt;
+                <div class="so-code-body">
+                    <div class="so-code-pane so-active" id="contextual-modal-html">
+                        <pre class="so-code-content"><code class="language-html">&lt;!-- Solid colored headers --&gt;
 &lt;div class="so-modal so-modal-primary"&gt;...&lt;/div&gt;
 &lt;div class="so-modal so-modal-secondary"&gt;...&lt;/div&gt;
 &lt;div class="so-modal so-modal-success"&gt;...&lt;/div&gt;
@@ -324,16 +333,9 @@ console.log('Alert was closed');</code></pre>
 &lt;div class="so-modal so-modal-warning-light"&gt;...&lt;/div&gt;
 &lt;div class="so-modal so-modal-info-light"&gt;...&lt;/div&gt;
 &lt;div class="so-modal so-modal-dark-light"&gt;...&lt;/div&gt;</code></pre>
-            </div>
-
-            <div class="so-code-block so-mt-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-javascript">// Create modal with contextual header using className option
+                    </div>
+                    <div class="so-code-pane" id="contextual-modal-js">
+                        <pre class="so-code-content"><code class="language-javascript">// Create modal with contextual header using className option
 const modal = SOModal.create({
     title: 'Success',
     content: '&lt;p&gt;Your changes have been saved.&lt;/p&gt;',
@@ -341,6 +343,8 @@ const modal = SOModal.create({
     footer: '&lt;button class="so-btn so-btn-primary" data-dismiss="modal"&gt;OK&lt;/button&gt;'
 });
 modal.show();</code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -504,14 +508,23 @@ modal.show();</code></pre>
                 <div>Try clicking outside the modal or pressing Escape - it won't close! A subtle shake animation indicates the modal requires action.</div>
             </div>
 
-            <div class="so-code-block so-mt-4">
+            <div class="so-code-block so-code-block-tabbed so-mt-4">
                 <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                    <div class="so-code-tabs">
+                        <button class="so-code-tab so-active" data-so-target="#static-modal-html">
+                            <span class="material-icons">code</span> HTML
+                        </button>
+                        <button class="so-code-tab" data-so-target="#static-modal-js">
+                            <span class="material-icons">javascript</span> JavaScript
+                        </button>
+                    </div>
                     <button class="so-code-copy" onclick="copyCode(this)">
                         <span class="material-icons">content_copy</span>
                     </button>
                 </div>
-                <pre class="so-code-content"><code class="language-html">&lt;!-- Static Modal - cannot be dismissed except via footer actions --&gt;
+                <div class="so-code-body">
+                    <div class="so-code-pane so-active" id="static-modal-html">
+                        <pre class="so-code-content"><code class="language-html">&lt;!-- Static Modal - cannot be dismissed except via footer actions --&gt;
 &lt;div class="so-modal so-modal-static" data-so-static="true"&gt;
     &lt;div class="so-modal-dialog"&gt;
         &lt;div class="so-modal-header"&gt;
@@ -533,16 +546,9 @@ modal.show();</code></pre>
 &lt;div class="so-modal so-modal-static so-modal-show-lock" data-so-static="true"&gt;
     ...
 &lt;/div&gt;</code></pre>
-            </div>
-
-            <div class="so-code-block so-mt-4">
-                <div class="so-code-header">
-                    <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                    <button class="so-code-copy" onclick="copyCode(this)">
-                        <span class="material-icons">content_copy</span>
-                    </button>
-                </div>
-                <pre class="so-code-content"><code class="language-javascript">// Create static modal programmatically
+                    </div>
+                    <div class="so-code-pane" id="static-modal-js">
+                        <pre class="so-code-content"><code class="language-javascript">// Create static modal programmatically
 const modal = SOModal.create({
     title: 'Terms of Service',
     content: '&lt;p&gt;Please accept our terms to continue.&lt;/p&gt;',
@@ -588,6 +594,8 @@ if (result) {
 } else {
     console.log('User cancelled');
 }</code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

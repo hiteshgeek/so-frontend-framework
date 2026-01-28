@@ -1089,3 +1089,1037 @@
 .#{$so-prefix}switch-reverse {
   flex-direction: row-reverse;
 }
+
+// ============================================
+// MUI-STYLE VARIANTS
+// Material UI inspired checkbox, radio & switch styles
+// ============================================
+
+// ============================================
+// RIPPLE ANIMATION EFFECT
+// ============================================
+
+@keyframes #{$so-prefix}ripple-effect {
+  0% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+// Ripple mixin for reuse
+@mixin ripple-base($size: 40px) {
+  position: relative;
+  overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $size;
+    height: $size;
+    margin-top: calc($size / -2);
+    margin-left: calc($size / -2);
+    background: currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+    transition: none;
+  }
+
+  &:active::before {
+    animation: #{$so-prefix}ripple-effect 0.4s ease-out;
+  }
+}
+
+// Checkbox with ripple
+.#{$so-prefix}checkbox-ripple {
+  .#{$so-prefix}checkbox-box {
+    @include ripple-base(36px);
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}checkbox-box::before {
+    opacity: 0.08;
+    transform: scale(1);
+    transition: opacity 0.15s, transform 0.15s;
+  }
+}
+
+// Radio with ripple
+.#{$so-prefix}radio-ripple {
+  .#{$so-prefix}radio-circle {
+    @include ripple-base(36px);
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}radio-circle::before {
+    opacity: 0.08;
+    transform: scale(1);
+    transition: opacity 0.15s, transform 0.15s;
+  }
+}
+
+// Switch with ripple (on thumb)
+.#{$so-prefix}switch-ripple {
+  .#{$so-prefix}switch-track::after {
+    @include ripple-base(32px);
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}switch-track::after::before {
+    opacity: 0.08;
+    transform: scale(1);
+  }
+}
+
+// ============================================
+// LABEL PLACEMENT VARIANTS
+// ============================================
+
+// Label on top
+.#{$so-prefix}checkbox-label-top,
+.#{$so-prefix}radio-label-top,
+.#{$so-prefix}switch-label-top {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: spacing("1");
+
+  .#{$so-prefix}checkbox-label,
+  .#{$so-prefix}radio-label,
+  .#{$so-prefix}switch-label {
+    padding-top: 0;
+  }
+
+  .#{$so-prefix}checkbox-box,
+  .#{$so-prefix}radio-circle {
+    margin-top: 0;
+  }
+}
+
+// Label on bottom
+.#{$so-prefix}checkbox-label-bottom,
+.#{$so-prefix}radio-label-bottom,
+.#{$so-prefix}switch-label-bottom {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: spacing("1");
+
+  .#{$so-prefix}checkbox-label,
+  .#{$so-prefix}radio-label,
+  .#{$so-prefix}switch-label {
+    padding-top: 0;
+  }
+
+  .#{$so-prefix}checkbox-box,
+  .#{$so-prefix}radio-circle {
+    margin-top: 0;
+  }
+}
+
+// Label on start (same as reverse)
+.#{$so-prefix}checkbox-label-start,
+.#{$so-prefix}radio-label-start,
+.#{$so-prefix}switch-label-start {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+// Label on end (default, explicit class)
+.#{$so-prefix}checkbox-label-end,
+.#{$so-prefix}radio-label-end,
+.#{$so-prefix}switch-label-end {
+  flex-direction: row;
+}
+
+// ============================================
+// SOFT/MUTED COLOR VARIANTS (MUI-style)
+// ============================================
+
+@each $name,
+  $color
+    in (
+      "primary": $so-primary,
+      "secondary": $so-secondary,
+      "success": $so-success,
+      "danger": $so-danger,
+      "warning": $so-warning,
+      "info": $so-info
+    )
+{
+  // Soft checkbox - lighter background, colored border and icon
+  .#{$so-prefix}checkbox-soft-#{$name} {
+    .#{$so-prefix}checkbox-box {
+      background: alpha($color, 0.08);
+      border-color: alpha($color, 0.3);
+    }
+
+    &:hover:not(.disabled) .#{$so-prefix}checkbox-box {
+      background: alpha($color, 0.12);
+      border-color: alpha($color, 0.5);
+    }
+
+    input:checked + .#{$so-prefix}checkbox-box,
+    input:indeterminate + .#{$so-prefix}checkbox-box {
+      background: alpha($color, 0.15);
+      border-color: $color;
+
+      .material-icons {
+        color: $color;
+      }
+    }
+
+    input:focus-visible + .#{$so-prefix}checkbox-box {
+      box-shadow: 0 0 0 3px alpha($color, 0.15);
+    }
+  }
+
+  // Soft radio
+  .#{$so-prefix}radio-soft-#{$name} {
+    .#{$so-prefix}radio-circle {
+      background: alpha($color, 0.08);
+      border-color: alpha($color, 0.3);
+
+      &::after {
+        background: $color;
+      }
+    }
+
+    &:hover:not(.disabled) .#{$so-prefix}radio-circle {
+      background: alpha($color, 0.12);
+      border-color: alpha($color, 0.5);
+    }
+
+    input:checked + .#{$so-prefix}radio-circle {
+      background: alpha($color, 0.15);
+      border-color: $color;
+    }
+
+    input:focus-visible + .#{$so-prefix}radio-circle {
+      box-shadow: 0 0 0 3px alpha($color, 0.15);
+    }
+  }
+
+  // Soft switch
+  .#{$so-prefix}switch-soft-#{$name} {
+    .#{$so-prefix}switch-track {
+      background: alpha($color, 0.2);
+    }
+
+    &:hover:not(.disabled) .#{$so-prefix}switch-track {
+      background: alpha($color, 0.3);
+    }
+
+    input:checked + .#{$so-prefix}switch-track {
+      background: alpha($color, 0.35);
+
+      &::after {
+        background: $color;
+      }
+    }
+
+    &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track {
+      background: alpha($color, 0.45);
+    }
+
+    input:focus-visible + .#{$so-prefix}switch-track {
+      box-shadow: 0 0 0 3px alpha($color, 0.15);
+    }
+  }
+}
+
+// ============================================
+// OUTLINED VARIANTS (MUI-style)
+// Always shows border, no fill when checked
+// ============================================
+
+@each $name,
+  $color
+    in (
+      "primary": $so-primary,
+      "secondary": $so-secondary,
+      "success": $so-success,
+      "danger": $so-danger,
+      "warning": $so-warning,
+      "info": $so-info
+    )
+{
+  // Outlined checkbox
+  .#{$so-prefix}checkbox-outlined-#{$name} {
+    .#{$so-prefix}checkbox-box {
+      border-color: $color;
+      background: transparent;
+    }
+
+    &:hover:not(.disabled) .#{$so-prefix}checkbox-box {
+      background: alpha($color, 0.08);
+    }
+
+    input:checked + .#{$so-prefix}checkbox-box,
+    input:indeterminate + .#{$so-prefix}checkbox-box {
+      background: transparent;
+      border-color: $color;
+
+      .material-icons {
+        color: $color;
+      }
+    }
+
+    input:focus-visible + .#{$so-prefix}checkbox-box {
+      box-shadow: 0 0 0 3px alpha($color, 0.2);
+    }
+  }
+
+  // Outlined radio
+  .#{$so-prefix}radio-outlined-#{$name} {
+    .#{$so-prefix}radio-circle {
+      border-color: $color;
+      background: transparent;
+
+      &::after {
+        background: $color;
+      }
+    }
+
+    &:hover:not(.disabled) .#{$so-prefix}radio-circle {
+      background: alpha($color, 0.08);
+    }
+
+    input:checked + .#{$so-prefix}radio-circle {
+      background: transparent;
+    }
+
+    input:focus-visible + .#{$so-prefix}radio-circle {
+      box-shadow: 0 0 0 3px alpha($color, 0.2);
+    }
+  }
+}
+
+// ============================================
+// iOS-STYLE SWITCH
+// Clean, rounded iOS aesthetic
+// ============================================
+
+.#{$so-prefix}switch-ios {
+  .#{$so-prefix}switch-track {
+    width: 51px;
+    height: 31px;
+    background: css-var("form-border-hover");
+    border-radius: 15.5px;
+    border: none;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    transition: background $so-transition-material;
+
+    &::after {
+      top: 2px;
+      left: 2px;
+      width: 27px;
+      height: 27px;
+      background: $so-white;
+      border-radius: 50%;
+      box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15),
+        0 1px 1px rgba(0, 0, 0, 0.16),
+        0 3px 1px rgba(0, 0, 0, 0.1);
+      transition: transform $so-transition-material;
+    }
+  }
+
+  input:checked + .#{$so-prefix}switch-track {
+    background: #34c759; // iOS green
+
+    &::after {
+      transform: translateX(20px);
+      left: 2px;
+    }
+  }
+
+  &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track {
+    background: #30d158;
+  }
+
+  input:focus-visible + .#{$so-prefix}switch-track {
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+      0 0 0 4px alpha(#34c759, 0.3);
+  }
+
+  // iOS color variants
+  @each $name,
+    $color
+      in (
+        "primary": $so-primary,
+        "secondary": $so-secondary,
+        "success": #34c759,
+        "danger": #ff3b30,
+        "warning": #ff9500,
+        "info": #007aff
+      )
+  {
+    &.#{$so-prefix}switch-ios-#{$name} {
+      input:checked + .#{$so-prefix}switch-track {
+        background: $color;
+      }
+
+      &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track {
+        background: color.adjust($color, $lightness: 5%);
+      }
+
+      input:focus-visible + .#{$so-prefix}switch-track {
+        box-shadow:
+          inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+          0 0 0 4px alpha($color, 0.3);
+      }
+    }
+  }
+
+  // Size variants
+  &.#{$so-prefix}switch-ios-sm {
+    .#{$so-prefix}switch-track {
+      width: 40px;
+      height: 24px;
+      border-radius: 12px;
+
+      &::after {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    input:checked + .#{$so-prefix}switch-track::after {
+      transform: translateX(16px);
+    }
+  }
+
+  &.#{$so-prefix}switch-ios-lg {
+    .#{$so-prefix}switch-track {
+      width: 64px;
+      height: 38px;
+      border-radius: 19px;
+
+      &::after {
+        top: 3px;
+        left: 3px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    input:checked + .#{$so-prefix}switch-track::after {
+      transform: translateX(26px);
+    }
+  }
+}
+
+// ============================================
+// ANDROID/MATERIAL DESIGN SWITCH
+// Material Design 2 style switch
+// ============================================
+
+.#{$so-prefix}switch-android {
+  .#{$so-prefix}switch-track {
+    width: 36px;
+    height: 14px;
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 7px;
+    transition: background $so-transition-base;
+
+    &::after {
+      top: -3px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: #fafafa;
+      border-radius: 50%;
+      box-shadow:
+        0 2px 2px rgba(0, 0, 0, 0.24),
+        0 0 2px rgba(0, 0, 0, 0.12);
+      transition:
+        left $so-transition-base,
+        background $so-transition-base;
+    }
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}switch-track::after {
+    box-shadow:
+      0 2px 2px rgba(0, 0, 0, 0.24),
+      0 0 2px rgba(0, 0, 0, 0.12),
+      0 0 0 8px rgba(0, 0, 0, 0.04);
+  }
+
+  input:checked + .#{$so-prefix}switch-track {
+    background: alpha($so-primary, 0.5);
+
+    &::after {
+      left: calc(100% - 20px);
+      background: $so-primary;
+    }
+  }
+
+  &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track::after {
+    box-shadow:
+      0 2px 2px rgba(0, 0, 0, 0.24),
+      0 0 2px rgba(0, 0, 0, 0.12),
+      0 0 0 8px alpha($so-primary, 0.12);
+  }
+
+  input:focus-visible + .#{$so-prefix}switch-track::after {
+    box-shadow:
+      0 2px 2px rgba(0, 0, 0, 0.24),
+      0 0 2px rgba(0, 0, 0, 0.12),
+      0 0 0 8px alpha($so-primary, 0.2);
+  }
+
+  // Android color variants
+  @each $name,
+    $color
+      in (
+        "primary": $so-primary,
+        "secondary": $so-secondary,
+        "success": $so-success,
+        "danger": $so-danger,
+        "warning": $so-warning,
+        "info": $so-info
+      )
+  {
+    &.#{$so-prefix}switch-android-#{$name} {
+      input:checked + .#{$so-prefix}switch-track {
+        background: alpha($color, 0.5);
+
+        &::after {
+          background: $color;
+        }
+      }
+
+      &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track::after {
+        box-shadow:
+          0 2px 2px rgba(0, 0, 0, 0.24),
+          0 0 2px rgba(0, 0, 0, 0.12),
+          0 0 0 8px alpha($color, 0.12);
+      }
+
+      input:focus-visible + .#{$so-prefix}switch-track::after {
+        box-shadow:
+          0 2px 2px rgba(0, 0, 0, 0.24),
+          0 0 2px rgba(0, 0, 0, 0.12),
+          0 0 0 8px alpha($color, 0.2);
+      }
+    }
+  }
+
+  // Size variants
+  &.#{$so-prefix}switch-android-sm {
+    .#{$so-prefix}switch-track {
+      width: 28px;
+      height: 10px;
+      border-radius: 5px;
+
+      &::after {
+        top: -3px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    input:checked + .#{$so-prefix}switch-track::after {
+      left: calc(100% - 16px);
+    }
+  }
+
+  &.#{$so-prefix}switch-android-lg {
+    .#{$so-prefix}switch-track {
+      width: 48px;
+      height: 18px;
+      border-radius: 9px;
+
+      &::after {
+        top: -4px;
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    input:checked + .#{$so-prefix}switch-track::after {
+      left: calc(100% - 26px);
+    }
+  }
+}
+
+// ============================================
+// MATERIAL 3 STYLE SWITCH
+// Latest Material Design with icon in thumb
+// ============================================
+
+.#{$so-prefix}switch-m3 {
+  .#{$so-prefix}switch-track {
+    width: 52px;
+    height: 32px;
+    background: css-var("form-border");
+    border: 2px solid css-var("text-secondary");
+    border-radius: 16px;
+    transition: all $so-transition-material;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 6px;
+      width: 16px;
+      height: 16px;
+      margin-top: -8px;
+      background: css-var("text-secondary");
+      border-radius: 50%;
+      transition: all $so-transition-material;
+    }
+  }
+
+  // Icon inside track (optional)
+  .#{$so-prefix}switch-icon-off,
+  .#{$so-prefix}switch-icon-on {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    z-index: 1;
+    transition: opacity $so-transition-base;
+  }
+
+  .#{$so-prefix}switch-icon-off {
+    right: 6px;
+    color: css-var("text-secondary");
+    opacity: 1;
+  }
+
+  .#{$so-prefix}switch-icon-on {
+    left: 6px;
+    color: $so-white;
+    opacity: 0;
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}switch-track {
+    background: alpha($so-primary, 0.08);
+    border-color: css-var("text-secondary");
+  }
+
+  input:checked + .#{$so-prefix}switch-track {
+    background: css-var("accent-primary");
+    border-color: css-var("accent-primary");
+
+    &::after {
+      left: calc(100% - 22px);
+      width: 24px;
+      height: 24px;
+      margin-top: -12px;
+      background: $so-white;
+    }
+
+    .#{$so-prefix}switch-icon-off {
+      opacity: 0;
+    }
+
+    .#{$so-prefix}switch-icon-on {
+      opacity: 1;
+    }
+  }
+
+  &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track {
+    background: css-var("accent-primary-hover");
+    border-color: css-var("accent-primary-hover");
+  }
+
+  input:focus-visible + .#{$so-prefix}switch-track {
+    box-shadow: 0 0 0 3px alpha($so-primary, 0.25);
+  }
+
+  // M3 color variants
+  @each $name,
+    $color
+      in (
+        "primary": $so-primary,
+        "secondary": $so-secondary,
+        "success": $so-success,
+        "danger": $so-danger,
+        "warning": $so-warning,
+        "info": $so-info
+      )
+  {
+    &.#{$so-prefix}switch-m3-#{$name} {
+      &:hover:not(.disabled) .#{$so-prefix}switch-track {
+        background: alpha($color, 0.08);
+      }
+
+      input:checked + .#{$so-prefix}switch-track {
+        background: $color;
+        border-color: $color;
+      }
+
+      &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track {
+        background: color.adjust($color, $lightness: 8%);
+        border-color: color.adjust($color, $lightness: 8%);
+      }
+
+      input:focus-visible + .#{$so-prefix}switch-track {
+        box-shadow: 0 0 0 3px alpha($color, 0.25);
+      }
+    }
+  }
+
+  // Size variants
+  &.#{$so-prefix}switch-m3-sm {
+    .#{$so-prefix}switch-track {
+      width: 40px;
+      height: 24px;
+      border-radius: 12px;
+
+      &::after {
+        left: 4px;
+        width: 12px;
+        height: 12px;
+        margin-top: -6px;
+      }
+    }
+
+    input:checked + .#{$so-prefix}switch-track::after {
+      left: calc(100% - 16px);
+      width: 18px;
+      height: 18px;
+      margin-top: -9px;
+    }
+
+    .#{$so-prefix}switch-icon-off,
+    .#{$so-prefix}switch-icon-on {
+      font-size: 12px;
+    }
+  }
+
+  &.#{$so-prefix}switch-m3-lg {
+    .#{$so-prefix}switch-track {
+      width: 64px;
+      height: 40px;
+      border-radius: 20px;
+
+      &::after {
+        left: 8px;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+      }
+    }
+
+    input:checked + .#{$so-prefix}switch-track::after {
+      left: calc(100% - 28px);
+      width: 30px;
+      height: 30px;
+      margin-top: -15px;
+    }
+
+    .#{$so-prefix}switch-icon-off,
+    .#{$so-prefix}switch-icon-on {
+      font-size: 20px;
+    }
+  }
+}
+
+// ============================================
+// ANT DESIGN STYLE SWITCH
+// Compact, square-ish design
+// ============================================
+
+.#{$so-prefix}switch-ant {
+  .#{$so-prefix}switch-track {
+    width: 44px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    transition: all 0.2s;
+
+    &::after {
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      background: $so-white;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 35, 11, 0.2);
+      transition: all 0.2s;
+    }
+  }
+
+  // Loading state
+  &.loading .#{$so-prefix}switch-track::after {
+    animation: #{$so-prefix}switch-loading 1s infinite linear;
+  }
+
+  input:checked + .#{$so-prefix}switch-track {
+    background: #1890ff; // Ant Design blue
+
+    &::after {
+      left: calc(100% - 20px);
+    }
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}switch-track {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track {
+    background: #40a9ff;
+  }
+
+  input:focus-visible + .#{$so-prefix}switch-track {
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+
+  // Ant color variants
+  @each $name,
+    $color
+      in (
+        "primary": #1890ff,
+        "success": #52c41a,
+        "danger": #ff4d4f,
+        "warning": #faad14
+      )
+  {
+    &.#{$so-prefix}switch-ant-#{$name} {
+      input:checked + .#{$so-prefix}switch-track {
+        background: $color;
+      }
+
+      &:hover:not(.disabled) input:checked + .#{$so-prefix}switch-track {
+        background: color.adjust($color, $lightness: 10%);
+      }
+
+      input:focus-visible + .#{$so-prefix}switch-track {
+        box-shadow: 0 0 0 2px alpha($color, 0.2);
+      }
+    }
+  }
+
+  // Size variants
+  &.#{$so-prefix}switch-ant-sm {
+    .#{$so-prefix}switch-track {
+      width: 28px;
+      height: 16px;
+
+      &::after {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    input:checked + .#{$so-prefix}switch-track::after {
+      left: calc(100% - 14px);
+    }
+  }
+}
+
+@keyframes #{$so-prefix}switch-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// ============================================
+// FILLED STYLE CHECKBOX (Always has bg color)
+// ============================================
+
+.#{$so-prefix}checkbox-filled {
+  .#{$so-prefix}checkbox-box {
+    background: css-var("form-disabled-bg");
+    border-color: transparent;
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}checkbox-box {
+    background: css-var("card-hover-bg");
+  }
+
+  input:checked + .#{$so-prefix}checkbox-box {
+    background: css-var("accent-primary");
+    border-color: transparent;
+  }
+
+  @each $name,
+    $color
+      in (
+        "primary": $so-primary,
+        "secondary": $so-secondary,
+        "success": $so-success,
+        "danger": $so-danger,
+        "warning": $so-warning,
+        "info": $so-info
+      )
+  {
+    &.#{$so-prefix}checkbox-filled-#{$name} {
+      .#{$so-prefix}checkbox-box {
+        background: alpha($color, 0.1);
+      }
+
+      &:hover:not(.disabled) .#{$so-prefix}checkbox-box {
+        background: alpha($color, 0.15);
+      }
+
+      input:checked + .#{$so-prefix}checkbox-box {
+        background: $color;
+      }
+    }
+  }
+}
+
+// ============================================
+// FILLED STYLE RADIO
+// ============================================
+
+.#{$so-prefix}radio-filled {
+  .#{$so-prefix}radio-circle {
+    background: css-var("form-disabled-bg");
+    border-color: transparent;
+  }
+
+  &:hover:not(.disabled) .#{$so-prefix}radio-circle {
+    background: css-var("card-hover-bg");
+  }
+
+  input:checked + .#{$so-prefix}radio-circle {
+    background: css-var("accent-primary");
+    border-color: transparent;
+
+    &::after {
+      background: $so-white;
+    }
+  }
+
+  @each $name,
+    $color
+      in (
+        "primary": $so-primary,
+        "secondary": $so-secondary,
+        "success": $so-success,
+        "danger": $so-danger,
+        "warning": $so-warning,
+        "info": $so-info
+      )
+  {
+    &.#{$so-prefix}radio-filled-#{$name} {
+      .#{$so-prefix}radio-circle {
+        background: alpha($color, 0.1);
+
+        &::after {
+          background: $color;
+        }
+      }
+
+      &:hover:not(.disabled) .#{$so-prefix}radio-circle {
+        background: alpha($color, 0.15);
+      }
+
+      input:checked + .#{$so-prefix}radio-circle {
+        background: $color;
+
+        &::after {
+          background: $so-white;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// CARD STYLE CHECKBOX/RADIO (Selectable cards)
+// ============================================
+
+.#{$so-prefix}checkbox-card,
+.#{$so-prefix}radio-card {
+  display: flex;
+  align-items: flex-start;
+  padding: spacing("4");
+  background: css-var("card-bg");
+  border: 1px solid css-var("card-border");
+  border-radius: radius("lg");
+  cursor: pointer;
+  transition: all $so-transition-base;
+
+  &:hover:not(.disabled) {
+    background: css-var("card-hover-bg");
+    border-color: css-var("form-border-hover");
+  }
+
+  input:checked ~ * {
+    // Visual feedback when checked
+  }
+
+  &:has(input:checked) {
+    border-color: css-var("accent-primary");
+    background: alpha($so-primary, 0.04);
+
+    @include dark-mode {
+      background: alpha($so-purple, 0.08);
+    }
+  }
+
+  &:has(input:focus-visible) {
+    box-shadow: 0 0 0 3px alpha($so-primary, 0.15);
+  }
+
+  &.disabled,
+  &:has(input:disabled) {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: css-var("form-disabled-bg");
+  }
+
+  // Card content wrapper
+  .#{$so-prefix}checkbox-card-content,
+  .#{$so-prefix}radio-card-content {
+    flex: 1;
+    margin-left: spacing("3");
+  }
+
+  .#{$so-prefix}checkbox-card-title,
+  .#{$so-prefix}radio-card-title {
+    font-size: font-size("base");
+    font-weight: font-weight("medium");
+    color: css-var("text-primary");
+    margin-bottom: spacing("1");
+  }
+
+  .#{$so-prefix}checkbox-card-description,
+  .#{$so-prefix}radio-card-description {
+    font-size: font-size("sm");
+    color: css-var("text-secondary");
+    line-height: line-height("relaxed");
+  }
+
+  // Color variants
+  @each $name,
+    $color
+      in (
+        "primary": $so-primary,
+        "secondary": $so-secondary,
+        "success": $so-success,
+        "danger": $so-danger,
+        "warning": $so-warning,
+        "info": $so-info
+      )
+  {
+    &.#{$so-prefix}checkbox-card-#{$name},
+    &.#{$so-prefix}radio-card-#{$name} {
+      &:has(input:checked) {
+        border-color: $color;
+        background: alpha($color, 0.04);
+
+        @include dark-mode {
+          background: alpha($color, 0.08);
+        }
+      }
+
+      &:has(input:focus-visible) {
+        box-shadow: 0 0 0 3px alpha($color, 0.15);
+      }
+    }
+  }
+}

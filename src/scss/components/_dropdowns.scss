@@ -1687,3 +1687,43 @@
     }
   }
 }
+
+// ============================================
+// NOWRAP MODIFIER
+// Prevents text wrapping in dropdown items
+// ============================================
+
+.#{$so-prefix}dropdown-nowrap {
+  .#{$so-prefix}dropdown-menu {
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+  }
+
+  .#{$so-prefix}dropdown-item,
+  .#{$so-prefix}searchable-item,
+  .#{$so-prefix}outlet-dropdown-item {
+    white-space: nowrap;
+  }
+
+  .#{$so-prefix}dropdown-header {
+    white-space: nowrap;
+  }
+}
+
+// Also support on menu directly
+.#{$so-prefix}dropdown-menu-nowrap,
+.#{$so-prefix}searchable-menu-nowrap {
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+
+  .#{$so-prefix}dropdown-item,
+  .#{$so-prefix}searchable-item {
+    white-space: nowrap;
+  }
+
+  .#{$so-prefix}dropdown-header {
+    white-space: nowrap;
+  }
+}

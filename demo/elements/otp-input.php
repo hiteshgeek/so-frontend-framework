@@ -42,14 +42,23 @@ require_once '../includes/navbar.php';
                     </div>
                 </div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#basic-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#basic-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="otpInput"&gt;
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="basic-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="otpInput"&gt;
     &lt;div class="so-otp-inputs"&gt;
         &lt;input type="text" class="so-otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]"&gt;
         &lt;input type="text" class="so-otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]"&gt;
@@ -59,20 +68,15 @@ require_once '../includes/navbar.php';
         &lt;input type="text" class="so-otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]"&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">// Get or create instance
+                        </div>
+                        <div class="so-code-pane" id="basic-js">
+                            <pre class="so-code-content"><code class="language-javascript">// Get or create instance
 const otp = SOOtpInput.getInstance('#otpInput');
 
 // Get the entered value
 const value = otp.getValue();</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -297,35 +301,39 @@ const value = otp.getValue();</code></pre>
                     <button type="button" class="so-btn so-btn-outline" onclick="setErrorState(false)">Clear Error</button>
                 </div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#error-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#error-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="errorOtp"&gt;
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="error-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="errorOtp"&gt;
     &lt;div class="so-otp-inputs"&gt;
         &lt;input type="text" class="so-otp-input" maxlength="1" inputmode="numeric"&gt;
         &lt;!-- ... --&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">const otp = SOOtpInput.getInstance('#errorOtp');
+                        </div>
+                        <div class="so-code-pane" id="error-js">
+                            <pre class="so-code-content"><code class="language-javascript">const otp = SOOtpInput.getInstance('#errorOtp');
 
 // Show error state
 otp.setError(true);
 
 // Clear error state
 otp.setError(false);</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -356,29 +364,31 @@ otp.setError(false);</code></pre>
                     </div>
                 </div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#event-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#event-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="eventOtp"&gt;
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="event-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="eventOtp"&gt;
     &lt;div class="so-otp-inputs"&gt;
         &lt;input type="text" class="so-otp-input" maxlength="1" inputmode="numeric"&gt;
         &lt;!-- ... --&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">const otp = SOOtpInput.getInstance('#eventOtp');
+                        </div>
+                        <div class="so-code-pane" id="event-js">
+                            <pre class="so-code-content"><code class="language-javascript">const otp = SOOtpInput.getInstance('#eventOtp');
 
 // Listen for value changes
 otp.element.addEventListener('otp:change', (e) => {
@@ -391,6 +401,8 @@ otp.element.addEventListener('otp:complete', (e) => {
     console.log('OTP complete:', e.detail.value);
     // Submit form or validate
 });</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -421,14 +433,23 @@ otp.element.addEventListener('otp:complete', (e) => {
 
                 <div id="validationResult" class="so-mt-4" style="display: none;"></div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#validate-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#validate-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="validateOtp"&gt;
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="validate-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-otp-group" id="validateOtp"&gt;
     &lt;div class="so-otp-inputs"&gt;
         &lt;input type="text" class="so-otp-input" maxlength="1" inputmode="numeric"&gt;
         &lt;!-- ... --&gt;
@@ -436,16 +457,9 @@ otp.element.addEventListener('otp:complete', (e) => {
 &lt;/div&gt;
 
 &lt;button class="so-btn so-btn-primary" onclick="validateOtp()"&gt;Validate&lt;/button&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">const otp = SOOtpInput.getInstance('#validateOtp');
+                        </div>
+                        <div class="so-code-pane" id="validate-js">
+                            <pre class="so-code-content"><code class="language-javascript">const otp = SOOtpInput.getInstance('#validateOtp');
 
 // Validate against expected value
 const isValid = otp.validate('123456');
@@ -456,6 +470,8 @@ if (isValid) {
     console.log('Invalid OTP');
     // Error state is automatically set
 }</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

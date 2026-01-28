@@ -632,6 +632,58 @@ $includeSearch = $includeSearch ?? true;
             margin-top: 24px;
         }
 
+        /* Tabbed Code Block */
+        .so-code-block-tabbed .so-code-header {
+            padding: 0 12px 0 0;
+        }
+
+        .so-code-tabs {
+            display: flex;
+            gap: 0;
+            flex: 1;
+        }
+
+        .so-code-tab {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 16px;
+            border: none;
+            background: transparent;
+            color: var(--so-text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .so-code-tab:hover {
+            color: var(--so-text-primary);
+            background: var(--so-card-hover-bg);
+        }
+
+        .so-code-tab.so-active {
+            color: var(--so-accent-primary);
+            border-bottom-color: var(--so-accent-primary);
+        }
+
+        .so-code-tab .material-icons {
+            font-size: 14px;
+        }
+
+        .so-code-body {
+            position: relative;
+        }
+
+        .so-code-pane {
+            display: none;
+        }
+
+        .so-code-pane.so-active {
+            display: block;
+        }
+
         /* Dropdown item danger color */
         .so-dropdown-item-danger {
             color: var(--so-accent-danger);
@@ -940,7 +992,17 @@ $includeSearch = $includeSearch ?? true;
     <script>
     function copyCode(button) {
         var codeBlock = button.closest('.so-code-block');
-        var code = codeBlock.querySelector('code').innerText;
+        var code;
+
+        // Check if tabbed code block
+        if (codeBlock.classList.contains('so-code-block-tabbed')) {
+            // Get active pane's code
+            var activePane = codeBlock.querySelector('.so-code-pane.so-active');
+            code = activePane ? activePane.querySelector('code').innerText : '';
+        } else {
+            // Standard code block
+            code = codeBlock.querySelector('code').innerText;
+        }
 
         navigator.clipboard.writeText(code).then(function() {
             // Visual feedback
@@ -976,6 +1038,30 @@ $includeSearch = $includeSearch ?? true;
             }
         });
     }
+
+    // Initialize code block tabs
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.so-code-tabs').forEach(function(tabsContainer) {
+            tabsContainer.querySelectorAll('.so-code-tab').forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    var codeBlock = this.closest('.so-code-block');
+                    var targetId = this.getAttribute('data-so-target');
+
+                    // Update active tab
+                    tabsContainer.querySelectorAll('.so-code-tab').forEach(function(t) {
+                        t.classList.remove('so-active');
+                    });
+                    this.classList.add('so-active');
+
+                    // Update active pane
+                    codeBlock.querySelectorAll('.so-code-pane').forEach(function(pane) {
+                        pane.classList.remove('so-active');
+                    });
+                    codeBlock.querySelector(targetId).classList.add('so-active');
+                });
+            });
+        });
+    });
     </script>
 </head>
 <body>

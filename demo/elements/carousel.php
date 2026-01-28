@@ -60,14 +60,23 @@ require_once '../includes/navbar.php';
                     </div>
                 </div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#carousel-basic-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#carousel-basic-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel" data-so-carousel&gt;
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="carousel-basic-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel" data-so-carousel&gt;
     &lt;div class="so-carousel-inner"&gt;
         &lt;div class="so-carousel-slide active"&gt;
             &lt;img src="slide1.jpg" alt="Slide 1"&gt;
@@ -93,16 +102,9 @@ require_once '../includes/navbar.php';
         &lt;button class="so-carousel-indicator" data-so-slide="2"&gt;&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">// Auto-initialized with data-so-carousel attribute
+                        </div>
+                        <div class="so-code-pane" id="carousel-basic-js">
+                            <pre class="so-code-content"><code class="language-javascript">// Auto-initialized with data-so-carousel attribute
 // Or initialize manually:
 const carousel = new SOCarousel(document.getElementById('my-carousel'), {
     autoplay: false,
@@ -114,6 +116,8 @@ const carousel = new SOCarousel(document.getElementById('my-carousel'), {
 carousel.next();
 carousel.prev();
 carousel.goTo(2);</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -218,14 +222,23 @@ carousel.goTo(2);</code></pre>
                     </div>
                 </div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#carousel-fade-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#carousel-fade-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel so-carousel-fade" data-so-carousel&gt;
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="carousel-fade-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel so-carousel-fade" data-so-carousel&gt;
     &lt;!-- slides... --&gt;
 &lt;/div&gt;
 
@@ -234,20 +247,15 @@ carousel.goTo(2);</code></pre>
     &lt;button class="so-carousel-indicator active"&gt;&lt;/button&gt;
     &lt;button class="so-carousel-indicator"&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">// Fade transition is CSS-based via .so-carousel-fade class
+                        </div>
+                        <div class="so-code-pane" id="carousel-fade-js">
+                            <pre class="so-code-content"><code class="language-javascript">// Fade transition is CSS-based via .so-carousel-fade class
 // Initialize normally:
 const carousel = new SOCarousel(element, {
     // options
 });</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -317,14 +325,23 @@ const carousel = new SOCarousel(element, {
                     </button>
                 </div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#carousel-multi-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#carousel-multi-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel so-carousel-multi so-carousel-cards" data-so-carousel data-so-items="3"&gt;
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="carousel-multi-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel so-carousel-multi so-carousel-cards" data-so-carousel data-so-items="3"&gt;
     &lt;div class="so-carousel-inner"&gt;
         &lt;div class="so-carousel-slide active"&gt;
             &lt;div class="so-card"&gt;...&lt;/div&gt;
@@ -336,16 +353,9 @@ const carousel = new SOCarousel(element, {
     &lt;/div&gt;
     &lt;!-- controls... --&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">// Multi-item carousel with responsive items
+                        </div>
+                        <div class="so-code-pane" id="carousel-multi-js">
+                            <pre class="so-code-content"><code class="language-javascript">// Multi-item carousel with responsive items
 const carousel = new SOCarousel(element, {
     itemsVisible: 3,           // Show 3 items at once
     itemsToScroll: 1,          // Scroll 1 item at a time
@@ -354,6 +364,8 @@ const carousel = new SOCarousel(element, {
         480: { itemsVisible: 1 }   // 1 item on mobile
     }
 });</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -542,14 +554,23 @@ const carousel = new SOCarousel(element, {
                     </button>
                 </div>
 
-                <div class="so-code-block so-mt-4">
+                <div class="so-code-block so-code-block-tabbed so-mt-4">
                     <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                        <div class="so-code-tabs">
+                            <button class="so-code-tab so-active" data-so-target="#autoplay-html">
+                                <span class="material-icons">code</span> HTML
+                            </button>
+                            <button class="so-code-tab" data-so-target="#autoplay-js">
+                                <span class="material-icons">javascript</span> JavaScript
+                            </button>
+                        </div>
                         <button class="so-code-copy" onclick="copyCode(this)">
                             <span class="material-icons">content_copy</span>
                         </button>
                     </div>
-                    <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel so-carousel-autoplay"
+                    <div class="so-code-body">
+                        <div class="so-code-pane so-active" id="autoplay-html">
+                            <pre class="so-code-content"><code class="language-html">&lt;div class="so-carousel so-carousel-autoplay"
      data-so-carousel
      data-so-autoplay="true"
      data-so-interval="4000"&gt;
@@ -559,16 +580,9 @@ const carousel = new SOCarousel(element, {
         &lt;div class="so-carousel-progress-bar"&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="so-code-block so-mt-3">
-                    <div class="so-code-header">
-                        <span class="so-code-label"><span class="material-icons">code</span> JavaScript</span>
-                        <button class="so-code-copy" onclick="copyCode(this)">
-                            <span class="material-icons">content_copy</span>
-                        </button>
-                    </div>
-                    <pre class="so-code-content"><code class="language-javascript">// Initialize with autoplay
+                        </div>
+                        <div class="so-code-pane" id="autoplay-js">
+                            <pre class="so-code-content"><code class="language-javascript">// Initialize with autoplay
 const carousel = new SOCarousel(element, {
     autoplay: true,
     interval: 4000,    // 4 seconds between slides
@@ -579,6 +593,8 @@ const carousel = new SOCarousel(element, {
 carousel.play();   // Start autoplay
 carousel.pause();  // Pause autoplay
 carousel.stop();   // Stop and reset</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

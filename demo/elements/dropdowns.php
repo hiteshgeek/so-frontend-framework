@@ -1389,7 +1389,170 @@ dropdown.clearSelection();  // Clear all selections
                     </div>
                 </div>
 
-                <!-- Section 9: Contextual Selection Colors -->
+                <!-- Section 9: No Scroll Dropdown -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">No Scroll Dropdown</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-demo-desc">
+                            By default, dropdown menus have a max-height with scrolling for long lists.
+                            Use <code>.so-dropdown-no-scroll</code> to remove the max-height constraint and show all items without scrolling.
+                        </p>
+
+                        <div class="so-grid so-grid-cols-2 so-grid-cols-md-1" class="so-demo-grid-gap">
+
+                            <!-- Default (with scroll) -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Default (with scroll)</label>
+                                <div class="so-dropdown so-dropdown-searchable" data-so-dropdown>
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected">Select country</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-search">
+                                            <input type="text" class="so-dropdown-search-input" placeholder="Search...">
+                                        </div>
+                                        <div class="so-dropdown-items">
+                                            <div class="so-dropdown-item" data-value="us">United States</div>
+                                            <div class="so-dropdown-item" data-value="uk">United Kingdom</div>
+                                            <div class="so-dropdown-item" data-value="ca">Canada</div>
+                                            <div class="so-dropdown-item" data-value="au">Australia</div>
+                                            <div class="so-dropdown-item" data-value="de">Germany</div>
+                                            <div class="so-dropdown-item" data-value="fr">France</div>
+                                            <div class="so-dropdown-item" data-value="jp">Japan</div>
+                                            <div class="so-dropdown-item" data-value="in">India</div>
+                                            <div class="so-dropdown-item" data-value="br">Brazil</div>
+                                            <div class="so-dropdown-item" data-value="mx">Mexico</div>
+                                            <div class="so-dropdown-item" data-value="es">Spain</div>
+                                            <div class="so-dropdown-item" data-value="it">Italy</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="so-demo-small-note">Max height with scrollbar for long lists</small>
+                            </div>
+
+                            <!-- No Scroll -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">No Scroll</label>
+                                <div class="so-dropdown so-dropdown-searchable so-dropdown-no-scroll" data-so-dropdown>
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected">Select country</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-search">
+                                            <input type="text" class="so-dropdown-search-input" placeholder="Search...">
+                                        </div>
+                                        <div class="so-dropdown-items">
+                                            <div class="so-dropdown-item" data-value="us">United States</div>
+                                            <div class="so-dropdown-item" data-value="uk">United Kingdom</div>
+                                            <div class="so-dropdown-item" data-value="ca">Canada</div>
+                                            <div class="so-dropdown-item" data-value="au">Australia</div>
+                                            <div class="so-dropdown-item" data-value="de">Germany</div>
+                                            <div class="so-dropdown-item" data-value="fr">France</div>
+                                            <div class="so-dropdown-item" data-value="jp">Japan</div>
+                                            <div class="so-dropdown-item" data-value="in">India</div>
+                                            <div class="so-dropdown-item" data-value="br">Brazil</div>
+                                            <div class="so-dropdown-item" data-value="mx">Mexico</div>
+                                            <div class="so-dropdown-item" data-value="es">Spain</div>
+                                            <div class="so-dropdown-item" data-value="it">Italy</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="so-demo-small-note">Shows all items without scrolling</small>
+                            </div>
+
+                            <!-- Action Menu No Scroll -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Action Menu (No Scroll)</label>
+                                <div class="so-dropdown so-dropdown-no-scroll" data-so-dropdown>
+                                    <button type="button" class="so-btn so-btn-light so-btn-icon so-dropdown-trigger">
+                                        <span class="material-icons">more_vert</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-item" data-action="view">
+                                            <span class="material-icons">visibility</span>
+                                            <span>View Details</span>
+                                        </div>
+                                        <div class="so-dropdown-item" data-action="edit">
+                                            <span class="material-icons">edit</span>
+                                            <span>Edit</span>
+                                        </div>
+                                        <div class="so-dropdown-item" data-action="duplicate">
+                                            <span class="material-icons">content_copy</span>
+                                            <span>Duplicate</span>
+                                        </div>
+                                        <div class="so-dropdown-item" data-action="archive">
+                                            <span class="material-icons">archive</span>
+                                            <span>Archive</span>
+                                        </div>
+                                        <div class="so-dropdown-divider"></div>
+                                        <div class="so-dropdown-item so-dropdown-item-danger" data-action="delete">
+                                            <span class="material-icons">delete</span>
+                                            <span>Delete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="so-demo-small-note">Action menus typically don't need scroll</small>
+                            </div>
+
+                            <!-- Alternative: Class on Menu -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Class on Menu Element</label>
+                                <div class="so-dropdown" data-so-dropdown>
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected">Select option</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu so-dropdown-menu-no-scroll">
+                                        <div class="so-dropdown-item" data-value="1">Option 1</div>
+                                        <div class="so-dropdown-item" data-value="2">Option 2</div>
+                                        <div class="so-dropdown-item" data-value="3">Option 3</div>
+                                        <div class="so-dropdown-item" data-value="4">Option 4</div>
+                                        <div class="so-dropdown-item" data-value="5">Option 5</div>
+                                        <div class="so-dropdown-item" data-value="6">Option 6</div>
+                                    </div>
+                                </div>
+                                <small class="so-demo-small-note">Can also add class to menu element directly</small>
+                            </div>
+
+                        </div>
+
+                        <!-- Code Example -->
+                        <div class="so-code-block so-code-block-spaced">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- No scroll on dropdown wrapper --&gt;
+&lt;div class="so-dropdown so-dropdown-no-scroll" data-so-dropdown&gt;
+    &lt;button type="button" class="so-btn so-btn-light so-dropdown-trigger"&gt;
+        &lt;span class="so-dropdown-selected"&gt;Select option&lt;/span&gt;
+        &lt;span class="material-icons so-dropdown-arrow"&gt;expand_more&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="so-dropdown-menu"&gt;
+        &lt;div class="so-dropdown-item" data-value="1"&gt;Option 1&lt;/div&gt;
+        &lt;div class="so-dropdown-item" data-value="2"&gt;Option 2&lt;/div&gt;
+        &lt;!-- All items shown without scroll --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Alternative: No scroll on menu element --&gt;
+&lt;div class="so-dropdown" data-so-dropdown&gt;
+    &lt;button type="button" class="so-btn so-btn-light so-dropdown-trigger"&gt;...&lt;/button&gt;
+    &lt;div class="so-dropdown-menu so-dropdown-menu-no-scroll"&gt;
+        &lt;!-- Items without scroll --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 10: Contextual Selection Colors -->
                 <div class="so-card">
                     <div class="so-card-header">
                         <h3 class="so-card-title">Contextual Selection Colors</h3>

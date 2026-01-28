@@ -35,13 +35,13 @@ require_once 'includes/navbar.php';
 
     <div class="demo-content">
         <!-- Page Header Card -->
-        <div class="so-page-header-card">
-            <nav class="so-breadcrumb">
-                <a href="#" class="so-breadcrumb-item">Customer</a>
-                <span class="so-breadcrumb-separator"><span class="material-icons">chevron_right</span></span>
-                <a href="#" class="so-breadcrumb-item">Latha Mohan</a>
-                <span class="so-breadcrumb-separator"><span class="material-icons">chevron_right</span></span>
-                <span class="so-breadcrumb-item so-active">Wallet</span>
+        <div class="so-card so-card-padded so-page-header-card so-shadow">
+            <nav class="so-breadcrumb-bar" style="background: transparent; border: none; padding: 0; margin-bottom: 12px;">
+                <a href="#" class="so-breadcrumb-bar-item">Customer</a>
+                <span class="so-breadcrumb-bar-separator"><span class="material-icons">chevron_right</span></span>
+                <a href="#" class="so-breadcrumb-bar-item">Latha Mohan</a>
+                <span class="so-breadcrumb-bar-separator"><span class="material-icons">chevron_right</span></span>
+                <span class="so-breadcrumb-bar-item active">Wallet</span>
             </nav>
             <div class="so-page-header-row">
                 <h1 class="so-page-title">
@@ -51,53 +51,53 @@ require_once 'includes/navbar.php';
                     Latha Mohan
                 </h1>
                 <div class="so-page-actions">
-                    <div class="so-options-dropdown">
-                        <button class="so-options-trigger">
+                    <div class="so-dropdown dropdown-right">
+                        <button class="so-btn so-btn-light so-dropdown-trigger">
                             <span class="material-icons">bolt</span>
                             Actions
-                            <span class="material-icons so-options-arrow">expand_more</span>
+                            <span class="material-icons so-dropdown-arrow">expand_more</span>
                         </button>
-                        <div class="so-options-menu">
-                            <a href="#" class="so-options-item">
+                        <div class="so-dropdown-menu">
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">location_on</span>
                                 Address Management
                             </a>
-                            <a href="#" class="so-options-item">
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">event_note</span>
                                 Followups
                             </a>
-                            <div class="so-options-divider"></div>
-                            <a href="#" class="so-options-item">
+                            <div class="so-dropdown-divider"></div>
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">receipt_long</span>
                                 Pending Invoices
                             </a>
-                            <a href="#" class="so-options-item">
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">shopping_cart</span>
                                 Sales Orders
                             </a>
-                            <a href="#" class="so-options-item">
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">request_quote</span>
                                 Quotations
                             </a>
-                            <div class="so-options-divider"></div>
-                            <a href="#" class="so-options-item">
+                            <div class="so-dropdown-divider"></div>
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">calendar_month</span>
                                 Month Wise Wallet
                             </a>
-                            <a href="#" class="so-options-item">
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">pending_actions</span>
                                 Pending Items
                             </a>
-                            <a href="#" class="so-options-item">
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">insights</span>
                                 Customer Performance
                             </a>
-                            <div class="so-options-divider"></div>
-                            <a href="#" class="so-options-item">
+                            <div class="so-dropdown-divider"></div>
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">sell</span>
                                 Default Price
                             </a>
-                            <a href="#" class="so-options-item">
+                            <a href="#" class="so-dropdown-item">
                                 <span class="material-icons">discount</span>
                                 Brand/Category Discount
                             </a>
@@ -109,7 +109,7 @@ require_once 'includes/navbar.php';
 
         <!-- Dashboard Cards -->
         <div class="dashboard-grid">
-            <div class="dashboard-card">
+            <div class="dashboard-card so-shadow">
                 <div class="dashboard-card-header">
                     <span class="dashboard-card-title">Total Sales</span>
                     <div class="dashboard-card-icon blue">
@@ -123,7 +123,7 @@ require_once 'includes/navbar.php';
                 </div>
             </div>
 
-            <div class="dashboard-card">
+            <div class="dashboard-card so-shadow">
                 <div class="dashboard-card-header">
                     <span class="dashboard-card-title">Total Purchase</span>
                     <div class="dashboard-card-icon red">
@@ -137,7 +137,7 @@ require_once 'includes/navbar.php';
                 </div>
             </div>
 
-            <div class="dashboard-card">
+            <div class="dashboard-card so-shadow">
                 <div class="dashboard-card-header">
                     <span class="dashboard-card-title">Pending Orders</span>
                     <div class="dashboard-card-icon yellow">
@@ -151,7 +151,7 @@ require_once 'includes/navbar.php';
                 </div>
             </div>
 
-            <div class="dashboard-card">
+            <div class="dashboard-card so-shadow">
                 <div class="dashboard-card-header">
                     <span class="dashboard-card-title">Active Customers</span>
                     <div class="dashboard-card-icon green">

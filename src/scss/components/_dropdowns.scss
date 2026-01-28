@@ -334,6 +334,35 @@
   @include custom-scrollbar;
 }
 
+// ============================================
+// NO SCROLL VARIANT
+// Usage: .so-dropdown.so-dropdown-no-scroll
+// Removes max-height constraint from menu
+// ============================================
+
+.#{$so-prefix}dropdown.#{$so-prefix}dropdown-no-scroll {
+  .#{$so-prefix}dropdown-menu {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .#{$so-prefix}dropdown-items {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+// Also support on menu element directly
+.#{$so-prefix}dropdown-menu.#{$so-prefix}dropdown-menu-no-scroll {
+  max-height: none !important;
+  overflow: visible !important;
+
+  .#{$so-prefix}dropdown-items {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
 // When menu has structured content (search, actions, items), remove outer scroll
 .#{$so-prefix}dropdown-menu:has(.#{$so-prefix}dropdown-items),
 .#{$so-prefix}dropdown-menu:has(.#{$so-prefix}dropdown-search),

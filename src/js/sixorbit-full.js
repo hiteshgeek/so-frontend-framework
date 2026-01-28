@@ -29,7 +29,7 @@ import SOPagination from './components/so-pagination.js';
 
 // Features
 import SOForms from './features/so-forms.js';
-import { SOFeatureCarousel, SOAuth } from './features/so-auth.js';
+// Note: SOAuth moved to src/pages/auth/auth.js (page-specific)
 
 // Expose components to global window for inline script usage
 window.SOModal = SOModal;
@@ -125,8 +125,6 @@ export {
   SOTable,
   SOPagination,
   SOForms,
-  SOFeatureCarousel,
-  SOAuth,
 };
 
 export default SixOrbit;

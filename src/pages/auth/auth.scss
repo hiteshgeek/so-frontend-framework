@@ -1,9 +1,10 @@
 // ============================================
 // SIXORBIT UI - AUTHENTICATION PAGES
 // Login, password reset, and OTP verification
+// Page-specific styles (not part of framework)
 // ============================================
 
-@use "../abstracts" as *;
+@use "../../scss/abstracts" as *;
 
 // ============================================
 // AUTH PAGE CSS VARIABLES
@@ -287,10 +288,11 @@
   display: inline-flex;
   align-items: center;
   gap: spacing("1");
-  transition: opacity $so-transition-normal;
+  transition: opacity $so-transition-normal, color $so-transition-normal;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+    color: $so-white;
   }
 
   .material-icons {

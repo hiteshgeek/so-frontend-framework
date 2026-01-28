@@ -40,6 +40,7 @@ const jsModules = [
 // These are NOT part of the framework - they are app/demo specific files
 const pageModules = [
   { name: "global", hasCSS: true, hasJS: true },
+  { name: "auth", hasCSS: true, hasJS: true },
   // { name: "dashboard", hasCSS: true, hasJS: true },
 ];
 

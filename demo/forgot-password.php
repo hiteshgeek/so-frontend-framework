@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SixOrbit UI Demo - Forgot Password
  */
@@ -7,6 +8,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,19 +16,19 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
 
     <!-- Prevent theme flash on page load -->
     <script>
-    (function() {
-        try {
-            var theme = localStorage.getItem('so-theme-preference') || 'light';
-            var effectiveTheme = theme;
-            if (theme === 'sidebar-dark') effectiveTheme = 'light';
-            else if (theme === 'system') {
-                effectiveTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        (function() {
+            try {
+                var theme = localStorage.getItem('so-theme-preference') || 'light';
+                var effectiveTheme = theme;
+                if (theme === 'sidebar-dark') effectiveTheme = 'light';
+                else if (theme === 'system') {
+                    effectiveTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.setAttribute('data-theme', effectiveTheme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
             }
-            document.documentElement.setAttribute('data-theme', effectiveTheme);
-        } catch(e) {
-            document.documentElement.setAttribute('data-theme', 'light');
-        }
-    })();
+        })();
     </script>
 
     <!-- Fonts -->
@@ -35,23 +37,20 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
 
     <!-- SixOrbit UI CSS -->
     <link rel="stylesheet" href="<?= so_asset('css', 'sixorbit-full') ?>">
+    <!-- Auth Page CSS -->
+    <?php if ($authCss = so_page_asset('auth', 'css')): ?>
+        <link rel="stylesheet" href="<?= $authCss ?>">
+    <?php endif; ?>
 </head>
+
 <body>
     <div class="so-auth-page">
         <div class="so-auth-container centered">
             <!-- Single Card for Forgot Password Flow -->
             <div class="so-auth-card">
-                <!-- Step Indicator -->
-                <div class="so-auth-steps">
-                    <div class="so-auth-step-dot so-active"></div>
-                    <div class="so-auth-step-dot"></div>
-                    <div class="so-auth-step-dot"></div>
-                    <div class="so-auth-step-dot"></div>
-                </div>
-
                 <div class="so-auth-body">
                     <!-- Step 1: Enter Email/Mobile -->
-                    <div class="so-auth-step so-active" data-step="1">
+                    <div class="so-auth-step active" data-step="1">
                         <div class="so-auth-header">
                             <h1 class="so-auth-title">Reset Password</h1>
                             <p class="so-auth-subtitle">Enter your email or mobile to receive a verification code</p>
@@ -60,7 +59,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                         <form id="sendOtpForm" novalidate>
                             <!-- Recovery Type Toggle -->
                             <div class="so-auth-type-toggle">
-                                <button type="button" class="so-auth-type-btn so-active" data-type="email">
+                                <button type="button" class="so-auth-type-btn active" data-type="email">
                                     <span class="material-icons">email</span>
                                     Email
                                 </button>
@@ -75,16 +74,19 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                                 <label class="so-form-label" for="recoveryId">Email Address</label>
                                 <div class="so-auth-input-wrapper">
                                     <input type="email"
-                                           id="recoveryId"
-                                           class="so-form-control"
-                                           placeholder="Enter your email address"
-                                           autocomplete="email"
-                                           required>
-                                    <span class="so-input-icon-left">
-                                        <span class="material-icons" id="recoveryIdIcon">email</span>
+                                        id="recoveryId"
+                                        class="so-form-control"
+                                        placeholder="Enter your email address"
+                                        autocomplete="email"
+                                        required>
+                                    <span class="so-form-control-icon-left" id="recoveryIdIcon">
+                                        <span class="material-icons">email</span>
                                     </span>
                                 </div>
-                                <span class="so-form-error" id="recoveryIdError">Please enter a valid email address</span>
+                                <span class="so-form-error" id="recoveryIdError">
+                                    <span class="material-icons">error</span>
+                                    Please enter a valid email address
+                                </span>
                             </div>
 
                             <!-- Submit Button -->
@@ -157,19 +159,22 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                                 <label class="so-form-label" for="newPassword">New Password</label>
                                 <div class="so-auth-input-wrapper has-toggle">
                                     <input type="password"
-                                           id="newPassword"
-                                           class="so-form-control"
-                                           placeholder="Enter your new password"
-                                           autocomplete="new-password"
-                                           required>
-                                    <span class="so-input-icon-left">
+                                        id="newPassword"
+                                        class="so-form-control"
+                                        placeholder="Enter your new password"
+                                        autocomplete="new-password"
+                                        required>
+                                    <span class="so-form-control-icon-left">
                                         <span class="material-icons">lock</span>
                                     </span>
                                     <button type="button" class="so-password-toggle" aria-label="Toggle password visibility">
                                         <span class="material-icons">visibility</span>
                                     </button>
                                 </div>
-                                <span class="so-form-error" id="newPasswordError">Password is required</span>
+                                <span class="so-form-error" id="newPasswordError">
+                                    <span class="material-icons">error</span>
+                                    Password is required
+                                </span>
                             </div>
 
                             <!-- Password Requirements -->
@@ -193,19 +198,22 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                                 <label class="so-form-label" for="confirmPassword">Confirm Password</label>
                                 <div class="so-auth-input-wrapper has-toggle">
                                     <input type="password"
-                                           id="confirmPassword"
-                                           class="so-form-control"
-                                           placeholder="Confirm your new password"
-                                           autocomplete="new-password"
-                                           required>
-                                    <span class="so-input-icon-left">
+                                        id="confirmPassword"
+                                        class="so-form-control"
+                                        placeholder="Confirm your new password"
+                                        autocomplete="new-password"
+                                        required>
+                                    <span class="so-form-control-icon-left">
                                         <span class="material-icons">lock_outline</span>
                                     </span>
                                     <button type="button" class="so-password-toggle" aria-label="Toggle password visibility">
                                         <span class="material-icons">visibility</span>
                                     </button>
                                 </div>
-                                <span class="so-form-error" id="confirmPasswordError">Please confirm your password</span>
+                                <span class="so-form-error" id="confirmPasswordError">
+                                    <span class="material-icons">error</span>
+                                    Please confirm your password
+                                </span>
                             </div>
 
                             <!-- Submit Button -->
@@ -240,11 +248,11 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                 <div class="so-auth-footer" style="border-top: none; margin-top: 32px;">
                     <a href="https://sixorbit.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--so-text-muted); font-size: 12px;">
                         <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <ellipse cx="24" cy="24" rx="22" ry="10" stroke="currentColor" stroke-width="2" fill="none" transform="rotate(-20 24 24)" opacity="0.6"/>
-                            <path d="M24 6L38.7 15V33L24 42L9.3 33V15L24 6Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
-                            <circle cx="24" cy="24" r="4" fill="currentColor"/>
-                            <circle cx="42" cy="18" r="2.5" fill="currentColor"/>
-                            <circle cx="6" cy="30" r="2.5" fill="currentColor"/>
+                            <ellipse cx="24" cy="24" rx="22" ry="10" stroke="currentColor" stroke-width="2" fill="none" transform="rotate(-20 24 24)" opacity="0.6" />
+                            <path d="M24 6L38.7 15V33L24 42L9.3 33V15L24 6Z" stroke="currentColor" stroke-width="2.5" fill="none" />
+                            <circle cx="24" cy="24" r="4" fill="currentColor" />
+                            <circle cx="42" cy="18" r="2.5" fill="currentColor" />
+                            <circle cx="6" cy="30" r="2.5" fill="currentColor" />
                         </svg>
                         Powered by <span style="color: var(--so-accent-primary); font-weight: 500;">SixOrbit ERP</span>
                     </a>
@@ -255,6 +263,10 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
 
     <!-- SixOrbit UI JS -->
     <script src="<?= so_asset('js', 'sixorbit-full') ?>"></script>
+    <!-- Auth Page JavaScript -->
+    <?php if ($authJs = so_page_asset('auth', 'js')): ?>
+        <script src="<?= $authJs ?>"></script>
+    <?php endif; ?>
     <script>
         // Initialize forgot password flow
         document.addEventListener('DOMContentLoaded', function() {
@@ -274,8 +286,12 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
             function goToStep(step) {
                 steps.forEach(s => s.classList.remove('active'));
                 dots.forEach((d, i) => {
-                    d.classList.toggle('active', i < step);
-                    d.classList.toggle('completed', i < step - 1);
+                    d.classList.remove('active', 'completed');
+                    if (i + 1 < step) {
+                        d.classList.add('completed');
+                    } else if (i + 1 === step) {
+                        d.classList.add('active');
+                    }
                 });
                 const targetStep = document.querySelector(`.so-auth-step[data-step="${step}"]`);
                 if (targetStep) targetStep.classList.add('active');
@@ -326,17 +342,18 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                     this.classList.add('active');
                     const type = this.dataset.type;
                     const input = document.getElementById('recoveryId');
-                    const icon = document.getElementById('recoveryIdIcon');
+                    const iconWrapper = document.getElementById('recoveryIdIcon');
+                    const iconEl = iconWrapper?.querySelector('.material-icons');
                     const label = document.querySelector('label[for="recoveryId"]');
                     if (type === 'mobile') {
                         input.type = 'tel';
                         input.placeholder = 'Enter your mobile number';
-                        icon.textContent = 'phone';
+                        if (iconEl) iconEl.textContent = 'phone';
                         label.textContent = 'Mobile Number';
                     } else {
                         input.type = 'email';
                         input.placeholder = 'Enter your email address';
-                        icon.textContent = 'email';
+                        if (iconEl) iconEl.textContent = 'email';
                         label.textContent = 'Email Address';
                     }
                 });
@@ -384,7 +401,7 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
                     Object.entries(reqs).forEach(([key, met]) => {
                         const li = document.querySelector(`[data-requirement="${key}"]`);
                         if (li) {
-                            li.classList.toggle('met', met);
+                            li.classList.toggle('valid', met);
                             li.querySelector('.material-icons').textContent = met ? 'check_circle' : 'radio_button_unchecked';
                         }
                     });
@@ -393,4 +410,5 @@ $pageTitle = 'Reset Password - ' . DEMO_COMPANY_NAME;
         }
     </script>
 </body>
+
 </html>

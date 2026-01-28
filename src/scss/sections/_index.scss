@@ -3,7 +3,7 @@
 // Forward all section modules
 // ============================================
 
-@forward 'auth';
+// Note: auth is now a separate page module (src/pages/auth/)
 @forward 'dashboard';
 @forward 'panel';
 @forward 'lms';

@@ -145,13 +145,14 @@ require_once '../includes/navbar.php';
                         <h3 class="so-card-title">Button Group Sizes</h3>
                     </div>
                     <div class="so-card-body">
+                        <p class="so-text-secondary so-mb-4">Apply uniform sizing to all buttons in a group using <code>.so-btn-group-sm</code> or <code>.so-btn-group-lg</code> on the group container.</p>
                         <div class="so-flex so-flex-col so-gap-4">
                             <div>
-                                <label class="so-form-label so-mb-2">Small</label>
-                                <div class="so-btn-group">
-                                    <button type="button" class="so-btn so-btn-primary so-btn-sm">One</button>
-                                    <button type="button" class="so-btn so-btn-primary so-btn-sm">Two</button>
-                                    <button type="button" class="so-btn so-btn-primary so-btn-sm">Three</button>
+                                <label class="so-form-label so-mb-2">Small (<code>.so-btn-group-sm</code>)</label>
+                                <div class="so-btn-group so-btn-group-sm">
+                                    <button type="button" class="so-btn so-btn-primary">One</button>
+                                    <button type="button" class="so-btn so-btn-primary">Two</button>
+                                    <button type="button" class="so-btn so-btn-primary">Three</button>
                                 </div>
                             </div>
 
@@ -165,14 +166,55 @@ require_once '../includes/navbar.php';
                             </div>
 
                             <div>
-                                <label class="so-form-label so-mb-2">Large</label>
-                                <div class="so-btn-group">
-                                    <button type="button" class="so-btn so-btn-primary so-btn-lg">One</button>
-                                    <button type="button" class="so-btn so-btn-primary so-btn-lg">Two</button>
-                                    <button type="button" class="so-btn so-btn-primary so-btn-lg">Three</button>
+                                <label class="so-form-label so-mb-2">Large (<code>.so-btn-group-lg</code>)</label>
+                                <div class="so-btn-group so-btn-group-lg">
+                                    <button type="button" class="so-btn so-btn-primary">One</button>
+                                    <button type="button" class="so-btn so-btn-primary">Two</button>
+                                    <button type="button" class="so-btn so-btn-primary">Three</button>
                                 </div>
                             </div>
                         </div>
+
+                        <h6 class="so-mt-4 so-mb-3">Outline Variants</h6>
+                        <div class="so-flex so-flex-col so-gap-4">
+                            <div>
+                                <label class="so-form-label so-mb-2">Small Outline</label>
+                                <div class="so-btn-group so-btn-group-sm">
+                                    <button type="button" class="so-btn so-btn-outline">One</button>
+                                    <button type="button" class="so-btn so-btn-outline">Two</button>
+                                    <button type="button" class="so-btn so-btn-outline">Three</button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="so-form-label so-mb-2">Large Outline</label>
+                                <div class="so-btn-group so-btn-group-lg">
+                                    <button type="button" class="so-btn so-btn-outline">One</button>
+                                    <button type="button" class="so-btn so-btn-outline">Two</button>
+                                    <button type="button" class="so-btn so-btn-outline">Three</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 class="so-mt-4 so-mb-3">Icon Button Groups</h6>
+                        <div class="so-flex so-flex-col so-gap-4">
+                            <div>
+                                <label class="so-form-label so-mb-2">Small Icons</label>
+                                <div class="so-btn-group so-btn-group-sm">
+                                    <button type="button" class="so-btn so-btn-outline so-btn-icon"><span class="material-icons">format_bold</span></button>
+                                    <button type="button" class="so-btn so-btn-outline so-btn-icon"><span class="material-icons">format_italic</span></button>
+                                    <button type="button" class="so-btn so-btn-outline so-btn-icon"><span class="material-icons">format_underlined</span></button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="so-form-label so-mb-2">Large Icons</label>
+                                <div class="so-btn-group so-btn-group-lg">
+                                    <button type="button" class="so-btn so-btn-outline so-btn-icon"><span class="material-icons">format_bold</span></button>
+                                    <button type="button" class="so-btn so-btn-outline so-btn-icon"><span class="material-icons">format_italic</span></button>
+                                    <button type="button" class="so-btn so-btn-outline so-btn-icon"><span class="material-icons">format_underlined</span></button>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="so-code-block so-mt-4">
                             <div class="so-code-header">
                                 <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
@@ -180,18 +222,24 @@ require_once '../includes/navbar.php';
                                     <span class="material-icons">content_copy</span>
                                 </button>
                             </div>
-                            <pre class="so-code-content"><code class="language-html">&lt;!-- Small --&gt;
-&lt;div class="so-btn-group"&gt;
-    &lt;button class="so-btn so-btn-primary so-btn-sm"&gt;One&lt;/button&gt;
-    &lt;button class="so-btn so-btn-primary so-btn-sm"&gt;Two&lt;/button&gt;
-    &lt;button class="so-btn so-btn-primary so-btn-sm"&gt;Three&lt;/button&gt;
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- Small Button Group (apply size at group level) --&gt;
+&lt;div class="so-btn-group so-btn-group-sm"&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;One&lt;/button&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;Two&lt;/button&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;Three&lt;/button&gt;
 &lt;/div&gt;
 
-&lt;!-- Large --&gt;
-&lt;div class="so-btn-group"&gt;
-    &lt;button class="so-btn so-btn-primary so-btn-lg"&gt;One&lt;/button&gt;
-    &lt;button class="so-btn so-btn-primary so-btn-lg"&gt;Two&lt;/button&gt;
-    &lt;button class="so-btn so-btn-primary so-btn-lg"&gt;Three&lt;/button&gt;
+&lt;!-- Large Button Group --&gt;
+&lt;div class="so-btn-group so-btn-group-lg"&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;One&lt;/button&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;Two&lt;/button&gt;
+    &lt;button class="so-btn so-btn-primary"&gt;Three&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Large Icon Button Group --&gt;
+&lt;div class="so-btn-group so-btn-group-lg"&gt;
+    &lt;button class="so-btn so-btn-outline so-btn-icon"&gt;&lt;span class="material-icons"&gt;format_bold&lt;/span&gt;&lt;/button&gt;
+    &lt;button class="so-btn so-btn-outline so-btn-icon"&gt;&lt;span class="material-icons"&gt;format_italic&lt;/span&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
                         </div>
                     </div>

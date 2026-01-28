@@ -521,6 +521,33 @@
   }
 }
 
+// OTP Size Variants
+.#{$so-prefix}otp-group-sm {
+  .#{$so-prefix}otp-inputs {
+    gap: spacing('2');
+  }
+
+  .#{$so-prefix}otp-input {
+    width: 40px;
+    height: 48px;
+    font-size: font-size('xl');
+    border-radius: radius('md');
+  }
+}
+
+.#{$so-prefix}otp-group-lg {
+  .#{$so-prefix}otp-inputs {
+    gap: spacing('4');
+  }
+
+  .#{$so-prefix}otp-input {
+    width: 64px;
+    height: 72px;
+    font-size: font-size('4xl');
+    border-radius: radius('xl');
+  }
+}
+
 // Resend OTP
 .#{$so-prefix}auth-resend {
   font-size: font-size('base');

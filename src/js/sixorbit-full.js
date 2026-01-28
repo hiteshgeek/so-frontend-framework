@@ -13,6 +13,7 @@ import SODropdown from './components/so-dropdown.js';
 // Note: SOSidebar moved to src/pages/global/global.js
 import { SONavbar } from './components/so-layout.js';
 import SOModal from './components/so-modal.js';
+import SODrawer from './components/so-drawer.js';
 import SORipple from './components/so-ripple.js';
 import SOOtpInput from './components/so-otp.js';
 import SOTabs from './components/so-tabs.js';
@@ -81,6 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize pagination
   SOPagination.initAll();
 
+  // Initialize drawers
+  SODrawer.initAll();
+
   console.log('SixOrbit UI Full initialized');
 });
 
@@ -92,6 +96,7 @@ export {
   SODropdown,
   SONavbar,
   SOModal,
+  SODrawer,
   SORipple,
   SOOtpInput,
   SOTabs,

@@ -40,6 +40,8 @@
             { "id": "dropdowns", "title": "Dropdowns", "url": "elements/dropdowns.php" },
             { "id": "tabs", "title": "Tabs", "url": "elements/tabs.php" },
             { "id": "modals", "title": "Modals", "url": "elements/modals.php" },
+            { "id": "offcanvas", "title": "Offcanvas", "url": "elements/offcanvas.php" },
+            { "id": "otp-input", "title": "OTP Input", "url": "elements/otp-input.php" },
             { "id": "alerts-toasts", "title": "Alerts & Toasts", "url": "elements/alerts-toasts.php" },
             { "id": "cards", "title": "Cards", "url": "elements/cards.php" },
             { "id": "tables", "title": "Tables", "url": "elements/tables.php" },

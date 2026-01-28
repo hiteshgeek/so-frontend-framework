@@ -906,6 +906,49 @@
 }
 
 // ============================================
+// BUTTON GROUP SIZES
+// Apply uniform sizing to all buttons in the group
+// ============================================
+
+.#{$so-prefix}btn-group-sm,
+.#{$so-prefix}btn-group-vertical.#{$so-prefix}btn-group-sm {
+  .#{$so-prefix}btn {
+    @include button-size($so-form-height-sm, spacing('3'), $so-form-font-size-sm);
+
+    .material-icons {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // Icon-only buttons in small group
+  .#{$so-prefix}btn-icon {
+    width: $so-form-height-sm;
+    padding: 0;
+  }
+}
+
+.#{$so-prefix}btn-group-lg,
+.#{$so-prefix}btn-group-vertical.#{$so-prefix}btn-group-lg {
+  .#{$so-prefix}btn {
+    @include button-size($so-form-height-lg, spacing('6'), $so-form-font-size-lg);
+
+    .material-icons {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // Icon-only buttons in large group
+  .#{$so-prefix}btn-icon {
+    width: $so-form-height-lg;
+    padding: 0;
+  }
+}
+
+// ============================================
 // TOGGLE BUTTONS (Radio/Checkbox)
 // Hidden inputs with label buttons for toggle behavior
 // ============================================

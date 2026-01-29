@@ -448,10 +448,10 @@ const carousel = new SOCarousel(element, {
                         </div>
 
                         <div class="so-d-flex so-gap-2 so-mt-4">
-                            <button class="so-btn so-btn-sm so-btn-primary" onclick="autoplayCarousel.play()">
+                            <button class="so-btn so-btn-sm so-btn-primary" id="autoplay-play-btn">
                                 <span class="material-icons">play_arrow</span> Play
                             </button>
-                            <button class="so-btn so-btn-sm so-btn-outline-secondary" onclick="autoplayCarousel.pause()">
+                            <button class="so-btn so-btn-sm so-btn-outline-secondary" id="autoplay-pause-btn">
                                 <span class="material-icons">pause</span> Pause
                             </button>
                 </div>
@@ -709,7 +709,7 @@ carouselEl.addEventListener(\'so:carousel:play\', () => {
 });
 
 carouselEl.addEventListener(\'so:carousel:pause\', () => {
-    console.log(\'Autoplay paused\');
+    console.log(\'Autoplay so-paused\');
 });', 'javascript') ?>
 
                 <h5 class="so-mt-6 so-mb-3">Available Events</h5>
@@ -740,7 +740,7 @@ carouselEl.addEventListener(\'so:carousel:pause\', () => {
                             </tr>
                             <tr>
                                 <td><code>so:carousel:pause</code></td>
-                                <td>Autoplay paused</td>
+                                <td>Autoplay so-paused</td>
                                 <td>-</td>
                             </tr>
                         </tbody>
@@ -932,6 +932,7 @@ class SOCarousel {
         this.currentIndex = 0;
         this.isPlaying = false;
         this.isPaused = false;
+        this.isManuallyPaused = false;
         this.isSliding = false;
         this.autoplayTimer = null;
         this.touchStartX = 0;
@@ -973,12 +974,12 @@ class SOCarousel {
             this.inner.addEventListener('mousedown', (e) => this._handleMouseDown(e));
         }
         if (this.options.pauseOnHover) {
-            this.element.addEventListener('mouseenter', () => { if (this.isPlaying) this._pauseAutoplay(true); });
-            this.element.addEventListener('mouseleave', () => { if (this.isPlaying && this.isPaused) this._resumeAutoplay(); });
+            this.element.addEventListener('mouseenter', () => { if (this.isPlaying && !this.isManuallyPaused) this._pauseAutoplay(true); });
+            this.element.addEventListener('mouseleave', () => { if (this.isPlaying && this.isPaused && !this.isManuallyPaused) this._resumeAutoplay(); });
         }
         document.addEventListener('visibilitychange', () => {
-            if (document.hidden && this.isPlaying) this._pauseAutoplay(false);
-            else if (!document.hidden && this.isPlaying && !this.isPaused) this._resumeAutoplay();
+            if (document.hidden && this.isPlaying && !this.isManuallyPaused) this._pauseAutoplay(false);
+            else if (!document.hidden && this.isPlaying && !this.isPaused && !this.isManuallyPaused) this._resumeAutoplay();
         });
     }
 
@@ -1038,11 +1039,11 @@ class SOCarousel {
 
     _updateIndicators() { this.indicators.forEach((ind, i) => ind.classList.toggle('so-active', i === this.currentIndex)); this.thumbnails.forEach((thumb, i) => thumb.classList.toggle('so-active', i === this.currentIndex)); }
     _resetProgress() { if (this.progressBar) { this.progressBar.style.animation = 'none'; this.progressBar.offsetHeight; this.progressBar.style.animation = ''; } }
-    play() { if (this.slides.length <= 1) return this; this.isPlaying = true; this.isPaused = false; this._resetAutoplayTimer(); this.element.classList.remove('paused'); this.element.dispatchEvent(new CustomEvent('so:carousel:play', { bubbles: true })); return this; }
-    pause() { this._pauseAutoplay(true); this.element.dispatchEvent(new CustomEvent('so:carousel:pause', { bubbles: true })); return this; }
-    stop() { this.isPlaying = false; this.isPaused = false; if (this.autoplayTimer) { clearInterval(this.autoplayTimer); this.autoplayTimer = null; } this.element.classList.remove('paused'); return this; }
-    _pauseAutoplay(updateState = true) { if (updateState) this.isPaused = true; if (this.autoplayTimer) { clearInterval(this.autoplayTimer); this.autoplayTimer = null; } this.element.classList.add('paused'); }
-    _resumeAutoplay() { this.isPaused = false; this.element.classList.remove('paused'); this._resetAutoplayTimer(); }
+    play() { if (this.slides.length <= 1) return this; this.isPlaying = true; this.isPaused = false; this.isManuallyPaused = false; this._resetAutoplayTimer(); this.element.classList.remove('so-paused'); this.element.dispatchEvent(new CustomEvent('so:carousel:play', { bubbles: true })); return this; }
+    pause() { this.isManuallyPaused = true; this._pauseAutoplay(true); this.element.dispatchEvent(new CustomEvent('so:carousel:pause', { bubbles: true })); return this; }
+    stop() { this.isPlaying = false; this.isPaused = false; this.isManuallyPaused = false; if (this.autoplayTimer) { clearInterval(this.autoplayTimer); this.autoplayTimer = null; } this.element.classList.remove('so-paused'); return this; }
+    _pauseAutoplay(updateState = true) { if (updateState) this.isPaused = true; if (this.autoplayTimer) { clearInterval(this.autoplayTimer); this.autoplayTimer = null; } this.element.classList.add('so-paused'); }
+    _resumeAutoplay() { this.isPaused = false; this.element.classList.remove('so-paused'); this._resetAutoplayTimer(); }
     _resetAutoplayTimer() { if (this.autoplayTimer) clearInterval(this.autoplayTimer); if (this.options.interval > 0 && this.isPlaying && !this.isPaused) this.autoplayTimer = setInterval(() => this.next(), this.options.interval); }
     getCurrentIndex() { return this.currentIndex; }
     getSlideCount() { return this.slides.length; }
@@ -1054,6 +1055,17 @@ document.addEventListener('DOMContentLoaded', function() {
     SOCarousel.initAll();
     window.apiCarousel = SOCarousel.getInstance(document.getElementById('api-carousel'));
     window.autoplayCarousel = SOCarousel.getInstance(document.getElementById('autoplay-carousel'));
+
+    // Setup autoplay control buttons
+    const playBtn = document.getElementById('autoplay-play-btn');
+    const pauseBtn = document.getElementById('autoplay-pause-btn');
+    if (playBtn && window.autoplayCarousel) {
+        playBtn.addEventListener('click', () => window.autoplayCarousel.play());
+    }
+    if (pauseBtn && window.autoplayCarousel) {
+        pauseBtn.addEventListener('click', () => window.autoplayCarousel.pause());
+    }
+
     const eventsCarousel = document.getElementById('events-carousel');
     const eventLog = document.getElementById('carousel-event-log');
     if (eventsCarousel && eventLog) {

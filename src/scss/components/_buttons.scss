@@ -701,6 +701,47 @@
 }
 
 // ============================================
+// AVATAR BUTTON (Circular with text/initials)
+// ============================================
+
+.#{$so-prefix}btn-avatar {
+  width: $so-form-height-md;
+  height: $so-form-height-md;
+  padding: 0;
+  border-radius: radius('full');
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+
+  &.#{$so-prefix}btn-xs {
+    width: 26px;
+    height: 26px;
+    font-size: 0.625rem;
+  }
+
+  &.#{$so-prefix}btn-sm {
+    width: $so-form-height-sm;
+    height: $so-form-height-sm;
+    font-size: 0.75rem;
+  }
+
+  &.#{$so-prefix}btn-lg {
+    width: $so-form-height-lg;
+    height: $so-form-height-lg;
+    font-size: 1rem;
+  }
+
+  &.#{$so-prefix}btn-xl {
+    width: 56px;
+    height: 56px;
+    font-size: 1.25rem;
+  }
+}
+
+// ============================================
 // BLOCK BUTTON (Full Width)
 // ============================================
 

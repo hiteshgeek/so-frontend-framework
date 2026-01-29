@@ -78,6 +78,101 @@ require_once '../includes/navbar.php';
             </div>
         </div>
 
+        <!-- Stats Cards -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Stats Cards</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Dashboard-style stats cards built with utility classes. Perfect for KPI displays and metrics.</p>
+                <div class="so-grid so-grid-cols-4 so-grid-cols-lg-2 so-grid-cols-sm-1 so-gap-3 so-mb-4">
+
+                    <!-- Total Sales -->
+                    <div class="so-card so-card-padded">
+                        <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                            <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Total Sales</span>
+                            <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-info-subtle so-w-8 so-h-8">
+                                <span class="material-icons so-text-info so-fs-lg">trending_up</span>
+                            </span>
+                        </div>
+                        <div class="so-fs-2xl so-fw-medium so-mb-1">₹12,45,890</div>
+                        <div class="so-d-flex so-align-items-center so-gap-1">
+                            <span class="material-icons so-text-success so-fs-base">arrow_upward</span>
+                            <span class="so-text-success so-fs-xs so-fw-medium">12.5% from last month</span>
+                        </div>
+                    </div>
+
+                    <!-- Total Purchase -->
+                    <div class="so-card so-card-padded">
+                        <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                            <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Total Purchase</span>
+                            <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-danger-subtle so-w-8 so-h-8">
+                                <span class="material-icons so-text-danger so-fs-lg">shopping_cart</span>
+                            </span>
+                        </div>
+                        <div class="so-fs-2xl so-fw-medium so-mb-1">₹8,34,560</div>
+                        <div class="so-d-flex so-align-items-center so-gap-1">
+                            <span class="material-icons so-text-danger so-fs-base">arrow_downward</span>
+                            <span class="so-text-danger so-fs-xs so-fw-medium">3.2% from last month</span>
+                        </div>
+                    </div>
+
+                    <!-- Pending Orders -->
+                    <div class="so-card so-card-padded">
+                        <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                            <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Pending Orders</span>
+                            <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-warning-subtle so-w-8 so-h-8">
+                                <span class="material-icons so-text-warning so-fs-lg">pending_actions</span>
+                            </span>
+                        </div>
+                        <div class="so-fs-2xl so-fw-medium so-mb-1">47</div>
+                        <div class="so-d-flex so-align-items-center so-gap-1">
+                            <span class="material-icons so-text-success so-fs-base">arrow_upward</span>
+                            <span class="so-text-success so-fs-xs so-fw-medium">8 new today</span>
+                        </div>
+                    </div>
+
+                    <!-- Active Customers -->
+                    <div class="so-card so-card-padded">
+                        <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                            <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Active Customers</span>
+                            <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-success-subtle so-w-8 so-h-8">
+                                <span class="material-icons so-text-success so-fs-lg">people</span>
+                            </span>
+                        </div>
+                        <div class="so-fs-2xl so-fw-medium so-mb-1">1,284</div>
+                        <div class="so-d-flex so-align-items-center so-gap-1">
+                            <span class="material-icons so-text-success so-fs-base">arrow_upward</span>
+                            <span class="so-text-success so-fs-xs so-fw-medium">24 new this week</span>
+                        </div>
+                    </div>
+
+                </div>
+                <?= so_code_block('<div class="so-card so-card-padded">
+    <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+        <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Total Sales</span>
+        <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-info-subtle so-w-8 so-h-8">
+            <span class="material-icons so-text-info so-fs-lg">trending_up</span>
+        </span>
+    </div>
+    <div class="so-fs-2xl so-fw-medium so-mb-1">₹12,45,890</div>
+    <div class="so-d-flex so-align-items-center so-gap-1">
+        <span class="material-icons so-text-success so-fs-base">arrow_upward</span>
+        <span class="so-text-success so-fs-xs so-fw-medium">12.5% from last month</span>
+    </div>
+</div>
+
+<!-- Utility Classes Used:
+     Card: so-card-padded (compact padding)
+     Label: so-fs-xs (12px), so-text-uppercase, so-fw-medium, so-text-muted
+     Icon Container: so-w-8 so-h-8 (32px), so-rounded-full, so-bg-{color}-subtle
+     Icon: so-fs-lg (18px), so-text-{color}
+     Value: so-fs-2xl (24px), so-fw-medium
+     Trend: so-fs-xs, so-fw-medium, so-text-{success|danger}
+-->', 'html') ?>
+            </div>
+        </div>
+
         <!-- Contextual Header Colors -->
         <div class="so-card so-mb-4">
             <div class="so-card-header">

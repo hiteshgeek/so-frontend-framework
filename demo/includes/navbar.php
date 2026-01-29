@@ -72,7 +72,7 @@
             <div class="so-navbar-divider"></div>
 
             <!-- User Status Selector -->
-            <div class="so-dropdown dropdown-right" id="userStatusSelector">
+            <div class="so-dropdown dropdown-right so-dropdown-no-scroll so-dropdown-nowrap" id="userStatusSelector">
                 <button class="so-btn so-btn-default so-dropdown-trigger" type="button" title="Set your status">
                     <span class="status-indicator available" id="statusIndicator"></span>
                     <span class="so-dropdown-text" id="statusText">Available</span>
@@ -139,18 +139,18 @@
             <div class="so-navbar-divider"></div>
 
             <!-- Keyboard Shortcuts -->
-            <button class="so-navbar-icon-btn" id="keyboardShortcutsBtn" title="Keyboard Shortcuts">
+            <button class="so-btn so-btn-icon so-btn-circle so-btn-ghost" id="keyboardShortcutsBtn" title="Keyboard Shortcuts">
                 <span class="material-icons">keyboard</span>
             </button>
 
             <!-- Settings Icon -->
-            <button class="so-navbar-icon-btn" title="Settings">
+            <button class="so-btn so-btn-icon so-btn-circle so-btn-ghost" title="Settings">
                 <span class="material-icons">settings</span>
             </button>
 
             <!-- Theme Switcher -->
             <div class="so-dropdown dropdown-right" id="themeSwitcher">
-                <button class="so-navbar-icon-btn so-dropdown-trigger" type="button" title="Theme">
+                <button class="so-btn so-btn-icon so-btn-circle so-btn-ghost so-dropdown-trigger" type="button" title="Theme">
                     <span class="material-icons theme-icon">light_mode</span>
                 </button>
                 <div class="so-dropdown-menu">
@@ -207,7 +207,7 @@
 
             <!-- Apps Menu (Google-like) -->
             <div class="so-navbar-apps">
-                <button class="so-navbar-icon-btn so-navbar-apps-btn" title="Apps">
+                <button class="so-btn so-btn-icon so-btn-circle so-btn-ghost so-navbar-apps-btn" title="Apps">
                     <span class="material-icons">apps</span>
                 </button>
                 <div class="so-navbar-apps-dropdown">
@@ -245,9 +245,7 @@
 
             <!-- User Menu -->
             <div class="so-navbar-user">
-                <button class="so-navbar-user-btn">
-                    <div class="so-navbar-user-avatar" data-color="teal"><?= substr(DEMO_USER_NAME, 0, 1) ?></div>
-                </button>
+                <button class="so-btn so-btn-avatar so-btn-info so-navbar-user-btn"><?= substr(DEMO_USER_NAME, 0, 1) ?></button>
                 <div class="so-navbar-user-dropdown">
                     <div class="so-navbar-user-header">
                         <div class="so-navbar-user-header-avatar" data-color="teal"><?= substr(DEMO_USER_NAME, 0, 1) ?></div>

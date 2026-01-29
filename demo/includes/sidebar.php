@@ -19,8 +19,11 @@ $urlPrefix = $urlDepth > 0 ? str_repeat('../', $urlDepth) : '';
 function check_children_active($children, $currentPage) {
     foreach ($children as $child) {
         $childUrl = $child['url'] ?? '';
-        if ($childUrl === $currentPage . '.php' || preg_match('/\/' . preg_quote($currentPage, '/') . '\.php$/', $childUrl)) {
-            return true;
+        // Skip external URLs (containing ..) from active check
+        if (strpos($childUrl, '..') === false) {
+            if ($childUrl === $currentPage . '.php' || preg_match('/\/' . preg_quote($currentPage, '/') . '\.php$/', $childUrl)) {
+                return true;
+            }
         }
         if (!empty($child['children']) && check_children_active($child['children'], $currentPage)) {
             return true;
@@ -38,7 +41,11 @@ function render_menu_items($items, $currentPage, $depth = 0) {
     foreach ($items as $item) {
         $hasChildren = !empty($item['children']);
         $itemUrl = $item['url'] ?? '';
-        $isActive = $itemUrl === $currentPage . '.php' || preg_match('/\/' . preg_quote($currentPage, '/') . '\.php$/', $itemUrl);
+        // Skip external URLs (containing ..) from active check
+        $isActive = false;
+        if (strpos($itemUrl, '..') === false) {
+            $isActive = $itemUrl === $currentPage . '.php' || preg_match('/\/' . preg_quote($currentPage, '/') . '\.php$/', $itemUrl);
+        }
         $isCurrent = $isActive;
 
         // Check if any child is active (recursively)

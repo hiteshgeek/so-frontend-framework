@@ -58,7 +58,7 @@ require_once 'includes/navbar.php';
                     Latha Mohan
                 </h1>
                 <div class="so-page-actions">
-                    <div class="so-dropdown so-dropdown-no-scroll dropdown-right">
+                    <div class="so-dropdown so-dropdown-nowrap so-dropdown-no-scroll dropdown-right">
                         <button class="so-btn so-btn-default so-btn-sm so-dropdown-trigger">
                             <span class="material-icons">bolt</span>
                             Actions
@@ -115,60 +115,60 @@ require_once 'includes/navbar.php';
         </div>
 
         <!-- Dashboard Cards -->
-        <div class="dashboard-grid">
-            <div class="dashboard-card so-shadow">
-                <div class="dashboard-card-header">
-                    <span class="dashboard-card-title">Total Sales</span>
-                    <div class="dashboard-card-icon blue">
-                        <span class="material-icons">trending_up</span>
-                    </div>
+        <div class="so-grid so-grid-cols-4 so-grid-cols-lg-2 so-grid-cols-sm-1 so-gap-3 so-mb-4">
+            <div class="so-card so-card-padded so-shadow">
+                <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                    <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Total Sales</span>
+                    <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-info-subtle so-w-8 so-h-8">
+                        <span class="material-icons so-text-info so-fs-lg">trending_up</span>
+                    </span>
                 </div>
-                <div class="dashboard-card-value">&#8377;12,45,890</div>
-                <div class="dashboard-card-change positive">
-                    <span class="material-icons" style="font-size: 16px;">arrow_upward</span>
-                    <span>12.5% from last month</span>
-                </div>
-            </div>
-
-            <div class="dashboard-card so-shadow">
-                <div class="dashboard-card-header">
-                    <span class="dashboard-card-title">Total Purchase</span>
-                    <div class="dashboard-card-icon red">
-                        <span class="material-icons">shopping_cart</span>
-                    </div>
-                </div>
-                <div class="dashboard-card-value">&#8377;8,34,560</div>
-                <div class="dashboard-card-change negative">
-                    <span class="material-icons" style="font-size: 16px;">arrow_downward</span>
-                    <span>3.2% from last month</span>
+                <div class="so-fs-2xl so-fw-medium so-mb-1">₹12,45,890</div>
+                <div class="so-d-flex so-align-items-center so-gap-1">
+                    <span class="material-icons so-text-success so-fs-base">arrow_upward</span>
+                    <span class="so-text-success so-fs-xs so-fw-medium">12.5% from last month</span>
                 </div>
             </div>
 
-            <div class="dashboard-card so-shadow">
-                <div class="dashboard-card-header">
-                    <span class="dashboard-card-title">Pending Orders</span>
-                    <div class="dashboard-card-icon yellow">
-                        <span class="material-icons">pending_actions</span>
-                    </div>
+            <div class="so-card so-card-padded so-shadow">
+                <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                    <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Total Purchase</span>
+                    <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-danger-subtle so-w-8 so-h-8">
+                        <span class="material-icons so-text-danger so-fs-lg">shopping_cart</span>
+                    </span>
                 </div>
-                <div class="dashboard-card-value">47</div>
-                <div class="dashboard-card-change positive">
-                    <span class="material-icons" style="font-size: 16px;">arrow_upward</span>
-                    <span>8 new today</span>
+                <div class="so-fs-2xl so-fw-medium so-mb-1">₹8,34,560</div>
+                <div class="so-d-flex so-align-items-center so-gap-1">
+                    <span class="material-icons so-text-danger so-fs-base">arrow_downward</span>
+                    <span class="so-text-danger so-fs-xs so-fw-medium">3.2% from last month</span>
                 </div>
             </div>
 
-            <div class="dashboard-card so-shadow">
-                <div class="dashboard-card-header">
-                    <span class="dashboard-card-title">Active Customers</span>
-                    <div class="dashboard-card-icon green">
-                        <span class="material-icons">people</span>
-                    </div>
+            <div class="so-card so-card-padded so-shadow">
+                <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                    <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Pending Orders</span>
+                    <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-warning-subtle so-w-8 so-h-8">
+                        <span class="material-icons so-text-warning so-fs-lg">pending_actions</span>
+                    </span>
                 </div>
-                <div class="dashboard-card-value">1,284</div>
-                <div class="dashboard-card-change positive">
-                    <span class="material-icons" style="font-size: 16px;">arrow_upward</span>
-                    <span>24 new this week</span>
+                <div class="so-fs-2xl so-fw-medium so-mb-1">47</div>
+                <div class="so-d-flex so-align-items-center so-gap-1">
+                    <span class="material-icons so-text-success so-fs-base">arrow_upward</span>
+                    <span class="so-text-success so-fs-xs so-fw-medium">8 new today</span>
+                </div>
+            </div>
+
+            <div class="so-card so-card-padded so-shadow">
+                <div class="so-d-flex so-justify-content-between so-align-items-center so-mb-2">
+                    <span class="so-text-muted so-fs-xs so-text-uppercase so-fw-medium">Active Customers</span>
+                    <span class="so-d-flex so-align-items-center so-justify-content-center so-rounded-full so-bg-success-subtle so-w-8 so-h-8">
+                        <span class="material-icons so-text-success so-fs-lg">people</span>
+                    </span>
+                </div>
+                <div class="so-fs-2xl so-fw-medium so-mb-1">1,284</div>
+                <div class="so-d-flex so-align-items-center so-gap-1">
+                    <span class="material-icons so-text-success so-fs-base">arrow_upward</span>
+                    <span class="so-text-success so-fs-xs so-fw-medium">24 new this week</span>
                 </div>
             </div>
         </div>

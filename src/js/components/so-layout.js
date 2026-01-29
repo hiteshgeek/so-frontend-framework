@@ -80,6 +80,16 @@ class SONavbar extends SOComponent {
         e.stopPropagation();
         this._toggleDropdown(userDropdown, 'user', 'so-active');
       }, userBtn);
+
+      // Handle menu item clicks - stop propagation to prevent triggering parent
+      const menuItems = userDropdown.querySelectorAll('.so-navbar-user-menu-item');
+      menuItems.forEach(item => {
+        this.on('click', (e) => {
+          e.stopPropagation();
+          // Close dropdown after clicking a menu item
+          this._closeNavbarDropdowns();
+        }, item);
+      });
     }
 
     // Apps dropdown

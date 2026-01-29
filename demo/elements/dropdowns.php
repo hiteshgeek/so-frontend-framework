@@ -1552,7 +1552,78 @@ dropdown.clearSelection();  // Clear all selections
                     </div>
                 </div>
 
-                <!-- Section 10: Contextual Selection Colors -->
+                <!-- Section 10: No Wrap Dropdown -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">No Wrap Dropdown</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-demo-desc">
+                            Use <code>.so-dropdown-nowrap</code> to prevent text wrapping in dropdown items. The menu will expand to fit the content width.
+                        </p>
+
+                        <div class="so-grid so-grid-cols-2 so-grid-cols-md-1" class="so-demo-grid-gap">
+
+                            <!-- Default (with wrap) -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">Default (allows wrap)</label>
+                                <div class="so-dropdown" data-so-dropdown style="max-width: 200px;">
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected">Select option</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-item" data-value="1">Short option</div>
+                                        <div class="so-dropdown-item" data-value="2">This is a very long option that will wrap to multiple lines</div>
+                                        <div class="so-dropdown-item" data-value="3">Another long text option for demonstration</div>
+                                    </div>
+                                </div>
+                                <small class="so-demo-small-note">Long text wraps within fixed width</small>
+                            </div>
+
+                            <!-- No Wrap -->
+                            <div class="so-form-group">
+                                <label class="so-form-label">No Wrap</label>
+                                <div class="so-dropdown so-dropdown-nowrap" data-so-dropdown style="max-width: 200px;">
+                                    <button type="button" class="so-btn so-btn-light so-dropdown-trigger">
+                                        <span class="so-dropdown-selected">Select option</span>
+                                        <span class="material-icons so-dropdown-arrow">expand_more</span>
+                                    </button>
+                                    <div class="so-dropdown-menu">
+                                        <div class="so-dropdown-item" data-value="1">Short option</div>
+                                        <div class="so-dropdown-item" data-value="2">This is a very long option that will not wrap</div>
+                                        <div class="so-dropdown-item" data-value="3">Another long text option for demonstration</div>
+                                    </div>
+                                </div>
+                                <small class="so-demo-small-note">Menu expands to fit content, no text wrap</small>
+                            </div>
+
+                        </div>
+
+                        <!-- Code Example -->
+                        <div class="so-code-block so-code-block-spaced">
+                            <div class="so-code-header">
+                                <span class="so-code-label"><span class="material-icons">code</span> HTML</span>
+                                <button class="so-code-copy" onclick="copyCode(this)">
+                                    <span class="material-icons">content_copy</span>
+                                </button>
+                            </div>
+                            <pre class="so-code-content"><code class="language-html">&lt;!-- No wrap dropdown --&gt;
+&lt;div class="so-dropdown so-dropdown-nowrap" data-so-dropdown&gt;
+    &lt;button type="button" class="so-btn so-btn-light so-dropdown-trigger"&gt;
+        &lt;span class="so-dropdown-selected"&gt;Select option&lt;/span&gt;
+        &lt;span class="material-icons so-dropdown-arrow"&gt;expand_more&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="so-dropdown-menu"&gt;
+        &lt;div class="so-dropdown-item" data-value="1"&gt;This text will not wrap&lt;/div&gt;
+        &lt;div class="so-dropdown-item" data-value="2"&gt;Menu expands to fit content&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 11: Contextual Selection Colors -->
                 <div class="so-card">
                     <div class="so-card-header">
                         <h3 class="so-card-title">Contextual Selection Colors</h3>

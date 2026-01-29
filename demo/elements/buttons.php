@@ -522,6 +522,81 @@ require_once '../includes/navbar.php';
                     </div>
                 </div>
 
+                <!-- Section 8b: Avatar Buttons -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Avatar Buttons (Text/Initials)</h3>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-text-muted so-mb-3">Circular buttons with text or initials using <code>.so-btn-avatar</code>. Works with all color variants.</p>
+
+                                <!-- Default Avatar Buttons -->
+                                <h5 class="so-mb-3">Solid Avatar Buttons</h5>
+                                <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                                    <button class="so-btn so-btn-avatar so-btn-primary">R</button>
+                                    <button class="so-btn so-btn-avatar so-btn-secondary">AB</button>
+                                    <button class="so-btn so-btn-avatar so-btn-success">JD</button>
+                                    <button class="so-btn so-btn-avatar so-btn-danger">K</button>
+                                    <button class="so-btn so-btn-avatar so-btn-warning">M</button>
+                                    <button class="so-btn so-btn-avatar so-btn-info">P</button>
+                                    <button class="so-btn so-btn-avatar so-btn-dark">S</button>
+                                </div>
+
+                                <!-- Outline Avatar Buttons -->
+                                <h5 class="so-mb-3">Outline Avatar Buttons</h5>
+                                <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                                    <button class="so-btn so-btn-avatar so-btn-outline-primary">R</button>
+                                    <button class="so-btn so-btn-avatar so-btn-outline-secondary">AB</button>
+                                    <button class="so-btn so-btn-avatar so-btn-outline-success">JD</button>
+                                    <button class="so-btn so-btn-avatar so-btn-outline-danger">K</button>
+                                    <button class="so-btn so-btn-avatar so-btn-outline-warning">M</button>
+                                    <button class="so-btn so-btn-avatar so-btn-outline-info">P</button>
+                                    <button class="so-btn so-btn-avatar so-btn-outline-dark">S</button>
+                                </div>
+
+                                <!-- Light/Soft Avatar Buttons -->
+                                <h5 class="so-mb-3">Light (Soft) Avatar Buttons</h5>
+                                <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                                    <button class="so-btn so-btn-avatar so-btn-light-primary">R</button>
+                                    <button class="so-btn so-btn-avatar so-btn-light-secondary">AB</button>
+                                    <button class="so-btn so-btn-avatar so-btn-light-success">JD</button>
+                                    <button class="so-btn so-btn-avatar so-btn-light-danger">K</button>
+                                    <button class="so-btn so-btn-avatar so-btn-light-warning">M</button>
+                                    <button class="so-btn so-btn-avatar so-btn-light-info">P</button>
+                                    <button class="so-btn so-btn-avatar so-btn-light-dark">S</button>
+                                </div>
+
+                                <!-- Size Variants -->
+                                <h5 class="so-mb-3">Size Variants</h5>
+                                <div class="so-flex so-gap-2 so-items-center so-flex-wrap so-mb-4">
+                                    <button class="so-btn so-btn-avatar so-btn-primary so-btn-xs">R</button>
+                                    <button class="so-btn so-btn-avatar so-btn-primary so-btn-sm">R</button>
+                                    <button class="so-btn so-btn-avatar so-btn-primary">R</button>
+                                    <button class="so-btn so-btn-avatar so-btn-primary so-btn-lg">R</button>
+                                    <button class="so-btn so-btn-avatar so-btn-primary so-btn-xl">R</button>
+                                </div>
+
+                        <?= so_code_block('<!-- Avatar Button with single initial -->
+<button class="so-btn so-btn-avatar so-btn-primary">R</button>
+
+<!-- Avatar Button with two initials -->
+<button class="so-btn so-btn-avatar so-btn-success">JD</button>
+
+<!-- Outline variant -->
+<button class="so-btn so-btn-avatar so-btn-outline-primary">R</button>
+
+<!-- Light/Soft variant -->
+<button class="so-btn so-btn-avatar so-btn-light-primary">R</button>
+
+<!-- Size variants -->
+<button class="so-btn so-btn-avatar so-btn-primary so-btn-xs">R</button>
+<button class="so-btn so-btn-avatar so-btn-primary so-btn-sm">R</button>
+<button class="so-btn so-btn-avatar so-btn-primary">R</button>
+<button class="so-btn so-btn-avatar so-btn-primary so-btn-lg">R</button>
+<button class="so-btn so-btn-avatar so-btn-primary so-btn-xl">R</button>', 'html') ?>
+                    </div>
+                </div>
+
                 <!-- Section 9: Hover Style Modifiers -->
                 <div class="so-card so-mb-4">
                     <div class="so-card-header">

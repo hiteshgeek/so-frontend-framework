@@ -1022,17 +1022,48 @@ new SOAutocomplete(\'#example-emails\', {
         if (document.getElementById('template-avatars')) {
             new SOAutocomplete('#template-avatars', {
                 placeholder: 'Select user...',
+                optionTemplate: (option) => {
+                    return `
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <img src="${option.avatar}"
+                             alt="${option.text}"
+                             style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <div style="font-weight: 500;">${option.text}</div>
+                            ${option.email ? `<div style="font-size: 0.875rem; color: var(--so-text-muted);">${option.email}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+                },
                 options: [{
                         value: '1',
-                        text: 'John Doe'
+                        text: 'John Doe',
+                        email: 'john.doe@example.com',
+                        avatar: 'https://i.pravatar.cc/150?img=12'
                     },
                     {
                         value: '2',
-                        text: 'Jane Smith'
+                        text: 'Jane Smith',
+                        email: 'jane.smith@example.com',
+                        avatar: 'https://i.pravatar.cc/150?img=5'
                     },
                     {
                         value: '3',
-                        text: 'Bob Johnson'
+                        text: 'Bob Johnson',
+                        email: 'bob.johnson@example.com',
+                        avatar: 'https://i.pravatar.cc/150?img=33'
+                    },
+                    {
+                        value: '4',
+                        text: 'Alice Williams',
+                        email: 'alice.w@example.com',
+                        avatar: 'https://i.pravatar.cc/150?img=9'
+                    },
+                    {
+                        value: '5',
+                        text: 'Charlie Brown',
+                        email: 'charlie.b@example.com',
+                        avatar: 'https://i.pravatar.cc/150?img=68'
                     }
                 ]
             });

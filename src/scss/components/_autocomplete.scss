@@ -130,6 +130,10 @@
   gap: spacing('2');
   flex: 1;
   min-width: 0;
+  width: 100%;
+  min-height: 40px;
+  padding: spacing('2') spacing('3'); // 8px 12px - same as standard input
+  line-height: line-height('normal'); // 1.4
 }
 
 // ============================================
@@ -137,58 +141,14 @@
 // ============================================
 
 .#{$so-prefix}autocomplete-token {
-  display: inline-flex;
-  align-items: center;
-  gap: spacing('1');
-  padding: spacing('1') spacing('2');
-  font-size: font-size('sm');
-  font-weight: 500;
-  color: css-var('text');
-  background-color: css-var('gray-100');
-  border-radius: radius('sm');
-  white-space: nowrap;
+  // Minimal styles - let .so-chip handle most styling
   max-width: 200px;
-  transition: background-color $so-transition-base;
-
-  @include dark-mode {
-    background-color: css-var('gray-700');
-    color: css-var('gray-200');
-  }
-
-  &:hover {
-    background-color: css-var('gray-200');
-
-    @include dark-mode {
-      background-color: css-var('gray-600');
-    }
-  }
+  white-space: nowrap;
 
   // Token text
   &-text {
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  // Remove button
-  &-remove {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin-left: spacing('1');
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: css-var('text-muted');
-    transition: color $so-transition-base;
-
-    &:hover {
-      color: css-var('danger');
-    }
-
-    .material-icons {
-      font-size: 16px;
-    }
   }
 
   // Overflow indicator ("+N more")
@@ -205,17 +165,6 @@
     &:hover {
       background-color: transparent;
     }
-  }
-
-  // Size variants
-  &.#{$so-prefix}autocomplete-token-sm {
-    padding: spacing('0-5') spacing('1-5');
-    font-size: font-size('xs');
-  }
-
-  &.#{$so-prefix}autocomplete-token-lg {
-    padding: spacing('1-5') spacing('3');
-    font-size: font-size('base');
   }
 }
 
@@ -638,20 +587,28 @@
 
 .#{$so-prefix}autocomplete-multiple {
   .#{$so-prefix}autocomplete-container {
-    min-height: $so-form-height-md;
-    padding: spacing('1-5') spacing('10') spacing('1-5') spacing('2');
+    padding: 0 spacing('10') 0 0; // Remove vertical padding, keep right padding for buttons
     align-items: flex-start;
   }
 
+  // Size variants for tokens container
   &.#{$so-prefix}autocomplete-sm {
+    .#{$so-prefix}autocomplete-tokens {
+      min-height: $so-form-height-sm;
+      padding: spacing('1-5') spacing('2'); // Match sm input padding
+    }
     .#{$so-prefix}autocomplete-container {
-      padding: spacing('1') spacing('9') spacing('1') spacing('1-5');
+      padding-right: spacing('9');
     }
   }
 
   &.#{$so-prefix}autocomplete-lg {
+    .#{$so-prefix}autocomplete-tokens {
+      min-height: $so-form-height-lg;
+      padding: spacing('3') spacing('4'); // Match lg input padding
+    }
     .#{$so-prefix}autocomplete-container {
-      padding: spacing('2') spacing('11') spacing('2') spacing('3');
+      padding-right: spacing('11');
     }
   }
 }

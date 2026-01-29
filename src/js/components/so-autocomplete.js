@@ -260,10 +260,11 @@ class SOAutocomplete extends SOComponent {
       this.on('focus', this._handleFocus, this._input);
       this.on('blur', this._handleBlur, this._input);
       this.on('keydown', this._handleKeydown, this._input);
+      this.on('click', this._handleInputClick, this._input);
     }
 
-    // Container click (for multiple mode)
-    if (this.options.multiple && this._container) {
+    // Container click (for all modes)
+    if (this._container) {
       this.on('click', this._handleContainerClick, this._container);
     }
 
@@ -278,10 +279,8 @@ class SOAutocomplete extends SOComponent {
     }
 
     // Option selection (event delegation)
-    if (this._optionsContainer) {
-      this.delegate(this._optionsContainer, '.so-autocomplete-option', 'click', this._handleOptionClick);
-      this.delegate(this._optionsContainer, '.so-autocomplete-option', 'mouseenter', this._handleOptionHover);
-    }
+    this.delegate('click', '.so-autocomplete-option', this._handleOptionClick);
+    this.delegate('mouseenter', '.so-autocomplete-option', this._handleOptionHover);
 
     // Outside click
     this.on('click', this._handleOutsideClick, document);
@@ -341,7 +340,8 @@ class SOAutocomplete extends SOComponent {
   _handleFocus(e) {
     this.element.classList.add('so-autocomplete-focused');
 
-    if (this.options.openOnFocus) {
+    // Always open on focus (or use openOnFocus option)
+    if (this.options.openOnFocus !== false) {
       this.open();
     }
   }
@@ -461,11 +461,26 @@ class SOAutocomplete extends SOComponent {
   }
 
   /**
-   * Handle container click (multiple mode)
+   * Handle input click
+   * @private
+   */
+  _handleInputClick() {
+    if (!this._isOpen) {
+      this.open();
+    }
+  }
+
+  /**
+   * Handle container click
    * @private
    */
   _handleContainerClick(e) {
-    // Focus input if clicking on container but not on token remove button
+    // Don't handle if clicking on clear or arrow button
+    if (e.target.closest('.so-autocomplete-clear, .so-autocomplete-arrow')) {
+      return;
+    }
+
+    // Focus input if clicking on container
     if (e.target === this._container || e.target === this._tokensContainer) {
       this._input.focus();
     }
@@ -477,8 +492,14 @@ class SOAutocomplete extends SOComponent {
    */
   _handleClearClick(e) {
     e.stopPropagation();
+    const wasOpen = this._isOpen;
     this.clear();
     this._input.focus();
+
+    // Open dropdown to show all options if it wasn't already open
+    if (!wasOpen) {
+      this.open();
+    }
   }
 
   /**
@@ -739,6 +760,11 @@ class SOAutocomplete extends SOComponent {
 
     this._updateClearButton();
 
+    // Refresh dropdown if open to show all items as unselected
+    if (this._isOpen) {
+      this._performSearch(''); // Re-filter to show all options
+    }
+
     if (hadValues) {
       this.emit(SOAutocomplete.EVENTS.CLEAR);
       this._emitChange();
@@ -796,6 +822,11 @@ class SOAutocomplete extends SOComponent {
     this._renderTokens();
     this._updatePlaceholder();
     this._updateClearButton();
+
+    // Refresh dropdown if open to show the removed item as available again
+    if (this._isOpen) {
+      this._renderOptions();
+    }
 
     // Emit events
     this.emit(SOAutocomplete.EVENTS.TOKEN_REMOVE, { token, tokens: this._tokens, index });
@@ -1433,8 +1464,8 @@ class SOAutocomplete extends SOComponent {
   _renderTokens() {
     if (!this.options.multiple || !this._tokensContainer) return;
 
-    // Remove existing tokens (keep input)
-    const tokenEls = this._tokensContainer.querySelectorAll('.so-autocomplete-token');
+    // Remove existing tokens and text display (keep input)
+    const tokenEls = this._tokensContainer.querySelectorAll('.so-autocomplete-token, .so-autocomplete-selected-text');
     tokenEls.forEach(el => el.remove());
 
     // Display mode: chips or chips-overflow
@@ -1471,13 +1502,14 @@ class SOAutocomplete extends SOComponent {
    */
   _createTokenElement(token, index) {
     const tokenEl = document.createElement('span');
-    tokenEl.className = 'so-autocomplete-token';
+    tokenEl.className = 'so-autocomplete-token so-chip so-chip-sm so-chip-soft-primary';
     tokenEl.dataset.index = index;
     tokenEl.dataset.value = token.value;
 
-    // Size variant
+    // Size variant (override default sm if specified)
     if (this.options.tokenSize) {
-      tokenEl.classList.add(`so-autocomplete-token-${this.options.tokenSize}`);
+      tokenEl.classList.remove('so-chip-sm');
+      tokenEl.classList.add(`so-chip-${this.options.tokenSize}`);
     }
 
     // Custom template
@@ -1487,7 +1519,7 @@ class SOAutocomplete extends SOComponent {
       // Default template
       tokenEl.innerHTML = `
         <span class="so-autocomplete-token-text">${token.text}</span>
-        <button type="button" class="so-autocomplete-token-remove" data-index="${index}">
+        <button type="button" class="so-autocomplete-token-remove so-chip-close" data-index="${index}">
           <span class="material-icons">close</span>
         </button>
       `;

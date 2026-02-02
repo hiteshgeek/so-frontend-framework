@@ -50,7 +50,8 @@ $carousel-gap: 16px !default;
     outline: none;
   }
 
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: 2px solid css-var("accent-primary");
     outline-offset: 2px;
   }
@@ -149,7 +150,8 @@ $carousel-gap: 16px !default;
     transform: translateY(-50%) scale(1.05);
   }
 
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: 2px solid css-var("accent-primary");
     outline-offset: 2px;
   }
@@ -223,7 +225,8 @@ $carousel-gap: 16px !default;
     border-radius: radius("full");
   }
 
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: 2px solid $so-white;
     outline-offset: 2px;
   }
@@ -506,7 +509,8 @@ $carousel-gap: 16px !default;
     opacity: 1;
   }
 
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: 2px solid css-var("accent-primary");
     outline-offset: 2px;
   }

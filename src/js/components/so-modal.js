@@ -21,6 +21,7 @@ class SOModal extends SOComponent {
     size: 'default', // 'sm', 'default', 'lg', 'xl', 'fullscreen'
     animation: true,
     static: false, // When true, modal cannot be dismissed via backdrop/escape/close button
+    focusElement: 'footer', // 'footer' (first footer button), 'close', 'first', or CSS selector
   };
 
   static EVENTS = {
@@ -115,6 +116,54 @@ class SOModal extends SOComponent {
     setTimeout(() => {
       this.element.classList.remove('so-modal-static-shake');
     }, 300);
+  }
+
+  /**
+   * Focus the initial element based on focusElement option
+   * @private
+   */
+  _focusInitialElement() {
+    if (!this.options.focus) return;
+
+    const focusOption = this.options.focusElement;
+    let elementToFocus = null;
+
+    if (focusOption === 'footer') {
+      // Focus first button in footer
+      const footer = this.$('.so-modal-footer');
+      if (footer) {
+        elementToFocus = footer.querySelector('button, [tabindex]:not([tabindex="-1"]), a[href]');
+      }
+      // Fallback to close button if no footer button
+      if (!elementToFocus) {
+        elementToFocus = this.$('.so-modal-close');
+      }
+    } else if (focusOption === 'close') {
+      // Focus close button
+      elementToFocus = this.$('.so-modal-close');
+    } else if (focusOption === 'first') {
+      // Focus first focusable element (original behavior)
+      const focusableElements = this.getFocusableElements();
+      elementToFocus = focusableElements[0];
+    } else if (typeof focusOption === 'string' && focusOption) {
+      // CSS selector
+      elementToFocus = this.$(focusOption);
+    }
+
+    // Fallback to first focusable element
+    if (!elementToFocus) {
+      const focusableElements = this.getFocusableElements();
+      elementToFocus = focusableElements[0];
+    }
+
+    if (elementToFocus && typeof elementToFocus.focus === 'function') {
+      // Add class to show focus ring (since :focus-visible doesn't work for programmatic focus)
+      elementToFocus.classList.add('so-focus-visible');
+      elementToFocus.addEventListener('blur', () => {
+        elementToFocus.classList.remove('so-focus-visible');
+      }, { once: true });
+      elementToFocus.focus();
+    }
   }
 
   /**
@@ -255,20 +304,43 @@ class SOModal extends SOComponent {
 
     this.addClass('so-show');
 
-    // Set up focus trap
+    // Set up focus trap (without initial focus - we'll handle that after animation)
     if (this.options.focus) {
-      this._focusTrapCleanup = this.trapFocus();
+      this._focusTrapCleanup = this.trapFocus({ skipInitialFocus: true });
     }
 
     // Bind document keyboard listener for Escape
     this._bindDocumentKeydown();
 
-    // Emit shown event after transition
+    // Emit shown event after transition and set focus
     if (this.options.animation) {
-      this._dialog.addEventListener('transitionend', () => {
+      let shownEmitted = false;
+      const handleShown = () => {
+        if (shownEmitted) return;
+        shownEmitted = true;
+        // Focus the appropriate element after animation completes
+        if (this.options.focus) {
+          this._focusInitialElement();
+        }
         this.emit(SOModal.EVENTS.SHOWN);
-      }, { once: true });
+      };
+
+      // Listen for transitionend on the dialog itself (not bubbled from children)
+      const transitionHandler = (e) => {
+        if (e.target === this._dialog) {
+          this._dialog.removeEventListener('transitionend', transitionHandler);
+          handleShown();
+        }
+      };
+      this._dialog.addEventListener('transitionend', transitionHandler);
+
+      // Fallback timeout in case transitionend doesn't fire
+      setTimeout(handleShown, 350);
     } else {
+      // Focus immediately when no animation
+      if (this.options.focus) {
+        this._focusInitialElement();
+      }
       this.emit(SOModal.EVENTS.SHOWN);
     }
 
@@ -409,6 +481,7 @@ class SOModal extends SOComponent {
    *     - Object: { content: [...], class: 'so-btn-primary', dismiss: true, onclick: fn }
    * @param {string} options.footerPosition - Footer alignment: 'left', 'center', 'right', 'between', 'around'
    * @param {string} options.footerLayout - Footer layout: 'inline' or 'stacked'
+   * @param {string} options.focusElement - Element to focus on open: 'footer' (default), 'close', 'first', or CSS selector
    * @returns {SOModal} Modal instance
    *
    * @example
@@ -442,6 +515,7 @@ class SOModal extends SOComponent {
       footerLayout = 'inline',
       className = '',
       static: isStatic = false,
+      focusElement = 'footer',
     } = options;
 
     /**
@@ -601,7 +675,12 @@ class SOModal extends SOComponent {
       }
     });
 
-    const instance = new SOModal(modal, { ...options, animation: true, static: isStatic });
+    const instance = new SOModal(modal, {
+      ...options,
+      animation: true,
+      static: isStatic,
+      focusElement  // Explicitly pass focusElement
+    });
 
     // Store the instance on the element for easy retrieval
     modal._soModalInstance = instance;
@@ -642,6 +721,7 @@ class SOModal extends SOComponent {
    * @param {boolean} options.fullWidthButtons - Make buttons full width
    * @param {boolean} options.reverseButtons - Swap cancel/confirm order
    * @param {boolean} options.showCloseButton - Show X close button in header
+   * @param {string} options.focusElement - Element to focus on open: 'footer' (default), 'close', 'first', or CSS selector
    *
    * @param {string} options.confirmText - Legacy: text for confirm button
    * @param {string} options.cancelText - Legacy: text for cancel button
@@ -699,6 +779,8 @@ class SOModal extends SOComponent {
       reverseButtons = false,
       showCloseButton = false,
       size = 'sm',
+      // Focus options
+      focusElement = 'footer',
     } = options;
 
     return new Promise((resolve) => {
@@ -949,6 +1031,7 @@ class SOModal extends SOComponent {
         static: isStatic,
         closable: isStatic ? false : closable,
         keyboard: !isStatic,
+        focusElement,
       });
 
       // Store instance on element
@@ -1052,6 +1135,25 @@ class SOModal extends SOComponent {
 
 // Register component
 SOModal.register();
+
+// Global click handler for data-so-toggle="modal"
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('[data-so-toggle="modal"]');
+  if (!trigger) return;
+
+  e.preventDefault();
+
+  const targetSelector = trigger.getAttribute('data-so-target') || trigger.getAttribute('href');
+  if (!targetSelector) return;
+
+  const modalEl = document.querySelector(targetSelector);
+  if (!modalEl) return;
+
+  const modal = SOModal.getInstance(modalEl);
+  if (modal) {
+    modal.show();
+  }
+});
 
 // Expose to global scope
 window.SOModal = SOModal;

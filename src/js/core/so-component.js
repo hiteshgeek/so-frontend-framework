@@ -401,9 +401,12 @@ class SOComponent {
 
   /**
    * Trap focus within component (for modals, etc.)
+   * @param {Object} [options={}] - Trap options
+   * @param {boolean} [options.skipInitialFocus=false] - Skip focusing first element
    * @returns {Function} Function to remove focus trap
    */
-  trapFocus() {
+  trapFocus(options = {}) {
+    const { skipInitialFocus = false } = options;
     const focusableElements = this.getFocusableElements();
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
@@ -425,7 +428,10 @@ class SOComponent {
     };
 
     this.element.addEventListener('keydown', handleKeydown);
-    firstElement?.focus();
+
+    if (!skipInitialFocus) {
+      firstElement?.focus();
+    }
 
     return () => {
       this.element.removeEventListener('keydown', handleKeydown);

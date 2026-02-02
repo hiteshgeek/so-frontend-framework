@@ -431,7 +431,8 @@
 /// @param {Color} $color - Ring color
 /// @param {Number} $offset - Ring offset
 @mixin focus-ring($color: css-var('accent-primary'), $offset: 2px) {
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: 2px solid $color;
     outline-offset: $offset;
   }

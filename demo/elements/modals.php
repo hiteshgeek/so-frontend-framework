@@ -518,6 +518,211 @@ SOModal.create({
         </div>
     </div>
 
+    <!-- Focus Element -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Focus Element</h3>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Control which element receives focus when a modal opens using the <code>focusElement</code> option.</p>
+
+            <h5 class="so-mb-3">Focus Options</h5>
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="showFocusModal('footer')">
+                    Footer Button (Default)
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showFocusModal('close')">
+                    Close Button
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showFocusModal('first')">
+                    First Focusable
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showFocusModal('#custom-input')">
+                    Custom Selector
+                </button>
+            </div>
+
+            <div id="focus-result" class="so-mt-3"></div>
+
+            <div class="so-mt-4">
+                <?= so_code_block('// Focus first footer button (default behavior)
+SOModal.create({
+    title: \'Focus Footer\',
+    content: \'<p>Focus goes to first button in footer.</p>\',
+    focusElement: \'footer\',  // Default
+    footer: [
+        \'Cancel\',
+        { content: \'Save\', class: \'so-btn-primary\' }
+    ]
+});
+
+// Focus close button
+SOModal.create({
+    title: \'Focus Close\',
+    content: \'<p>Focus goes to the X close button.</p>\',
+    focusElement: \'close\'
+});
+
+// Focus first focusable element (original behavior)
+SOModal.create({
+    title: \'Focus First\',
+    content: \'<p>Focus goes to first focusable element.</p>\',
+    focusElement: \'first\'
+});
+
+// Focus specific element using CSS selector
+SOModal.create({
+    title: \'Focus Custom\',
+    content: \'<input id="my-input" class="so-form-control" placeholder="Focus here">\',
+    focusElement: \'#my-input\'
+});
+
+// Also works with SOModal.confirm()
+SOModal.confirm({
+    title: \'Confirm\',
+    message: \'Focus on cancel button instead of confirm.\',
+    focusElement: \'[data-modal-action="cancel"]\'
+});', 'javascript') ?>
+            </div>
+
+            <h5 class="so-mb-3 so-mt-5">DOM Modal with Data Attribute</h5>
+            <p class="so-text-secondary so-mb-3">For modals defined in HTML, use the <code>data-so-focus-element</code> attribute.</p>
+
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-outline" data-so-toggle="modal" data-so-target="#focusDomModalFooter">
+                    Focus Footer
+                </button>
+                <button type="button" class="so-btn so-btn-outline" data-so-toggle="modal" data-so-target="#focusDomModalClose">
+                    Focus Close
+                </button>
+                <button type="button" class="so-btn so-btn-outline" data-so-toggle="modal" data-so-target="#focusDomModalInput">
+                    Focus Input
+                </button>
+                <button type="button" class="so-btn so-btn-outline" data-so-toggle="modal" data-so-target="#focusDomModalButton">
+                    Focus Specific Button
+                </button>
+            </div>
+
+            <div class="so-mt-4">
+                <?= so_code_block('<!-- Focus footer button (default) -->
+<div class="so-modal" id="myModal" data-so-focus-element="footer">
+    ...
+</div>
+
+<!-- Focus close button -->
+<div class="so-modal" id="myModal" data-so-focus-element="close">
+    ...
+</div>
+
+<!-- Focus specific input -->
+<div class="so-modal" id="myModal" data-so-focus-element="#email-input">
+    ...
+    <input id="email-input" class="so-form-control">
+    ...
+</div>
+
+<!-- Focus specific button by ID -->
+<div class="so-modal" id="myModal" data-so-focus-element="#save-btn">
+    ...
+    <button id="save-btn" class="so-btn so-btn-primary">Save</button>
+    ...
+</div>
+
+// Initialize via JavaScript
+const modal = SOModal.getInstance(\'#myModal\');
+modal.show();', 'html') ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOM Modals for Focus Demo -->
+    <div class="so-modal" id="focusDomModalFooter" data-so-focus-element="footer">
+        <div class="so-modal-dialog">
+            <div class="so-modal-content">
+                <div class="so-modal-header">
+                    <h5 class="so-modal-title">DOM Modal - Footer Focus</h5>
+                    <button type="button" class="so-modal-close" data-dismiss="modal">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                <div class="so-modal-body">
+                    <p>This modal is defined in HTML with <code>data-so-focus-element="footer"</code>.</p>
+                    <p>Focus goes to the first button in the footer (Cancel).</p>
+                </div>
+                <div class="so-modal-footer">
+                    <button type="button" class="so-btn so-btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="so-btn so-btn-primary" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="so-modal" id="focusDomModalClose" data-so-focus-element="close">
+        <div class="so-modal-dialog">
+            <div class="so-modal-content">
+                <div class="so-modal-header">
+                    <h5 class="so-modal-title">DOM Modal - Close Focus</h5>
+                    <button type="button" class="so-modal-close" data-dismiss="modal">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                <div class="so-modal-body">
+                    <p>This modal is defined in HTML with <code>data-so-focus-element="close"</code>.</p>
+                    <p>Focus goes to the X close button in the header.</p>
+                </div>
+                <div class="so-modal-footer">
+                    <button type="button" class="so-btn so-btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="so-btn so-btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="so-modal" id="focusDomModalInput" data-so-focus-element="#dom-focus-input">
+        <div class="so-modal-dialog">
+            <div class="so-modal-content">
+                <div class="so-modal-header">
+                    <h5 class="so-modal-title">DOM Modal - Input Focus</h5>
+                    <button type="button" class="so-modal-close" data-dismiss="modal">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                <div class="so-modal-body">
+                    <p>This modal uses <code>data-so-focus-element="#dom-focus-input"</code>.</p>
+                    <div class="so-form-group so-mt-3">
+                        <label class="so-form-label">Email Address</label>
+                        <input type="email" id="dom-focus-input" class="so-form-control" placeholder="Enter your email">
+                    </div>
+                </div>
+                <div class="so-modal-footer">
+                    <button type="button" class="so-btn so-btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="so-btn so-btn-primary" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="so-modal" id="focusDomModalButton" data-so-focus-element="#dom-save-btn">
+        <div class="so-modal-dialog">
+            <div class="so-modal-content">
+                <div class="so-modal-header">
+                    <h5 class="so-modal-title">DOM Modal - Button Focus</h5>
+                    <button type="button" class="so-modal-close" data-dismiss="modal">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                <div class="so-modal-body">
+                    <p>This modal uses <code>data-so-focus-element="#dom-save-btn"</code>.</p>
+                    <p>Focus goes directly to the Save button in the footer, skipping Cancel.</p>
+                </div>
+                <div class="so-modal-footer">
+                    <button type="button" class="so-btn so-btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="dom-save-btn" class="so-btn so-btn-primary" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Form in Modal -->
     <div class="so-card so-mb-4">
         <div class="so-card-header">
@@ -1434,6 +1639,57 @@ function handleConfirmDelete(btn) {
     const modal = btn.closest('.so-modal');
     SOModal.getInstance(modal)?.hide();
     SOToast?.show({ message: 'Account has been deleted.', type: 'danger' });
+}
+
+// Focus Element Demo Functions
+function showFocusModal(focusOption) {
+    const descriptions = {
+        'footer': 'Focus is on the first footer button (Cancel). This is the new default behavior.',
+        'close': 'Focus is on the X close button in the header.',
+        'first': 'Focus is on the first focusable element (original behavior).',
+        '#custom-input': 'Focus is on a specific element using a CSS selector.'
+    };
+
+    let content = `<p>${descriptions[focusOption]}</p>`;
+
+    // Add an input for the custom selector demo
+    if (focusOption === '#custom-input') {
+        content = `
+            <p>${descriptions[focusOption]}</p>
+            <div class="so-form-group so-mt-3">
+                <label class="so-form-label">Custom Input (focused)</label>
+                <input type="text" id="custom-input" class="so-form-control" placeholder="This input receives focus">
+            </div>
+        `;
+    }
+
+    const modal = SOModal.create({
+        title: `Focus: ${focusOption}`,
+        content: content,
+        focusElement: focusOption,
+        footer: [
+            'Cancel',
+            { content: 'OK', class: 'so-btn-primary' }
+        ],
+        footerPosition: 'right'
+    });
+    modal.show();
+
+    document.getElementById('focus-result').innerHTML = `
+        <div class="so-alert so-alert-info so-alert-sm">
+            <span class="material-icons">center_focus_strong</span>
+            <div>focusElement: <code>${focusOption}</code></div>
+        </div>
+    `;
+}
+
+// DOM Modal Demo Functions
+function showDomModal(modalId) {
+    const modalEl = document.getElementById(modalId);
+    if (!modalEl) return;
+
+    const modal = SOModal.getInstance(modalEl);
+    modal.show();
 }
 </script>
 

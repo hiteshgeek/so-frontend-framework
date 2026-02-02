@@ -95,7 +95,8 @@ $pagination-border-radius: radius('md');
     border-color: css-var('accent-primary');
   }
 
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px alpha($so-primary, 0.2);
     z-index: 1;
@@ -424,7 +425,8 @@ $pagination-border-radius: radius('md');
     color: $so-white;
   }
 
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px alpha($so-primary, 0.2);
   }

@@ -372,7 +372,8 @@
   // Optional: Add subtle indicator that element has context menu
   // cursor: context-menu; // Uncomment to show context menu cursor
 
-  &:focus-visible {
+  &:focus-visible,
+  &.#{$so-prefix}focus-visible {
     outline: 2px solid css-var('accent-primary');
     outline-offset: 2px;
   }

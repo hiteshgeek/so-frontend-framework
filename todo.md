@@ -84,11 +84,11 @@
 - [ ] Modal with sidebar layout
 
 ### Tabs (so-tabs.js)
-- [ ] Closable tabs (X button)
-- [ ] Draggable tab reordering
-- [ ] Overflow handling (scroll arrows or dropdown when many tabs)
-- [ ] Tab badges/indicators
-- [ ] Vertical tabs variant
+- [x] Closable tabs (X button) ✓ IMPLEMENTED
+- [x] Draggable tab reordering ✓ IMPLEMENTED
+- [x] Overflow handling (scroll arrows or dropdown when many tabs) ✓ IMPLEMENTED
+- [x] Tab badges/indicators ✓ IMPLEMENTED
+- [x] Vertical tabs variant ✓ IMPLEMENTED
 
 ### Dropdown/Select (so-select.js)
 - [ ] Grouped options with headers
@@ -157,7 +157,7 @@
 - [x] Input masking ✓ IMPLEMENTED
 
 ### Phase 2 (User Experience)
-- [ ] Tabs overflow handling
+- [x] Tabs overflow handling ✓ IMPLEMENTED
 - [ ] Toast actions
 - [x] Copy button utility ✓ IMPLEMENTED
 - [x] Skeleton presets ✓ IMPLEMENTED

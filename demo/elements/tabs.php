@@ -402,6 +402,302 @@ require_once '../includes/navbar.php';
                     </div>
                 </div>
 
+                <!-- Closable Tabs -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Closable Tabs</h3>
+                        <span class="so-badge so-badge-success">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-mb-3">Tabs can include close buttons to allow users to remove them. Use <code>data-so-tabs='{"closable": true}'</code> or add the close button manually.</p>
+                        <div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs='{"closable": true}' id="demo-closable-tabs">
+                            <button class="so-tab so-active" role="tab" data-so-target="#demo-close-1">Dashboard</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-close-2">Reports</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-close-3">Analytics</button>
+                            <button class="so-tab so-tab-no-close" role="tab" data-so-target="#demo-close-4">Settings</button>
+                        </div>
+                        <div class="so-tab-content">
+                            <div class="so-tab-pane so-fade so-show so-active" id="demo-close-1" role="tabpanel">
+                                <p>Dashboard tab - Try closing other tabs using the X button.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-close-2" role="tabpanel">
+                                <p>Reports tab content.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-close-3" role="tabpanel">
+                                <p>Analytics tab content.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-close-4" role="tabpanel">
+                                <p>Settings tab - This tab cannot be closed (has <code>so-tab-no-close</code> class).</p>
+                            </div>
+                        </div>
+<?= so_code_block('<!-- Enable closable tabs via data attribute -->
+<div class="so-tabs" data-so-tabs=\'{"closable": true}\'>
+    <button class="so-tab so-active" data-so-target="#panel1">Tab 1</button>
+    <button class="so-tab" data-so-target="#panel2">Tab 2</button>
+    <!-- Prevent close with so-tab-no-close class -->
+    <button class="so-tab so-tab-no-close" data-so-target="#panel3">Permanent</button>
+</div>
+
+<!-- Or manually add close buttons -->
+<button class="so-tab so-tab-closable">
+    Tab Label
+    <button class="so-tab-close" aria-label="Close">
+        <span class="material-icons">close</span>
+    </button>
+</button>
+
+// Close tab programmatically
+const tabs = SOTabs.getInstance(el);
+tabs.closeTab(1); // by index
+tabs.closeTab(tabElement); // by element', 'html') ?>
+                    </div>
+                </div>
+
+                <!-- Tab Badges & Indicators -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Tab Badges & Indicators</h3>
+                        <span class="so-badge so-badge-success">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-mb-3">Add badges, counters, and dot indicators to tabs for notifications and status.</p>
+                        <div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab" data-so-target="#demo-badge-1">
+                                <span class="material-icons">inbox</span>
+                                Inbox
+                                <span class="so-badge so-badge-danger">5</span>
+                            </button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-badge-2">
+                                <span class="material-icons">notifications</span>
+                                Alerts
+                                <span class="so-tab-dot so-tab-dot-pulse"></span>
+                            </button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-badge-3">
+                                <span class="material-icons">forum</span>
+                                Messages
+                                <span class="so-tab-count">128</span>
+                            </button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-badge-4">
+                                <span class="material-icons">task_alt</span>
+                                Tasks
+                                <span class="so-tab-dot so-tab-dot-success"></span>
+                            </button>
+                        </div>
+                        <div class="so-tab-content">
+                            <div class="so-tab-pane so-fade so-show so-active" id="demo-badge-1" role="tabpanel">
+                                <p>Inbox with badge showing unread count.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-badge-2" role="tabpanel">
+                                <p>Alerts with animated dot indicator.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-badge-3" role="tabpanel">
+                                <p>Messages with counter badge.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-badge-4" role="tabpanel">
+                                <p>Tasks with success status dot.</p>
+                            </div>
+                        </div>
+<?= so_code_block('<!-- Badge (number) -->
+<button class="so-tab">
+    Inbox
+    <span class="so-badge so-badge-danger">5</span>
+</button>
+
+<!-- Counter badge -->
+<button class="so-tab">
+    Messages
+    <span class="so-tab-count">128</span>
+</button>
+
+<!-- Dot indicator with pulse animation -->
+<button class="so-tab">
+    Alerts
+    <span class="so-tab-dot so-tab-dot-pulse"></span>
+</button>
+
+<!-- Dot colors: default (danger), success, warning, info, primary -->
+<span class="so-tab-dot so-tab-dot-success"></span>
+<span class="so-tab-dot so-tab-dot-warning"></span>
+<span class="so-tab-dot so-tab-dot-info"></span>
+<span class="so-tab-dot so-tab-dot-primary"></span>', 'html') ?>
+                    </div>
+                </div>
+
+                <!-- Scroll Overflow -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Scroll Overflow (Many Tabs)</h3>
+                        <span class="so-badge so-badge-success">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-mb-3">When there are many tabs, scroll buttons appear automatically. Use <code>overflow: 'scroll'</code> option (default).</p>
+                        <div class="so-tabs" role="tablist" data-so-tabs='{"overflow": "scroll"}' id="demo-overflow-tabs">
+                            <button class="so-tab so-active" role="tab" data-so-target="#demo-scroll-1">January</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-2">February</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-3">March</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-4">April</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-5">May</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-6">June</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-7">July</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-8">August</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-9">September</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-10">October</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-11">November</button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-scroll-12">December</button>
+                        </div>
+                        <div class="so-tab-content">
+                            <div class="so-tab-pane so-fade so-show so-active" id="demo-scroll-1" role="tabpanel">
+                                <p>January content - Use the scroll arrows to navigate between tabs.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-2" role="tabpanel"><p>February content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-3" role="tabpanel"><p>March content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-4" role="tabpanel"><p>April content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-5" role="tabpanel"><p>May content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-6" role="tabpanel"><p>June content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-7" role="tabpanel"><p>July content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-8" role="tabpanel"><p>August content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-9" role="tabpanel"><p>September content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-10" role="tabpanel"><p>October content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-11" role="tabpanel"><p>November content</p></div>
+                            <div class="so-tab-pane so-fade" id="demo-scroll-12" role="tabpanel"><p>December content</p></div>
+                        </div>
+<?= so_code_block('<!-- Scroll overflow (default behavior) -->
+<div class="so-tabs" data-so-tabs=\'{"overflow": "scroll"}\'>
+    <button class="so-tab">Tab 1</button>
+    <button class="so-tab">Tab 2</button>
+    <!-- ... many tabs ... -->
+    <button class="so-tab">Tab 12</button>
+</div>
+
+<!-- Overflow options: "scroll", "wrap", "none" -->', 'html') ?>
+                    </div>
+                </div>
+
+                <!-- Draggable Tabs -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Draggable Tabs</h3>
+                        <span class="so-badge so-badge-success">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-mb-3">Enable tab reordering by dragging. Use <code>draggable: true</code> option.</p>
+                        <div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs='{"draggable": true}' id="demo-draggable-tabs">
+                            <button class="so-tab so-active" role="tab" data-so-target="#demo-drag-1">
+                                <span class="material-icons">folder</span>
+                                Documents
+                            </button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-drag-2">
+                                <span class="material-icons">image</span>
+                                Images
+                            </button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-drag-3">
+                                <span class="material-icons">movie</span>
+                                Videos
+                            </button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-drag-4">
+                                <span class="material-icons">audio_file</span>
+                                Music
+                            </button>
+                        </div>
+                        <div class="so-tab-content">
+                            <div class="so-tab-pane so-fade so-show so-active" id="demo-drag-1" role="tabpanel">
+                                <p>Documents - Drag tabs to reorder them.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-drag-2" role="tabpanel">
+                                <p>Images content.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-drag-3" role="tabpanel">
+                                <p>Videos content.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-drag-4" role="tabpanel">
+                                <p>Music content.</p>
+                            </div>
+                        </div>
+<?= so_code_block('<!-- Enable draggable tabs -->
+<div class="so-tabs" data-so-tabs=\'{"draggable": true}\'>
+    <button class="so-tab">Tab 1</button>
+    <button class="so-tab">Tab 2</button>
+    <button class="so-tab">Tab 3</button>
+</div>
+
+// Listen for reorder events
+tabsEl.addEventListener(\'so:tab:reorder\', (e) => {
+    console.log(\'Tab reordered\', e.detail.tabs);
+});', 'html') ?>
+                    </div>
+                </div>
+
+                <!-- Dynamic Tabs -->
+                <div class="so-card so-mb-4">
+                    <div class="so-card-header">
+                        <h3 class="so-card-title">Dynamic Tabs (Add/Remove)</h3>
+                        <span class="so-badge so-badge-success">New</span>
+                    </div>
+                    <div class="so-card-body">
+                        <p class="so-mb-3">Add and remove tabs dynamically using JavaScript API. Combine with closable tabs for full dynamic control.</p>
+                        <div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs='{"closable": true}' id="demo-dynamic-tabs">
+                            <button class="so-tab so-active so-tab-no-close" role="tab" data-so-target="#demo-dynamic-1">
+                                <span class="material-icons">home</span>
+                                Home
+                            </button>
+                            <button class="so-tab" role="tab" data-so-target="#demo-dynamic-2">Tab 2</button>
+                            <button type="button" class="so-tab-add" aria-label="Add new tab">
+                                <span class="material-icons">add</span>
+                            </button>
+                        </div>
+                        <div class="so-tab-content" id="demo-dynamic-content">
+                            <div class="so-tab-pane so-fade so-show so-active" id="demo-dynamic-1" role="tabpanel">
+                                <p>Home tab - Click the + button to add new tabs, or close existing ones.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="demo-dynamic-2" role="tabpanel">
+                                <p>Tab 2 content.</p>
+                            </div>
+                        </div>
+                        <div class="so-mt-3">
+                            <button class="so-btn so-btn-primary so-btn-sm" onclick="addDynamicTab()">
+                                <span class="material-icons">add</span> Add Tab via JS
+                            </button>
+                        </div>
+<?= so_code_block('// Add tab dynamically
+const tabs = SOTabs.getInstance(tabsEl);
+
+tabs.addTab({
+    label: \'New Tab\',
+    content: \'<p>Tab content here</p>\',
+    icon: \'description\',  // Material icon name
+    closable: true,       // Can be closed
+    activate: true,       // Activate immediately
+    position: \'end\'       // \'start\', \'end\', or index
+});
+
+// Close tab programmatically
+tabs.closeTab(tabElement);
+tabs.closeTab(2); // by index
+
+// With confirmation callback
+const tabs = new SOTabs(el, {
+    closable: true,
+    closeConfirm: (tab, pane) => {
+        return confirm(\'Close this tab?\');
+    }
+});
+
+// Events
+tabsEl.addEventListener(\'so:tab:close\', (e) => {
+    console.log(\'Tab closing\', e.target);
+    // e.preventDefault(); // Cancel close
+});
+
+tabsEl.addEventListener(\'so:tab:closed\', (e) => {
+    console.log(\'Tab closed\', e.detail);
+});
+
+tabsEl.addEventListener(\'so:tab:add\', (e) => {
+    console.log(\'Tab added\', e.detail.tab);
+});', 'javascript') ?>
+                    </div>
+                </div>
+
                 <!-- Alignment Options -->
                 <div class="so-card so-mb-4">
                     <div class="so-card-header">
@@ -474,32 +770,53 @@ require_once '../includes/navbar.php';
 const tabsEl = document.querySelector(\'#my-tabs\');
 const tabs = SOTabs.getInstance(tabsEl);
 
-// Public methods
+// Navigation methods
 tabs.show(2);           // Show tab by index (0-based)
 tabs.showById(\'panel3\'); // Show tab by target ID
 tabs.next();            // Go to next tab
 tabs.prev();            // Go to previous tab
 tabs.getActiveTab();    // Get active tab element
 tabs.getActiveIndex();  // Get active tab index
+tabs.getTabs();         // Get all tab elements
+tabs.refresh();         // Re-scan for tab elements
+
+// Dynamic tabs
+tabs.addTab({
+    label: \'New Tab\',
+    content: \'<p>Content</p>\',
+    icon: \'description\',
+    closable: true,
+    activate: true,
+    position: \'end\'
+});
+tabs.closeTab(2);       // Close by index
+tabs.closeTab(tabEl);   // Close by element
+
+// Configuration options
+new SOTabs(el, {
+    autoActivate: false,  // Activate on focus
+    animation: true,      // Fade animation
+    keyboard: true,       // Arrow key navigation
+    closable: false,      // Enable close buttons
+    draggable: false,     // Enable drag reorder
+    overflow: \'scroll\',   // \'scroll\', \'wrap\', \'none\'
+    scrollStep: 150,      // Scroll amount in pixels
+    closeConfirm: null,   // (tab, pane) => boolean
+    onAdd: null           // Called when add button clicked
+});
 
 // Events (use \'so:\' prefix)
 tabsEl.addEventListener(\'so:tab:show\', (e) => {
     console.log(\'About to show:\', e.target);
-    console.log(\'Previous tab:\', e.detail.relatedTarget);
-    // e.preventDefault(); // Can cancel tab change
+    // e.preventDefault(); // Cancel tab change
 });
-
-tabsEl.addEventListener(\'so:tab:shown\', (e) => {
-    console.log(\'Tab shown:\', e.target);
-});
-
-tabsEl.addEventListener(\'so:tab:hide\', (e) => {
-    console.log(\'About to hide:\', e.target);
-});
-
-tabsEl.addEventListener(\'so:tab:hidden\', (e) => {
-    console.log(\'Tab hidden:\', e.target);
-});', 'javascript') ?>
+tabsEl.addEventListener(\'so:tab:shown\', (e) => { });
+tabsEl.addEventListener(\'so:tab:hide\', (e) => { });
+tabsEl.addEventListener(\'so:tab:hidden\', (e) => { });
+tabsEl.addEventListener(\'so:tab:close\', (e) => { });
+tabsEl.addEventListener(\'so:tab:closed\', (e) => { });
+tabsEl.addEventListener(\'so:tab:reorder\', (e) => { });
+tabsEl.addEventListener(\'so:tab:add\', (e) => { });', 'javascript') ?>
                     </div>
                 </div>
 
@@ -532,8 +849,33 @@ function demoTabsShowById() {
     }
 }
 
+// Dynamic tabs counter
+let dynamicTabCounter = 3;
+
+// Add dynamic tab function
+function addDynamicTab() {
+    const tabsEl = document.querySelector('#demo-dynamic-tabs');
+    if (tabsEl && typeof SOTabs !== 'undefined') {
+        const tabs = SOTabs.getInstance(tabsEl);
+        if (tabs) {
+            const icons = ['description', 'code', 'analytics', 'settings', 'account_circle', 'shopping_cart'];
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+
+            tabs.addTab({
+                label: `Tab ${dynamicTabCounter}`,
+                content: `<p>This is dynamically added Tab ${dynamicTabCounter}. You can close it using the X button.</p>`,
+                icon: randomIcon,
+                closable: true,
+                activate: true
+            });
+            dynamicTabCounter++;
+        }
+    }
+}
+
 // Event listeners for demo
 document.addEventListener('DOMContentLoaded', function() {
+    // JavaScript API demo events
     const tabsEl = document.querySelector('#demo-events-tabs');
     if (tabsEl) {
         tabsEl.addEventListener('so:tab:show', (e) => {
@@ -548,6 +890,42 @@ document.addEventListener('DOMContentLoaded', function() {
         tabsEl.addEventListener('so:tab:hidden', (e) => {
             console.log('so:tab:hidden - Tab hidden:', e.detail);
         });
+    }
+
+    // Closable tabs events
+    const closableTabsEl = document.querySelector('#demo-closable-tabs');
+    if (closableTabsEl) {
+        closableTabsEl.addEventListener('so:tab:close', (e) => {
+            console.log('so:tab:close - Closing tab:', e.target);
+        });
+        closableTabsEl.addEventListener('so:tab:closed', (e) => {
+            console.log('so:tab:closed - Tab closed, remaining:', e.detail.remainingTabs);
+        });
+    }
+
+    // Draggable tabs events
+    const draggableTabsEl = document.querySelector('#demo-draggable-tabs');
+    if (draggableTabsEl) {
+        draggableTabsEl.addEventListener('so:tab:reorder', (e) => {
+            console.log('so:tab:reorder - Tabs reordered:', e.detail.tabs);
+        });
+    }
+
+    // Dynamic tabs - handle add button click
+    const dynamicTabsEl = document.querySelector('#demo-dynamic-tabs');
+    if (dynamicTabsEl) {
+        dynamicTabsEl.addEventListener('so:tab:add', (e) => {
+            console.log('so:tab:add - Tab added:', e.detail.tab);
+        });
+        dynamicTabsEl.addEventListener('so:tab:closed', (e) => {
+            console.log('so:tab:closed - Dynamic tab closed');
+        });
+
+        // Handle the add button
+        const addBtn = dynamicTabsEl.querySelector('.so-tab-add');
+        if (addBtn) {
+            addBtn.addEventListener('click', addDynamicTab);
+        }
     }
 });
 </script>

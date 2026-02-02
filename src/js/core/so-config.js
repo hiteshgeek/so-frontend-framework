@@ -273,7 +273,13 @@ Object.assign(SixOrbit, {
           // Keep as string if not valid JSON
         }
 
-        options[normalizedKey] = value;
+        // If value is a plain object (not array), spread its properties
+        // This allows data-so-tabs='{"closable": true}' to work correctly
+        if (value && typeof value === 'object' && !Array.isArray(value)) {
+          Object.assign(options, value);
+        } else {
+          options[normalizedKey] = value;
+        }
       }
     });
 

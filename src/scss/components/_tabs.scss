@@ -740,3 +740,506 @@
   position: sticky;
   top: spacing("4");
 }
+
+// ============================================
+// CLOSABLE TABS
+// ============================================
+
+.#{$so-prefix}tab-closable {
+  padding-right: spacing("2");
+
+  .#{$so-prefix}tab-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-left: spacing("2");
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: css-var("text-muted");
+    cursor: pointer;
+    transition: all $so-transition-base;
+    flex-shrink: 0;
+
+    .material-icons {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+    }
+
+    &:hover {
+      background: css-var("card-hover-bg");
+      color: css-var("text-primary");
+    }
+
+    &:active {
+      background: css-var("border-color");
+    }
+  }
+
+  // Active tab close button
+  &.#{$so-prefix}active .#{$so-prefix}tab-close,
+  &[aria-selected="true"] .#{$so-prefix}tab-close {
+    color: css-var("accent-primary");
+
+    &:hover {
+      background: alpha($so-primary, 0.15);
+      color: css-var("accent-danger");
+    }
+  }
+}
+
+// Pills variant closable
+.#{$so-prefix}tabs-pills .#{$so-prefix}tab-closable {
+  &.#{$so-prefix}active .#{$so-prefix}tab-close,
+  &[aria-selected="true"] .#{$so-prefix}tab-close {
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: $so-white;
+    }
+  }
+}
+
+// ============================================
+// TAB BADGES/INDICATORS
+// ============================================
+
+.#{$so-prefix}tab {
+  // Badge inside tab
+  .#{$so-prefix}badge {
+    margin-left: spacing("2");
+    font-size: 10px;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 6px;
+  }
+
+  // Dot indicator (notification dot)
+  .#{$so-prefix}tab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: css-var("accent-danger");
+    margin-left: spacing("2");
+    flex-shrink: 0;
+
+    &.#{$so-prefix}tab-dot-success {
+      background: css-var("accent-success");
+    }
+
+    &.#{$so-prefix}tab-dot-warning {
+      background: css-var("accent-warning");
+    }
+
+    &.#{$so-prefix}tab-dot-info {
+      background: css-var("accent-info");
+    }
+
+    &.#{$so-prefix}tab-dot-primary {
+      background: css-var("accent-primary");
+    }
+
+    // Pulse animation
+    &.#{$so-prefix}tab-dot-pulse {
+      animation: so-tab-dot-pulse 1.5s ease-in-out infinite;
+    }
+  }
+
+  // Counter badge
+  .#{$so-prefix}tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    margin-left: spacing("2");
+    font-size: 11px;
+    font-weight: font-weight("semibold");
+    background: css-var("card-hover-bg");
+    color: css-var("text-secondary");
+    border-radius: radius("full");
+    flex-shrink: 0;
+  }
+
+  &.#{$so-prefix}active .#{$so-prefix}tab-count,
+  &[aria-selected="true"] .#{$so-prefix}tab-count {
+    background: alpha($so-primary, 0.15);
+    color: css-var("accent-primary");
+  }
+}
+
+@keyframes so-tab-dot-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+}
+
+// Pills variant badges
+.#{$so-prefix}tabs-pills .#{$so-prefix}tab {
+  &.#{$so-prefix}active .#{$so-prefix}tab-count,
+  &[aria-selected="true"] .#{$so-prefix}tab-count {
+    background: rgba(255, 255, 255, 0.25);
+    color: $so-white;
+  }
+}
+
+// ============================================
+// OVERFLOW HANDLING (Scroll Arrows)
+// ============================================
+
+.#{$so-prefix}tabs-overflow {
+  position: relative;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.#{$so-prefix}tabs-overflow-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.#{$so-prefix}tabs-scroll-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.#{$so-prefix}tabs-scroll-inner {
+  display: flex;
+  align-items: center;
+  gap: spacing("1");
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .#{$so-prefix}tab {
+    flex-shrink: 0;
+  }
+}
+
+// Scroll arrows - hidden by default, shown only when overflow exists
+.#{$so-prefix}tabs-scroll-btn {
+  display: none; // Hidden by default
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: css-var("card-bg");
+  color: css-var("text-secondary");
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all $so-transition-base;
+  border-radius: radius("md");
+  z-index: 2;
+
+  .material-icons {
+    font-size: 20px;
+  }
+
+  &:hover:not(:disabled) {
+    background: css-var("card-hover-bg");
+    color: css-var("text-primary");
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &.#{$so-prefix}tabs-scroll-prev {
+    margin-right: spacing("1");
+  }
+
+  &.#{$so-prefix}tabs-scroll-next {
+    margin-left: spacing("1");
+  }
+}
+
+// Only show scroll buttons when there's actual overflow
+.#{$so-prefix}tabs-overflow-container.#{$so-prefix}has-overflow {
+  .#{$so-prefix}tabs-scroll-btn {
+    display: flex;
+  }
+}
+
+// Shadow indicators for scroll
+.#{$so-prefix}tabs-scroll-wrapper::before,
+.#{$so-prefix}tabs-scroll-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity $so-transition-base;
+}
+
+.#{$so-prefix}tabs-scroll-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, css-var("card-bg"), transparent);
+}
+
+.#{$so-prefix}tabs-scroll-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, css-var("card-bg"), transparent);
+}
+
+.#{$so-prefix}tabs-overflow-container.#{$so-prefix}can-scroll-left .#{$so-prefix}tabs-scroll-wrapper::before {
+  opacity: 1;
+}
+
+.#{$so-prefix}tabs-overflow-container.#{$so-prefix}can-scroll-right .#{$so-prefix}tabs-scroll-wrapper::after {
+  opacity: 1;
+}
+
+// Dropdown overflow menu
+.#{$so-prefix}tabs-overflow-menu {
+  position: relative;
+  margin-left: spacing("2");
+}
+
+.#{$so-prefix}tabs-overflow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: spacing("1");
+  min-height: 36px;
+  padding: spacing("2") spacing("3");
+  font-size: font-size("sm");
+  font-weight: font-weight("medium");
+  color: css-var("text-secondary");
+  background: transparent;
+  border: 1px solid css-var("border-color");
+  border-radius: radius("md");
+  cursor: pointer;
+  transition: all $so-transition-base;
+
+  .material-icons {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: css-var("card-hover-bg");
+    border-color: css-var("border-dark");
+  }
+
+  .#{$so-prefix}tabs-overflow-count {
+    font-size: 11px;
+    padding: 2px 6px;
+    background: css-var("card-hover-bg");
+    border-radius: radius("full");
+  }
+}
+
+.#{$so-prefix}tabs-overflow-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 180px;
+  max-height: 300px;
+  margin-top: spacing("1");
+  padding: spacing("1");
+  background: css-var("card-bg");
+  border: 1px solid css-var("border-color");
+  border-radius: radius("lg");
+  box-shadow: shadow("lg");
+  overflow-y: auto;
+  z-index: z-index("dropdown");
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all $so-transition-base;
+
+  &.#{$so-prefix}show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .#{$so-prefix}tab {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: radius("md");
+    margin-bottom: 0;
+
+    &::after {
+      display: none;
+    }
+
+    &.#{$so-prefix}active,
+    &[aria-selected="true"] {
+      background: alpha($so-primary, 0.1);
+    }
+  }
+}
+
+// ============================================
+// DRAGGABLE TABS
+// ============================================
+
+.#{$so-prefix}tabs-draggable {
+  .#{$so-prefix}tab {
+    cursor: grab;
+    user-select: none;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  .#{$so-prefix}tab.#{$so-prefix}dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
+
+  .#{$so-prefix}tab.#{$so-prefix}drag-over {
+    border-left: 2px solid css-var("accent-primary");
+  }
+
+  // Drag ghost element
+  .#{$so-prefix}tab-drag-ghost {
+    position: fixed;
+    pointer-events: none;
+    z-index: z-index("modal");
+    opacity: 0.9;
+    transform: rotate(2deg);
+    box-shadow: shadow("lg");
+  }
+}
+
+// ============================================
+// VERTICAL TABS ENHANCEMENTS
+// ============================================
+
+.#{$so-prefix}tabs-vertical {
+  // Closable in vertical
+  .#{$so-prefix}tab-closable {
+    padding-right: spacing("3");
+
+    .#{$so-prefix}tab-close {
+      margin-left: auto;
+    }
+  }
+
+  // Badges in vertical
+  .#{$so-prefix}tab .#{$so-prefix}badge,
+  .#{$so-prefix}tab .#{$so-prefix}tab-count,
+  .#{$so-prefix}tab .#{$so-prefix}tab-dot {
+    margin-left: auto;
+  }
+
+  // Overflow in vertical - use max-height
+  &.#{$so-prefix}tabs-overflow {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: css-var("border-color");
+      border-radius: radius("full");
+    }
+  }
+
+  // Draggable in vertical
+  &.#{$so-prefix}tabs-draggable {
+    .#{$so-prefix}tab.#{$so-prefix}drag-over {
+      border-left: none;
+      border-top: 2px solid css-var("accent-primary");
+    }
+  }
+}
+
+// ============================================
+// TAB ADD BUTTON
+// ============================================
+
+.#{$so-prefix}tab-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px dashed css-var("border-color");
+  border-radius: radius("md");
+  background: transparent;
+  color: css-var("text-muted");
+  cursor: pointer;
+  transition: all $so-transition-base;
+  margin-left: spacing("2");
+  flex-shrink: 0;
+
+  .material-icons {
+    font-size: 18px;
+  }
+
+  &:hover {
+    border-color: css-var("accent-primary");
+    color: css-var("accent-primary");
+    background: alpha($so-primary, 0.05);
+  }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+
+@media (max-width: 576px) {
+  .#{$so-prefix}tabs:not(.#{$so-prefix}tabs-vertical) {
+    // Auto-scroll on mobile
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .#{$so-prefix}tab {
+      flex-shrink: 0;
+    }
+  }
+
+  .#{$so-prefix}tabs-scroll-btn {
+    width: 28px;
+    height: 28px;
+
+    .material-icons {
+      font-size: 18px;
+    }
+  }
+}

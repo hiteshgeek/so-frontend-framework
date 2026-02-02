@@ -22,6 +22,12 @@ class SOModal extends SOComponent {
     animation: true,
     static: false, // When true, modal cannot be dismissed via backdrop/escape/close button
     focusElement: 'footer', // 'footer' (first footer button), 'close', 'first', or CSS selector
+    draggable: false, // Allow modal to be dragged by header
+    maximizable: false, // Show maximize/restore button
+    mobileFullscreen: false, // Auto-switch to fullscreen on mobile
+    mobileBreakpoint: 768, // Breakpoint for mobile fullscreen
+    sidebar: false, // Enable sidebar layout: 'left' or 'right'
+    sidebarWidth: '280px', // Width of sidebar
   };
 
   static EVENTS = {
@@ -31,7 +37,14 @@ class SOModal extends SOComponent {
     HIDDEN: 'modal:hidden',
     CONFIRM: 'modal:confirm',
     CANCEL: 'modal:cancel',
+    MAXIMIZE: 'modal:maximize',
+    RESTORE: 'modal:restore',
+    DRAG_START: 'modal:drag-start',
+    DRAG_END: 'modal:drag-end',
   };
+
+  // Base z-index for modals
+  static _baseZIndex = 1050;
 
   // Track open modals for stacking
   static _openModals = [];
@@ -47,12 +60,18 @@ class SOModal extends SOComponent {
     // Cache elements
     this._dialog = this.$('.so-modal-dialog');
     this._content = this.$('.so-modal-content');
+    this._header = this.$('.so-modal-header');
     this._backdrop = null;
 
     // State
     this._isOpen = false;
     this._focusTrapCleanup = null;
     this._previousActiveElement = null;
+    this._isMaximized = false;
+    this._isDragging = false;
+    this._dragPosition = { x: 0, y: 0 };
+    this._originalSize = null;
+    this._resizeObserver = null;
 
     // Check for static mode from data attribute, class, or options
     // (options.static may already be set from constructor)
@@ -64,6 +83,26 @@ class SOModal extends SOComponent {
       this.options.keyboard = false;
       // Add static class if not present
       this.element.classList.add('so-modal-static');
+    }
+
+    // Setup draggable
+    if (this.options.draggable) {
+      this._setupDraggable();
+    }
+
+    // Setup maximizable
+    if (this.options.maximizable) {
+      this._setupMaximizable();
+    }
+
+    // Setup mobile fullscreen
+    if (this.options.mobileFullscreen) {
+      this._setupMobileFullscreen();
+    }
+
+    // Setup sidebar layout
+    if (this.options.sidebar) {
+      this._setupSidebar();
     }
 
     // Bind events
@@ -115,10 +154,351 @@ class SOModal extends SOComponent {
    * @private
    */
   _shakeModal() {
-    this.element.classList.add('so-modal-static-shake');
+    this._playFeedbackAnimation('shake');
+  }
+
+  /**
+   * Play a feedback animation on the modal
+   * @param {string} type - Animation type: 'shake', 'pulse', 'bounce', 'headshake'
+   * @private
+   */
+  _playFeedbackAnimation(type = 'shake') {
+    const animationClass = `so-modal-feedback-${type}`;
+    this.element.classList.add(animationClass);
     setTimeout(() => {
-      this.element.classList.remove('so-modal-static-shake');
-    }, 300);
+      this.element.classList.remove(animationClass);
+    }, 500);
+  }
+
+  // ============================================
+  // DRAGGABLE FUNCTIONALITY
+  // ============================================
+
+  /**
+   * Setup draggable functionality
+   * @private
+   */
+  _setupDraggable() {
+    if (!this._header || !this._dialog) return;
+
+    this.element.classList.add('so-modal-draggable');
+    this._header.style.cursor = 'move';
+
+    // Bind drag handlers
+    this._boundDragStart = this._handleDragStart.bind(this);
+    this._boundDragMove = this._handleDragMove.bind(this);
+    this._boundDragEnd = this._handleDragEnd.bind(this);
+
+    this._header.addEventListener('mousedown', this._boundDragStart);
+    this._header.addEventListener('touchstart', this._boundDragStart, { passive: false });
+  }
+
+  /**
+   * Handle drag start
+   * @param {MouseEvent|TouchEvent} e
+   * @private
+   */
+  _handleDragStart(e) {
+    // Don't drag if clicking on buttons or close icon
+    if (e.target.closest('button, .so-modal-close, .so-modal-maximize')) return;
+    // Don't drag if maximized
+    if (this._isMaximized) return;
+
+    e.preventDefault();
+    this._isDragging = true;
+
+    const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+    const rect = this._dialog.getBoundingClientRect();
+    this._dragOffset = {
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    };
+
+    // Store initial position if not already dragged
+    if (!this._dragPosition.x && !this._dragPosition.y) {
+      this._dragPosition = {
+        x: rect.left,
+        y: rect.top
+      };
+    }
+
+    this.element.classList.add('so-modal-dragging');
+    this.emit(SOModal.EVENTS.DRAG_START);
+
+    // Add move/end listeners to document
+    document.addEventListener('mousemove', this._boundDragMove);
+    document.addEventListener('mouseup', this._boundDragEnd);
+    document.addEventListener('touchmove', this._boundDragMove, { passive: false });
+    document.addEventListener('touchend', this._boundDragEnd);
+  }
+
+  /**
+   * Handle drag move
+   * @param {MouseEvent|TouchEvent} e
+   * @private
+   */
+  _handleDragMove(e) {
+    if (!this._isDragging) return;
+    e.preventDefault();
+
+    const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+    let newX = clientX - this._dragOffset.x;
+    let newY = clientY - this._dragOffset.y;
+
+    // Constrain to viewport
+    const dialogRect = this._dialog.getBoundingClientRect();
+    const maxX = window.innerWidth - dialogRect.width;
+    const maxY = window.innerHeight - dialogRect.height;
+
+    newX = Math.max(0, Math.min(newX, maxX));
+    newY = Math.max(0, Math.min(newY, maxY));
+
+    this._dragPosition = { x: newX, y: newY };
+    this._dialog.style.position = 'fixed';
+    this._dialog.style.margin = '0';
+    this._dialog.style.left = `${newX}px`;
+    this._dialog.style.top = `${newY}px`;
+    this._dialog.style.transform = 'none';
+  }
+
+  /**
+   * Handle drag end
+   * @private
+   */
+  _handleDragEnd() {
+    if (!this._isDragging) return;
+
+    this._isDragging = false;
+    this.element.classList.remove('so-modal-dragging');
+    this.emit(SOModal.EVENTS.DRAG_END);
+
+    // Remove move/end listeners
+    document.removeEventListener('mousemove', this._boundDragMove);
+    document.removeEventListener('mouseup', this._boundDragEnd);
+    document.removeEventListener('touchmove', this._boundDragMove);
+    document.removeEventListener('touchend', this._boundDragEnd);
+  }
+
+  /**
+   * Reset drag position
+   * @private
+   */
+  _resetDragPosition() {
+    if (this._dialog) {
+      this._dialog.style.position = '';
+      this._dialog.style.left = '';
+      this._dialog.style.top = '';
+      this._dialog.style.margin = '';
+      this._dialog.style.transform = '';
+    }
+    this._dragPosition = { x: 0, y: 0 };
+  }
+
+  // ============================================
+  // MAXIMIZABLE FUNCTIONALITY
+  // ============================================
+
+  /**
+   * Setup maximizable functionality
+   * @private
+   */
+  _setupMaximizable() {
+    if (!this._header) return;
+
+    this.element.classList.add('so-modal-maximizable');
+
+    // Check if maximize button already exists (e.g., from SOModal.create())
+    this._maximizeBtn = this._header.querySelector('.so-modal-maximize');
+
+    // Create maximize button only if it doesn't exist
+    if (!this._maximizeBtn) {
+      this._maximizeBtn = document.createElement('button');
+      this._maximizeBtn.type = 'button';
+      this._maximizeBtn.className = 'so-modal-maximize';
+      this._maximizeBtn.innerHTML = '<span class="material-icons">open_in_full</span>';
+      this._maximizeBtn.title = 'Maximize';
+
+      // Insert before close button or at end of header
+      const closeBtn = this._header.querySelector('.so-modal-close');
+      if (closeBtn) {
+        closeBtn.parentNode.insertBefore(this._maximizeBtn, closeBtn);
+      } else {
+        this._header.appendChild(this._maximizeBtn);
+      }
+    }
+
+    // Bind click handler
+    this._maximizeBtn.addEventListener('click', () => this.toggleMaximize());
+
+    // Double-click header to maximize (if draggable)
+    if (this.options.draggable) {
+      this._header.addEventListener('dblclick', (e) => {
+        if (!e.target.closest('button, .so-modal-close, .so-modal-maximize')) {
+          this.toggleMaximize();
+        }
+      });
+    }
+  }
+
+  /**
+   * Maximize the modal
+   * @returns {this} For chaining
+   */
+  maximize() {
+    if (this._isMaximized) return this;
+
+    // Store original position/size for restore
+    this._originalSize = {
+      width: this._dialog.style.width,
+      height: this._dialog.style.height,
+      maxWidth: this._dialog.style.maxWidth,
+      maxHeight: this._dialog.style.maxHeight,
+      position: this._dialog.style.position,
+      left: this._dialog.style.left,
+      top: this._dialog.style.top,
+      transform: this._dialog.style.transform,
+      margin: this._dialog.style.margin,
+      borderRadius: this._dialog.style.borderRadius,
+      dragPosition: { ...this._dragPosition }
+    };
+
+    this._isMaximized = true;
+    this.element.classList.add('so-modal-maximized');
+
+    // Apply maximized styles
+    this._dialog.style.width = '100%';
+    this._dialog.style.height = '100%';
+    this._dialog.style.maxWidth = '100%';
+    this._dialog.style.maxHeight = '100%';
+    this._dialog.style.position = 'fixed';
+    this._dialog.style.left = '0';
+    this._dialog.style.top = '0';
+    this._dialog.style.transform = 'none';
+    this._dialog.style.margin = '0';
+    this._dialog.style.borderRadius = '0';
+
+    // Update maximize button icon
+    if (this._maximizeBtn) {
+      this._maximizeBtn.innerHTML = '<span class="material-icons">close_fullscreen</span>';
+      this._maximizeBtn.title = 'Restore';
+    }
+
+    // Update header cursor
+    if (this._header && this.options.draggable) {
+      this._header.style.cursor = 'default';
+    }
+
+    this.emit(SOModal.EVENTS.MAXIMIZE);
+    return this;
+  }
+
+  /**
+   * Restore the modal from maximized state
+   * @returns {this} For chaining
+   */
+  restore() {
+    if (!this._isMaximized) return this;
+
+    this._isMaximized = false;
+    this.element.classList.remove('so-modal-maximized');
+
+    // Restore original styles
+    if (this._originalSize) {
+      this._dialog.style.width = this._originalSize.width;
+      this._dialog.style.height = this._originalSize.height;
+      this._dialog.style.maxWidth = this._originalSize.maxWidth;
+      this._dialog.style.maxHeight = this._originalSize.maxHeight;
+      this._dialog.style.position = this._originalSize.position;
+      this._dialog.style.left = this._originalSize.left;
+      this._dialog.style.top = this._originalSize.top;
+      this._dialog.style.transform = this._originalSize.transform;
+      this._dialog.style.margin = this._originalSize.margin;
+      this._dialog.style.borderRadius = this._originalSize.borderRadius;
+      this._dragPosition = this._originalSize.dragPosition;
+    }
+
+    // Update maximize button icon
+    if (this._maximizeBtn) {
+      this._maximizeBtn.innerHTML = '<span class="material-icons">open_in_full</span>';
+      this._maximizeBtn.title = 'Maximize';
+    }
+
+    // Restore header cursor
+    if (this._header && this.options.draggable) {
+      this._header.style.cursor = 'move';
+    }
+
+    this.emit(SOModal.EVENTS.RESTORE);
+    return this;
+  }
+
+  /**
+   * Toggle between maximized and normal state
+   * @returns {this} For chaining
+   */
+  toggleMaximize() {
+    return this._isMaximized ? this.restore() : this.maximize();
+  }
+
+  /**
+   * Check if modal is maximized
+   * @returns {boolean}
+   */
+  isMaximized() {
+    return this._isMaximized;
+  }
+
+  // ============================================
+  // MOBILE FULLSCREEN
+  // ============================================
+
+  /**
+   * Setup mobile fullscreen auto-switch
+   * @private
+   */
+  _setupMobileFullscreen() {
+    this._checkMobileFullscreen = () => {
+      const isMobile = window.innerWidth < this.options.mobileBreakpoint;
+
+      if (isMobile && this._isOpen && !this._isMaximized) {
+        this.element.classList.add('so-modal-mobile-fullscreen');
+      } else {
+        this.element.classList.remove('so-modal-mobile-fullscreen');
+      }
+    };
+
+    // Check on resize
+    this._resizeObserver = new ResizeObserver(() => {
+      this._checkMobileFullscreen();
+    });
+    this._resizeObserver.observe(document.body);
+
+    // Initial check
+    this._checkMobileFullscreen();
+  }
+
+  // ============================================
+  // SIDEBAR LAYOUT
+  // ============================================
+
+  /**
+   * Setup sidebar layout
+   * @private
+   */
+  _setupSidebar() {
+    const position = this.options.sidebar === true ? 'left' : this.options.sidebar;
+
+    this.element.classList.add('so-modal-with-sidebar');
+    this.element.classList.add(`so-modal-sidebar-${position}`);
+
+    // Set sidebar width as CSS variable
+    if (this.options.sidebarWidth) {
+      this._dialog.style.setProperty('--so-modal-sidebar-width', this.options.sidebarWidth);
+    }
   }
 
   /**
@@ -226,11 +606,38 @@ class SOModal extends SOComponent {
       this._backdrop.classList.add('so-fade');
     }
 
+    // Set z-index for stacked modals
+    const modalIndex = SOModal._openModals.indexOf(this);
+    if (modalIndex > 0) {
+      this._backdrop.style.zIndex = SOModal._baseZIndex + (modalIndex * 10) - 1;
+    }
+
     document.body.appendChild(this._backdrop);
 
     // Force reflow for animation
     this._backdrop.offsetHeight;
     this._backdrop.classList.add('so-show');
+  }
+
+  /**
+   * Update z-index for nested modals
+   * @private
+   */
+  _updateZIndex() {
+    const modalIndex = SOModal._openModals.indexOf(this);
+    if (modalIndex > 0) {
+      // Each nested modal gets a higher z-index
+      const zIndex = SOModal._baseZIndex + (modalIndex * 10);
+      this.element.style.zIndex = zIndex;
+    }
+  }
+
+  /**
+   * Reset z-index when modal closes
+   * @private
+   */
+  _resetZIndex() {
+    this.element.style.zIndex = '';
   }
 
   /**
@@ -289,6 +696,14 @@ class SOModal extends SOComponent {
 
     // Add to open modals stack
     SOModal._openModals.push(this);
+
+    // Update z-index for nested modals
+    this._updateZIndex();
+
+    // Check mobile fullscreen
+    if (this.options.mobileFullscreen) {
+      this._checkMobileFullscreen();
+    }
 
     // Show backdrop
     this._showBackdrop();
@@ -386,6 +801,26 @@ class SOModal extends SOComponent {
       this.element.style.display = 'none';
       this._hideBackdrop();
       this._manageBodyScroll(false);
+
+      // Reset z-index for nested modals
+      this._resetZIndex();
+
+      // Reset drag position if draggable
+      if (this.options.draggable) {
+        this._resetDragPosition();
+      }
+
+      // Reset maximized state
+      if (this._isMaximized) {
+        this._isMaximized = false;
+        this.element.classList.remove('so-modal-maximized');
+        if (this._maximizeBtn) {
+          this._maximizeBtn.innerHTML = '<span class="material-icons">open_in_full</span>';
+        }
+      }
+
+      // Remove mobile fullscreen class
+      this.element.classList.remove('so-modal-mobile-fullscreen');
 
       // Restore focus
       if (this._previousActiveElement && typeof this._previousActiveElement.focus === 'function') {
@@ -521,15 +956,22 @@ class SOModal extends SOComponent {
       focusElement = 'footer',
       singleton = false,
       singletonId = null,
+      singletonFeedback = 'shake', // 'shake', 'pulse', 'bounce', 'headshake'
+      draggable = false,
+      maximizable = false,
+      mobileFullscreen = false,
+      mobileBreakpoint = 768,
+      sidebar = false,
+      sidebarWidth = '280px',
     } = options;
 
-    // Singleton check - if modal with same ID exists, shake it and return existing
+    // Singleton check - if modal with same ID exists, provide feedback and return existing
     if (singleton) {
       const id = singletonId || `singleton-${title.toLowerCase().replace(/\s+/g, '-')}`;
       const existingInstance = SOModal._singletonInstances.get(id);
 
       if (existingInstance && existingInstance._isOpen) {
-        existingInstance._shakeModal();
+        existingInstance._playFeedbackAnimation(singletonFeedback);
         return existingInstance;
       }
     }
@@ -589,9 +1031,12 @@ class SOModal extends SOComponent {
     // Size class goes on the modal container, not the dialog
     const sizeClass = size !== 'default' ? `so-modal-${size}` : '';
     const staticClass = isStatic ? 'so-modal-static' : '';
+    const sidebarClass = sidebar ? `so-modal-with-sidebar so-modal-sidebar-${sidebar === true ? 'left' : sidebar}` : '';
+    const draggableClass = draggable ? 'so-modal-draggable' : '';
+    const maximizableClass = maximizable ? 'so-modal-maximizable' : '';
 
     const modal = document.createElement('div');
-    modal.className = `so-modal so-fade ${sizeClass} ${staticClass} ${className}`.trim().replace(/\s+/g, ' ');
+    modal.className = `so-modal so-fade ${sizeClass} ${staticClass} ${sidebarClass} ${draggableClass} ${maximizableClass} ${className}`.trim().replace(/\s+/g, ' ');
     modal.tabIndex = -1;
 
     // For static modals, set the data attribute
@@ -666,16 +1111,47 @@ class SOModal extends SOComponent {
     // Don't show close button if static or not closable
     const showCloseButton = closable && !isStatic;
 
+    // Build header buttons (maximize + close)
+    let headerButtons = '';
+    if (maximizable) {
+      headerButtons += '<button type="button" class="so-modal-maximize" title="Maximize"><span class="material-icons">open_in_full</span></button>';
+    }
+    if (showCloseButton) {
+      headerButtons += '<button type="button" class="so-modal-close" data-dismiss="modal"><span class="material-icons">close</span></button>';
+    }
+
+    // Build main content area (with sidebar support)
+    let mainContentHtml = '';
+    if (sidebar && typeof content === 'object' && content.sidebar !== undefined) {
+      // Content has sidebar + main sections
+      const sidebarContent = content.sidebar || '';
+      const mainContent = content.main || '';
+      mainContentHtml = `
+        <div class="so-modal-body so-modal-body-with-sidebar">
+          <div class="so-modal-sidebar">${sidebarContent}</div>
+          <div class="so-modal-main">${mainContent}</div>
+        </div>
+      `;
+    } else {
+      // Regular content
+      const contentStr = typeof content === 'object' ? (content.main || '') : content;
+      mainContentHtml = `<div class="so-modal-body">${contentStr}</div>`;
+    }
+
+    // Set sidebar width as CSS variable
+    let dialogStyle = '';
+    if (sidebar && sidebarWidth) {
+      dialogStyle = `style="--so-modal-sidebar-width: ${sidebarWidth}"`;
+    }
+
     modal.innerHTML = `
-      <div class="so-modal-dialog">
+      <div class="so-modal-dialog" ${dialogStyle}>
         <div class="so-modal-content">
-          <div class="so-modal-header">
+          <div class="so-modal-header"${draggable ? ' style="cursor: move"' : ''}>
             <h5 class="so-modal-title">${title}</h5>
-            ${showCloseButton ? '<button type="button" class="so-modal-close" data-dismiss="modal"><span class="material-icons">close</span></button>' : ''}
+            ${headerButtons}
           </div>
-          <div class="so-modal-body">
-            ${content}
-          </div>
+          ${mainContentHtml}
           ${footerHtml}
         </div>
       </div>
@@ -695,7 +1171,13 @@ class SOModal extends SOComponent {
       ...options,
       animation: true,
       static: isStatic,
-      focusElement  // Explicitly pass focusElement
+      focusElement,
+      draggable,
+      maximizable,
+      mobileFullscreen,
+      mobileBreakpoint,
+      sidebar,
+      sidebarWidth,
     });
 
     // Store the instance on the element for easy retrieval

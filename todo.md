@@ -77,11 +77,11 @@
 - [ ] Inline cell editing
 
 ### Modal (so-modal.js)
-- [ ] Draggable modal (movable by header)
-- [ ] Maximizable/minimize toggle
-- [ ] Nested modal management
-- [ ] Mobile fullscreen auto-switch
-- [ ] Modal with sidebar layout
+- [x] Draggable modal (movable by header) ✓ IMPLEMENTED
+- [x] Maximizable/minimize toggle ✓ IMPLEMENTED
+- [x] Nested modal management ✓ IMPLEMENTED
+- [x] Mobile fullscreen auto-switch ✓ IMPLEMENTED
+- [x] Modal with sidebar layout ✓ IMPLEMENTED
 
 ### Tabs (so-tabs.js)
 - [x] Closable tabs (X button) ✓ IMPLEMENTED

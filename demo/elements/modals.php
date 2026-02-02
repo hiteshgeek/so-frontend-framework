@@ -944,23 +944,20 @@ if (result) {
                 </button>
             </div>
 
-            <h5 class="so-mb-3 so-mt-4">Singleton with Animation Options</h5>
-            <p class="so-text-secondary so-text-sm so-mb-3">Customize the modal entrance animation or disable it entirely.</p>
+            <h5 class="so-mb-3 so-mt-4">Duplicate Attempt Feedback</h5>
+            <p class="so-text-secondary so-text-sm so-mb-3">When trying to open an already-open singleton modal, it provides visual feedback. Click the button twice to see the effect.</p>
             <div class="so-btn-group so-flex-wrap so-mb-4">
-                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithAnimation('none')">
-                    No Animation
+                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithFeedback('shake')">
+                    Shake (Default)
                 </button>
-                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithAnimation('bounce-in')">
-                    Bounce In
+                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithFeedback('pulse')">
+                    Pulse
                 </button>
-                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithAnimation('scale-in')">
-                    Scale In
+                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithFeedback('bounce')">
+                    Bounce
                 </button>
-                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithAnimation('fade-in-up')">
-                    Fade In Up
-                </button>
-                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithAnimation('slide-in-up')">
-                    Slide In Up
+                <button type="button" class="so-btn so-btn-outline" onclick="showSingletonModalWithFeedback('headshake')">
+                    Head Shake
                 </button>
             </div>
 
@@ -981,29 +978,320 @@ SOModal.create({
     footer: [...]
 });
 
-// Singleton with no animation
+// When trying to open the same singleton again:
+// - Default behavior: shake animation
+// - Can customize with singletonFeedback option
+
 SOModal.create({
-    title: \'Quick Modal\',
-    content: \'<p>Appears instantly without animation.</p>\',
+    title: \'My Singleton\',
+    content: \'...\',
     singleton: true,
-    singletonId: \'quick-modal\',
-    animation: false  // Disable fade animation
+    singletonId: \'my-modal\',
+    singletonFeedback: \'pulse\'  // \'shake\' (default), \'pulse\', \'bounce\', \'headshake\'
+});', 'javascript') ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Draggable Modal -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Draggable Modal</h3>
+            <span class="so-badge so-badge-primary">New</span>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Modals can be dragged by their header. Click and hold the header to move the modal around the screen.</p>
+
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="showDraggableModal()">
+                    Draggable Modal
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showDraggableModal('lg')">
+                    Large Draggable
+                </button>
+            </div>
+
+            <div class="so-alert so-alert-info so-alert-sm so-mb-4">
+                <span class="material-icons">info</span>
+                <div>Dragging is disabled on mobile devices and when the modal is maximized.</div>
+            </div>
+
+            <div class="so-mt-4">
+                <?= so_code_tabs('draggable-modal', [
+                    [
+                        'label' => 'HTML',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Draggable modal via data attribute -->
+<div class="so-modal so-modal-draggable" data-so-draggable="true">
+    <div class="so-modal-dialog">
+        <div class="so-modal-header" style="cursor: move">
+            <h5 class="so-modal-title">Draggable Modal</h5>
+            <button class="so-modal-close" data-dismiss="modal">...</button>
+        </div>
+        <div class="so-modal-body">...</div>
+        <div class="so-modal-footer">...</div>
+    </div>
+</div>'
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => '// Create draggable modal programmatically
+const modal = SOModal.create({
+    title: \'Draggable Modal\',
+    content: \'<p>Drag me by the header!</p>\',
+    draggable: true,
+    footer: [
+        { content: \'Close\', dismiss: true }
+    ]
+});
+modal.show();
+
+// Events
+modal.element.addEventListener(\'so:modal:drag-start\', () => {
+    console.log(\'Started dragging\');
 });
 
-// Singleton with custom animation
-SOModal.create({
-    title: \'Bouncy Modal\',
-    content: \'<p>Custom entrance animation.</p>\',
-    singleton: true,
-    singletonId: \'bouncy-modal\',
-    className: \'so-animate so-animate-bounce-in\'  // Use framework animations
+modal.element.addEventListener(\'so:modal:drag-end\', () => {
+    console.log(\'Stopped dragging\');
+});'
+                    ]
+                ]) ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maximizable Modal -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Maximizable Modal</h3>
+            <span class="so-badge so-badge-primary">New</span>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Modals can have a maximize button that expands them to fullscreen. Click the maximize button in the header or double-click the header (when draggable).</p>
+
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="showMaximizableModal()">
+                    Maximizable Modal
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showDraggableMaximizableModal()">
+                    Draggable + Maximizable
+                </button>
+            </div>
+
+            <div class="so-alert so-alert-info so-alert-sm so-mb-4">
+                <span class="material-icons">info</span>
+                <div>When both draggable and maximizable, double-click the header to toggle maximize.</div>
+            </div>
+
+            <div class="so-mt-4">
+                <?= so_code_block('// Create maximizable modal
+const modal = SOModal.create({
+    title: \'Maximizable Modal\',
+    content: \'<p>Click the expand button to maximize!</p>\',
+    maximizable: true,
+    footer: [
+        { content: \'Close\', dismiss: true }
+    ]
+});
+modal.show();
+
+// Programmatic control
+modal.maximize();   // Maximize the modal
+modal.restore();    // Restore to original size
+modal.toggleMaximize(); // Toggle between states
+modal.isMaximized(); // Check if maximized
+
+// Events
+modal.element.addEventListener(\'so:modal:maximize\', () => {
+    console.log(\'Modal maximized\');
 });
 
-// Available animations:
-// - so-animate-bounce-in, so-animate-scale-in, so-animate-zoom-in
-// - so-animate-fade-in-up, so-animate-fade-in-down
-// - so-animate-slide-in-up, so-animate-slide-in-down
-// - so-animate-tada, so-animate-swing', 'javascript') ?>
+modal.element.addEventListener(\'so:modal:restore\', () => {
+    console.log(\'Modal restored\');
+});
+
+// Draggable + Maximizable (double-click to maximize)
+SOModal.create({
+    title: \'Window-like Modal\',
+    content: \'...\',
+    draggable: true,
+    maximizable: true
+});', 'javascript') ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nested Modals -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Nested Modals</h3>
+            <span class="so-badge so-badge-primary">Improved</span>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Multiple modals can be stacked. Each nested modal gets a higher z-index and its own backdrop. Only the topmost modal responds to Escape key.</p>
+
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="showNestedModalDemo()">
+                    Open Nested Modals Demo
+                </button>
+            </div>
+
+            <div class="so-mt-4">
+                <?= so_code_block('// Open first modal
+const modal1 = SOModal.create({
+    title: \'First Modal\',
+    content: `
+        <p>This is the first (parent) modal.</p>
+        <button class="so-btn so-btn-primary" onclick="openSecondModal()">
+            Open Second Modal
+        </button>
+    `
+});
+modal1.show();
+
+// Open second modal (stacks on top)
+function openSecondModal() {
+    const modal2 = SOModal.create({
+        title: \'Second Modal\',
+        content: `
+            <p>This modal is stacked on top of the first.</p>
+            <p>Press Escape to close this modal only.</p>
+        `
+    });
+    modal2.show();
+}
+
+// Z-index stacking is automatic
+// Escape closes only the topmost modal
+// Each modal has its own backdrop', 'javascript') ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Fullscreen -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Mobile Fullscreen</h3>
+            <span class="so-badge so-badge-primary">New</span>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Modals can automatically switch to fullscreen mode on mobile devices. This improves usability on small screens.</p>
+
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="showMobileFullscreenModal()">
+                    Mobile Fullscreen Modal
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showMobileFullscreenModal(480)">
+                    Custom Breakpoint (480px)
+                </button>
+            </div>
+
+            <div class="so-alert so-alert-info so-alert-sm so-mb-4">
+                <span class="material-icons">info</span>
+                <div>Resize your browser to below 768px to see the fullscreen effect.</div>
+            </div>
+
+            <div class="so-mt-4">
+                <?= so_code_block('// Auto fullscreen on mobile (< 768px)
+const modal = SOModal.create({
+    title: \'Responsive Modal\',
+    content: \'<p>This modal becomes fullscreen on mobile!</p>\',
+    mobileFullscreen: true,
+    footer: [...]
+});
+
+// Custom breakpoint
+SOModal.create({
+    title: \'Custom Breakpoint\',
+    content: \'...\',
+    mobileFullscreen: true,
+    mobileBreakpoint: 480 // Fullscreen below 480px
+});
+
+// Mobile fullscreen automatically:
+// - Disables dragging
+// - Hides maximize button
+// - Removes border radius
+// - Expands to full viewport', 'javascript') ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal with Sidebar -->
+    <div class="so-card so-mb-4">
+        <div class="so-card-header">
+            <h3 class="so-card-title">Modal with Sidebar</h3>
+            <span class="so-badge so-badge-primary">New</span>
+        </div>
+        <div class="so-card-body">
+            <p class="so-text-secondary so-mb-4">Modals can have a sidebar layout, useful for settings panels, file browsers, or any content that benefits from a navigation area.</p>
+
+            <div class="so-btn-group so-flex-wrap so-mb-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="showSidebarModal('left')">
+                    Sidebar Left
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showSidebarModal('right')">
+                    Sidebar Right
+                </button>
+                <button type="button" class="so-btn so-btn-outline" onclick="showSidebarModalCustomWidth()">
+                    Custom Width (200px)
+                </button>
+            </div>
+
+            <div class="so-alert so-alert-info so-alert-sm so-mb-4">
+                <span class="material-icons">info</span>
+                <div>On mobile, the sidebar stacks above the main content.</div>
+            </div>
+
+            <div class="so-mt-4">
+                <?= so_code_block('// Sidebar on the left (default)
+const modal = SOModal.create({
+    title: \'Settings\',
+    sidebar: \'left\', // or true (defaults to left)
+    sidebarWidth: \'280px\', // default
+    content: {
+        sidebar: `
+            <div class="so-list-group so-list-group-flush">
+                <a href="#" class="so-list-group-item so-list-group-item-action so-active">General</a>
+                <a href="#" class="so-list-group-item so-list-group-item-action">Account</a>
+                <a href="#" class="so-list-group-item so-list-group-item-action">Privacy</a>
+            </div>
+        `,
+        main: `
+            <h4>General Settings</h4>
+            <div class="so-form-group">
+                <label class="so-form-label">Language</label>
+                <select class="so-form-control" data-so-select>
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </div>
+        `
+    },
+    footer: [
+        { content: \'Cancel\', dismiss: true },
+        { content: \'Save\', class: \'so-btn-primary\' }
+    ]
+});
+modal.show();
+
+// Initialize select components after modal is shown
+modal.element.addEventListener(\'so:modal:shown\', () => {
+    modal.element.querySelectorAll(\'[data-so-select]\').forEach(el => {
+        if (!el._soSelectInstance) new SOSelect(el);
+    });
+});
+
+// Custom sidebar width
+SOModal.create({
+    title: \'Compact Sidebar\',
+    sidebar: \'left\',
+    sidebarWidth: \'200px\',
+    content: {...}
+});', 'javascript') ?>
             </div>
         </div>
     </div>
@@ -1826,42 +2114,314 @@ function showSingletonModal() {
     modal.show();
 }
 
-// Singleton Modal with Animation Options
-function showSingletonModalWithAnimation(animationType) {
-    const animationNames = {
-        'none': 'No Animation',
-        'bounce-in': 'Bounce In',
-        'scale-in': 'Scale In',
-        'fade-in-up': 'Fade In Up',
-        'slide-in-up': 'Slide In Up'
+// Singleton Modal with Duplicate Attempt Feedback
+function showSingletonModalWithFeedback(feedbackType) {
+    const feedbackNames = {
+        'shake': 'Shake',
+        'pulse': 'Pulse',
+        'bounce': 'Bounce',
+        'headshake': 'Head Shake'
     };
 
     const options = {
-        title: `Singleton - ${animationNames[animationType]}`,
+        title: `Singleton - ${feedbackNames[feedbackType]} Feedback`,
         content: `
-            <p>This singleton modal uses <strong>${animationType === 'none' ? 'no animation' : 'so-animate-' + animationType}</strong> for its entrance.</p>
-            <p>Click the button below to try opening another instance - the modal will shake instead.</p>
+            <p>This singleton uses <strong>${feedbackType}</strong> animation when you try to open it again while already open.</p>
+            <p>Click the button below to see the feedback animation:</p>
             <div class="so-mt-4">
-                <button type="button" class="so-btn so-btn-primary" onclick="showSingletonModalWithAnimation('${animationType}')">
-                    <span class="material-icons">add</span> Try Open Another
+                <button type="button" class="so-btn so-btn-primary" onclick="showSingletonModalWithFeedback('${feedbackType}')">
+                    <span class="material-icons">add</span> Try Open Again
                 </button>
             </div>
         `,
         singleton: true,
-        singletonId: 'demo-singleton-animated',
+        singletonId: 'demo-singleton-feedback',
+        singletonFeedback: feedbackType,
         footer: [
             { content: 'Close', class: 'so-btn-outline', dismiss: true }
         ]
     };
 
-    // Apply animation settings
-    if (animationType === 'none') {
-        options.animation = false;
-    } else {
-        options.className = `so-animate so-animate-${animationType}`;
-    }
-
     const modal = SOModal.create(options);
+    modal.show();
+}
+
+// Draggable Modal Demos
+function showDraggableModal(size = 'default') {
+    const modal = SOModal.create({
+        title: 'Draggable Modal',
+        content: `
+            <p>This modal can be dragged by its header. Try clicking and dragging the header bar!</p>
+            <p>The modal is constrained to the viewport boundaries.</p>
+            <div class="so-alert so-alert-info so-alert-sm so-mt-3">
+                <span class="material-icons">touch_app</span>
+                <div>Works with both mouse and touch events.</div>
+            </div>
+        `,
+        size: size,
+        draggable: true,
+        footer: [
+            { content: 'Cancel', class: 'so-btn-outline', dismiss: true },
+            { content: 'OK', class: 'so-btn-primary', dismiss: true }
+        ]
+    });
+    modal.show();
+}
+
+// Maximizable Modal Demos
+function showMaximizableModal() {
+    const modal = SOModal.create({
+        title: 'Maximizable Modal',
+        content: `
+            <p>Click the <span class="material-icons" style="vertical-align: middle; font-size: 18px;">open_in_full</span> button in the header to maximize this modal to fullscreen.</p>
+            <p>Click it again (or the <span class="material-icons" style="vertical-align: middle; font-size: 18px;">close_fullscreen</span> button) to restore it.</p>
+            <div class="so-mt-4">
+                <h5>Maximized State Features:</h5>
+                <ul>
+                    <li>Full viewport coverage</li>
+                    <li>No border radius</li>
+                    <li>Content area expands</li>
+                    <li>Dragging is disabled</li>
+                </ul>
+            </div>
+        `,
+        maximizable: true,
+        footer: [
+            { content: 'Close', class: 'so-btn-outline', dismiss: true }
+        ]
+    });
+    modal.show();
+}
+
+function showDraggableMaximizableModal() {
+    const modal = SOModal.create({
+        title: 'Draggable + Maximizable',
+        content: `
+            <p>This modal combines both features:</p>
+            <ul>
+                <li><strong>Drag:</strong> Click and hold the header to move</li>
+                <li><strong>Maximize:</strong> Click the expand button OR double-click the header</li>
+            </ul>
+            <p class="so-text-secondary so-mt-3">When maximized, dragging is disabled. Restore to normal size to drag again.</p>
+        `,
+        draggable: true,
+        maximizable: true,
+        footer: [
+            { content: 'Close', class: 'so-btn-outline', dismiss: true }
+        ]
+    });
+    modal.show();
+}
+
+// Nested Modals Demo
+function showNestedModalDemo() {
+    const modal1 = SOModal.create({
+        title: 'First Modal (Level 1)',
+        content: `
+            <p>This is the first (parent) modal.</p>
+            <p>Each nested modal gets a higher z-index and its own backdrop.</p>
+            <div class="so-mt-4">
+                <button type="button" class="so-btn so-btn-primary" onclick="openNestedModal2()">
+                    <span class="material-icons">layers</span> Open Second Modal
+                </button>
+            </div>
+        `,
+        footer: [
+            { content: 'Close', class: 'so-btn-outline', dismiss: true }
+        ]
+    });
+    modal1.show();
+}
+
+function openNestedModal2() {
+    const modal2 = SOModal.create({
+        title: 'Second Modal (Level 2)',
+        content: `
+            <p>This modal is stacked on top of the first.</p>
+            <p>Press <kbd>Escape</kbd> to close only this modal.</p>
+            <div class="so-mt-4">
+                <button type="button" class="so-btn so-btn-warning" onclick="openNestedModal3()">
+                    <span class="material-icons">layers</span> Open Third Modal
+                </button>
+            </div>
+        `,
+        footer: [
+            { content: 'Close', class: 'so-btn-outline', dismiss: true }
+        ]
+    });
+    modal2.show();
+}
+
+function openNestedModal3() {
+    const modal3 = SOModal.create({
+        title: 'Third Modal (Level 3)',
+        content: `
+            <p>This is the third level!</p>
+            <p>Each modal maintains its own state and can be closed independently.</p>
+            <div class="so-alert so-alert-success so-alert-sm so-mt-3">
+                <span class="material-icons">check_circle</span>
+                <div>Z-index stacking is handled automatically.</div>
+            </div>
+        `,
+        size: 'sm',
+        footer: [
+            { content: 'Close All', class: 'so-btn-outline', onclick: () => {
+                // Close all modals by pressing escape multiple times equivalent
+                document.querySelectorAll('.so-modal.so-show').forEach(m => {
+                    SOModal.getInstance(m)?.hide();
+                });
+            }},
+            { content: 'Close This', class: 'so-btn-primary', dismiss: true }
+        ]
+    });
+    modal3.show();
+}
+
+// Mobile Fullscreen Demo
+function showMobileFullscreenModal(breakpoint = 768) {
+    const modal = SOModal.create({
+        title: 'Responsive Modal',
+        content: `
+            <p>This modal automatically switches to fullscreen on mobile devices.</p>
+            <p><strong>Current breakpoint:</strong> ${breakpoint}px</p>
+            <p>Resize your browser window below ${breakpoint}px to see the fullscreen effect.</p>
+            <div class="so-alert so-alert-info so-alert-sm so-mt-3">
+                <span class="material-icons">phone_android</span>
+                <div>In mobile fullscreen mode:</div>
+            </div>
+            <ul>
+                <li>Modal fills the entire viewport</li>
+                <li>Dragging is disabled</li>
+                <li>Maximize button is hidden</li>
+                <li>Border radius is removed</li>
+            </ul>
+        `,
+        mobileFullscreen: true,
+        mobileBreakpoint: breakpoint,
+        footer: [
+            { content: 'Close', class: 'so-btn-outline', dismiss: true },
+            { content: 'Got It', class: 'so-btn-primary', dismiss: true }
+        ]
+    });
+    modal.show();
+}
+
+// Modal with Sidebar Demos
+function showSidebarModal(position = 'left') {
+    const sidebarContent = `
+        <div class="so-list-group so-list-group-flush">
+            <a href="#" class="so-list-group-item so-list-group-item-action so-active">
+                <span class="material-icons">settings</span>
+                General
+            </a>
+            <a href="#" class="so-list-group-item so-list-group-item-action">
+                <span class="material-icons">person</span>
+                Account
+            </a>
+            <a href="#" class="so-list-group-item so-list-group-item-action">
+                <span class="material-icons">lock</span>
+                Privacy
+            </a>
+            <a href="#" class="so-list-group-item so-list-group-item-action">
+                <span class="material-icons">notifications</span>
+                Notifications
+            </a>
+            <a href="#" class="so-list-group-item so-list-group-item-action">
+                <span class="material-icons">palette</span>
+                Appearance
+            </a>
+        </div>
+    `;
+
+    const mainContent = `
+        <h4 class="so-mb-4">General Settings</h4>
+        <div class="so-form-group">
+            <label class="so-form-label">Language</label>
+            <select class="so-form-control" data-so-select>
+                <option value="en" selected>English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="ja">Japanese</option>
+            </select>
+        </div>
+        <div class="so-form-group">
+            <label class="so-form-label">Timezone</label>
+            <select class="so-form-control" data-so-select>
+                <option value="utc" selected>UTC</option>
+                <option value="est">EST (Eastern)</option>
+                <option value="pst">PST (Pacific)</option>
+                <option value="gmt">GMT</option>
+                <option value="ist">IST (India)</option>
+            </select>
+        </div>
+        <div class="so-form-group">
+            <label class="so-checkbox">
+                <input type="checkbox" checked>
+                <span class="so-checkbox-mark"></span>
+                <span class="so-checkbox-label">Enable auto-save</span>
+            </label>
+        </div>
+    `;
+
+    const modal = SOModal.create({
+        title: 'Settings',
+        sidebar: position,
+        size: 'lg',
+        content: {
+            sidebar: sidebarContent,
+            main: mainContent
+        },
+        footer: [
+            { content: 'Cancel', class: 'so-btn-outline', dismiss: true },
+            { content: [{ icon: 'save' }, 'Save Changes'], class: 'so-btn-primary', dismiss: true }
+        ]
+    });
+    modal.show();
+
+    // Initialize select components after modal is shown
+    modal.element.addEventListener('so:modal:shown', () => {
+        modal.element.querySelectorAll('[data-so-select]').forEach(el => {
+            if (typeof SOSelect !== 'undefined' && !el._soSelectInstance) {
+                new SOSelect(el);
+            }
+        });
+    });
+}
+
+function showSidebarModalCustomWidth() {
+    const modal = SOModal.create({
+        title: 'Compact Sidebar',
+        sidebar: 'left',
+        sidebarWidth: '200px',
+        content: {
+            sidebar: `
+                <div class="so-text-center so-py-3">
+                    <span class="material-icons so-text-primary" style="font-size: 48px;">folder</span>
+                </div>
+                <div class="so-list-group so-list-group-flush so-list-group-sm">
+                    <a href="#" class="so-list-group-item so-list-group-item-action so-active">Documents</a>
+                    <a href="#" class="so-list-group-item so-list-group-item-action">Images</a>
+                    <a href="#" class="so-list-group-item so-list-group-item-action">Downloads</a>
+                    <a href="#" class="so-list-group-item so-list-group-item-action">Shared</a>
+                </div>
+            `,
+            main: `
+                <h5 class="so-mb-3">Documents</h5>
+                <p class="so-text-secondary">Select a folder from the sidebar to view its contents.</p>
+                <div class="so-border so-rounded so-p-3 so-mt-3 so-bg-light">
+                    <p class="so-text-center so-text-secondary so-my-4">
+                        <span class="material-icons" style="font-size: 48px; opacity: 0.5;">folder_open</span>
+                        <br>
+                        No files in this folder
+                    </p>
+                </div>
+            `
+        },
+        footer: [
+            { content: 'Close', class: 'so-btn-outline', dismiss: true }
+        ]
+    });
     modal.show();
 }
 </script>

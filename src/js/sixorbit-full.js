@@ -35,6 +35,9 @@ import { SOInputMask, SOPasswordStrength, SOCharCounter, SOInputClear, initAllFo
 import SOForms from './features/so-forms.js';
 // Note: SOAuth moved to src/pages/auth/auth.js (page-specific)
 
+// UI Engine
+import { UiEngine, ValidationEngine, ErrorReporter, Element as UiElement, FormElement as UiFormElement, ContainerElement as UiContainerElement } from './ui-engine/index.js';
+
 // Expose components to global window for inline script usage
 window.SOModal = SOModal;
 window.SODrawer = SODrawer;
@@ -56,6 +59,11 @@ window.SOInputMask = SOInputMask;
 window.SOPasswordStrength = SOPasswordStrength;
 window.SOCharCounter = SOCharCounter;
 window.SOInputClear = SOInputClear;
+
+// UI Engine
+window.UiEngine = UiEngine;
+window.ValidationEngine = ValidationEngine;
+window.ErrorReporter = ErrorReporter;
 
 // Auto-initialize all components when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -155,6 +163,13 @@ export {
   SOPasswordStrength,
   SOCharCounter,
   SOInputClear,
+  // UI Engine
+  UiEngine,
+  ValidationEngine,
+  ErrorReporter,
+  UiElement,
+  UiFormElement,
+  UiContainerElement,
 };
 
 export default SixOrbit;

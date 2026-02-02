@@ -5,7 +5,7 @@
 
 // Load sidebar menu data
 $sidebarMenu = load_data('sidebar-menu.json');
-$currentPage = get_current_page();
+$currentPagePath = get_current_page_path();
 
 // Base path for all demo URLs (absolute)
 $demoBase = '/demo/';
@@ -13,16 +13,17 @@ $demoBase = '/demo/';
 /**
  * Check if any child item is active (recursively)
  */
-function check_children_active($children, $currentPage) {
+function check_children_active($children, $currentPagePath) {
     foreach ($children as $child) {
         $childUrl = $child['url'] ?? '';
         // Skip external URLs (containing ..) from active check
         if (strpos($childUrl, '..') === false) {
-            if ($childUrl === $currentPage . '.php' || preg_match('/\/' . preg_quote($currentPage, '/') . '\.php$/', $childUrl)) {
+            // Compare full paths for exact matching
+            if ($childUrl === $currentPagePath) {
                 return true;
             }
         }
-        if (!empty($child['children']) && check_children_active($child['children'], $currentPage)) {
+        if (!empty($child['children']) && check_children_active($child['children'], $currentPagePath)) {
             return true;
         }
     }
@@ -32,7 +33,7 @@ function check_children_active($children, $currentPage) {
 /**
  * Render sidebar menu items recursively
  */
-function render_menu_items($items, $currentPage, $depth = 0) {
+function render_menu_items($items, $currentPagePath, $depth = 0) {
     global $demoBase;
     $html = '';
     foreach ($items as $item) {
@@ -41,13 +42,14 @@ function render_menu_items($items, $currentPage, $depth = 0) {
         // Skip external URLs (containing ..) from active check
         $isActive = false;
         if (strpos($itemUrl, '..') === false) {
-            $isActive = $itemUrl === $currentPage . '.php' || preg_match('/\/' . preg_quote($currentPage, '/') . '\.php$/', $itemUrl);
+            // Compare full paths for exact matching
+            $isActive = ($itemUrl === $currentPagePath);
         }
         $isCurrent = $isActive;
 
         // Check if any child is active (recursively)
         if ($hasChildren) {
-            $isActive = check_children_active($item['children'], $currentPage) || $isActive;
+            $isActive = check_children_active($item['children'], $currentPagePath) || $isActive;
         }
 
         $itemClass = 'so-sidebar-item';
@@ -79,7 +81,7 @@ function render_menu_items($items, $currentPage, $depth = 0) {
 
         if ($hasChildren) {
             $html .= '<ul class="so-sidebar-submenu">';
-            $html .= render_menu_items($item['children'], $currentPage, $depth + 1);
+            $html .= render_menu_items($item['children'], $currentPagePath, $depth + 1);
             $html .= '</ul>';
         }
 
@@ -106,7 +108,7 @@ function render_menu_items($items, $currentPage, $depth = 0) {
         <!-- Navigation Menu -->
         <ul class="so-sidebar-nav">
             <?php if (!empty($sidebarMenu['menu'])): ?>
-                <?= render_menu_items($sidebarMenu['menu'], $currentPage) ?>
+                <?= render_menu_items($sidebarMenu['menu'], $currentPagePath) ?>
             <?php else: ?>
                 <!-- Fallback menu -->
                 <li class="so-sidebar-item <?= is_page('index') ? 'current' : '' ?>">

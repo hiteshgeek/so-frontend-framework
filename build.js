@@ -27,12 +27,14 @@ const distDir = path.join(rootDir, "dist");
 const cssModules = [
   { name: "sixorbit-base", entry: "sixorbit-base.scss", type: "base" },
   { name: "sixorbit-full", entry: "sixorbit-full.scss", type: "bundle" },
+  { name: "ui-engine", entry: "ui-engine/ui-engine.scss", type: "standalone" },
 ];
 
 // JS Modules Configuration
 const jsModules = [
   { name: "sixorbit-core", entry: "sixorbit-core.js", globalName: "SixOrbitCore" },
   { name: "sixorbit-full", entry: "sixorbit-full.js", globalName: "SixOrbit" },
+  { name: "ui-engine", entry: "ui-engine/ui-engine.js", globalName: "UiEngine" },
 ];
 
 // Page-specific Modules Configuration

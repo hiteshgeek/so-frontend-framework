@@ -414,6 +414,97 @@
               "url": "elements/utilities.php"
             }
           ]
+        },
+        {
+          "id": "ui-engine",
+          "title": "UI Engine",
+          "icon": "auto_awesome",
+          "badge": "New",
+          "children": [
+            {
+              "id": "uie-overview",
+              "title": "Overview",
+              "icon": "home",
+              "url": "ui-engine/index.php"
+            },
+            {
+              "id": "uie-form",
+              "title": "Form Elements",
+              "icon": "input",
+              "children": [
+                {"id": "uie-input", "title": "Input", "icon": "text_fields", "url": "ui-engine/form/input.php"},
+                {"id": "uie-select", "title": "Select", "icon": "arrow_drop_down", "url": "ui-engine/form/select.php"},
+                {"id": "uie-checkbox", "title": "Checkbox", "icon": "check_box", "url": "ui-engine/form/checkbox.php"},
+                {"id": "uie-radio", "title": "Radio", "icon": "radio_button_checked", "url": "ui-engine/form/radio.php"},
+                {"id": "uie-textarea", "title": "Textarea", "icon": "notes", "url": "ui-engine/form/textarea.php"},
+                {"id": "uie-button", "title": "Button", "icon": "smart_button", "url": "ui-engine/form/button.php"},
+                {"id": "uie-file-input", "title": "File Input", "icon": "attach_file", "url": "ui-engine/form/file-input.php"},
+                {"id": "uie-hidden", "title": "Hidden", "icon": "visibility_off", "url": "ui-engine/form/hidden.php"},
+                {"id": "uie-form", "title": "Form", "icon": "description", "url": "ui-engine/form/form.php"},
+                {"id": "uie-autocomplete", "title": "Autocomplete", "icon": "search", "url": "ui-engine/form/autocomplete.php"},
+                {"id": "uie-color-input", "title": "Color Input", "icon": "palette", "url": "ui-engine/form/color-input.php"},
+                {"id": "uie-date-picker", "title": "Date Picker", "icon": "calendar_today", "url": "ui-engine/form/date-picker.php"},
+                {"id": "uie-time-picker", "title": "Time Picker", "icon": "schedule", "url": "ui-engine/form/time-picker.php"},
+                {"id": "uie-toggle", "title": "Toggle", "icon": "toggle_on", "url": "ui-engine/form/toggle.php"},
+                {"id": "uie-slider", "title": "Slider", "icon": "tune", "url": "ui-engine/form/slider.php"},
+                {"id": "uie-dropzone", "title": "Dropzone", "icon": "cloud_upload", "url": "ui-engine/form/dropzone.php"},
+                {"id": "uie-otp-input", "title": "OTP Input", "icon": "pin", "url": "ui-engine/form/otp-input.php"}
+              ]
+            },
+            {
+              "id": "uie-display",
+              "title": "Display Elements",
+              "icon": "widgets",
+              "children": [
+                {"id": "uie-accordion", "title": "Accordion", "icon": "expand_more", "url": "ui-engine/display/accordion.php"},
+                {"id": "uie-alert", "title": "Alert", "icon": "warning", "url": "ui-engine/display/alert.php"},
+                {"id": "uie-badge", "title": "Badge", "icon": "new_releases", "url": "ui-engine/display/badge.php"},
+                {"id": "uie-card", "title": "Card", "icon": "credit_card", "url": "ui-engine/display/card.php"},
+                {"id": "uie-modal", "title": "Modal", "icon": "open_in_new", "url": "ui-engine/display/modal.php"},
+                {"id": "uie-progress", "title": "Progress", "icon": "donut_large", "url": "ui-engine/display/progress.php"},
+                {"id": "uie-table", "title": "Table", "icon": "table_chart", "url": "ui-engine/display/table.php"},
+                {"id": "uie-tabs", "title": "Tabs", "icon": "tab", "url": "ui-engine/display/tabs.php"},
+                {"id": "uie-toast", "title": "Toast", "icon": "notifications", "url": "ui-engine/display/toast.php"},
+                {"id": "uie-tooltip", "title": "Tooltip", "icon": "chat_bubble_outline", "url": "ui-engine/display/tooltip.php"},
+                {"id": "uie-breadcrumb", "title": "Breadcrumb", "icon": "navigation", "url": "ui-engine/display/breadcrumb.php"},
+                {"id": "uie-pagination", "title": "Pagination", "icon": "last_page", "url": "ui-engine/display/pagination.php"},
+                {"id": "uie-carousel", "title": "Carousel", "icon": "view_carousel", "url": "ui-engine/display/carousel.php"},
+                {"id": "uie-timeline", "title": "Timeline", "icon": "timeline", "url": "ui-engine/display/timeline.php"},
+                {"id": "uie-stepper", "title": "Stepper", "icon": "format_list_numbered", "url": "ui-engine/display/stepper.php"},
+                {"id": "uie-list-group", "title": "List Group", "icon": "list", "url": "ui-engine/display/list-group.php"},
+                {"id": "uie-rating", "title": "Rating", "icon": "star", "url": "ui-engine/display/rating.php"},
+                {"id": "uie-spinner", "title": "Spinner", "icon": "refresh", "url": "ui-engine/display/spinner.php"},
+                {"id": "uie-skeleton", "title": "Skeleton", "icon": "hourglass_empty", "url": "ui-engine/display/skeleton.php"},
+                {"id": "uie-empty-state", "title": "Empty State", "icon": "inbox", "url": "ui-engine/display/empty-state.php"},
+                {"id": "uie-media-object", "title": "Media Object", "icon": "perm_media", "url": "ui-engine/display/media-object.php"},
+                {"id": "uie-code-block", "title": "Code Block", "icon": "code", "url": "ui-engine/display/code-block.php"}
+              ]
+            },
+            {
+              "id": "uie-navigation",
+              "title": "Navigation Elements",
+              "icon": "menu",
+              "children": [
+                {"id": "uie-dropdown", "title": "Dropdown", "icon": "arrow_drop_down_circle", "url": "ui-engine/navigation/dropdown.php"},
+                {"id": "uie-context-menu", "title": "Context Menu", "icon": "more_vert", "url": "ui-engine/navigation/context-menu.php"},
+                {"id": "uie-navbar", "title": "Navbar", "icon": "web", "url": "ui-engine/navigation/navbar.php"},
+                {"id": "uie-collapse", "title": "Collapse", "icon": "unfold_less", "url": "ui-engine/navigation/collapse.php"}
+              ]
+            },
+            {
+              "id": "uie-layout",
+              "title": "Layout Elements",
+              "icon": "dashboard",
+              "children": [
+                {"id": "uie-container", "title": "Container", "icon": "crop_free", "url": "ui-engine/layout/container.php"},
+                {"id": "uie-row", "title": "Row", "icon": "table_rows", "url": "ui-engine/layout/row.php"},
+                {"id": "uie-column", "title": "Column", "icon": "view_column", "url": "ui-engine/layout/column.php"},
+                {"id": "uie-divider", "title": "Divider", "icon": "horizontal_rule", "url": "ui-engine/layout/divider.php"},
+                {"id": "uie-grid", "title": "Grid", "icon": "grid_on", "url": "ui-engine/layout/grid.php"},
+                {"id": "uie-flex", "title": "Flex", "icon": "view_agenda", "url": "ui-engine/layout/flex.php"}
+              ]
+            }
+          ]
         }
       ]
     },

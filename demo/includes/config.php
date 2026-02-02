@@ -108,6 +108,19 @@ function get_current_page() {
 }
 
 /**
+ * Get current page path relative to demo directory
+ * @return string - Current page path (e.g., "ui-engine/navigation/collapse.php")
+ */
+function get_current_page_path() {
+    $path = $_SERVER['PHP_SELF'];
+    // Extract path after /demo/
+    if (preg_match('#/demo/(.+)$#', $path, $matches)) {
+        return $matches[1];
+    }
+    return basename($path);
+}
+
+/**
  * Check if current page matches
  * @param string|array $pages - Page name(s) to check
  * @return bool - Whether current page matches
@@ -183,6 +196,23 @@ HTML;
     </div>
 </div>
 HTML;
+}
+
+/**
+ * Generate 3-tab UiEngine code block (PHP, JS, HTML)
+ * Shorthand helper for UiEngine element demos
+ * @param string $id - Unique ID for the tabs
+ * @param string $phpCode - PHP code example
+ * @param string $jsCode - JavaScript code example
+ * @param string $htmlOutput - HTML output example
+ * @return string - HTML for the tabbed code block
+ */
+function so_uiengine_code($id, $phpCode, $jsCode, $htmlOutput) {
+    return so_code_tabs($id, [
+        ['label' => 'PHP', 'language' => 'php', 'icon' => 'data_object', 'code' => $phpCode],
+        ['label' => 'JavaScript', 'language' => 'javascript', 'icon' => 'javascript', 'code' => $jsCode],
+        ['label' => 'HTML Output', 'language' => 'html', 'icon' => 'code', 'code' => $htmlOutput]
+    ]);
 }
 
 /**

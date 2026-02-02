@@ -29,6 +29,7 @@ import SOTable from './components/so-table.js';
 import SOPagination from './components/so-pagination.js';
 import SOCopy from './components/so-copy.js';
 import SOGoToTop from './components/so-go-to-top.js';
+import { SOInputMask, SOPasswordStrength, SOCharCounter, SOInputClear, initAllFormEnhancers } from './components/so-form-enhancers.js';
 
 // Features
 import SOForms from './features/so-forms.js';
@@ -51,6 +52,10 @@ window.SONavbar = SONavbar;
 window.SOContextMenu = SOContextMenu;
 window.SOCopy = SOCopy;
 window.SOGoToTop = SOGoToTop;
+window.SOInputMask = SOInputMask;
+window.SOPasswordStrength = SOPasswordStrength;
+window.SOCharCounter = SOCharCounter;
+window.SOInputClear = SOInputClear;
 
 // Auto-initialize all components when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -115,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize go to top buttons
   SOGoToTop.initAll();
 
+  // Initialize form enhancers (input mask, password strength, char counter, clear button)
+  initAllFormEnhancers();
+
   console.log('SixOrbit UI Full initialized');
 });
 
@@ -143,6 +151,10 @@ export {
   SOCopy,
   SOGoToTop,
   SOForms,
+  SOInputMask,
+  SOPasswordStrength,
+  SOCharCounter,
+  SOInputClear,
 };
 
 export default SixOrbit;

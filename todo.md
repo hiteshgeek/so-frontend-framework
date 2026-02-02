@@ -111,11 +111,11 @@
 - [ ] Icon-only button sizing fixes
 
 ### Forms/Inputs
-- [ ] Input masking (phone: xxx-xxx-xxxx, card: xxxx xxxx xxxx xxxx)
-- [ ] Password strength meter
-- [ ] Character counter
-- [ ] Clear button (X to clear input)
-- [ ] Prefix/suffix improvements
+- [x] Input masking (phone: xxx-xxx-xxxx, card: xxxx xxxx xxxx xxxx) ✓ IMPLEMENTED
+- [x] Password strength meter ✓ IMPLEMENTED
+- [x] Character counter ✓ IMPLEMENTED
+- [x] Clear button (X to clear input) ✓ IMPLEMENTED
+- [x] Prefix/suffix improvements ✓ IMPLEMENTED
 
 ### Cards
 - [x] Card loading/skeleton state ✓ IMPLEMENTED (data-loading attribute)
@@ -154,7 +154,7 @@
 - [ ] Date Picker
 - [ ] Table column resizing + fixed header
 - [ ] Split buttons
-- [ ] Input masking
+- [x] Input masking ✓ IMPLEMENTED
 
 ### Phase 2 (User Experience)
 - [ ] Tabs overflow handling

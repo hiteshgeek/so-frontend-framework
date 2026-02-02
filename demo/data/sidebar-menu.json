@@ -237,6 +237,13 @@
                   "title": "Validation",
                   "icon": "verified",
                   "url": "elements/validation.php"
+                },
+                {
+                  "id": "form-enhancements",
+                  "title": "Form Enhancements",
+                  "icon": "auto_fix_high",
+                  "url": "elements/form-enhancements.php",
+                  "badge": "New"
                 }
               ]
             },

@@ -32,6 +32,7 @@ class Select extends FormElement {
         this._emptyOptionText = config.emptyOption ?? null;
         this._emptyOptionValue = config.emptyValue || '';
         this._searchable = config.searchable || false;
+        this._enhanced = config.enhanced || false;
     }
 
     // ==================
@@ -115,6 +116,17 @@ class Select extends FormElement {
         return this;
     }
 
+    /**
+     * Enable enhanced SOSelect component
+     * Adds data-so-select attribute to trigger JS enhancement
+     * @param {boolean} val
+     * @returns {this}
+     */
+    enhanced(val = true) {
+        this._enhanced = val;
+        return this;
+    }
+
     // ==================
     // Rendering
     // ==================
@@ -137,6 +149,7 @@ class Select extends FormElement {
         if (this._multiple) attrs.multiple = true;
         if (this._visibleSize) attrs.size = this._visibleSize;
         if (this._searchable) attrs[SixOrbit.data('searchable')] = 'true';
+        if (this._enhanced) attrs[SixOrbit.data('select')] = '';
 
         // Remove value attribute for select (handled by option selected)
         delete attrs.value;
@@ -149,14 +162,11 @@ class Select extends FormElement {
      * @returns {string}
      */
     buildClassString() {
-        this._extraClasses.add(SixOrbit.cls('form-select'));
+        this._extraClasses.add(SixOrbit.cls('form-control'));
 
         if (this._error) {
             this._extraClasses.add(SixOrbit.cls('is-invalid'));
         }
-
-        // Remove form-control (select uses form-select)
-        this._extraClasses.delete(SixOrbit.cls('form-control'));
 
         return super.buildClassString();
     }
@@ -286,6 +296,7 @@ class Select extends FormElement {
             config.emptyValue = this._emptyOptionValue;
         }
         if (this._searchable) config.searchable = true;
+        if (this._enhanced) config.enhanced = true;
 
         return config;
     }

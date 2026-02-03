@@ -892,6 +892,273 @@ select.clear();"
             </div>
         </div>
 
+        <!-- Input States -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Input States</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-secondary so-mb-3">Select elements support various states including disabled, readonly, and validation states.</p>
+
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <div class="so-grid so-grid-cols-3 so-grid-cols-sm-1">
+                        <div class="so-form-group">
+                            <label class="so-form-label">Normal</label>
+                            <select class="so-form-control" data-so-select>
+                                <option value="">Select option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </select>
+                        </div>
+                        <div class="so-form-group">
+                            <label class="so-form-label">Disabled</label>
+                            <select class="so-form-control" data-so-select disabled>
+                                <option value="">Cannot select</option>
+                                <option value="1">Option 1</option>
+                            </select>
+                        </div>
+                        <div class="so-form-group">
+                            <label class="so-form-label">Required</label>
+                            <select class="so-form-control" data-so-select required>
+                                <option value="">Select option *</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="so-mb-4">
+                    <h5 class="so-mb-3">Validation States</h5>
+                    <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
+                        <div class="so-form-group so-has-success">
+                            <label class="so-form-label">Valid Selection</label>
+                            <select class="so-form-control so-is-valid" data-so-select>
+                                <option value="">Select option</option>
+                                <option value="1" selected>Option 1</option>
+                                <option value="2">Option 2</option>
+                            </select>
+                            <div class="so-valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="so-form-group so-has-error">
+                            <label class="so-form-label">Invalid Selection</label>
+                            <select class="so-form-control so-is-invalid" data-so-select>
+                                <option value="">Select option</option>
+                                <option value="1">Option 1</option>
+                            </select>
+                            <div class="so-invalid-feedback">Please select an option</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('select-states', [
+                    [
+                        'label' => 'PHP',
+                        'language' => 'php',
+                        'icon' => 'data_object',
+                        'code' => "// Disabled select
+UiEngine::select('status')
+    ->enhanced()
+    ->disabled()
+    ->options(['1' => 'Option 1']);
+
+// Required select
+UiEngine::select('category')
+    ->enhanced()
+    ->required()
+    ->placeholder('Select category *')
+    ->options(['1' => 'Category 1']);
+
+// With validation error
+UiEngine::select('type')
+    ->enhanced()
+    ->error('Please select an option')
+    ->options(['1' => 'Type 1']);"
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "// Disable/enable select
+const select = SOSelect.getInstance('#mySelect');
+select.disable();
+select.enable();
+
+// Set validation state
+select.setError(true);   // Shows error state
+select.setError(false);  // Removes error state
+
+// Check if valid
+if (select.getValue()) {
+    select.element.classList.remove('so-is-invalid');
+    select.element.classList.add('so-is-valid');
+}"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Disabled -->
+<select class="so-form-control" data-so-select disabled>
+    <option value="">Cannot select</option>
+</select>
+
+<!-- Required -->
+<select class="so-form-control" data-so-select required>
+    <option value="">Select option *</option>
+</select>
+
+<!-- Valid state -->
+<div class="so-form-group so-has-success">
+    <select class="so-form-control so-is-valid" data-so-select>...</select>
+    <div class="so-valid-feedback">Looks good!</div>
+</div>
+
+<!-- Invalid state -->
+<div class="so-form-group so-has-error">
+    <select class="so-form-control so-is-invalid" data-so-select>...</select>
+    <div class="so-invalid-feedback">Please select an option</div>
+</div>'
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- JavaScript Interactivity -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">JavaScript Interactivity</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-secondary so-mb-3">The SOSelect runtime component provides methods for dynamic manipulation.</p>
+
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
+                        <div>
+                            <label class="so-form-label">Interactive Demo</label>
+                            <select id="interactive-demo" class="so-form-control" data-so-select data-so-clearable="true">
+                                <option value="">Select a fruit</option>
+                                <option value="apple">Apple</option>
+                                <option value="banana">Banana</option>
+                                <option value="cherry">Cherry</option>
+                                <option value="date">Date</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="so-form-label">Controls</label>
+                            <div class="so-btn-group so-mb-2">
+                                <button class="so-btn so-btn-sm so-btn-outline-primary" onclick="demoSetValue('banana')">Set Banana</button>
+                                <button class="so-btn so-btn-sm so-btn-outline-primary" onclick="demoClear()">Clear</button>
+                                <button class="so-btn so-btn-sm so-btn-outline-primary" onclick="demoOpen()">Open</button>
+                                <button class="so-btn so-btn-sm so-btn-outline-primary" onclick="demoClose()">Close</button>
+                            </div>
+                            <div class="so-btn-group">
+                                <button class="so-btn so-btn-sm so-btn-outline-secondary" onclick="demoDisable()">Disable</button>
+                                <button class="so-btn so-btn-sm so-btn-outline-secondary" onclick="demoEnable()">Enable</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('select-interactivity', [
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "// Get the SOSelect instance
+const select = SOSelect.getInstance('#mySelect');
+
+// Value manipulation
+select.getValue();           // Get current value
+select.setValue('banana');   // Set value
+select.clear();              // Clear selection
+
+// For multiple select
+select.addValue('apple');    // Add to selection
+select.removeValue('apple'); // Remove from selection
+select.selectAll();          // Select all options
+select.selectNone();         // Deselect all
+
+// Dropdown control
+select.open();               // Open dropdown
+select.close();              // Close dropdown
+select.toggle();             // Toggle dropdown
+
+// State control
+select.enable();             // Enable select
+select.disable();            // Disable select
+
+// Options manipulation
+select.setOptions([          // Replace all options
+    { value: 'a', label: 'Option A' },
+    { value: 'b', label: 'Option B' },
+]);
+select.addOption('c', 'Option C');  // Add single option
+select.removeOption('a');           // Remove option by value
+
+// Listen to events (events use so: prefix)
+select.element.addEventListener('so:select:change', (e) => {
+    console.log('Value:', e.detail.value);
+    console.log('Text:', e.detail.text);
+});
+
+select.element.addEventListener('so:select:open', () => {
+    console.log('Dropdown opened');
+});
+
+select.element.addEventListener('so:select:close', () => {
+    console.log('Dropdown closed');
+});"
+                    ],
+                    [
+                        'label' => 'Events',
+                        'language' => 'javascript',
+                        'icon' => 'bolt',
+                        'code' => "// All SOSelect events (prefixed with so:)
+// =====================================
+
+// so:select:change - Fired when selection changes
+element.addEventListener('so:select:change', (e) => {
+    e.detail.value;   // Selected value (string or array)
+    e.detail.values;  // Array of selected values
+    e.detail.text;    // Selected text
+    e.detail.texts;   // Array of selected texts
+});
+
+// so:select:open - Before dropdown opens
+element.addEventListener('so:select:open', (e) => {
+    // Can call e.preventDefault() to cancel
+});
+
+// so:select:opened - After dropdown is open
+element.addEventListener('so:select:opened', () => {});
+
+// so:select:close - Before dropdown closes
+element.addEventListener('so:select:close', (e) => {
+    // Can call e.preventDefault() to cancel
+});
+
+// so:select:closed - After dropdown is closed
+element.addEventListener('so:select:closed', () => {});
+
+// so:select:search - When search query changes
+element.addEventListener('so:select:search', (e) => {
+    e.detail.query;  // Search query string
+});
+
+// so:select:clear - When selection is cleared
+element.addEventListener('so:select:clear', (e) => {
+    e.detail.previousValue;  // Value before clearing
+});"
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
         <!-- API Reference -->
         <div class="so-card">
             <div class="so-card-header">
@@ -973,6 +1240,10 @@ select.clear();"
                                     <tr>
                                         <td><code>searchable(bool $val = true)</code></td>
                                         <td>Enable search/filter (JS enhancement)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>enhanced(bool $val = true)</code></td>
+                                        <td>Enable SOSelect component (adds data-so-select)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1102,6 +1373,10 @@ select.clear();"
                                         <td><code>searchable(val = true)</code></td>
                                         <td>Enable search/filter</td>
                                     </tr>
+                                    <tr>
+                                        <td><code>enhanced(val = true)</code></td>
+                                        <td>Enable SOSelect component (adds data-so-select)</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1229,24 +1504,32 @@ select.clear();"
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>select:change</code></td>
+                                        <td><code>so:select:change</code></td>
                                         <td>Fired when selection changes (detail: {value, values, text, texts})</td>
                                     </tr>
                                     <tr>
-                                        <td><code>select:open</code></td>
-                                        <td>Fired when dropdown opens</td>
+                                        <td><code>so:select:open</code></td>
+                                        <td>Fired before dropdown opens (cancelable)</td>
                                     </tr>
                                     <tr>
-                                        <td><code>select:close</code></td>
-                                        <td>Fired when dropdown closes</td>
+                                        <td><code>so:select:opened</code></td>
+                                        <td>Fired after dropdown opens</td>
                                     </tr>
                                     <tr>
-                                        <td><code>select:search</code></td>
+                                        <td><code>so:select:close</code></td>
+                                        <td>Fired before dropdown closes (cancelable)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:select:closed</code></td>
+                                        <td>Fired after dropdown closes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:select:search</code></td>
                                         <td>Fired on search (detail: {query})</td>
                                     </tr>
                                     <tr>
-                                        <td><code>select:clear</code></td>
-                                        <td>Fired when cleared (detail: {previousValues})</td>
+                                        <td><code>so:select:clear</code></td>
+                                        <td>Fired when cleared (detail: {previousValue})</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1269,4 +1552,40 @@ document.addEventListener('DOMContentLoaded', function() {
         SOSelect.getInstance(customSelect);
     }
 });
+
+// Interactive demo functions
+function getInteractiveSelect() {
+    const el = document.getElementById('interactive-demo');
+    return el ? SOSelect.getInstance(el) : null;
+}
+
+function demoSetValue(value) {
+    const select = getInteractiveSelect();
+    if (select) select.setValue(value);
+}
+
+function demoClear() {
+    const select = getInteractiveSelect();
+    if (select) select.clear();
+}
+
+function demoOpen() {
+    const select = getInteractiveSelect();
+    if (select) select.open();
+}
+
+function demoClose() {
+    const select = getInteractiveSelect();
+    if (select) select.close();
+}
+
+function demoDisable() {
+    const select = getInteractiveSelect();
+    if (select) select.disable();
+}
+
+function demoEnable() {
+    const select = getInteractiveSelect();
+    if (select) select.enable();
+}
 </script>

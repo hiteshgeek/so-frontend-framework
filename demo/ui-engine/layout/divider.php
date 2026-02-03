@@ -149,17 +149,22 @@ const divider2 = UiEngine.divider()
                         'code' => "// Left aligned text
 UiEngine::divider()
     ->text('Left aligned')
-    ->align('start');
+    ->textPosition('left');
 
 // Center aligned (default)
 UiEngine::divider()
     ->text('Center aligned')
-    ->align('center');
+    ->textPosition('center');
 
 // Right aligned
 UiEngine::divider()
     ->text('Right aligned')
-    ->align('end');"
+    ->textPosition('right');
+
+// Shorthand methods
+UiEngine::divider()->text('...')->textLeft();
+UiEngine::divider()->text('...')->textCenter();
+UiEngine::divider()->text('...')->textRight();"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -168,17 +173,21 @@ UiEngine::divider()
                         'code' => "// Left aligned text
 UiEngine.divider()
     .text('Left aligned')
-    .align('start');
+    .textPosition('left');
 
 // Center aligned (default)
 UiEngine.divider()
     .text('Center aligned')
-    .align('center');
+    .textPosition('center');
 
 // Right aligned
 UiEngine.divider()
     .text('Right aligned')
-    .align('end');"
+    .textPosition('right');
+
+// Shorthand methods
+UiEngine.divider().text('...').textLeft();
+UiEngine.divider().text('...').textRight();"
                     ],
                 ]) ?>
             </div>
@@ -206,41 +215,41 @@ UiEngine.divider()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Solid (default)
+                        'code' => "// Solid line (default variant)
 UiEngine::divider()
-    ->style('solid');
+    ->variant('line');
 
 // Dashed line
 UiEngine::divider()
-    ->style('dashed');
+    ->variant('dashed');
 
 // Dotted line
 UiEngine::divider()
-    ->style('dotted');
+    ->variant('dotted');
 
-// Thick line
-UiEngine::divider()
-    ->thickness(3);  // 3px"
+// Shorthand methods
+UiEngine::divider()->dashed();
+UiEngine::divider()->dotted();"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Solid (default)
+                        'code' => "// Solid line (default variant)
 UiEngine.divider()
-    .style('solid');
+    .variant('line');
 
 // Dashed line
 UiEngine.divider()
-    .style('dashed');
+    .variant('dashed');
 
 // Dotted line
 UiEngine.divider()
-    .style('dotted');
+    .variant('dotted');
 
-// Thick line
-UiEngine.divider()
-    .thickness(3);"
+// Shorthand methods
+UiEngine.divider().dashed();
+UiEngine.divider().dotted();"
                     ],
                 ]) ?>
             </div>
@@ -264,41 +273,38 @@ UiEngine.divider()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Primary color
-UiEngine::divider()
-    ->color('primary');
+                        'code' => "// Colored dividers use custom classes or inline styles
+// The Divider element doesn't have a color method
 
-// Success color
+// Add custom class for border color
 UiEngine::divider()
-    ->color('success');
+    ->addClass('so-border-primary');
 
-// Danger color
+// Or use inline style
 UiEngine::divider()
-    ->color('danger');
+    ->style('border-color: var(--so-success) !important; opacity: 1');
 
-// Warning color
+// For custom hex colors
 UiEngine::divider()
-    ->color('warning');
-
-// Custom color
-UiEngine::divider()
-    ->color('#ff5722');"
+    ->style('border-color: #ff5722 !important; opacity: 1');"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Primary color
-UiEngine.divider()
-    .color('primary');
+                        'code' => "// Colored dividers use custom classes or inline styles
 
-// Success color
+// Add custom class for border color
 UiEngine.divider()
-    .color('success');
+    .addClass('so-border-primary');
 
-// Custom color
+// Or use inline style
 UiEngine.divider()
-    .color('#ff5722');"
+    .style('border-color: var(--so-success) !important; opacity: 1');
+
+// For custom hex colors
+UiEngine.divider()
+    .style('border-color: #ff5722 !important; opacity: 1');"
                     ],
                 ]) ?>
             </div>
@@ -323,33 +329,29 @@ UiEngine.divider()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Vertical divider
-\$divider = UiEngine::divider()
-    ->vertical()
-    ->height(100);  // Optional height
+                        'code' => "// Vertical dividers use the so-vr CSS class
+// The UiEngine divider is horizontal by default
 
-// In a flex container
-echo '<div class=\"so-d-flex\">';
-echo '<div>Left</div>';
-echo \$divider->render();
-echo '<div>Right</div>';
+// For vertical dividers, use raw HTML with the so-vr class
+echo '<div class=\"so-d-flex so-align-items-center\" style=\"height:100px\">';
+echo '<div>Left content</div>';
+echo '<div class=\"so-vr so-mx-3\"></div>';
+echo '<div>Right content</div>';
 echo '</div>';"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Vertical divider
-const divider = UiEngine.divider()
-    .vertical()
-    .height(100);
+                        'code' => "// Vertical dividers use the so-vr CSS class
+// The UiEngine divider is horizontal by default
 
-// In a flex container
+// For vertical dividers, use raw HTML with the so-vr class
 container.innerHTML = `
-    <div class='so-d-flex'>
-        <div>Left</div>
-        \${divider.toHtml()}
-        <div>Right</div>
+    <div class='so-d-flex so-align-items-center' style='height:100px'>
+        <div>Left content</div>
+        <div class='so-vr so-mx-3'></div>
+        <div>Right content</div>
     </div>
 `;"
                     ],
@@ -369,43 +371,51 @@ container.innerHTML = `
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// No margin
+                        'code' => "// Small spacing
 UiEngine::divider()
-    ->margin(0);
+    ->spacing('sm');
 
-// Small margin
+// Medium spacing (default)
 UiEngine::divider()
-    ->margin(2);
+    ->spacing('md');
 
-// Large margin
+// Large spacing
 UiEngine::divider()
-    ->margin(5);
+    ->spacing('lg');
 
-// Custom margin
+// Extra large spacing
 UiEngine::divider()
-    ->marginY(4)
-    ->marginX(0);"
+    ->spacing('xl');
+
+// Shorthand methods
+UiEngine::divider()->small();       // spacing('sm')
+UiEngine::divider()->large();       // spacing('lg')
+UiEngine::divider()->extraLarge();  // spacing('xl')"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// No margin
+                        'code' => "// Small spacing
 UiEngine.divider()
-    .margin(0);
+    .spacing('sm');
 
-// Small margin
+// Medium spacing (default)
 UiEngine.divider()
-    .margin(2);
+    .spacing('md');
 
-// Large margin
+// Large spacing
 UiEngine.divider()
-    .margin(5);
+    .spacing('lg');
 
-// Custom margin
+// Extra large spacing
 UiEngine.divider()
-    .marginY(4)
-    .marginX(0);"
+    .spacing('xl');
+
+// Shorthand methods
+UiEngine.divider().small();
+UiEngine.divider().large();
+UiEngine.divider().extraLarge();"
                     ],
                 ]) ?>
             </div>
@@ -433,39 +443,34 @@ UiEngine.divider()
                                 <td>Add text label to divider</td>
                             </tr>
                             <tr>
-                                <td><code>align()</code></td>
-                                <td><code>string $alignment</code></td>
-                                <td>Text alignment: start, center, end</td>
+                                <td><code>textPosition()</code></td>
+                                <td><code>string $position</code></td>
+                                <td>Text position: left, center, right</td>
                             </tr>
                             <tr>
-                                <td><code>style()</code></td>
-                                <td><code>string $style</code></td>
-                                <td>Line style: solid, dashed, dotted</td>
-                            </tr>
-                            <tr>
-                                <td><code>thickness()</code></td>
-                                <td><code>int $pixels</code></td>
-                                <td>Line thickness in pixels</td>
-                            </tr>
-                            <tr>
-                                <td><code>color()</code></td>
-                                <td><code>string $color</code></td>
-                                <td>Line color (variant or hex)</td>
-                            </tr>
-                            <tr>
-                                <td><code>vertical()</code></td>
+                                <td><code>textLeft()</code>, <code>textCenter()</code>, <code>textRight()</code></td>
                                 <td>-</td>
-                                <td>Make divider vertical</td>
+                                <td>Shorthand for text position</td>
                             </tr>
                             <tr>
-                                <td><code>height()</code></td>
-                                <td><code>int $pixels</code></td>
-                                <td>Height for vertical divider</td>
+                                <td><code>variant()</code></td>
+                                <td><code>string $variant</code></td>
+                                <td>Line style: line, dashed, dotted</td>
                             </tr>
                             <tr>
-                                <td><code>margin()</code></td>
-                                <td><code>int $size</code></td>
-                                <td>Set margin (0-5)</td>
+                                <td><code>dashed()</code>, <code>dotted()</code></td>
+                                <td>-</td>
+                                <td>Shorthand for variant</td>
+                            </tr>
+                            <tr>
+                                <td><code>spacing()</code></td>
+                                <td><code>string $size</code></td>
+                                <td>Vertical margin: sm, md, lg, xl</td>
+                            </tr>
+                            <tr>
+                                <td><code>small()</code>, <code>large()</code>, <code>extraLarge()</code></td>
+                                <td>-</td>
+                                <td>Shorthand for spacing size</td>
                             </tr>
                         </tbody>
                     </table>

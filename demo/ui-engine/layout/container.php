@@ -243,6 +243,27 @@ UiEngine.container()
                 <h3 class="so-card-title">With Row and Columns</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-container so-bg-light so-p-3 so-rounded so-mb-4">
+                    <div class="so-row so-g-3">
+                        <div class="so-col-4">
+                            <div class="so-card">
+                                <div class="so-card-body">Column 1</div>
+                            </div>
+                        </div>
+                        <div class="so-col-4">
+                            <div class="so-card">
+                                <div class="so-card-body">Column 2</div>
+                            </div>
+                        </div>
+                        <div class="so-col-4">
+                            <div class="so-card">
+                                <div class="so-card-body">Column 3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('container-grid', [
                     [
@@ -285,6 +306,24 @@ document.body.innerHTML = page.toHtml();"
                 <h3 class="so-card-title">Custom Padding</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <p class="so-text-muted so-mb-2">No horizontal padding (so-px-0):</p>
+                    <div class="so-container so-px-0 so-bg-primary so-text-white so-py-2 so-rounded so-mb-3">
+                        Container with no horizontal padding
+                    </div>
+
+                    <p class="so-text-muted so-mb-2">Extra padding (so-p-5):</p>
+                    <div class="so-container so-p-5 so-bg-success so-text-white so-rounded so-mb-3">
+                        Container with extra padding
+                    </div>
+
+                    <p class="so-text-muted so-mb-2">Custom padding (so-px-4 so-py-5):</p>
+                    <div class="so-container so-px-4 so-py-5 so-bg-info so-text-white so-rounded">
+                        Container with custom horizontal and vertical padding
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('container-padding', [
                     [

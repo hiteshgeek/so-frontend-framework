@@ -113,15 +113,15 @@ document.getElementById('container').innerHTML = row.toHtml();"
                         'icon' => 'data_object',
                         'code' => "// Column spanning 1-12 grid units
 UiEngine::column()
-    ->width(6)  // Half width (6 of 12)
+    ->size(6)  // Half width (6 of 12)
     ->content('Half width column');
 
 UiEngine::column()
-    ->width(4)  // One third (4 of 12)
+    ->size(4)  // One third (4 of 12)
     ->content('One third column');
 
 UiEngine::column()
-    ->width(3)  // One quarter (3 of 12)
+    ->size(3)  // One quarter (3 of 12)
     ->content('Quarter column');
 
 // Mixed widths in a row
@@ -135,15 +135,15 @@ UiEngine::row()
                         'icon' => 'javascript',
                         'code' => "// Column spanning 1-12 grid units
 UiEngine.column()
-    .width(6)
+    .size(6)
     .content('Half width column');
 
 UiEngine.column()
-    .width(4)
+    .size(4)
     .content('One third column');
 
 UiEngine.column()
-    .width(3)
+    .size(3)
     .content('Quarter column');
 
 // Mixed widths in a row
@@ -185,20 +185,20 @@ UiEngine.row()
                         'icon' => 'data_object',
                         'code' => "// Responsive column widths
 UiEngine::column()
-    ->width(12)     // Full width on extra small
+    ->size(12)      // Full width on extra small
     ->sm(6)         // Half on small
     ->md(4)         // Third on medium
     ->lg(3)         // Quarter on large
     ->content('Responsive column');
 
-// Using array syntax
+// All responsive breakpoints
 UiEngine::column()
-    ->responsive([
-        'default' => 12,
-        'sm' => 6,
-        'md' => 4,
-        'lg' => 3,
-    ])
+    ->size(12)      // Base size (xs)
+    ->sm(6)         // Small screens
+    ->md(4)         // Medium screens
+    ->lg(3)         // Large screens
+    ->xl(2)         // Extra large screens
+    ->xxl(1)        // Extra extra large screens
     ->content('...');"
                     ],
                     [
@@ -207,20 +207,20 @@ UiEngine::column()
                         'icon' => 'javascript',
                         'code' => "// Responsive column widths
 UiEngine.column()
-    .width(12)
+    .size(12)
     .sm(6)
     .md(4)
     .lg(3)
     .content('Responsive column');
 
-// Using object syntax
+// All responsive breakpoints
 UiEngine.column()
-    .responsive({
-        default: 12,
-        sm: 6,
-        md: 4,
-        lg: 3,
-    })
+    .size(12)
+    .sm(6)
+    .md(4)
+    .lg(3)
+    .xl(2)
+    .xxl(1)
     .content('...');"
                     ],
                 ]) ?>
@@ -312,21 +312,21 @@ UiEngine.row()
                         'icon' => 'data_object',
                         'code' => "// Offset by 4 columns
 UiEngine::column()
-    ->width(4)
+    ->size(4)
     ->offset(4)
     ->content('Centered');
 
 // Responsive offset
 UiEngine::column()
-    ->width(6)
+    ->size(6)
     ->offset(3)
-    ->offsetMd(0)  // No offset on medium+
+    ->offsetAt('md', 0)  // No offset on medium+
     ->content('...');
 
 // Center a column with offset
 UiEngine::row()
     ->col(UiEngine::column()
-        ->width(6)
+        ->size(6)
         ->offset(3)
         ->content('Centered content')
     );"
@@ -337,21 +337,21 @@ UiEngine::row()
                         'icon' => 'javascript',
                         'code' => "// Offset by 4 columns
 UiEngine.column()
-    .width(4)
+    .size(4)
     .offset(4)
     .content('Centered');
 
 // Responsive offset
 UiEngine.column()
-    .width(6)
+    .size(6)
     .offset(3)
-    .offsetMd(0)
+    .offsetAt('md', 0)
     .content('...');
 
 // Center a column with offset
 UiEngine.row()
     .col(UiEngine.column()
-        .width(6)
+        .size(6)
         .offset(3)
         .content('Centered content')
     );"
@@ -385,15 +385,14 @@ UiEngine::row()
     ->col(UiEngine::column()->order(1)->content('First'))
     ->col(UiEngine::column()->order(2)->content('Second'));
 
-// Responsive ordering
+// Order using numeric values (1-5)
 UiEngine::column()
-    ->order(2)         // Second on mobile
-    ->orderMd(1)       // First on medium+
+    ->order(2)
     ->content('...');
 
 // Special order values
-UiEngine::column()->orderFirst();  // order: -1
-UiEngine::column()->orderLast();   // order: 13"
+UiEngine::column()->first();   // Display first (order: first)
+UiEngine::column()->last();    // Display last (order: last)"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -405,15 +404,14 @@ UiEngine.row()
     .col(UiEngine.column().order(1).content('First'))
     .col(UiEngine.column().order(2).content('Second'));
 
-// Responsive ordering
+// Order using numeric values (1-5)
 UiEngine.column()
     .order(2)
-    .orderMd(1)
     .content('...');
 
 // Special order values
-UiEngine.column().orderFirst();
-UiEngine.column().orderLast();"
+UiEngine.column().first();   // Display first
+UiEngine.column().last();    // Display last"
                     ],
                 ]) ?>
             </div>
@@ -441,13 +439,13 @@ UiEngine.column().orderLast();"
                                 <td>Set column content</td>
                             </tr>
                             <tr>
-                                <td><code>width()</code></td>
-                                <td><code>int $cols</code></td>
-                                <td>Set width (1-12 columns)</td>
+                                <td><code>size()</code></td>
+                                <td><code>int|string $size</code></td>
+                                <td>Set width (1-12 columns or 'auto')</td>
                             </tr>
                             <tr>
-                                <td><code>sm()</code>, <code>md()</code>, <code>lg()</code>, <code>xl()</code></td>
-                                <td><code>int $cols</code></td>
+                                <td><code>sm()</code>, <code>md()</code>, <code>lg()</code>, <code>xl()</code>, <code>xxl()</code></td>
+                                <td><code>int|string $size</code></td>
                                 <td>Set responsive width at breakpoint</td>
                             </tr>
                             <tr>
@@ -458,27 +456,32 @@ UiEngine.column().orderLast();"
                             <tr>
                                 <td><code>offset()</code></td>
                                 <td><code>int $cols</code></td>
-                                <td>Set column offset</td>
+                                <td>Set column offset (0-11)</td>
+                            </tr>
+                            <tr>
+                                <td><code>offsetAt()</code></td>
+                                <td><code>string $breakpoint, int $offset</code></td>
+                                <td>Set responsive offset at breakpoint</td>
                             </tr>
                             <tr>
                                 <td><code>order()</code></td>
-                                <td><code>int $order</code></td>
-                                <td>Set visual order</td>
+                                <td><code>int|string $order</code></td>
+                                <td>Set visual order (1-5 or 'first'/'last')</td>
                             </tr>
                             <tr>
-                                <td><code>orderFirst()</code></td>
+                                <td><code>first()</code></td>
                                 <td>-</td>
                                 <td>Display first</td>
                             </tr>
                             <tr>
-                                <td><code>orderLast()</code></td>
+                                <td><code>last()</code></td>
                                 <td>-</td>
                                 <td>Display last</td>
                             </tr>
                             <tr>
-                                <td><code>align()</code></td>
+                                <td><code>alignSelf()</code></td>
                                 <td><code>string $alignment</code></td>
-                                <td>Self alignment: start, center, end</td>
+                                <td>Self alignment: start, center, end, stretch, baseline</td>
                             </tr>
                         </tbody>
                     </table>

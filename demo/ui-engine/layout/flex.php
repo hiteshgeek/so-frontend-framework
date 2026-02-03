@@ -45,10 +45,12 @@ require_once '../../includes/navbar.php';
 use Core\UiEngine\UiEngine;
 
 \$flex = UiEngine::flex()
-    ->gap(3)
-    ->item('Item 1')
-    ->item('Item 2')
-    ->item('Item 3');
+    ->gap(3);
+
+// Add children with add()
+\$flex->add('<div>Item 1</div>');
+\$flex->add('<div>Item 2</div>');
+\$flex->add('<div>Item 3</div>');
 
 echo \$flex->render();"
                     ],
@@ -57,10 +59,12 @@ echo \$flex->render();"
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "const flex = UiEngine.flex()
-    .gap(3)
-    .item('Item 1')
-    .item('Item 2')
-    .item('Item 3');
+    .gap(3);
+
+// Add children with add()
+flex.add('<div>Item 1</div>');
+flex.add('<div>Item 2</div>');
+flex.add('<div>Item 3</div>');
 
 document.getElementById('container').innerHTML = flex.toHtml();"
                     ],
@@ -105,48 +109,32 @@ document.getElementById('container').innerHTML = flex.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "// Horizontal row (default)
-UiEngine::flex()
-    ->direction('row')
-    ->items(['1', '2', '3']);
+\$flex = UiEngine::flex()->direction('row');
+\$flex->add('<div>1</div>')->add('<div>2</div>')->add('<div>3</div>');
 
-// Horizontal reverse
-UiEngine::flex()
-    ->direction('row-reverse')
-    ->items(['1', '2', '3']);
+// Or use shorthand methods
+UiEngine::flex()->row();      // Same as direction('row')
+UiEngine::flex()->rowReverse();
 
 // Vertical column
-UiEngine::flex()
-    ->direction('column')
-    ->items(['1', '2', '3']);
-
-// Vertical reverse
-UiEngine::flex()
-    ->direction('column-reverse')
-    ->items(['1', '2', '3']);"
+UiEngine::flex()->column();   // Same as direction('column')
+UiEngine::flex()->columnReverse();"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "// Horizontal row (default)
-UiEngine.flex()
-    .direction('row')
-    .items(['1', '2', '3']);
+const flex = UiEngine.flex().direction('row');
+flex.add('<div>1</div>').add('<div>2</div>').add('<div>3</div>');
 
-// Horizontal reverse
-UiEngine.flex()
-    .direction('row-reverse')
-    .items(['1', '2', '3']);
+// Or use shorthand methods
+UiEngine.flex().row();
+UiEngine.flex().rowReverse();
 
 // Vertical column
-UiEngine.flex()
-    .direction('column')
-    .items(['1', '2', '3']);
-
-// Vertical reverse
-UiEngine.flex()
-    .direction('column-reverse')
-    .items(['1', '2', '3']);"
+UiEngine.flex().column();
+UiEngine.flex().columnReverse();"
                     ],
                 ]) ?>
             </div>
@@ -191,64 +179,38 @@ UiEngine.flex()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Align to start (left)
-UiEngine::flex()
-    ->justify('start')
-    ->items(['A', 'B']);
+                        'code' => "// Justify content options
+UiEngine::flex()->justify('start');    // Align to start (left)
+UiEngine::flex()->justify('center');   // Align to center
+UiEngine::flex()->justify('end');      // Align to end (right)
+UiEngine::flex()->justify('between');  // Space between items
+UiEngine::flex()->justify('around');   // Space around items
+UiEngine::flex()->justify('evenly');   // Space evenly
 
-// Align to center
-UiEngine::flex()
-    ->justify('center')
-    ->items(['A', 'B']);
-
-// Align to end (right)
-UiEngine::flex()
-    ->justify('end')
-    ->items(['A', 'B']);
-
-// Space between items
-UiEngine::flex()
-    ->justify('between')
-    ->items(['A', 'B']);
-
-// Space around items
-UiEngine::flex()
-    ->justify('around')
-    ->items(['A', 'B']);
-
-// Space evenly
-UiEngine::flex()
-    ->justify('evenly')
-    ->items(['A', 'B']);"
+// Shorthand methods
+UiEngine::flex()->justifyStart();
+UiEngine::flex()->justifyCenter();
+UiEngine::flex()->justifyEnd();
+UiEngine::flex()->justifyBetween();
+UiEngine::flex()->justifyAround();
+UiEngine::flex()->justifyEvenly();"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Align to start (left)
-UiEngine.flex()
-    .justify('start')
-    .items(['A', 'B']);
+                        'code' => "// Justify content options
+UiEngine.flex().justify('start');
+UiEngine.flex().justify('center');
+UiEngine.flex().justify('end');
+UiEngine.flex().justify('between');
+UiEngine.flex().justify('around');
+UiEngine.flex().justify('evenly');
 
-// Align to center
-UiEngine.flex()
-    .justify('center')
-    .items(['A', 'B']);
-
-// Align to end (right)
-UiEngine.flex()
-    .justify('end')
-    .items(['A', 'B']);
-
-// Space between items
-UiEngine.flex()
-    .justify('between')
-    .items(['A', 'B']);
-
-// Space around items
-UiEngine.flex()
-    .justify('around')
-    .items(['A', 'B']);"
+// Shorthand methods
+UiEngine.flex().justifyStart();
+UiEngine.flex().justifyCenter();
+UiEngine.flex().justifyBetween();"
                     ],
                 ]) ?>
             </div>
@@ -291,54 +253,35 @@ UiEngine.flex()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Align to top
-UiEngine::flex()
-    ->align('start')
-    ->items(['A', 'B']);
+                        'code' => "// Align items options (cross axis)
+UiEngine::flex()->align('start');     // Align to top
+UiEngine::flex()->align('center');    // Align to center
+UiEngine::flex()->align('end');       // Align to bottom
+UiEngine::flex()->align('stretch');   // Stretch to fill (default)
+UiEngine::flex()->align('baseline');  // Align to baseline
 
-// Align to center
-UiEngine::flex()
-    ->align('center')
-    ->items(['A', 'B']);
-
-// Align to bottom
-UiEngine::flex()
-    ->align('end')
-    ->items(['A', 'B']);
-
-// Stretch to fill (default)
-UiEngine::flex()
-    ->align('stretch')
-    ->items(['A', 'B']);
-
-// Align to baseline
-UiEngine::flex()
-    ->align('baseline')
-    ->items(['A', 'B']);"
+// Shorthand methods
+UiEngine::flex()->alignStart();
+UiEngine::flex()->alignCenter();
+UiEngine::flex()->alignEnd();
+UiEngine::flex()->alignStretch();
+UiEngine::flex()->alignBaseline();"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Align to top
-UiEngine.flex()
-    .align('start')
-    .items(['A', 'B']);
+                        'code' => "// Align items options (cross axis)
+UiEngine.flex().align('start');
+UiEngine.flex().align('center');
+UiEngine.flex().align('end');
+UiEngine.flex().align('stretch');
+UiEngine.flex().align('baseline');
 
-// Align to center
-UiEngine.flex()
-    .align('center')
-    .items(['A', 'B']);
-
-// Align to bottom
-UiEngine.flex()
-    .align('end')
-    .items(['A', 'B']);
-
-// Stretch to fill
-UiEngine.flex()
-    .align('stretch')
-    .items(['A', 'B']);"
+// Shorthand methods
+UiEngine.flex().alignStart();
+UiEngine.flex().alignCenter();
+UiEngine.flex().alignEnd();"
                     ],
                 ]) ?>
             </div>
@@ -365,39 +308,29 @@ UiEngine.flex()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// No wrap (default) - items shrink
-UiEngine::flex()
-    ->wrap('nowrap')
-    ->items(['1', '2', '3', '4', '5']);
+                        'code' => "// Wrap options
+UiEngine::flex()->wrap('nowrap');       // No wrap (default) - items shrink
+UiEngine::flex()->wrap('wrap');         // Wrap to next line
+UiEngine::flex()->wrap('wrap-reverse'); // Wrap reverse
 
-// Wrap to next line
-UiEngine::flex()
-    ->wrap('wrap')
-    ->items(['1', '2', '3', '4', '5']);
-
-// Wrap reverse
-UiEngine::flex()
-    ->wrap('wrap-reverse')
-    ->items(['1', '2', '3', '4', '5']);"
+// Shorthand methods
+UiEngine::flex()->nowrap();
+UiEngine::flex()->wrap();        // Defaults to 'wrap'
+UiEngine::flex()->wrapReverse();"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// No wrap (default)
-UiEngine.flex()
-    .wrap('nowrap')
-    .items(['1', '2', '3', '4', '5']);
+                        'code' => "// Wrap options
+UiEngine.flex().wrap('nowrap');
+UiEngine.flex().wrap('wrap');
+UiEngine.flex().wrap('wrap-reverse');
 
-// Wrap to next line
-UiEngine.flex()
-    .wrap('wrap')
-    .items(['1', '2', '3', '4', '5']);
-
-// Wrap reverse
-UiEngine.flex()
-    .wrap('wrap-reverse')
-    .items(['1', '2', '3', '4', '5']);"
+// Shorthand methods
+UiEngine.flex().nowrap();
+UiEngine.flex().wrap();
+UiEngine.flex().wrapReverse();"
                     ],
                 ]) ?>
             </div>
@@ -428,57 +361,42 @@ UiEngine.flex()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Flex grow - item expands to fill space
-UiEngine::flex()
-    ->item('Fixed')
-    ->item('Grows', ['grow' => true])  // or grow => 1
-    ->item('Fixed');
+                        'code' => "// Flex item properties are applied via inline styles
+\$flex = UiEngine::flex()->gap(2);
 
-// Flex shrink - item can shrink below its size
-UiEngine::flex()
-    ->item('No shrink', ['shrink' => false])  // shrink => 0
-    ->item('Can shrink', ['shrink' => true]);
+// Add items with flex grow/shrink/basis via style
+\$flex->add('<div>Fixed</div>');
+\$flex->add('<div style=\"flex-grow: 1\">Grows</div>');
+\$flex->add('<div>Fixed</div>');
 
-// Flex basis - initial size before grow/shrink
-UiEngine::flex()
-    ->item('200px base', ['basis' => '200px'])
-    ->item('Auto base');
+// Flex shrink
+\$flex2 = UiEngine::flex();
+\$flex2->add('<div style=\"flex-shrink: 0; width: 100px\">No shrink</div>');
+\$flex2->add('<div style=\"flex-shrink: 1\">Can shrink</div>');
 
-// Combined (flex shorthand)
-UiEngine::flex()
-    ->item('Content', [
-        'grow' => 1,
-        'shrink' => 0,
-        'basis' => '200px',
-    ]);"
+// Flex basis
+\$flex3 = UiEngine::flex();
+\$flex3->add('<div style=\"flex-basis: 200px\">200px base</div>');"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Flex grow - item expands to fill space
-UiEngine.flex()
-    .item('Fixed')
-    .item('Grows', {grow: true})
-    .item('Fixed');
+                        'code' => "// Flex item properties are applied via inline styles
+const flex = UiEngine.flex().gap(2);
 
-// Flex shrink - item can shrink below its size
-UiEngine.flex()
-    .item('No shrink', {shrink: false})
-    .item('Can shrink', {shrink: true});
+flex.add('<div>Fixed</div>');
+flex.add('<div style=\"flex-grow: 1\">Grows</div>');
+flex.add('<div>Fixed</div>');
 
-// Flex basis - initial size
-UiEngine.flex()
-    .item('200px base', {basis: '200px'})
-    .item('Auto base');
+// Flex shrink
+const flex2 = UiEngine.flex();
+flex2.add('<div style=\"flex-shrink: 0; width: 100px\">No shrink</div>');
+flex2.add('<div style=\"flex-shrink: 1\">Can shrink</div>');
 
-// Combined
-UiEngine.flex()
-    .item('Content', {
-        grow: 1,
-        shrink: 0,
-        basis: '200px',
-    });"
+// Flex basis
+const flex3 = UiEngine.flex();
+flex3.add('<div style=\"flex-basis: 200px\">200px base</div>');"
                     ],
                 ]) ?>
             </div>
@@ -505,15 +423,18 @@ UiEngine.flex()
 \$flex = UiEngine::flex()
     ->justify('center')
     ->align('center')
-    ->height(150)
-    ->item('Perfectly Centered');
+    ->class('so-bg-light')  // Add custom classes
+    ->style('height: 150px');  // Add custom styles
+
+\$flex->add('<div>Perfectly Centered</div>');
 
 echo \$flex->render();
 
 // Shorthand for centering
-\$flex = UiEngine::flex()
-    ->center()  // Same as justify('center')->align('center')
-    ->item('Centered');"
+\$flex2 = UiEngine::flex()
+    ->center();  // Same as justify('center')->align('center')
+
+\$flex2->add('<div>Centered</div>');"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -523,13 +444,14 @@ echo \$flex->render();
 const flex = UiEngine.flex()
     .justify('center')
     .align('center')
-    .height(150)
-    .item('Perfectly Centered');
+    .addClass('so-bg-light')
+    .style('height: 150px');
+
+flex.add('<div>Perfectly Centered</div>');
 
 // Shorthand
-const flex2 = UiEngine.flex()
-    .center()
-    .item('Centered');"
+const flex2 = UiEngine.flex().center();
+flex2.add('<div>Centered</div>');"
                     ],
                 ]) ?>
             </div>
@@ -577,14 +499,14 @@ const flex2 = UiEngine.flex()
                                 <td>Set gap between items (0-5)</td>
                             </tr>
                             <tr>
-                                <td><code>item()</code></td>
-                                <td><code>mixed $content, array $options</code></td>
-                                <td>Add flex item with optional properties</td>
+                                <td><code>add()</code></td>
+                                <td><code>mixed $content</code></td>
+                                <td>Add child element to the flex container</td>
                             </tr>
                             <tr>
-                                <td><code>items()</code></td>
-                                <td><code>array $items</code></td>
-                                <td>Add multiple items at once</td>
+                                <td><code>alignContent()</code></td>
+                                <td><code>string $align</code></td>
+                                <td>Multi-line alignment: start, center, end, stretch</td>
                             </tr>
                             <tr>
                                 <td><code>center()</code></td>

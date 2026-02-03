@@ -47,15 +47,15 @@ require_once '../../includes/navbar.php';
                         'code' => "<?php
 use Core\UiEngine\UiEngine;
 
+// Grid uses CSS Grid layout - add children as HTML content
 \$grid = UiEngine::grid()
-    ->columns(3)  // 3 equal columns
-    ->gap(4)      // Gap between items
-    ->item('Item 1')
-    ->item('Item 2')
-    ->item('Item 3')
-    ->item('Item 4')
-    ->item('Item 5')
-    ->item('Item 6');
+    ->columns(3)     // 3 equal columns
+    ->gap('1rem');   // Gap between items
+
+// Add child elements
+\$grid->add('<div>Item 1</div>');
+\$grid->add('<div>Item 2</div>');
+\$grid->add('<div>Item 3</div>');
 
 echo \$grid->render();"
                     ],
@@ -65,13 +65,12 @@ echo \$grid->render();"
                         'icon' => 'javascript',
                         'code' => "const grid = UiEngine.grid()
     .columns(3)
-    .gap(4)
-    .item('Item 1')
-    .item('Item 2')
-    .item('Item 3')
-    .item('Item 4')
-    .item('Item 5')
-    .item('Item 6');
+    .gap('1rem');
+
+// Add child elements
+grid.add('<div>Item 1</div>');
+grid.add('<div>Item 2</div>');
+grid.add('<div>Item 3</div>');
 
 document.getElementById('container').innerHTML = grid.toHtml();"
                     ],
@@ -116,31 +115,33 @@ document.getElementById('container').innerHTML = grid.toHtml();"
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "\$grid = UiEngine::grid()
-    ->columns(1)      // 1 column on mobile
-    ->columnsSm(2)    // 2 columns on small
-    ->columnsMd(3)    // 3 columns on medium
-    ->columnsLg(4)    // 4 columns on large
-    ->gap(3)
-    ->items(['Item 1', 'Item 2', 'Item 3', 'Item 4',
-             'Item 5', 'Item 6', 'Item 7', 'Item 8']);
+                        'code' => "// For responsive grids, use CSS utility classes
+// The Grid element uses inline styles, so for responsive
+// behavior, use class-based approach with so-grid-cols-*
 
-echo \$grid->render();"
+\$html = '<div class=\"so-grid so-grid-cols-1 so-grid-cols-sm-2 so-grid-cols-md-3 so-grid-cols-lg-4 so-gap-3\">';
+\$html .= '<div>Item 1</div>';
+\$html .= '<div>Item 2</div>';
+// ... more items
+\$html .= '</div>';
+
+echo \$html;"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "const grid = UiEngine.grid()
-    .columns(1)
-    .columnsSm(2)
-    .columnsMd(3)
-    .columnsLg(4)
-    .gap(3)
-    .items(['Item 1', 'Item 2', 'Item 3', 'Item 4',
-            'Item 5', 'Item 6', 'Item 7', 'Item 8']);
+                        'code' => "// For responsive grids, use CSS utility classes
+const html = `
+<div class=\"so-grid so-grid-cols-1 so-grid-cols-sm-2 so-grid-cols-md-3 so-grid-cols-lg-4 so-gap-3\">
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+    <div>Item 4</div>
+</div>
+`;
 
-document.getElementById('container').innerHTML = grid.toHtml();"
+document.getElementById('container').innerHTML = html;"
                     ],
                 ]) ?>
             </div>
@@ -167,33 +168,37 @@ document.getElementById('container').innerHTML = grid.toHtml();"
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Auto-fit: fills available space, wraps when needed
+                        'code' => "// Auto-fit: use columns() with CSS grid template string
 \$grid = UiEngine::grid()
-    ->autoFit(150)  // Min 150px per column
-    ->gap(4)
-    ->items(['Card 1', 'Card 2', 'Card 3', 'Card 4', 'Card 5']);
+    ->columns('repeat(auto-fit, minmax(150px, 1fr))')
+    ->gap('1rem');
 
 // Auto-fill: creates empty columns if space allows
-\$grid = UiEngine::grid()
-    ->autoFill(200)  // Min 200px per column
-    ->gap(4)
-    ->items(['Card 1', 'Card 2']);"
+\$grid2 = UiEngine::grid()
+    ->columns('repeat(auto-fill, minmax(200px, 1fr))')
+    ->gap('1rem');
+
+// Add children
+\$grid->add('<div>Card 1</div>');
+\$grid->add('<div>Card 2</div>');"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Auto-fit: fills available space, wraps when needed
+                        'code' => "// Auto-fit: use columns() with CSS grid template string
 const grid = UiEngine.grid()
-    .autoFit(150)
-    .gap(4)
-    .items(['Card 1', 'Card 2', 'Card 3', 'Card 4', 'Card 5']);
+    .columns('repeat(auto-fit, minmax(150px, 1fr))')
+    .gap('1rem');
 
 // Auto-fill: creates empty columns if space allows
 const grid2 = UiEngine.grid()
-    .autoFill(200)
-    .gap(4)
-    .items(['Card 1', 'Card 2']);"
+    .columns('repeat(auto-fill, minmax(200px, 1fr))')
+    .gap('1rem');
+
+// Add children
+grid.add('<div>Card 1</div>');
+grid.add('<div>Card 2</div>');"
                     ],
                 ]) ?>
             </div>
@@ -218,42 +223,42 @@ const grid2 = UiEngine.grid()
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Custom column template
+                        'code' => "// Custom column template - pass string to columns()
 \$grid = UiEngine::grid()
-    ->templateColumns('200px 1fr 100px')  // Sidebar - Main - Aside
-    ->gap(4)
-    ->item('Sidebar')
-    ->item('Main Content')
-    ->item('Aside');
+    ->columns('200px 1fr 100px')  // Sidebar - Main - Aside
+    ->gap('1rem');
+
+\$grid->add('<div>Sidebar</div>');
+\$grid->add('<div>Main Content</div>');
+\$grid->add('<div>Aside</div>');
 
 // Using fractions
-\$grid = UiEngine::grid()
-    ->templateColumns('1fr 2fr 1fr')  // 1:2:1 ratio
-    ->gap(4)
-    ->items(['Left', 'Center', 'Right']);
+\$grid2 = UiEngine::grid()
+    ->columns('1fr 2fr 1fr')  // 1:2:1 ratio
+    ->gap('1rem');
 
 // Mix of units
-\$grid = UiEngine::grid()
-    ->templateColumns('auto 1fr minmax(100px, 300px)')
-    ->gap(4);"
+\$grid3 = UiEngine::grid()
+    ->columns('auto 1fr minmax(100px, 300px)')
+    ->gap('1rem');"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Custom column template
+                        'code' => "// Custom column template - pass string to columns()
 const grid = UiEngine.grid()
-    .templateColumns('200px 1fr 100px')
-    .gap(4)
-    .item('Sidebar')
-    .item('Main Content')
-    .item('Aside');
+    .columns('200px 1fr 100px')
+    .gap('1rem');
+
+grid.add('<div>Sidebar</div>');
+grid.add('<div>Main Content</div>');
+grid.add('<div>Aside</div>');
 
 // Using fractions
 const grid2 = UiEngine.grid()
-    .templateColumns('1fr 2fr 1fr')
-    .gap(4)
-    .items(['Left', 'Center', 'Right']);"
+    .columns('1fr 2fr 1fr')
+    .gap('1rem');"
                     ],
                 ]) ?>
             </div>
@@ -280,14 +285,15 @@ const grid2 = UiEngine.grid()
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "\$grid = UiEngine::grid()
-    ->templateColumns('1fr 1fr')
-    ->templateRows('auto 1fr auto')  // Header, Content, Footer
-    ->height(250)
-    ->gap(4)
-    ->item('Header', ['colSpan' => 2])
-    ->item('Sidebar')
-    ->item('Main Content')
-    ->item('Footer', ['colSpan' => 2]);
+    ->columns('1fr 1fr')
+    ->rows('auto 1fr auto')  // Header, Content, Footer
+    ->gap('1rem');
+
+// Add children with inline styles for spanning
+\$grid->add('<div style=\"grid-column: span 2\">Header</div>');
+\$grid->add('<div>Sidebar</div>');
+\$grid->add('<div>Main Content</div>');
+\$grid->add('<div style=\"grid-column: span 2\">Footer</div>');
 
 echo \$grid->render();"
                     ],
@@ -296,14 +302,15 @@ echo \$grid->render();"
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "const grid = UiEngine.grid()
-    .templateColumns('1fr 1fr')
-    .templateRows('auto 1fr auto')
-    .height(250)
-    .gap(4)
-    .item('Header', {colSpan: 2})
-    .item('Sidebar')
-    .item('Main Content')
-    .item('Footer', {colSpan: 2});
+    .columns('1fr 1fr')
+    .rows('auto 1fr auto')
+    .gap('1rem');
+
+// Add children with inline styles for spanning
+grid.add('<div style=\"grid-column: span 2\">Header</div>');
+grid.add('<div>Sidebar</div>');
+grid.add('<div>Main Content</div>');
+grid.add('<div style=\"grid-column: span 2\">Footer</div>');
 
 document.getElementById('container').innerHTML = grid.toHtml();"
                     ],
@@ -335,20 +342,18 @@ document.getElementById('container').innerHTML = grid.toHtml();"
                         'icon' => 'data_object',
                         'code' => "\$grid = UiEngine::grid()
     ->columns(4)
-    ->autoRows(100)  // Each row 100px
-    ->gap(4)
-    ->item('Wide item', ['colSpan' => 2])   // Spans 2 columns
-    ->item('Normal')
-    ->item('Tall item', ['rowSpan' => 2])   // Spans 2 rows
-    ->item('Item 2')
-    ->item('Item 3')
-    ->item('Item 4');
+    ->gap('1rem');
+
+// Add children with inline styles for spanning
+\$grid->add('<div style=\"grid-column: span 2\">Wide item</div>');
+\$grid->add('<div>Normal</div>');
+\$grid->add('<div style=\"grid-row: span 2\">Tall item</div>');
+\$grid->add('<div>Item 2</div>');
+\$grid->add('<div>Item 3</div>');
+\$grid->add('<div>Item 4</div>');
 
 // Both column and row span
-\$grid->item('Large', [
-    'colSpan' => 2,
-    'rowSpan' => 2,
-]);"
+\$grid->add('<div style=\"grid-column: span 2; grid-row: span 2\">Large</div>');"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -356,20 +361,18 @@ document.getElementById('container').innerHTML = grid.toHtml();"
                         'icon' => 'javascript',
                         'code' => "const grid = UiEngine.grid()
     .columns(4)
-    .autoRows(100)
-    .gap(4)
-    .item('Wide item', {colSpan: 2})
-    .item('Normal')
-    .item('Tall item', {rowSpan: 2})
-    .item('Item 2')
-    .item('Item 3')
-    .item('Item 4');
+    .gap('1rem');
+
+// Add children with inline styles for spanning
+grid.add('<div style=\"grid-column: span 2\">Wide item</div>');
+grid.add('<div>Normal</div>');
+grid.add('<div style=\"grid-row: span 2\">Tall item</div>');
+grid.add('<div>Item 2</div>');
+grid.add('<div>Item 3</div>');
+grid.add('<div>Item 4</div>');
 
 // Both column and row span
-grid.item('Large', {
-    colSpan: 2,
-    rowSpan: 2,
-});"
+grid.add('<div style=\"grid-column: span 2; grid-row: span 2\">Large</div>');"
                     ],
                 ]) ?>
             </div>
@@ -391,21 +394,14 @@ grid.item('Large', {
 \$grid = UiEngine::grid()
     ->columns(3)
     ->justifyItems('center')   // Horizontal: start, center, end, stretch
-    ->alignItems('center')     // Vertical: start, center, end, stretch
-    ->items(['A', 'B', 'C']);
+    ->alignItems('center');    // Vertical: start, center, end, stretch
 
-// Align the grid itself within container
-\$grid = UiEngine::grid()
-    ->columns(3)
-    ->justifyContent('center')  // Horizontal grid position
-    ->alignContent('center')    // Vertical grid position
-    ->items(['A', 'B', 'C']);
+\$grid->add('<div>A</div>');
+\$grid->add('<div>B</div>');
+\$grid->add('<div>C</div>');
 
-// Per-item alignment
-\$grid->item('Centered', [
-    'justifySelf' => 'center',
-    'alignSelf' => 'center',
-]);"
+// Per-item alignment (use inline styles)
+\$grid->add('<div style=\"justify-self: center; align-self: center\">Centered</div>');"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -415,21 +411,14 @@ grid.item('Large', {
 const grid = UiEngine.grid()
     .columns(3)
     .justifyItems('center')
-    .alignItems('center')
-    .items(['A', 'B', 'C']);
+    .alignItems('center');
 
-// Align the grid itself
-const grid2 = UiEngine.grid()
-    .columns(3)
-    .justifyContent('center')
-    .alignContent('center')
-    .items(['A', 'B', 'C']);
+grid.add('<div>A</div>');
+grid.add('<div>B</div>');
+grid.add('<div>C</div>');
 
-// Per-item alignment
-grid.item('Centered', {
-    justifySelf: 'center',
-    alignSelf: 'center',
-});"
+// Per-item alignment (use inline styles)
+grid.add('<div style=\"justify-self: center; align-self: center\">Centered</div>');"
                     ],
                 ]) ?>
             </div>
@@ -453,43 +442,53 @@ grid.item('Centered', {
                         <tbody>
                             <tr>
                                 <td><code>columns()</code></td>
-                                <td><code>int $count</code></td>
-                                <td>Set number of equal columns</td>
+                                <td><code>int|string $columns</code></td>
+                                <td>Set columns (number or CSS template string)</td>
                             </tr>
                             <tr>
-                                <td><code>templateColumns()</code></td>
-                                <td><code>string $template</code></td>
-                                <td>Set custom column template</td>
-                            </tr>
-                            <tr>
-                                <td><code>templateRows()</code></td>
-                                <td><code>string $template</code></td>
-                                <td>Set custom row template</td>
-                            </tr>
-                            <tr>
-                                <td><code>autoFit()</code></td>
-                                <td><code>int $minWidth</code></td>
-                                <td>Auto-fit columns with minimum width</td>
-                            </tr>
-                            <tr>
-                                <td><code>autoFill()</code></td>
-                                <td><code>int $minWidth</code></td>
-                                <td>Auto-fill columns with minimum width</td>
+                                <td><code>rows()</code></td>
+                                <td><code>int|string $rows</code></td>
+                                <td>Set rows (number or CSS template string)</td>
                             </tr>
                             <tr>
                                 <td><code>gap()</code></td>
-                                <td><code>int $size</code></td>
-                                <td>Set gap between items (0-5)</td>
+                                <td><code>string $gap</code></td>
+                                <td>Set gap between items (e.g., '1rem')</td>
                             </tr>
                             <tr>
-                                <td><code>item()</code></td>
-                                <td><code>mixed $content, array $options</code></td>
-                                <td>Add grid item with optional span</td>
+                                <td><code>rowGap()</code></td>
+                                <td><code>string $gap</code></td>
+                                <td>Set row gap</td>
                             </tr>
                             <tr>
-                                <td><code>items()</code></td>
-                                <td><code>array $items</code></td>
-                                <td>Add multiple items at once</td>
+                                <td><code>columnGap()</code></td>
+                                <td><code>string $gap</code></td>
+                                <td>Set column gap</td>
+                            </tr>
+                            <tr>
+                                <td><code>justifyItems()</code></td>
+                                <td><code>string $value</code></td>
+                                <td>Align items horizontally: start, center, end, stretch</td>
+                            </tr>
+                            <tr>
+                                <td><code>alignItems()</code></td>
+                                <td><code>string $value</code></td>
+                                <td>Align items vertically: start, center, end, stretch</td>
+                            </tr>
+                            <tr>
+                                <td><code>areas()</code></td>
+                                <td><code>array $areas</code></td>
+                                <td>Set named grid areas</td>
+                            </tr>
+                            <tr>
+                                <td><code>autoFlow()</code></td>
+                                <td><code>string $flow</code></td>
+                                <td>Set auto flow: row, column, dense</td>
+                            </tr>
+                            <tr>
+                                <td><code>add()</code></td>
+                                <td><code>mixed $content</code></td>
+                                <td>Add child element to the grid</td>
                             </tr>
                         </tbody>
                     </table>

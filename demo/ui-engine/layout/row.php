@@ -254,10 +254,9 @@ UiEngine::row()
     ->col('B', 4)
     ->col('C', 4);
 
-// Different horizontal/vertical gutters
+// No gutters
 UiEngine::row()
-    ->gutterX(3)  // Horizontal gutter
-    ->gutterY(4)  // Vertical gutter (for wrapped rows)
+    ->noGutter()
     ->col('A', 6)
     ->col('B', 6)
     ->col('C', 6)
@@ -281,10 +280,9 @@ UiEngine.row()
     .col('B', 4)
     .col('C', 4);
 
-// Different horizontal/vertical gutters
+// No gutters
 UiEngine.row()
-    .gutterX(3)
-    .gutterY(4)
+    .noGutter()
     .col('A', 6)
     .col('B', 6)
     .col('C', 6)
@@ -315,24 +313,23 @@ UiEngine.row()
                         'icon' => 'data_object',
                         'code' => "// Align items to start (top)
 UiEngine::row()
-    ->align('start')
+    ->alignItems('start')
     ->col('Top aligned');
 
 // Align items to center
 UiEngine::row()
-    ->align('center')
+    ->alignItems('center')
     ->col('Center aligned');
 
 // Align items to end (bottom)
 UiEngine::row()
-    ->align('end')
+    ->alignItems('end')
     ->col('Bottom aligned');
 
-// Individual column alignment
-UiEngine::row()
-    ->col('Top', ['align' => 'start'])
-    ->col('Center', ['align' => 'center'])
-    ->col('Bottom', ['align' => 'end']);"
+// Shorthand methods
+UiEngine::row()->alignStart();   // Same as alignItems('start')
+UiEngine::row()->alignCenter();  // Same as alignItems('center')
+UiEngine::row()->alignEnd();     // Same as alignItems('end')"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -340,24 +337,23 @@ UiEngine::row()
                         'icon' => 'javascript',
                         'code' => "// Align items to start (top)
 UiEngine.row()
-    .align('start')
+    .alignItems('start')
     .col('Top aligned');
 
 // Align items to center
 UiEngine.row()
-    .align('center')
+    .alignItems('center')
     .col('Center aligned');
 
 // Align items to end (bottom)
 UiEngine.row()
-    .align('end')
+    .alignItems('end')
     .col('Bottom aligned');
 
-// Individual column alignment
-UiEngine.row()
-    .col('Top', {align: 'start'})
-    .col('Center', {align: 'center'})
-    .col('Bottom', {align: 'end'});"
+// Shorthand methods
+UiEngine.row().alignStart();
+UiEngine.row().alignCenter();
+UiEngine.row().alignEnd();"
                     ],
                 ]) ?>
             </div>
@@ -387,39 +383,28 @@ UiEngine.row()
                         'icon' => 'data_object',
                         'code' => "// Justify to start (left)
 UiEngine::row()
-    ->justify('start')
+    ->justifyContent('start')
     ->col('A', 3)
     ->col('B', 3);
 
 // Justify to center
 UiEngine::row()
-    ->justify('center')
+    ->justifyContent('center')
     ->col('A', 3)
     ->col('B', 3);
 
 // Justify to end (right)
 UiEngine::row()
-    ->justify('end')
+    ->justifyContent('end')
     ->col('A', 3)
     ->col('B', 3);
 
-// Space between
-UiEngine::row()
-    ->justify('between')
-    ->col('A', 3)
-    ->col('B', 3);
-
-// Space around
-UiEngine::row()
-    ->justify('around')
-    ->col('A', 3)
-    ->col('B', 3);
-
-// Space evenly
-UiEngine::row()
-    ->justify('evenly')
-    ->col('A', 3)
-    ->col('B', 3);"
+// Shorthand methods
+UiEngine::row()->justifyStart();    // start
+UiEngine::row()->justifyCenter();   // center
+UiEngine::row()->justifyEnd();      // end
+UiEngine::row()->justifyBetween();  // space-between
+UiEngine::row()->justifyAround();   // space-around"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -427,21 +412,20 @@ UiEngine::row()
                         'icon' => 'javascript',
                         'code' => "// Justify to start (left)
 UiEngine.row()
-    .justify('start')
+    .justifyContent('start')
     .col('A', 3)
     .col('B', 3);
 
 // Justify to center
 UiEngine.row()
-    .justify('center')
+    .justifyContent('center')
     .col('A', 3)
     .col('B', 3);
 
-// Space between
-UiEngine.row()
-    .justify('between')
-    .col('A', 3)
-    .col('B', 3);"
+// Shorthand methods
+UiEngine.row().justifyStart();
+UiEngine.row().justifyCenter();
+UiEngine.row().justifyBetween();"
                     ],
                 ]) ?>
             </div>
@@ -478,25 +462,20 @@ UiEngine.row()
                                 <td><code>int $size</code></td>
                                 <td>Set gutter spacing (0-5)</td>
                             </tr>
-                            <tr>
-                                <td><code>gutterX()</code></td>
-                                <td><code>int $size</code></td>
-                                <td>Set horizontal gutter</td>
-                            </tr>
-                            <tr>
-                                <td><code>gutterY()</code></td>
-                                <td><code>int $size</code></td>
-                                <td>Set vertical gutter</td>
-                            </tr>
-                            <tr>
-                                <td><code>align()</code></td>
+                                                        <tr>
+                                <td><code>alignItems()</code></td>
                                 <td><code>string $alignment</code></td>
-                                <td>Vertical align: start, center, end</td>
+                                <td>Vertical align: start, center, end, stretch, baseline</td>
                             </tr>
                             <tr>
-                                <td><code>justify()</code></td>
+                                <td><code>justifyContent()</code></td>
                                 <td><code>string $justify</code></td>
-                                <td>Horizontal: start, center, end, between, around, evenly</td>
+                                <td>Horizontal: start, center, end, between, around</td>
+                            </tr>
+                            <tr>
+                                <td><code>noGutter()</code></td>
+                                <td>-</td>
+                                <td>Remove gutter spacing</td>
                             </tr>
                         </tbody>
                     </table>

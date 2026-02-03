@@ -140,25 +140,23 @@ document.getElementById('header').innerHTML = navbar.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "\$navbar = UiEngine::navbar()
-    ->brand('SixOrbit', '/', [
-        'icon' => 'hexagon',
-        // or 'logo' => '/images/logo.png',
-    ])
+    ->brand('SixOrbit', '/')
+    ->brandImage('/images/logo.png')  // Optional logo image
     ->item('Products', '/products')
     ->item('Solutions', '/solutions')
     ->item('Resources', '/resources');
 
-echo \$navbar->render();"
+echo \$navbar->render();
+
+// Note: For icons in brand, use custom HTML in the brand area"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "const navbar = UiEngine.navbar()
-    .brand('SixOrbit', '/', {
-        icon: 'hexagon',
-        // or logo: '/images/logo.png',
-    })
+    .brand('SixOrbit', '/')
+    .brandImage('/images/logo.png')
     .item('Products', '/products')
     .item('Solutions', '/solutions')
     .item('Resources', '/resources');"

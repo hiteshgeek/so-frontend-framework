@@ -90,6 +90,21 @@ document.getElementById('container').innerHTML = emptyState.toHtml();"
                 <h3 class="so-card-title">With Custom Image</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-text-center so-py-5 so-mb-4">
+                    <svg width="200" height="150" viewBox="0 0 200 150" class="so-mb-3">
+                        <rect x="40" y="30" width="120" height="90" rx="8" fill="#e9ecef" stroke="#dee2e6" stroke-width="2"/>
+                        <rect x="55" y="45" width="90" height="12" rx="2" fill="#adb5bd"/>
+                        <rect x="55" y="65" width="70" height="8" rx="2" fill="#ced4da"/>
+                        <rect x="55" y="80" width="80" height="8" rx="2" fill="#ced4da"/>
+                        <rect x="55" y="95" width="50" height="8" rx="2" fill="#ced4da"/>
+                        <circle cx="100" cy="70" r="35" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="100" y="75" text-anchor="middle" fill="#6c757d" font-size="12">No Image</text>
+                    </svg>
+                    <h5 class="so-mt-3">Your inbox is empty</h5>
+                    <p class="so-text-muted">When you receive messages, they will appear here.</p>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('empty-image', [
                     [
@@ -116,6 +131,19 @@ echo \$emptyState->render();"
 
 document.getElementById('container').innerHTML = emptyState.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-empty-state so-text-center so-py-5">
+    <img src="/images/illustrations/empty-inbox.svg"
+         alt="Empty inbox"
+         class="so-empty-state-image"
+         style="width:200px;height:auto;">
+    <h5 class="so-mt-3">Your inbox is empty</h5>
+    <p class="so-text-muted">When you receive messages, they will appear here.</p>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -126,6 +154,53 @@ document.getElementById('container').innerHTML = emptyState.toHtml();"
                 <h3 class="so-card-title">Common Scenarios</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demos -->
+                <div class="so-row so-g-4 so-mb-4">
+                    <!-- No Search Results -->
+                    <div class="so-col-md-6">
+                        <div class="so-border so-rounded so-p-4">
+                            <div class="so-text-center so-py-4">
+                                <span class="material-icons so-text-muted" style="font-size:48px;">search_off</span>
+                                <h6 class="so-mt-3">No results found</h6>
+                                <p class="so-text-muted small">Try adjusting your search or filters.</p>
+                                <button class="so-btn so-btn-sm so-btn-secondary">Clear filters</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- No Notifications -->
+                    <div class="so-col-md-6">
+                        <div class="so-border so-rounded so-p-4">
+                            <div class="so-text-center so-py-4">
+                                <span class="material-icons so-text-success" style="font-size:48px;">notifications_none</span>
+                                <h6 class="so-mt-3">All caught up!</h6>
+                                <p class="so-text-muted small">You have no new notifications.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Empty Cart -->
+                    <div class="so-col-md-6">
+                        <div class="so-border so-rounded so-p-4">
+                            <div class="so-text-center so-py-4">
+                                <span class="material-icons so-text-muted" style="font-size:48px;">shopping_cart</span>
+                                <h6 class="so-mt-3">Your cart is empty</h6>
+                                <p class="so-text-muted small">Add some items to get started.</p>
+                                <button class="so-btn so-btn-sm so-btn-primary">Browse Products</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Error State -->
+                    <div class="so-col-md-6">
+                        <div class="so-border so-rounded so-p-4">
+                            <div class="so-text-center so-py-4">
+                                <span class="material-icons so-text-danger" style="font-size:48px;">error_outline</span>
+                                <h6 class="so-mt-3">Something went wrong</h6>
+                                <p class="so-text-muted small">We encountered an error loading your data.</p>
+                                <button class="so-btn so-btn-sm so-btn-primary">Retry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('empty-scenarios', [
                     [
@@ -191,6 +266,26 @@ UiEngine.emptyState()
     .title('Something went wrong')
     .description('We encountered an error loading your data.')
     .action(UiEngine.button('Retry').variant('primary'));"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- No search results -->
+<div class="so-empty-state so-text-center so-py-5">
+    <span class="material-icons so-text-muted" style="font-size:64px;">search_off</span>
+    <h5 class="so-mt-3">No results found</h5>
+    <p class="so-text-muted">Try adjusting your search or filters.</p>
+    <button class="so-btn so-btn-secondary">Clear filters</button>
+</div>
+
+<!-- Error state with colored icon -->
+<div class="so-empty-state so-text-center so-py-5">
+    <span class="material-icons so-text-danger" style="font-size:64px;">error_outline</span>
+    <h5 class="so-mt-3">Something went wrong</h5>
+    <p class="so-text-muted">We encountered an error loading your data.</p>
+    <button class="so-btn so-btn-primary">Retry</button>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -277,6 +372,15 @@ document.getElementById('container').innerHTML = emptyState.toHtml();"
                 <h3 class="so-card-title">Compact Style</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-border so-rounded so-p-3 so-mb-4" style="max-width:400px;">
+                    <div class="so-text-center so-py-3">
+                        <span class="material-icons so-text-muted" style="font-size:32px;">comment</span>
+                        <h6 class="so-mt-2 so-mb-1">No comments</h6>
+                        <p class="so-text-muted small so-mb-0">Be the first to comment.</p>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('empty-compact', [
                     [
@@ -304,6 +408,16 @@ const emptyState = UiEngine.emptyState()
     .description('Be the first to comment.');
 
 document.getElementById('container').innerHTML = emptyState.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-empty-state so-empty-state-compact so-text-center so-py-3">
+    <span class="material-icons so-text-muted" style="font-size:32px;">comment</span>
+    <h6 class="so-mt-2 so-mb-1">No comments</h6>
+    <p class="so-text-muted small so-mb-0">Be the first to comment.</p>
+</div>'
                     ],
                 ]) ?>
             </div>

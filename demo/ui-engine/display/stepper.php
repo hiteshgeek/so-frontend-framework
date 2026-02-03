@@ -401,6 +401,91 @@ document.getElementById('container').innerHTML = stepper.toHtml();"
                 <h3 class="so-card-title">Interactive Stepper</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Allow users to navigate between steps by clicking on them. Control the stepper programmatically with JavaScript.</p>
+
+                <!-- Live Demo -->
+                <div class="so-stepper so-stepper-interactive so-mb-4" id="interactive-stepper-demo">
+                    <div class="so-stepper-item so-completed" data-step="0" style="cursor: pointer;">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">check</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Cart</div>
+                            <div class="so-stepper-subtitle">Review items</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-active" data-step="1" style="cursor: pointer;">
+                        <div class="so-stepper-indicator">2</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Shipping</div>
+                            <div class="so-stepper-subtitle">Enter address</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item" data-step="2" style="cursor: pointer;">
+                        <div class="so-stepper-indicator">3</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Payment</div>
+                            <div class="so-stepper-subtitle">Add payment</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item" data-step="3" style="cursor: pointer;">
+                        <div class="so-stepper-indicator">4</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Complete</div>
+                            <div class="so-stepper-subtitle">Order confirmed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="so-btn-group so-mb-4">
+                    <button class="so-btn so-btn-outline so-btn-sm" onclick="stepperPrev()">
+                        <span class="material-icons" style="font-size:16px;">chevron_left</span> Previous
+                    </button>
+                    <button class="so-btn so-btn-primary so-btn-sm" onclick="stepperNext()">
+                        Next <span class="material-icons" style="font-size:16px;">chevron_right</span>
+                    </button>
+                </div>
+
+                <script>
+                (function() {
+                    const stepper = document.getElementById('interactive-stepper-demo');
+                    if (!stepper) return;
+
+                    const items = stepper.querySelectorAll('.so-stepper-item');
+                    let currentStep = 1;
+
+                    function updateStepper(step) {
+                        items.forEach((item, index) => {
+                            item.classList.remove('so-completed', 'so-active');
+                            const indicator = item.querySelector('.so-stepper-indicator');
+
+                            if (index < step) {
+                                item.classList.add('so-completed');
+                                indicator.innerHTML = '<span class="material-icons">check</span>';
+                            } else if (index === step) {
+                                item.classList.add('so-active');
+                                indicator.innerHTML = (index + 1).toString();
+                            } else {
+                                indicator.innerHTML = (index + 1).toString();
+                            }
+                        });
+                        currentStep = step;
+                    }
+
+                    items.forEach((item, index) => {
+                        item.addEventListener('click', () => updateStepper(index));
+                    });
+
+                    window.stepperNext = function() {
+                        if (currentStep < items.length - 1) updateStepper(currentStep + 1);
+                    };
+
+                    window.stepperPrev = function() {
+                        if (currentStep > 0) updateStepper(currentStep - 1);
+                    };
+                })();
+                </script>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('stepper-interactive', [
                     [

@@ -215,15 +215,15 @@ document.getElementById('container').innerHTML = list.toHtml();"
                 <ul class="so-list-group so-mb-4" style="max-width:400px;">
                     <li class="so-list-group-item so-d-flex so-justify-content-between so-align-items-center">
                         Inbox
-                        <span class="so-badge so-bg-primary so-rounded-pill">14</span>
+                        <span class="so-badge so-badge-primary so-badge-pill">14</span>
                     </li>
                     <li class="so-list-group-item so-d-flex so-justify-content-between so-align-items-center">
                         Drafts
-                        <span class="so-badge so-bg-secondary so-rounded-pill">3</span>
+                        <span class="so-badge so-badge-secondary so-badge-pill">3</span>
                     </li>
                     <li class="so-list-group-item so-d-flex so-justify-content-between so-align-items-center">
                         Sent
-                        <span class="so-badge so-bg-success so-rounded-pill">99+</span>
+                        <span class="so-badge so-badge-success so-badge-pill">99+</span>
                     </li>
                 </ul>
 
@@ -258,11 +258,11 @@ document.getElementById('container').innerHTML = list.toHtml();"
                         'code' => '<ul class="so-list-group">
     <li class="so-list-group-item so-d-flex so-justify-content-between so-align-items-center">
         Inbox
-        <span class="so-badge so-bg-primary so-rounded-pill">14</span>
+        <span class="so-badge so-badge-primary so-badge-pill">14</span>
     </li>
     <li class="so-list-group-item so-d-flex so-justify-content-between so-align-items-center">
         Drafts
-        <span class="so-badge so-bg-secondary so-rounded-pill">3</span>
+        <span class="so-badge so-badge-secondary so-badge-pill">3</span>
     </li>
 </ul>'
                     ],

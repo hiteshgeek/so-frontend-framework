@@ -85,13 +85,15 @@ document.getElementById('container').innerHTML = rating.toHtml();"
                 <!-- Live Demo -->
                 <div class="so-mb-4">
                     <label class="so-form-label so-mb-2">Rate this product</label>
-                    <div class="so-rating so-rating-editable so-d-flex so-gap-1" style="cursor:pointer;">
+                    <div class="so-rating so-rating-editable so-d-flex so-gap-1" id="interactive-rating-demo" style="cursor:pointer;">
                         <span class="material-icons so-text-warning" data-value="1">star</span>
                         <span class="material-icons so-text-warning" data-value="2">star</span>
                         <span class="material-icons so-text-warning" data-value="3">star</span>
                         <span class="material-icons so-text-muted" data-value="4">star_border</span>
                         <span class="material-icons so-text-muted" data-value="5">star_border</span>
                     </div>
+                    <input type="hidden" id="interactive-rating-value" value="3">
+                    <p class="so-text-muted so-small so-mt-2">Current rating: <span id="rating-display">3</span> stars</p>
                 </div>
 
                 <!-- Code Tabs -->
@@ -438,5 +440,54 @@ UiEngine.rating(4.2)
         </div>
     </div>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ratingContainer = document.getElementById('interactive-rating-demo');
+    const ratingValue = document.getElementById('interactive-rating-value');
+    const ratingDisplay = document.getElementById('rating-display');
+
+    if (ratingContainer) {
+        const stars = ratingContainer.querySelectorAll('[data-value]');
+
+        // Update star display based on value
+        function updateStars(value) {
+            stars.forEach(star => {
+                const starValue = parseInt(star.getAttribute('data-value'));
+                if (starValue <= value) {
+                    star.textContent = 'star';
+                    star.classList.remove('so-text-muted');
+                    star.classList.add('so-text-warning');
+                } else {
+                    star.textContent = 'star_border';
+                    star.classList.remove('so-text-warning');
+                    star.classList.add('so-text-muted');
+                }
+            });
+        }
+
+        // Click handler
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const value = parseInt(this.getAttribute('data-value'));
+                ratingValue.value = value;
+                ratingDisplay.textContent = value;
+                updateStars(value);
+            });
+
+            // Hover preview
+            star.addEventListener('mouseenter', function() {
+                const value = parseInt(this.getAttribute('data-value'));
+                updateStars(value);
+            });
+        });
+
+        // Reset to actual value on mouse leave
+        ratingContainer.addEventListener('mouseleave', function() {
+            updateStars(parseInt(ratingValue.value));
+        });
+    }
+});
+</script>
 
 <?php require_once '../../includes/footer.php'; ?>

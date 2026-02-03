@@ -155,6 +155,42 @@ document.getElementById('container').innerHTML = media.toHtml();"
                 <h3 class="so-card-title">Media Position</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-3">Position the media element on the left (start) or right (end) side of the content.</p>
+
+                <!-- Live Demo -->
+                <div class="so-d-flex so-flex-column so-gap-4 so-mb-4">
+                    <!-- Media on the left (default) -->
+                    <div>
+                        <p class="so-text-muted so-mb-2 small">Media on Left (default):</p>
+                        <div class="so-d-flex" style="max-width:500px;">
+                            <div class="so-flex-shrink-0">
+                                <div style="width:48px;height:48px;background:#0d6efd;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                    <span class="material-icons so-text-white">person</span>
+                                </div>
+                            </div>
+                            <div class="so-flex-grow-1 so-ms-3">
+                                <h5 class="so-mt-0">Left Aligned</h5>
+                                <p class="so-mb-0">Media element positioned on the left side of the content (default behavior).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Media on the right -->
+                    <div>
+                        <p class="so-text-muted so-mb-2 small">Media on Right:</p>
+                        <div class="so-d-flex" style="max-width:500px;">
+                            <div class="so-flex-grow-1 so-me-3">
+                                <h5 class="so-mt-0">Right Aligned</h5>
+                                <p class="so-mb-0">Media element positioned on the right side of the content.</p>
+                            </div>
+                            <div class="so-flex-shrink-0">
+                                <div style="width:48px;height:48px;background:#198754;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                    <span class="material-icons so-text-white">person</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('media-position', [
                     [

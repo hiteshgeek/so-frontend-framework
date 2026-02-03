@@ -468,33 +468,8 @@ body.sidebar-collapsed .#{$so-prefix}main-content {
   }
 }
 
-.#{$so-prefix}spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid css-var('border-color');
-  border-top-color: css-var('accent-primary');
-  border-radius: radius('full');
-  animation: so-spin 0.8s linear infinite;
-}
-
-@keyframes so-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Spinner sizes
-.#{$so-prefix}spinner-sm {
-  width: 24px;
-  height: 24px;
-  border-width: 2px;
-}
-
-.#{$so-prefix}spinner-lg {
-  width: 56px;
-  height: 56px;
-  border-width: 4px;
-}
+// NOTE: Spinner styles moved to components/_spinners.scss
+// Do not duplicate spinner definitions here
 
 // ============================================
 // EMPTY STATE

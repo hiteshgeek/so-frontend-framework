@@ -337,6 +337,52 @@ document.getElementById('container').innerHTML = timeline.toHtml();"
                 <h3 class="so-card-title">Alternating Layout</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Events alternate between left and right sides for a centered timeline look.</p>
+
+                <!-- Live Demo -->
+                <div class="so-timeline so-timeline-alternating so-mb-4">
+                    <div class="so-timeline-item so-timeline-left">
+                        <div class="so-timeline-marker so-bg-primary">
+                            <span class="material-icons" style="font-size:14px;color:white;">rocket_launch</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">2020</div>
+                            <h6 class="so-timeline-title">Company Founded</h6>
+                            <p class="so-timeline-text">Started with a small team of 3 passionate developers.</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item so-timeline-right">
+                        <div class="so-timeline-marker so-bg-success">
+                            <span class="material-icons" style="font-size:14px;color:white;">trending_up</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">2021</div>
+                            <h6 class="so-timeline-title">Series A Funding</h6>
+                            <p class="so-timeline-text">Raised $5M in funding to scale operations.</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item so-timeline-left">
+                        <div class="so-timeline-marker so-bg-info">
+                            <span class="material-icons" style="font-size:14px;color:white;">public</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">2022</div>
+                            <h6 class="so-timeline-title">Global Expansion</h6>
+                            <p class="so-timeline-text">Opened offices in 5 countries across 3 continents.</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item so-timeline-right">
+                        <div class="so-timeline-marker so-bg-warning">
+                            <span class="material-icons" style="font-size:14px;color:white;">emoji_events</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">2023</div>
+                            <h6 class="so-timeline-title">IPO</h6>
+                            <p class="so-timeline-text">Successfully went public on the stock exchange.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('timeline-alternating', [
                     [
@@ -393,6 +439,54 @@ document.getElementById('container').innerHTML = timeline.toHtml();"
                 <h3 class="so-card-title">With Custom Content</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Embed rich content like cards, alerts, or any custom HTML inside timeline events.</p>
+
+                <!-- Live Demo -->
+                <div class="so-timeline so-mb-4">
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker so-bg-primary">
+                            <span class="material-icons" style="font-size:14px;color:white;">event</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">Tomorrow</div>
+                            <h6 class="so-timeline-title">Meeting Scheduled</h6>
+                            <div class="so-card so-card-sm so-mt-2">
+                                <div class="so-card-body so-py-2 so-px-3">
+                                    <p class="so-mb-1">Team sync meeting</p>
+                                    <small class="so-text-muted">10:00 AM - 11:00 AM</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker so-bg-success">
+                            <span class="material-icons" style="font-size:14px;color:white;">check_circle</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">Today</div>
+                            <h6 class="so-timeline-title">Task Completed</h6>
+                            <div class="so-alert so-alert-success so-alert-sm so-mt-2 so-py-2">
+                                <span class="material-icons so-me-1" style="font-size:16px;">thumb_up</span>
+                                Great job! All tests passed.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker so-bg-info">
+                            <span class="material-icons" style="font-size:14px;color:white;">attach_file</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">Yesterday</div>
+                            <h6 class="so-timeline-title">File Uploaded</h6>
+                            <div class="so-d-flex so-align-items-center so-gap-2 so-mt-2 so-p-2 so-bg-light so-rounded">
+                                <span class="material-icons so-text-muted">description</span>
+                                <span>project-report.pdf</span>
+                                <span class="so-badge so-badge-secondary so-ms-auto">2.4 MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('timeline-custom', [
                     [

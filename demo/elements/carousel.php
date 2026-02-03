@@ -884,6 +884,727 @@ const carousel = new SOCarousel(element, {
             </div>
         </div>
 
+        <!-- UiEngine Usage Examples -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">UiEngine Usage Examples</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">The Carousel component is available in the UiEngine for both backend (PHP) and frontend (JavaScript) rendering.</p>
+
+                <?= so_tabs('carousel-uiengine-examples', [
+                    [
+                        'id' => 'php-example',
+                        'title' => 'PHP (Backend)',
+                        'active' => true,
+                        'content' => so_code_block('use Core\UiEngine\UiEngine;
+
+// Basic carousel with autoplay
+$carousel = UiEngine::carousel()
+    ->id(\'my-carousel\')
+    ->addSlide(\'image1.jpg\', \'First Slide\', \'Slide description\', \'Alt text\')
+    ->addSlide(\'image2.jpg\', \'Second Slide\', \'Another description\')
+    ->addSlide(\'image3.jpg\', \'Third Slide\')
+    ->autoplay(true)
+    ->interval(4000)
+    ->render();
+
+// Hero carousel with fade
+$heroCarousel = UiEngine::carousel()
+    ->addSlide(\'hero1.jpg\')
+    ->addSlide(\'hero2.jpg\')
+    ->addSlide(\'hero3.jpg\')
+    ->hero()
+    ->fade()
+    ->dark()
+    ->render();
+
+// Multi-item carousel
+$productsCarousel = UiEngine::carousel()
+    ->addSlide(\'product1.jpg\')
+    ->addSlide(\'product2.jpg\')
+    ->addSlide(\'product3.jpg\')
+    ->addSlide(\'product4.jpg\')
+    ->multi(3)
+    ->controlsHover()
+    ->lineIndicators()
+    ->render();
+
+// Full configuration
+$advancedCarousel = UiEngine::carousel()
+    ->slides([
+        [\'image\' => \'slide1.jpg\', \'title\' => \'Title 1\', \'description\' => \'Desc 1\'],
+        [\'image\' => \'slide2.jpg\', \'title\' => \'Title 2\', \'description\' => \'Desc 2\'],
+    ])
+    ->indicators(true)
+    ->controls(true)
+    ->autoplay(true)
+    ->interval(5000)
+    ->fade(true)
+    ->touch(true)
+    ->pauseOnHover(true)
+    ->keyboard(true)
+    ->loop(true)
+    ->dark()
+    ->small()
+    ->render();', 'php', false)
+                    ],
+                    [
+                        'id' => 'js-example',
+                        'title' => 'JavaScript (Frontend)',
+                        'content' => so_code_block('import { UiEngine } from \'./ui-engine/UiEngine.js\';
+
+// Basic carousel
+const carousel = UiEngine.carousel()
+    .id(\'my-carousel\')
+    .addSlide(\'image1.jpg\', \'First Slide\', \'Description\', \'Alt text\')
+    .addSlide(\'image2.jpg\', \'Second Slide\', \'Description\')
+    .autoplay(true)
+    .interval(4000)
+    .render();
+
+document.getElementById(\'container\').innerHTML = carousel;
+
+// Hero carousel with chaining
+const heroCarousel = UiEngine.carousel()
+    .addSlide(\'hero1.jpg\')
+    .addSlide(\'hero2.jpg\')
+    .hero()
+    .fade()
+    .dark()
+    .render();
+
+// Multi-item carousel
+const productsCarousel = UiEngine.carousel()
+    .slides([
+        { image: \'product1.jpg\' },
+        { image: \'product2.jpg\' },
+        { image: \'product3.jpg\' },
+        { image: \'product4.jpg\' }
+    ])
+    .multi(3)
+    .controlsHover()
+    .lineIndicators()
+    .render();
+
+// Full configuration
+const advancedCarousel = UiEngine.carousel()
+    .slides([
+        { image: \'slide1.jpg\', title: \'Title 1\', description: \'Desc 1\' },
+        { image: \'slide2.jpg\', title: \'Title 2\', description: \'Desc 2\' }
+    ])
+    .autoplay(true)
+    .interval(5000)
+    .fade(true)
+    .pauseOnHover(true)
+    .keyboard(true)
+    .loop(true)
+    .dark()
+    .small()
+    .render();', 'javascript', false)
+                    ],
+                    [
+                        'id' => 'html-example',
+                        'title' => 'HTML (Static)',
+                        'content' => so_code_block('<!-- Basic carousel -->
+<div class="so-carousel" data-so-carousel>
+    <div class="so-carousel-inner">
+        <div class="so-carousel-slide so-active">
+            <img src="slide1.jpg" alt="Slide 1">
+        </div>
+        <div class="so-carousel-slide">
+            <img src="slide2.jpg" alt="Slide 2">
+        </div>
+    </div>
+    <button class="so-carousel-control so-carousel-control-prev">
+        <span class="material-icons">chevron_left</span>
+    </button>
+    <button class="so-carousel-control so-carousel-control-next">
+        <span class="material-icons">chevron_right</span>
+    </button>
+    <div class="so-carousel-indicators">
+        <button class="so-carousel-indicator so-active" data-so-slide="0"></button>
+        <button class="so-carousel-indicator" data-so-slide="1"></button>
+    </div>
+</div>
+
+<!-- Hero carousel with fade -->
+<div class="so-carousel so-carousel-hero so-carousel-fade so-carousel-dark"
+     data-so-carousel>
+    <!-- slides... -->
+</div>
+
+<!-- Multi-item carousel -->
+<div class="so-carousel so-carousel-multi so-carousel-controls-hover"
+     data-so-carousel
+     data-so-items="3">
+    <div class="so-carousel-inner">
+        <div class="so-carousel-slide so-active">...</div>
+        <div class="so-carousel-slide">...</div>
+        <div class="so-carousel-slide">...</div>
+    </div>
+    <div class="so-carousel-indicators so-carousel-indicators-line">
+        <button class="so-carousel-indicator so-active"></button>
+        <button class="so-carousel-indicator"></button>
+        <button class="so-carousel-indicator"></button>
+    </div>
+</div>', 'html', false)
+                    ]
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- API Reference -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">API Reference</h3>
+            </div>
+            <div class="so-card-body">
+                <?= so_tabs('carousel-api-reference', [
+                    [
+                        'id' => 'config-methods',
+                        'title' => 'Configuration Methods',
+                        'active' => true,
+                        'content' => '
+                            <div class="so-table-responsive">
+                                <table class="so-table so-table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%">Method</th>
+                                            <th style="width: 25%">Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>slides(array)</code></td>
+                                            <td><code>array $slides</code></td>
+                                            <td>Set all slides at once. Each slide: <code>[\'image\' => \'\', \'title\' => \'\', \'description\' => \'\', \'alt\' => \'\']</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>addSlide()</code></td>
+                                            <td><code>string $image</code><br><code>?string $title</code><br><code>?string $description</code><br><code>?string $alt</code></td>
+                                            <td>Add a single slide with optional title, description, and alt text</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>indicators()</code></td>
+                                            <td><code>bool $show = true</code></td>
+                                            <td>Show or hide slide indicators (dots)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>controls()</code></td>
+                                            <td><code>bool $show = true</code></td>
+                                            <td>Show or hide prev/next navigation buttons</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>autoplay()</code></td>
+                                            <td><code>bool $autoplay = true</code></td>
+                                            <td>Enable automatic slide advancement</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>interval()</code></td>
+                                            <td><code>int $ms</code></td>
+                                            <td>Set autoplay interval in milliseconds (default: 5000)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>fade()</code></td>
+                                            <td><code>bool $fade = true</code></td>
+                                            <td>Use crossfade transition instead of sliding</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>touch()</code></td>
+                                            <td><code>bool $touch = true</code></td>
+                                            <td>Enable touch/swipe gestures for navigation</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>pauseOnHover()</code></td>
+                                            <td><code>bool $pause = true</code></td>
+                                            <td>Pause autoplay when mouse hovers over carousel</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>keyboard()</code></td>
+                                            <td><code>bool $keyboard = true</code></td>
+                                            <td>Enable keyboard navigation (arrow keys, Home, End, Space)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>loop()</code></td>
+                                            <td><code>bool $loop = true</code></td>
+                                            <td>Enable looping (wrap around to start/end)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>dark()</code></td>
+                                            <td><code>bool $dark = true</code></td>
+                                            <td>Use dark variant with dark controls for light backgrounds</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        '
+                    ],
+                    [
+                        'id' => 'variant-methods',
+                        'title' => 'Carousel Variants',
+                        'content' => '
+                            <div class="so-table-responsive">
+                                <table class="so-table so-table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%">Method</th>
+                                            <th style="width: 25%">Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>hero()</code></td>
+                                            <td>-</td>
+                                            <td>Center-focused carousel with peek effect showing edges of adjacent slides</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>multi()</code></td>
+                                            <td><code>?int $items = null</code></td>
+                                            <td>Multi-item carousel showing multiple slides at once. Specify number of visible items.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>small()</code></td>
+                                            <td>-</td>
+                                            <td>Smaller controls and indicators size</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>large()</code></td>
+                                            <td>-</td>
+                                            <td>Larger controls and indicators size</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>controlsHover()</code></td>
+                                            <td>-</td>
+                                            <td>Show controls only on hover (cleaner look)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>lineIndicators()</code></td>
+                                            <td>-</td>
+                                            <td>Use line-style indicators instead of dots</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        '
+                    ],
+                    [
+                        'id' => 'interactivity-js',
+                        'title' => 'Interactivity (JS)',
+                        'content' => '
+                            <p class="so-text-muted so-mb-4">The SOCarousel JavaScript class provides runtime interactivity for carousels.</p>
+                            <div class="so-table-responsive">
+                                <table class="so-table so-table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%">Method</th>
+                                            <th style="width: 25%">Returns</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>next()</code></td>
+                                            <td><code>this</code></td>
+                                            <td>Navigate to next slide</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>prev()</code></td>
+                                            <td><code>this</code></td>
+                                            <td>Navigate to previous slide</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>goTo(index)</code></td>
+                                            <td><code>this</code></td>
+                                            <td>Navigate to specific slide by index (0-based)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>play()</code></td>
+                                            <td><code>this</code></td>
+                                            <td>Start autoplay</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>pause()</code></td>
+                                            <td><code>this</code></td>
+                                            <td>Pause autoplay (can be resumed)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>stop()</code></td>
+                                            <td><code>this</code></td>
+                                            <td>Stop autoplay completely</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>getCurrentIndex()</code></td>
+                                            <td><code>number</code></td>
+                                            <td>Get current slide index</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>getSlideCount()</code></td>
+                                            <td><code>number</code></td>
+                                            <td>Get total number of slides</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>isPlaying()</code></td>
+                                            <td><code>boolean</code></td>
+                                            <td>Check if autoplay is active</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>destroy()</code></td>
+                                            <td><code>void</code></td>
+                                            <td>Destroy the carousel instance and cleanup</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h5 class="so-mt-4 so-mb-3">Static Methods</h5>
+                            <div class="so-table-responsive">
+                                <table class="so-table so-table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 30%">Method</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>SOCarousel.getInstance(element)</code></td>
+                                            <td>Get existing carousel instance from DOM element</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>SOCarousel.initAll()</code></td>
+                                            <td>Initialize all carousels with <code>data-so-carousel</code> attribute</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h5 class="so-mt-4 so-mb-3">Events</h5>
+                            <div class="so-table-responsive">
+                                <table class="so-table so-table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 30%">Event</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>so:carousel:slide</code></td>
+                                            <td>Fires before slide change (cancelable). Detail: <code>{ from, to, direction }</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>so:carousel:slid</code></td>
+                                            <td>Fires after slide transition completes. Detail: <code>{ from, to, direction }</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>so:carousel:play</code></td>
+                                            <td>Fires when autoplay starts or resumes</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>so:carousel:pause</code></td>
+                                            <td>Fires when autoplay is paused</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        '
+                    ],
+                    [
+                        'id' => 'inherited',
+                        'title' => 'Inherited Methods',
+                        'content' => '
+                            <p class="so-text-muted so-mb-4">Carousel inherits all base methods from the Element class.</p>
+                            <div class="so-table-responsive">
+                                <table class="so-table so-table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%">Method</th>
+                                            <th style="width: 25%">Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>id()</code></td>
+                                            <td><code>string $id</code></td>
+                                            <td>Set element ID attribute</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>addClass()</code></td>
+                                            <td><code>string $class</code></td>
+                                            <td>Add CSS class to element</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>removeClass()</code></td>
+                                            <td><code>string $class</code></td>
+                                            <td>Remove CSS class from element</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>attr()</code></td>
+                                            <td><code>string $name</code><br><code>string $value</code></td>
+                                            <td>Set custom HTML attribute</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>data()</code></td>
+                                            <td><code>string $key</code><br><code>string $value</code></td>
+                                            <td>Set data attribute (automatically prefixed with <code>data-so-</code>)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>render()</code></td>
+                                            <td>-</td>
+                                            <td>Generate and return HTML string</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>toArray()</code></td>
+                                            <td>-</td>
+                                            <td>Export configuration as array (PHP)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>toConfig()</code></td>
+                                            <td>-</td>
+                                            <td>Export configuration as object (JS)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        '
+                    ]
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- Validation -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Validation</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Carousel components do not have built-in validation as they are display elements rather than form inputs.</p>
+
+                <?= callout('info', '<strong>Note:</strong> If you need to validate carousel-related data (e.g., minimum number of slides, required captions), implement custom validation logic in your application layer before rendering the carousel.') ?>
+
+                <?= so_code_block('// Custom validation example (application level)
+function validateCarouselData($slides) {
+    if (empty($slides)) {
+        throw new Exception("Carousel must have at least one slide");
+    }
+
+    foreach ($slides as $slide) {
+        if (empty($slide[\'image\'])) {
+            throw new Exception("Each slide must have an image");
+        }
+    }
+
+    return true;
+}
+
+// Then create carousel
+$slides = [...];
+validateCarouselData($slides);
+
+$carousel = UiEngine::carousel()
+    ->slides($slides)
+    ->render();', 'php') ?>
+            </div>
+        </div>
+
+        <!-- Error Handling -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Error Handling</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">The Carousel component provides robust error handling for common scenarios.</p>
+
+                <h5 class="so-mt-4 so-mb-3">Common Error Scenarios</h5>
+                <div class="so-table-responsive">
+                    <table class="so-table so-table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Behavior</th>
+                                <th>Prevention</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Empty slides array</td>
+                                <td>Carousel renders empty container with no errors</td>
+                                <td>Check <code>count($slides) > 0</code> before rendering</td>
+                            </tr>
+                            <tr>
+                                <td>Invalid image URL</td>
+                                <td>Browser displays broken image icon</td>
+                                <td>Validate image URLs before adding slides</td>
+                            </tr>
+                            <tr>
+                                <td>Single slide with controls</td>
+                                <td>Controls automatically hidden (not useful for 1 slide)</td>
+                                <td>No action needed - handled automatically</td>
+                            </tr>
+                            <tr>
+                                <td>Missing SOCarousel JS class</td>
+                                <td>Carousel displays but doesn\'t transition</td>
+                                <td>Ensure ui-engine.js is loaded or include SOCarousel manually</td>
+                            </tr>
+                            <tr>
+                                <td>Conflicting slide indices</td>
+                                <td>SOCarousel normalizes indices automatically</td>
+                                <td>No action needed - handled internally</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="so-mt-4 so-mb-3">JavaScript Error Handling</h5>
+                <?= so_code_block('// Listen for slide transition errors
+const carouselEl = document.getElementById(\'my-carousel\');
+
+carouselEl.addEventListener(\'so:carousel:slide\', (e) => {
+    // Prevent slide if validation fails
+    if (!validateSlideTransition(e.detail.from, e.detail.to)) {
+        e.preventDefault();
+        console.error(\'Invalid slide transition\');
+    }
+});
+
+// Handle missing carousel instance
+const carousel = SOCarousel.getInstance(carouselEl);
+if (!carousel) {
+    console.error(\'Carousel not initialized\');
+    // Fallback: initialize manually
+    new SOCarousel(carouselEl);
+}
+
+// Safe navigation with error handling
+try {
+    carousel.goTo(slideIndex);
+} catch (error) {
+    console.error(\'Navigation failed:\', error);
+    // Fallback to first slide
+    carousel.goTo(0);
+}', 'javascript') ?>
+
+                <h5 class="so-mt-4 so-mb-3">PHP Error Prevention</h5>
+                <?= so_code_block('// Safe carousel creation with validation
+try {
+    $carousel = UiEngine::carousel();
+
+    // Validate slides exist
+    if (!empty($slides)) {
+        foreach ($slides as $slide) {
+            // Sanitize and validate each slide
+            $image = filter_var($slide[\'image\'] ?? \'\', FILTER_SANITIZE_URL);
+            $title = htmlspecialchars($slide[\'title\'] ?? \'\', ENT_QUOTES);
+            $description = htmlspecialchars($slide[\'description\'] ?? \'\', ENT_QUOTES);
+
+            if (!empty($image)) {
+                $carousel->addSlide($image, $title, $description);
+            }
+        }
+    }
+
+    echo $carousel->render();
+
+} catch (Exception $e) {
+    // Log error and show fallback
+    error_log("Carousel error: " . $e->getMessage());
+    echo \'<div class="so-alert so-alert-warning">Unable to load carousel</div>\';
+}', 'php') ?>
+
+                <?= callout('tip', '<strong>Best Practice:</strong> Always validate and sanitize user-provided data (images, captions) before passing to the Carousel component to prevent XSS attacks and broken layouts.') ?>
+            </div>
+        </div>
+
+        <!-- UiEngine vs SOCarousel -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">UiEngine Carousel vs SOCarousel</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Understanding the difference between the UiEngine Carousel class and the SOCarousel runtime class.</p>
+
+                <div class="so-table-responsive">
+                    <table class="so-table so-table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%">Aspect</th>
+                                <th>UiEngine Carousel (PHP/JS)</th>
+                                <th>SOCarousel (Runtime JS)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Purpose</strong></td>
+                                <td>HTML generation and configuration</td>
+                                <td>Runtime interactivity and behavior</td>
+                            </tr>
+                            <tr>
+                                <td><strong>When Used</strong></td>
+                                <td>During initial page render (server or client)</td>
+                                <td>After DOM is ready, for user interactions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Key Methods</strong></td>
+                                <td><code>addSlide()</code>, <code>autoplay()</code>, <code>fade()</code>, <code>hero()</code>, <code>render()</code></td>
+                                <td><code>next()</code>, <code>prev()</code>, <code>goTo()</code>, <code>play()</code>, <code>pause()</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Output</strong></td>
+                                <td>HTML string with proper structure and data attributes</td>
+                                <td>Live DOM manipulation and event handling</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Events</strong></td>
+                                <td>N/A (no events, just rendering)</td>
+                                <td>Emits <code>so:carousel:slide</code>, <code>so:carousel:slid</code>, <code>so:carousel:play</code>, <code>so:carousel:pause</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Initialization</strong></td>
+                                <td>Instantiate with <code>UiEngine::carousel()</code> or <code>UiEngine.carousel()</code></td>
+                                <td>Auto-initialized via <code>data-so-carousel</code> or manual <code>new SOCarousel(element)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="so-mt-4 so-mb-3">Workflow Example</h5>
+                <?= so_code_tabs('carousel-workflow', [
+                    ['language' => 'php', 'code' => '// Step 1: Use UiEngine Carousel to generate HTML (server-side)
+$carousel = UiEngine::carousel()
+    ->id(\'product-carousel\')
+    ->addSlide(\'image1.jpg\', \'Product 1\')
+    ->addSlide(\'image2.jpg\', \'Product 2\')
+    ->autoplay(true)
+    ->interval(4000)
+    ->render();
+
+echo $carousel;
+// Outputs: <div class="so-carousel" data-so-carousel data-so-autoplay="true" data-so-interval="4000" id="product-carousel">...</div>'],
+                    ['language' => 'javascript', 'code' => '// Step 2: SOCarousel automatically initializes on DOMContentLoaded
+// (because of data-so-carousel attribute)
+
+// Step 3: Get instance for runtime control
+const carousel = SOCarousel.getInstance(document.getElementById(\'product-carousel\'));
+
+// Step 4: Control programmatically
+carousel.pause();  // Pause autoplay
+carousel.goTo(2);  // Jump to slide 3
+carousel.play();   // Resume autoplay
+
+// Step 5: Listen to events
+carousel.element.addEventListener(\'so:carousel:slid\', (e) => {
+    console.log(\'Now showing slide:\', e.detail.to + 1);
+});']
+                ]) ?>
+
+                <?= callout('info', '<strong>Summary:</strong> Use <code>UiEngine::carousel()</code> to <em>create</em> the carousel HTML. Use <code>SOCarousel</code> to <em>control</em> it after rendering.') ?>
+            </div>
+        </div>
+
     </div>
 </div>
 

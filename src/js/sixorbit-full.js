@@ -4,39 +4,52 @@
 // ============================================
 
 // Core modules (SixOrbit global is exposed to window in so-config.js)
-import SixOrbit from './core/so-config.js';
-import SOComponent from './core/so-component.js';
+import SixOrbit from "./core/so-config.js";
+import SOComponent from "./core/so-component.js";
 
 // Core components
-import SOTheme from './components/so-theme.js';
-import SODropdown from './components/so-dropdown.js';
+import SOTheme from "./components/so-theme.js";
+import SODropdown from "./components/so-dropdown.js";
 // Note: SOSidebar moved to src/pages/global/global.js
-import { SONavbar } from './components/so-layout.js';
-import SOModal from './components/so-modal.js';
-import SODrawer from './components/so-drawer.js';
-import SORipple from './components/so-ripple.js';
-import SOOtpInput from './components/so-otp.js';
-import SOTabs from './components/so-tabs.js';
-import SOTooltip from './components/so-tooltip.js';
-import SOContextMenu from './components/so-context-menu.js';
-import SOProgressButton from './components/so-progress-button.js';
-import SOButtonGroup from './components/so-button-group.js';
-import SOAlert from './components/so-alert.js';
-import SOToast from './components/so-toast.js';
-import SOSelect from './components/so-select.js';
-import SOAutocomplete from './components/so-autocomplete.js';
-import SOTable from './components/so-table.js';
-import SOPagination from './components/so-pagination.js';
-import SOCopy from './components/so-copy.js';
-import SOGoToTop from './components/so-go-to-top.js';
-import { SOInputMask, SOPasswordStrength, SOCharCounter, SOInputClear, initAllFormEnhancers } from './components/so-form-enhancers.js';
+import { SONavbar } from "./components/so-layout.js";
+import SOModal from "./components/so-modal.js";
+import SODrawer from "./components/so-drawer.js";
+import SORipple from "./components/so-ripple.js";
+import SOOtpInput from "./components/so-otp.js";
+import SOTabs from "./components/so-tabs.js";
+import SOTooltip from "./components/so-tooltip.js";
+import SOContextMenu from "./components/so-context-menu.js";
+import SOProgressButton from "./components/so-progress-button.js";
+import SOButtonGroup from "./components/so-button-group.js";
+import SOAlert from "./components/so-alert.js";
+import SOToast from "./components/so-toast.js";
+import SOSelect from "./components/so-select.js";
+import SOAutocomplete from "./components/so-autocomplete.js";
+import SOTable from "./components/so-table.js";
+import SOPagination from "./components/so-pagination.js";
+import SOCopy from "./components/so-copy.js";
+import SOGoToTop from "./components/so-go-to-top.js";
+import {
+  SOInputMask,
+  SOPasswordStrength,
+  SOCharCounter,
+  SOInputClear,
+  initAllFormEnhancers,
+} from "./components/so-form-enhancers.js";
 
 // Features
-import SOForms from './features/so-forms.js';
+import SOForms from "./features/so-forms.js";
 // Note: SOAuth moved to src/pages/auth/auth.js (page-specific)
 
 // UI Engine
-import { UiEngine, ValidationEngine, ErrorReporter, Element as UiElement, FormElement as UiFormElement, ContainerElement as UiContainerElement } from './ui-engine/index.js';
+import {
+  UiEngine,
+  ValidationEngine,
+  ErrorReporter,
+  Element as UiElement,
+  FormElement as UiFormElement,
+  ContainerElement as UiContainerElement,
+} from "./ui-engine/index.js";
 
 // Expose components to global window for inline script usage
 window.SOModal = SOModal;
@@ -66,17 +79,17 @@ window.ValidationEngine = ValidationEngine;
 window.ErrorReporter = ErrorReporter;
 
 // Auto-initialize all components when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Note: Sidebar initialization moved to src/pages/global/global.js
 
   // Initialize navbar if present
-  const navbar = document.querySelector('.so-navbar');
+  const navbar = document.querySelector(".so-navbar");
   if (navbar) {
     SONavbar.getInstance(navbar);
   }
 
   // Initialize theme controller if settings exist
-  const themeSettings = document.querySelector('.so-navbar-theme');
+  const themeSettings = document.querySelector(".so-navbar-theme");
   if (themeSettings) {
     SOTheme.getInstance(themeSettings);
   }
@@ -85,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
   SOForms.initAll();
 
   // Initialize OTP inputs if present
-  document.querySelectorAll('.so-otp-group').forEach(el => {
+  document.querySelectorAll(".so-otp-group").forEach((el) => {
     SOOtpInput.getInstance(el);
   });
 
@@ -131,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize form enhancers (input mask, password strength, char counter, clear button)
   initAllFormEnhancers();
 
-  console.log('SixOrbit UI Full initialized');
+  // console.log('SixOrbit UI Full initialized');
 });
 
 // Export everything for ES modules

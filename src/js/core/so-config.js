@@ -10,7 +10,7 @@
 const SixOrbit = {
   // Expose to window immediately for other scripts
   // This ensures SixOrbit is available before any other code runs
-}
+};
 
 // Expose to global scope immediately
 window.SixOrbit = SixOrbit;
@@ -22,16 +22,16 @@ Object.assign(SixOrbit, {
   // ============================================
 
   /** Framework version */
-  VERSION: '1.0.0',
+  VERSION: "1.0.0",
 
   /** CSS class prefix */
-  PREFIX: 'so',
+  PREFIX: "so",
 
   /** Data attribute prefix */
-  DATA_PREFIX: 'data-so',
+  DATA_PREFIX: "data-so",
 
   /** Custom event prefix */
-  EVENT_PREFIX: 'so:',
+  EVENT_PREFIX: "so:",
 
   // ============================================
   // CLASS NAME HELPERS
@@ -44,7 +44,7 @@ Object.assign(SixOrbit, {
    * @example SixOrbit.cls('btn', 'primary') => 'so-btn-primary'
    */
   cls(...parts) {
-    return `${this.PREFIX}-${parts.join('-')}`;
+    return `${this.PREFIX}-${parts.join("-")}`;
   },
 
   /**
@@ -165,7 +165,9 @@ Object.assign(SixOrbit, {
    * @returns {string} CSS variable value
    */
   getCssVar(name, element = document.documentElement) {
-    return getComputedStyle(element).getPropertyValue(`--${this.PREFIX}-${name}`).trim();
+    return getComputedStyle(element)
+      .getPropertyValue(`--${this.PREFIX}-${name}`)
+      .trim();
   },
 
   /**
@@ -218,7 +220,7 @@ Object.assign(SixOrbit, {
    * @param {string} [prefix='so'] - ID prefix
    * @returns {string} Unique ID
    */
-  uniqueId(prefix = 'so') {
+  uniqueId(prefix = "so") {
     return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 9)}`;
   },
 
@@ -250,16 +252,17 @@ Object.assign(SixOrbit, {
    */
   parseDataOptions(element, keys = []) {
     const options = {};
-    const prefix = 'so';
+    const prefix = "so";
 
     if (!element || !element.dataset) return options;
 
-    Object.keys(element.dataset).forEach(key => {
+    Object.keys(element.dataset).forEach((key) => {
       // Only process keys starting with 'so'
       if (key.startsWith(prefix)) {
         const optionKey = key.slice(prefix.length);
         // Convert to camelCase with lowercase first letter
-        const normalizedKey = optionKey.charAt(0).toLowerCase() + optionKey.slice(1);
+        const normalizedKey =
+          optionKey.charAt(0).toLowerCase() + optionKey.slice(1);
 
         // Skip if keys specified and this key isn't in the list
         if (keys.length > 0 && !keys.includes(normalizedKey)) return;
@@ -275,7 +278,7 @@ Object.assign(SixOrbit, {
 
         // If value is a plain object (not array), spread its properties
         // This allows data-so-tabs='{"closable": true}' to work correctly
-        if (value && typeof value === 'object' && !Array.isArray(value)) {
+        if (value && typeof value === "object" && !Array.isArray(value)) {
           Object.assign(options, value);
         } else {
           options[normalizedKey] = value;
@@ -303,7 +306,7 @@ Object.assign(SixOrbit, {
    * @param {string} breakpoint - Breakpoint name (sm, md, lg, xl)
    * @returns {boolean} Whether viewport is below breakpoint
    */
-  isMobile(breakpoint = 'md') {
+  isMobile(breakpoint = "md") {
     return window.innerWidth < (this.breakpoints[breakpoint] || 768);
   },
 
@@ -375,7 +378,7 @@ Object.assign(SixOrbit, {
   removeInstance(element, name) {
     const instances = this._instances.get(element);
     if (instances && instances[name]) {
-      if (typeof instances[name].destroy === 'function') {
+      if (typeof instances[name].destroy === "function") {
         instances[name].destroy();
       }
       delete instances[name];
@@ -398,17 +401,19 @@ Object.assign(SixOrbit, {
     this._initialized = true;
 
     // Dispatch ready event
-    document.dispatchEvent(new CustomEvent(this.evt('ready'), {
-      detail: { version: this.VERSION }
-    }));
+    document.dispatchEvent(
+      new CustomEvent(this.evt("ready"), {
+        detail: { version: this.VERSION },
+      }),
+    );
 
-    console.log(`SixOrbit UI v${this.VERSION} initialized`);
-  }
+    // console.log(`SixOrbit UI v${this.VERSION} initialized`);
+  },
 });
 
 // Auto-initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => SixOrbit.init());
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => SixOrbit.init());
 } else {
   SixOrbit.init();
 }

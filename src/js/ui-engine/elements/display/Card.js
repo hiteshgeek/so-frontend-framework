@@ -36,7 +36,7 @@ class Card extends ContainerElement {
     }
 
     // ==================
-    // Fluent API
+    // Content Configuration
     // ==================
 
     /**
@@ -46,6 +46,7 @@ class Card extends ContainerElement {
      */
     title(title) {
         this._title = title;
+        if (this.element) this._updateContent();
         return this;
     }
 
@@ -56,6 +57,7 @@ class Card extends ContainerElement {
      */
     subtitle(subtitle) {
         this._subtitle = subtitle;
+        if (this.element) this._updateContent();
         return this;
     }
 
@@ -66,6 +68,7 @@ class Card extends ContainerElement {
      */
     body(body) {
         this._body = body;
+        if (this.element) this._updateContent();
         return this;
     }
 
@@ -76,6 +79,7 @@ class Card extends ContainerElement {
      */
     footer(footer) {
         this._footer = footer;
+        if (this.element) this._updateContent();
         return this;
     }
 
@@ -88,6 +92,7 @@ class Card extends ContainerElement {
     image(src, position = 'top') {
         this._image = src;
         this._imagePosition = position;
+        if (this.element) this._updateContent();
         return this;
     }
 
@@ -98,7 +103,347 @@ class Card extends ContainerElement {
      */
     addHeaderAction(action) {
         this._headerActions.push(action);
+        if (this.element) this._updateContent();
         return this;
+    }
+
+    // ==================
+    // Border Color Variants
+    // ==================
+
+    /**
+     * Set border color variant
+     * @param {string} variant - primary, success, danger, etc.
+     * @returns {this}
+     */
+    variant(variant) {
+        return this.addClass(`card-border-${variant}`);
+    }
+
+    /**
+     * Primary border color
+     * @returns {this}
+     */
+    borderPrimary() {
+        return this.variant('primary');
+    }
+
+    /**
+     * Success border color
+     * @returns {this}
+     */
+    borderSuccess() {
+        return this.variant('success');
+    }
+
+    /**
+     * Danger border color
+     * @returns {this}
+     */
+    borderDanger() {
+        return this.variant('danger');
+    }
+
+    /**
+     * Warning border color
+     * @returns {this}
+     */
+    borderWarning() {
+        return this.variant('warning');
+    }
+
+    /**
+     * Info border color
+     * @returns {this}
+     */
+    borderInfo() {
+        return this.variant('info');
+    }
+
+    /**
+     * Secondary border color
+     * @returns {this}
+     */
+    borderSecondary() {
+        return this.variant('secondary');
+    }
+
+    /**
+     * Light border color
+     * @returns {this}
+     */
+    borderLight() {
+        return this.variant('light');
+    }
+
+    /**
+     * Dark border color
+     * @returns {this}
+     */
+    borderDark() {
+        return this.variant('dark');
+    }
+
+    // ==================
+    // Header Color Variants
+    // ==================
+
+    /**
+     * Set header color variant
+     * @param {string} variant - primary, success, danger, etc.
+     * @param {boolean} soft - Use soft/light style
+     * @returns {this}
+     */
+    headerColor(variant, soft = false) {
+        const className = soft ? `card-header-soft-${variant}` : `card-header-${variant}`;
+        return this.addClass(className);
+    }
+
+    /**
+     * Primary header color
+     * @returns {this}
+     */
+    headerPrimary() {
+        return this.addClass('card-header-primary');
+    }
+
+    /**
+     * Success header color
+     * @returns {this}
+     */
+    headerSuccess() {
+        return this.addClass('card-header-success');
+    }
+
+    /**
+     * Danger header color
+     * @returns {this}
+     */
+    headerDanger() {
+        return this.addClass('card-header-danger');
+    }
+
+    /**
+     * Warning header color
+     * @returns {this}
+     */
+    headerWarning() {
+        return this.addClass('card-header-warning');
+    }
+
+    /**
+     * Info header color
+     * @returns {this}
+     */
+    headerInfo() {
+        return this.addClass('card-header-info');
+    }
+
+    /**
+     * Secondary header color
+     * @returns {this}
+     */
+    headerSecondary() {
+        return this.addClass('card-header-secondary');
+    }
+
+    /**
+     * Light header color
+     * @returns {this}
+     */
+    headerLight() {
+        return this.addClass('card-header-light');
+    }
+
+    /**
+     * Dark header color
+     * @returns {this}
+     */
+    headerDark() {
+        return this.addClass('card-header-dark');
+    }
+
+    // ==================
+    // Header Color Variants (Soft)
+    // ==================
+
+    /**
+     * Soft primary header color
+     * @returns {this}
+     */
+    headerSoftPrimary() {
+        return this.addClass('card-header-soft-primary');
+    }
+
+    /**
+     * Soft success header color
+     * @returns {this}
+     */
+    headerSoftSuccess() {
+        return this.addClass('card-header-soft-success');
+    }
+
+    /**
+     * Soft danger header color
+     * @returns {this}
+     */
+    headerSoftDanger() {
+        return this.addClass('card-header-soft-danger');
+    }
+
+    /**
+     * Soft warning header color
+     * @returns {this}
+     */
+    headerSoftWarning() {
+        return this.addClass('card-header-soft-warning');
+    }
+
+    /**
+     * Soft info header color
+     * @returns {this}
+     */
+    headerSoftInfo() {
+        return this.addClass('card-header-soft-info');
+    }
+
+    /**
+     * Soft secondary header color
+     * @returns {this}
+     */
+    headerSoftSecondary() {
+        return this.addClass('card-header-soft-secondary');
+    }
+
+    /**
+     * Soft light header color
+     * @returns {this}
+     */
+    headerSoftLight() {
+        return this.addClass('card-header-soft-light');
+    }
+
+    /**
+     * Soft dark header color
+     * @returns {this}
+     */
+    headerSoftDark() {
+        return this.addClass('card-header-soft-dark');
+    }
+
+    // ==================
+    // Card Styles
+    // ==================
+
+    /**
+     * Bordered style (border, no shadow)
+     * @returns {this}
+     */
+    bordered() {
+        return this.addClass('card-bordered');
+    }
+
+    /**
+     * Flat style (no shadow, no border)
+     * @returns {this}
+     */
+    flat() {
+        return this.addClass('card-flat');
+    }
+
+    /**
+     * Elevated style (larger shadow)
+     * @returns {this}
+     */
+    elevated() {
+        return this.addClass('card-elevated');
+    }
+
+    /**
+     * Padded style (direct padding on card)
+     * @returns {this}
+     */
+    padded() {
+        return this.addClass('card-padded');
+    }
+
+    // ==================
+    // Spacing Modes
+    // ==================
+
+    /**
+     * Compact spacing
+     * @returns {this}
+     */
+    compact() {
+        return this.addClass('card-compact');
+    }
+
+    /**
+     * Spacious spacing
+     * @returns {this}
+     */
+    spacious() {
+        return this.addClass('card-spacious');
+    }
+
+    // ==================
+    // Layout Options
+    // ==================
+
+    /**
+     * Horizontal layout
+     * @returns {this}
+     */
+    horizontal() {
+        return this.addClass('card-horizontal');
+    }
+
+    // ==================
+    // Interactivity Methods
+    // ==================
+
+    /**
+     * Get current title
+     * @returns {string|null}
+     */
+    getTitle() {
+        return this._title;
+    }
+
+    /**
+     * Get current subtitle
+     * @returns {string|null}
+     */
+    getSubtitle() {
+        return this._subtitle;
+    }
+
+    /**
+     * Get current body
+     * @returns {string|null}
+     */
+    getBody() {
+        return this._body;
+    }
+
+    /**
+     * Get current footer
+     * @returns {string|null}
+     */
+    getFooter() {
+        return this._footer;
+    }
+
+    /**
+     * Update content in DOM
+     * @private
+     */
+    _updateContent() {
+        if (!this.element) return;
+
+        const newContent = this.renderContent();
+        this.element.innerHTML = newContent;
     }
 
     // ==================

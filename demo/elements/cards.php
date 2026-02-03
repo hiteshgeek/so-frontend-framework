@@ -1264,6 +1264,421 @@ require_once '../includes/navbar.php';
             </div>
         </div>
     </div>
+
+        <!-- UiEngine Usage Examples -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">UiEngine Usage Examples</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Create cards programmatically using the UiEngine Card class in JavaScript or PHP.</p>
+                <?= so_code_tabs_multi('card-uiengine-examples',
+                    '// JavaScript - Client-side rendering
+import { UiEngine } from \'@sixorbit/ui-engine\';
+
+// Basic card with header, body, and footer
+const card = UiEngine.card()
+    .title("Card Title")
+    .subtitle("Optional subtitle")
+    .body("Card content goes here.")
+    .footer("Footer content")
+    .renderTo(document.body);
+
+// Card with colored header
+const coloredCard = UiEngine.card()
+    .title("Primary Header")
+    .headerPrimary()
+    .body("Card with primary colored header")
+    .renderTo(document.body);
+
+// Card with soft header color
+const softCard = UiEngine.card()
+    .title("Soft Success")
+    .headerSoftSuccess()
+    .body("Card with soft success header")
+    .renderTo(document.body);
+
+// Card with border color
+const borderCard = UiEngine.card()
+    .title("Danger Border")
+    .borderDanger()
+    .body("Card with danger border")
+    .renderTo(document.body);
+
+// Card styles
+const borderedCard = UiEngine.card()
+    .title("Bordered Card")
+    .body("Card with border style")
+    .bordered()
+    .renderTo(document.body);
+
+const elevatedCard = UiEngine.card()
+    .title("Elevated Card")
+    .body("Card with larger shadow")
+    .elevated()
+    .renderTo(document.body);
+
+// Spacing modes
+const compactCard = UiEngine.card()
+    .title("Compact Card")
+    .body("Dense spacing for dashboards")
+    .compact()
+    .renderTo(document.body);
+
+// Horizontal layout
+const horizontalCard = UiEngine.card()
+    .image("image.jpg", "top")
+    .title("Horizontal Card")
+    .body("Side-by-side layout")
+    .horizontal()
+    .renderTo(document.body);
+
+// Dynamic updates
+card.title("Updated Title");
+card.body("Updated content");',
+                    '// PHP - Server-side rendering
+use Core\\UiEngine\\UiEngine;
+
+// Basic card
+$card = UiEngine::card()
+    ->title("Card Title")
+    ->subtitle("Optional subtitle")
+    ->bodyText("Card content goes here.")
+    ->footer("Footer content");
+
+echo $card;
+
+// Card with colored header
+$coloredCard = UiEngine::card()
+    ->title("Primary Header")
+    ->headerPrimary()
+    ->bodyText("Card with primary colored header");
+
+echo $coloredCard;
+
+// Card with soft header color
+$softCard = UiEngine::card()
+    ->title("Soft Success")
+    ->headerSoftSuccess()
+    ->bodyText("Card with soft success header");
+
+echo $softCard;
+
+// Card with border color
+$borderCard = UiEngine::card()
+    ->title("Danger Border")
+    ->danger()
+    ->bodyText("Card with danger border");
+
+echo $borderCard;
+
+// Card styles
+$borderedCard = UiEngine::card()
+    ->title("Bordered Card")
+    ->bodyText("Card with border style")
+    ->bordered();
+
+echo $borderedCard;
+
+$elevatedCard = UiEngine::card()
+    ->title("Elevated Card")
+    ->bodyText("Card with larger shadow")
+    ->elevated();
+
+echo $elevatedCard;
+
+// Spacing modes
+$compactCard = UiEngine::card()
+    ->title("Compact Card")
+    ->bodyText("Dense spacing for dashboards")
+    ->compact();
+
+echo $compactCard;
+
+// Horizontal layout
+$horizontalCard = UiEngine::card()
+    ->image("image.jpg", "top")
+    ->title("Horizontal Card")
+    ->bodyText("Side-by-side layout")
+    ->horizontal();
+
+echo $horizontalCard;',
+                    '<div class="so-card">
+    <div class="so-card-header">
+        <h3 class="so-card-title">Card Title</h3>
+    </div>
+    <div class="so-card-body">
+        <h6 class="so-card-subtitle">Optional subtitle</h6>
+        <p>Card content goes here.</p>
+    </div>
+    <div class="so-card-footer">
+        Footer content
+    </div>
+</div>
+
+<!-- Card with colored header -->
+<div class="so-card so-card-header-primary">
+    <div class="so-card-header">
+        <h3 class="so-card-title">Primary Header</h3>
+    </div>
+    <div class="so-card-body">
+        <p>Card with primary colored header</p>
+    </div>
+</div>
+
+<!-- Card with soft header -->
+<div class="so-card so-card-header-soft-success">
+    <div class="so-card-header">
+        <h3 class="so-card-title">Soft Success</h3>
+    </div>
+    <div class="so-card-body">
+        <p>Card with soft success header</p>
+    </div>
+</div>
+
+<!-- Card with border color -->
+<div class="so-card so-card-border-danger">
+    <div class="so-card-header">
+        <h3 class="so-card-title">Danger Border</h3>
+    </div>
+    <div class="so-card-body">
+        <p>Card with danger border</p>
+    </div>
+</div>
+
+<!-- Bordered style -->
+<div class="so-card so-card-bordered">
+    <div class="so-card-body">
+        <p>Card with border style</p>
+    </div>
+</div>
+
+<!-- Elevated style -->
+<div class="so-card so-card-elevated">
+    <div class="so-card-body">
+        <p>Card with larger shadow</p>
+    </div>
+</div>
+
+<!-- Compact spacing -->
+<div class="so-card so-card-compact">
+    <div class="so-card-body">
+        <p>Dense spacing</p>
+    </div>
+</div>
+
+<!-- Horizontal layout -->
+<div class="so-card so-card-horizontal">
+    <img class="so-card-img" src="image.jpg" alt="">
+    <div class="so-card-content">
+        <div class="so-card-body">
+            <h4>Horizontal Card</h4>
+            <p>Side-by-side layout</p>
+        </div>
+    </div>
+</div>'
+                ) ?>
+            </div>
+        </div>
+
+        <!-- API Reference -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">API Reference</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Complete API reference for the Card element with all available methods.</p>
+                <?= so_tabs('card-api-reference', [
+                    [
+                        'title' => 'Configuration Methods',
+                        'content' => '<div class="so-api-reference">
+                            <h4 class="so-mb-3">Content Methods</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">title(string $title): static</code>
+                                <p class="so-text-muted so-text-sm">Set card title.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">subtitle(string $subtitle): static</code>
+                                <p class="so-text-muted so-text-sm">Set card subtitle.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">bodyText(string $text): static</code>
+                                <p class="so-text-muted so-text-sm">Set body text content.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">header(string $header): static</code>
+                                <p class="so-text-muted so-text-sm">Set custom header content.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">footer(string $footer): static</code>
+                                <p class="so-text-muted so-text-sm">Set footer content.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">image(string $url, string $position = \'top\', string $alt = \'\'): static</code>
+                                <p class="so-text-muted so-text-sm">Add image to card. Position can be \'top\' or \'bottom\'.</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Border Color Variants</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">variant(string $variant): static</code>
+                                <p class="so-text-muted so-text-sm">Set border color variant (primary, success, danger, warning, info, secondary, light, dark).</p>
+
+                                <div class="so-mt-3">
+                                    <code>primary()</code>, <code>success()</code>, <code>danger()</code>, <code>warning()</code>,
+                                    <code>info()</code>, <code>secondary()</code>, <code>light()</code>, <code>dark()</code>
+                                    <p class="so-text-muted so-text-sm so-mt-2">Shorthand methods for border color variants.</p>
+                                </div>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Header Color Variants (Solid)</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">headerColor(string $variant, bool $soft = false): static</code>
+                                <p class="so-text-muted so-text-sm">Set header color variant. Use $soft = true for light background.</p>
+
+                                <div class="so-mt-3">
+                                    <code>headerPrimary()</code>, <code>headerSuccess()</code>, <code>headerDanger()</code>,
+                                    <code>headerWarning()</code>, <code>headerInfo()</code>, <code>headerSecondary()</code>,
+                                    <code>headerLight()</code>, <code>headerDark()</code>
+                                    <p class="so-text-muted so-text-sm so-mt-2">Solid header color shortcuts.</p>
+                                </div>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Header Color Variants (Soft)</h4>
+                            <div class="so-mb-4">
+                                <code>headerSoftPrimary()</code>, <code>headerSoftSuccess()</code>, <code>headerSoftDanger()</code>,
+                                <code>headerSoftWarning()</code>, <code>headerSoftInfo()</code>, <code>headerSoftSecondary()</code>,
+                                <code>headerSoftLight()</code>, <code>headerSoftDark()</code>
+                                <p class="so-text-muted so-text-sm so-mt-2">Light/subtle header color variants.</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Card Styles</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">style(string $style): static</code>
+                                <p class="so-text-muted so-text-sm">Set card style (bordered, flat, elevated, padded).</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">bordered(): static</code>
+                                <p class="so-text-muted so-text-sm">Border style with no shadow.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">flat(): static</code>
+                                <p class="so-text-muted so-text-sm">Flat style with no shadow or border.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">elevated(): static</code>
+                                <p class="so-text-muted so-text-sm">Elevated style with larger shadow.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">padded(): static</code>
+                                <p class="so-text-muted so-text-sm">Direct padding on card (no header/body wrappers needed).</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Spacing Modes</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">spacing(string $spacing): static</code>
+                                <p class="so-text-muted so-text-sm">Set spacing mode (compact or spacious).</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">compact(): static</code>
+                                <p class="so-text-muted so-text-sm">Compact spacing for dense layouts.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">spacious(): static</code>
+                                <p class="so-text-muted so-text-sm">Extra spacing for breathing room.</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Layout Options</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">horizontal(bool $horizontal = true): static</code>
+                                <p class="so-text-muted so-text-sm">Enable horizontal layout with side-by-side image and content.</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Other Options</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">shadow(string $size = \'md\'): static</code>
+                                <p class="so-text-muted so-text-sm">Enable shadow with size (sm, md, lg).</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">collapsible(bool $startCollapsed = false): static</code>
+                                <p class="so-text-muted so-text-sm">Make card collapsible with optional start state.</p>
+                            </div>
+                        </div>'
+                    ],
+                    [
+                        'title' => 'Interactivity Methods (JS)',
+                        'content' => '<div class="so-api-reference">
+                            <h4 class="so-mb-3">Dynamic Content Updates</h4>
+                            <p class="so-text-muted so-mb-4">These methods are available in JavaScript for dynamic card manipulation.</p>
+
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">getTitle(): string|null</code>
+                                <p class="so-text-muted so-text-sm">Get current card title.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">getSubtitle(): string|null</code>
+                                <p class="so-text-muted so-text-sm">Get current card subtitle.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">getBody(): string|null</code>
+                                <p class="so-text-muted so-text-sm">Get current card body content.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">getFooter(): string|null</code>
+                                <p class="so-text-muted so-text-sm">Get current card footer content.</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Usage Example</h4>
+                            <pre class="so-bg-light so-p-3 so-rounded"><code>// Create card
+const card = UiEngine.card()
+    .title("Initial Title")
+    .body("Initial content")
+    .headerPrimary();
+
+card.renderTo(document.body);
+
+// Update content dynamically
+card.title("Updated Title");
+card.body("New content here");
+
+// Get current values
+console.log(card.getTitle()); // "Updated Title"
+console.log(card.getBody());  // "New content here"
+
+// Chain style changes
+card.bordered().compact();</code></pre>
+                        </div>'
+                    ],
+                    [
+                        'title' => 'Inherited Methods',
+                        'content' => '<div class="so-api-reference">
+                            <h4 class="so-mb-3">From Element Base Class</h4>
+                            <p class="so-text-muted so-mb-4">Card inherits these methods from the Element base class.</p>
+
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">addClass(string $class): static</code>
+                                <p class="so-text-muted so-text-sm">Add CSS class to the card element.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">removeClass(string $class): static</code>
+                                <p class="so-text-muted so-text-sm">Remove CSS class from the card element.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">setAttribute(string $name, mixed $value): static</code>
+                                <p class="so-text-muted so-text-sm">Set HTML attribute on the card element.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">id(string $id): static</code>
+                                <p class="so-text-muted so-text-sm">Set element ID.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">data(string $key, mixed $value): static</code>
+                                <p class="so-text-muted so-text-sm">Set data attribute (data-{key}).</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">From ContainerElement</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">addChild(Element $child): static</code>
+                                <p class="so-text-muted so-text-sm">Add child element to card body.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">children(array $children): static</code>
+                                <p class="so-text-muted so-text-sm">Set multiple child elements.</p>
+                            </div>
+
+                            <h4 class="so-mb-3 so-mt-4">Rendering</h4>
+                            <div class="so-mb-4">
+                                <code class="so-d-block so-mb-2">render(): string</code>
+                                <p class="so-text-muted so-text-sm">Render card as HTML string.</p>
+
+                                <code class="so-d-block so-mb-2 so-mt-3">toArray(): array</code>
+                                <p class="so-text-muted so-text-sm">Convert card configuration to array.</p>
+                            </div>
+                        </div>'
+                    ]
+                ]) ?>
+            </div>
+        </div>
+    </div>
 </main>
 
 <?php

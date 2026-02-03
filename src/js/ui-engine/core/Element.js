@@ -119,6 +119,15 @@ class Element extends SOComponent {
     }
 
     /**
+     * Set element ID (alias for setId)
+     * @param {string} id
+     * @returns {this}
+     */
+    id(id) {
+        return this.setId(id);
+    }
+
+    /**
      * Add CSS class
      * @param {string} className
      * @returns {this}
@@ -518,6 +527,23 @@ class Element extends SOComponent {
         // innerHTML escapes <, >, & but not quotes
         // We need to also escape quotes for attribute values
         return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    /**
+     * Dispatch custom event on the element
+     * @param {string} eventName - Event name (e.g., 'so:progress:change')
+     * @param {Object} detail - Event detail data
+     * @private
+     */
+    _dispatchEvent(eventName, detail = {}) {
+        if (this.element) {
+            const event = new CustomEvent(eventName, {
+                bubbles: true,
+                cancelable: true,
+                detail
+            });
+            this.element.dispatchEvent(event);
+        }
     }
 
     /**

@@ -1165,20 +1165,12 @@ Progress.make().circular().indeterminate().danger().toHtml();"
                     <!-- Progress Bars -->
                     <div class="so-mb-3">
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Linear Progress</label>
-                        <div id="demo-progress-linear" class="so-progress so-progress-primary" data-so-progress role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="so-progress-bar" style="width: 0%"></div>
-                        </div>
+                        <div id="demo-progress-linear-container"></div>
                     </div>
 
                     <div>
                         <label class="so-d-block so-mb-2 so-text-sm so-font-medium">Circular Progress</label>
-                        <div id="demo-progress-circular" class="so-progress-circular so-progress-circular-primary" data-so-progress>
-                            <svg class="so-progress-ring" viewBox="0 0 48 48">
-                                <circle class="so-progress-ring-bg" cx="24" cy="24" r="20" fill="none"></circle>
-                                <circle class="so-progress-ring-fill" cx="24" cy="24" r="20" fill="none" stroke-dasharray="125.66" stroke-dashoffset="125.66"></circle>
-                            </svg>
-                            <span class="so-progress-text">0%</span>
-                        </div>
+                        <div id="demo-progress-circular-container"></div>
                     </div>
                 </div>
 
@@ -1943,11 +1935,87 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('demo-basic-progress-4').innerHTML =
         Progress.make().value(100).primary().toHtml();
 
+    // Interactive Demo Progress Bars
+    document.getElementById('demo-progress-linear-container').innerHTML =
+        Progress.make().value(0).primary().id('demo-progress-linear').toHtml();
+
+    document.getElementById('demo-progress-circular-container').innerHTML =
+        Progress.make().value(0).primary().circular().id('demo-progress-circular').toHtml();
+
     // Initialize all Progress instances (after a short delay to ensure DOM is ready)
     setTimeout(function() {
         Progress.initAll();
+
+        // Interactive Demo Controls
+        setupInteractiveDemo();
     }, 100);
 });
+
+function setupInteractiveDemo() {
+    const linearProgress = Progress.getInstance('#demo-progress-linear');
+    const circularProgress = Progress.getInstance('#demo-progress-circular');
+    const eventLog = document.getElementById('progress-event-log');
+
+    if (!linearProgress || !circularProgress || !eventLog) {
+        console.error('Interactive demo elements not found');
+        return;
+    }
+
+    function logEvent(message) {
+        const timestamp = new Date().toLocaleTimeString();
+        const entry = document.createElement('div');
+        entry.textContent = `[${timestamp}] ${message}`;
+        eventLog.insertBefore(entry, eventLog.firstChild);
+    }
+
+    // Button handlers
+    document.getElementById('progress-set-25').addEventListener('click', () => {
+        linearProgress.setValue(25);
+        circularProgress.setValue(25);
+        logEvent('Set progress to 25%');
+    });
+
+    document.getElementById('progress-set-50').addEventListener('click', () => {
+        linearProgress.setValue(50);
+        circularProgress.setValue(50);
+        logEvent('Set progress to 50%');
+    });
+
+    document.getElementById('progress-set-75').addEventListener('click', () => {
+        linearProgress.setValue(75);
+        circularProgress.setValue(75);
+        logEvent('Set progress to 75%');
+    });
+
+    document.getElementById('progress-set-100').addEventListener('click', () => {
+        linearProgress.setValue(100);
+        circularProgress.setValue(100);
+        logEvent('Set progress to 100%');
+    });
+
+    document.getElementById('progress-animate').addEventListener('click', () => {
+        linearProgress.animate(linearProgress.getValue(), 100, 2000);
+        circularProgress.animate(circularProgress.getValue(), 100, 2000);
+        logEvent('Animating to 100% over 2 seconds');
+    });
+
+    document.getElementById('progress-reset').addEventListener('click', () => {
+        linearProgress.setValue(0);
+        circularProgress.setValue(0);
+        logEvent('Progress reset to 0%');
+    });
+
+    // Event listeners
+    document.getElementById('demo-progress-linear').addEventListener('so:progress:change', (e) => {
+        logEvent(`Linear progress changed: ${e.detail.oldValue}% → ${e.detail.newValue}%`);
+    });
+
+    document.getElementById('demo-progress-circular').addEventListener('so:progress:change', (e) => {
+        logEvent(`Circular progress changed: ${e.detail.oldValue}% → ${e.detail.newValue}%`);
+    });
+
+    logEvent('Interactive demo ready');
+}
 </script>
 
 <?php require_once '../../includes/footer.php'; ?>

@@ -168,7 +168,8 @@ function so_code_tabs($id, $tabs) {
         $label = $tab['label'] ?? strtoupper($tab['language']);
         $icon = $tab['icon'] ?? ($tab['language'] === 'javascript' ? 'javascript' : 'code');
         $escaped = htmlspecialchars($tab['code'], ENT_QUOTES, 'UTF-8');
-        $paneId = "{$id}-{$tab['language']}";
+        // Use index to ensure unique IDs even when multiple tabs have the same language
+        $paneId = "{$id}-tab-{$index}";
 
         $tabButtons .= <<<HTML
             <button class="so-code-tab{$isActive}" data-so-target="#{$paneId}">

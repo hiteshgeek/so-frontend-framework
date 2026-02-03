@@ -1110,7 +1110,62 @@ document.getElementById('settings-list').innerHTML = html;"
                             </table>
                         </div>
 
+                        <h6 class="so-mt-4">Interactivity Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>toggle()</code></td>
+                                        <td>Toggle the switch state</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>isChecked()</code></td>
+                                        <td>Get current checked state (boolean)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setChecked(val)</code></td>
+                                        <td>Set checked state programmatically</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onChange(callback)</code></td>
+                                        <td>Listen to change events. Callback receives (checked, event)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(cls)</code></td>
+                                        <td>Add CSS class to switch wrapper</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>removeClass(cls)</code></td>
+                                        <td>Remove CSS class from switch wrapper</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setId(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>on(event, callback)</code></td>
+                                        <td>Attach event listener</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <h6 class="so-mt-4">Events</h6>
+                        <p class="so-text-muted so-mb-2">Switches use native HTML checkbox events:</p>
                         <div class="so-table-responsive">
                             <table class="so-table so-table-bordered so-table-sm">
                                 <thead class="so-table-light">
@@ -1122,11 +1177,11 @@ document.getElementById('settings-list').innerHTML = html;"
                                 <tbody>
                                     <tr>
                                         <td><code>change</code></td>
-                                        <td>Fires when switch state changes</td>
+                                        <td>Fires when switch state changes (after interaction completes)</td>
                                     </tr>
                                     <tr>
                                         <td><code>input</code></td>
-                                        <td>Fires on input change</td>
+                                        <td>Fires immediately on input change</td>
                                     </tr>
                                 </tbody>
                             </table>

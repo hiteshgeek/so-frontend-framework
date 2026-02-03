@@ -225,6 +225,27 @@ class UiEngine {
     }
 
     /**
+     * Create switch element
+     * @param {string} name
+     * @returns {SwitchElement}
+     */
+    static switch(name = null) {
+        return FormElements.SwitchElement.make({
+            type: 'switch',
+            name
+        });
+    }
+
+    /**
+     * Create toggle element (alias for switch)
+     * @param {string} name
+     * @returns {SwitchElement}
+     */
+    static toggle(name = null) {
+        return this.switch(name);
+    }
+
+    /**
      * Create button element
      * @param {string} text
      * @returns {Element}
@@ -633,7 +654,8 @@ UiEngine.register('autocomplete', FormElements.Autocomplete);
 UiEngine.register('color-input', FormElements.ColorInput);
 UiEngine.register('date-picker', FormElements.DatePicker);
 UiEngine.register('time-picker', FormElements.TimePicker);
-UiEngine.register('toggle', FormElements.Toggle);
+UiEngine.register('switch', FormElements.SwitchElement);
+UiEngine.register('toggle', FormElements.Toggle); // backwards compatibility alias
 UiEngine.register('slider', FormElements.Slider);
 UiEngine.register('dropzone', FormElements.Dropzone);
 UiEngine.register('otp-input', FormElements.OtpInput);

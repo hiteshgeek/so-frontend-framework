@@ -16,7 +16,7 @@ import { Autocomplete } from './Autocomplete.js';
 import { ColorInput } from './ColorInput.js';
 import { DatePicker } from './DatePicker.js';
 import { TimePicker } from './TimePicker.js';
-import { Toggle } from './Toggle.js';
+import { SwitchElement, Toggle } from './SwitchElement.js';
 import { Slider } from './Slider.js';
 import { Dropzone } from './Dropzone.js';
 import { OtpInput } from './OtpInput.js';
@@ -36,7 +36,8 @@ export {
     ColorInput,
     DatePicker,
     TimePicker,
-    Toggle,
+    SwitchElement,
+    Toggle, // backwards compatibility alias
     Slider,
     Dropzone,
     OtpInput,
@@ -57,7 +58,8 @@ export default {
     ColorInput,
     DatePicker,
     TimePicker,
-    Toggle,
+    SwitchElement,
+    Toggle, // backwards compatibility alias
     Slider,
     Dropzone,
     OtpInput,

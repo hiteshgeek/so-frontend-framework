@@ -117,6 +117,27 @@ UiEngine.skeleton().rectangle(150, 100).toHtml();
 // Text lines
 UiEngine.skeleton().lines(3).toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Circle -->
+<div class="so-placeholder-glow">
+    <div class="so-placeholder so-rounded-circle" style="width:64px;height:64px;"></div>
+</div>
+
+<!-- Rectangle -->
+<div class="so-placeholder-glow">
+    <div class="so-placeholder so-rounded" style="width:150px;height:100px;"></div>
+</div>
+
+<!-- Text lines -->
+<div class="so-placeholder-glow">
+    <span class="so-placeholder so-col-12"></span>
+    <span class="so-placeholder so-col-10"></span>
+    <span class="so-placeholder so-col-8"></span>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -171,6 +192,20 @@ UiEngine.skeleton().animation('wave').lines(2).toHtml();
 // No animation
 UiEngine.skeleton().animation('none').lines(2).toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Glow animation -->
+<div class="so-placeholder-glow">
+    <span class="so-placeholder so-col-12"></span>
+</div>
+
+<!-- Wave animation -->
+<div class="so-placeholder-wave">
+    <span class="so-placeholder so-col-12"></span>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -224,6 +259,24 @@ UiEngine.skeleton().card({
     button: true,
 }).toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-card">
+    <div class="so-placeholder-glow">
+        <div class="so-placeholder" style="height:150px;width:100%;"></div>
+    </div>
+    <div class="so-card-body">
+        <div class="so-placeholder-glow">
+            <span class="so-placeholder so-col-7 so-mb-2"></span>
+            <span class="so-placeholder so-col-12 so-mb-2"></span>
+            <span class="so-placeholder so-col-10 so-mb-3"></span>
+            <span class="so-placeholder so-col-4 so-btn so-btn-primary"></span>
+        </div>
+    </div>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -274,6 +327,25 @@ UiEngine.skeleton().list({
     avatar: true,
     lines: 2,
 }).toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-list-group">
+    <div class="so-list-group-item">
+        <div class="so-d-flex so-align-items-center">
+            <div class="so-placeholder-glow so-me-3">
+                <div class="so-placeholder so-rounded-circle" style="width:40px;height:40px;"></div>
+            </div>
+            <div class="so-placeholder-glow so-flex-grow-1">
+                <span class="so-placeholder so-col-6 so-mb-1"></span>
+                <span class="so-placeholder so-col-4"></span>
+            </div>
+        </div>
+    </div>
+    <!-- More items... -->
+</div>'
                     ],
                 ]) ?>
             </div>

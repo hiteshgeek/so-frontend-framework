@@ -198,6 +198,26 @@ const accordion = UiEngine.accordion('features')
 
 document.getElementById('container').innerHTML = accordion.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- No data-so-parent attribute allows multiple open -->
+<div class="so-accordion" id="features" data-so-accordion>
+    <div class="so-accordion-item">
+        <h2 class="so-accordion-header">
+            <button class="so-accordion-button" data-so-toggle="collapse"
+                data-so-target="#features-0" aria-expanded="true">
+                Feature 1
+            </button>
+        </h2>
+        <div id="features-0" class="so-accordion-collapse so-collapse so-show">
+            <div class="so-accordion-body">Description of feature 1</div>
+        </div>
+    </div>
+    <!-- More items without data-so-parent... -->
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -298,6 +318,33 @@ const html = `
 
 document.getElementById('container').innerHTML = html;"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-accordion" id="settings" data-so-accordion>
+    <div class="so-accordion-item">
+        <h2 class="so-accordion-header">
+            <button class="so-accordion-button" data-so-toggle="collapse" data-so-target="#settings-1">
+                <span class="material-icons so-me-2">person</span> Account Settings
+            </button>
+        </h2>
+        <div id="settings-1" class="so-accordion-collapse so-collapse so-show" data-so-parent="#settings">
+            <div class="so-accordion-body">Manage your account...</div>
+        </div>
+    </div>
+    <div class="so-accordion-item">
+        <h2 class="so-accordion-header">
+            <button class="so-accordion-button so-collapsed" data-so-toggle="collapse" data-so-target="#settings-2">
+                <span class="material-icons so-me-2">lock</span> Privacy Settings
+            </button>
+        </h2>
+        <div id="settings-2" class="so-accordion-collapse so-collapse" data-so-parent="#settings">
+            <div class="so-accordion-body">Control your privacy...</div>
+        </div>
+    </div>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -373,6 +420,25 @@ echo \$accordion->render();"
     .item('Section 3', 'Content for section 3');
 
 document.getElementById('container').innerHTML = accordion.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- so-accordion-flush removes borders and rounded corners -->
+<div class="so-accordion so-accordion-flush" id="flush-demo" data-so-accordion>
+    <div class="so-accordion-item">
+        <h2 class="so-accordion-header">
+            <button class="so-accordion-button" data-so-toggle="collapse" data-so-target="#flush-1">
+                Section 1
+            </button>
+        </h2>
+        <div id="flush-1" class="so-accordion-collapse so-collapse so-show" data-so-parent="#flush-demo">
+            <div class="so-accordion-body">Content for section 1</div>
+        </div>
+    </div>
+    <!-- More items... -->
+</div>'
                     ],
                 ]) ?>
             </div>

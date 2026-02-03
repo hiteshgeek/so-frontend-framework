@@ -301,6 +301,18 @@ UiEngine.alert('This is a compact alert.')
     .small()
     .toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-alert so-alert-info so-alert-sm">
+    <span class="so-alert-icon"><span class="material-icons">info</span></span>
+    <div class="so-alert-content">
+        <strong>Small Alert</strong>
+        This is a compact alert with smaller padding.
+    </div>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>

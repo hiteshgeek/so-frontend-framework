@@ -28,6 +28,42 @@ require_once '../../includes/navbar.php';
                 <h3 class="so-card-title">Basic Timeline</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-timeline so-mb-4">
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker"></div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">Jan 15, 2026</div>
+                            <h6 class="so-timeline-title">Project Started</h6>
+                            <p class="so-timeline-text">Initial project setup and configuration</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker"></div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">Jan 22, 2026</div>
+                            <h6 class="so-timeline-title">Design Complete</h6>
+                            <p class="so-timeline-text">UI/UX design finalized and approved</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker"></div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">Feb 1, 2026</div>
+                            <h6 class="so-timeline-title">Development</h6>
+                            <p class="so-timeline-text">Backend and frontend development in progress</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker"></div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">Feb 10, 2026</div>
+                            <h6 class="so-timeline-title">Testing</h6>
+                            <p class="so-timeline-text">QA testing and bug fixes</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('basic-timeline', [
                     [
@@ -57,6 +93,22 @@ echo \$timeline->render();"
 
 document.getElementById('container').innerHTML = timeline.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-timeline">
+    <div class="so-timeline-item">
+        <div class="so-timeline-marker"></div>
+        <div class="so-timeline-content">
+            <div class="so-timeline-time">Jan 15, 2026</div>
+            <h6 class="so-timeline-title">Project Started</h6>
+            <p class="so-timeline-text">Initial project setup and configuration</p>
+        </div>
+    </div>
+    <!-- More items... -->
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -67,6 +119,50 @@ document.getElementById('container').innerHTML = timeline.toHtml();"
                 <h3 class="so-card-title">With Icons</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-timeline so-mb-4">
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker so-bg-primary">
+                            <span class="material-icons" style="font-size:16px;color:white;">shopping_cart</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">10:30 AM</div>
+                            <h6 class="so-timeline-title">Order Placed</h6>
+                            <p class="so-timeline-text">Your order has been placed</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker so-bg-success">
+                            <span class="material-icons" style="font-size:16px;color:white;">payment</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">10:32 AM</div>
+                            <h6 class="so-timeline-title">Payment Confirmed</h6>
+                            <p class="so-timeline-text">Payment received successfully</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker so-bg-info">
+                            <span class="material-icons" style="font-size:16px;color:white;">inventory</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">11:00 AM</div>
+                            <h6 class="so-timeline-title">Processing</h6>
+                            <p class="so-timeline-text">Order is being prepared</p>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker so-bg-warning">
+                            <span class="material-icons" style="font-size:16px;color:white;">local_shipping</span>
+                        </div>
+                        <div class="so-timeline-content">
+                            <div class="so-timeline-time">2:00 PM</div>
+                            <h6 class="so-timeline-title">Shipped</h6>
+                            <p class="so-timeline-text">Package dispatched</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('timeline-icons', [
                     [
@@ -117,6 +213,24 @@ echo \$timeline->render();"
 
 document.getElementById('container').innerHTML = timeline.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-timeline">
+    <div class="so-timeline-item">
+        <div class="so-timeline-marker so-bg-primary">
+            <span class="material-icons">shopping_cart</span>
+        </div>
+        <div class="so-timeline-content">
+            <div class="so-timeline-time">10:30 AM</div>
+            <h6 class="so-timeline-title">Order Placed</h6>
+            <p class="so-timeline-text">Your order has been placed</p>
+        </div>
+    </div>
+    <!-- More items with different colors... -->
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -127,6 +241,37 @@ document.getElementById('container').innerHTML = timeline.toHtml();"
                 <h3 class="so-card-title">Activity Feed</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-timeline so-timeline-compact so-mb-4">
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker">
+                            <img src="https://i.pravatar.cc/40?img=1" alt="John Doe" class="so-rounded-circle" style="width:32px;height:32px;">
+                        </div>
+                        <div class="so-timeline-content">
+                            <p class="so-timeline-text"><strong>John Doe</strong> created a new project</p>
+                            <div class="so-timeline-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker">
+                            <img src="https://i.pravatar.cc/40?img=5" alt="Jane Smith" class="so-rounded-circle" style="width:32px;height:32px;">
+                        </div>
+                        <div class="so-timeline-content">
+                            <p class="so-timeline-text"><strong>Jane Smith</strong> commented on the task</p>
+                            <div class="so-timeline-time">4 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="so-timeline-item">
+                        <div class="so-timeline-marker">
+                            <img src="https://i.pravatar.cc/40?img=8" alt="Bob Wilson" class="so-rounded-circle" style="width:32px;height:32px;">
+                        </div>
+                        <div class="so-timeline-content">
+                            <p class="so-timeline-text"><strong>Bob Wilson</strong> completed the milestone</p>
+                            <div class="so-timeline-time">Yesterday</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('timeline-activity', [
                     [
@@ -165,6 +310,23 @@ echo \$timeline->render();"
 
 document.getElementById('container').innerHTML = timeline.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-timeline so-timeline-compact">
+    <div class="so-timeline-item">
+        <div class="so-timeline-marker">
+            <img src="/avatars/john.jpg" alt="John Doe" class="so-rounded-circle">
+        </div>
+        <div class="so-timeline-content">
+            <p class="so-timeline-text"><strong>John Doe</strong> created a new project</p>
+            <div class="so-timeline-time">2 hours ago</div>
+        </div>
+    </div>
+    <!-- More items... -->
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -202,6 +364,24 @@ echo \$timeline->render();"
     .event('2023', 'IPO', 'Successfully went public');
 
 document.getElementById('container').innerHTML = timeline.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-timeline so-timeline-alternating">
+    <div class="so-timeline-item so-timeline-left">
+        <div class="so-timeline-marker"></div>
+        <div class="so-timeline-content">
+            <div class="so-timeline-time">2020</div>
+            <h6 class="so-timeline-title">Company Founded</h6>
+            <p class="so-timeline-text">Started with a small team of 3</p>
+        </div>
+    </div>
+    <div class="so-timeline-item so-timeline-right">
+        <!-- Right side content -->
+    </div>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -248,6 +428,26 @@ echo \$timeline->render();"
     , 'Today', {icon: 'check_circle', color: 'success'});
 
 document.getElementById('container').innerHTML = timeline.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-timeline">
+    <div class="so-timeline-item">
+        <div class="so-timeline-marker">
+            <span class="material-icons">event</span>
+        </div>
+        <div class="so-timeline-content">
+            <div class="so-timeline-time">Tomorrow</div>
+            <h6 class="so-timeline-title">Meeting Scheduled</h6>
+            <div class="so-card">
+                <div class="so-card-body">Team sync meeting</div>
+                <div class="so-card-footer">10:00 AM - 11:00 AM</div>
+            </div>
+        </div>
+    </div>
+</div>'
                     ],
                 ]) ?>
             </div>

@@ -426,23 +426,23 @@
               "title": "Form Elements",
               "icon": "input",
               "children": [
-                {"id": "uie-input", "title": "1. Input", "icon": "text_fields", "url": "ui-engine/form/input.php"},
-                {"id": "uie-select", "title": "2. Select", "icon": "arrow_drop_down", "url": "ui-engine/form/select.php"},
+                {"id": "uie-autocomplete", "title": "1. Autocomplete", "icon": "search", "url": "ui-engine/form/autocomplete.php"},
+                {"id": "uie-button", "title": "2. Button", "icon": "smart_button", "url": "ui-engine/form/button.php"},
                 {"id": "uie-checkbox", "title": "3. Checkbox", "icon": "check_box", "url": "ui-engine/form/checkbox.php"},
-                {"id": "uie-radio", "title": "4. Radio", "icon": "radio_button_checked", "url": "ui-engine/form/radio.php"},
-                {"id": "uie-textarea", "title": "5. Textarea", "icon": "notes", "url": "ui-engine/form/textarea.php"},
-                {"id": "uie-button", "title": "6. Button", "icon": "smart_button", "url": "ui-engine/form/button.php"},
+                {"id": "uie-color-input", "title": "4. Color Input", "icon": "palette", "url": "ui-engine/form/color-input.php"},
+                {"id": "uie-date-picker", "title": "5. Date Picker", "icon": "calendar_today", "url": "ui-engine/form/date-picker.php"},
+                {"id": "uie-dropzone", "title": "6. Dropzone", "icon": "cloud_upload", "url": "ui-engine/form/dropzone.php"},
                 {"id": "uie-file-input", "title": "7. File Input", "icon": "attach_file", "url": "ui-engine/form/file-input.php"},
-                {"id": "uie-hidden", "title": "8. Hidden", "icon": "visibility_off", "url": "ui-engine/form/hidden.php"},
-                {"id": "uie-form", "title": "9. Form", "icon": "description", "url": "ui-engine/form/form.php"},
-                {"id": "uie-autocomplete", "title": "10. Autocomplete", "icon": "search", "url": "ui-engine/form/autocomplete.php"},
-                {"id": "uie-color-input", "title": "11. Color Input", "icon": "palette", "url": "ui-engine/form/color-input.php"},
-                {"id": "uie-date-picker", "title": "12. Date Picker", "icon": "calendar_today", "url": "ui-engine/form/date-picker.php"},
-                {"id": "uie-time-picker", "title": "13. Time Picker", "icon": "schedule", "url": "ui-engine/form/time-picker.php"},
-                {"id": "uie-toggle", "title": "14. Toggle", "icon": "toggle_on", "url": "ui-engine/form/toggle.php"},
-                {"id": "uie-slider", "title": "15. Slider", "icon": "tune", "url": "ui-engine/form/slider.php"},
-                {"id": "uie-dropzone", "title": "16. Dropzone", "icon": "cloud_upload", "url": "ui-engine/form/dropzone.php"},
-                {"id": "uie-otp-input", "title": "17. OTP Input", "icon": "pin", "url": "ui-engine/form/otp-input.php"}
+                {"id": "uie-form", "title": "8. Form", "icon": "description", "url": "ui-engine/form/form.php"},
+                {"id": "uie-hidden", "title": "9. Hidden", "icon": "visibility_off", "url": "ui-engine/form/hidden.php"},
+                {"id": "uie-input", "title": "10. Input", "icon": "text_fields", "url": "ui-engine/form/input.php"},
+                {"id": "uie-otp-input", "title": "11. OTP Input", "icon": "pin", "url": "ui-engine/form/otp-input.php"},
+                {"id": "uie-radio", "title": "12. Radio", "icon": "radio_button_checked", "url": "ui-engine/form/radio.php"},
+                {"id": "uie-select", "title": "13. Select", "icon": "arrow_drop_down", "url": "ui-engine/form/select.php"},
+                {"id": "uie-slider", "title": "14. Slider", "icon": "tune", "url": "ui-engine/form/slider.php"},
+                {"id": "uie-textarea", "title": "15. Textarea", "icon": "notes", "url": "ui-engine/form/textarea.php"},
+                {"id": "uie-time-picker", "title": "16. Time Picker", "icon": "schedule", "url": "ui-engine/form/time-picker.php"},
+                {"id": "uie-toggle", "title": "17. Toggle", "icon": "toggle_on", "url": "ui-engine/form/toggle.php"}
               ]
             },
             {
@@ -453,25 +453,25 @@
                 {"id": "uie-accordion", "title": "1. Accordion", "icon": "expand_more", "url": "ui-engine/display/accordion.php"},
                 {"id": "uie-alert", "title": "2. Alert", "icon": "warning", "url": "ui-engine/display/alert.php"},
                 {"id": "uie-badge", "title": "3. Badge", "icon": "new_releases", "url": "ui-engine/display/badge.php"},
-                {"id": "uie-card", "title": "4. Card", "icon": "credit_card", "url": "ui-engine/display/card.php"},
-                {"id": "uie-modal", "title": "5. Modal", "icon": "open_in_new", "url": "ui-engine/display/modal.php"},
-                {"id": "uie-progress", "title": "6. Progress", "icon": "donut_large", "url": "ui-engine/display/progress.php"},
-                {"id": "uie-table", "title": "7. Table", "icon": "table_chart", "url": "ui-engine/display/table.php"},
-                {"id": "uie-tabs", "title": "8. Tabs", "icon": "tab", "url": "ui-engine/display/tabs.php"},
-                {"id": "uie-toast", "title": "9. Toast", "icon": "notifications", "url": "ui-engine/display/toast.php"},
-                {"id": "uie-tooltip", "title": "10. Tooltip", "icon": "chat_bubble_outline", "url": "ui-engine/display/tooltip.php"},
-                {"id": "uie-breadcrumb", "title": "11. Breadcrumb", "icon": "navigation", "url": "ui-engine/display/breadcrumb.php"},
+                {"id": "uie-breadcrumb", "title": "4. Breadcrumb", "icon": "navigation", "url": "ui-engine/display/breadcrumb.php"},
+                {"id": "uie-card", "title": "5. Card", "icon": "credit_card", "url": "ui-engine/display/card.php"},
+                {"id": "uie-carousel", "title": "6. Carousel", "icon": "view_carousel", "url": "ui-engine/display/carousel.php"},
+                {"id": "uie-code-block", "title": "7. Code Block", "icon": "code", "url": "ui-engine/display/code-block.php"},
+                {"id": "uie-empty-state", "title": "8. Empty State", "icon": "inbox", "url": "ui-engine/display/empty-state.php"},
+                {"id": "uie-list-group", "title": "9. List Group", "icon": "list", "url": "ui-engine/display/list-group.php"},
+                {"id": "uie-media-object", "title": "10. Media Object", "icon": "perm_media", "url": "ui-engine/display/media-object.php"},
+                {"id": "uie-modal", "title": "11. Modal", "icon": "open_in_new", "url": "ui-engine/display/modal.php"},
                 {"id": "uie-pagination", "title": "12. Pagination", "icon": "last_page", "url": "ui-engine/display/pagination.php"},
-                {"id": "uie-carousel", "title": "13. Carousel", "icon": "view_carousel", "url": "ui-engine/display/carousel.php"},
-                {"id": "uie-timeline", "title": "14. Timeline", "icon": "timeline", "url": "ui-engine/display/timeline.php"},
-                {"id": "uie-stepper", "title": "15. Stepper", "icon": "format_list_numbered", "url": "ui-engine/display/stepper.php"},
-                {"id": "uie-list-group", "title": "16. List Group", "icon": "list", "url": "ui-engine/display/list-group.php"},
-                {"id": "uie-rating", "title": "17. Rating", "icon": "star", "url": "ui-engine/display/rating.php"},
-                {"id": "uie-spinner", "title": "18. Spinner", "icon": "refresh", "url": "ui-engine/display/spinner.php"},
-                {"id": "uie-skeleton", "title": "19. Skeleton", "icon": "hourglass_empty", "url": "ui-engine/display/skeleton.php"},
-                {"id": "uie-empty-state", "title": "20. Empty State", "icon": "inbox", "url": "ui-engine/display/empty-state.php"},
-                {"id": "uie-media-object", "title": "21. Media Object", "icon": "perm_media", "url": "ui-engine/display/media-object.php"},
-                {"id": "uie-code-block", "title": "22. Code Block", "icon": "code", "url": "ui-engine/display/code-block.php"}
+                {"id": "uie-progress", "title": "13. Progress", "icon": "donut_large", "url": "ui-engine/display/progress.php"},
+                {"id": "uie-rating", "title": "14. Rating", "icon": "star", "url": "ui-engine/display/rating.php"},
+                {"id": "uie-skeleton", "title": "15. Skeleton", "icon": "hourglass_empty", "url": "ui-engine/display/skeleton.php"},
+                {"id": "uie-spinner", "title": "16. Spinner", "icon": "refresh", "url": "ui-engine/display/spinner.php"},
+                {"id": "uie-stepper", "title": "17. Stepper", "icon": "format_list_numbered", "url": "ui-engine/display/stepper.php"},
+                {"id": "uie-table", "title": "18. Table", "icon": "table_chart", "url": "ui-engine/display/table.php"},
+                {"id": "uie-tabs", "title": "19. Tabs", "icon": "tab", "url": "ui-engine/display/tabs.php"},
+                {"id": "uie-timeline", "title": "20. Timeline", "icon": "timeline", "url": "ui-engine/display/timeline.php"},
+                {"id": "uie-toast", "title": "21. Toast", "icon": "notifications", "url": "ui-engine/display/toast.php"},
+                {"id": "uie-tooltip", "title": "22. Tooltip", "icon": "chat_bubble_outline", "url": "ui-engine/display/tooltip.php"}
               ]
             },
             {
@@ -479,10 +479,10 @@
               "title": "Navigation Elements",
               "icon": "menu",
               "children": [
-                {"id": "uie-dropdown", "title": "1. Dropdown", "icon": "arrow_drop_down_circle", "url": "ui-engine/navigation/dropdown.php"},
+                {"id": "uie-collapse", "title": "1. Collapse", "icon": "unfold_less", "url": "ui-engine/navigation/collapse.php"},
                 {"id": "uie-context-menu", "title": "2. Context Menu", "icon": "more_vert", "url": "ui-engine/navigation/context-menu.php"},
-                {"id": "uie-navbar", "title": "3. Navbar", "icon": "web", "url": "ui-engine/navigation/navbar.php"},
-                {"id": "uie-collapse", "title": "4. Collapse", "icon": "unfold_less", "url": "ui-engine/navigation/collapse.php"}
+                {"id": "uie-dropdown", "title": "3. Dropdown", "icon": "arrow_drop_down_circle", "url": "ui-engine/navigation/dropdown.php"},
+                {"id": "uie-navbar", "title": "4. Navbar", "icon": "web", "url": "ui-engine/navigation/navbar.php"}
               ]
             },
             {
@@ -490,12 +490,12 @@
               "title": "Layout Elements",
               "icon": "dashboard",
               "children": [
-                {"id": "uie-container", "title": "1. Container", "icon": "crop_free", "url": "ui-engine/layout/container.php"},
-                {"id": "uie-row", "title": "2. Row", "icon": "table_rows", "url": "ui-engine/layout/row.php"},
-                {"id": "uie-column", "title": "3. Column", "icon": "view_column", "url": "ui-engine/layout/column.php"},
-                {"id": "uie-divider", "title": "4. Divider", "icon": "horizontal_rule", "url": "ui-engine/layout/divider.php"},
+                {"id": "uie-column", "title": "1. Column", "icon": "view_column", "url": "ui-engine/layout/column.php"},
+                {"id": "uie-container", "title": "2. Container", "icon": "crop_free", "url": "ui-engine/layout/container.php"},
+                {"id": "uie-divider", "title": "3. Divider", "icon": "horizontal_rule", "url": "ui-engine/layout/divider.php"},
+                {"id": "uie-flex", "title": "4. Flex", "icon": "view_agenda", "url": "ui-engine/layout/flex.php"},
                 {"id": "uie-grid", "title": "5. Grid", "icon": "grid_on", "url": "ui-engine/layout/grid.php"},
-                {"id": "uie-flex", "title": "6. Flex", "icon": "view_agenda", "url": "ui-engine/layout/flex.php"}
+                {"id": "uie-row", "title": "6. Row", "icon": "table_rows", "url": "ui-engine/layout/row.php"}
               ]
             }
           ]

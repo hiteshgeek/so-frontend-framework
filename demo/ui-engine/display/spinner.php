@@ -119,6 +119,17 @@ UiEngine.spinner().variant('danger').toHtml();
 UiEngine.spinner().variant('warning').toHtml();
 UiEngine.spinner().variant('info').toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-spinner-border so-text-primary" role="status"></div>
+<div class="so-spinner-border so-text-secondary" role="status"></div>
+<div class="so-spinner-border so-text-success" role="status"></div>
+<div class="so-spinner-border so-text-danger" role="status"></div>
+<div class="so-spinner-border so-text-warning" role="status"></div>
+<div class="so-spinner-border so-text-info" role="status"></div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -163,6 +174,19 @@ UiEngine.spinner().toHtml();
 
 // Custom size
 UiEngine.spinner().size(48).toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Small -->
+<div class="so-spinner-border so-spinner-border-sm" role="status"></div>
+
+<!-- Default -->
+<div class="so-spinner-border" role="status"></div>
+
+<!-- Custom size -->
+<div class="so-spinner-border" style="width: 48px; height: 48px;" role="status"></div>'
                     ],
                 ]) ?>
             </div>
@@ -219,6 +243,20 @@ UiEngine.button('Processing')
     .disabled()
     .toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<button class="so-btn so-btn-primary" type="button" disabled>
+    <span class="so-spinner-border so-spinner-border-sm"></span>
+    Loading...
+</button>
+
+<button class="so-btn so-btn-secondary" type="button" disabled>
+    <span class="so-spinner-grow so-spinner-grow-sm"></span>
+    Processing
+</button>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -229,6 +267,18 @@ UiEngine.button('Processing')
                 <h3 class="so-card-title">With Text</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-d-flex so-gap-4 so-align-items-center so-mb-4">
+                    <div class="so-d-flex so-align-items-center so-gap-2">
+                        <div class="so-spinner-border so-text-primary" role="status"></div>
+                        <span>Loading...</span>
+                    </div>
+                    <div class="so-d-flex so-flex-column so-align-items-center so-gap-2">
+                        <div class="so-spinner-border" role="status"></div>
+                        <span class="so-text-muted">Please wait...</span>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('spinner-text', [
                     [
@@ -260,6 +310,22 @@ UiEngine.spinner()
     .overlay()
     .label('Please wait...')
     .toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Inline with text -->
+<div class="so-d-flex so-align-items-center so-gap-2">
+    <div class="so-spinner-border so-text-primary" role="status"></div>
+    <span>Loading...</span>
+</div>
+
+<!-- Stacked with text -->
+<div class="so-d-flex so-flex-column so-align-items-center so-gap-2">
+    <div class="so-spinner-border" role="status"></div>
+    <span class="so-text-muted">Please wait...</span>
+</div>'
                     ],
                 ]) ?>
             </div>

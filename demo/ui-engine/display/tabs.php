@@ -22,34 +22,31 @@ require_once '../../includes/navbar.php';
     </div>
 
     <div class="so-page-body">
-        <!-- Basic Tabs -->
+        <!-- Basic Tabs (Underline) -->
         <div class="so-card so-mb-4">
             <div class="so-card-header">
-                <h3 class="so-card-title">Basic Tabs</h3>
+                <h3 class="so-card-title">Basic Tabs (Underline)</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Default underline style tabs with content panels.</p>
+
                 <!-- Live Demo -->
                 <div class="so-mb-4">
-                    <ul class="so-nav so-nav-tabs" role="tablist">
-                        <li class="so-nav-item">
-                            <button class="so-nav-link active" data-bs-toggle="tab" data-bs-target="#demo-home">Home</button>
-                        </li>
-                        <li class="so-nav-item">
-                            <button class="so-nav-link" data-bs-toggle="tab" data-bs-target="#demo-profile">Profile</button>
-                        </li>
-                        <li class="so-nav-item">
-                            <button class="so-nav-link" data-bs-toggle="tab" data-bs-target="#demo-contact">Contact</button>
-                        </li>
-                    </ul>
-                    <div class="so-tab-content so-p-3 so-border so-border-top-0">
-                        <div class="so-tab-pane so-fade so-show so-active" id="demo-home">
-                            <p>This is the home tab content.</p>
+                    <div class="so-tabs" role="tablist" data-so-tabs>
+                        <button class="so-tab so-active" role="tab" data-so-target="#demo-home">Home</button>
+                        <button class="so-tab" role="tab" data-so-target="#demo-profile">Profile</button>
+                        <button class="so-tab" role="tab" data-so-target="#demo-settings">Settings</button>
+                        <button class="so-tab so-disabled" role="tab">Disabled</button>
+                    </div>
+                    <div class="so-tab-content">
+                        <div class="so-tab-pane so-fade so-show so-active" id="demo-home" role="tabpanel">
+                            <p>This is the home tab content. Default underline style shows an indicator below the active tab.</p>
                         </div>
-                        <div class="so-tab-pane so-fade" id="demo-profile">
-                            <p>This is the profile tab content.</p>
+                        <div class="so-tab-pane so-fade" id="demo-profile" role="tabpanel">
+                            <p>This is the profile tab content with user information.</p>
                         </div>
-                        <div class="so-tab-pane so-fade" id="demo-contact">
-                            <p>This is the contact tab content.</p>
+                        <div class="so-tab-pane so-fade" id="demo-settings" role="tabpanel">
+                            <p>This is the settings tab content for configuration options.</p>
                         </div>
                     </div>
                 </div>
@@ -64,9 +61,10 @@ require_once '../../includes/navbar.php';
 use Core\UiEngine\UiEngine;
 
 \$tabs = UiEngine::tabs('main-tabs')
-    ->tab('home', 'Home', 'This is the home tab content.', true)
-    ->tab('profile', 'Profile', 'This is the profile tab content.')
-    ->tab('contact', 'Contact', 'This is the contact tab content.');
+    ->tab('Home', 'This is the home tab content.')
+    ->tab('Profile', 'This is the profile tab content.')
+    ->tab('Settings', 'This is the settings tab content.')
+    ->tab('Disabled', 'Disabled content', null, true);
 
 echo \$tabs->render();"
                     ],
@@ -75,78 +73,393 @@ echo \$tabs->render();"
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "const tabs = UiEngine.tabs('main-tabs')
-    .tab('home', 'Home', 'This is the home tab content.', true)
-    .tab('profile', 'Profile', 'This is the profile tab content.')
-    .tab('contact', 'Contact', 'This is the contact tab content.');
+    .tab('Home', 'This is the home tab content.')
+    .tab('Profile', 'This is the profile tab content.')
+    .tab('Settings', 'This is the settings tab content.')
+    .tab('Disabled', 'Disabled content', null, true);
 
 document.getElementById('container').innerHTML = tabs.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-tabs" role="tablist" data-so-tabs>
+    <button class="so-tab so-active" role="tab" data-so-target="#panel1">Home</button>
+    <button class="so-tab" role="tab" data-so-target="#panel2">Profile</button>
+    <button class="so-tab" role="tab" data-so-target="#panel3">Settings</button>
+    <button class="so-tab so-disabled" role="tab">Disabled</button>
+</div>
+<div class="so-tab-content">
+    <div class="so-tab-pane so-fade so-show so-active" id="panel1" role="tabpanel">...</div>
+    <div class="so-tab-pane so-fade" id="panel2" role="tabpanel">...</div>
+    <div class="so-tab-pane so-fade" id="panel3" role="tabpanel">...</div>
+</div>'
                     ],
                 ]) ?>
             </div>
         </div>
 
-        <!-- Pills Style -->
+        <!-- Tab Styles -->
         <div class="so-card so-mb-4">
             <div class="so-card-header">
-                <h3 class="so-card-title">Pills Style</h3>
+                <h3 class="so-card-title">Tab Styles</h3>
             </div>
             <div class="so-card-body">
-                <!-- Live Demo -->
+                <p class="so-text-muted so-mb-4">Different visual styles for tabs: pills, boxed, ghost, and bordered.</p>
+
+                <!-- Pills -->
+                <h5 class="so-mb-3">Pills Style</h5>
                 <div class="so-mb-4">
-                    <ul class="so-nav so-nav-pills so-mb-3">
-                        <li class="so-nav-item">
-                            <button class="so-nav-link active" data-bs-toggle="pill" data-bs-target="#pill-home">Home</button>
-                        </li>
-                        <li class="so-nav-item">
-                            <button class="so-nav-link" data-bs-toggle="pill" data-bs-target="#pill-profile">Profile</button>
-                        </li>
-                        <li class="so-nav-item">
-                            <button class="so-nav-link" data-bs-toggle="pill" data-bs-target="#pill-messages">Messages</button>
-                        </li>
-                    </ul>
+                    <div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs>
+                        <button class="so-tab so-active" role="tab" data-so-target="#pills-1">Overview</button>
+                        <button class="so-tab" role="tab" data-so-target="#pills-2">Features</button>
+                        <button class="so-tab" role="tab" data-so-target="#pills-3">Pricing</button>
+                    </div>
                     <div class="so-tab-content">
-                        <div class="so-tab-pane so-fade so-show so-active" id="pill-home">Home content</div>
-                        <div class="so-tab-pane so-fade" id="pill-profile">Profile content</div>
-                        <div class="so-tab-pane so-fade" id="pill-messages">Messages content</div>
+                        <div class="so-tab-pane so-fade so-show so-active" id="pills-1" role="tabpanel">Pills have a rounded background on the active tab.</div>
+                        <div class="so-tab-pane so-fade" id="pills-2" role="tabpanel">Features content.</div>
+                        <div class="so-tab-pane so-fade" id="pills-3" role="tabpanel">Pricing content.</div>
+                    </div>
+                </div>
+
+                <!-- Boxed -->
+                <h5 class="so-mb-3">Boxed/Segmented Style</h5>
+                <div class="so-mb-4">
+                    <div class="so-tabs so-tabs-boxed" role="tablist" data-so-tabs>
+                        <button class="so-tab so-active" role="tab" data-so-target="#boxed-1">Day</button>
+                        <button class="so-tab" role="tab" data-so-target="#boxed-2">Week</button>
+                        <button class="so-tab" role="tab" data-so-target="#boxed-3">Month</button>
+                    </div>
+                    <div class="so-tab-content">
+                        <div class="so-tab-pane so-fade so-show so-active" id="boxed-1" role="tabpanel">Boxed tabs look like a segmented control.</div>
+                        <div class="so-tab-pane so-fade" id="boxed-2" role="tabpanel">Weekly view.</div>
+                        <div class="so-tab-pane so-fade" id="boxed-3" role="tabpanel">Monthly view.</div>
+                    </div>
+                </div>
+
+                <!-- Ghost -->
+                <h5 class="so-mb-3">Ghost Style</h5>
+                <div class="so-mb-4">
+                    <div class="so-tabs so-tabs-ghost" role="tablist" data-so-tabs>
+                        <button class="so-tab so-active" role="tab" data-so-target="#ghost-1">All</button>
+                        <button class="so-tab" role="tab" data-so-target="#ghost-2">Active</button>
+                        <button class="so-tab" role="tab" data-so-target="#ghost-3">Completed</button>
+                    </div>
+                    <div class="so-tab-content">
+                        <div class="so-tab-pane so-fade so-show so-active" id="ghost-1" role="tabpanel">Ghost tabs have minimal styling.</div>
+                        <div class="so-tab-pane so-fade" id="ghost-2" role="tabpanel">Active items.</div>
+                        <div class="so-tab-pane so-fade" id="ghost-3" role="tabpanel">Completed items.</div>
+                    </div>
+                </div>
+
+                <!-- Bordered -->
+                <h5 class="so-mb-3">Bordered Style</h5>
+                <div class="so-mb-4">
+                    <div class="so-tabs so-tabs-bordered" role="tablist" data-so-tabs>
+                        <button class="so-tab so-active" role="tab" data-so-target="#bordered-1">Details</button>
+                        <button class="so-tab" role="tab" data-so-target="#bordered-2">Reviews</button>
+                        <button class="so-tab" role="tab" data-so-target="#bordered-3">FAQ</button>
+                    </div>
+                    <div class="so-tab-content">
+                        <div class="so-tab-pane so-fade so-show so-active" id="bordered-1" role="tabpanel">Bordered tabs have individual borders.</div>
+                        <div class="so-tab-pane so-fade" id="bordered-2" role="tabpanel">Reviews content.</div>
+                        <div class="so-tab-pane so-fade" id="bordered-3" role="tabpanel">FAQ content.</div>
                     </div>
                 </div>
 
                 <!-- Code Tabs -->
-                <?= so_code_tabs('pills-tabs', [
+                <?= so_code_tabs('tab-styles', [
                     [
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "\$tabs = UiEngine::tabs('pill-tabs')
-    ->pills()  // Use pill style
-    ->tab('home', 'Home', 'Home content', true)
-    ->tab('profile', 'Profile', 'Profile content')
-    ->tab('messages', 'Messages', 'Messages content');
+                        'code' => "// Pills style
+UiEngine::tabs('pills-tabs')
+    ->pills()
+    ->tab('Overview', 'Overview content')
+    ->tab('Features', 'Features content');
 
-echo \$tabs->render();"
+// Boxed/Segmented style
+UiEngine::tabs('boxed-tabs')
+    ->boxed()
+    ->tab('Day', 'Daily view')
+    ->tab('Week', 'Weekly view');
+
+// Ghost style
+UiEngine::tabs('ghost-tabs')
+    ->ghost()
+    ->tab('All', 'All items')
+    ->tab('Active', 'Active items');
+
+// Bordered style
+UiEngine::tabs('bordered-tabs')
+    ->bordered()
+    ->tab('Details', 'Details content')
+    ->tab('Reviews', 'Reviews content');"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "const tabs = UiEngine.tabs('pill-tabs')
+                        'code' => "// Pills style
+UiEngine.tabs('pills-tabs')
     .pills()
-    .tab('home', 'Home', 'Home content', true)
-    .tab('profile', 'Profile', 'Profile content')
-    .tab('messages', 'Messages', 'Messages content');
+    .tab('Overview', 'Overview content')
+    .tab('Features', 'Features content');
 
-document.getElementById('container').innerHTML = tabs.toHtml();"
+// Boxed style
+UiEngine.tabs('boxed-tabs')
+    .boxed()
+    .tab('Day', 'Daily view')
+    .tab('Week', 'Weekly view');
+
+// Ghost style
+UiEngine.tabs('ghost-tabs')
+    .ghost()
+    .tab('All', 'All items');
+
+// Bordered style
+UiEngine.tabs('bordered-tabs')
+    .bordered()
+    .tab('Details', 'Details content');"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Pills -->
+<div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs>...</div>
+
+<!-- Boxed/Segmented -->
+<div class="so-tabs so-tabs-boxed" role="tablist" data-so-tabs>...</div>
+
+<!-- Ghost -->
+<div class="so-tabs so-tabs-ghost" role="tablist" data-so-tabs>...</div>
+
+<!-- Bordered -->
+<div class="so-tabs so-tabs-bordered" role="tablist" data-so-tabs>...</div>'
                     ],
                 ]) ?>
             </div>
         </div>
 
-        <!-- With Icons -->
+        <!-- Tab Sizes -->
         <div class="so-card so-mb-4">
             <div class="so-card-header">
-                <h3 class="so-card-title">With Icons</h3>
+                <h3 class="so-card-title">Tab Sizes</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Small and large size variants for tabs.</p>
+
+                <!-- Small -->
+                <h5 class="so-mb-3">Small Tabs</h5>
+                <div class="so-tabs so-tabs-pills so-tabs-sm so-mb-4" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab">Tab 1</button>
+                    <button class="so-tab" role="tab">Tab 2</button>
+                    <button class="so-tab" role="tab">Tab 3</button>
+                </div>
+
+                <!-- Default -->
+                <h5 class="so-mb-3">Default Tabs</h5>
+                <div class="so-tabs so-tabs-pills so-mb-4" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab">Tab 1</button>
+                    <button class="so-tab" role="tab">Tab 2</button>
+                    <button class="so-tab" role="tab">Tab 3</button>
+                </div>
+
+                <!-- Large -->
+                <h5 class="so-mb-3">Large Tabs</h5>
+                <div class="so-tabs so-tabs-pills so-tabs-lg so-mb-4" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab">Tab 1</button>
+                    <button class="so-tab" role="tab">Tab 2</button>
+                    <button class="so-tab" role="tab">Tab 3</button>
+                </div>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('tab-sizes', [
+                    [
+                        'label' => 'PHP',
+                        'language' => 'php',
+                        'icon' => 'data_object',
+                        'code' => "// Small tabs
+UiEngine::tabs('sm-tabs')
+    ->pills()
+    ->small()  // or ->size('sm')
+    ->tab('Tab 1', 'Content 1')
+    ->tab('Tab 2', 'Content 2');
+
+// Large tabs
+UiEngine::tabs('lg-tabs')
+    ->pills()
+    ->large()  // or ->size('lg')
+    ->tab('Tab 1', 'Content 1')
+    ->tab('Tab 2', 'Content 2');"
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "// Small tabs
+UiEngine.tabs('sm-tabs')
+    .pills()
+    .small()
+    .tab('Tab 1', 'Content 1')
+    .tab('Tab 2', 'Content 2');
+
+// Large tabs
+UiEngine.tabs('lg-tabs')
+    .pills()
+    .large()
+    .tab('Tab 1', 'Content 1');"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Small -->
+<div class="so-tabs so-tabs-pills so-tabs-sm" role="tablist" data-so-tabs>...</div>
+
+<!-- Default -->
+<div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs>...</div>
+
+<!-- Large -->
+<div class="so-tabs so-tabs-pills so-tabs-lg" role="tablist" data-so-tabs>...</div>'
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- Color Variants -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Color Variants</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Contextual color variants for tabs.</p>
+
+                <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1 so-gap-4">
+                    <div>
+                        <h6 class="so-mb-2">Primary</h6>
+                        <div class="so-tabs so-tabs-pills so-tabs-primary so-tabs-sm" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab">Active</button>
+                            <button class="so-tab" role="tab">Tab 2</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 class="so-mb-2">Success</h6>
+                        <div class="so-tabs so-tabs-pills so-tabs-success so-tabs-sm" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab">Active</button>
+                            <button class="so-tab" role="tab">Tab 2</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 class="so-mb-2">Danger</h6>
+                        <div class="so-tabs so-tabs-pills so-tabs-danger so-tabs-sm" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab">Active</button>
+                            <button class="so-tab" role="tab">Tab 2</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 class="so-mb-2">Warning</h6>
+                        <div class="so-tabs so-tabs-pills so-tabs-warning so-tabs-sm" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab">Active</button>
+                            <button class="so-tab" role="tab">Tab 2</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 class="so-mb-2">Info</h6>
+                        <div class="so-tabs so-tabs-pills so-tabs-info so-tabs-sm" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab">Active</button>
+                            <button class="so-tab" role="tab">Tab 2</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 class="so-mb-2">Secondary</h6>
+                        <div class="so-tabs so-tabs-pills so-tabs-secondary so-tabs-sm" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab">Active</button>
+                            <button class="so-tab" role="tab">Tab 2</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('tab-colors', [
+                    [
+                        'label' => 'PHP',
+                        'language' => 'php',
+                        'icon' => 'data_object',
+                        'code' => "// Color variants
+UiEngine::tabs('tabs')->pills()->primary()->tab('Tab', 'Content');
+UiEngine::tabs('tabs')->pills()->success()->tab('Tab', 'Content');
+UiEngine::tabs('tabs')->pills()->danger()->tab('Tab', 'Content');
+UiEngine::tabs('tabs')->pills()->warning()->tab('Tab', 'Content');
+UiEngine::tabs('tabs')->pills()->info()->tab('Tab', 'Content');
+UiEngine::tabs('tabs')->pills()->secondary()->tab('Tab', 'Content');
+
+// Or use variant() method
+UiEngine::tabs('tabs')->pills()->variant('primary');"
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "// Color variants
+UiEngine.tabs('tabs').pills().primary().tab('Tab', 'Content');
+UiEngine.tabs('tabs').pills().success().tab('Tab', 'Content');
+UiEngine.tabs('tabs').pills().danger().tab('Tab', 'Content');
+UiEngine.tabs('tabs').pills().warning().tab('Tab', 'Content');
+UiEngine.tabs('tabs').pills().info().tab('Tab', 'Content');
+
+// Or use variant() method
+UiEngine.tabs('tabs').pills().variant('primary');"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-tabs so-tabs-pills so-tabs-primary">...</div>
+<div class="so-tabs so-tabs-pills so-tabs-success">...</div>
+<div class="so-tabs so-tabs-pills so-tabs-danger">...</div>
+<div class="so-tabs so-tabs-pills so-tabs-warning">...</div>
+<div class="so-tabs so-tabs-pills so-tabs-info">...</div>
+<div class="so-tabs so-tabs-pills so-tabs-secondary">...</div>'
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- Tabs with Icons -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Tabs with Icons</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Add Material Icons to tabs for better visual recognition.</p>
+
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs>
+                        <button class="so-tab so-active" role="tab" data-so-target="#icon-1">
+                            <span class="material-icons">home</span>
+                            Home
+                        </button>
+                        <button class="so-tab" role="tab" data-so-target="#icon-2">
+                            <span class="material-icons">person</span>
+                            Profile
+                        </button>
+                        <button class="so-tab" role="tab" data-so-target="#icon-3">
+                            <span class="material-icons">settings</span>
+                            Settings
+                        </button>
+                    </div>
+                    <div class="so-tab-content">
+                        <div class="so-tab-pane so-fade so-show so-active" id="icon-1" role="tabpanel">Home content with icon in tab.</div>
+                        <div class="so-tab-pane so-fade" id="icon-2" role="tabpanel">Profile content.</div>
+                        <div class="so-tab-pane so-fade" id="icon-3" role="tabpanel">Settings content.</div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('tabs-icons', [
                     [
@@ -154,9 +467,10 @@ document.getElementById('container').innerHTML = tabs.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "\$tabs = UiEngine::tabs('icon-tabs')
-    ->tab('home', 'Home', 'Home content', true, 'home')
-    ->tab('profile', 'Profile', 'Profile content', false, 'person')
-    ->tab('settings', 'Settings', 'Settings content', false, 'settings');
+    ->pills()
+    ->tab('Home', 'Home content', 'home')
+    ->tab('Profile', 'Profile content', 'person')
+    ->tab('Settings', 'Settings content', 'settings');
 
 echo \$tabs->render();"
                     ],
@@ -165,11 +479,27 @@ echo \$tabs->render();"
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "const tabs = UiEngine.tabs('icon-tabs')
-    .tab('home', 'Home', 'Home content', true, 'home')
-    .tab('profile', 'Profile', 'Profile content', false, 'person')
-    .tab('settings', 'Settings', 'Settings content', false, 'settings');
+    .pills()
+    .tab('Home', 'Home content', 'home')
+    .tab('Profile', 'Profile content', 'person')
+    .tab('Settings', 'Settings content', 'settings');
 
-document.getElementById('container').innerHTML = tabs.toHtml();"
+document.body.innerHTML = tabs.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-tabs so-tabs-pills" role="tablist" data-so-tabs>
+    <button class="so-tab so-active" role="tab" data-so-target="#panel1">
+        <span class="material-icons">home</span>
+        Home
+    </button>
+    <button class="so-tab" role="tab" data-so-target="#panel2">
+        <span class="material-icons">person</span>
+        Profile
+    </button>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -181,6 +511,38 @@ document.getElementById('container').innerHTML = tabs.toHtml();"
                 <h3 class="so-card-title">Vertical Tabs</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Vertical tab layout for settings pages with many sections.</p>
+
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <div class="so-tabs-container so-tabs-container-vertical">
+                        <div class="so-tabs so-tabs-vertical" role="tablist" data-so-tabs>
+                            <button class="so-tab so-active" role="tab" data-so-target="#vert-1">General</button>
+                            <button class="so-tab" role="tab" data-so-target="#vert-2">Security</button>
+                            <button class="so-tab" role="tab" data-so-target="#vert-3">Notifications</button>
+                            <button class="so-tab" role="tab" data-so-target="#vert-4">Privacy</button>
+                        </div>
+                        <div class="so-tab-content">
+                            <div class="so-tab-pane so-fade so-show so-active" id="vert-1" role="tabpanel">
+                                <h5>General Settings</h5>
+                                <p>Configure your general application settings here.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="vert-2" role="tabpanel">
+                                <h5>Security Settings</h5>
+                                <p>Manage your security preferences.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="vert-3" role="tabpanel">
+                                <h5>Notification Preferences</h5>
+                                <p>Control which notifications you receive.</p>
+                            </div>
+                            <div class="so-tab-pane so-fade" id="vert-4" role="tabpanel">
+                                <h5>Privacy Settings</h5>
+                                <p>Manage your privacy preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('tabs-vertical', [
                     [
@@ -188,12 +550,11 @@ document.getElementById('container').innerHTML = tabs.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "\$tabs = UiEngine::tabs('vertical-tabs')
-    ->vertical()           // Vertical layout
-    ->navWidth(3)          // Navigation column width (out of 12)
-    ->pills()              // Often used with pills for vertical
-    ->tab('overview', 'Overview', 'Overview content', true)
-    ->tab('details', 'Details', 'Details content')
-    ->tab('history', 'History', 'History content');
+    ->vertical()
+    ->tab('General', 'General settings content')
+    ->tab('Security', 'Security settings content')
+    ->tab('Notifications', 'Notification settings')
+    ->tab('Privacy', 'Privacy settings');
 
 echo \$tabs->render();"
                     ],
@@ -203,61 +564,122 @@ echo \$tabs->render();"
                         'icon' => 'javascript',
                         'code' => "const tabs = UiEngine.tabs('vertical-tabs')
     .vertical()
-    .navWidth(3)
-    .pills()
-    .tab('overview', 'Overview', 'Overview content', true)
-    .tab('details', 'Details', 'Details content')
-    .tab('history', 'History', 'History content');
+    .tab('General', 'General settings content')
+    .tab('Security', 'Security settings content')
+    .tab('Notifications', 'Notification settings');
 
-document.getElementById('container').innerHTML = tabs.toHtml();"
+document.body.innerHTML = tabs.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-tabs-container so-tabs-container-vertical">
+    <div class="so-tabs so-tabs-vertical" role="tablist" data-so-tabs>
+        <button class="so-tab so-active" role="tab" data-so-target="#panel1">General</button>
+        <button class="so-tab" role="tab" data-so-target="#panel2">Security</button>
+        <button class="so-tab" role="tab" data-so-target="#panel3">Notifications</button>
+    </div>
+    <div class="so-tab-content">
+        <div class="so-tab-pane so-fade so-show so-active" id="panel1">...</div>
+        <div class="so-tab-pane so-fade" id="panel2">...</div>
+        <div class="so-tab-pane so-fade" id="panel3">...</div>
+    </div>
+</div>'
                     ],
                 ]) ?>
             </div>
         </div>
 
-        <!-- Justified and Fill -->
+        <!-- Alignment Options -->
         <div class="so-card so-mb-4">
             <div class="so-card-header">
-                <h3 class="so-card-title">Justified and Fill</h3>
+                <h3 class="so-card-title">Alignment Options</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-4">Center, right-align, justify, or fill available space.</p>
+
+                <!-- Center -->
+                <h5 class="so-mb-3">Center Aligned</h5>
+                <div class="so-tabs so-tabs-center so-mb-4" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab">Tab 1</button>
+                    <button class="so-tab" role="tab">Tab 2</button>
+                    <button class="so-tab" role="tab">Tab 3</button>
+                </div>
+
+                <!-- Right -->
+                <h5 class="so-mb-3">Right Aligned</h5>
+                <div class="so-tabs so-tabs-end so-mb-4" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab">Tab 1</button>
+                    <button class="so-tab" role="tab">Tab 2</button>
+                    <button class="so-tab" role="tab">Tab 3</button>
+                </div>
+
+                <!-- Justified -->
+                <h5 class="so-mb-3">Justified (Equal Width)</h5>
+                <div class="so-tabs so-tabs-justified so-mb-4" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab">Tab 1</button>
+                    <button class="so-tab" role="tab">Tab 2</button>
+                    <button class="so-tab" role="tab">Tab 3</button>
+                </div>
+
+                <!-- Fill -->
+                <h5 class="so-mb-3">Fill (Proportional)</h5>
+                <div class="so-tabs so-tabs-fill so-mb-4" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab">Short</button>
+                    <button class="so-tab" role="tab">Much Longer Tab</button>
+                    <button class="so-tab" role="tab">Tab</button>
+                </div>
+
                 <!-- Code Tabs -->
-                <?= so_code_tabs('tabs-layout', [
+                <?= so_code_tabs('tabs-alignment', [
                     [
                         'label' => 'PHP',
                         'language' => 'php',
                         'icon' => 'data_object',
-                        'code' => "// Fill - proportionally fill available space
-\$tabs = UiEngine::tabs('fill-tabs')
-    ->fill()
-    ->tab('short', 'Short', 'Short tab content')
-    ->tab('much-longer-tab', 'Much Longer Tab', 'Longer tab content');
+                        'code' => "// Center aligned
+UiEngine::tabs('tabs')->centered()->tab('Tab 1', 'Content');
 
-// Justified - equal width tabs
-\$tabs = UiEngine::tabs('justified-tabs')
-    ->justified()
-    ->tab('tab1', 'Tab 1', 'Content 1')
-    ->tab('tab2', 'Tab 2', 'Content 2')
-    ->tab('tab3', 'Tab 3', 'Content 3');
+// Right aligned
+UiEngine::tabs('tabs')->end()->tab('Tab 1', 'Content');
 
-echo \$tabs->render();"
+// Justified (equal width)
+UiEngine::tabs('tabs')->justified()->tab('Tab 1', 'Content');
+
+// Fill (proportional)
+UiEngine::tabs('tabs')->fill()->tab('Tab 1', 'Content');"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
-                        'code' => "// Fill - proportionally fill available space
-const fillTabs = UiEngine.tabs('fill-tabs')
-    .fill()
-    .tab('short', 'Short', 'Short tab content')
-    .tab('much-longer-tab', 'Much Longer Tab', 'Longer tab content');
+                        'code' => "// Center aligned
+UiEngine.tabs('tabs').centered().tab('Tab 1', 'Content');
 
-// Justified - equal width tabs
-const justifiedTabs = UiEngine.tabs('justified-tabs')
-    .justified()
-    .tab('tab1', 'Tab 1', 'Content 1')
-    .tab('tab2', 'Tab 2', 'Content 2')
-    .tab('tab3', 'Tab 3', 'Content 3');"
+// Right aligned
+UiEngine.tabs('tabs').end().tab('Tab 1', 'Content');
+
+// Justified (equal width)
+UiEngine.tabs('tabs').justified().tab('Tab 1', 'Content');
+
+// Fill (proportional)
+UiEngine.tabs('tabs').fill().tab('Tab 1', 'Content');"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Center aligned -->
+<div class="so-tabs so-tabs-center" role="tablist">...</div>
+
+<!-- Right aligned -->
+<div class="so-tabs so-tabs-end" role="tablist">...</div>
+
+<!-- Justified (equal width) -->
+<div class="so-tabs so-tabs-justified" role="tablist">...</div>
+
+<!-- Fill (proportional) -->
+<div class="so-tabs so-tabs-fill" role="tablist">...</div>'
                     ],
                 ]) ?>
             </div>
@@ -281,8 +703,13 @@ const justifiedTabs = UiEngine.tabs('justified-tabs')
                         <tbody>
                             <tr>
                                 <td><code>tab()</code></td>
-                                <td><code>string $id, string $label, string $content, bool $active, string $icon</code></td>
+                                <td><code>string $title, mixed $content, ?string $icon, bool $disabled</code></td>
                                 <td>Add a tab</td>
+                            </tr>
+                            <tr>
+                                <td><code>activeTab()</code></td>
+                                <td><code>int $index</code></td>
+                                <td>Set active tab by index (0-based)</td>
                             </tr>
                             <tr>
                                 <td><code>pills()</code></td>
@@ -290,9 +717,44 @@ const justifiedTabs = UiEngine.tabs('justified-tabs')
                                 <td>Use pills style</td>
                             </tr>
                             <tr>
+                                <td><code>boxed()</code></td>
+                                <td>-</td>
+                                <td>Use boxed/segmented style</td>
+                            </tr>
+                            <tr>
+                                <td><code>ghost()</code></td>
+                                <td>-</td>
+                                <td>Use ghost style</td>
+                            </tr>
+                            <tr>
+                                <td><code>bordered()</code></td>
+                                <td>-</td>
+                                <td>Use bordered style</td>
+                            </tr>
+                            <tr>
                                 <td><code>vertical()</code></td>
                                 <td>-</td>
                                 <td>Vertical layout</td>
+                            </tr>
+                            <tr>
+                                <td><code>small()</code></td>
+                                <td>-</td>
+                                <td>Small size</td>
+                            </tr>
+                            <tr>
+                                <td><code>large()</code></td>
+                                <td>-</td>
+                                <td>Large size</td>
+                            </tr>
+                            <tr>
+                                <td><code>centered()</code></td>
+                                <td>-</td>
+                                <td>Center align tabs</td>
+                            </tr>
+                            <tr>
+                                <td><code>end()</code></td>
+                                <td>-</td>
+                                <td>Right align tabs</td>
                             </tr>
                             <tr>
                                 <td><code>fill()</code></td>
@@ -305,14 +767,101 @@ const justifiedTabs = UiEngine.tabs('justified-tabs')
                                 <td>Equal width tabs</td>
                             </tr>
                             <tr>
-                                <td><code>navWidth()</code></td>
-                                <td><code>int $columns</code></td>
-                                <td>Nav column width for vertical tabs</td>
+                                <td><code>primary()</code></td>
+                                <td>-</td>
+                                <td>Primary color variant</td>
                             </tr>
                             <tr>
-                                <td><code>onChange()</code></td>
-                                <td><code>callable $callback</code></td>
-                                <td>Tab change callback</td>
+                                <td><code>success()</code></td>
+                                <td>-</td>
+                                <td>Success color variant</td>
+                            </tr>
+                            <tr>
+                                <td><code>danger()</code></td>
+                                <td>-</td>
+                                <td>Danger color variant</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="so-mt-4 so-mb-3">CSS Classes Reference</h5>
+                <div class="so-table-responsive">
+                    <table class="so-table so-table-bordered">
+                        <thead class="so-table-light">
+                            <tr>
+                                <th>Class</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>.so-tabs</code></td>
+                                <td>Tab container</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tab</code></td>
+                                <td>Individual tab button</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tab-content</code></td>
+                                <td>Content panels container</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tab-pane</code></td>
+                                <td>Individual content panel</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-pills</code></td>
+                                <td>Pills style</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-boxed</code></td>
+                                <td>Boxed/segmented style</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-ghost</code></td>
+                                <td>Ghost style</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-bordered</code></td>
+                                <td>Bordered style</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-vertical</code></td>
+                                <td>Vertical layout</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-sm/lg</code></td>
+                                <td>Size variants</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-{color}</code></td>
+                                <td>Color variants (primary, success, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-center</code></td>
+                                <td>Center aligned</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-end</code></td>
+                                <td>Right aligned</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-justified</code></td>
+                                <td>Equal width tabs</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-tabs-fill</code></td>
+                                <td>Proportional fill</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-active</code></td>
+                                <td>Active state</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-disabled</code></td>
+                                <td>Disabled state</td>
                             </tr>
                         </tbody>
                     </table>

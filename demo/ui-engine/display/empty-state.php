@@ -67,6 +67,19 @@ echo \$emptyState->render();"
 
 document.getElementById('container').innerHTML = emptyState.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-text-center so-py-5">
+    <span class="material-icons so-text-muted" style="font-size:64px;">inbox</span>
+    <h5 class="so-mt-3">No items yet</h5>
+    <p class="so-text-muted">Get started by creating your first item.</p>
+    <button class="so-btn so-btn-primary">
+        <span class="material-icons">add</span> Create Item
+    </button>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -235,6 +248,24 @@ echo \$emptyState->render();"
     ]);
 
 document.getElementById('container').innerHTML = emptyState.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-text-center so-py-5">
+    <span class="material-icons so-text-muted" style="font-size:64px;">folder_open</span>
+    <h5 class="so-mt-3">No files uploaded</h5>
+    <p class="so-text-muted">Upload files or create a new folder to organize your content.</p>
+    <div class="so-d-flex so-gap-2 so-justify-content-center">
+        <button class="so-btn so-btn-primary">
+            <span class="material-icons">upload</span> Upload Files
+        </button>
+        <button class="so-btn so-btn-outline-secondary">
+            <span class="material-icons">create_new_folder</span> New Folder
+        </button>
+    </div>
+</div>'
                     ],
                 ]) ?>
             </div>

@@ -65,6 +65,17 @@ echo \$list->render();"
 
 document.getElementById('container').innerHTML = list.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<ul class="so-list-group">
+    <li class="so-list-group-item">First item</li>
+    <li class="so-list-group-item">Second item</li>
+    <li class="so-list-group-item">Third item</li>
+    <li class="so-list-group-item">Fourth item</li>
+</ul>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -77,9 +88,9 @@ document.getElementById('container').innerHTML = list.toHtml();"
             <div class="so-card-body">
                 <!-- Live Demo -->
                 <ul class="so-list-group so-mb-4" style="max-width:400px;">
-                    <li class="so-list-group-item active">Active item</li>
+                    <li class="so-list-group-item so-active">Active item</li>
                     <li class="so-list-group-item">Regular item</li>
-                    <li class="so-list-group-item disabled">Disabled item</li>
+                    <li class="so-list-group-item so-disabled">Disabled item</li>
                     <li class="so-list-group-item">Another item</li>
                 </ul>
 
@@ -109,6 +120,17 @@ echo \$list->render();"
 
 document.getElementById('container').innerHTML = list.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<ul class="so-list-group">
+    <li class="so-list-group-item so-active">Active item</li>
+    <li class="so-list-group-item">Regular item</li>
+    <li class="so-list-group-item so-disabled">Disabled item</li>
+    <li class="so-list-group-item">Another item</li>
+</ul>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -121,7 +143,7 @@ document.getElementById('container').innerHTML = list.toHtml();"
             <div class="so-card-body">
                 <!-- Live Demo -->
                 <div class="so-list-group so-mb-4" style="max-width:400px;">
-                    <a href="#" class="so-list-group-item so-list-group-item-action active">
+                    <a href="#" class="so-list-group-item so-list-group-item-action so-active">
                         Active link item
                     </a>
                     <a href="#" class="so-list-group-item so-list-group-item-action">
@@ -130,7 +152,7 @@ document.getElementById('container').innerHTML = list.toHtml();"
                     <a href="#" class="so-list-group-item so-list-group-item-action">
                         Another link
                     </a>
-                    <a href="#" class="so-list-group-item so-list-group-item-action disabled">
+                    <a href="#" class="so-list-group-item so-list-group-item-action so-disabled">
                         Disabled link
                     </a>
                 </div>
@@ -162,6 +184,22 @@ echo \$list->render();"
     .item('Disabled link', {url: '#', disabled: true});
 
 document.getElementById('container').innerHTML = list.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-list-group">
+    <a href="#" class="so-list-group-item so-list-group-item-action so-active">
+        Active link item
+    </a>
+    <a href="/page" class="so-list-group-item so-list-group-item-action">
+        Link item
+    </a>
+    <a href="#" class="so-list-group-item so-list-group-item-action so-disabled">
+        Disabled link
+    </a>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -212,6 +250,21 @@ echo \$list->render();"
     .item('Sent', {badge: '99+', badgeVariant: 'success'});
 
 document.getElementById('container').innerHTML = list.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<ul class="so-list-group">
+    <li class="so-list-group-item so-d-flex so-justify-content-between so-align-items-center">
+        Inbox
+        <span class="so-badge so-bg-primary so-rounded-pill">14</span>
+    </li>
+    <li class="so-list-group-item so-d-flex so-justify-content-between so-align-items-center">
+        Drafts
+        <span class="so-badge so-bg-secondary so-rounded-pill">3</span>
+    </li>
+</ul>'
                     ],
                 ]) ?>
             </div>
@@ -265,6 +318,21 @@ echo \$list->render();"
 
 document.getElementById('container').innerHTML = list.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-list-group">
+    <a href="/dashboard" class="so-list-group-item so-list-group-item-action so-d-flex so-align-items-center">
+        <span class="material-icons so-me-3 so-text-primary">home</span>
+        Dashboard
+    </a>
+    <a href="/profile" class="so-list-group-item so-list-group-item-action so-d-flex so-align-items-center">
+        <span class="material-icons so-me-3 so-text-primary">person</span>
+        Profile
+    </a>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -275,6 +343,13 @@ document.getElementById('container').innerHTML = list.toHtml();"
                 <h3 class="so-card-title">Flush Style (No Borders)</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <ul class="so-list-group so-list-group-flush so-mb-4" style="max-width:400px;">
+                    <li class="so-list-group-item">First item</li>
+                    <li class="so-list-group-item">Second item</li>
+                    <li class="so-list-group-item">Third item</li>
+                </ul>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('list-flush', [
                     [
@@ -300,6 +375,16 @@ echo \$list->render();"
     .item('Third item');
 
 document.getElementById('container').innerHTML = list.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<ul class="so-list-group so-list-group-flush">
+    <li class="so-list-group-item">First item</li>
+    <li class="so-list-group-item">Second item</li>
+    <li class="so-list-group-item">Third item</li>
+</ul>'
                     ],
                 ]) ?>
             </div>

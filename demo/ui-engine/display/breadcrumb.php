@@ -72,7 +72,7 @@ document.getElementById('container').innerHTML = breadcrumb.toHtml();"
     <ol class="so-breadcrumb">
         <li class="so-breadcrumb-item"><a href="/">Home</a></li>
         <li class="so-breadcrumb-item"><a href="/products">Products</a></li>
-        <li class="so-breadcrumb-item active" aria-current="page">Category</li>
+        <li class="so-breadcrumb-item so-active" aria-current="page">Category</li>
     </ol>
 </nav>'
                     ],
@@ -125,6 +125,24 @@ echo \$breadcrumb->render();"
 
 document.getElementById('container').innerHTML = breadcrumb.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<nav aria-label="breadcrumb">
+    <ol class="so-breadcrumb">
+        <li class="so-breadcrumb-item">
+            <a href="/"><span class="material-icons">home</span> Home</a>
+        </li>
+        <li class="so-breadcrumb-item">
+            <a href="/settings"><span class="material-icons">settings</span> Settings</a>
+        </li>
+        <li class="so-breadcrumb-item so-active" aria-current="page">
+            <span class="material-icons">person</span> Profile
+        </li>
+    </ol>
+</nav>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -135,6 +153,29 @@ document.getElementById('container').innerHTML = breadcrumb.toHtml();"
                 <h3 class="so-card-title">Custom Separators</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-3">Customize the separator between breadcrumb items using CSS variables.</p>
+
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <p class="so-text-muted so-mb-2">Arrow separator (>):</p>
+                    <nav aria-label="breadcrumb" class="so-mb-3" style="--so-breadcrumb-divider: '>';">
+                        <ol class="so-breadcrumb">
+                            <li class="so-breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="so-breadcrumb-item"><a href="#">Products</a></li>
+                            <li class="so-breadcrumb-item so-active">Item</li>
+                        </ol>
+                    </nav>
+
+                    <p class="so-text-muted so-mb-2">Pipe separator (|):</p>
+                    <nav aria-label="breadcrumb" style="--so-breadcrumb-divider: '|';">
+                        <ol class="so-breadcrumb">
+                            <li class="so-breadcrumb-item"><a href="#">Page 1</a></li>
+                            <li class="so-breadcrumb-item"><a href="#">Page 2</a></li>
+                            <li class="so-breadcrumb-item so-active">Page 3</li>
+                        </ol>
+                    </nav>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('breadcrumb-separator', [
                     [
@@ -180,6 +221,24 @@ const iconBreadcrumb = UiEngine.breadcrumb()
     .item('Category')
     .item('Product');"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Arrow separator using CSS variable -->
+<nav aria-label="breadcrumb" style="--so-breadcrumb-divider: \'>\';">
+    <ol class="so-breadcrumb">
+        <li class="so-breadcrumb-item"><a href="/">Home</a></li>
+        <li class="so-breadcrumb-item"><a href="/products">Products</a></li>
+        <li class="so-breadcrumb-item so-active">Item</li>
+    </ol>
+</nav>
+
+<!-- Pipe separator -->
+<nav aria-label="breadcrumb" style="--so-breadcrumb-divider: \'|\';">
+    <ol class="so-breadcrumb">...</ol>
+</nav>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -190,6 +249,20 @@ const iconBreadcrumb = UiEngine.breadcrumb()
                 <h3 class="so-card-title">From Array</h3>
             </div>
             <div class="so-card-body">
+                <p class="so-text-muted so-mb-3">Build breadcrumbs from an array of items for dynamic navigation.</p>
+
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="so-breadcrumb">
+                            <li class="so-breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="so-breadcrumb-item"><a href="#">Users</a></li>
+                            <li class="so-breadcrumb-item"><a href="#">John Doe</a></li>
+                            <li class="so-breadcrumb-item so-active" aria-current="page">Edit Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('breadcrumb-array', [
                     [
@@ -223,6 +296,19 @@ const breadcrumb = UiEngine.breadcrumb()
     .items(items);
 
 document.getElementById('container').innerHTML = breadcrumb.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<nav aria-label="breadcrumb">
+    <ol class="so-breadcrumb">
+        <li class="so-breadcrumb-item"><a href="/">Home</a></li>
+        <li class="so-breadcrumb-item"><a href="/users">Users</a></li>
+        <li class="so-breadcrumb-item"><a href="/users/123">John Doe</a></li>
+        <li class="so-breadcrumb-item so-active" aria-current="page">Edit Profile</li>
+    </ol>
+</nav>'
                     ],
                 ]) ?>
             </div>

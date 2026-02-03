@@ -28,6 +28,13 @@ require_once '../../includes/navbar.php';
                 <h3 class="so-card-title">Basic Code Block</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-code-block so-mb-4">
+                    <pre class="so-code-content"><code class="language-php">&lt;?php
+echo "Hello, World!";
+?&gt;</code></pre>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('basic-code', [
                     [
@@ -57,6 +64,16 @@ echo \$code->render();"
 
 document.getElementById('container').innerHTML = code.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-code-block">
+    <pre class="so-code-content"><code class="language-php">&lt;?php
+echo "Hello, World!";
+?&gt;</code></pre>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -67,6 +84,16 @@ document.getElementById('container').innerHTML = code.toHtml();"
                 <h3 class="so-card-title">With Line Numbers</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-code-block so-code-block-numbered so-mb-4">
+                    <pre class="so-code-content"><code class="language-javascript"><span class="so-line-number">1</span>function fibonacci(n) {
+<span class="so-line-number">2</span>    if (n <= 1) return n;
+<span class="so-line-number">3</span>    return fibonacci(n - 1) + fibonacci(n - 2);
+<span class="so-line-number">4</span>}
+<span class="so-line-number">5</span>
+<span class="so-line-number">6</span>console.log(fibonacci(10));</code></pre>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('code-lines', [
                     [
@@ -101,6 +128,18 @@ console.log(fibonacci(10));`);
 
 document.getElementById('container').innerHTML = code.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-code-block so-code-block-numbered">
+    <pre class="so-code-content"><code class="language-javascript">
+<span class="so-line-number">1</span>function fibonacci(n) {
+<span class="so-line-number">2</span>    if (n <= 1) return n;
+...
+</code></pre>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -111,6 +150,19 @@ document.getElementById('container').innerHTML = code.toHtml();"
                 <h3 class="so-card-title">Line Highlighting</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-code-block so-code-block-numbered so-mb-4">
+                    <pre class="so-code-content"><code class="language-php"><span class="so-line-number">1</span>$users = User::where("active", true)
+<span class="so-line-number">2</span>    ->orderBy("name")
+<span class="so-line-number">3</span><mark class="so-code-highlight">    ->limit(10)      // highlighted</mark>
+<span class="so-line-number">4</span><mark class="so-code-highlight">    ->offset(0)      // highlighted</mark>
+<span class="so-line-number">5</span><mark class="so-code-highlight">    ->get();         // highlighted</mark>
+<span class="so-line-number">6</span>
+<span class="so-line-number">7</span>foreach ($users as $user) {
+<span class="so-line-number">8</span>    echo $user->name;
+<span class="so-line-number">9</span>}</code></pre>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('code-highlight', [
                     [
@@ -146,6 +198,19 @@ echo \$code->render();"
 // Or highlight a range
 code.highlight('3-5');  // Lines 3 through 5"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-code-block so-code-block-numbered">
+    <pre class="so-code-content"><code>
+<span class="so-line-number">1</span>$users = User::where("active", true)
+<span class="so-line-number">2</span>    ->orderBy("name")
+<span class="so-line-number">3</span><mark class="so-code-highlight">    ->limit(10)</mark>
+...
+</code></pre>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -156,6 +221,16 @@ code.highlight('3-5');  // Lines 3 through 5"
                 <h3 class="so-card-title">With Copy Button</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-code-block so-mb-4">
+                    <div class="so-code-header">
+                        <button class="so-code-copy" onclick="navigator.clipboard.writeText('npm install @sixorbit/ui-engine')">
+                            <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                    <pre class="so-code-content"><code class="language-bash">npm install @sixorbit/ui-engine</code></pre>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('code-copy', [
                     [
@@ -183,6 +258,19 @@ echo \$code->render();"
 
 document.getElementById('container').innerHTML = code.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-code-block">
+    <div class="so-code-header">
+        <button class="so-code-copy">
+            <span class="material-icons">content_copy</span>
+        </button>
+    </div>
+    <pre class="so-code-content"><code class="language-bash">npm install @sixorbit/ui-engine</code></pre>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -193,6 +281,24 @@ document.getElementById('container').innerHTML = code.toHtml();"
                 <h3 class="so-card-title">With Filename</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-code-block so-code-block-numbered so-mb-4">
+                    <div class="so-code-header">
+                        <span class="so-code-filename">app.js</span>
+                        <button class="so-code-copy" onclick="navigator.clipboard.writeText(this.closest('.so-code-block').querySelector('code').textContent)">
+                            <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                    <pre class="so-code-content"><code class="language-javascript"><span class="so-line-number">1</span>import { UiEngine } from "@sixorbit/ui-engine";
+<span class="so-line-number">2</span>
+<span class="so-line-number">3</span>const app = UiEngine.create({
+<span class="so-line-number">4</span>    theme: "light",
+<span class="so-line-number">5</span>    locale: "en",
+<span class="so-line-number">6</span>});
+<span class="so-line-number">7</span>
+<span class="so-line-number">8</span>export default app;</code></pre>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('code-filename', [
                     [
@@ -228,16 +334,58 @@ echo \$code->render();"
 
 document.getElementById('container').innerHTML = code.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-code-block so-code-block-numbered">
+    <div class="so-code-header">
+        <span class="so-code-filename">app.js</span>
+        <button class="so-code-copy">
+            <span class="material-icons">content_copy</span>
+        </button>
+    </div>
+    <pre class="so-code-content"><code class="language-javascript">
+import { UiEngine } from "@sixorbit/ui-engine";
+...
+</code></pre>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
 
-        <!-- Supported Languages -->
+        <!-- Multiple Languages Example -->
         <div class="so-card so-mb-4">
             <div class="so-card-header">
-                <h3 class="so-card-title">Supported Languages</h3>
+                <h3 class="so-card-title">Different Languages</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo Python -->
+                <p class="so-text-muted so-mb-2">Python</p>
+                <div class="so-code-block so-mb-3">
+                    <pre class="so-code-content"><code class="language-python">def hello(name):
+    return f"Hello, {name}!"
+
+print(hello("World"))</code></pre>
+                </div>
+
+                <!-- Live Demo SQL -->
+                <p class="so-text-muted so-mb-2">SQL</p>
+                <div class="so-code-block so-mb-3">
+                    <pre class="so-code-content"><code class="language-sql">SELECT * FROM users WHERE active = 1 ORDER BY name;</code></pre>
+                </div>
+
+                <!-- Live Demo JSON -->
+                <p class="so-text-muted so-mb-2">JSON</p>
+                <div class="so-code-block so-mb-4">
+                    <pre class="so-code-content"><code class="language-json">{
+    "name": "example",
+    "version": "1.0.0",
+    "dependencies": {}
+}</code></pre>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('code-languages', [
                     [
@@ -245,13 +393,9 @@ document.getElementById('container').innerHTML = code.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "// Common languages supported:
-// - php, javascript, typescript
-// - html, css, scss, less
-// - json, xml, yaml
-// - python, ruby, go, rust
-// - java, c, cpp, csharp
-// - sql, bash, shell
-// - markdown, diff
+// php, javascript, typescript, html, css, scss
+// json, xml, yaml, python, ruby, go, rust
+// java, c, cpp, csharp, sql, bash, shell, markdown
 
 UiEngine::codeBlock()
     ->language('python')
@@ -269,6 +413,36 @@ UiEngine::codeBlock()
     \"version\": \"1.0.0\"
 }');"
                     ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "UiEngine.codeBlock()
+    .language('python')
+    .code(`def hello(name):
+    return f\"Hello, {name}!\"`);
+
+UiEngine.codeBlock()
+    .language('sql')
+    .code('SELECT * FROM users WHERE active = 1;');
+
+UiEngine.codeBlock()
+    .language('json')
+    .code(JSON.stringify({name: 'example'}, null, 2));"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-code-block">
+    <pre class="so-code-content"><code class="language-python">def hello(name):
+    return f"Hello, {name}!"</code></pre>
+</div>
+
+<div class="so-code-block">
+    <pre class="so-code-content"><code class="language-sql">SELECT * FROM users WHERE active = 1;</code></pre>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -279,6 +453,18 @@ UiEngine::codeBlock()
                 <h3 class="so-card-title">Code Block Themes</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo Light -->
+                <p class="so-text-muted so-mb-2">Light Theme (Default)</p>
+                <div class="so-code-block so-code-theme-light so-mb-3">
+                    <pre class="so-code-content"><code class="language-php">echo "Light theme";</code></pre>
+                </div>
+
+                <!-- Live Demo Dark -->
+                <p class="so-text-muted so-mb-2">Dark Theme</p>
+                <div class="so-code-block so-code-theme-dark so-mb-4">
+                    <pre class="so-code-content"><code class="language-php">echo "Dark theme";</code></pre>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('code-themes', [
                     [
@@ -321,6 +507,20 @@ UiEngine.codeBlock()
     .theme('dracula')
     .language('javascript')
     .code(`...`);"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Light theme -->
+<div class="so-code-block so-code-theme-light">
+    <pre class="so-code-content"><code>...</code></pre>
+</div>
+
+<!-- Dark theme -->
+<div class="so-code-block so-code-theme-dark">
+    <pre class="so-code-content"><code>...</code></pre>
+</div>'
                     ],
                 ]) ?>
             </div>

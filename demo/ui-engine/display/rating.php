@@ -82,6 +82,18 @@ document.getElementById('container').innerHTML = rating.toHtml();"
                 <h3 class="so-card-title">Interactive Rating (Input)</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-mb-4">
+                    <label class="so-form-label so-mb-2">Rate this product</label>
+                    <div class="so-rating so-rating-editable so-d-flex so-gap-1" style="cursor:pointer;">
+                        <span class="material-icons so-text-warning" data-value="1">star</span>
+                        <span class="material-icons so-text-warning" data-value="2">star</span>
+                        <span class="material-icons so-text-warning" data-value="3">star</span>
+                        <span class="material-icons so-text-muted" data-value="4">star_border</span>
+                        <span class="material-icons so-text-muted" data-value="5">star_border</span>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('rating-input', [
                     [
@@ -110,6 +122,20 @@ const rating = UiEngine.rating('product_rating')
     });
 
 document.getElementById('container').innerHTML = rating.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<label class="so-form-label">Rate this product</label>
+<div class="so-rating so-rating-editable" data-so-rating>
+    <input type="hidden" name="product_rating" value="3">
+    <span class="material-icons so-text-warning" data-value="1">star</span>
+    <span class="material-icons so-text-warning" data-value="2">star</span>
+    <span class="material-icons so-text-warning" data-value="3">star</span>
+    <span class="material-icons so-text-muted" data-value="4">star_border</span>
+    <span class="material-icons so-text-muted" data-value="5">star_border</span>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -154,6 +180,19 @@ const rating = UiEngine.rating(3.5)
     .showValue();
 
 document.getElementById('container').innerHTML = rating.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-rating so-d-flex so-gap-1 so-align-items-center">
+    <span class="material-icons so-text-warning">star</span>
+    <span class="material-icons so-text-warning">star</span>
+    <span class="material-icons so-text-warning">star</span>
+    <span class="material-icons so-text-warning">star_half</span>
+    <span class="material-icons so-text-muted">star_border</span>
+    <span class="so-ms-2 so-text-muted">(3.5)</span>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -217,6 +256,19 @@ UiEngine::rating(4)->size('lg');  // Large"
 UiEngine.rating(4).toHtml();               // Default
 UiEngine.rating(4).size('lg').toHtml();  // Large"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Small -->
+<div class="so-rating so-rating-sm">...</div>
+
+<!-- Default -->
+<div class="so-rating">...</div>
+
+<!-- Large -->
+<div class="so-rating so-rating-lg">...</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -227,6 +279,28 @@ UiEngine.rating(4).size('lg').toHtml();  // Large"
                 <h3 class="so-card-title">Custom Options</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo - Custom Icons (Hearts) -->
+                <p class="so-text-muted so-mb-2">Custom Icons (Hearts)</p>
+                <div class="so-d-flex so-gap-1 so-mb-3">
+                    <span class="material-icons so-text-danger">favorite</span>
+                    <span class="material-icons so-text-danger">favorite</span>
+                    <span class="material-icons so-text-danger">favorite</span>
+                    <span class="material-icons so-text-muted">favorite_border</span>
+                    <span class="material-icons so-text-muted">favorite_border</span>
+                </div>
+
+                <!-- Live Demo - With Count -->
+                <p class="so-text-muted so-mb-2">With Review Count</p>
+                <div class="so-d-flex so-gap-1 so-align-items-center so-mb-4">
+                    <span class="material-icons so-text-warning">star</span>
+                    <span class="material-icons so-text-warning">star</span>
+                    <span class="material-icons so-text-warning">star</span>
+                    <span class="material-icons so-text-warning">star</span>
+                    <span class="material-icons so-text-warning">star_half</span>
+                    <span class="so-ms-2">4.2</span>
+                    <span class="so-text-muted">(128 reviews)</span>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('rating-custom', [
                     [
@@ -266,6 +340,26 @@ UiEngine.rating(4.2)
     .showValue()
     .count(128) // Shows \"4.2 (128 reviews)\"
     .toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Custom icons (hearts) -->
+<div class="so-rating so-rating-danger">
+    <span class="material-icons so-text-danger">favorite</span>
+    <span class="material-icons so-text-danger">favorite</span>
+    <span class="material-icons so-text-danger">favorite</span>
+    <span class="material-icons so-text-muted">favorite_border</span>
+    <span class="material-icons so-text-muted">favorite_border</span>
+</div>
+
+<!-- With review count -->
+<div class="so-rating so-d-flex so-align-items-center">
+    <!-- stars -->
+    <span class="so-rating-value">4.2</span>
+    <span class="so-rating-count">(128 reviews)</span>
+</div>'
                     ],
                 ]) ?>
             </div>

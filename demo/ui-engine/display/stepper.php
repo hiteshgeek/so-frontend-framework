@@ -28,6 +28,42 @@ require_once '../../includes/navbar.php';
                 <h3 class="so-card-title">Basic Stepper</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-stepper so-mb-4">
+                    <div class="so-stepper-item so-completed">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">check</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Account</div>
+                            <div class="so-stepper-subtitle">Create your account</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-completed">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">check</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Profile</div>
+                            <div class="so-stepper-subtitle">Complete your profile</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-active">
+                        <div class="so-stepper-indicator">3</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Payment</div>
+                            <div class="so-stepper-subtitle">Add payment method</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item">
+                        <div class="so-stepper-indicator">4</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Confirm</div>
+                            <div class="so-stepper-subtitle">Review and confirm</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('basic-stepper', [
                     [
@@ -59,6 +95,30 @@ echo \$stepper->render();"
 
 document.getElementById('container').innerHTML = stepper.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-stepper">
+    <div class="so-stepper-item so-completed">
+        <div class="so-stepper-indicator">
+            <span class="material-icons">check</span>
+        </div>
+        <div class="so-stepper-content">
+            <div class="so-stepper-title">Account</div>
+            <div class="so-stepper-subtitle">Create your account</div>
+        </div>
+    </div>
+    <div class="so-stepper-item so-active">
+        <div class="so-stepper-indicator">2</div>
+        <div class="so-stepper-content">
+            <div class="so-stepper-title">Profile</div>
+            <div class="so-stepper-subtitle">Complete your profile</div>
+        </div>
+    </div>
+    <!-- More steps... -->
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -69,6 +129,46 @@ document.getElementById('container').innerHTML = stepper.toHtml();"
                 <h3 class="so-card-title">With Icons</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-stepper so-mb-4">
+                    <div class="so-stepper-item so-completed">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">check</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Cart</div>
+                            <div class="so-stepper-subtitle">Review items</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-active">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">local_shipping</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Shipping</div>
+                            <div class="so-stepper-subtitle">Enter address</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">payment</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Payment</div>
+                            <div class="so-stepper-subtitle">Add payment</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">check_circle</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Complete</div>
+                            <div class="so-stepper-subtitle">Order confirmed</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('stepper-icons', [
                     [
@@ -97,6 +197,28 @@ echo \$stepper->render();"
 
 document.getElementById('container').innerHTML = stepper.toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-stepper">
+    <div class="so-stepper-item so-completed">
+        <div class="so-stepper-indicator">
+            <span class="material-icons">check</span>
+        </div>
+        <div class="so-stepper-content">
+            <div class="so-stepper-title">Cart</div>
+            <div class="so-stepper-subtitle">Review items</div>
+        </div>
+    </div>
+    <div class="so-stepper-item so-active">
+        <div class="so-stepper-indicator">
+            <span class="material-icons">local_shipping</span>
+        </div>
+        <!-- Content... -->
+    </div>
+</div>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -107,6 +229,33 @@ document.getElementById('container').innerHTML = stepper.toHtml();"
                 <h3 class="so-card-title">Vertical Stepper</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-stepper so-stepper-vertical so-mb-4">
+                    <div class="so-stepper-item so-completed">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">check</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Personal Info</div>
+                            <div class="so-stepper-subtitle">Enter your name and email</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-active">
+                        <div class="so-stepper-indicator">2</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Address</div>
+                            <div class="so-stepper-subtitle">Provide your shipping address</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item">
+                        <div class="so-stepper-indicator">3</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Payment</div>
+                            <div class="so-stepper-subtitle">Choose payment method</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('stepper-vertical', [
                     [
@@ -135,58 +284,24 @@ echo \$stepper->render();"
 
 document.getElementById('container').innerHTML = stepper.toHtml();"
                     ],
-                ]) ?>
-            </div>
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-stepper so-stepper-vertical">
+    <div class="so-stepper-item so-completed">
+        <div class="so-stepper-indicator">
+            <span class="material-icons">check</span>
         </div>
-
-        <!-- With Content -->
-        <div class="so-card so-mb-4">
-            <div class="so-card-header">
-                <h3 class="so-card-title">With Step Content</h3>
-            </div>
-            <div class="so-card-body">
-                <!-- Code Tabs -->
-                <?= so_code_tabs('stepper-content', [
-                    [
-                        'label' => 'PHP',
-                        'language' => 'php',
-                        'icon' => 'data_object',
-                        'code' => "\$stepper = UiEngine::stepper()
-    ->vertical()
-    ->step('Account', null, null, UiEngine::form()
-        ->add(UiEngine::email('email')->label('Email'))
-        ->add(UiEngine::password('password')->label('Password'))
-    )
-    ->step('Profile', null, null, UiEngine::form()
-        ->add(UiEngine::input('name')->label('Full Name'))
-        ->add(UiEngine::input('phone')->label('Phone'))
-    )
-    ->step('Complete')
-    ->current(0);
-
-echo \$stepper->render();"
-                    ],
-                    [
-                        'label' => 'JavaScript',
-                        'language' => 'javascript',
-                        'icon' => 'javascript',
-                        'code' => "const stepper = UiEngine.stepper()
-    .vertical()
-    .step('Account', null, null, UiEngine.form()
-        .add(UiEngine.email('email').label('Email'))
-        .add(UiEngine.password('password').label('Password'))
-    )
-    .step('Profile', null, null, UiEngine.form()
-        .add(UiEngine.input('name').label('Full Name'))
-        .add(UiEngine.input('phone').label('Phone'))
-    )
-    .step('Complete')
-    .current(0)
-    .onStepChange((step) => {
-        console.log('Now on step:', step);
-    });
-
-document.getElementById('container').innerHTML = stepper.toHtml();"
+        <div class="so-stepper-content">
+            <div class="so-stepper-title">Personal Info</div>
+            <div class="so-stepper-subtitle">Enter your name and email</div>
+        </div>
+    </div>
+    <div class="so-stepper-item so-active">
+        <!-- Current step... -->
+    </div>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -198,6 +313,44 @@ document.getElementById('container').innerHTML = stepper.toHtml();"
                 <h3 class="so-card-title">Step States</h3>
             </div>
             <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-stepper so-mb-4">
+                    <div class="so-stepper-item so-completed">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">check</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Completed</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-active">
+                        <div class="so-stepper-indicator">2</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Current</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item">
+                        <div class="so-stepper-indicator">3</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Pending</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-error">
+                        <div class="so-stepper-indicator">
+                            <span class="material-icons">error</span>
+                        </div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Error</div>
+                        </div>
+                    </div>
+                    <div class="so-stepper-item so-disabled">
+                        <div class="so-stepper-indicator">5</div>
+                        <div class="so-stepper-content">
+                            <div class="so-stepper-title">Disabled</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <?= so_code_tabs('stepper-states', [
                     [
@@ -225,6 +378,18 @@ echo \$stepper->render();"
     .step('Step 5', 'Skipped', null, null, 'skipped');
 
 document.getElementById('container').innerHTML = stepper.toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-stepper">
+    <div class="so-stepper-item so-completed">...</div>
+    <div class="so-stepper-item so-active">...</div>
+    <div class="so-stepper-item">...</div>
+    <div class="so-stepper-item so-error">...</div>
+    <div class="so-stepper-item so-disabled">...</div>
+</div>'
                     ],
                 ]) ?>
             </div>
@@ -262,6 +427,21 @@ stepper.next();     // Go to next step
 stepper.prev();     // Go to previous step
 stepper.goTo(2);    // Go to specific step
 stepper.complete(); // Mark all as complete"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-stepper so-stepper-interactive" id="checkout-stepper">
+    <div class="so-stepper-item so-active" data-step="0">
+        <div class="so-stepper-indicator">1</div>
+        <div class="so-stepper-content">
+            <div class="so-stepper-title">Cart</div>
+            <div class="so-stepper-subtitle">Review items</div>
+        </div>
+    </div>
+    <!-- More steps... -->
+</div>'
                     ],
                 ]) ?>
             </div>

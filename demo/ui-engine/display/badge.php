@@ -29,13 +29,15 @@ require_once '../../includes/navbar.php';
             </div>
             <div class="so-card-body">
                 <!-- Live Demo -->
-                <div class="so-mb-4">
-                    <span class="so-badge so-bg-primary">Primary</span>
-                    <span class="so-badge so-bg-secondary">Secondary</span>
-                    <span class="so-badge so-bg-success">Success</span>
-                    <span class="so-badge so-bg-danger">Danger</span>
-                    <span class="so-badge so-bg-warning so-text-dark">Warning</span>
-                    <span class="so-badge so-bg-info">Info</span>
+                <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                    <span class="so-badge so-badge-primary">Primary</span>
+                    <span class="so-badge so-badge-secondary">Secondary</span>
+                    <span class="so-badge so-badge-success">Success</span>
+                    <span class="so-badge so-badge-danger">Danger</span>
+                    <span class="so-badge so-badge-warning">Warning</span>
+                    <span class="so-badge so-badge-info">Info</span>
+                    <span class="so-badge so-badge-light">Light</span>
+                    <span class="so-badge so-badge-dark">Dark</span>
                 </div>
 
                 <!-- Code Tabs -->
@@ -52,7 +54,9 @@ echo UiEngine::badge('Secondary')->variant('secondary');
 echo UiEngine::badge('Success')->variant('success');
 echo UiEngine::badge('Danger')->variant('danger');
 echo UiEngine::badge('Warning')->variant('warning');
-echo UiEngine::badge('Info')->variant('info');"
+echo UiEngine::badge('Info')->variant('info');
+echo UiEngine::badge('Light')->variant('light');
+echo UiEngine::badge('Dark')->variant('dark');"
                     ],
                     [
                         'label' => 'JavaScript',
@@ -65,6 +69,124 @@ UiEngine.badge('Danger').variant('danger').toHtml();
 UiEngine.badge('Warning').variant('warning').toHtml();
 UiEngine.badge('Info').variant('info').toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<span class="so-badge so-badge-primary">Primary</span>
+<span class="so-badge so-badge-secondary">Secondary</span>
+<span class="so-badge so-badge-success">Success</span>
+<span class="so-badge so-badge-danger">Danger</span>
+<span class="so-badge so-badge-warning">Warning</span>
+<span class="so-badge so-badge-info">Info</span>
+<span class="so-badge so-badge-light">Light</span>
+<span class="so-badge so-badge-dark">Dark</span>'
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- Soft Badges -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Soft Badges</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-3">Light background variants for a softer appearance.</p>
+                <!-- Live Demo -->
+                <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                    <span class="so-badge so-badge-soft-primary">Primary</span>
+                    <span class="so-badge so-badge-soft-secondary">Secondary</span>
+                    <span class="so-badge so-badge-soft-success">Success</span>
+                    <span class="so-badge so-badge-soft-danger">Danger</span>
+                    <span class="so-badge so-badge-soft-warning">Warning</span>
+                    <span class="so-badge so-badge-soft-info">Info</span>
+                    <span class="so-badge so-badge-soft-light">Light</span>
+                    <span class="so-badge so-badge-soft-dark">Dark</span>
+                </div>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('soft-badges', [
+                    [
+                        'label' => 'PHP',
+                        'language' => 'php',
+                        'icon' => 'data_object',
+                        'code' => "UiEngine::badge('Primary')->variant('primary')->soft();
+UiEngine::badge('Success')->variant('success')->soft();
+UiEngine::badge('Danger')->variant('danger')->soft();
+UiEngine::badge('Warning')->variant('warning')->soft();"
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "UiEngine.badge('Primary').variant('primary').soft().toHtml();
+UiEngine.badge('Success').variant('success').soft().toHtml();
+UiEngine.badge('Danger').variant('danger').soft().toHtml();
+UiEngine.badge('Warning').variant('warning').soft().toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<span class="so-badge so-badge-soft-primary">Primary</span>
+<span class="so-badge so-badge-soft-success">Success</span>
+<span class="so-badge so-badge-soft-danger">Danger</span>
+<span class="so-badge so-badge-soft-warning">Warning</span>'
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- Badge Sizes -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Badge Sizes</h3>
+            </div>
+            <div class="so-card-body">
+                <!-- Live Demo -->
+                <div class="so-flex so-gap-2 so-items-center so-flex-wrap so-mb-4">
+                    <span class="so-badge so-badge-primary so-badge-sm">Small</span>
+                    <span class="so-badge so-badge-primary">Default</span>
+                    <span class="so-badge so-badge-primary so-badge-lg">Large</span>
+                </div>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('badge-sizes', [
+                    [
+                        'label' => 'PHP',
+                        'language' => 'php',
+                        'icon' => 'data_object',
+                        'code' => "// Small badge
+UiEngine::badge('Small')->variant('primary')->small();
+
+// Default badge
+UiEngine::badge('Default')->variant('primary');
+
+// Large badge
+UiEngine::badge('Large')->variant('primary')->large();"
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "// Small badge
+UiEngine.badge('Small').variant('primary').small().toHtml();
+
+// Default badge
+UiEngine.badge('Default').variant('primary').toHtml();
+
+// Large badge
+UiEngine.badge('Large').variant('primary').large().toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<span class="so-badge so-badge-primary so-badge-sm">Small</span>
+<span class="so-badge so-badge-primary">Default</span>
+<span class="so-badge so-badge-primary so-badge-lg">Large</span>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -76,11 +198,11 @@ UiEngine.badge('Info').variant('info').toHtml();"
             </div>
             <div class="so-card-body">
                 <!-- Live Demo -->
-                <div class="so-mb-4">
-                    <span class="so-badge so-rounded-pill so-bg-primary">Primary</span>
-                    <span class="so-badge so-rounded-pill so-bg-secondary">Secondary</span>
-                    <span class="so-badge so-rounded-pill so-bg-success">Success</span>
-                    <span class="so-badge so-rounded-pill so-bg-danger">Danger</span>
+                <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                    <span class="so-badge so-badge-pill so-badge-primary">Primary</span>
+                    <span class="so-badge so-badge-pill so-badge-secondary">Secondary</span>
+                    <span class="so-badge so-badge-pill so-badge-success">Success</span>
+                    <span class="so-badge so-badge-pill so-badge-danger">Danger</span>
                 </div>
 
                 <!-- Code Tabs -->
@@ -103,6 +225,15 @@ UiEngine.badge('Secondary').variant('secondary').pill().toHtml();
 UiEngine.badge('Success').variant('success').pill().toHtml();
 UiEngine.badge('Danger').variant('danger').pill().toHtml();"
                     ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<span class="so-badge so-badge-pill so-badge-primary">Primary</span>
+<span class="so-badge so-badge-pill so-badge-secondary">Secondary</span>
+<span class="so-badge so-badge-pill so-badge-success">Success</span>
+<span class="so-badge so-badge-pill so-badge-danger">Danger</span>'
+                    ],
                 ]) ?>
             </div>
         </div>
@@ -114,14 +245,14 @@ UiEngine.badge('Danger').variant('danger').pill().toHtml();"
             </div>
             <div class="so-card-body">
                 <!-- Live Demo -->
-                <div class="so-mb-4">
-                    <span class="so-badge so-bg-success">
+                <div class="so-flex so-gap-2 so-flex-wrap so-mb-4">
+                    <span class="so-badge so-badge-success">
                         <span class="material-icons" style="font-size: 14px; vertical-align: middle;">check</span> Verified
                     </span>
-                    <span class="so-badge so-bg-danger">
+                    <span class="so-badge so-badge-danger">
                         <span class="material-icons" style="font-size: 14px; vertical-align: middle;">close</span> Rejected
                     </span>
-                    <span class="so-badge so-bg-warning so-text-dark">
+                    <span class="so-badge so-badge-warning">
                         <span class="material-icons" style="font-size: 14px; vertical-align: middle;">schedule</span> Pending
                     </span>
                 </div>
@@ -144,63 +275,25 @@ UiEngine::badge('Pending')->variant('warning')->icon('schedule');"
 UiEngine.badge('Rejected').variant('danger').icon('close').toHtml();
 UiEngine.badge('Pending').variant('warning').icon('schedule').toHtml();"
                     ],
-                ]) ?>
-            </div>
-        </div>
-
-        <!-- Badge as Counter -->
-        <div class="so-card so-mb-4">
-            <div class="so-card-header">
-                <h3 class="so-card-title">As Counter</h3>
-            </div>
-            <div class="so-card-body">
-                <!-- Live Demo -->
-                <div class="so-mb-4">
-                    <button type="button" class="so-btn so-btn-primary so-position-relative">
-                        Inbox
-                        <span class="so-position-absolute so-top-0 so-start-100 so-translate-middle so-badge so-rounded-pill so-bg-danger">
-                            99+
-                        </span>
-                    </button>
-                    <button type="button" class="so-btn so-btn-secondary so-position-relative so-ms-3">
-                        Notifications
-                        <span class="so-position-absolute so-top-0 so-start-100 so-translate-middle so-badge so-rounded-pill so-bg-primary">
-                            5
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Code Tabs -->
-                <?= so_code_tabs('badge-counter', [
                     [
-                        'label' => 'PHP',
-                        'language' => 'php',
-                        'icon' => 'data_object',
-                        'code' => "\$button = UiEngine::button('Inbox')
-    ->variant('primary')
-    ->badge(UiEngine::badge('99+')->variant('danger')->pill());
-
-\$button2 = UiEngine::button('Notifications')
-    ->variant('secondary')
-    ->badge(UiEngine::badge('5')->variant('primary')->pill());"
-                    ],
-                    [
-                        'label' => 'JavaScript',
-                        'language' => 'javascript',
-                        'icon' => 'javascript',
-                        'code' => "const button = UiEngine.button('Inbox')
-    .variant('primary')
-    .badge(UiEngine.badge('99+').variant('danger').pill());
-
-const button2 = UiEngine.button('Notifications')
-    .variant('secondary')
-    .badge(UiEngine.badge('5').variant('primary').pill());"
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<span class="so-badge so-badge-success">
+    <span class="material-icons" style="font-size: 14px; vertical-align: middle;">check</span> Verified
+</span>
+<span class="so-badge so-badge-danger">
+    <span class="material-icons" style="font-size: 14px; vertical-align: middle;">close</span> Rejected
+</span>
+<span class="so-badge so-badge-warning">
+    <span class="material-icons" style="font-size: 14px; vertical-align: middle;">schedule</span> Pending
+</span>'
                     ],
                 ]) ?>
             </div>
         </div>
 
-        <!-- Dot Badges -->
+        <!-- Dot Badges (Status Indicators) -->
         <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">Dot Badges (Status Indicators)</h3>
@@ -208,17 +301,17 @@ const button2 = UiEngine.button('Notifications')
             <div class="so-card-body">
                 <!-- Live Demo -->
                 <div class="so-mb-4">
-                    <div class="so-mb-2">
-                        <span class="so-badge so-bg-success" style="width:10px;height:10px;padding:0;border-radius:50%;"></span>
-                        <span class="so-ms-2">Online</span>
+                    <div class="so-d-inline-flex so-align-items-center so-gap-2 so-mb-2 so-me-4">
+                        <span class="so-badge so-badge-dot so-badge-success"></span>
+                        <span>Online</span>
                     </div>
-                    <div class="so-mb-2">
-                        <span class="so-badge so-bg-warning" style="width:10px;height:10px;padding:0;border-radius:50%;"></span>
-                        <span class="so-ms-2">Away</span>
+                    <div class="so-d-inline-flex so-align-items-center so-gap-2 so-mb-2 so-me-4">
+                        <span class="so-badge so-badge-dot so-badge-warning"></span>
+                        <span>Away</span>
                     </div>
-                    <div>
-                        <span class="so-badge so-bg-danger" style="width:10px;height:10px;padding:0;border-radius:50%;"></span>
-                        <span class="so-ms-2">Offline</span>
+                    <div class="so-d-inline-flex so-align-items-center so-gap-2 so-mb-2">
+                        <span class="so-badge so-badge-dot so-badge-danger"></span>
+                        <span>Offline</span>
                     </div>
                 </div>
 
@@ -241,6 +334,23 @@ UiEngine::badge()->variant('danger')->dot()->label('Offline');"
 UiEngine.badge().variant('success').dot().label('Online').toHtml();
 UiEngine.badge().variant('warning').dot().label('Away').toHtml();
 UiEngine.badge().variant('danger').dot().label('Offline').toHtml();"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<span class="so-d-inline-flex so-align-items-center so-gap-2">
+    <span class="so-badge so-badge-dot so-badge-success"></span>
+    <span>Online</span>
+</span>
+<span class="so-d-inline-flex so-align-items-center so-gap-2">
+    <span class="so-badge so-badge-dot so-badge-warning"></span>
+    <span>Away</span>
+</span>
+<span class="so-d-inline-flex so-align-items-center so-gap-2">
+    <span class="so-badge so-badge-dot so-badge-danger"></span>
+    <span>Offline</span>
+</span>'
                     ],
                 ]) ?>
             </div>
@@ -265,27 +375,84 @@ UiEngine.badge().variant('danger').dot().label('Offline').toHtml();"
                             <tr>
                                 <td><code>variant()</code></td>
                                 <td><code>string $variant</code></td>
-                                <td>Set variant: primary, secondary, success, danger, warning, info</td>
+                                <td>Set variant: primary, secondary, success, danger, warning, info, light, dark</td>
+                            </tr>
+                            <tr>
+                                <td><code>soft()</code></td>
+                                <td><code>bool $soft = true</code></td>
+                                <td>Use soft/light background style</td>
                             </tr>
                             <tr>
                                 <td><code>pill()</code></td>
+                                <td><code>bool $pill = true</code></td>
+                                <td>Use pill (fully rounded) style</td>
+                            </tr>
+                            <tr>
+                                <td><code>small()</code></td>
                                 <td>-</td>
-                                <td>Use pill (rounded) style</td>
+                                <td>Use small size</td>
+                            </tr>
+                            <tr>
+                                <td><code>large()</code></td>
+                                <td>-</td>
+                                <td>Use large size</td>
                             </tr>
                             <tr>
                                 <td><code>icon()</code></td>
                                 <td><code>string $icon</code></td>
-                                <td>Add icon to badge</td>
+                                <td>Add Material icon to badge</td>
                             </tr>
                             <tr>
                                 <td><code>dot()</code></td>
-                                <td>-</td>
-                                <td>Show as dot indicator</td>
+                                <td><code>bool $dot = true</code></td>
+                                <td>Show as dot indicator (no text)</td>
                             </tr>
                             <tr>
                                 <td><code>label()</code></td>
                                 <td><code>string $label</code></td>
                                 <td>Add text label after dot badge</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="so-mt-4 so-mb-3">CSS Classes Reference</h5>
+                <div class="so-table-responsive">
+                    <table class="so-table so-table-bordered">
+                        <thead class="so-table-light">
+                            <tr>
+                                <th>Class</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>.so-badge</code></td>
+                                <td>Base badge class</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-badge-{variant}</code></td>
+                                <td>Solid color variant (primary, success, danger, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-badge-soft-{variant}</code></td>
+                                <td>Soft/light background variant</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-badge-sm</code></td>
+                                <td>Small size</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-badge-lg</code></td>
+                                <td>Large size</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-badge-pill</code></td>
+                                <td>Fully rounded pill style</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-badge-dot</code></td>
+                                <td>Dot indicator style</td>
                             </tr>
                         </tbody>
                     </table>

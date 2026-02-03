@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SixOrbit UI Engine - Slider Element Demo
  */
@@ -51,8 +52,7 @@ use Core\UiEngine\UiEngine;
 
 \$slider = UiEngine::slider('volume')
     ->label('Volume')
-    ->min(0)
-    ->max(100)
+    ->range(0, 100)    // minValue, maxValue, step
     ->value(50);
 
 echo \$slider->renderGroup();"
@@ -63,8 +63,7 @@ echo \$slider->renderGroup();"
                         'icon' => 'javascript',
                         'code' => "const slider = UiEngine.slider('volume')
     .label('Volume')
-    .min(0)
-    .max(100)
+    .range(0, 100)    // minValue, maxValue, step
     .value(50);
 
 document.getElementById('container').innerHTML = slider.toHtml();"
@@ -238,11 +237,9 @@ UiEngine.slider('lg').size('lg').value(60);"
                         'code' => "// Discrete slider with tick marks
 \$slider = UiEngine::slider('volume')
     ->label('Volume')
-    ->min(0)->max(100)->step(10)
+    ->range(0, 100, 10)       // min, max, step
     ->value(50)
-    ->discrete()              // Show tick marks
-    ->ticks(11)               // 11 tick marks (0,10,20...100)
-    ->labels([0, 50, 100]);   // Labels below slider
+    ->ticks(11);              // 11 tick marks (0,10,20...100)
 
 echo \$slider->renderGroup();"
                     ],
@@ -253,11 +250,9 @@ echo \$slider->renderGroup();"
                         'code' => "// Discrete slider with tick marks
 const slider = UiEngine.slider('volume')
     .label('Volume')
-    .min(0).max(100).step(10)
+    .range(0, 100, 10)        // min, max, step
     .value(50)
-    .discrete()
-    .ticks(11)
-    .labels([0, 50, 100]);
+    .ticks(11);
 
 document.getElementById('container').innerHTML = slider.toHtml();"
                     ],
@@ -293,7 +288,7 @@ document.getElementById('container').innerHTML = slider.toHtml();"
             </div>
             <div class="so-card-body">
                 <!-- Live Demo -->
-                <div class="so-mb-4 so-pt-8">
+                <div class="so-mb-4">
                     <div class="so-slider so-slider-labeled so-slider-primary" data-so-slider>
                         <input type="range" class="so-slider-input" id="demo-brightness" min="0" max="100" value="65">
                         <div class="so-slider-track">
@@ -313,8 +308,9 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                         'icon' => 'data_object',
                         'code' => "\$slider = UiEngine::slider('brightness')
     ->label('Brightness')
-    ->min(0)->max(100)->value(65)
-    ->tooltip();           // Show tooltip on hover/drag
+    ->range(0, 100)
+    ->value(65)
+    ->showTooltip();          // Show tooltip on hover/drag
 
 echo \$slider->renderGroup();"
                     ],
@@ -324,8 +320,9 @@ echo \$slider->renderGroup();"
                         'icon' => 'javascript',
                         'code' => "const slider = UiEngine.slider('brightness')
     .label('Brightness')
-    .min(0).max(100).value(65)
-    .tooltip();
+    .range(0, 100)
+    .value(65)
+    .showTooltip();
 
 document.getElementById('container').innerHTML = slider.toHtml();"
                     ],
@@ -384,29 +381,33 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "\$slider = UiEngine::slider('value')
-    ->min(0)->max(100)->value(70)
+    ->range(0, 100)
+    ->value(70)
     ->output('#inline-value');    // External value display
 
 \$priceSlider = UiEngine::slider('price')
-    ->min(0)->max(1000)->value(250)
-    ->color('success')
+    ->range(0, 1000)
+    ->value(250)
+    ->variant('success')
     ->output('#price-value')
     ->prefix('\$');
 
-echo \$slider->renderInline();
-echo \$priceSlider->renderInline();"
+echo \$slider->render();
+echo \$priceSlider->render();"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "const slider = UiEngine.slider('value')
-    .min(0).max(100).value(70)
+    .range(0, 100)
+    .value(70)
     .output('#inline-value');
 
 const priceSlider = UiEngine.slider('price')
-    .min(0).max(1000).value(250)
-    .color('success')
+    .range(0, 1000)
+    .value(250)
+    .success()                 // or .variant('success')
     .output('#price-value')
     .prefix('\$');
 
@@ -463,34 +464,30 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "// Price range slider with dual thumbs
-\$priceRange = UiEngine::rangeSlider('price')
+\$priceRange = UiEngine::slider('price')
     ->label('Price Range')
-    ->min(0)
-    ->max(1000)
-    ->values([200, 800])    // [min value, max value]
+    ->range(0, 1000)
+    ->value(200)            // Start value
+    ->valueEnd(800)         // End value (enables dual range)
     ->prefix('\$')
     ->output('#range-display')
-    ->separator(' - ')
-    ->labels(['\$0', '\$500', '\$1000']);
+    ->separator(' - ');
 
-echo \$priceRange->renderGroup();"
+echo \$priceRange->render();"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "// Price range slider with dual thumbs
-const priceRange = UiEngine.rangeSlider('price')
+const priceRange = UiEngine.slider('price')
     .label('Price Range')
-    .min(0)
-    .max(1000)
-    .values([200, 800])
-    .prefix('$')
+    .range(0, 1000)
+    .value(200)             // Start value
+    .valueEnd(800)          // End value (enables dual range)
+    .prefix('\$')
     .output('#range-display')
-    .separator(' - ')
-    .onChange((min, max) => {
-        console.log('Price range:', min, 'to', max);
-    });
+    .separator(' - ');
 
 document.getElementById('container').innerHTML = priceRange.toHtml();"
                     ],
@@ -588,14 +585,14 @@ document.getElementById('container').innerHTML = priceRange.toHtml();"
                         'code' => "// Vertical slider
 \$slider = UiEngine::slider('volume')
     ->vertical()
-    ->color('primary')
+    ->primary()               // or ->variant('primary')
     ->value(60);
 
 // Vertical with tooltip
 \$tooltipSlider = UiEngine::slider('level')
     ->vertical()
-    ->tooltip()
-    ->color('warning')
+    ->showTooltip()
+    ->warning()               // or ->variant('warning')
     ->value(45);
 
 echo \$slider->render();
@@ -608,14 +605,14 @@ echo \$tooltipSlider->render();"
                         'code' => "// Vertical slider
 const slider = UiEngine.slider('volume')
     .vertical()
-    .color('primary')
+    .primary()                // or .variant('primary')
     .value(60);
 
 // Vertical with tooltip
 const tooltipSlider = UiEngine.slider('level')
     .vertical()
-    .tooltip()
-    .color('warning')
+    .showTooltip()
+    .warning()                // or .variant('warning')
     .value(45);
 
 document.getElementById('container').innerHTML = slider.toHtml();"
@@ -736,44 +733,44 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                         'language' => 'php',
                         'icon' => 'data_object',
                         'code' => "// Primary (default)
-UiEngine::slider('primary')->color('primary')->value(60);
+UiEngine::slider('primary')->primary()->value(60);
 
 // Secondary
-UiEngine::slider('secondary')->color('secondary')->value(60);
+UiEngine::slider('secondary')->secondary()->value(60);
 
 // Success
-UiEngine::slider('success')->color('success')->value(60);
+UiEngine::slider('success')->success()->value(60);
 
 // Warning
-UiEngine::slider('warning')->color('warning')->value(60);
+UiEngine::slider('warning')->warning()->value(60);
 
 // Danger
-UiEngine::slider('danger')->color('danger')->value(60);
+UiEngine::slider('danger')->danger()->value(60);
 
 // Info
-UiEngine::slider('info')->color('info')->value(60);"
+UiEngine::slider('info')->info()->value(60);"
                     ],
                     [
                         'label' => 'JavaScript',
                         'language' => 'javascript',
                         'icon' => 'javascript',
                         'code' => "// Primary (default)
-UiEngine.slider('primary').color('primary').value(60);
+UiEngine.slider('primary').primary().value(60);
 
 // Secondary
-UiEngine.slider('secondary').color('secondary').value(60);
+UiEngine.slider('secondary').secondary().value(60);
 
 // Success
-UiEngine.slider('success').color('success').value(60);
+UiEngine.slider('success').success().value(60);
 
 // Warning
-UiEngine.slider('warning').color('warning').value(60);
+UiEngine.slider('warning').warning().value(60);
 
 // Danger
-UiEngine.slider('danger').color('danger').value(60);
+UiEngine.slider('danger').danger().value(60);
 
 // Info
-UiEngine.slider('info').color('info').value(60);"
+UiEngine.slider('info').info().value(60);"
                     ],
                     [
                         'label' => 'HTML Output',
@@ -846,7 +843,7 @@ UiEngine.slider('info').color('info').value(60);"
                         'icon' => 'data_object',
                         'code' => "// Disabled slider
 \$slider = UiEngine::slider('disabled')
-    ->color('primary')
+    ->primary()
     ->value(40)
     ->disabled();
 
@@ -858,7 +855,7 @@ echo \$slider->render();"
                         'icon' => 'javascript',
                         'code' => "// Disabled slider
 const slider = UiEngine.slider('disabled')
-    .color('primary')
+    .primary()
     .value(40)
     .disabled();
 
@@ -925,12 +922,16 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>min(int|float $min)</code></td>
-                                        <td>Set minimum value</td>
+                                        <td><code>minValue(int|float $value)</code></td>
+                                        <td>Set minimum slider value</td>
                                     </tr>
                                     <tr>
-                                        <td><code>max(int|float $max)</code></td>
-                                        <td>Set maximum value</td>
+                                        <td><code>maxValue(int|float $value)</code></td>
+                                        <td>Set maximum slider value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>range($min, $max, $step = 1)</code></td>
+                                        <td>Set min, max, and step in one call</td>
                                     </tr>
                                     <tr>
                                         <td><code>step(int|float $step)</code></td>
@@ -941,8 +942,12 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                         <td>Set current value</td>
                                     </tr>
                                     <tr>
-                                        <td><code>values(array $values)</code></td>
-                                        <td>Set [min, max] values for range slider</td>
+                                        <td><code>valueEnd(int|float $value)</code></td>
+                                        <td>Set end value for range slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>dualRange(bool $enabled = true)</code></td>
+                                        <td>Enable dual-thumb range slider</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -959,20 +964,16 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>tooltip()</code></td>
+                                        <td><code>showTooltip(bool $show = true)</code></td>
                                         <td>Show tooltip on hover/drag</td>
                                     </tr>
                                     <tr>
-                                        <td><code>discrete()</code></td>
-                                        <td>Enable discrete mode with tick marks</td>
+                                        <td><code>labeled()</code></td>
+                                        <td>Alias for showTooltip(true)</td>
                                     </tr>
                                     <tr>
                                         <td><code>ticks(int $count)</code></td>
                                         <td>Number of tick marks to display</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>labels(array $labels)</code></td>
-                                        <td>Labels displayed below the slider</td>
                                     </tr>
                                     <tr>
                                         <td><code>output(string $selector)</code></td>
@@ -991,7 +992,7 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                         <td>Separator for range display (default: ' - ')</td>
                                     </tr>
                                     <tr>
-                                        <td><code>vertical()</code></td>
+                                        <td><code>vertical(bool $vertical = true)</code></td>
                                         <td>Vertical orientation</td>
                                     </tr>
                                 </tbody>
@@ -1009,12 +1010,20 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>color(string $color)</code></td>
-                                        <td>Set color (primary, secondary, success, danger, warning, info)</td>
+                                        <td><code>variant(string $variant)</code></td>
+                                        <td>Set color variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>primary() / secondary() / success() / danger() / warning() / info()</code></td>
+                                        <td>Shortcut color methods</td>
                                     </tr>
                                     <tr>
                                         <td><code>size(string $size)</code></td>
                                         <td>Set size (xs, sm, lg)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>xs() / sm() / lg()</code></td>
+                                        <td>Shortcut size methods</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1099,12 +1108,16 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>min(min)</code></td>
-                                        <td>Set minimum value</td>
+                                        <td><code>minValue(value)</code></td>
+                                        <td>Set minimum slider value</td>
                                     </tr>
                                     <tr>
-                                        <td><code>max(max)</code></td>
-                                        <td>Set maximum value</td>
+                                        <td><code>maxValue(value)</code></td>
+                                        <td>Set maximum slider value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>range(min, max, step = 1)</code></td>
+                                        <td>Set min, max, and step in one call</td>
                                     </tr>
                                     <tr>
                                         <td><code>step(step)</code></td>
@@ -1115,8 +1128,12 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                         <td>Set current value</td>
                                     </tr>
                                     <tr>
-                                        <td><code>values([min, max])</code></td>
-                                        <td>Set values for range slider</td>
+                                        <td><code>valueEnd(value)</code></td>
+                                        <td>Set end value for range slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>dualRange(enabled = true)</code></td>
+                                        <td>Enable dual-thumb range slider</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1133,20 +1150,16 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>tooltip()</code></td>
+                                        <td><code>showTooltip(show = true)</code></td>
                                         <td>Show tooltip on hover/drag</td>
                                     </tr>
                                     <tr>
-                                        <td><code>discrete()</code></td>
-                                        <td>Enable discrete mode with tick marks</td>
+                                        <td><code>labeled()</code></td>
+                                        <td>Alias for showTooltip(true)</td>
                                     </tr>
                                     <tr>
                                         <td><code>ticks(count)</code></td>
                                         <td>Number of tick marks to display</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>labels(labelsArray)</code></td>
-                                        <td>Labels displayed below the slider</td>
                                     </tr>
                                     <tr>
                                         <td><code>output(selector)</code></td>
@@ -1165,7 +1178,7 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                         <td>Separator for range display</td>
                                     </tr>
                                     <tr>
-                                        <td><code>vertical()</code></td>
+                                        <td><code>vertical(val = true)</code></td>
                                         <td>Vertical orientation</td>
                                     </tr>
                                 </tbody>
@@ -1183,12 +1196,20 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>color(color)</code></td>
+                                        <td><code>variant(variant)</code></td>
                                         <td>Set color variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>primary() / secondary() / success() / danger() / warning() / info()</code></td>
+                                        <td>Shortcut color methods</td>
                                     </tr>
                                     <tr>
                                         <td><code>size(size)</code></td>
                                         <td>Set size variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>xs() / sm() / lg()</code></td>
+                                        <td>Shortcut size methods</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1419,426 +1440,440 @@ document.getElementById('container').innerHTML = slider.toHtml();"
 </main>
 
 <script>
-// SOSlider Class
-class SOSlider {
-    static instances = new Map();
+    // SOSlider Class
+    class SOSlider {
+        static instances = new Map();
 
-    constructor(element, options = {}) {
-        if (!(element instanceof HTMLElement)) return;
+        constructor(element, options = {}) {
+            if (!(element instanceof HTMLElement)) return;
 
-        this.element = element;
-        this.input = element.querySelector('.so-slider-input');
-        this.fill = element.querySelector('.so-slider-fill');
-        this.thumb = element.querySelector('.so-slider-thumb');
-        this.tooltip = element.querySelector('.so-slider-tooltip');
-        this.ticks = element.querySelector('.so-slider-ticks');
+            this.element = element;
+            this.input = element.querySelector('.so-slider-input');
+            this.fill = element.querySelector('.so-slider-fill');
+            this.thumb = element.querySelector('.so-slider-thumb');
+            this.tooltip = element.querySelector('.so-slider-tooltip');
+            this.ticks = element.querySelector('.so-slider-ticks');
 
-        this.options = {
-            output: element.dataset.soOutput || options.output || null,
-            prefix: element.dataset.soPrefix || options.prefix || '',
-            suffix: element.dataset.soSuffix || options.suffix || '',
-            ticks: parseInt(element.dataset.soTicks) || options.ticks || 0,
-            separator: element.dataset.soSeparator || options.separator || ' - '
-        };
+            this.options = {
+                output: element.dataset.soOutput || options.output || null,
+                prefix: element.dataset.soPrefix || options.prefix || '',
+                suffix: element.dataset.soSuffix || options.suffix || '',
+                ticks: parseInt(element.dataset.soTicks) || options.ticks || 0,
+                separator: element.dataset.soSeparator || options.separator || ' - '
+            };
 
-        this.isVertical = element.classList.contains('so-slider-vertical');
-        this.isDragging = false;
-        this.oldValue = parseFloat(this.input.value);
+            this.isVertical = element.classList.contains('so-slider-vertical');
+            this.isDragging = false;
+            this.oldValue = parseFloat(this.input.value);
 
-        this._init();
-        SOSlider.instances.set(element, this);
-    }
-
-    static getInstance(element) {
-        return SOSlider.instances.get(element);
-    }
-
-    static initAll() {
-        document.querySelectorAll('[data-so-slider]').forEach(el => {
-            if (!SOSlider.instances.has(el)) {
-                new SOSlider(el);
-            }
-        });
-        // Initialize range sliders
-        document.querySelectorAll('[data-so-slider-range]').forEach(el => {
-            if (!SORangeSlider.instances.has(el)) {
-                new SORangeSlider(el);
-            }
-        });
-    }
-
-    _init() {
-        this._updateUI();
-        this._generateTicks();
-        this._bindEvents();
-    }
-
-    _bindEvents() {
-        this.input.addEventListener('input', (e) => this._onInput(e));
-        this.input.addEventListener('change', (e) => this._onChange(e));
-        this.input.addEventListener('mousedown', () => this._onStart());
-        this.input.addEventListener('touchstart', () => this._onStart());
-        this.input.addEventListener('mouseup', () => this._onEnd());
-        this.input.addEventListener('touchend', () => this._onEnd());
-    }
-
-    _onInput(e) {
-        this._updateUI();
-        this._emit('so:slider:input', {
-            value: this.getValue(),
-            percentage: this._getPercentage()
-        });
-    }
-
-    _onChange(e) {
-        const newValue = this.getValue();
-        this._emit('so:slider:change', {
-            value: newValue,
-            percentage: this._getPercentage(),
-            oldValue: this.oldValue
-        });
-        this.oldValue = newValue;
-    }
-
-    _onStart() {
-        this.isDragging = true;
-        this.element.classList.add('dragging');
-        this._emit('so:slider:start', { value: this.getValue() });
-    }
-
-    _onEnd() {
-        this.isDragging = false;
-        this.element.classList.remove('dragging');
-        this._emit('so:slider:end', { value: this.getValue() });
-    }
-
-    _updateUI() {
-        const percentage = this._getPercentage();
-
-        if (this.isVertical) {
-            this.fill.style.height = percentage + '%';
-            this.thumb.style.bottom = percentage + '%';
-        } else {
-            this.fill.style.width = percentage + '%';
-            this.thumb.style.left = percentage + '%';
+            this._init();
+            SOSlider.instances.set(element, this);
         }
 
-        // Update tooltip
-        if (this.tooltip) {
-            this.tooltip.textContent = this._formatValue(this.getValue());
+        static getInstance(element) {
+            return SOSlider.instances.get(element);
         }
 
-        // Update external output
-        if (this.options.output) {
-            const outputEl = document.querySelector(this.options.output);
-            if (outputEl) {
-                outputEl.textContent = this._formatValue(this.getValue());
-            }
+        static initAll() {
+            document.querySelectorAll('[data-so-slider]').forEach(el => {
+                if (!SOSlider.instances.has(el)) {
+                    new SOSlider(el);
+                }
+            });
+            // Initialize range sliders
+            document.querySelectorAll('[data-so-slider-range]').forEach(el => {
+                if (!SORangeSlider.instances.has(el)) {
+                    new SORangeSlider(el);
+                }
+            });
         }
 
-        // Update tick marks active state
-        this._updateTicks();
-    }
-
-    _getPercentage() {
-        const min = parseFloat(this.input.min) || 0;
-        const max = parseFloat(this.input.max) || 100;
-        const value = parseFloat(this.input.value);
-        return ((value - min) / (max - min)) * 100;
-    }
-
-    _formatValue(value) {
-        return this.options.prefix + value + this.options.suffix;
-    }
-
-    _generateTicks() {
-        if (!this.ticks || this.options.ticks <= 0) return;
-
-        this.ticks.innerHTML = '';
-        for (let i = 0; i < this.options.ticks; i++) {
-            const tick = document.createElement('span');
-            tick.className = 'so-slider-tick';
-            this.ticks.appendChild(tick);
+        _init() {
+            this._updateUI();
+            this._generateTicks();
+            this._bindEvents();
         }
-        this._updateTicks();
-    }
 
-    _updateTicks() {
-        if (!this.ticks) return;
+        _bindEvents() {
+            this.input.addEventListener('input', (e) => this._onInput(e));
+            this.input.addEventListener('change', (e) => this._onChange(e));
+            this.input.addEventListener('mousedown', () => this._onStart());
+            this.input.addEventListener('touchstart', () => this._onStart());
+            this.input.addEventListener('mouseup', () => this._onEnd());
+            this.input.addEventListener('touchend', () => this._onEnd());
+        }
 
-        const percentage = this._getPercentage();
-        const ticks = this.ticks.querySelectorAll('.so-slider-tick');
-        const tickCount = ticks.length;
+        _onInput(e) {
+            this._updateUI();
+            this._emit('so:slider:input', {
+                value: this.getValue(),
+                percentage: this._getPercentage()
+            });
+        }
 
-        ticks.forEach((tick, index) => {
-            const tickPercentage = (index / (tickCount - 1)) * 100;
-            if (tickPercentage <= percentage) {
-                tick.classList.add('active');
+        _onChange(e) {
+            const newValue = this.getValue();
+            this._emit('so:slider:change', {
+                value: newValue,
+                percentage: this._getPercentage(),
+                oldValue: this.oldValue
+            });
+            this.oldValue = newValue;
+        }
+
+        _onStart() {
+            this.isDragging = true;
+            this.element.classList.add('dragging');
+            this._emit('so:slider:start', {
+                value: this.getValue()
+            });
+        }
+
+        _onEnd() {
+            this.isDragging = false;
+            this.element.classList.remove('dragging');
+            this._emit('so:slider:end', {
+                value: this.getValue()
+            });
+        }
+
+        _updateUI() {
+            const percentage = this._getPercentage();
+
+            if (this.isVertical) {
+                this.fill.style.height = percentage + '%';
+                this.thumb.style.bottom = percentage + '%';
             } else {
-                tick.classList.remove('active');
+                this.fill.style.width = percentage + '%';
+                this.thumb.style.left = percentage + '%';
             }
-        });
-    }
 
-    _emit(eventName, detail) {
-        const event = new CustomEvent(eventName, { detail, bubbles: true });
-        this.element.dispatchEvent(event);
-    }
+            // Update tooltip
+            if (this.tooltip) {
+                this.tooltip.textContent = this._formatValue(this.getValue());
+            }
 
-    // Public API
-    getValue() {
-        return parseFloat(this.input.value);
-    }
+            // Update external output
+            if (this.options.output) {
+                const outputEl = document.querySelector(this.options.output);
+                if (outputEl) {
+                    outputEl.textContent = this._formatValue(this.getValue());
+                }
+            }
 
-    setValue(value) {
-        const min = parseFloat(this.input.min) || 0;
-        const max = parseFloat(this.input.max) || 100;
-        this.input.value = Math.min(max, Math.max(min, value));
-        this._updateUI();
-        this._emit('so:slider:change', {
-            value: this.getValue(),
-            percentage: this._getPercentage(),
-            oldValue: this.oldValue
-        });
-        this.oldValue = this.getValue();
-    }
+            // Update tick marks active state
+            this._updateTicks();
+        }
 
-    enable() {
-        this.input.disabled = false;
-        this.element.classList.remove('so-disabled');
-    }
+        _getPercentage() {
+            const min = parseFloat(this.input.min) || 0;
+            const max = parseFloat(this.input.max) || 100;
+            const value = parseFloat(this.input.value);
+            return ((value - min) / (max - min)) * 100;
+        }
 
-    disable() {
-        this.input.disabled = true;
-        this.element.classList.add('so-disabled');
-    }
+        _formatValue(value) {
+            return this.options.prefix + value + this.options.suffix;
+        }
 
-    on(eventName, callback) {
-        this.element.addEventListener('so:slider:' + eventName, (e) => callback(e.detail));
-    }
+        _generateTicks() {
+            if (!this.ticks || this.options.ticks <= 0) return;
 
-    destroy() {
-        SOSlider.instances.delete(this.element);
-    }
-}
+            this.ticks.innerHTML = '';
+            for (let i = 0; i < this.options.ticks; i++) {
+                const tick = document.createElement('span');
+                tick.className = 'so-slider-tick';
+                this.ticks.appendChild(tick);
+            }
+            this._updateTicks();
+        }
 
-// SORangeSlider Class for dual-thumb sliders
-class SORangeSlider {
-    static instances = new Map();
+        _updateTicks() {
+            if (!this.ticks) return;
 
-    constructor(element, options = {}) {
-        if (!(element instanceof HTMLElement)) return;
+            const percentage = this._getPercentage();
+            const ticks = this.ticks.querySelectorAll('.so-slider-tick');
+            const tickCount = ticks.length;
 
-        this.element = element;
-        this.inputMin = element.querySelector('.so-slider-input-min');
-        this.inputMax = element.querySelector('.so-slider-input-max');
-        this.track = element.querySelector('.so-slider-track');
-        this.fill = element.querySelector('.so-slider-fill');
-        this.thumbMin = element.querySelector('.so-slider-thumb-min');
-        this.thumbMax = element.querySelector('.so-slider-thumb-max');
+            ticks.forEach((tick, index) => {
+                const tickPercentage = (index / (tickCount - 1)) * 100;
+                if (tickPercentage <= percentage) {
+                    tick.classList.add('active');
+                } else {
+                    tick.classList.remove('active');
+                }
+            });
+        }
 
-        this.options = {
-            output: element.dataset.soOutput || options.output || null,
-            prefix: element.dataset.soPrefix || options.prefix || '',
-            suffix: element.dataset.soSuffix || options.suffix || '',
-            separator: element.dataset.soSeparator || options.separator || ' - '
-        };
+        _emit(eventName, detail) {
+            const event = new CustomEvent(eventName, {
+                detail,
+                bubbles: true
+            });
+            this.element.dispatchEvent(event);
+        }
 
-        this.activeThumb = null;
-        this.isDragging = false;
+        // Public API
+        getValue() {
+            return parseFloat(this.input.value);
+        }
 
-        this._init();
-        SORangeSlider.instances.set(element, this);
-    }
+        setValue(value) {
+            const min = parseFloat(this.input.min) || 0;
+            const max = parseFloat(this.input.max) || 100;
+            this.input.value = Math.min(max, Math.max(min, value));
+            this._updateUI();
+            this._emit('so:slider:change', {
+                value: this.getValue(),
+                percentage: this._getPercentage(),
+                oldValue: this.oldValue
+            });
+            this.oldValue = this.getValue();
+        }
 
-    static getInstance(element) {
-        return SORangeSlider.instances.get(element);
-    }
+        enable() {
+            this.input.disabled = false;
+            this.element.classList.remove('so-disabled');
+        }
 
-    _init() {
-        this._updateUI();
-        this._bindEvents();
-    }
+        disable() {
+            this.input.disabled = true;
+            this.element.classList.add('so-disabled');
+        }
 
-    _bindEvents() {
-        // Native input events for keyboard accessibility
-        this.inputMin.addEventListener('input', () => this._onInput('min'));
-        this.inputMax.addEventListener('input', () => this._onInput('max'));
+        on(eventName, callback) {
+            this.element.addEventListener('so:slider:' + eventName, (e) => callback(e.detail));
+        }
 
-        // Custom drag handling for mouse/touch
-        this.element.addEventListener('mousedown', (e) => this._onMouseDown(e));
-        this.element.addEventListener('touchstart', (e) => this._onTouchStart(e), { passive: false });
-
-        // Document-level handlers for drag
-        document.addEventListener('mousemove', (e) => this._onMouseMove(e));
-        document.addEventListener('mouseup', () => this._onMouseUp());
-        document.addEventListener('touchmove', (e) => this._onTouchMove(e), { passive: false });
-        document.addEventListener('touchend', () => this._onMouseUp());
-    }
-
-    _onMouseDown(e) {
-        if (e.target.closest('.so-slider-track') || e.target.closest('.so-slider-input')) {
-            e.preventDefault();
-            this._startDrag(e.clientX);
+        destroy() {
+            SOSlider.instances.delete(this.element);
         }
     }
 
-    _onTouchStart(e) {
-        if (e.target.closest('.so-slider-track') || e.target.closest('.so-slider-input')) {
-            e.preventDefault();
-            this._startDrag(e.touches[0].clientX);
-        }
-    }
+    // SORangeSlider Class for dual-thumb sliders
+    class SORangeSlider {
+        static instances = new Map();
 
-    _startDrag(clientX) {
-        const rect = this.track.getBoundingClientRect();
-        const clickPercent = ((clientX - rect.left) / rect.width) * 100;
+        constructor(element, options = {}) {
+            if (!(element instanceof HTMLElement)) return;
 
-        const min = parseFloat(this.inputMin.min) || 0;
-        const max = parseFloat(this.inputMin.max) || 100;
-        const minVal = parseFloat(this.inputMin.value);
-        const maxVal = parseFloat(this.inputMax.value);
+            this.element = element;
+            this.inputMin = element.querySelector('.so-slider-input-min');
+            this.inputMax = element.querySelector('.so-slider-input-max');
+            this.track = element.querySelector('.so-slider-track');
+            this.fill = element.querySelector('.so-slider-fill');
+            this.thumbMin = element.querySelector('.so-slider-thumb-min');
+            this.thumbMax = element.querySelector('.so-slider-thumb-max');
 
-        const minPercent = ((minVal - min) / (max - min)) * 100;
-        const maxPercent = ((maxVal - min) / (max - min)) * 100;
+            this.options = {
+                output: element.dataset.soOutput || options.output || null,
+                prefix: element.dataset.soPrefix || options.prefix || '',
+                suffix: element.dataset.soSuffix || options.suffix || '',
+                separator: element.dataset.soSeparator || options.separator || ' - '
+            };
 
-        // Determine which thumb is closer
-        const distToMin = Math.abs(clickPercent - minPercent);
-        const distToMax = Math.abs(clickPercent - maxPercent);
+            this.activeThumb = null;
+            this.isDragging = false;
 
-        if (distToMin < distToMax) {
-            this.activeThumb = 'min';
-            this.inputMin.focus();
-        } else {
-            this.activeThumb = 'max';
-            this.inputMax.focus();
+            this._init();
+            SORangeSlider.instances.set(element, this);
         }
 
-        this.isDragging = true;
-        this.element.classList.add('dragging');
-        this._updateFromPosition(clientX);
-    }
+        static getInstance(element) {
+            return SORangeSlider.instances.get(element);
+        }
 
-    _onMouseMove(e) {
-        if (!this.isDragging) return;
-        e.preventDefault();
-        this._updateFromPosition(e.clientX);
-    }
+        _init() {
+            this._updateUI();
+            this._bindEvents();
+        }
 
-    _onTouchMove(e) {
-        if (!this.isDragging) return;
-        e.preventDefault();
-        this._updateFromPosition(e.touches[0].clientX);
-    }
+        _bindEvents() {
+            // Native input events for keyboard accessibility
+            this.inputMin.addEventListener('input', () => this._onInput('min'));
+            this.inputMax.addEventListener('input', () => this._onInput('max'));
 
-    _onMouseUp() {
-        if (!this.isDragging) return;
-        this.isDragging = false;
-        this.activeThumb = null;
-        this.element.classList.remove('dragging');
-        this._emit('so:slider:change', this.getValues());
-    }
+            // Custom drag handling for mouse/touch
+            this.element.addEventListener('mousedown', (e) => this._onMouseDown(e));
+            this.element.addEventListener('touchstart', (e) => this._onTouchStart(e), {
+                passive: false
+            });
 
-    _updateFromPosition(clientX) {
-        const rect = this.track.getBoundingClientRect();
-        let percent = ((clientX - rect.left) / rect.width) * 100;
-        percent = Math.max(0, Math.min(100, percent));
+            // Document-level handlers for drag
+            document.addEventListener('mousemove', (e) => this._onMouseMove(e));
+            document.addEventListener('mouseup', () => this._onMouseUp());
+            document.addEventListener('touchmove', (e) => this._onTouchMove(e), {
+                passive: false
+            });
+            document.addEventListener('touchend', () => this._onMouseUp());
+        }
 
-        const min = parseFloat(this.inputMin.min) || 0;
-        const max = parseFloat(this.inputMin.max) || 100;
-        const step = parseFloat(this.inputMin.step) || 1;
+        _onMouseDown(e) {
+            if (e.target.closest('.so-slider-track') || e.target.closest('.so-slider-input')) {
+                e.preventDefault();
+                this._startDrag(e.clientX);
+            }
+        }
 
-        let value = min + (percent / 100) * (max - min);
-        value = Math.round(value / step) * step;
-        value = Math.max(min, Math.min(max, value));
+        _onTouchStart(e) {
+            if (e.target.closest('.so-slider-track') || e.target.closest('.so-slider-input')) {
+                e.preventDefault();
+                this._startDrag(e.touches[0].clientX);
+            }
+        }
 
-        const minVal = parseFloat(this.inputMin.value);
-        const maxVal = parseFloat(this.inputMax.value);
+        _startDrag(clientX) {
+            const rect = this.track.getBoundingClientRect();
+            const clickPercent = ((clientX - rect.left) / rect.width) * 100;
 
-        if (this.activeThumb === 'min') {
-            if (value <= maxVal) {
-                this.inputMin.value = value;
+            const min = parseFloat(this.inputMin.min) || 0;
+            const max = parseFloat(this.inputMin.max) || 100;
+            const minVal = parseFloat(this.inputMin.value);
+            const maxVal = parseFloat(this.inputMax.value);
+
+            const minPercent = ((minVal - min) / (max - min)) * 100;
+            const maxPercent = ((maxVal - min) / (max - min)) * 100;
+
+            // Determine which thumb is closer
+            const distToMin = Math.abs(clickPercent - minPercent);
+            const distToMax = Math.abs(clickPercent - maxPercent);
+
+            if (distToMin < distToMax) {
+                this.activeThumb = 'min';
+                this.inputMin.focus();
             } else {
+                this.activeThumb = 'max';
+                this.inputMax.focus();
+            }
+
+            this.isDragging = true;
+            this.element.classList.add('dragging');
+            this._updateFromPosition(clientX);
+        }
+
+        _onMouseMove(e) {
+            if (!this.isDragging) return;
+            e.preventDefault();
+            this._updateFromPosition(e.clientX);
+        }
+
+        _onTouchMove(e) {
+            if (!this.isDragging) return;
+            e.preventDefault();
+            this._updateFromPosition(e.touches[0].clientX);
+        }
+
+        _onMouseUp() {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            this.activeThumb = null;
+            this.element.classList.remove('dragging');
+            this._emit('so:slider:change', this.getValues());
+        }
+
+        _updateFromPosition(clientX) {
+            const rect = this.track.getBoundingClientRect();
+            let percent = ((clientX - rect.left) / rect.width) * 100;
+            percent = Math.max(0, Math.min(100, percent));
+
+            const min = parseFloat(this.inputMin.min) || 0;
+            const max = parseFloat(this.inputMin.max) || 100;
+            const step = parseFloat(this.inputMin.step) || 1;
+
+            let value = min + (percent / 100) * (max - min);
+            value = Math.round(value / step) * step;
+            value = Math.max(min, Math.min(max, value));
+
+            const minVal = parseFloat(this.inputMin.value);
+            const maxVal = parseFloat(this.inputMax.value);
+
+            if (this.activeThumb === 'min') {
+                if (value <= maxVal) {
+                    this.inputMin.value = value;
+                } else {
+                    this.inputMin.value = maxVal;
+                }
+            } else if (this.activeThumb === 'max') {
+                if (value >= minVal) {
+                    this.inputMax.value = value;
+                } else {
+                    this.inputMax.value = minVal;
+                }
+            }
+
+            this._updateUI();
+            this._emit('so:slider:input', this.getValues());
+        }
+
+        _onInput(which) {
+            let minVal = parseFloat(this.inputMin.value);
+            let maxVal = parseFloat(this.inputMax.value);
+
+            // Prevent crossing
+            if (which === 'min' && minVal > maxVal) {
                 this.inputMin.value = maxVal;
-            }
-        } else if (this.activeThumb === 'max') {
-            if (value >= minVal) {
-                this.inputMax.value = value;
-            } else {
+            } else if (which === 'max' && maxVal < minVal) {
                 this.inputMax.value = minVal;
             }
+
+            this._updateUI();
+            this._emit('so:slider:input', this.getValues());
         }
 
-        this._updateUI();
-        this._emit('so:slider:input', this.getValues());
-    }
+        _updateUI() {
+            const min = parseFloat(this.inputMin.min) || 0;
+            const max = parseFloat(this.inputMin.max) || 100;
+            const minVal = parseFloat(this.inputMin.value);
+            const maxVal = parseFloat(this.inputMax.value);
 
-    _onInput(which) {
-        let minVal = parseFloat(this.inputMin.value);
-        let maxVal = parseFloat(this.inputMax.value);
+            const minPercent = ((minVal - min) / (max - min)) * 100;
+            const maxPercent = ((maxVal - min) / (max - min)) * 100;
 
-        // Prevent crossing
-        if (which === 'min' && minVal > maxVal) {
-            this.inputMin.value = maxVal;
-        } else if (which === 'max' && maxVal < minVal) {
-            this.inputMax.value = minVal;
-        }
+            this.fill.style.left = minPercent + '%';
+            this.fill.style.width = (maxPercent - minPercent) + '%';
+            this.thumbMin.style.left = minPercent + '%';
+            this.thumbMax.style.left = maxPercent + '%';
 
-        this._updateUI();
-        this._emit('so:slider:input', this.getValues());
-    }
-
-    _updateUI() {
-        const min = parseFloat(this.inputMin.min) || 0;
-        const max = parseFloat(this.inputMin.max) || 100;
-        const minVal = parseFloat(this.inputMin.value);
-        const maxVal = parseFloat(this.inputMax.value);
-
-        const minPercent = ((minVal - min) / (max - min)) * 100;
-        const maxPercent = ((maxVal - min) / (max - min)) * 100;
-
-        this.fill.style.left = minPercent + '%';
-        this.fill.style.width = (maxPercent - minPercent) + '%';
-        this.thumbMin.style.left = minPercent + '%';
-        this.thumbMax.style.left = maxPercent + '%';
-
-        // Update external output
-        if (this.options.output) {
-            const outputEl = document.querySelector(this.options.output);
-            if (outputEl) {
-                outputEl.textContent = this._formatValue(minVal) + this.options.separator + this._formatValue(maxVal);
+            // Update external output
+            if (this.options.output) {
+                const outputEl = document.querySelector(this.options.output);
+                if (outputEl) {
+                    outputEl.textContent = this._formatValue(minVal) + this.options.separator + this._formatValue(maxVal);
+                }
             }
         }
+
+        _formatValue(value) {
+            return this.options.prefix + value + this.options.suffix;
+        }
+
+        _emit(eventName, detail) {
+            const event = new CustomEvent(eventName, {
+                detail,
+                bubbles: true
+            });
+            this.element.dispatchEvent(event);
+        }
+
+        // Public API
+        getValues() {
+            return {
+                min: parseFloat(this.inputMin.value),
+                max: parseFloat(this.inputMax.value)
+            };
+        }
+
+        setValues(minVal, maxVal) {
+            this.inputMin.value = minVal;
+            this.inputMax.value = maxVal;
+            this._updateUI();
+        }
     }
 
-    _formatValue(value) {
-        return this.options.prefix + value + this.options.suffix;
-    }
-
-    _emit(eventName, detail) {
-        const event = new CustomEvent(eventName, { detail, bubbles: true });
-        this.element.dispatchEvent(event);
-    }
-
-    // Public API
-    getValues() {
-        return {
-            min: parseFloat(this.inputMin.value),
-            max: parseFloat(this.inputMax.value)
-        };
-    }
-
-    setValues(minVal, maxVal) {
-        this.inputMin.value = minVal;
-        this.inputMax.value = maxVal;
-        this._updateUI();
-    }
-}
-
-// Initialize all sliders when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    SOSlider.initAll();
-});
+    // Initialize all sliders when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        SOSlider.initAll();
+    });
 </script>
 
 <?php require_once '../../includes/footer.php'; ?>

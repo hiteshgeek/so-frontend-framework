@@ -138,11 +138,16 @@ class Textarea extends FormElement {
 
     /**
      * Enable auto-resize based on content
-     * @param {boolean} enable
+     * @param {boolean|string} enable - true/false or size variant ('sm', 'lg')
      * @returns {this}
      */
     autoResize(enable = true) {
-        this._autoResize = enable;
+        if (typeof enable === 'string') {
+            this._autoResizeSize = enable;
+            this._autoResize = true;
+        } else {
+            this._autoResize = enable;
+        }
         return this;
     }
 
@@ -154,6 +159,259 @@ class Textarea extends FormElement {
     showCounter(show = true) {
         this._showCounter = show;
         return this;
+    }
+
+    // ==================
+    // Interactivity Methods
+    // ==================
+
+    /**
+     * Get current value
+     * @returns {string}
+     */
+    getValue() {
+        if (this.element) {
+            return this.element.value;
+        }
+        return this._value || '';
+    }
+
+    /**
+     * Set value programmatically
+     * @param {string} value
+     * @returns {this}
+     */
+    setValue(value) {
+        this._value = value;
+        if (this.element) {
+            this.element.value = value;
+            this.element.dispatchEvent(new Event('input', { bubbles: true }));
+            this._triggerAutoResize();
+        }
+        return this;
+    }
+
+    /**
+     * Clear the textarea
+     * @returns {this}
+     */
+    clear() {
+        return this.setValue('');
+    }
+
+    /**
+     * Get character count
+     * @returns {number}
+     */
+    getCharCount() {
+        return this.getValue().length;
+    }
+
+    /**
+     * Check if at max length
+     * @returns {boolean}
+     */
+    isAtMaxLength() {
+        if (!this._maxlength) return false;
+        return this.getCharCount() >= this._maxlength;
+    }
+
+    /**
+     * Get remaining characters (if maxlength set)
+     * @returns {number|null}
+     */
+    getRemainingChars() {
+        if (!this._maxlength) return null;
+        return this._maxlength - this.getCharCount();
+    }
+
+    /**
+     * Check if empty
+     * @returns {boolean}
+     */
+    isEmpty() {
+        return this.getValue().trim() === '';
+    }
+
+    /**
+     * Focus the textarea
+     * @returns {this}
+     */
+    focus() {
+        if (this.element) {
+            this.element.focus();
+        }
+        return this;
+    }
+
+    /**
+     * Blur the textarea
+     * @returns {this}
+     */
+    blur() {
+        if (this.element) {
+            this.element.blur();
+        }
+        return this;
+    }
+
+    /**
+     * Select all text
+     * @returns {this}
+     */
+    selectAll() {
+        if (this.element) {
+            this.element.select();
+        }
+        return this;
+    }
+
+    /**
+     * Set selection range
+     * @param {number} start
+     * @param {number} end
+     * @returns {this}
+     */
+    setSelectionRange(start, end) {
+        if (this.element) {
+            this.element.setSelectionRange(start, end);
+        }
+        return this;
+    }
+
+    /**
+     * Insert text at cursor position
+     * @param {string} text
+     * @returns {this}
+     */
+    insertAtCursor(text) {
+        if (this.element) {
+            const start = this.element.selectionStart;
+            const end = this.element.selectionEnd;
+            const value = this.element.value;
+            this.element.value = value.substring(0, start) + text + value.substring(end);
+            this.element.selectionStart = this.element.selectionEnd = start + text.length;
+            this.element.dispatchEvent(new Event('input', { bubbles: true }));
+            this._triggerAutoResize();
+        }
+        return this;
+    }
+
+    /**
+     * Append text to end
+     * @param {string} text
+     * @returns {this}
+     */
+    append(text) {
+        return this.setValue(this.getValue() + text);
+    }
+
+    /**
+     * Prepend text to start
+     * @param {string} text
+     * @returns {this}
+     */
+    prepend(text) {
+        return this.setValue(text + this.getValue());
+    }
+
+    /**
+     * Enable the textarea
+     * @returns {this}
+     */
+    enable() {
+        this._disabled = false;
+        if (this.element) {
+            this.element.disabled = false;
+            this.element.classList.remove(SixOrbit.cls('disabled'));
+        }
+        return this;
+    }
+
+    /**
+     * Disable the textarea
+     * @param {boolean} disable
+     * @returns {this}
+     */
+    disable(disable = true) {
+        this._disabled = disable;
+        if (this.element) {
+            this.element.disabled = disable;
+            if (disable) {
+                this.element.classList.add(SixOrbit.cls('disabled'));
+            } else {
+                this.element.classList.remove(SixOrbit.cls('disabled'));
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Set rows dynamically
+     * @param {number} count
+     * @returns {this}
+     */
+    setRows(count) {
+        this._rows = count;
+        if (this.element) {
+            this.element.rows = count;
+        }
+        return this;
+    }
+
+    /**
+     * Trigger auto-resize (if enabled)
+     * @private
+     */
+    _triggerAutoResize() {
+        if (this.element && this._autoResize) {
+            // Reset height to recalculate
+            this.element.style.height = 'auto';
+            this.element.style.height = this.element.scrollHeight + 'px';
+
+            // Dispatch custom event
+            const event = new CustomEvent(SixOrbit.evt('autosize'), {
+                detail: { height: this.element.scrollHeight },
+                bubbles: true
+            });
+            this.element.dispatchEvent(event);
+        }
+    }
+
+    /**
+     * Listen to input events
+     * @param {Function} callback
+     * @returns {this}
+     */
+    onInput(callback) {
+        return this.on('input', callback);
+    }
+
+    /**
+     * Listen to change events
+     * @param {Function} callback
+     * @returns {this}
+     */
+    onChange(callback) {
+        return this.on('change', callback);
+    }
+
+    /**
+     * Listen to focus events
+     * @param {Function} callback
+     * @returns {this}
+     */
+    onFocus(callback) {
+        return this.on('focus', callback);
+    }
+
+    /**
+     * Listen to blur events
+     * @param {Function} callback
+     * @returns {this}
+     */
+    onBlur(callback) {
+        return this.on('blur', callback);
     }
 
     // ==================

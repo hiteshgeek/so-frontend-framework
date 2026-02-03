@@ -458,6 +458,247 @@ UiEngine.textarea('readonly')
             </div>
         </div>
 
+        <!-- Validation -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Validation</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-secondary so-mb-3">Textareas support HTML5 validation and can integrate with SixOrbit's validation system.</p>
+
+                <!-- Live Demo -->
+                <form id="validation-demo-form" novalidate>
+                    <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
+                        <div class="so-form-group">
+                            <label class="so-form-label">Required Textarea</label>
+                            <textarea class="so-form-control" name="required_text" rows="3" required placeholder="This field is required"></textarea>
+                            <div class="so-invalid-feedback">Please enter some text</div>
+                        </div>
+                        <div class="so-form-group">
+                            <label class="so-form-label">Min/Max Length</label>
+                            <textarea class="so-form-control" name="length_text" rows="3" minlength="10" maxlength="100" placeholder="10-100 characters"></textarea>
+                            <div class="so-invalid-feedback">Must be 10-100 characters</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="so-btn so-btn-primary">Validate</button>
+                </form>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('textarea-validation', [
+                    [
+                        'label' => 'PHP',
+                        'language' => 'php',
+                        'icon' => 'data_object',
+                        'code' => "// Required textarea
+\$textarea = UiEngine::textarea('comments')
+    ->label('Comments')
+    ->required()
+    ->error('Please enter your comments');
+
+// Length validation
+\$textarea = UiEngine::textarea('bio')
+    ->label('Bio')
+    ->minlength(10)
+    ->maxlength(500)
+    ->error('Bio must be 10-500 characters');
+
+// Multiple validation rules (via HasValidation trait)
+\$textarea = UiEngine::textarea('description')
+    ->label('Description')
+    ->required('Description is required')
+    ->minLength(20, 'At least 20 characters required')
+    ->maxLength(1000, 'Maximum 1000 characters');
+
+// Export validation rules for JS
+echo \$textarea->renderGroup();
+echo '<script>UiEngine.loadValidation(' . \$textarea->toValidationJson() . ');</script>';"
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "// Required textarea
+const textarea = UiEngine.textarea('comments')
+    .label('Comments')
+    .required()
+    .error('Please enter your comments');
+
+// Length validation
+const bioTextarea = UiEngine.textarea('bio')
+    .label('Bio')
+    .minlength(10)
+    .maxlength(500)
+    .error('Bio must be 10-500 characters');
+
+// Manual validation
+const form = document.getElementById('my-form');
+form.addEventListener('submit', (e) => {
+    const results = UiEngine.validateForm(form);
+    if (!results.valid) {
+        e.preventDefault();
+        UiEngine.showErrors(results.errors);
+    }
+});
+
+// Validate single field
+const field = document.querySelector('textarea[name=\"bio\"]');
+const result = UiEngine.validateField(field);
+if (!result.valid) {
+    console.log('Errors:', result.errors);
+}
+
+// Custom validation rule
+UiEngine.registerRule('noSpam', (value) => {
+    return !value.toLowerCase().includes('spam');
+}, 'Message cannot contain spam');
+
+// Apply custom rule
+textarea.addRule('noSpam');"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Required -->
+<div class="so-form-group">
+    <label class="so-form-label">Comments <span class="so-text-danger">*</span></label>
+    <textarea class="so-form-control" name="comments" rows="3" required></textarea>
+    <div class="so-invalid-feedback">Please enter your comments</div>
+</div>
+
+<!-- With length constraints -->
+<div class="so-form-group">
+    <label class="so-form-label">Bio</label>
+    <textarea class="so-form-control" name="bio" rows="3"
+        minlength="10" maxlength="500"></textarea>
+    <div class="so-invalid-feedback">Bio must be 10-500 characters</div>
+</div>
+
+<!-- Validation states -->
+<textarea class="so-form-control so-is-valid">Valid input</textarea>
+<textarea class="so-form-control so-is-invalid">Invalid input</textarea>'
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
+        <!-- Error Handling -->
+        <div class="so-card so-mb-4">
+            <div class="so-card-header">
+                <h3 class="so-card-title">Error Handling</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-secondary so-mb-3">Configure how validation errors are displayed and styled.</p>
+
+                <!-- Live Demo -->
+                <div class="so-grid so-grid-cols-2 so-grid-cols-sm-1">
+                    <div class="so-form-group">
+                        <label class="so-form-label">Invalid State</label>
+                        <textarea class="so-form-control so-is-invalid" rows="2">Invalid content</textarea>
+                        <div class="so-invalid-feedback">This field has an error</div>
+                    </div>
+                    <div class="so-form-group">
+                        <label class="so-form-label">Valid State</label>
+                        <textarea class="so-form-control so-is-valid" rows="2">Valid content</textarea>
+                        <div class="so-valid-feedback">Looks good!</div>
+                    </div>
+                </div>
+
+                <!-- Code Tabs -->
+                <?= so_code_tabs('textarea-errors', [
+                    [
+                        'label' => 'PHP',
+                        'language' => 'php',
+                        'icon' => 'data_object',
+                        'code' => "// Set error state
+\$textarea = UiEngine::textarea('message')
+    ->label('Message')
+    ->error('This field has an error')
+    ->invalid();
+
+// Set valid state
+\$textarea = UiEngine::textarea('message')
+    ->label('Message')
+    ->valid();
+
+// Configure error display globally
+UiEngine::configureErrors([
+    'showInline' => true,      // Show errors below fields
+    'showTooltip' => false,    // Show as tooltip instead
+    'scrollToFirst' => true,   // Scroll to first error
+    'focusFirst' => true,      // Focus first invalid field
+]);
+
+// Clear errors
+UiEngine::clearErrors();"
+                    ],
+                    [
+                        'label' => 'JavaScript',
+                        'language' => 'javascript',
+                        'icon' => 'javascript',
+                        'code' => "// Set error state programmatically
+const textarea = UiEngine.textarea('message');
+
+// Mark as invalid with error message
+textarea.setError('This field has an error');
+
+// Mark as valid
+textarea.setValid();
+
+// Clear validation state
+textarea.clearValidation();
+
+// Configure error display
+UiEngine.configureErrors({
+    showInline: true,
+    showTooltip: false,
+    scrollToFirst: true,
+    focusFirst: true
+});
+
+// Show multiple errors
+UiEngine.showErrors({
+    'message': ['Message is required', 'Message too short'],
+    'bio': ['Bio cannot be empty']
+});
+
+// Clear all errors
+UiEngine.clearErrors();
+
+// Listen to validation events
+textarea.on('so:validate', (e) => {
+    console.log('Valid:', e.detail.valid);
+    console.log('Errors:', e.detail.errors);
+});"
+                    ],
+                    [
+                        'label' => 'HTML Output',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<!-- Invalid state -->
+<div class="so-form-group">
+    <label class="so-form-label">Message</label>
+    <textarea class="so-form-control so-is-invalid" rows="2"></textarea>
+    <div class="so-invalid-feedback">This field has an error</div>
+</div>
+
+<!-- Valid state -->
+<div class="so-form-group">
+    <label class="so-form-label">Message</label>
+    <textarea class="so-form-control so-is-valid" rows="2"></textarea>
+    <div class="so-valid-feedback">Looks good!</div>
+</div>
+
+<!-- Error tooltip (alternative) -->
+<div class="so-form-group so-position-relative">
+    <textarea class="so-form-control so-is-invalid" rows="2"></textarea>
+    <div class="so-invalid-tooltip">Error as tooltip</div>
+</div>'
+                    ],
+                ]) ?>
+            </div>
+        </div>
+
         <!-- API Reference -->
         <div class="so-card">
             <div class="so-card-header">
@@ -826,7 +1067,136 @@ UiEngine.textarea('readonly')
                             </table>
                         </div>
 
+                        <h6 class="so-mt-4">Interactivity Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>getValue()</code></td>
+                                        <td>Get current textarea value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setValue(value)</code></td>
+                                        <td>Set value programmatically</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>clear()</code></td>
+                                        <td>Clear the textarea</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>getCharCount()</code></td>
+                                        <td>Get current character count</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>getRemainingChars()</code></td>
+                                        <td>Get remaining characters (if maxlength set)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>isAtMaxLength()</code></td>
+                                        <td>Check if at max length</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>isEmpty()</code></td>
+                                        <td>Check if textarea is empty</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>focus()</code></td>
+                                        <td>Focus the textarea</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>blur()</code></td>
+                                        <td>Remove focus from textarea</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>selectAll()</code></td>
+                                        <td>Select all text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setSelectionRange(start, end)</code></td>
+                                        <td>Set text selection range</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>insertAtCursor(text)</code></td>
+                                        <td>Insert text at cursor position</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>append(text)</code></td>
+                                        <td>Append text to end</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>prepend(text)</code></td>
+                                        <td>Prepend text to start</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>enable()</code></td>
+                                        <td>Enable the textarea</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disable()</code></td>
+                                        <td>Disable the textarea</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setRows(count)</code></td>
+                                        <td>Set rows dynamically</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(cls)</code></td>
+                                        <td>Add CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>removeClass(cls)</code></td>
+                                        <td>Remove CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setId(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Event Listener Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>onInput(callback)</code></td>
+                                        <td>Listen to input events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onChange(callback)</code></td>
+                                        <td>Listen to change events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onFocus(callback)</code></td>
+                                        <td>Listen to focus events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onBlur(callback)</code></td>
+                                        <td>Listen to blur events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>on(event, callback)</code></td>
+                                        <td>Attach any event listener</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <h6 class="so-mt-4">Events</h6>
+                        <p class="so-text-muted so-mb-2">Native events and custom SixOrbit events:</p>
                         <div class="so-table-responsive">
                             <table class="so-table so-table-bordered so-table-sm">
                                 <thead class="so-table-light">
@@ -838,11 +1208,19 @@ UiEngine.textarea('readonly')
                                 <tbody>
                                     <tr>
                                         <td><code>input</code></td>
-                                        <td>Fires on input</td>
+                                        <td>Fires on every keystroke/input</td>
                                     </tr>
                                     <tr>
                                         <td><code>change</code></td>
-                                        <td>Fires on value change</td>
+                                        <td>Fires on value change (after blur)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>focus</code></td>
+                                        <td>Fires when textarea gains focus</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>blur</code></td>
+                                        <td>Fires when textarea loses focus</td>
                                     </tr>
                                     <tr>
                                         <td><code>so:autosize</code></td>
@@ -941,6 +1319,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Initialize count
         bioCount.textContent = bioTextarea.value.length;
+    }
+
+    // Validation demo form
+    const validationForm = document.getElementById('validation-demo-form');
+    if (validationForm) {
+        validationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Reset validation states
+            this.querySelectorAll('.so-form-control').forEach(el => {
+                el.classList.remove('so-is-valid', 'so-is-invalid');
+            });
+
+            let isValid = true;
+
+            // Validate each field
+            this.querySelectorAll('textarea').forEach(textarea => {
+                const isFieldValid = textarea.checkValidity();
+
+                if (isFieldValid) {
+                    textarea.classList.add('so-is-valid');
+                } else {
+                    textarea.classList.add('so-is-invalid');
+                    isValid = false;
+                }
+            });
+
+            if (isValid) {
+                alert('Form is valid!');
+            }
+        });
     }
 });
 </script>

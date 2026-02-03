@@ -445,49 +445,324 @@ document.getElementById('container').innerHTML = accordion.toHtml();"
         </div>
 
         <!-- API Reference -->
-        <div class="so-card">
+        <div class="so-card so-mb-4">
             <div class="so-card-header">
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>item()</code></td>
-                                <td><code>string $title, string|Element $content, bool $open = false</code></td>
-                                <td>Add an accordion item (title is escaped)</td>
-                            </tr>
-                            <tr>
-                                <td><code>activeItem()</code></td>
-                                <td><code>int $index</code></td>
-                                <td>Set which item is expanded (0-based index)</td>
-                            </tr>
-                            <tr>
-                                <td><code>collapsed()</code></td>
-                                <td>-</td>
-                                <td>Start with all panels collapsed</td>
-                            </tr>
-                            <tr>
-                                <td><code>alwaysOpen()</code></td>
-                                <td><code>bool $alwaysOpen = true</code></td>
-                                <td>Allow multiple panels to stay open</td>
-                            </tr>
-                            <tr>
-                                <td><code>flush()</code></td>
-                                <td><code>bool $flush = true</code></td>
-                                <td>Remove borders and rounded corners</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Tabs for different API sections -->
+                <ul class="so-nav so-nav-tabs so-mb-3" role="tablist">
+                    <li class="so-nav-item" role="presentation">
+                        <button class="so-nav-link so-active" data-so-toggle="tab" data-so-target="#api-config" type="button" role="tab">Configuration Methods</button>
+                    </li>
+                    <li class="so-nav-item" role="presentation">
+                        <button class="so-nav-link" data-so-toggle="tab" data-so-target="#api-interactive" type="button" role="tab">Interactivity Methods</button>
+                    </li>
+                    <li class="so-nav-item" role="presentation">
+                        <button class="so-nav-link" data-so-toggle="tab" data-so-target="#api-events" type="button" role="tab">Events</button>
+                    </li>
+                </ul>
+
+                <div class="so-tab-content">
+                    <!-- Configuration Methods -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-config" role="tabpanel">
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>Parameters</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>item()</code></td>
+                                        <td><code>string $title, string|Element $content, bool $open = false</code></td>
+                                        <td>Add an accordion item (title is escaped)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>activeItem()</code></td>
+                                        <td><code>int $index</code></td>
+                                        <td>Set which item is expanded (0-based index)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>collapsed()</code></td>
+                                        <td>-</td>
+                                        <td>Start with all panels collapsed</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>alwaysOpen()</code></td>
+                                        <td><code>bool $alwaysOpen = true</code></td>
+                                        <td>Allow multiple panels to stay open</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>flush()</code></td>
+                                        <td><code>bool $flush = true</code></td>
+                                        <td>Remove borders and rounded corners</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Interactivity Methods (JS only) -->
+                    <div class="so-tab-pane so-fade" id="api-interactive" role="tabpanel">
+                        <p class="so-text-muted so-mb-3">These methods are available in JavaScript for runtime manipulation:</p>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>Parameters</th>
+                                        <th>Returns</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>expand()</code></td>
+                                        <td><code>index: number</code></td>
+                                        <td><code>this</code></td>
+                                        <td>Expand item by index</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>collapse()</code></td>
+                                        <td><code>index: number</code></td>
+                                        <td><code>this</code></td>
+                                        <td>Collapse item by index</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toggle()</code></td>
+                                        <td><code>index: number</code></td>
+                                        <td><code>this</code></td>
+                                        <td>Toggle item expand/collapse state</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>expandAll()</code></td>
+                                        <td>-</td>
+                                        <td><code>this</code></td>
+                                        <td>Expand all items</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>collapseAll()</code></td>
+                                        <td>-</td>
+                                        <td><code>this</code></td>
+                                        <td>Collapse all items</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>isExpanded()</code></td>
+                                        <td><code>index: number</code></td>
+                                        <td><code>boolean</code></td>
+                                        <td>Check if item is expanded</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>getItemCount()</code></td>
+                                        <td>-</td>
+                                        <td><code>number</code></td>
+                                        <td>Get total number of items</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Interactivity Example -->
+                        <?= so_code_tabs('accordion-interactivity', [
+                            [
+                                'label' => 'JavaScript',
+                                'language' => 'javascript',
+                                'icon' => 'javascript',
+                                'code' => "// Create accordion and render
+const accordion = UiEngine.accordion('faq')
+    .item('Question 1', 'Answer 1')
+    .item('Question 2', 'Answer 2')
+    .item('Question 3', 'Answer 3');
+
+document.getElementById('container').appendChild(accordion.render());
+
+// Runtime manipulation
+accordion.expand(1);           // Expand second item
+accordion.collapse(0);         // Collapse first item
+accordion.toggle(2);           // Toggle third item
+
+// Check state
+if (accordion.isExpanded(1)) {
+    console.log('Item 2 is expanded');
+}
+
+// Expand/collapse all
+accordion.expandAll();
+accordion.collapseAll();"
+                            ],
+                        ]) ?>
+                    </div>
+
+                    <!-- Events -->
+                    <div class="so-tab-pane so-fade" id="api-events" role="tabpanel">
+                        <p class="so-text-muted so-mb-3">Accordion dispatches custom events with the <code>so:</code> prefix:</p>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th>Event</th>
+                                        <th>Detail Properties</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>so:accordion:show</code></td>
+                                        <td><code>{ index, collapseEl }</code></td>
+                                        <td>Fired before an item starts expanding (cancelable)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:accordion:shown</code></td>
+                                        <td><code>{ index, collapseEl }</code></td>
+                                        <td>Fired after an item has expanded</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:accordion:hide</code></td>
+                                        <td><code>{ index, collapseEl }</code></td>
+                                        <td>Fired before an item starts collapsing (cancelable)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:accordion:hidden</code></td>
+                                        <td><code>{ index, collapseEl }</code></td>
+                                        <td>Fired after an item has collapsed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h5 class="so-mt-4 so-mb-3">Event Listener Methods (JS)</h5>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>Parameters</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>onShow()</code></td>
+                                        <td><code>callback: Function</code></td>
+                                        <td>Listen to show events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onShown()</code></td>
+                                        <td><code>callback: Function</code></td>
+                                        <td>Listen to shown events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onHide()</code></td>
+                                        <td><code>callback: Function</code></td>
+                                        <td>Listen to hide events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onHidden()</code></td>
+                                        <td><code>callback: Function</code></td>
+                                        <td>Listen to hidden events</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Events Example -->
+                        <?= so_code_tabs('accordion-events', [
+                            [
+                                'label' => 'JavaScript',
+                                'language' => 'javascript',
+                                'icon' => 'javascript',
+                                'code' => "const accordion = UiEngine.accordion('faq')
+    .item('Section 1', 'Content 1')
+    .item('Section 2', 'Content 2')
+    .onShow((e) => {
+        console.log('About to show item', e.detail.index);
+        // Return false or call e.preventDefault() to cancel
+    })
+    .onShown((e) => {
+        console.log('Item shown:', e.detail.index);
+    })
+    .onHide((e) => {
+        console.log('About to hide item', e.detail.index);
+    })
+    .onHidden((e) => {
+        console.log('Item hidden:', e.detail.index);
+    });
+
+// Or listen via standard addEventListener
+accordion.element.addEventListener('so:accordion:show', (e) => {
+    console.log('Show event:', e.detail);
+});"
+                            ],
+                        ]) ?>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- DOM Structure Reference -->
+        <div class="so-card">
+            <div class="so-card-header">
+                <h3 class="so-card-title">DOM Structure Reference</h3>
+            </div>
+            <div class="so-card-body">
+                <p class="so-text-muted so-mb-3">The accordion generates the following HTML structure:</p>
+                <?= so_code_tabs('accordion-dom', [
+                    [
+                        'label' => 'HTML Structure',
+                        'language' => 'html',
+                        'icon' => 'code',
+                        'code' => '<div class="so-accordion" id="myAccordion" data-so-accordion>
+    <div class="so-accordion-item">
+        <h2 class="so-accordion-header" id="myAccordion-header-0">
+            <button class="so-accordion-button" type="button"
+                data-so-toggle="collapse"
+                data-so-target="#myAccordion-collapse-0"
+                aria-expanded="true"
+                aria-controls="myAccordion-collapse-0">
+                Item Title
+            </button>
+        </h2>
+        <div id="myAccordion-collapse-0"
+            class="so-accordion-collapse so-collapse so-show"
+            aria-labelledby="myAccordion-header-0"
+            data-so-parent="#myAccordion">
+            <div class="so-accordion-body">
+                Item content...
+            </div>
+        </div>
+    </div>
+    <!-- More items... -->
+</div>'
+                    ],
+                    [
+                        'label' => 'CSS Classes',
+                        'language' => 'text',
+                        'icon' => 'style',
+                        'code' => 'so-accordion           - Main container
+so-accordion-flush     - Removes borders (optional)
+so-accordion-item      - Individual item wrapper
+so-accordion-header    - Header wrapper (h2)
+so-accordion-button    - Clickable toggle button
+so-accordion-collapse  - Collapsible content wrapper
+so-collapse            - Collapse state class
+so-show                - Visible/expanded state
+so-collapsed           - Button collapsed state
+so-accordion-body      - Content container'
+                    ],
+                    [
+                        'label' => 'Data Attributes',
+                        'language' => 'text',
+                        'icon' => 'data_object',
+                        'code' => 'data-so-accordion    - Root element marker for JS init
+data-so-toggle       - Toggle action ("collapse")
+data-so-target       - Target collapse element ID
+data-so-parent       - Parent accordion ID (for single-open mode)'
+                    ],
+                ]) ?>
             </div>
         </div>
     </div>

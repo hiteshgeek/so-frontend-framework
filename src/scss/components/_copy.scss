@@ -127,7 +127,6 @@
   .#{$so-prefix}btn[data-so-copy],
   .#{$so-prefix}code-copy {
     position: absolute;
-    top: spacing('2');
     right: spacing('2');
     opacity: 0;
     transition: opacity 0.15s ease;

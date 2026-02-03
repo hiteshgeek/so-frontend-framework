@@ -1008,12 +1008,11 @@ $includeSearch = $includeSearch ?? true;
             code = codeBlock.querySelector('code').innerText;
         }
 
-        navigator.clipboard.writeText(code).then(function() {
-            // Visual feedback
+        // Function to show success feedback
+        function showSuccess() {
             button.classList.add('copied');
             button.querySelector('.material-icons').textContent = 'check';
 
-            // Show success tooltip
             if (typeof SOTooltip !== 'undefined') {
                 SOTooltip.showTemporary(button, {
                     content: 'Copied!',
@@ -1023,15 +1022,14 @@ $includeSearch = $includeSearch ?? true;
                 });
             }
 
-            // Reset after 2 seconds
             setTimeout(function() {
                 button.classList.remove('copied');
                 button.querySelector('.material-icons').textContent = 'content_copy';
             }, 2000);
-        }).catch(function(err) {
-            console.error('Failed to copy:', err);
+        }
 
-            // Show error tooltip
+        // Function to show error feedback
+        function showError() {
             if (typeof SOTooltip !== 'undefined') {
                 SOTooltip.showTemporary(button, {
                     content: 'Copy failed',
@@ -1040,7 +1038,50 @@ $includeSearch = $includeSearch ?? true;
                     autoHide: 2000
                 });
             }
-        });
+        }
+
+        // Try modern Clipboard API first (requires secure context)
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+            navigator.clipboard.writeText(code).then(showSuccess).catch(function(err) {
+                console.error('Clipboard API failed:', err);
+                // Try fallback
+                if (fallbackCopy(code)) {
+                    showSuccess();
+                } else {
+                    showError();
+                }
+            });
+        } else {
+            // Fallback for non-secure contexts (HTTP)
+            if (fallbackCopy(code)) {
+                showSuccess();
+            } else {
+                showError();
+            }
+        }
+    }
+
+    // Fallback copy method using textarea and execCommand
+    function fallbackCopy(text) {
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        textarea.style.top = '0';
+        textarea.setAttribute('readonly', '');
+        document.body.appendChild(textarea);
+
+        try {
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+            var success = document.execCommand('copy');
+            document.body.removeChild(textarea);
+            return success;
+        } catch (err) {
+            console.error('Fallback copy failed:', err);
+            document.body.removeChild(textarea);
+            return false;
+        }
     }
 
     // Initialize code block tabs

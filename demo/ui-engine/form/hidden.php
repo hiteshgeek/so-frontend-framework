@@ -311,38 +311,132 @@ element.value = 'new-value';"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>value()</code></td>
-                                <td><code>mixed $value</code></td>
-                                <td>Set the hidden input value</td>
-                            </tr>
-                            <tr>
-                                <td><code>id()</code></td>
-                                <td><code>string $id</code></td>
-                                <td>Set custom ID attribute</td>
-                            </tr>
-                            <tr>
-                                <td><code>attr()</code></td>
-                                <td><code>string $name, mixed $value</code></td>
-                                <td>Set custom HTML attribute</td>
-                            </tr>
-                            <tr>
-                                <td><code>data()</code></td>
-                                <td><code>string $key, mixed $value</code></td>
-                                <td>Set data-* attribute</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Hidden</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::hidden(string $name)</code></td>
+                                        <td>Create hidden input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(mixed $value)</code></td>
+                                        <td>Set hidden input value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(string $id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render the hidden input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Same as render() for hidden inputs</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.hidden()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.hidden(name)</code></td>
+                                        <td>Create hidden input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set hidden input value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Same as render() for hidden inputs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

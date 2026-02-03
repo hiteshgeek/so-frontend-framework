@@ -359,48 +359,282 @@ document.getElementById('container').innerHTML = radio.toHtml();"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>label()</code></td>
-                                <td><code>string $label</code></td>
-                                <td>Set the group label</td>
-                            </tr>
-                            <tr>
-                                <td><code>options()</code></td>
-                                <td><code>array $options</code></td>
-                                <td>Set radio options as key-value pairs</td>
-                            </tr>
-                            <tr>
-                                <td><code>value()</code></td>
-                                <td><code>mixed $value</code></td>
-                                <td>Set the selected value</td>
-                            </tr>
-                            <tr>
-                                <td><code>inline()</code></td>
-                                <td>-</td>
-                                <td>Display radio buttons inline</td>
-                            </tr>
-                            <tr>
-                                <td><code>required()</code></td>
-                                <td>-</td>
-                                <td>Mark as required</td>
-                            </tr>
-                            <tr>
-                                <td><code>disabled()</code></td>
-                                <td>-</td>
-                                <td>Disable all radio buttons</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Radio</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::radio(string $name)</code></td>
+                                        <td>Create radio group with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Options Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>options(array $options)</code></td>
+                                        <td>Set radio options (key-value or array of {value, label})</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>option(mixed $value, string $label)</code></td>
+                                        <td>Add a single option</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Style Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inline(bool $val = true)</code></td>
+                                        <td>Display radio buttons inline</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>buttonStyle(bool $val = true)</code></td>
+                                        <td>Use toggle button style</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>buttonVariant(string $variant)</code></td>
+                                        <td>Set button variant (outline-primary, etc.)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(mixed $value)</code></td>
+                                        <td>Set selected value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set group label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(bool $val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(bool $val = true)</code></td>
+                                        <td>Disable all options</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>help(string $text)</code></td>
+                                        <td>Add help text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(string $message)</code></td>
+                                        <td>Set error message</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render radio group</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.radio()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.radio(name)</code></td>
+                                        <td>Create radio group with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Options Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>options(opts)</code></td>
+                                        <td>Set radio options</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>option(value, label)</code></td>
+                                        <td>Add a single option</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">State Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>checked(val = true)</code></td>
+                                        <td>Set checked state (single radio)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>isChecked()</code></td>
+                                        <td>Check if currently checked</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Style Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inline(val = true)</code></td>
+                                        <td>Display inline</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>buttonStyle(val = true)</code></td>
+                                        <td>Use toggle button style</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>buttonVariant(variant)</code></td>
+                                        <td>Set button variant</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set selected value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set group label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(val = true)</code></td>
+                                        <td>Disable all options</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>help(text)</code></td>
+                                        <td>Add help text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(message)</code></td>
+                                        <td>Set error message</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(className)</code></td>
+                                        <td>Add CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

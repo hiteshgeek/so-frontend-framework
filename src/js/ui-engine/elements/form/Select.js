@@ -28,9 +28,10 @@ class Select extends FormElement {
 
         this._options = config.options || [];
         this._multiple = config.multiple || false;
-        this._size = config.size || null;
-        this._emptyOption = config.emptyOption ?? null;
-        this._emptyOptionText = config.emptyOptionText || '-- Select --';
+        this._visibleSize = config.visibleSize || null;
+        this._emptyOptionText = config.emptyOption ?? null;
+        this._emptyOptionValue = config.emptyValue || '';
+        this._searchable = config.searchable || false;
     }
 
     // ==================
@@ -39,33 +40,46 @@ class Select extends FormElement {
 
     /**
      * Set options
-     * @param {Array} options - Array of {value, label, disabled?, selected?}
+     * @param {Array} opts - Array of {value, label, disabled?, selected?}
      * @returns {this}
      */
-    setOptions(options) {
-        this._options = options;
+    options(opts) {
+        this._options = opts;
         return this;
     }
 
     /**
-     * Add option
-     * @param {string} value
+     * Add single option
+     * @param {string|number} value
      * @param {string} label
      * @param {boolean} disabled
      * @returns {this}
      */
-    addOption(value, label, disabled = false) {
-        this._options.push({ value, label, disabled });
+    option(value, label, disabled = false) {
+        const opt = { value, label };
+        if (disabled) opt.disabled = true;
+        this._options.push(opt);
         return this;
     }
 
     /**
-     * Set multiple selection
-     * @param {boolean} multiple
+     * Add option group
+     * @param {string} label - Group label
+     * @param {Array} opts - Options in the group
      * @returns {this}
      */
-    setMultiple(multiple = true) {
-        this._multiple = multiple;
+    optgroup(label, opts) {
+        this._options.push({ label, options: opts });
+        return this;
+    }
+
+    /**
+     * Enable multiple selection
+     * @param {boolean} val
+     * @returns {this}
+     */
+    multiple(val = true) {
+        this._multiple = val;
         return this;
     }
 
@@ -74,19 +88,30 @@ class Select extends FormElement {
      * @param {number} size
      * @returns {this}
      */
-    setSize(size) {
-        this._size = size;
+    visibleSize(size) {
+        this._visibleSize = size;
         return this;
     }
 
     /**
-     * Add empty option at top
+     * Add empty/placeholder option
      * @param {string} text
+     * @param {string} value
      * @returns {this}
      */
-    emptyOption(text = '-- Select --') {
-        this._emptyOption = true;
+    emptyOption(text, value = '') {
         this._emptyOptionText = text;
+        this._emptyOptionValue = value;
+        return this;
+    }
+
+    /**
+     * Enable searchable mode (for JS enhancement)
+     * @param {boolean} val
+     * @returns {this}
+     */
+    searchable(val = true) {
+        this._searchable = val;
         return this;
     }
 
@@ -110,7 +135,8 @@ class Select extends FormElement {
         const attrs = super.buildAttributes();
 
         if (this._multiple) attrs.multiple = true;
-        if (this._size) attrs.size = this._size;
+        if (this._visibleSize) attrs.size = this._visibleSize;
+        if (this._searchable) attrs[SixOrbit.data('searchable')] = 'true';
 
         // Remove value attribute for select (handled by option selected)
         delete attrs.value;
@@ -151,17 +177,45 @@ class Select extends FormElement {
         let html = '';
 
         // Empty option
-        if (this._emptyOption) {
-            html += `<option value="">${this._escapeHtml(this._emptyOptionText)}</option>`;
+        if (this._emptyOptionText !== null) {
+            const selected = this._isSelected(this._emptyOptionValue) ? ' selected' : '';
+            html += `<option value="${this._escapeHtml(this._emptyOptionValue)}"${selected}>${this._escapeHtml(this._emptyOptionText)}</option>`;
         }
 
         // Regular options
-        this._options.forEach(opt => {
-            const value = opt.value ?? opt;
-            const label = opt.label ?? opt;
-            const disabled = opt.disabled ? ' disabled' : '';
-            const selected = this._isSelected(value) ? ' selected' : '';
-            html += `<option value="${this._escapeHtml(String(value))}"${disabled}${selected}>${this._escapeHtml(String(label))}</option>`;
+        html += this._renderOptions(this._options);
+
+        return html;
+    }
+
+    /**
+     * Render options array (handles optgroups)
+     * @param {Array} options
+     * @returns {string}
+     * @private
+     */
+    _renderOptions(options) {
+        let html = '';
+
+        options.forEach((opt, key) => {
+            if (typeof opt === 'object' && opt.options) {
+                // Option group
+                const disabled = opt.disabled ? ' disabled' : '';
+                html += `<optgroup label="${this._escapeHtml(opt.label)}"${disabled}>`;
+                html += this._renderOptions(opt.options);
+                html += '</optgroup>';
+            } else if (typeof opt === 'object') {
+                // Structured option: {value, label}
+                const value = opt.value ?? key;
+                const label = opt.label ?? value;
+                const disabled = opt.disabled ? ' disabled' : '';
+                const selected = this._isSelected(value) ? ' selected' : '';
+                html += `<option value="${this._escapeHtml(String(value))}"${disabled}${selected}>${this._escapeHtml(String(label))}</option>`;
+            } else {
+                // Simple key => label format
+                const selected = this._isSelected(key) ? ' selected' : '';
+                html += `<option value="${this._escapeHtml(String(key))}"${selected}>${this._escapeHtml(String(opt))}</option>`;
+            }
         });
 
         return html;
@@ -205,22 +259,8 @@ class Select extends FormElement {
             }
         });
 
-        // Add options
-        if (this._emptyOption) {
-            const emptyOpt = document.createElement('option');
-            emptyOpt.value = '';
-            emptyOpt.textContent = this._emptyOptionText;
-            el.appendChild(emptyOpt);
-        }
-
-        this._options.forEach(opt => {
-            const option = document.createElement('option');
-            option.value = opt.value ?? opt;
-            option.textContent = opt.label ?? opt;
-            if (opt.disabled) option.disabled = true;
-            if (this._isSelected(option.value)) option.selected = true;
-            el.appendChild(option);
-        });
+        // Add options via innerHTML (handles optgroups)
+        el.innerHTML = this._renderOptionsHtml();
 
         this.element = el;
         this._attachEventHandlers();
@@ -238,13 +278,14 @@ class Select extends FormElement {
     toConfig() {
         const config = super.toConfig();
 
-        config.options = this._options;
+        if (this._options.length > 0) config.options = this._options;
         if (this._multiple) config.multiple = true;
-        if (this._size) config.size = this._size;
-        if (this._emptyOption) {
-            config.emptyOption = true;
-            config.emptyOptionText = this._emptyOptionText;
+        if (this._visibleSize) config.visibleSize = this._visibleSize;
+        if (this._emptyOptionText !== null) {
+            config.emptyOption = this._emptyOptionText;
+            config.emptyValue = this._emptyOptionValue;
         }
+        if (this._searchable) config.searchable = true;
 
         return config;
     }

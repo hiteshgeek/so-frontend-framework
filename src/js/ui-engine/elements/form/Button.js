@@ -33,9 +33,13 @@ class Button extends Element {
         this._block = config.block || false;
         this._disabled = config.disabled || false;
         this._loading = config.loading || false;
+        this._loadingText = config.loadingText || null;
         this._icon = config.icon || null;
         this._iconPosition = config.iconPosition || 'left';
+        this._iconOnly = config.iconOnly || false;
         this._text = config.text || null;
+        this._href = config.href || null;
+        this._target = config.target || null;
 
         // Events
         this._eventHandlers = config.events || {};
@@ -108,11 +112,11 @@ class Button extends Element {
 
     /**
      * Set as outline style
-     * @param {boolean} outline
+     * @param {boolean} val
      * @returns {this}
      */
-    setOutline(outline = true) {
-        this._outline = outline;
+    outline(val = true) {
+        this._outline = val;
         return this;
     }
 
@@ -121,56 +125,71 @@ class Button extends Element {
      * @param {string} size - sm, lg
      * @returns {this}
      */
-    setSize(size) {
+    size(size) {
         this._size = size;
         return this;
     }
 
     /** Small size */
-    small() { return this.setSize('sm'); }
+    small() { return this.size('sm'); }
 
     /** Large size */
-    large() { return this.setSize('lg'); }
+    large() { return this.size('lg'); }
 
     /**
-     * Set as block button
-     * @param {boolean} block
+     * Set as block button (full width)
+     * @param {boolean} val
      * @returns {this}
      */
-    setBlock(block = true) {
-        this._block = block;
+    block(val = true) {
+        this._block = val;
         return this;
     }
 
     /**
      * Set disabled state
-     * @param {boolean} disabled
+     * @param {boolean} val
      * @returns {this}
      */
-    setDisabled(disabled = true) {
-        this._disabled = disabled;
+    disabled(val = true) {
+        this._disabled = val;
         return this;
     }
 
     /**
      * Set loading state
-     * @param {boolean} loading
+     * @param {boolean} val
+     * @param {string|null} loadingText
      * @returns {this}
      */
-    setLoading(loading = true) {
-        this._loading = loading;
+    loading(val = true, loadingText = null) {
+        this._loading = val;
+        if (loadingText !== null) {
+            this._loadingText = loadingText;
+        }
         return this;
     }
 
     /**
      * Set icon
-     * @param {string} icon
+     * @param {string} icon - Material Icons name
      * @param {string} position - left, right
      * @returns {this}
      */
-    setIcon(icon, position = 'left') {
+    icon(icon, position = 'left') {
         this._icon = icon;
         this._iconPosition = position;
+        return this;
+    }
+
+    /**
+     * Set as icon-only button
+     * @param {string} icon - Material Icons name
+     * @returns {this}
+     */
+    iconOnly(icon) {
+        this._icon = icon;
+        this._iconOnly = true;
         return this;
     }
 
@@ -179,8 +198,29 @@ class Button extends Element {
      * @param {string} text
      * @returns {this}
      */
-    setText(text) {
+    text(text) {
         this._text = text;
+        return this;
+    }
+
+    /**
+     * Set as link button
+     * @param {string} url
+     * @param {string|null} target
+     * @returns {this}
+     */
+    href(url, target = null) {
+        this._href = url;
+        this._target = target;
+        return this;
+    }
+
+    /**
+     * Open link in new tab
+     * @returns {this}
+     */
+    newTab() {
+        this._target = '_blank';
         return this;
     }
 
@@ -207,7 +247,7 @@ class Button extends Element {
      * @returns {string}
      */
     getTagName() {
-        return 'button';
+        return this._href ? 'a' : 'button';
     }
 
     /**
@@ -233,6 +273,16 @@ class Button extends Element {
             this._extraClasses.add(SixOrbit.cls('w-100'));
         }
 
+        // Loading
+        if (this._loading) {
+            this._extraClasses.add(SixOrbit.cls('btn-loading'));
+        }
+
+        // Icon-only
+        if (this._iconOnly) {
+            this._extraClasses.add(SixOrbit.cls('btn-icon'));
+        }
+
         return super.buildClassString();
     }
 
@@ -243,10 +293,37 @@ class Button extends Element {
     buildAttributes() {
         const attrs = super.buildAttributes();
 
-        attrs.type = this._buttonType;
+        if (this._href) {
+            // Anchor element
+            attrs.href = this._href;
+            attrs.role = 'button';
 
-        if (this._disabled || this._loading) {
-            attrs.disabled = true;
+            if (this._target) {
+                attrs.target = this._target;
+                if (this._target === '_blank') {
+                    attrs.rel = 'noopener noreferrer';
+                }
+            }
+
+            if (this._disabled) {
+                attrs['aria-disabled'] = 'true';
+                attrs.tabindex = '-1';
+            }
+        } else {
+            // Button element
+            attrs.type = this._buttonType;
+
+            if (this._disabled || this._loading) {
+                attrs.disabled = true;
+            }
+        }
+
+        // Loading data attributes
+        if (this._loading) {
+            attrs[SixOrbit.data('loading')] = 'true';
+            if (this._loadingText) {
+                attrs[SixOrbit.data('loading-text')] = this._loadingText;
+            }
         }
 
         return attrs;
@@ -261,24 +338,34 @@ class Button extends Element {
 
         // Loading spinner
         if (this._loading) {
-            html += `<span class="${SixOrbit.cls('spinner-border')} ${SixOrbit.cls('spinner-border-sm')} ${SixOrbit.cls('me-2')}" role="status" aria-hidden="true"></span>`;
+            html += `<span class="${SixOrbit.cls('spinner')} ${SixOrbit.cls('spinner-border')} ${SixOrbit.cls('spinner-border-sm')}" role="status" aria-hidden="true"></span> `;
         }
 
         // Icon left
         if (this._icon && this._iconPosition === 'left' && !this._loading) {
-            html += `<span class="material-icons ${SixOrbit.cls('me-1')}">${this._escapeHtml(this._icon)}</span>`;
+            html += `<span class="material-icons">${this._escapeHtml(this._icon)}</span>`;
+            if (!this._iconOnly && this._text) {
+                html += ' ';
+            }
         }
 
         // Text
-        if (this._text) {
-            html += this._escapeHtml(this._text);
-        } else if (this._content) {
-            html += this._escapeHtml(this._content);
+        if (!this._iconOnly) {
+            if (this._loading && this._loadingText) {
+                html += this._escapeHtml(this._loadingText);
+            } else if (this._text) {
+                html += this._escapeHtml(this._text);
+            } else if (this._content) {
+                html += this._escapeHtml(this._content);
+            }
         }
 
         // Icon right
         if (this._icon && this._iconPosition === 'right' && !this._loading) {
-            html += `<span class="material-icons ${SixOrbit.cls('ms-1')}">${this._escapeHtml(this._icon)}</span>`;
+            if (!this._iconOnly && this._text) {
+                html += ' ';
+            }
+            html += `<span class="material-icons">${this._escapeHtml(this._icon)}</span>`;
         }
 
         return html;
@@ -334,12 +421,18 @@ class Button extends Element {
         if (this._outline) config.outline = true;
         if (this._block) config.block = true;
         if (this._disabled) config.disabled = true;
-        if (this._loading) config.loading = true;
+        if (this._loading) {
+            config.loading = true;
+            if (this._loadingText) config.loadingText = this._loadingText;
+        }
         if (this._icon) {
             config.icon = this._icon;
             if (this._iconPosition !== 'left') config.iconPosition = this._iconPosition;
         }
+        if (this._iconOnly) config.iconOnly = true;
         if (this._text) config.text = this._text;
+        if (this._href) config.href = this._href;
+        if (this._target) config.target = this._target;
 
         return config;
     }

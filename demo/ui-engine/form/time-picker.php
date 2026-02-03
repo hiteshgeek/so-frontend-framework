@@ -389,55 +389,401 @@ document.getElementById('container').innerHTML = timeRange.toHtml();"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\TimePicker</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::timePicker(string $name)</code></td>
+                                        <td>Create time picker with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Format Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>hourFormat(int $format)</code></td>
+                                        <td>Set hour format (12 or 24)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hour12()</code></td>
+                                        <td>Use 12-hour format with AM/PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hour24()</code></td>
+                                        <td>Use 24-hour format (default)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>minuteStep(int $step)</code></td>
+                                        <td>Set minute step interval (default: 5)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showSeconds(bool $show = true)</code></td>
+                                        <td>Show seconds selector</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Constraint Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>minTime(string $time)</code></td>
+                                        <td>Set minimum selectable time (e.g., '09:00')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxTime(string $time)</code></td>
+                                        <td>Set maximum selectable time (e.g., '17:00')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>timeRange(string $min, string $max)</code></td>
+                                        <td>Set both min and max time</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>businessHours()</code></td>
+                                        <td>Shortcut for 9:00 - 17:00 range</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Feature Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>clearable(bool $clearable = true)</code></td>
+                                        <td>Show clear button (default: true)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>nowButton(bool $show = true)</code></td>
+                                        <td>Show "Now" button (default: true)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(string $id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(string $text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(string $time)</code></td>
+                                        <td>Set the time value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required()</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the picker</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render time picker HTML</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with form group wrapper</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.timePicker()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.timePicker(name)</code></td>
+                                        <td>Create time picker with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Format Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>hourFormat(fmt)</code></td>
+                                        <td>Set hour format (12 or 24)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hour12()</code></td>
+                                        <td>Use 12-hour format with AM/PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hour24()</code></td>
+                                        <td>Use 24-hour format (default)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>minuteStep(step)</code></td>
+                                        <td>Set minute step interval (default: 5)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showSeconds(val = true)</code></td>
+                                        <td>Show seconds selector</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Constraint Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>minTime(time)</code></td>
+                                        <td>Set minimum selectable time</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxTime(time)</code></td>
+                                        <td>Set maximum selectable time</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>timeRange(min, max)</code></td>
+                                        <td>Set both min and max time</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>businessHours()</code></td>
+                                        <td>Shortcut for 9:00 - 17:00 range</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Feature Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>clearable(val = true)</code></td>
+                                        <td>Show clear button (default: true)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>nowButton(val = true)</code></td>
+                                        <td>Show "Now" button (default: true)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(time)</code></td>
+                                        <td>Set the time value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required()</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the picker</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toConfig()</code></td>
+                                        <td>Export configuration object</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Events</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Event</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>change</code></td>
+                                        <td>Fires when time is selected</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:timepicker:open</code></td>
+                                        <td>Fires when picker opens</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:timepicker:close</code></td>
+                                        <td>Fires when picker closes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:timepicker:clear</code></td>
+                                        <td>Fires when time is cleared</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="so-mt-6 so-mb-3">CSS Classes Reference</h5>
                 <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
+                    <table class="so-table so-table-bordered so-table-sm">
                         <thead class="so-table-light">
                             <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
+                                <th style="width:40%">Class</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>value()</code></td>
-                                <td><code>string $time</code></td>
-                                <td>Set the time value</td>
+                                <td><code>.so-timepicker-wrapper</code></td>
+                                <td>Wrapper for time picker component</td>
                             </tr>
                             <tr>
-                                <td><code>min()</code></td>
-                                <td><code>string $time</code></td>
-                                <td>Set minimum selectable time</td>
+                                <td><code>.so-timepicker-input</code></td>
+                                <td>Time input field</td>
                             </tr>
                             <tr>
-                                <td><code>max()</code></td>
-                                <td><code>string $time</code></td>
-                                <td>Set maximum selectable time</td>
+                                <td><code>.so-timepicker-dropdown</code></td>
+                                <td>Time selection dropdown</td>
                             </tr>
                             <tr>
-                                <td><code>step()</code></td>
-                                <td><code>int $minutes</code></td>
-                                <td>Set minute step interval</td>
+                                <td><code>.so-timepicker-clear</code></td>
+                                <td>Clear button</td>
                             </tr>
                             <tr>
-                                <td><code>format()</code></td>
-                                <td><code>string $format</code></td>
-                                <td>Set the time format</td>
+                                <td><code>.so-form-control-sm</code></td>
+                                <td>Small size variant</td>
                             </tr>
                             <tr>
-                                <td><code>use12Hour()</code></td>
-                                <td>-</td>
-                                <td>Use 12-hour format with AM/PM</td>
-                            </tr>
-                            <tr>
-                                <td><code>showSeconds()</code></td>
-                                <td>-</td>
-                                <td>Include seconds in picker</td>
-                            </tr>
-                            <tr>
-                                <td><code>onChange()</code></td>
-                                <td><code>callable $callback</code></td>
-                                <td>Time change callback</td>
+                                <td><code>.so-form-control-lg</code></td>
+                                <td>Large size variant</td>
                             </tr>
                         </tbody>
                     </table>

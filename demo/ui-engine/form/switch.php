@@ -736,86 +736,410 @@ document.getElementById('settings-list').innerHTML = html;"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>checked()</code></td>
-                                <td><code>bool $checked = true</code></td>
-                                <td>Set checked state</td>
-                            </tr>
-                            <tr>
-                                <td><code>label()</code></td>
-                                <td><code>string $label</code></td>
-                                <td>Set the switch label</td>
-                            </tr>
-                            <tr>
-                                <td><code>size()</code></td>
-                                <td><code>string $size</code></td>
-                                <td>Set size: 'sm' or 'lg'</td>
-                            </tr>
-                            <tr>
-                                <td><code>color()</code></td>
-                                <td><code>string $color</code></td>
-                                <td>Set color: primary, secondary, success, danger, warning, info</td>
-                            </tr>
-                            <tr>
-                                <td><code>icon()</code></td>
-                                <td>-</td>
-                                <td>Enable icon mode</td>
-                            </tr>
-                            <tr>
-                                <td><code>onIcon()</code></td>
-                                <td><code>string $icon</code></td>
-                                <td>Set icon for on state</td>
-                            </tr>
-                            <tr>
-                                <td><code>offIcon()</code></td>
-                                <td><code>string $icon</code></td>
-                                <td>Set icon for off state</td>
-                            </tr>
-                            <tr>
-                                <td><code>text()</code></td>
-                                <td>-</td>
-                                <td>Enable text mode</td>
-                            </tr>
-                            <tr>
-                                <td><code>onText()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set text for on state (e.g., 'ON', 'YES')</td>
-                            </tr>
-                            <tr>
-                                <td><code>offText()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set text for off state (e.g., 'OFF', 'NO')</td>
-                            </tr>
-                            <tr>
-                                <td><code>disabled()</code></td>
-                                <td>-</td>
-                                <td>Disable the switch</td>
-                            </tr>
-                            <tr>
-                                <td><code>onChange()</code></td>
-                                <td><code>callable $callback</code></td>
-                                <td>Switch change callback</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\SwitchElement</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::switch(string $name)</code></td>
+                                        <td>Create switch with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">State Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>checked(bool $checked = true)</code></td>
+                                        <td>Set checked state</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>unchecked()</code></td>
+                                        <td>Set unchecked state</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Variant Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>variant(string $variant)</code></td>
+                                        <td>Set variant/color</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>color(string $color)</code></td>
+                                        <td>Alias for variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>primary()</code></td>
+                                        <td>Primary variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>secondary()</code></td>
+                                        <td>Secondary variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>success()</code></td>
+                                        <td>Success variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>danger()</code></td>
+                                        <td>Danger variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>warning()</code></td>
+                                        <td>Warning variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>info()</code></td>
+                                        <td>Info variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>size(string $size)</code></td>
+                                        <td>Set size (sm, lg)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>small()</code></td>
+                                        <td>Small size shortcut</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>large()</code></td>
+                                        <td>Large size shortcut</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display Mode Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>icon(bool $enable = true)</code></td>
+                                        <td>Enable icon mode</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onIcon(string $icon)</code></td>
+                                        <td>Set on state icon (Material icon name)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>offIcon(string $icon)</code></td>
+                                        <td>Set off state icon</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>text(bool $enable = true)</code></td>
+                                        <td>Enable text mode</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onText(string $text)</code></td>
+                                        <td>Set on state text (e.g., 'ON', 'YES')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>offText(string $text)</code></td>
+                                        <td>Set off state text (e.g., 'OFF', 'NO')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>labels(string $on, string $off)</code></td>
+                                        <td>Set both on/off labels</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(string $id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the switch</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render switch HTML</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.switch()</h5>
+                        <p class="so-text-muted">Extends FormElement (Toggle class)</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.switch(name)</code></td>
+                                        <td>Create switch with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">State Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>checked(val = true)</code></td>
+                                        <td>Set checked state</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>unchecked()</code></td>
+                                        <td>Set unchecked state</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Variant Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>variant(v)</code></td>
+                                        <td>Set variant/color</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>color(c)</code></td>
+                                        <td>Alias for variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>primary()</code></td>
+                                        <td>Primary variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>secondary()</code></td>
+                                        <td>Secondary variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>success()</code></td>
+                                        <td>Success variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>danger()</code></td>
+                                        <td>Danger variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>warning()</code></td>
+                                        <td>Warning variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>info()</code></td>
+                                        <td>Info variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>size(size)</code></td>
+                                        <td>Set size (sm, lg)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>small()</code></td>
+                                        <td>Small size shortcut</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>large()</code></td>
+                                        <td>Large size shortcut</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display Mode Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>icon(enable = true)</code></td>
+                                        <td>Enable icon mode</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onIcon(icon)</code></td>
+                                        <td>Set on state icon</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>offIcon(icon)</code></td>
+                                        <td>Set off state icon</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>text(enable = true)</code></td>
+                                        <td>Enable text mode</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onText(text)</code></td>
+                                        <td>Set on state text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>offText(text)</code></td>
+                                        <td>Set off state text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>labels(on, off)</code></td>
+                                        <td>Set both on/off labels</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the switch</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toConfig()</code></td>
+                                        <td>Export configuration object</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Events</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Event</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>change</code></td>
+                                        <td>Fires when switch state changes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>input</code></td>
+                                        <td>Fires on input change</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <h5 class="so-mt-6 so-mb-3">CSS Classes Reference</h5>
                 <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
+                    <table class="so-table so-table-bordered so-table-sm">
                         <thead class="so-table-light">
                             <tr>
-                                <th>Class</th>
+                                <th style="width:40%">Class</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
@@ -841,12 +1165,8 @@ document.getElementById('settings-list').innerHTML = html;"
                                 <td>Content shown when off (inside track)</td>
                             </tr>
                             <tr>
-                                <td><code>.so-switch-sm</code></td>
-                                <td>Small size variant</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-switch-lg</code></td>
-                                <td>Large size variant</td>
+                                <td><code>.so-switch-{size}</code></td>
+                                <td>Size variants (sm, lg)</td>
                             </tr>
                             <tr>
                                 <td><code>.so-switch-{color}</code></td>
@@ -863,10 +1183,6 @@ document.getElementById('settings-list').innerHTML = html;"
                             <tr>
                                 <td><code>.so-switch-icon-text</code></td>
                                 <td>Enable icon + text display inside track</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-switch-label-contextual</code></td>
-                                <td>Label color matches switch color</td>
                             </tr>
                             <tr>
                                 <td><code>.so-disabled</code></td>

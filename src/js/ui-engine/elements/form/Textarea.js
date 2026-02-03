@@ -31,11 +31,13 @@ class Textarea extends FormElement {
         this._maxlength = config.maxlength ?? null;
         this._minlength = config.minlength ?? null;
         this._wrap = config.wrap || null;
-        this._resize = config.resize ?? true;
+        this._resize = config.resize ?? null;
+        this._autoResize = config.autoResize ?? false;
+        this._showCounter = config.showCounter ?? false;
     }
 
     // ==================
-    // Fluent API
+    // Fluent API - Dimensions
     // ==================
 
     /**
@@ -43,7 +45,7 @@ class Textarea extends FormElement {
      * @param {number} rows
      * @returns {this}
      */
-    setRows(rows) {
+    rows(rows) {
         this._rows = rows;
         return this;
     }
@@ -53,17 +55,21 @@ class Textarea extends FormElement {
      * @param {number} cols
      * @returns {this}
      */
-    setCols(cols) {
+    cols(cols) {
         this._cols = cols;
         return this;
     }
+
+    // ==================
+    // Fluent API - Constraints
+    // ==================
 
     /**
      * Set maximum length
      * @param {number} maxlength
      * @returns {this}
      */
-    setMaxlength(maxlength) {
+    maxlength(maxlength) {
         this._maxlength = maxlength;
         return this;
     }
@@ -73,7 +79,7 @@ class Textarea extends FormElement {
      * @param {number} minlength
      * @returns {this}
      */
-    setMinlength(minlength) {
+    minlength(minlength) {
         this._minlength = minlength;
         return this;
     }
@@ -83,8 +89,22 @@ class Textarea extends FormElement {
      * @param {string} wrap
      * @returns {this}
      */
-    setWrap(wrap) {
+    wrap(wrap) {
         this._wrap = wrap;
+        return this;
+    }
+
+    // ==================
+    // Fluent API - Resize
+    // ==================
+
+    /**
+     * Set resize behavior
+     * @param {string} direction - 'none', 'vertical', 'horizontal', 'both'
+     * @returns {this}
+     */
+    resize(direction) {
+        this._resize = direction;
         return this;
     }
 
@@ -93,17 +113,46 @@ class Textarea extends FormElement {
      * @returns {this}
      */
     noResize() {
-        this._resize = false;
+        return this.resize('none');
+    }
+
+    /**
+     * Allow only vertical resizing
+     * @returns {this}
+     */
+    resizeVertical() {
+        return this.resize('vertical');
+    }
+
+    /**
+     * Allow only horizontal resizing
+     * @returns {this}
+     */
+    resizeHorizontal() {
+        return this.resize('horizontal');
+    }
+
+    // ==================
+    // Fluent API - Features
+    // ==================
+
+    /**
+     * Enable auto-resize based on content
+     * @param {boolean} enable
+     * @returns {this}
+     */
+    autoResize(enable = true) {
+        this._autoResize = enable;
         return this;
     }
 
     /**
-     * Enable resize
-     * @param {string} direction - 'both', 'horizontal', 'vertical', 'none'
+     * Show character counter
+     * @param {boolean} show
      * @returns {this}
      */
-    setResize(direction = true) {
-        this._resize = direction;
+    showCounter(show = true) {
+        this._showCounter = show;
         return this;
     }
 
@@ -126,15 +175,9 @@ class Textarea extends FormElement {
     buildClassString() {
         super.buildClassString();
 
-        // Add resize style if disabled
-        if (this._resize === false || this._resize === 'none') {
-            this._extraAttributes.set('style',
-                (this._extraAttributes.get('style') || '') + 'resize: none;'
-            );
-        } else if (typeof this._resize === 'string' && this._resize !== 'both') {
-            this._extraAttributes.set('style',
-                (this._extraAttributes.get('style') || '') + `resize: ${this._resize};`
-            );
+        // Add resize class if specified
+        if (this._resize !== null) {
+            this._extraClasses.add(SixOrbit.cls('resize-' + this._resize));
         }
 
         return Array.from(this._extraClasses).join(' ');
@@ -152,6 +195,14 @@ class Textarea extends FormElement {
         if (this._maxlength) attrs.maxlength = this._maxlength;
         if (this._minlength) attrs.minlength = this._minlength;
         if (this._wrap) attrs.wrap = this._wrap;
+
+        if (this._autoResize) {
+            attrs[SixOrbit.data('auto-resize')] = 'true';
+        }
+
+        if (this._showCounter && this._maxlength) {
+            attrs[SixOrbit.data('counter')] = 'true';
+        }
 
         // Remove value attribute (textarea uses content)
         delete attrs.value;
@@ -218,7 +269,9 @@ class Textarea extends FormElement {
         if (this._maxlength) config.maxlength = this._maxlength;
         if (this._minlength) config.minlength = this._minlength;
         if (this._wrap) config.wrap = this._wrap;
-        if (this._resize !== true) config.resize = this._resize;
+        if (this._resize !== null) config.resize = this._resize;
+        if (this._autoResize) config.autoResize = true;
+        if (this._showCounter) config.showCounter = true;
 
         return config;
     }

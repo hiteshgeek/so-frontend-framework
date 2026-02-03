@@ -67,7 +67,7 @@ class Input extends FormElement {
     tel() { return this.inputType('tel'); }
 
     /** Set as URL input */
-    urlType() { return this.inputType('url'); }
+    url() { return this.inputType('url'); }
 
     /** Set as search input */
     search() { return this.inputType('search'); }
@@ -102,7 +102,7 @@ class Input extends FormElement {
      * @param {*} min
      * @returns {this}
      */
-    setMin(min) {
+    min(min) {
         this._min = min;
         return this;
     }
@@ -112,7 +112,7 @@ class Input extends FormElement {
      * @param {*} max
      * @returns {this}
      */
-    setMax(max) {
+    max(max) {
         this._max = max;
         return this;
     }
@@ -122,7 +122,7 @@ class Input extends FormElement {
      * @param {*} step
      * @returns {this}
      */
-    setStep(step) {
+    step(step) {
         this._step = step;
         return this;
     }
@@ -132,7 +132,7 @@ class Input extends FormElement {
      * @param {number} maxlength
      * @returns {this}
      */
-    setMaxlength(maxlength) {
+    maxlength(maxlength) {
         this._maxlength = maxlength;
         return this;
     }
@@ -142,7 +142,7 @@ class Input extends FormElement {
      * @param {number} minlength
      * @returns {this}
      */
-    setMinlength(minlength) {
+    minlength(minlength) {
         this._minlength = minlength;
         return this;
     }
@@ -152,7 +152,7 @@ class Input extends FormElement {
      * @param {string} pattern
      * @returns {this}
      */
-    setPattern(pattern) {
+    pattern(pattern) {
         this._pattern = pattern;
         return this;
     }
@@ -162,7 +162,7 @@ class Input extends FormElement {
      * @param {string} autocomplete
      * @returns {this}
      */
-    setAutocomplete(autocomplete) {
+    autocomplete(autocomplete) {
         this._autocomplete = autocomplete;
         return this;
     }
@@ -172,7 +172,7 @@ class Input extends FormElement {
      * @returns {this}
      */
     noAutocomplete() {
-        return this.setAutocomplete('off');
+        return this.autocomplete('off');
     }
 
     /**
@@ -180,7 +180,7 @@ class Input extends FormElement {
      * @param {string} prefix
      * @returns {this}
      */
-    setPrefix(prefix) {
+    prefix(prefix) {
         this._prefix = prefix;
         return this;
     }
@@ -190,7 +190,7 @@ class Input extends FormElement {
      * @param {string} suffix
      * @returns {this}
      */
-    setSuffix(suffix) {
+    suffix(suffix) {
         this._suffix = suffix;
         return this;
     }

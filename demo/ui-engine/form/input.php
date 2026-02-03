@@ -386,78 +386,496 @@ UiEngine.input('username')
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>label()</code></td>
-                                <td><code>string $label</code></td>
-                                <td>Set the input label</td>
-                            </tr>
-                            <tr>
-                                <td><code>placeholder()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set the placeholder text</td>
-                            </tr>
-                            <tr>
-                                <td><code>value()</code></td>
-                                <td><code>mixed $value</code></td>
-                                <td>Set the input value</td>
-                            </tr>
-                            <tr>
-                                <td><code>type()</code></td>
-                                <td><code>string $type</code></td>
-                                <td>Set input type (text, email, password, etc.)</td>
-                            </tr>
-                            <tr>
-                                <td><code>required()</code></td>
-                                <td>-</td>
-                                <td>Mark the input as required</td>
-                            </tr>
-                            <tr>
-                                <td><code>disabled()</code></td>
-                                <td>-</td>
-                                <td>Disable the input</td>
-                            </tr>
-                            <tr>
-                                <td><code>readonly()</code></td>
-                                <td>-</td>
-                                <td>Make the input read-only</td>
-                            </tr>
-                            <tr>
-                                <td><code>size()</code></td>
-                                <td><code>string $size</code></td>
-                                <td>Set size: 'sm' or 'lg'</td>
-                            </tr>
-                            <tr>
-                                <td><code>prefix()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Add input group prefix</td>
-                            </tr>
-                            <tr>
-                                <td><code>suffix()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Add input group suffix</td>
-                            </tr>
-                            <tr>
-                                <td><code>rules()</code></td>
-                                <td><code>string|array $rules</code></td>
-                                <td>Set validation rules</td>
-                            </tr>
-                            <tr>
-                                <td><code>help()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Add help text below input</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Input</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::input(string $name)</code></td>
+                                        <td>Create text input with name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine::email(string $name)</code></td>
+                                        <td>Create email input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine::password(string $name)</code></td>
+                                        <td>Create password input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine::number(string $name)</code></td>
+                                        <td>Create number input</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Input Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inputType(string $type)</code></td>
+                                        <td>Set input type (text, email, password, etc.)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>email()</code></td>
+                                        <td>Set as email input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>password()</code></td>
+                                        <td>Set as password input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>number()</code></td>
+                                        <td>Set as number input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>tel()</code></td>
+                                        <td>Set as telephone input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>url()</code></td>
+                                        <td>Set as URL input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>search()</code></td>
+                                        <td>Set as search input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>date()</code></td>
+                                        <td>Set as date input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>time()</code></td>
+                                        <td>Set as time input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>datetime()</code></td>
+                                        <td>Set as datetime-local input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>month()</code></td>
+                                        <td>Set as month input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>week()</code></td>
+                                        <td>Set as week input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>color()</code></td>
+                                        <td>Set as color input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>range()</code></td>
+                                        <td>Set as range input</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Constraint Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>min(mixed $min)</code></td>
+                                        <td>Set minimum value (for number, date, range)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>max(mixed $max)</code></td>
+                                        <td>Set maximum value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>step(mixed $step)</code></td>
+                                        <td>Set step value (for number, range)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>minlength(int $length)</code></td>
+                                        <td>Set minimum character length</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxlength(int $length)</code></td>
+                                        <td>Set maximum character length</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pattern(string $regex)</code></td>
+                                        <td>Set validation regex pattern</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autocomplete(string $value)</code></td>
+                                        <td>Set autocomplete attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>noAutocomplete()</code></td>
+                                        <td>Disable autocomplete</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Addon Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>prefix(string $text)</code></td>
+                                        <td>Add input group prefix</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>suffix(string $text)</code></td>
+                                        <td>Add input group suffix</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(mixed $value)</code></td>
+                                        <td>Set input value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set input label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(string $text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(bool $val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(bool $val = true)</code></td>
+                                        <td>Disable input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly(bool $val = true)</code></td>
+                                        <td>Make read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>help(string $text)</code></td>
+                                        <td>Add help text below input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(string $message)</code></td>
+                                        <td>Set error message</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>rules(string|array $rules)</code></td>
+                                        <td>Set validation rules</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render input element only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with label, help, error</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.input()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.input(name)</code></td>
+                                        <td>Create text input with name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine.email(name)</code></td>
+                                        <td>Create email input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine.password(name)</code></td>
+                                        <td>Create password input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine.number(name)</code></td>
+                                        <td>Create number input</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Input Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inputType(type)</code></td>
+                                        <td>Set input type</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>email()</code></td>
+                                        <td>Set as email input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>password()</code></td>
+                                        <td>Set as password input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>number()</code></td>
+                                        <td>Set as number input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>tel()</code></td>
+                                        <td>Set as telephone input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>url()</code></td>
+                                        <td>Set as URL input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>search()</code></td>
+                                        <td>Set as search input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>date()</code></td>
+                                        <td>Set as date input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>time()</code></td>
+                                        <td>Set as time input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>datetime()</code></td>
+                                        <td>Set as datetime-local input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>month()</code></td>
+                                        <td>Set as month input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>week()</code></td>
+                                        <td>Set as week input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>color()</code></td>
+                                        <td>Set as color input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>range()</code></td>
+                                        <td>Set as range input</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Constraint Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>min(min)</code></td>
+                                        <td>Set minimum value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>max(max)</code></td>
+                                        <td>Set maximum value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>step(step)</code></td>
+                                        <td>Set step value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>minlength(length)</code></td>
+                                        <td>Set minimum character length</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxlength(length)</code></td>
+                                        <td>Set maximum character length</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pattern(regex)</code></td>
+                                        <td>Set validation regex pattern</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autocomplete(value)</code></td>
+                                        <td>Set autocomplete attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>noAutocomplete()</code></td>
+                                        <td>Disable autocomplete</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Addon Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>prefix(text)</code></td>
+                                        <td>Add input group prefix</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>suffix(text)</code></td>
+                                        <td>Add input group suffix</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set input value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set input label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(val = true)</code></td>
+                                        <td>Disable input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly(val = true)</code></td>
+                                        <td>Make read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>help(text)</code></td>
+                                        <td>Add help text below input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(message)</code></td>
+                                        <td>Set error message</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>rules(rules)</code></td>
+                                        <td>Set validation rules</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(className)</code></td>
+                                        <td>Add CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with label, help, error</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

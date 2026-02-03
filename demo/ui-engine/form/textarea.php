@@ -464,70 +464,445 @@ UiEngine.textarea('readonly')
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Textarea</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::textarea(string $name)</code></td>
+                                        <td>Create textarea with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Dimension Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>rows(int $rows)</code></td>
+                                        <td>Set visible rows (default: 3)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>cols(int $cols)</code></td>
+                                        <td>Set visible columns</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Constraint Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>maxlength(int $maxlength)</code></td>
+                                        <td>Set maximum character limit</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>minlength(int $minlength)</code></td>
+                                        <td>Set minimum character limit</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Resize Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>resize(string $direction)</code></td>
+                                        <td>Set resize: none, vertical, horizontal, both</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>noResize()</code></td>
+                                        <td>Disable resizing</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>resizeVertical()</code></td>
+                                        <td>Allow vertical resize only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>resizeHorizontal()</code></td>
+                                        <td>Allow horizontal resize only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autoResize(bool $enable = true)</code></td>
+                                        <td>Enable auto-resize based on content</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Feature Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>showCounter(bool $show = true)</code></td>
+                                        <td>Show character counter (requires maxlength)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(string $id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(string $text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(mixed $value)</code></td>
+                                        <td>Set textarea value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required()</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the textarea</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly()</code></td>
+                                        <td>Make textarea read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render textarea HTML</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with form group wrapper</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.textarea()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.textarea(name)</code></td>
+                                        <td>Create textarea with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Dimension Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>rows(rows)</code></td>
+                                        <td>Set visible rows (default: 3)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>cols(cols)</code></td>
+                                        <td>Set visible columns</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Constraint Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>maxlength(maxlength)</code></td>
+                                        <td>Set maximum character limit</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>minlength(minlength)</code></td>
+                                        <td>Set minimum character limit</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>wrap(wrap)</code></td>
+                                        <td>Set wrap mode (hard, soft, off)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Resize Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>resize(direction)</code></td>
+                                        <td>Set resize: none, vertical, horizontal, both</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>noResize()</code></td>
+                                        <td>Disable resizing</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>resizeVertical()</code></td>
+                                        <td>Allow vertical resize only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>resizeHorizontal()</code></td>
+                                        <td>Allow horizontal resize only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autoResize(enable = true)</code></td>
+                                        <td>Enable auto-resize based on content</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Feature Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>showCounter(show = true)</code></td>
+                                        <td>Show character counter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set textarea value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required()</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the textarea</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly()</code></td>
+                                        <td>Make textarea read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toConfig()</code></td>
+                                        <td>Export configuration object</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Events</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Event</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>input</code></td>
+                                        <td>Fires on input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>change</code></td>
+                                        <td>Fires on value change</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:autosize</code></td>
+                                        <td>Fires when auto-resize adjusts height (detail: {height})</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="so-mt-6 so-mb-3">CSS Classes Reference</h5>
                 <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
+                    <table class="so-table so-table-bordered so-table-sm">
                         <thead class="so-table-light">
                             <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
+                                <th style="width:40%">Class</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>rows()</code></td>
-                                <td><code>int $rows</code></td>
-                                <td>Set the number of visible rows</td>
+                                <td><code>.so-form-control</code></td>
+                                <td>Base textarea styling</td>
                             </tr>
                             <tr>
-                                <td><code>cols()</code></td>
-                                <td><code>int $cols</code></td>
-                                <td>Set the number of visible columns</td>
+                                <td><code>.so-form-control-sm</code></td>
+                                <td>Small textarea size</td>
                             </tr>
                             <tr>
-                                <td><code>maxLength()</code></td>
-                                <td><code>int $max</code></td>
-                                <td>Set maximum character limit</td>
+                                <td><code>.so-form-control-lg</code></td>
+                                <td>Large textarea size</td>
                             </tr>
                             <tr>
-                                <td><code>showCount()</code></td>
-                                <td>-</td>
-                                <td>Show character counter</td>
+                                <td><code>.so-form-control-autosize</code></td>
+                                <td>Enable auto-resize (80-400px)</td>
                             </tr>
                             <tr>
-                                <td><code>autoResize()</code></td>
-                                <td><code>string $size = null</code></td>
-                                <td>Enable auto-resize. Size: <code>null</code> (default 80-400px), <code>'sm'</code> (60-200px), <code>'lg'</code> (120-600px)</td>
+                                <td><code>.so-form-control-autosize-sm</code></td>
+                                <td>Small auto-resize (60-200px)</td>
                             </tr>
                             <tr>
-                                <td><code>resize()</code></td>
-                                <td><code>string $direction</code></td>
-                                <td>Set resize behavior: <code>'vertical'</code>, <code>'horizontal'</code>, <code>'both'</code>, <code>'none'</code></td>
+                                <td><code>.so-form-control-autosize-lg</code></td>
+                                <td>Large auto-resize (120-600px)</td>
                             </tr>
                             <tr>
-                                <td><code>placeholder()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set placeholder text</td>
+                                <td><code>.so-resize-none</code></td>
+                                <td>Disable resizing</td>
                             </tr>
                             <tr>
-                                <td><code>value()</code></td>
-                                <td><code>string $value</code></td>
-                                <td>Set the textarea value</td>
+                                <td><code>.so-resize-vertical</code></td>
+                                <td>Vertical resize only</td>
                             </tr>
                             <tr>
-                                <td><code>required()</code></td>
-                                <td>-</td>
-                                <td>Mark as required</td>
+                                <td><code>.so-resize-horizontal</code></td>
+                                <td>Horizontal resize only</td>
                             </tr>
                             <tr>
-                                <td><code>disabled()</code></td>
-                                <td>-</td>
-                                <td>Disable the textarea</td>
-                            </tr>
-                            <tr>
-                                <td><code>readonly()</code></td>
-                                <td>-</td>
-                                <td>Make the textarea read-only</td>
+                                <td><code>.so-resize-both</code></td>
+                                <td>Both directions</td>
                             </tr>
                         </tbody>
                     </table>

@@ -28,7 +28,9 @@ class Radio extends FormElement {
 
         this._checked = config.checked || false;
         this._inline = config.inline || false;
-        this._options = config.options || null; // For radio group
+        this._options = config.options || [];
+        this._buttonStyle = config.buttonStyle || false;
+        this._buttonVariant = config.buttonVariant || 'outline-primary';
     }
 
     // ==================
@@ -40,7 +42,7 @@ class Radio extends FormElement {
      * @param {boolean} checked
      * @returns {this}
      */
-    setChecked(checked = true) {
+    checked(checked = true) {
         this._checked = checked;
         if (this.element) {
             this.element.checked = checked;
@@ -60,22 +62,53 @@ class Radio extends FormElement {
     }
 
     /**
-     * Render inline
-     * @param {boolean} inline
+     * Set radio options
+     * @param {Array} opts - Array of {value, label, checked?, disabled?}
      * @returns {this}
      */
-    setInline(inline = true) {
-        this._inline = inline;
+    options(opts) {
+        this._options = opts;
         return this;
     }
 
     /**
-     * Set options for radio group
-     * @param {Array} options - Array of {value, label, checked?, disabled?}
+     * Add a single option
+     * @param {string|number} value
+     * @param {string} label
      * @returns {this}
      */
-    setOptions(options) {
-        this._options = options;
+    option(value, label) {
+        this._options.push({ value, label });
+        return this;
+    }
+
+    /**
+     * Render inline
+     * @param {boolean} val
+     * @returns {this}
+     */
+    inline(val = true) {
+        this._inline = val;
+        return this;
+    }
+
+    /**
+     * Use button style (toggle buttons)
+     * @param {boolean} val
+     * @returns {this}
+     */
+    buttonStyle(val = true) {
+        this._buttonStyle = val;
+        return this;
+    }
+
+    /**
+     * Set button variant (for button style)
+     * @param {string} variant
+     * @returns {this}
+     */
+    buttonVariant(variant) {
+        this._buttonVariant = variant;
         return this;
     }
 
@@ -229,6 +262,26 @@ class Radio extends FormElement {
     toHtml() {
         // If options provided, render radio group
         if (this._options && this._options.length > 0) {
+            // Button style uses btn-group wrapper
+            if (this._buttonStyle) {
+                let html = `<div class="${SixOrbit.cls('btn-group')}" role="group">`;
+
+                this._options.forEach((opt, index) => {
+                    const value = opt.value ?? opt;
+                    const label = opt.label ?? opt;
+                    const id = `${this._id || this._name}-${index}`;
+                    const checked = (opt.checked || this._value == value) ? ' checked' : '';
+                    const disabled = (opt.disabled || this._disabled) ? ' disabled' : '';
+
+                    html += `<input type="radio" class="${SixOrbit.cls('btn-check')}" name="${this._escapeHtml(this._name)}" value="${this._escapeHtml(String(value))}" id="${this._escapeHtml(id)}" autocomplete="off"${checked}${disabled}>`;
+                    html += `<label class="${SixOrbit.cls('btn')} ${SixOrbit.cls('btn', this._buttonVariant)}" for="${this._escapeHtml(id)}">${this._escapeHtml(String(label))}</label>`;
+                });
+
+                html += '</div>';
+                return html;
+            }
+
+            // Standard radio group
             let html = `<div class="${SixOrbit.cls('radio-group')}">`;
 
             this._options.forEach((opt, index) => {
@@ -283,7 +336,11 @@ class Radio extends FormElement {
 
         if (this._checked) config.checked = true;
         if (this._inline) config.inline = true;
-        if (this._options) config.options = this._options;
+        if (this._options && this._options.length > 0) config.options = this._options;
+        if (this._buttonStyle) {
+            config.buttonStyle = true;
+            config.buttonVariant = this._buttonVariant;
+        }
 
         return config;
     }

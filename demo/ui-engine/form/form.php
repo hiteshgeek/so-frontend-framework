@@ -533,63 +533,336 @@ document.getElementById('container').innerHTML = form.toHtml();"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>action()</code></td>
-                                <td><code>string $url</code></td>
-                                <td>Set form action URL</td>
-                            </tr>
-                            <tr>
-                                <td><code>method()</code></td>
-                                <td><code>string $method</code></td>
-                                <td>Set HTTP method (GET, POST, PUT, DELETE)</td>
-                            </tr>
-                            <tr>
-                                <td><code>add()</code></td>
-                                <td><code>Element $element</code></td>
-                                <td>Add form element</td>
-                            </tr>
-                            <tr>
-                                <td><code>layout()</code></td>
-                                <td><code>string $layout</code></td>
-                                <td>Set layout: 'vertical', 'horizontal', 'inline'</td>
-                            </tr>
-                            <tr>
-                                <td><code>validate()</code></td>
-                                <td>-</td>
-                                <td>Enable client-side validation</td>
-                            </tr>
-                            <tr>
-                                <td><code>ajax()</code></td>
-                                <td>-</td>
-                                <td>Enable AJAX submission</td>
-                            </tr>
-                            <tr>
-                                <td><code>multipart()</code></td>
-                                <td>-</td>
-                                <td>Enable file uploads</td>
-                            </tr>
-                            <tr>
-                                <td><code>onSuccess()</code></td>
-                                <td><code>string|callable $handler</code></td>
-                                <td>Set success callback</td>
-                            </tr>
-                            <tr>
-                                <td><code>onError()</code></td>
-                                <td><code>string|callable $handler</code></td>
-                                <td>Set error callback</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Form</h5>
+                        <p class="so-text-muted">Extends ContainerElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::form(string $action = '')</code></td>
+                                        <td>Create form with optional action URL</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">HTTP Method</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>action(string $url)</code></td>
+                                        <td>Set form action URL</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>method(string $method)</code></td>
+                                        <td>Set method: GET|POST|PUT|PATCH|DELETE</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>get()</code></td>
+                                        <td>Shortcut for GET method</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>post()</code></td>
+                                        <td>Shortcut for POST method</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>put()</code></td>
+                                        <td>PUT with method override</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>patch()</code></td>
+                                        <td>PATCH with method override</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>delete()</code></td>
+                                        <td>DELETE with method override</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Form Attributes</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>enctype(string $type)</code></td>
+                                        <td>Set encoding type</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>multipart()</code></td>
+                                        <td>Multipart/form-data for file uploads</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>target(string $target)</code></td>
+                                        <td>Set form target</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>newTab()</code></td>
+                                        <td>Open in new tab (target="_blank")</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>novalidate(bool $val = true)</code></td>
+                                        <td>Disable browser validation</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autocomplete(string $val)</code></td>
+                                        <td>Set autocomplete on/off</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>noAutocomplete()</code></td>
+                                        <td>Disable autocomplete</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">AJAX & Security</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>ajax(bool $val = true)</code></td>
+                                        <td>Enable AJAX submission</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showLoading(bool $val = true)</code></td>
+                                        <td>Show loading state on submit</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>csrf(string $token, string $field = '_token')</code></td>
+                                        <td>Add CSRF token hidden field</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Children</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>add(Element $element)</code></td>
+                                        <td>Add child element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render form HTML</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderWithValidation()</code></td>
+                                        <td>Render with validation script</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.form()</h5>
+                        <p class="so-text-muted">Extends ContainerElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.form(action = '')</code></td>
+                                        <td>Create form with optional action URL</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">HTTP Method</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>action(url)</code></td>
+                                        <td>Set form action URL</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>method(method)</code></td>
+                                        <td>Set method: GET|POST|PUT|PATCH|DELETE</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>get()</code></td>
+                                        <td>Shortcut for GET method</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>post()</code></td>
+                                        <td>Shortcut for POST method</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>put()</code></td>
+                                        <td>PUT with method override</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>patch()</code></td>
+                                        <td>PATCH with method override</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>delete()</code></td>
+                                        <td>DELETE with method override</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Form Attributes</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>enctype(type)</code></td>
+                                        <td>Set encoding type</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>multipart()</code></td>
+                                        <td>Multipart for file uploads</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>target(target)</code></td>
+                                        <td>Set form target</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>newTab()</code></td>
+                                        <td>Open in new tab</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>novalidate(val = true)</code></td>
+                                        <td>Disable browser validation</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autocomplete(val)</code></td>
+                                        <td>Set autocomplete</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>noAutocomplete()</code></td>
+                                        <td>Disable autocomplete</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">AJAX & Events</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>ajax(val = true)</code></td>
+                                        <td>Enable AJAX submission</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showLoading(val = true)</code></td>
+                                        <td>Show loading state on submit</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>onSubmit(handler)</code></td>
+                                        <td>Set submit handler</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Runtime Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>getFormData()</code></td>
+                                        <td>Get FormData object</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>getValues()</code></td>
+                                        <td>Get values as object</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setValues(values)</code></td>
+                                        <td>Set form field values</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>resetForm()</code></td>
+                                        <td>Reset all fields</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>submitForm()</code></td>
+                                        <td>Submit the form</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>validate()</code></td>
+                                        <td>Check form validity</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>reportValidity()</code></td>
+                                        <td>Report validity with UI feedback</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

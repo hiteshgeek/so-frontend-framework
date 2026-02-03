@@ -400,53 +400,302 @@ UiEngine.file('large')
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>accept()</code></td>
-                                <td><code>string $types</code></td>
-                                <td>Set accepted file types (e.g., 'image/*', '.pdf')</td>
-                            </tr>
-                            <tr>
-                                <td><code>multiple()</code></td>
-                                <td>-</td>
-                                <td>Allow multiple file selection</td>
-                            </tr>
-                            <tr>
-                                <td><code>buttonText()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set button text (default: 'Browse')</td>
-                            </tr>
-                            <tr>
-                                <td><code>icon()</code></td>
-                                <td><code>string $icon</code></td>
-                                <td>Set Material icon name</td>
-                            </tr>
-                            <tr>
-                                <td><code>size()</code></td>
-                                <td><code>string $size</code></td>
-                                <td>Set size: 'sm' or 'lg'</td>
-                            </tr>
-                            <tr>
-                                <td><code>required()</code></td>
-                                <td>-</td>
-                                <td>Mark as required</td>
-                            </tr>
-                            <tr>
-                                <td><code>disabled()</code></td>
-                                <td>-</td>
-                                <td>Disable the file input</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\FileInput</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::file(string $name)</code></td>
+                                        <td>Create file input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">File Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>accept(string $types)</code></td>
+                                        <td>Set accepted MIME types or extensions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>images()</code></td>
+                                        <td>Accept only images (image/*)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pdf()</code></td>
+                                        <td>Accept only PDF files</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>documents()</code></td>
+                                        <td>Accept common document types</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>videos()</code></td>
+                                        <td>Accept only videos (video/*)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>audio()</code></td>
+                                        <td>Accept only audio (audio/*)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">File Selection Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>multiple(bool $val = true)</code></td>
+                                        <td>Enable multiple file selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxSize(int $bytes)</code></td>
+                                        <td>Maximum file size in bytes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxSizeMB(int $mb)</code></td>
+                                        <td>Maximum file size in megabytes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Camera Capture Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>capture(string $type = 'user')</code></td>
+                                        <td>Enable camera capture (mobile)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>frontCamera()</code></td>
+                                        <td>Use front camera</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>backCamera()</code></td>
+                                        <td>Use rear camera</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>preview(bool $val = true)</code></td>
+                                        <td>Enable file preview</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>dropzone(bool $val = true)</code></td>
+                                        <td>Render as drag-drop zone</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.file()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.file(name)</code></td>
+                                        <td>Create file input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">File Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>accept(types)</code></td>
+                                        <td>Set accepted MIME types or extensions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>images()</code></td>
+                                        <td>Accept only images</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pdf()</code></td>
+                                        <td>Accept only PDF files</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>documents()</code></td>
+                                        <td>Accept common document types</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>videos()</code></td>
+                                        <td>Accept only videos</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>audio()</code></td>
+                                        <td>Accept only audio</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">File Selection Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>multiple(val = true)</code></td>
+                                        <td>Enable multiple file selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxSize(bytes)</code></td>
+                                        <td>Maximum file size in bytes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxSizeMB(mb)</code></td>
+                                        <td>Maximum file size in megabytes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Camera Capture Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>capture(type = 'user')</code></td>
+                                        <td>Enable camera capture</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>frontCamera()</code></td>
+                                        <td>Use front camera</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>backCamera()</code></td>
+                                        <td>Use rear camera</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>preview(val = true)</code></td>
+                                        <td>Enable file preview</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>dropzone(val = true)</code></td>
+                                        <td>Render as drag-drop zone</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Runtime Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>getFiles()</code></td>
+                                        <td>Get FileList from input element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>getValue()</code></td>
+                                        <td>Get file names (string or array)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <h4 class="so-mt-4">CSS Classes</h4>

@@ -886,96 +886,470 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>min()</code></td>
-                                <td><code>number $min</code></td>
-                                <td>Set minimum value</td>
-                            </tr>
-                            <tr>
-                                <td><code>max()</code></td>
-                                <td><code>number $max</code></td>
-                                <td>Set maximum value</td>
-                            </tr>
-                            <tr>
-                                <td><code>step()</code></td>
-                                <td><code>number $step</code></td>
-                                <td>Set step increment</td>
-                            </tr>
-                            <tr>
-                                <td><code>value()</code></td>
-                                <td><code>number $value</code></td>
-                                <td>Set current value</td>
-                            </tr>
-                            <tr>
-                                <td><code>color()</code></td>
-                                <td><code>string $color</code></td>
-                                <td>Set slider color (primary, secondary, success, danger, warning, info)</td>
-                            </tr>
-                            <tr>
-                                <td><code>size()</code></td>
-                                <td><code>string $size</code></td>
-                                <td>Set slider size (xs, sm, lg)</td>
-                            </tr>
-                            <tr>
-                                <td><code>vertical()</code></td>
-                                <td>-</td>
-                                <td>Make slider vertical orientation</td>
-                            </tr>
-                            <tr>
-                                <td><code>tooltip()</code></td>
-                                <td>-</td>
-                                <td>Show tooltip on hover/drag</td>
-                            </tr>
-                            <tr>
-                                <td><code>discrete()</code></td>
-                                <td>-</td>
-                                <td>Enable discrete mode with tick marks</td>
-                            </tr>
-                            <tr>
-                                <td><code>ticks()</code></td>
-                                <td><code>int $count</code></td>
-                                <td>Number of tick marks to display</td>
-                            </tr>
-                            <tr>
-                                <td><code>output()</code></td>
-                                <td><code>string $selector</code></td>
-                                <td>CSS selector for external value display</td>
-                            </tr>
-                            <tr>
-                                <td><code>prefix()</code></td>
-                                <td><code>string $prefix</code></td>
-                                <td>Add prefix to value display</td>
-                            </tr>
-                            <tr>
-                                <td><code>suffix()</code></td>
-                                <td><code>string $suffix</code></td>
-                                <td>Add suffix to value display</td>
-                            </tr>
-                            <tr>
-                                <td><code>disabled()</code></td>
-                                <td>-</td>
-                                <td>Disable the slider</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Slider</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::slider(string $name)</code></td>
+                                        <td>Create slider with name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine::rangeSlider(string $name)</code></td>
+                                        <td>Create dual-thumb range slider</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Range Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>min(int|float $min)</code></td>
+                                        <td>Set minimum value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>max(int|float $max)</code></td>
+                                        <td>Set maximum value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>step(int|float $step)</code></td>
+                                        <td>Set step increment</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(int|float $value)</code></td>
+                                        <td>Set current value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>values(array $values)</code></td>
+                                        <td>Set [min, max] values for range slider</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>tooltip()</code></td>
+                                        <td>Show tooltip on hover/drag</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>discrete()</code></td>
+                                        <td>Enable discrete mode with tick marks</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>ticks(int $count)</code></td>
+                                        <td>Number of tick marks to display</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>labels(array $labels)</code></td>
+                                        <td>Labels displayed below the slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>output(string $selector)</code></td>
+                                        <td>CSS selector for external value display</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>prefix(string $prefix)</code></td>
+                                        <td>Add prefix to value display (e.g., '$')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>suffix(string $suffix)</code></td>
+                                        <td>Add suffix to value display (e.g., '%')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>separator(string $sep)</code></td>
+                                        <td>Separator for range display (default: ' - ')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>vertical()</code></td>
+                                        <td>Vertical orientation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Variant Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>color(string $color)</code></td>
+                                        <td>Set color (primary, secondary, success, danger, warning, info)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>size(string $size)</code></td>
+                                        <td>Set size (xs, sm, lg)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(string $id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render slider HTML</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with wrapper and label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderInline()</code></td>
+                                        <td>Render inline with external value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.slider()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.slider(name)</code></td>
+                                        <td>Create slider with name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UiEngine.rangeSlider(name)</code></td>
+                                        <td>Create dual-thumb range slider</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Range Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>min(min)</code></td>
+                                        <td>Set minimum value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>max(max)</code></td>
+                                        <td>Set maximum value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>step(step)</code></td>
+                                        <td>Set step increment</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set current value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>values([min, max])</code></td>
+                                        <td>Set values for range slider</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>tooltip()</code></td>
+                                        <td>Show tooltip on hover/drag</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>discrete()</code></td>
+                                        <td>Enable discrete mode with tick marks</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>ticks(count)</code></td>
+                                        <td>Number of tick marks to display</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>labels(labelsArray)</code></td>
+                                        <td>Labels displayed below the slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>output(selector)</code></td>
+                                        <td>CSS selector for external value display</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>prefix(prefix)</code></td>
+                                        <td>Add prefix to value display</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>suffix(suffix)</code></td>
+                                        <td>Add suffix to value display</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>separator(sep)</code></td>
+                                        <td>Separator for range display</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>vertical()</code></td>
+                                        <td>Vertical orientation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Variant Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>color(color)</code></td>
+                                        <td>Set color variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>size(size)</code></td>
+                                        <td>Set size variant</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set label text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled()</code></td>
+                                        <td>Disable the slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toConfig()</code></td>
+                                        <td>Export configuration object</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Runtime Methods (SOSlider)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>SOSlider.getInstance(el)</code></td>
+                                        <td>Get SOSlider instance from element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>getValue()</code></td>
+                                        <td>Get current value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setValue(value)</code></td>
+                                        <td>Set slider value programmatically</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>enable()</code></td>
+                                        <td>Enable the slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disable()</code></td>
+                                        <td>Disable the slider</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>on(event, callback)</code></td>
+                                        <td>Subscribe to slider events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>destroy()</code></td>
+                                        <td>Destroy the slider instance</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Runtime Methods (SORangeSlider)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>SORangeSlider.getInstance(el)</code></td>
+                                        <td>Get SORangeSlider instance</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>getValues()</code></td>
+                                        <td>Get {min, max} values</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setValues(min, max)</code></td>
+                                        <td>Set both min and max values</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Events</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Event</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>so:slider:input</code></td>
+                                        <td>Fires during drag (value, percentage)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:slider:change</code></td>
+                                        <td>Fires on value change (value, percentage, oldValue)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:slider:start</code></td>
+                                        <td>Fires when drag starts</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>so:slider:end</code></td>
+                                        <td>Fires when drag ends</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <h5 class="so-mt-6 so-mb-3">CSS Classes Reference</h5>
                 <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
+                    <table class="so-table so-table-bordered so-table-sm">
                         <thead class="so-table-light">
                             <tr>
-                                <th>Class</th>
+                                <th style="width:40%">Class</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
@@ -1005,20 +1379,12 @@ document.getElementById('container').innerHTML = slider.toHtml();"
                                 <td>Tooltip inside thumb</td>
                             </tr>
                             <tr>
-                                <td><code>.so-slider-xs</code></td>
-                                <td>Extra small size variant</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-slider-sm</code></td>
-                                <td>Small size variant</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-slider-lg</code></td>
-                                <td>Large size variant</td>
+                                <td><code>.so-slider-{size}</code></td>
+                                <td>Size variants (xs, sm, lg)</td>
                             </tr>
                             <tr>
                                 <td><code>.so-slider-{color}</code></td>
-                                <td>Color variants (primary, secondary, success, danger, warning, info, light, dark)</td>
+                                <td>Color variants (primary, secondary, success, danger, warning, info)</td>
                             </tr>
                             <tr>
                                 <td><code>.so-slider-discrete</code></td>

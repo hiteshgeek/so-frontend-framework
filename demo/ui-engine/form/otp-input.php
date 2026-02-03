@@ -464,122 +464,492 @@ otp.element.addEventListener('otp:complete', (e) => {
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>length()</code></td>
-                                <td><code>int $length</code></td>
-                                <td>Set number of digits (default: 6)</td>
-                            </tr>
-                            <tr>
-                                <td><code>size()</code></td>
-                                <td><code>string $size</code></td>
-                                <td>Set size: 'sm' or 'lg'</td>
-                            </tr>
-                            <tr>
-                                <td><code>autoFocus()</code></td>
-                                <td>-</td>
-                                <td>Auto-focus first input on load</td>
-                            </tr>
-                            <tr>
-                                <td><code>onComplete()</code></td>
-                                <td><code>callable $callback</code></td>
-                                <td>Callback when all digits entered</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
                 </div>
 
-                <h4 class="so-mt-4">CSS Classes</h4>
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Class</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>.so-otp-group</code></td>
-                                <td>Main OTP container</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-otp-group-sm</code></td>
-                                <td>Small size variant</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-otp-group-lg</code></td>
-                                <td>Large size variant</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-otp-inputs</code></td>
-                                <td>Container for input elements</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-otp-input</code></td>
-                                <td>Individual digit input</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\OtpInput</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
 
-                <h4 class="so-mt-4">JavaScript Methods</h4>
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Returns</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>getValue()</code></td>
-                                <td>string</td>
-                                <td>Returns the combined OTP value</td>
-                            </tr>
-                            <tr>
-                                <td><code>setValue(value)</code></td>
-                                <td>this</td>
-                                <td>Sets the OTP value and updates UI</td>
-                            </tr>
-                            <tr>
-                                <td><code>clear()</code></td>
-                                <td>this</td>
-                                <td>Clears all inputs</td>
-                            </tr>
-                            <tr>
-                                <td><code>focus()</code></td>
-                                <td>this</td>
-                                <td>Focuses on first empty input</td>
-                            </tr>
-                            <tr>
-                                <td><code>setError(hasError)</code></td>
-                                <td>this</td>
-                                <td>Sets or removes error state</td>
-                            </tr>
-                            <tr>
-                                <td><code>isComplete()</code></td>
-                                <td>boolean</td>
-                                <td>Returns true if all inputs filled</td>
-                            </tr>
-                            <tr>
-                                <td><code>validate(expected)</code></td>
-                                <td>boolean</td>
-                                <td>Validates OTP against expected value</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::otp(string $name)</code></td>
+                                        <td>Create OTP input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Length Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>length(int $length)</code></td>
+                                        <td>Set number of digits (default: 6)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pin4()</code></td>
+                                        <td>Set to 4-digit code</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pin6()</code></td>
+                                        <td>Set to 6-digit code</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Input Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inputType(string $type)</code></td>
+                                        <td>Set input type (text, number, password)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>numeric()</code></td>
+                                        <td>Numbers only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>alphanumeric()</code></td>
+                                        <td>Letters and numbers</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>password()</code></td>
+                                        <td>Show as password (masked)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>masked(bool $val = true)</code></td>
+                                        <td>Mask input (show dots)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Behavior Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>autoSubmit(bool $val = true)</code></td>
+                                        <td>Auto-submit form when complete</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autoFocus(bool $val = true)</code></td>
+                                        <td>Auto-focus first input on load</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>allowPaste(bool $val = true)</code></td>
+                                        <td>Allow paste from clipboard</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>groupSize(int $size)</code></td>
+                                        <td>Set group size for visual separation</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>grouped()</code></td>
+                                        <td>Group as XXX-XXX (size 3)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Variant Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>variant(string $variant)</code></td>
+                                        <td>Set style variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>outline()</code></td>
+                                        <td>Outline style</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>filled()</code></td>
+                                        <td>Filled style</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>underline()</code></td>
+                                        <td>Underline style</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(mixed $value)</code></td>
+                                        <td>Set initial OTP value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set input label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(bool $val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(bool $val = true)</code></td>
+                                        <td>Disable input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly(bool $val = true)</code></td>
+                                        <td>Make read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(string $message)</code></td>
+                                        <td>Set error message</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>help(string $text)</code></td>
+                                        <td>Add help text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render OTP element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with label, help, error</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.otp()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.otp(name)</code></td>
+                                        <td>Create OTP input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Length Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>length(len)</code></td>
+                                        <td>Set number of digits</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pin4()</code></td>
+                                        <td>Set to 4-digit code</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pin6()</code></td>
+                                        <td>Set to 6-digit code</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Input Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inputType(type)</code></td>
+                                        <td>Set input type</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>numeric()</code></td>
+                                        <td>Numbers only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>alphanumeric()</code></td>
+                                        <td>Letters and numbers</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>password()</code></td>
+                                        <td>Show as password</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>masked(val = true)</code></td>
+                                        <td>Mask input</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Behavior Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>autoSubmit(val = true)</code></td>
+                                        <td>Auto-submit when complete</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autoFocus(val = true)</code></td>
+                                        <td>Auto-focus first input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>allowPaste(val = true)</code></td>
+                                        <td>Allow paste from clipboard</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>groupSize(size)</code></td>
+                                        <td>Set group size</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>grouped()</code></td>
+                                        <td>Group as XXX-XXX</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Variant Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>variant(v)</code></td>
+                                        <td>Set style variant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>outline()</code></td>
+                                        <td>Outline style</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>filled()</code></td>
+                                        <td>Filled style</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>underline()</code></td>
+                                        <td>Underline style</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set initial OTP value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set input label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(val = true)</code></td>
+                                        <td>Disable input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly(val = true)</code></td>
+                                        <td>Make read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(message)</code></td>
+                                        <td>Set error message</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>help(text)</code></td>
+                                        <td>Add help text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(className)</code></td>
+                                        <td>Add CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with label, help, error</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Runtime Instance Methods (SOOtpInput)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>getValue()</code></td>
+                                        <td>Returns combined OTP value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setValue(value)</code></td>
+                                        <td>Sets OTP value and updates UI</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>clear()</code></td>
+                                        <td>Clears all inputs</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>focus()</code></td>
+                                        <td>Focuses on first empty input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setError(hasError)</code></td>
+                                        <td>Sets or removes error state</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>isComplete()</code></td>
+                                        <td>Returns true if all inputs filled</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>validate(expected)</code></td>
+                                        <td>Validates OTP against expected value</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Events</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Event</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>otp:change</code></td>
+                                        <td>Fired on value change (detail: {value, index})</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>otp:complete</code></td>
+                                        <td>Fired when all digits entered (detail: {value})</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

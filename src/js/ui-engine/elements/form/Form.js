@@ -28,10 +28,13 @@ class Form extends ContainerElement {
 
         this._action = config.action || '';
         this._method = config.method || 'POST';
+        this._methodOverride = null;
         this._enctype = config.enctype || null;
         this._target = config.target || null;
         this._novalidate = config.novalidate || false;
         this._autocomplete = config.autocomplete || null;
+        this._ajax = config.ajax || false;
+        this._showLoading = config.showLoading !== false;
 
         // Events
         this._onSubmit = config.onSubmit || null;
@@ -43,43 +46,61 @@ class Form extends ContainerElement {
 
     /**
      * Set form action
-     * @param {string} action
+     * @param {string} url
      * @returns {this}
      */
-    setAction(action) {
-        this._action = action;
+    action(url) {
+        this._action = url;
         return this;
     }
 
     /**
      * Set form method
-     * @param {string} method
+     * @param {string} method - GET|POST|PUT|PATCH|DELETE
      * @returns {this}
      */
-    setMethod(method) {
-        this._method = method.toUpperCase();
+    method(method) {
+        method = method.toUpperCase();
+
+        // HTML forms only support GET and POST
+        if (['PUT', 'PATCH', 'DELETE'].includes(method)) {
+            this._method = 'POST';
+            this._methodOverride = method;
+        } else {
+            this._method = method;
+            this._methodOverride = null;
+        }
         return this;
     }
 
     /** GET method */
-    get() { return this.setMethod('GET'); }
+    get() { return this.method('GET'); }
 
     /** POST method */
-    post() { return this.setMethod('POST'); }
+    post() { return this.method('POST'); }
+
+    /** PUT method (uses method override) */
+    put() { return this.method('PUT'); }
+
+    /** PATCH method (uses method override) */
+    patch() { return this.method('PATCH'); }
+
+    /** DELETE method (uses method override) */
+    delete() { return this.method('DELETE'); }
 
     /**
      * Set enctype
-     * @param {string} enctype
+     * @param {string} type
      * @returns {this}
      */
-    setEnctype(enctype) {
-        this._enctype = enctype;
+    enctype(type) {
+        this._enctype = type;
         return this;
     }
 
     /** Multipart form data */
     multipart() {
-        return this.setEnctype('multipart/form-data');
+        return this.enctype('multipart/form-data');
     }
 
     /**
@@ -87,28 +108,58 @@ class Form extends ContainerElement {
      * @param {string} target
      * @returns {this}
      */
-    setTarget(target) {
+    target(target) {
         this._target = target;
         return this;
     }
 
+    /** Open in new tab */
+    newTab() {
+        return this.target('_blank');
+    }
+
     /**
      * Disable HTML5 validation
-     * @param {boolean} novalidate
+     * @param {boolean} val
      * @returns {this}
      */
-    setNovalidate(novalidate = true) {
-        this._novalidate = novalidate;
+    novalidate(val = true) {
+        this._novalidate = val;
         return this;
     }
 
     /**
      * Set autocomplete
-     * @param {string} autocomplete
+     * @param {string} autocomplete - on|off
      * @returns {this}
      */
-    setAutocomplete(autocomplete) {
+    autocomplete(autocomplete) {
         this._autocomplete = autocomplete;
+        return this;
+    }
+
+    /** Disable autocomplete */
+    noAutocomplete() {
+        return this.autocomplete('off');
+    }
+
+    /**
+     * Enable AJAX submission
+     * @param {boolean} val
+     * @returns {this}
+     */
+    ajax(val = true) {
+        this._ajax = val;
+        return this;
+    }
+
+    /**
+     * Set loading state behavior
+     * @param {boolean} val
+     * @returns {this}
+     */
+    showLoading(val = true) {
+        this._showLoading = val;
         return this;
     }
 
@@ -147,8 +198,28 @@ class Form extends ContainerElement {
         if (this._target) attrs.target = this._target;
         if (this._novalidate) attrs.novalidate = true;
         if (this._autocomplete) attrs.autocomplete = this._autocomplete;
+        if (this._ajax) attrs[SixOrbit.data('ajax')] = 'true';
+        if (!this._showLoading) attrs[SixOrbit.data('no-loading')] = 'true';
 
         return attrs;
+    }
+
+    /**
+     * Render content including hidden fields
+     * @returns {string}
+     */
+    renderContent() {
+        let html = '';
+
+        // Method override hidden field for PUT/PATCH/DELETE
+        if (this._methodOverride) {
+            html += `<input type="hidden" name="_method" value="${this._escapeHtml(this._methodOverride)}">`;
+        }
+
+        // Render children
+        html += super.renderContent();
+
+        return html;
     }
 
     /**
@@ -306,11 +377,13 @@ class Form extends ContainerElement {
         const config = super.toConfig();
 
         if (this._action) config.action = this._action;
-        if (this._method !== 'POST') config.method = this._method;
+        config.method = this._methodOverride || this._method;
         if (this._enctype) config.enctype = this._enctype;
         if (this._target) config.target = this._target;
         if (this._novalidate) config.novalidate = true;
         if (this._autocomplete) config.autocomplete = this._autocomplete;
+        if (this._ajax) config.ajax = true;
+        if (!this._showLoading) config.showLoading = false;
 
         return config;
     }

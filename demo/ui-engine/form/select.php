@@ -898,162 +898,360 @@ select.clear();"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <h4>UiEngine Methods</h4>
-                <div class="so-table-responsive so-mb-4">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>options()</code></td>
-                                <td><code>array $options</code></td>
-                                <td>Set select options as key-value pairs</td>
-                            </tr>
-                            <tr>
-                                <td><code>optionGroups()</code></td>
-                                <td><code>array $groups</code></td>
-                                <td>Set options with optgroup labels</td>
-                            </tr>
-                            <tr>
-                                <td><code>enhanced()</code></td>
-                                <td>-</td>
-                                <td>Enable JS-powered enhanced select</td>
-                            </tr>
-                            <tr>
-                                <td><code>multiple()</code></td>
-                                <td>-</td>
-                                <td>Enable multiple selection</td>
-                            </tr>
-                            <tr>
-                                <td><code>searchable()</code></td>
-                                <td>-</td>
-                                <td>Enable search/filter functionality</td>
-                            </tr>
-                            <tr>
-                                <td><code>clearable()</code></td>
-                                <td>-</td>
-                                <td>Add clear button to reset selection</td>
-                            </tr>
-                            <tr>
-                                <td><code>selectionStyle()</code></td>
-                                <td><code>string $style</code></td>
-                                <td>Set style: 'icon-bg', 'icon', 'bg', 'radio', 'checkbox'</td>
-                            </tr>
-                            <tr>
-                                <td><code>displayMode()</code></td>
-                                <td><code>string $mode</code></td>
-                                <td>Multiple display: 'text', 'chips', 'chips-overflow'</td>
-                            </tr>
-                            <tr>
-                                <td><code>showActions()</code></td>
-                                <td>-</td>
-                                <td>Show Select All / None buttons (multiple)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
                 </div>
 
-                <h4>CSS Classes</h4>
-                <div class="so-table-responsive so-mb-4">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Class</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>.so-select</code></td>
-                                <td>Main enhanced select container</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-trigger</code></td>
-                                <td>Clickable trigger area</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-dropdown</code></td>
-                                <td>Dropdown panel container</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-options</code></td>
-                                <td>Options list container</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-option</code></td>
-                                <td>Individual option item</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-group</code></td>
-                                <td>Option group container</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-group-label</code></td>
-                                <td>Group label text</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-sm</code></td>
-                                <td>Small size variant</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-select-lg</code></td>
-                                <td>Large size variant</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-selected</code></td>
-                                <td>Selected option state</td>
-                            </tr>
-                            <tr>
-                                <td><code>.so-disabled</code></td>
-                                <td>Disabled option state</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Select</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
 
-                <h4>JavaScript Events</h4>
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Event</th>
-                                <th>Detail</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>select:change</code></td>
-                                <td><code>{ value, values, text, texts }</code></td>
-                                <td>Fired when selection changes</td>
-                            </tr>
-                            <tr>
-                                <td><code>select:open</code></td>
-                                <td>-</td>
-                                <td>Fired when dropdown opens</td>
-                            </tr>
-                            <tr>
-                                <td><code>select:close</code></td>
-                                <td>-</td>
-                                <td>Fired when dropdown closes</td>
-                            </tr>
-                            <tr>
-                                <td><code>select:search</code></td>
-                                <td><code>{ query }</code></td>
-                                <td>Fired when search input changes</td>
-                            </tr>
-                            <tr>
-                                <td><code>select:clear</code></td>
-                                <td><code>{ previousValues }</code></td>
-                                <td>Fired when selection is cleared</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::select(string $name)</code></td>
+                                        <td>Create select dropdown with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Options Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>options(array $options)</code></td>
+                                        <td>Set select options</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>option(mixed $value, string $label, bool $disabled = false)</code></td>
+                                        <td>Add single option</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>optgroup(string $label, array $options)</code></td>
+                                        <td>Add option group</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>emptyOption(string $text, string $value = '')</code></td>
+                                        <td>Add placeholder option</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Behavior Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>multiple(bool $val = true)</code></td>
+                                        <td>Enable multiple selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>visibleSize(int $size)</code></td>
+                                        <td>Set visible options count</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>searchable(bool $val = true)</code></td>
+                                        <td>Enable search/filter (JS enhancement)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(mixed $value)</code></td>
+                                        <td>Set selected value(s)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(bool $val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(bool $val = true)</code></td>
+                                        <td>Disable select</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>help(string $text)</code></td>
+                                        <td>Add help text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(string $message)</code></td>
+                                        <td>Set error message</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render select element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with label, help, error</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.select()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.select(name)</code></td>
+                                        <td>Create select dropdown with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Options Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>options(opts)</code></td>
+                                        <td>Set select options</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>option(value, label, disabled = false)</code></td>
+                                        <td>Add single option</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>optgroup(label, opts)</code></td>
+                                        <td>Add option group</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>emptyOption(text, value = '')</code></td>
+                                        <td>Add placeholder option</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Behavior Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>multiple(val = true)</code></td>
+                                        <td>Enable multiple selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>visibleSize(size)</code></td>
+                                        <td>Set visible options count</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>searchable(val = true)</code></td>
+                                        <td>Enable search/filter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (from FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set selected value(s)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(val = true)</code></td>
+                                        <td>Disable select</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(className)</code></td>
+                                        <td>Add CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set custom attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data-* attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with label, help, error</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">SOSelect Runtime Instance Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>getValue()</code></td>
+                                        <td>Get current value(s)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>setValue(value)</code></td>
+                                        <td>Set selected value(s)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addValue(value)</code></td>
+                                        <td>Add to selection (multiple)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>removeValue(value)</code></td>
+                                        <td>Remove from selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>selectAll()</code></td>
+                                        <td>Select all options</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>selectNone()</code></td>
+                                        <td>Deselect all options</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>clear()</code></td>
+                                        <td>Clear selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>open()</code></td>
+                                        <td>Open dropdown</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>close()</code></td>
+                                        <td>Close dropdown</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Events</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Event</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>select:change</code></td>
+                                        <td>Fired when selection changes (detail: {value, values, text, texts})</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>select:open</code></td>
+                                        <td>Fired when dropdown opens</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>select:close</code></td>
+                                        <td>Fired when dropdown closes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>select:search</code></td>
+                                        <td>Fired on search (detail: {query})</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>select:clear</code></td>
+                                        <td>Fired when cleared (detail: {previousValues})</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

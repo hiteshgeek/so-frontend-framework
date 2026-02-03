@@ -263,48 +263,346 @@ document.getElementById('container').innerHTML = color.toHtml();"
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>value()</code></td>
-                                <td><code>string $color</code></td>
-                                <td>Set the color value</td>
-                            </tr>
-                            <tr>
-                                <td><code>format()</code></td>
-                                <td><code>string $format</code></td>
-                                <td>Set format: 'hex', 'rgb', 'rgba', 'hsl', 'hsla'</td>
-                            </tr>
-                            <tr>
-                                <td><code>presets()</code></td>
-                                <td><code>array $colors</code></td>
-                                <td>Set preset color swatches</td>
-                            </tr>
-                            <tr>
-                                <td><code>alpha()</code></td>
-                                <td>-</td>
-                                <td>Enable alpha channel</td>
-                            </tr>
-                            <tr>
-                                <td><code>showInput()</code></td>
-                                <td>-</td>
-                                <td>Show text input for manual entry</td>
-                            </tr>
-                            <tr>
-                                <td><code>onChange()</code></td>
-                                <td><code>callable $callback</code></td>
-                                <td>Color change callback (JS only)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\ColorInput</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::color(string $name)</code></td>
+                                        <td>Create color input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Color Input Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:35%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>presets(array $colors)</code></td>
+                                        <td>Set preset color swatches</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addPreset(string $color)</code></td>
+                                        <td>Add a single preset color</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>bootstrapPresets()</code></td>
+                                        <td>Use Bootstrap default color palette</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showInput(bool $show = true)</code></td>
+                                        <td>Show text input for manual entry</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hideInput()</code></td>
+                                        <td>Hide text input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>format(string $format)</code></td>
+                                        <td>Set format: 'hex', 'rgb', 'hsl'</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hex()</code></td>
+                                        <td>Shortcut for format('hex')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>rgb()</code></td>
+                                        <td>Shortcut for format('rgb')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hsl()</code></td>
+                                        <td>Shortcut for format('hsl')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>alpha(bool $alpha = true)</code></td>
+                                        <td>Enable alpha/opacity channel</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:35%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(string $name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(mixed $value)</code></td>
+                                        <td>Set color value (e.g., '#3b82f6')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(string $label)</code></td>
+                                        <td>Set form label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(string $text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(bool $val = true)</code></td>
+                                        <td>Disable the input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly(bool $val = true)</code></td>
+                                        <td>Make input read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(bool $val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>helpText(string $text)</code></td>
+                                        <td>Add help text below input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(string $message)</code></td>
+                                        <td>Set validation error message</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Rendering Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:35%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render input HTML only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>renderGroup()</code></td>
+                                        <td>Render with label, help text, errors</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toArray()</code></td>
+                                        <td>Export configuration array</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.color()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.color(name)</code></td>
+                                        <td>Create color input with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Color Input Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:35%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>presets(colors)</code></td>
+                                        <td>Set preset color swatches array</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addPreset(color)</code></td>
+                                        <td>Add a single preset color</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>bootstrapPresets()</code></td>
+                                        <td>Use Bootstrap default color palette</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showInput(show = true)</code></td>
+                                        <td>Show text input for manual entry</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hideInput()</code></td>
+                                        <td>Hide text input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>format(fmt)</code></td>
+                                        <td>Set format: 'hex', 'rgb', 'hsl'</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hex()</code></td>
+                                        <td>Shortcut for format('hex')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>rgb()</code></td>
+                                        <td>Shortcut for format('rgb')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hsl()</code></td>
+                                        <td>Shortcut for format('hsl')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>alpha(val = true)</code></td>
+                                        <td>Enable alpha/opacity channel</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Inherited Methods (FormElement)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:35%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>name(name)</code></td>
+                                        <td>Set input name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value(value)</code></td>
+                                        <td>Set color value</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>label(label)</code></td>
+                                        <td>Set form label</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder(text)</code></td>
+                                        <td>Set placeholder text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled(val = true)</code></td>
+                                        <td>Disable the input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly(val = true)</code></td>
+                                        <td>Make input read-only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>required(val = true)</code></td>
+                                        <td>Mark as required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>helpText(text)</code></td>
+                                        <td>Add help text below input</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>error(message)</code></td>
+                                        <td>Set validation error message</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Rendering Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:35%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toConfig()</code></td>
+                                        <td>Export configuration object</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Element Methods (Base)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:35%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(className)</code></td>
+                                        <td>Add CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>removeClass(className)</code></td>
+                                        <td>Remove CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>on(event, handler)</code></td>
+                                        <td>Attach event handler</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

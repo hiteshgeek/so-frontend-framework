@@ -29,6 +29,9 @@ class FileInput extends FormElement {
         this._accept = config.accept || null;
         this._multiple = config.multiple || false;
         this._capture = config.capture || null;
+        this._maxSize = config.maxSize || null;
+        this._preview = config.preview || false;
+        this._dropzone = config.dropzone || false;
     }
 
     // ==================
@@ -40,7 +43,7 @@ class FileInput extends FormElement {
      * @param {string} accept - MIME types or extensions
      * @returns {this}
      */
-    setAccept(accept) {
+    accept(accept) {
         this._accept = accept;
         return this;
     }
@@ -50,7 +53,7 @@ class FileInput extends FormElement {
      * @returns {this}
      */
     images() {
-        return this.setAccept('image/*');
+        return this.accept('image/*');
     }
 
     /**
@@ -58,7 +61,7 @@ class FileInput extends FormElement {
      * @returns {this}
      */
     videos() {
-        return this.setAccept('video/*');
+        return this.accept('video/*');
     }
 
     /**
@@ -66,34 +69,61 @@ class FileInput extends FormElement {
      * @returns {this}
      */
     audio() {
-        return this.setAccept('audio/*');
+        return this.accept('audio/*');
     }
 
     /**
      * Accept PDFs
      * @returns {this}
      */
-    pdfs() {
-        return this.setAccept('application/pdf');
+    pdf() {
+        return this.accept('application/pdf,.pdf');
+    }
+
+    /**
+     * Accept documents
+     * @returns {this}
+     */
+    documents() {
+        return this.accept('.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt');
     }
 
     /**
      * Set multiple files
-     * @param {boolean} multiple
+     * @param {boolean} val
      * @returns {this}
      */
-    setMultiple(multiple = true) {
-        this._multiple = multiple;
+    multiple(val = true) {
+        this._multiple = val;
         return this;
     }
 
     /**
-     * Set capture mode (camera, microphone)
-     * @param {string} capture - user, environment
+     * Set maximum file size in bytes
+     * @param {number} bytes
      * @returns {this}
      */
-    setCapture(capture) {
-        this._capture = capture;
+    maxSize(bytes) {
+        this._maxSize = bytes;
+        return this;
+    }
+
+    /**
+     * Set maximum file size in megabytes
+     * @param {number} mb
+     * @returns {this}
+     */
+    maxSizeMB(mb) {
+        return this.maxSize(mb * 1024 * 1024);
+    }
+
+    /**
+     * Set capture mode (camera, microphone)
+     * @param {string} type - user, environment
+     * @returns {this}
+     */
+    capture(type = 'user') {
+        this._capture = type;
         return this;
     }
 
@@ -102,7 +132,7 @@ class FileInput extends FormElement {
      * @returns {this}
      */
     frontCamera() {
-        return this.setCapture('user');
+        return this.capture('user');
     }
 
     /**
@@ -110,7 +140,27 @@ class FileInput extends FormElement {
      * @returns {this}
      */
     backCamera() {
-        return this.setCapture('environment');
+        return this.capture('environment');
+    }
+
+    /**
+     * Enable file preview
+     * @param {boolean} val
+     * @returns {this}
+     */
+    preview(val = true) {
+        this._preview = val;
+        return this;
+    }
+
+    /**
+     * Enable drag and drop zone
+     * @param {boolean} val
+     * @returns {this}
+     */
+    dropzone(val = true) {
+        this._dropzone = val;
+        return this;
     }
 
     // ==================
@@ -137,6 +187,9 @@ class FileInput extends FormElement {
         if (this._accept) attrs.accept = this._accept;
         if (this._multiple) attrs.multiple = true;
         if (this._capture) attrs.capture = this._capture;
+        if (this._maxSize) attrs[SixOrbit.data('max-size')] = this._maxSize;
+        if (this._preview) attrs[SixOrbit.data('preview')] = 'true';
+        if (this._dropzone) attrs[SixOrbit.data('dropzone')] = 'true';
 
         // Remove value (not applicable for file inputs)
         delete attrs.value;
@@ -197,6 +250,9 @@ class FileInput extends FormElement {
         if (this._accept) config.accept = this._accept;
         if (this._multiple) config.multiple = true;
         if (this._capture) config.capture = this._capture;
+        if (this._maxSize) config.maxSize = this._maxSize;
+        if (this._preview) config.preview = true;
+        if (this._dropzone) config.dropzone = true;
 
         return config;
     }

@@ -56,8 +56,7 @@ use Core\UiEngine\UiEngine;
 
 \$dropzone = UiEngine::dropzone('files')
     ->label('Upload Files')
-    ->message('Drag & drop files here')
-    ->subMessage('or click to browse');
+    ->message('Drag & drop files here or click to upload');
 
 echo \$dropzone->renderGroup();"
                     ],
@@ -67,8 +66,7 @@ echo \$dropzone->renderGroup();"
                         'icon' => 'javascript',
                         'code' => "const dropzone = UiEngine.dropzone('files')
     .label('Upload Files')
-    .message('Drag & drop files here')
-    .subMessage('or click to browse');
+    .message('Drag & drop files here or click to upload');
 
 document.getElementById('container').innerHTML = dropzone.toHtml();"
                     ],
@@ -76,20 +74,13 @@ document.getElementById('container').innerHTML = dropzone.toHtml();"
                         'label' => 'HTML Output',
                         'language' => 'html',
                         'icon' => 'code',
-                        'code' => '<div class="so-form-group">
-    <label class="so-form-label">Upload Files</label>
-    <div class="so-form-file-dropzone">
-        <input type="file" multiple>
-        <div class="so-form-file-dropzone-icon">
-            <span class="material-icons">cloud_upload</span>
-        </div>
-        <div class="so-form-file-dropzone-text">
-            Drag & drop files here, or <span>click to browse</span>
-        </div>
-        <div class="so-form-file-dropzone-hint">
-            Supports all file types
-        </div>
+                        'code' => '<div class="so-dropzone">
+    <div class="so-dropzone-area">
+        <span class="material-icons so-dropzone-icon">cloud_upload</span>
+        <p class="so-dropzone-message">Drag & drop files here or click to upload</p>
+        <input type="file" class="so-dropzone-input" name="files[]" multiple>
     </div>
+    <div class="so-dropzone-preview"></div>
 </div>'
                     ],
                 ]) ?>
@@ -127,12 +118,10 @@ document.getElementById('container').innerHTML = dropzone.toHtml();"
                         'icon' => 'data_object',
                         'code' => "\$dropzone = UiEngine::dropzone('images')
     ->label('Upload Images')
-    ->accept(['image/jpeg', 'image/png', 'image/gif'])
-    ->maxSize(5 * 1024 * 1024)  // 5MB
-    ->message('Click to upload')
-    ->subMessage('or drag and drop')
-    ->hint('Accepts: JPG, PNG, GIF (max 5MB)')
-    ->icon('add_photo_alternate');
+    ->images()  // Shortcut for accept('image/*')
+    ->maxFileSizeMB(5)  // 5MB
+    ->icon('add_photo_alternate')
+    ->message('Click to upload or drag and drop images');
 
 echo \$dropzone->renderGroup();"
                     ],
@@ -142,12 +131,10 @@ echo \$dropzone->renderGroup();"
                         'icon' => 'javascript',
                         'code' => "const dropzone = UiEngine.dropzone('images')
     .label('Upload Images')
-    .accept(['image/jpeg', 'image/png', 'image/gif'])
-    .maxSize(5 * 1024 * 1024)
-    .message('Click to upload')
-    .subMessage('or drag and drop')
-    .hint('Accepts: JPG, PNG, GIF (max 5MB)')
-    .icon('add_photo_alternate');
+    .images()  // Shortcut for accept('image/*')
+    .maxFileSizeMB(5)  // 5MB
+    .icon('add_photo_alternate')
+    .message('Click to upload or drag and drop images');
 
 document.getElementById('container').innerHTML = dropzone.toHtml();"
                     ],
@@ -155,20 +142,13 @@ document.getElementById('container').innerHTML = dropzone.toHtml();"
                         'label' => 'HTML Output',
                         'language' => 'html',
                         'icon' => 'code',
-                        'code' => '<div class="so-form-group">
-    <label class="so-form-label">Upload Images</label>
-    <div class="so-form-file-dropzone">
-        <input type="file" multiple accept="image/jpeg,image/png,image/gif">
-        <div class="so-form-file-dropzone-icon">
-            <span class="material-icons">add_photo_alternate</span>
-        </div>
-        <div class="so-form-file-dropzone-text">
-            <span>Click to upload</span> or drag and drop
-        </div>
-        <div class="so-form-file-dropzone-hint">
-            Accepts: JPG, PNG, GIF (max 5MB)
-        </div>
+                        'code' => '<div class="so-dropzone">
+    <div class="so-dropzone-area">
+        <span class="material-icons so-dropzone-icon">add_photo_alternate</span>
+        <p class="so-dropzone-message">Click to upload or drag and drop images</p>
+        <input type="file" class="so-dropzone-input" name="images[]" accept="image/*" multiple>
     </div>
+    <div class="so-dropzone-preview"></div>
 </div>'
                     ],
                 ]) ?>
@@ -206,12 +186,10 @@ document.getElementById('container').innerHTML = dropzone.toHtml();"
                         'icon' => 'data_object',
                         'code' => "\$dropzone = UiEngine::dropzone('documents')
     ->label('Upload Documents')
-    ->accept(['.pdf', '.doc', '.docx', '.xls', '.xlsx'])
-    ->maxSize(10 * 1024 * 1024)  // 10MB
-    ->message('Drag & drop files here')
-    ->subMessage('or click to browse')
-    ->hint('Supports: PDF, DOC, DOCX, XLS, XLSX (max 10MB)')
-    ->icon('description');
+    ->documents()  // Shortcut for common document types
+    ->maxFileSizeMB(10)  // 10MB
+    ->icon('description')
+    ->message('Drag & drop documents here or click to browse');
 
 echo \$dropzone->renderGroup();"
                     ],
@@ -221,12 +199,10 @@ echo \$dropzone->renderGroup();"
                         'icon' => 'javascript',
                         'code' => "const dropzone = UiEngine.dropzone('documents')
     .label('Upload Documents')
-    .accept(['.pdf', '.doc', '.docx', '.xls', '.xlsx'])
-    .maxSize(10 * 1024 * 1024)
-    .message('Drag & drop files here')
-    .subMessage('or click to browse')
-    .hint('Supports: PDF, DOC, DOCX, XLS, XLSX (max 10MB)')
-    .icon('description');
+    .documents()  // Shortcut for common document types
+    .maxFileSizeMB(10)  // 10MB
+    .icon('description')
+    .message('Drag & drop documents here or click to browse');
 
 document.getElementById('container').innerHTML = dropzone.toHtml();"
                     ],
@@ -234,20 +210,14 @@ document.getElementById('container').innerHTML = dropzone.toHtml();"
                         'label' => 'HTML Output',
                         'language' => 'html',
                         'icon' => 'code',
-                        'code' => '<div class="so-form-group">
-    <label class="so-form-label">Upload Documents</label>
-    <div class="so-form-file-dropzone">
-        <input type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx">
-        <div class="so-form-file-dropzone-icon">
-            <span class="material-icons">description</span>
-        </div>
-        <div class="so-form-file-dropzone-text">
-            Drag & drop files here, or <span>click to browse</span>
-        </div>
-        <div class="so-form-file-dropzone-hint">
-            Supports: PDF, DOC, DOCX, XLS, XLSX (max 10MB)
-        </div>
+                        'code' => '<div class="so-dropzone">
+    <div class="so-dropzone-area">
+        <span class="material-icons so-dropzone-icon">description</span>
+        <p class="so-dropzone-message">Drag & drop documents here or click to browse</p>
+        <input type="file" class="so-dropzone-input" name="documents[]"
+               accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt" multiple>
     </div>
+    <div class="so-dropzone-preview"></div>
 </div>'
                     ],
                 ]) ?>
@@ -285,11 +255,11 @@ document.getElementById('container').innerHTML = dropzone.toHtml();"
                         'icon' => 'data_object',
                         'code' => "\$dropzone = UiEngine::dropzone('avatar')
     ->label('Profile Photo')
-    ->accept('image/*')
-    ->maxSize(2 * 1024 * 1024)  // 2MB
-    ->compact()
+    ->images()  // Accept image/*
+    ->single()  // Only one file
+    ->maxFileSizeMB(2)  // 2MB
     ->icon('account_circle')
-    ->hint('PNG, JPG or GIF (max 2MB)');
+    ->message('Click to upload or drag photo');
 
 echo \$dropzone->renderGroup();"
                     ],
@@ -299,11 +269,11 @@ echo \$dropzone->renderGroup();"
                         'icon' => 'javascript',
                         'code' => "const dropzone = UiEngine.dropzone('avatar')
     .label('Profile Photo')
-    .accept('image/*')
-    .maxSize(2 * 1024 * 1024)
-    .compact()
+    .images()  // Accept image/*
+    .single()  // Only one file
+    .maxFileSizeMB(2)  // 2MB
     .icon('account_circle')
-    .hint('PNG, JPG or GIF (max 2MB)');
+    .message('Click to upload or drag photo');
 
 document.getElementById('container').innerHTML = dropzone.toHtml();"
                     ],
@@ -311,20 +281,13 @@ document.getElementById('container').innerHTML = dropzone.toHtml();"
                         'label' => 'HTML Output',
                         'language' => 'html',
                         'icon' => 'code',
-                        'code' => '<div class="so-form-group">
-    <label class="so-form-label">Profile Photo</label>
-    <div class="so-form-file-dropzone" style="padding: 2rem;">
-        <input type="file" accept="image/*">
-        <div class="so-form-file-dropzone-icon">
-            <span class="material-icons">account_circle</span>
-        </div>
-        <div class="so-form-file-dropzone-text">
-            <span>Click to upload</span> or drag and drop
-        </div>
-        <div class="so-form-file-dropzone-hint">
-            PNG, JPG or GIF (max 2MB)
-        </div>
+                        'code' => '<div class="so-dropzone">
+    <div class="so-dropzone-area">
+        <span class="material-icons so-dropzone-icon">account_circle</span>
+        <p class="so-dropzone-message">Click to upload or drag photo</p>
+        <input type="file" class="so-dropzone-input" name="avatar" accept="image/*">
     </div>
+    <div class="so-dropzone-preview"></div>
 </div>'
                     ],
                 ]) ?>
@@ -435,58 +398,302 @@ function handleFiles(files) {
                 <h3 class="so-card-title">API Reference</h3>
             </div>
             <div class="so-card-body">
-                <div class="so-table-responsive">
-                    <table class="so-table so-table-bordered">
-                        <thead class="so-table-light">
-                            <tr>
-                                <th>Method</th>
-                                <th>Parameters</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>accept()</code></td>
-                                <td><code>string|array $types</code></td>
-                                <td>Set accepted file types (MIME types or extensions)</td>
-                            </tr>
-                            <tr>
-                                <td><code>maxSize()</code></td>
-                                <td><code>int $bytes</code></td>
-                                <td>Maximum file size per file in bytes</td>
-                            </tr>
-                            <tr>
-                                <td><code>multiple()</code></td>
-                                <td>-</td>
-                                <td>Allow multiple file selection</td>
-                            </tr>
-                            <tr>
-                                <td><code>message()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set main message text</td>
-                            </tr>
-                            <tr>
-                                <td><code>subMessage()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set secondary message text</td>
-                            </tr>
-                            <tr>
-                                <td><code>hint()</code></td>
-                                <td><code>string $text</code></td>
-                                <td>Set hint text (file restrictions info)</td>
-                            </tr>
-                            <tr>
-                                <td><code>icon()</code></td>
-                                <td><code>string $icon</code></td>
-                                <td>Set Material icon name</td>
-                            </tr>
-                            <tr>
-                                <td><code>compact()</code></td>
-                                <td>-</td>
-                                <td>Use compact variant with less padding</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- API Tabs -->
+                <div class="so-tabs" role="tablist" data-so-tabs>
+                    <button class="so-tab so-active" role="tab" data-so-target="#api-php">PHP Class</button>
+                    <button class="so-tab" role="tab" data-so-target="#api-js">JS UiEngine</button>
+                </div>
+
+                <div class="so-tab-content">
+                    <!-- PHP Class Reference -->
+                    <div class="so-tab-pane so-fade so-show so-active" id="api-php" role="tabpanel">
+                        <h5 class="so-mt-3">Core\\UiEngine\\Elements\\Form\\Dropzone</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine::dropzone(string $name)</code></td>
+                                        <td>Create dropzone with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">File Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>accept(string $types)</code></td>
+                                        <td>Set accepted MIME types or extensions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>images()</code></td>
+                                        <td>Shortcut for accept('image/*')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>documents()</code></td>
+                                        <td>Accept common document types (PDF, DOC, XLS, etc.)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>videos()</code></td>
+                                        <td>Shortcut for accept('video/*')</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Size & Count Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>maxFileSize(int $bytes)</code></td>
+                                        <td>Maximum file size in bytes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxFileSizeMB(int $mb)</code></td>
+                                        <td>Maximum file size in megabytes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxFiles(int $max)</code></td>
+                                        <td>Maximum number of files</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>multiple(bool $val = true)</code></td>
+                                        <td>Allow multiple file selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>single()</code></td>
+                                        <td>Allow only single file (multiple=false)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display & Upload Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>message(string $msg)</code></td>
+                                        <td>Set dropzone message text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>icon(string $icon)</code></td>
+                                        <td>Set Material icon name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showPreview(bool $show = true)</code></td>
+                                        <td>Show file preview area</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hidePreview()</code></td>
+                                        <td>Hide file preview area</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>uploadUrl(string $url)</code></td>
+                                        <td>Set server upload URL</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autoUpload(bool $auto = true)</code></td>
+                                        <td>Auto-upload files on selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>existingFiles(array $files)</code></td>
+                                        <td>Set existing files for edit mode</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JS UiEngine Reference -->
+                    <div class="so-tab-pane so-fade" id="api-js" role="tabpanel">
+                        <h5 class="so-mt-3">UiEngine.dropzone()</h5>
+                        <p class="so-text-muted">Extends FormElement</p>
+
+                        <h6 class="so-mt-4">Constructor</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><code>UiEngine.dropzone(name)</code></td>
+                                        <td>Create dropzone with name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">File Type Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>accept(types)</code></td>
+                                        <td>Set accepted MIME types or extensions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>images()</code></td>
+                                        <td>Shortcut for accept('image/*')</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>documents()</code></td>
+                                        <td>Accept common document types</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>videos()</code></td>
+                                        <td>Shortcut for accept('video/*')</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Size & Count Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>maxFileSize(bytes)</code></td>
+                                        <td>Maximum file size in bytes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxFileSizeMB(mb)</code></td>
+                                        <td>Maximum file size in megabytes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>maxFiles(max)</code></td>
+                                        <td>Maximum number of files</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>multiple(val = true)</code></td>
+                                        <td>Allow multiple file selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>single()</code></td>
+                                        <td>Allow only single file</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Display & Upload Methods</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>message(msg)</code></td>
+                                        <td>Set dropzone message text</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>icon(icon)</code></td>
+                                        <td>Set Material icon name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>showPreview(val = true)</code></td>
+                                        <td>Show file preview area</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>hidePreview()</code></td>
+                                        <td>Hide file preview area</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>uploadUrl(url)</code></td>
+                                        <td>Set server upload URL</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>autoUpload(val = true)</code></td>
+                                        <td>Auto-upload files on selection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>existingFiles(files)</code></td>
+                                        <td>Set existing files for edit mode</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h6 class="so-mt-4">Element Methods (Base)</h6>
+                        <div class="so-table-responsive">
+                            <table class="so-table so-table-bordered so-table-sm">
+                                <thead class="so-table-light">
+                                    <tr>
+                                        <th style="width:40%">Method</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>id(id)</code></td>
+                                        <td>Set element ID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>addClass(className)</code></td>
+                                        <td>Add CSS class</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>attr(name, value)</code></td>
+                                        <td>Set attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data(key, value)</code></td>
+                                        <td>Set data attribute</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toHtml()</code></td>
+                                        <td>Get HTML string</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>render()</code></td>
+                                        <td>Render to DOM element</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>toConfig()</code></td>
+                                        <td>Export configuration object</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <h4 class="so-mt-4">CSS Classes</h4>
@@ -500,24 +707,32 @@ function handleFiles(files) {
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>.so-form-file-dropzone</code></td>
+                                <td><code>.so-dropzone</code></td>
                                 <td>Main dropzone container</td>
                             </tr>
                             <tr>
-                                <td><code>.so-form-file-dropzone-icon</code></td>
-                                <td>Icon wrapper</td>
+                                <td><code>.so-dropzone-area</code></td>
+                                <td>Drop area wrapper</td>
                             </tr>
                             <tr>
-                                <td><code>.so-form-file-dropzone-text</code></td>
-                                <td>Main message text</td>
+                                <td><code>.so-dropzone-icon</code></td>
+                                <td>Icon element</td>
                             </tr>
                             <tr>
-                                <td><code>.so-form-file-dropzone-hint</code></td>
-                                <td>Hint text (accepted formats, size limits)</td>
+                                <td><code>.so-dropzone-message</code></td>
+                                <td>Message text</td>
                             </tr>
                             <tr>
-                                <td><code>.so-dragover</code></td>
-                                <td>Applied when files are dragged over (highlight state)</td>
+                                <td><code>.so-dropzone-input</code></td>
+                                <td>Hidden file input</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-dropzone-preview</code></td>
+                                <td>File preview container</td>
+                            </tr>
+                            <tr>
+                                <td><code>.so-dropzone-file</code></td>
+                                <td>Individual file preview item</td>
                             </tr>
                         </tbody>
                     </table>
